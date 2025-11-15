@@ -212,26 +212,38 @@ odoo-learning-platform/
 └── README.md
 ```
 
-## 🎨 Personalización de Colores
+## 🎨 Colores de Mentora Hub
 
-Para aplicar los colores de Mentora Hub, edita `tailwind.config.js`:
+La plataforma utiliza la paleta de colores oficial de Mentora Hub:
 
-```javascript
-theme: {
-  extend: {
-    colors: {
-      primary: {
-        50: '#f0f9ff',
-        // ... agregar escala completa
-        900: '#0c4a6e',
-      },
-      secondary: {
-        // ... colores secundarios
-      }
-    }
-  }
-}
-```
+### Colores Principales
+
+**Azul Rey (Primary)** - Color principal de la marca
+- Base: `#001D7A`
+- Uso: Botones primarios, navegación, elementos destacados
+- CMYK: C100 M95 Y20 K15
+
+**Naranja (Secondary)** - Color de acento
+- Base: `#FF3F00`
+- Uso: Llamadas a acción, badges importantes, elementos prioritarios
+- CMYK: C0 M89 Y100 K0
+
+**Azul Brillante (Accent)** - Color complementario
+- Base: `#0F7CDA`
+- Uso: Enlaces, elementos interactivos, estados activos
+- CMYK: C80 M48 Y0 K0
+
+**Azul Aqua (Accent)** - Color de acento secundario
+- Base: `#00BBE6`
+- Uso: Notificaciones, progreso, highlights
+- CMYK: C69 M02 Y04 K0
+
+**Gris Claro (Neutral)**
+- Base: `#EFEFEF`
+- Uso: Fondos, separadores, elementos neutros
+- CMYK: C05 M03 Y03 K0
+
+Para más detalles sobre el uso de colores, consulta el archivo `COLORS.md`
 
 ## 🚀 Scripts Disponibles
 
