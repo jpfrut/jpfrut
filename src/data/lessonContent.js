@@ -1360,6 +1360,135 @@ export const lessonContent = {
       description: 'Genera y analiza los tres reportes principales de Mentora Consulting',
       steps: []
     }
+  },
+
+  'acc-006': {
+    title: 'Impuestos y Declaraciones',
+    introduction: 'Domina la gestión de impuestos y declaraciones fiscales en Odoo para cumplir con tus obligaciones tributarias de manera eficiente.',
+    sections: [
+      { title: '1. Configuración de Impuestos', content: 'Configura todos los tipos de impuestos de tu jurisdicción.', example: '📍 Ruta: Contabilidad > Configuración > Impuestos\n\nIVA España 21%:\nNombre: IVA 21% Ventas\nTipo: Porcentaje\nImporte: 21%\nCuenta: 4770001 IVA Repercutido', tips: ['Configura impuestos por pares compra/venta', 'Valida con tu contador'] },
+      { title: '2. Reportes Fiscales', content: 'Genera declaraciones de impuestos automáticamente.', example: 'IVA Trimestral Q1 2025:\nVentas: 100,000 EUR\nIVA Repercutido: 21,000 EUR\nCompras: 25,000 EUR  \nIVA Soportado: 5,250 EUR\nA Pagar: 15,750 EUR', tips: ['Declara puntualmente', 'Conserva todos los comprobantes'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Por qué configurar impuestos por pares?', options: ['No es necesario', 'Para separar IVA cobrado vs soportado', 'Solo en Europa', 'Solo empresas grandes'], correct: 1, explanation: 'Necesitas pares para registrar correctamente IVA de ventas e IVA de compras por separado.' }] },
+    practicalExercise: { title: 'Ejercicio: Declaración Fiscal', description: 'Genera tu primera declaración de IVA', steps: [] }
+  },
+
+  // ========================================
+  // VENTAS - TODAS LAS LECCIONES
+  // ========================================
+
+  'sales-002': {
+    title: 'Gestión de Cotizaciones',
+    introduction: 'Crea cotizaciones profesionales y conviértelas en pedidos de venta de manera eficiente.',
+    sections: [
+      { title: '1. Crear Cotizaciones', content: 'Genera cotizaciones profesionales rápidamente.', example: '📍 Cotización para TechCorp:\nServicio: Implementación Odoo\nHoras: 80\nPrecio/hora: 120 EUR\nSubtotal: 9,600 EUR\nIVA 21%: 2,016 EUR\nTotal: 11,616 EUR\n\nVigencia: 30 días\nTérminos de pago: 50% adelanto, 50% al finalizar', tips: ['Usa plantillas para servicios recurrentes', 'Incluye términos claros'] },
+      { title: '2. Productos Opcionales', content: 'Ofrece productos adicionales en tus cotizaciones.', example: 'Base: Implementación Odoo (9,600 EUR)\nOpcionales:\n- Capacitación adicional: 1,200 EUR\n- Soporte extendido 6 meses: 2,400 EUR\n\nCliente elige qué agregar', tips: ['Usa opcionales para upselling', 'Márgenes más altos en opcionales'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Cuál es la ventaja de productos opcionales?', options: ['No tienen ventaja', 'Permiten al cliente personalizar y aumentan ventas', 'Solo para inventario', 'Complican el proceso'], correct: 1, explanation: 'Los opcionales dan flexibilidad al cliente y oportunidad de vender más sin presionar.' }] },
+    practicalExercise: { title: 'Ejercicio: Cotización Completa', description: 'Crea una cotización con opcionales', steps: [] }
+  },
+
+  'sales-003': {
+    title: 'Pedidos de Venta',
+    introduction: 'Gestiona el ciclo completo de pedidos desde la confirmación hasta la entrega.',
+    sections: [
+      { title: '1. Confirmar Pedidos', content: 'Convierte cotizaciones aprobadas en pedidos.', example: 'Cotización #S00045 → Pedido #SO00123\nEstado: Confirmado\nProductos reservados\nEntrega programada: 15/02/2025', tips: ['Confirma solo cuando el cliente acepta', 'Verifica stock antes'] },
+      { title: '2. Gestionar Entregas', content: 'Programa y ejecuta entregas de productos/servicios.', example: 'Pedido SO00123:\nFase 1: Análisis (Semana 1-2)\nFase 2: Configuración (Semana 3-4)\nFase 3: Capacitación (Semana 5)\nFase 4: Go-Live (Semana 6)', tips: ['Comunica fechas claramente', 'Actualiza estado regularmente'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Cuándo confirmar un pedido?', options: ['Inmediatamente al crear', 'Cuando el cliente aprueba la cotización', 'Al final del mes', 'Nunca'], correct: 1, explanation: 'Solo confirma pedidos cuando el cliente ha aprobado formalmente la cotización.' }] },
+    practicalExercise: { title: 'Ejercicio: Gestión de Pedido', description: 'Procesa un pedido completo', steps: [] }
+  },
+
+  'sales-004': {
+    title: 'Facturación desde Ventas',
+    introduction: 'Factura automáticamente desde pedidos de venta según diferentes políticas.',
+    sections: [
+      { title: '1. Políticas de Facturación', content: 'Factura según entrega, hitos o anticipos.', example: 'Opciones:\n- Al confirmar pedido (servicios)\n- Al entregar productos (ventas)\n- Por hitos (proyectos)\n- Anticipos + saldo', tips: ['Define política antes de confirmar', 'Comunica al cliente cuándo facturarás'] },
+      { title: '2. Facturación Automática', content: 'Genera facturas automáticamente según reglas.', example: 'Pedido #SO00123:\nHito 1 (50%): Factura al completar análisis\nHito 2 (50%): Factura al Go-Live\n\nOdoo genera facturas automáticamente', tips: ['Automatiza para ahorrar tiempo', 'Revisa facturas antes de enviar'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Qué es facturación por hitos?', options: ['Facturar todo al final', 'Facturar al completar cada fase del proyecto', 'Facturar mensualmente', 'Facturar por producto'], correct: 1, explanation: 'Facturación por hitos significa cobrar al completar cada etapa definida del proyecto.' }] },
+    practicalExercise: { title: 'Ejercicio: Facturación Automática', description: 'Configura facturación por hitos', steps: [] }
+  },
+
+  'sales-005': {
+    title: 'CRM y Seguimiento',
+    introduction: 'Usa el CRM integrado para gestionar tu pipeline de ventas y dar seguimiento a oportunidades.',
+    sections: [
+      { title: '1. Pipeline de Ventas', content: 'Organiza oportunidades en etapas visuales.', example: 'Pipeline:\n→ Nuevo Lead\n→ Contactado\n→ Reunión Agendada\n→ Propuesta Enviada\n→ Negociación\n→ Ganada/Perdida', tips: ['Actualiza estado regularmente', 'Define probabilidad por etapa'] },
+      { title: '2. Actividades y Seguimiento', content: 'Programa recordatorios y tareas de seguimiento.', example: 'Lead: TechCorp\nActividad: Llamada de seguimiento\nFecha: Mañana 10:00\nResponsable: María González\nNotas: Preguntar por presupuesto', tips: ['No dejes leads sin seguimiento', 'Usa recordatorios automáticos'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Por qué es importante el pipeline visual?', options: ['Solo es decorativo', 'Permite ver rápidamente el estado de todas las oportunidades', 'Es obligatorio', 'Solo para gerentes'], correct: 1, explanation: 'El pipeline visual te permite identificar rápidamente dónde están tus oportunidades y actuar en consecuencia.' }] },
+    practicalExercise: { title: 'Ejercicio: Gestión de Pipeline', description: 'Mueve oportunidades por el pipeline', steps: [] }
+  },
+
+  'sales-006': {
+    title: 'Reportes y Análisis de Ventas',
+    introduction: 'Analiza el desempeño de ventas con dashboards y reportes detallados.',
+    sections: [
+      { title: '1. Dashboard de Ventas', content: 'Visualiza KPIs clave en tiempo real.', example: 'Dashboard Enero 2025:\nVentas del mes: 100,000 EUR ↑15%\nPipeline activo: 250,000 EUR\nTasa de conversión: 35%\nTicket promedio: 12,500 EUR\nTop vendedor: María G. (45,000 EUR)', tips: ['Revisa dashboard diariamente', 'Establece metas mensuales'] },
+      { title: '2. Análisis por Vendedor', content: 'Compara rendimiento del equipo de ventas.', example: 'Vendedor | Ventas | Oportunidades | Conv%\nMaría G. | 45,000 | 15 | 40%\nCarlos M.| 35,000 | 20 | 30%\nAna R.   | 20,000 | 10 | 35%', tips: ['Reconoce top performers', 'Ayuda a los que necesitan apoyo'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Qué mide la tasa de conversión?', options: ['Total de ventas', 'Porcentaje de oportunidades que se cierran exitosamente', 'Número de clientes', 'Ingresos totales'], correct: 1, explanation: 'La tasa de conversión mide qué porcentaje de oportunidades se convierten en ventas cerradas.' }] },
+    practicalExercise: { title: 'Ejercicio: Análisis de Ventas', description: 'Genera y analiza reportes de ventas', steps: [] }
+  },
+
+  // ========================================
+  // FLOTA - TODAS LAS LECCIONES
+  // ========================================
+
+  'fleet-002': {
+    title: 'Gestión de Vehículos',
+    introduction: 'Registra y administra todos los vehículos de tu flota empresarial.',
+    sections: [
+      { title: '1. Registro de Vehículos', content: 'Ingresa toda la información de cada vehículo.', example: 'Vehículo: Toyota Prius 2022\nPlaca: 1234-ABC\nVIN: JT2BK18E0X0123456\nKm actuales: 45,000\nValor adquisición: 28,000 EUR\nSeguro: POL-2022-001\nVence: 15/01/2026', tips: ['Digitaliza documentos', 'Actualiza kilometraje mensualmente'] },
+      { title: '2. Seguimiento de Documentación', content: 'Controla vencimientos de seguros, permisos, revisiones técnicas.', example: 'Alertas VEH-001:\n⚠️ Seguro vence en 60 días\n⚠️ Revisión técnica en 15 días\n✅ SOAP vigente', tips: ['Configura alertas 60 días antes', 'Renueva a tiempo'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Por qué registrar el VIN?', options: ['No es necesario', 'Identificación única del vehículo para seguros y trámites', 'Solo para autos nuevos', 'Es opcional'], correct: 1, explanation: 'El VIN es el identificador único del vehículo, esencial para seguros, registros y historial.' }] },
+    practicalExercise: { title: 'Ejercicio: Registrar Flota', description: 'Ingresa los 3 vehículos de Mentora', steps: [] }
+  },
+
+  'fleet-003': {
+    title: 'Asignación de Vehículos',
+    introduction: 'Asigna vehículos a conductores y gestiona el uso eficientemente.',
+    sections: [
+      { title: '1. Asignar a Conductores', content: 'Vincula vehículos con empleados autorizados.', example: 'VEH-001: Juan Pérez (Director)\nVEH-002: Carlos Martínez (Consultor)\nVEH-003: Pool car (sin asignar)', tips: ['Verifica licencia vigente', 'Define responsable único'] },
+      { title: '2. Control de Uso', content: 'Registra y analiza el uso de cada vehículo.', example: 'VEH-001 Enero 2025:\nKm recorridos: 2,500\nViajes: 45\nPromedio: 55 km/viaje\nCombustible: 180 EUR\nCosto/km: 0.072 EUR', tips: ['Pide reporte mensual', 'Analiza costos por vehículo'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Por qué tener vehículos pool (sin asignar)?', options: ['Es un error', 'Flexibilidad para que cualquier empleado autorizado los use según necesidad', 'Solo para emergencias', 'No tiene sentido'], correct: 1, explanation: 'Los vehículos pool dan flexibilidad operativa sin necesidad de tener un vehículo por empleado.' }] },
+    practicalExercise: { title: 'Ejercicio: Asignación', description: 'Asigna vehículos a empleados', steps: [] }
+  },
+
+  'fleet-004': {
+    title: 'Mantenimiento y Servicios',
+    introduction: 'Programa y registra todos los mantenimientos para prolongar la vida útil de tu flota.',
+    sections: [
+      { title: '1. Plan de Mantenimiento', content: 'Define intervalos de servicio preventivo.', example: 'Toyota Prius:\nCambio aceite: cada 15,000 km\nFiltros: cada 30,000 km\nRevisión mayor: cada 60,000 km\nNeumáticos: cada 40,000 km\n\nPróximo servicio: 60,000 km (en 3,000 km)', tips: ['Sigue manual del fabricante', 'Mantén historial completo'] },
+      { title: '2. Registro de Servicios', content: 'Documenta cada servicio realizado.', example: 'Servicio #SRV-001:\nVehículo: VEH-001\nFecha: 15/11/2024\nKm: 45,000\nTipo: Mantenimiento preventivo\nTaller: Toyota Service Madrid\nCosto: 250 EUR\nDetalle: Cambio aceite + filtros', tips: ['Guarda facturas digitalmente', 'Adjunta en Odoo'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Cuál es el beneficio del mantenimiento preventivo?', options: ['Ninguno, es gasto innecesario', 'Previene fallas costosas y prolonga vida del vehículo', 'Solo para autos caros', 'Solo si está en garantía'], correct: 1, explanation: 'El mantenimiento preventivo evita averías costosas y extiende significativamente la vida útil del vehículo.' }] },
+    practicalExercise: { title: 'Ejercicio: Plan de Mantenimiento', description: 'Crea plan para los vehículos', steps: [] }
+  },
+
+  'fleet-005': {
+    title: 'Control de Costos',
+    introduction: 'Analiza y controla todos los costos asociados a tu flota.',
+    sections: [
+      { title: '1. Registro de Combustible', content: 'Lleva control detallado de consumo de combustible.', example: 'VEH-001 Enero:\nCargas: 8\nLitros totales: 180 L\nCosto total: 280 EUR\nPrecio promedio: 1.56 EUR/L\nKm recorridos: 2,500\nConsumo: 7.2 L/100km', tips: ['Usa tarjeta corporativa', 'Analiza eficiencia mensualmente'] },
+      { title: '2. Costo Total de Propiedad', content: 'Calcula el TCO (Total Cost of Ownership).', example: 'VEH-001 TCO Anual:\nDepreciación: 4,000 EUR\nCombustible: 3,360 EUR\nMantenimiento: 1,200 EUR\nSeguro: 1,200 EUR\nImpuestos: 800 EUR\nTotal: 10,560 EUR\nCosto/km: 0.352 EUR\nCosto/mes: 880 EUR', tips: ['Calcula TCO anualmente', 'Compara con leasing'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Qué incluye el TCO?', options: ['Solo combustible', 'Todos los costos del vehículo: compra, operación, mantenimiento, seguros', 'Solo compra', 'Solo mantenimiento'], correct: 1, explanation: 'TCO incluye TODOS los costos: adquisición, depreciación, operación, mantenimiento, seguros e impuestos.' }] },
+    practicalExercise: { title: 'Ejercicio: Análisis de Costos', description: 'Calcula TCO de la flota', steps: [] }
+  },
+
+  'fleet-006': {
+    title: 'Contratos y Reportes',
+    introduction: 'Gestiona contratos de arrendamiento y genera reportes de rendimiento de flota.',
+    sections: [
+      { title: '1. Contratos de Arrendamiento', content: 'Administra leasing y renting de vehículos.', example: 'Contrato VEH-003:\nTipo: Renting\nProveedor: AutoRent S.A.\nCuota mensual: 450 EUR\nIncluye: mantenimiento, seguro, neumáticos\nDuración: 36 meses\nInicio: 01/03/2023\nVence: 28/02/2026\nKm incluidos: 30,000/año', tips: ['Revisa qué incluye el contrato', 'Controla exceso de km'] },
+      { title: '2. Reportes de Flota', content: 'Genera análisis para optimizar tu flota.', example: 'Reporte Trimestral:\nFlota total: 3 vehículos\nKm totales: 18,500\nCosto total: 8,450 EUR\nCosto/km: 0.457 EUR\nUtilización: 75%\nVehículo más eficiente: VEH-003\nRecomendación: Renovar VEH-002', tips: ['Genera reportes trimestrales', 'Busca optimizaciones'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Qué ventaja tiene el renting vs compra?', options: ['Ninguna', 'Cuota fija mensual que incluye todos los costos, sin sorpresas', 'Es más caro siempre', 'Solo para empresas grandes'], correct: 1, explanation: 'El renting ofrece cuota fija mensual que incluye mantenimiento, seguros y otros costos, facilitando el presupuesto.' }] },
+    practicalExercise: { title: 'Ejercicio: Reporte de Flota', description: 'Genera análisis completo', steps: [] }
   }
 }
 
