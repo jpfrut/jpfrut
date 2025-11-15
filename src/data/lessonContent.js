@@ -828,6 +828,538 @@ export const lessonContent = {
       description: 'Configura los elementos básicos del módulo de flota',
       steps: []
     }
+  },
+
+  // ========================================
+  // CONTABILIDAD - LECCIONES RESTANTES
+  // ========================================
+
+  'acc-004': {
+    title: 'Conciliación Bancaria',
+    introduction: `
+      La conciliación bancaria es esencial para mantener la integridad de tus registros contables.
+      Aprende a importar extractos bancarios y conciliar transacciones automática y manualmente.
+    `,
+    sections: [
+      {
+        title: '1. Importar Extractos Bancarios',
+        content: `
+          Odoo permite importar extractos de diferentes formatos para agilizar la conciliación.
+
+          **Formatos soportados:**
+          - CSV (valores separados por comas)
+          - OFX/QFX (formato bancario estándar)
+          - CAMT.053 (formato europeo SEPA)
+          - Formatos específicos de bancos
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Bancos > Importar extracto
+
+          Datos del extracto de Banco Santander (Enero 2025):
+
+          Fecha      | Descripción                    | Débito  | Crédito | Saldo
+          -----------|--------------------------------|---------|---------|--------
+          2025-01-05 | Pago Odoo S.A. - Licencias     | 1,089   |         | 123,911
+          2025-01-10 | Cobro INV-2025-001 TechCorp    |         | 18,876  | 142,787
+          2025-01-15 | Pago nóminas enero             | 28,000  |         | 114,787
+          2025-01-20 | Cobro INV-2025-002 Distribuid. |         | 968     | 115,755
+          2025-01-25 | Pago Sistemas Pro - Hardware   | 1,815   |         | 113,940
+
+          Pasos de importación:
+          1. Descargar extracto del banco en formato CSV/OFX
+          2. En Odoo: Contabilidad > Bancos > [Tu banco]
+          3. Botón "Importar"
+          4. Seleccionar archivo
+          5. Mapear campos si es necesario
+          6. Confirmar importación
+        `,
+        tips: [
+          'Importa extractos regularmente (semanal o mensual)',
+          'Verifica que el saldo final coincida con el del banco',
+          'Guarda copias de los archivos de extracto',
+          'Configura el formato de importación una sola vez por banco'
+        ]
+      },
+      {
+        title: '2. Conciliación Automática',
+        content: `
+          Odoo puede conciliar automáticamente transacciones que coinciden con facturas y pagos.
+
+          **Reglas de conciliación automática:**
+          - Coincidencia por monto exacto
+          - Coincidencia por referencia de pago
+          - Coincidencia por número de factura
+          - Reglas personalizadas
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Configuración > Reglas de conciliación
+
+          Ejemplo de regla automática:
+
+          Nombre: "Cobros de clientes"
+          Tipo: Extracto bancario de entrada
+          Cuenta contable: Clientes (1120)
+
+          Condiciones:
+          - Monto > 0 (entrada de dinero)
+          - Buscar factura con monto exacto
+          - Buscar referencia que contenga "INV"
+
+          Resultado de conciliación automática:
+          ✅ Transacción: +18,876 EUR - Ref: "INV-2025-001"
+          ✅ Conciliada con: Factura INV-2025-001 (TechCorp)
+          ✅ Estado: Conciliada automáticamente
+
+          Ahorro de tiempo: ~90% de transacciones conciliadas automáticamente
+        `,
+        tips: [
+          'Configura reglas para tus transacciones más frecuentes',
+          'Revisa las conciliaciones automáticas periódicamente',
+          'Usa referencias claras en pagos para facilitar matching',
+          'Ajusta reglas basándote en patrones recurrentes'
+        ]
+      },
+      {
+        title: '3. Conciliación Manual',
+        content: `
+          Algunas transacciones requieren intervención manual para su conciliación.
+
+          **Casos que requieren conciliación manual:**
+          - Pagos parciales
+          - Múltiples facturas en un solo pago
+          - Transacciones con diferencias de cambio
+          - Comisiones y cargos bancarios
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Bancos > Conciliar
+
+          Caso práctico - Pago múltiple:
+
+          Transacción bancaria:
+          - Pago a "Odoo S.A." por 2,178 EUR
+
+          Facturas pendientes:
+          - BILL-2025-001: 1,089 EUR
+          - BILL-2025-003: 1,089 EUR
+
+          Proceso de conciliación:
+          1. Seleccionar transacción bancaria pendiente
+          2. Buscar facturas del proveedor
+          3. Marcar ambas facturas (1,089 + 1,089 = 2,178)
+          4. Verificar que el total coincide
+          5. Clic en "Validar"
+
+          ✅ Resultado: 2 facturas conciliadas con 1 pago
+
+          Caso con diferencia:
+          Transacción: 100 EUR
+          Factura: 102 EUR
+          Diferencia: -2 EUR (comisión bancaria)
+
+          Solución:
+          1. Seleccionar transacción y factura
+          2. Registrar diferencia como "Comisión bancaria"
+          3. Cuenta: Gastos bancarios (6280)
+          4. Validar
+        `,
+        tips: [
+          'Investiga las diferencias antes de conciliar',
+          'Documenta el motivo de las diferencias',
+          'Crea cuentas específicas para comisiones y cargos',
+          'No fuerces conciliaciones incorrectas'
+        ]
+      },
+      {
+        title: '4. Resolución de Diferencias',
+        content: `
+          Aprende a identificar y resolver discrepancias entre tus registros y el banco.
+
+          **Tipos de diferencias comunes:**
+          - Pagos registrados pero no procesados
+          - Cobros procesados pero no registrados
+          - Comisiones bancarias no contabilizadas
+          - Errores de captura
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Bancos > Diferencias
+
+          Análisis de diferencias (31/01/2025):
+
+          Saldo según Odoo:     115,940 EUR
+          Saldo según banco:    113,940 EUR
+          Diferencia:            2,000 EUR
+
+          Investigación:
+
+          1. Revisar transacciones no conciliadas en Odoo:
+             ✓ Pago cheque #1234 a proveedor: 2,000 EUR (sin cobrar)
+
+          2. Revisar transacciones bancarias no registradas:
+             - Ninguna encontrada
+
+          3. Verificar fechas:
+             ✓ Cheque emitido 30/01 pero cobrado 02/02
+
+          Resolución:
+          - El cheque se cobrará en febrero
+          - Diferencia temporal normal
+          - Documentar en "Partidas en tránsito"
+          - Se conciliará en próximo extracto
+
+          Reporte de conciliación:
+          Saldo banco:              113,940 EUR
+          + Cheques en tránsito:      2,000 EUR
+          - Depósitos pendientes:         0 EUR
+          = Saldo según libros:     115,940 EUR ✅
+        `,
+        tips: [
+          'Concilia al menos mensualmente',
+          'Documenta todas las partidas en tránsito',
+          'Investiga diferencias inmediatamente',
+          'Mantén comunicación con el banco para aclarar dudas'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Qué porcentaje de transacciones puede conciliar Odoo automáticamente con reglas bien configuradas?',
+          options: [
+            'Menos del 50%',
+            'Aproximadamente 90%',
+            '100% siempre',
+            'No puede conciliar automáticamente'
+          ],
+          correct: 1,
+          explanation: 'Con reglas de conciliación bien configuradas, Odoo puede conciliar automáticamente cerca del 90% de las transacciones, ahorrando tiempo significativo.'
+        },
+        {
+          id: 'q2',
+          question: '¿Qué debes hacer si encuentras una diferencia entre el saldo bancario y tus registros?',
+          options: [
+            'Ignorarla si es pequeña',
+            'Investigar la causa y documentarla',
+            'Ajustar el saldo forzadamente',
+            'Esperar a que se resuelva sola'
+          ],
+          correct: 1,
+          explanation: 'Siempre debes investigar las diferencias, sin importar el monto, para mantener la integridad contable y detectar posibles errores o fraudes.'
+        },
+        {
+          id: 'q3',
+          question: '¿Qué son las "partidas en tránsito"?',
+          options: [
+            'Errores contables',
+            'Transacciones registradas en un sistema pero aún no procesadas en el otro',
+            'Facturas canceladas',
+            'Pagos rechazados'
+          ],
+          correct: 1,
+          explanation: 'Las partidas en tránsito son transacciones registradas en tus libros (como cheques emitidos) que aún no aparecen en el extracto bancario porque no se han procesado.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio Práctico: Conciliación Bancaria Completa',
+      description: 'Realiza una conciliación bancaria usando datos de Mentora Consulting',
+      steps: []
+    }
+  },
+
+  'acc-005': {
+    title: 'Reportes Financieros',
+    introduction: `
+      Los reportes financieros son fundamentales para la toma de decisiones. Aprende a generar
+      y analizar el Balance General, Estado de Resultados y Flujo de Caja en Odoo 19.
+    `,
+    sections: [
+      {
+        title: '1. Balance General',
+        content: `
+          El Balance General muestra la situación financiera de la empresa en un momento específico.
+
+          **Componentes del Balance:**
+          - Activos: Lo que la empresa posee
+          - Pasivos: Lo que la empresa debe
+          - Patrimonio: Capital y utilidades
+
+          Ecuación contable: Activos = Pasivos + Patrimonio
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Reportes > Balance General
+
+          MENTORA CONSULTING S.A.
+          Balance General al 31/01/2025
+          (Cifras en EUR)
+
+          ACTIVOS
+          Activo Corriente
+            Bancos y equivalentes        250,000
+            Cuentas por cobrar clientes   19,844
+            Otros activos corrientes        5,000
+            Total Activo Corriente       274,844
+
+          Activo No Corriente
+            Vehículos                     84,000
+            Depreciación acumulada       (12,000)
+            Equipos de oficina            25,000
+            Depreciación acumulada        (5,000)
+            Total Activo No Corriente     92,000
+
+          TOTAL ACTIVOS                  366,844
+
+          PASIVOS
+          Pasivo Corriente
+            Cuentas por pagar              2,178
+            Nómina por pagar              28,000
+            Impuestos por pagar            8,500
+            Total Pasivo Corriente        38,678
+
+          TOTAL PASIVOS                   38,678
+
+          PATRIMONIO
+            Capital social               250,000
+            Utilidades acumuladas         50,000
+            Utilidad del período          28,166
+            Total Patrimonio             328,166
+
+          TOTAL PASIVO + PATRIMONIO      366,844 ✅
+
+          Análisis:
+          - Liquidez: 274,844 / 38,678 = 7.1 (Excelente)
+          - Endeudamiento: 38,678 / 366,844 = 10.5% (Bajo)
+          - ROE: 28,166 / 328,166 = 8.6% (Bueno)
+        `,
+        tips: [
+          'Genera el balance mensualmente para monitorear tendencias',
+          'Compara con períodos anteriores',
+          'Calcula ratios financieros clave',
+          'Usa filtros de comparación para ver evolución'
+        ]
+      },
+      {
+        title: '2. Estado de Resultados',
+        content: `
+          El Estado de Resultados (P&L) muestra la rentabilidad en un período.
+
+          **Estructura:**
+          - Ingresos
+          - Costo de ventas
+          - Utilidad bruta
+          - Gastos operativos
+          - Utilidad neta
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Reportes > Estado de Resultados
+
+          MENTORA CONSULTING S.A.
+          Estado de Resultados - Enero 2025
+          (Cifras en EUR)
+
+          INGRESOS
+            Consultoría Estratégica        35,000
+            Implementación Odoo            45,000
+            Soporte Técnico                12,000
+            Capacitación                    8,000
+            Total Ingresos                100,000
+
+          COSTO DE VENTAS
+            Salarios consultores          (32,000)
+            Licencias software             (2,500)
+            Costos directos               (10,000)
+            Total Costo de Ventas         (44,500)
+
+          UTILIDAD BRUTA                   55,500
+          Margen bruto: 55.5%
+
+          GASTOS OPERATIVOS
+            Salarios administrativos      (12,000)
+            Arriendo oficina               (3,000)
+            Servicios (luz, agua, etc)     (1,500)
+            Marketing y publicidad         (2,800)
+            Depreciación                   (1,500)
+            Gastos varios                  (2,534)
+            Total Gastos Operativos       (23,334)
+
+          UTILIDAD OPERATIVA               32,166
+          Margen operativo: 32.2%
+
+          OTROS INGRESOS/GASTOS
+            Intereses ganados                 500
+            Comisiones bancarias             (500)
+            Total Otros                         0
+
+          UTILIDAD ANTES DE IMPUESTOS      32,166
+
+          IMPUESTOS (12%)                  (4,000)
+
+          UTILIDAD NETA                    28,166
+          Margen neto: 28.2%
+
+          KPIs:
+          ✅ Margen bruto > 50% (55.5%)
+          ✅ Margen operativo > 25% (32.2%)
+          ✅ Margen neto > 15% (28.2%)
+        `,
+        tips: [
+          'Analiza márgenes por tipo de servicio',
+          'Compara con presupuesto mensual',
+          'Identifica tendencias de ingresos y gastos',
+          'Establece metas de rentabilidad'
+        ]
+      },
+      {
+        title: '3. Flujo de Caja',
+        content: `
+          El Flujo de Caja muestra el movimiento de efectivo en un período.
+
+          **Categorías:**
+          - Actividades operativas
+          - Actividades de inversión
+          - Actividades de financiamiento
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Reportes > Flujo de Caja
+
+          MENTORA CONSULTING S.A.
+          Flujo de Caja - Enero 2025
+          (Cifras en EUR)
+
+          SALDO INICIAL (01/01/2025)      225,000
+
+          ACTIVIDADES OPERATIVAS
+          Cobros de clientes               85,000
+          Pago a proveedores               (8,500)
+          Pago nóminas                    (28,000)
+          Pago impuestos                   (3,500)
+          Otros gastos operativos          (6,000)
+          Flujo Operativo Neto             39,000
+
+          ACTIVIDADES DE INVERSIÓN
+          Compra equipos                   (5,000)
+          Venta activos                         0
+          Flujo de Inversión               (5,000)
+
+          ACTIVIDADES DE FINANCIAMIENTO
+          Aportes de capital                    0
+          Distribución dividendos          (9,000)
+          Flujo de Financiamiento          (9,000)
+
+          FLUJO NETO DEL PERÍODO           25,000
+
+          SALDO FINAL (31/01/2025)        250,000
+
+          Análisis:
+          - Flujo operativo positivo: ✅ Bueno
+          - Capacidad de inversión: ✅ Sí
+          - Días de caja: 250,000 / (100,000/30) = 75 días
+        `,
+        tips: [
+          'Proyecta flujo de caja a 3-6 meses',
+          'Identifica períodos de bajo efectivo',
+          'Mantén un colchón de seguridad',
+          'Negocia términos de pago favorables'
+        ]
+      },
+      {
+        title: '4. Reportes Personalizados',
+        content: `
+          Crea reportes personalizados según las necesidades de tu negocio.
+
+          **Opciones de personalización:**
+          - Filtros por período, cuenta, etiqueta
+          - Agrupación por diferentes criterios
+          - Comparativas entre períodos
+          - Exportación a Excel/PDF
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Reportes > Reportes personalizados
+
+          Ejemplos de reportes útiles:
+
+          1. Análisis por Cliente (Top 5):
+             - TechCorp:        18,876 EUR (38%)
+             - Distribuidora:   15,200 EUR (30%)
+             - Beta Services:   10,500 EUR (21%)
+             - Retail Group:     8,424 EUR (17%)
+             - Startups Inn:     2,000 EUR (4%)
+
+          2. Gastos por Categoría:
+             - Personal:        44,000 EUR (51%)
+             - Operaciones:     15,000 EUR (17%)
+             - Software:         2,500 EUR (3%)
+             - Marketing:        2,800 EUR (3%)
+             - Otros:           21,700 EUR (25%)
+
+          3. Rentabilidad por Servicio:
+             Servicio              | Ingresos | Costos | Margen
+             ---------------------|----------|--------|--------
+             Implementación Odoo  | 45,000   | 18,000 | 60%
+             Consultoría          | 35,000   | 17,500 | 50%
+             Soporte              | 12,000   |  6,000 | 50%
+             Capacitación         |  8,000   |  3,000 | 62.5%
+
+          Configuración de reporte:
+          - Período: Mes actual
+          - Agrupar por: Tipo de servicio
+          - Mostrar: Ingresos, Costos, Margen
+          - Ordenar por: Margen descendente
+          - Exportar a: Excel para análisis detallado
+        `,
+        tips: [
+          'Crea plantillas de reportes frecuentes',
+          'Programa envíos automáticos por email',
+          'Usa gráficos para visualizar tendencias',
+          'Comparte reportes con stakeholders relevantes'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Cuál es la ecuación contable fundamental?',
+          options: [
+            'Ingresos - Gastos = Utilidad',
+            'Activos = Pasivos + Patrimonio',
+            'Ventas - Costos = Margen',
+            'Efectivo + Bancos = Liquidez'
+          ],
+          correct: 1,
+          explanation: 'La ecuación contable fundamental es Activos = Pasivos + Patrimonio. Esta ecuación siempre debe estar en balance.'
+        },
+        {
+          id: 'q2',
+          question: '¿Qué mide el margen bruto?',
+          options: [
+            'La liquidez de la empresa',
+            'La diferencia entre ingresos y costo de ventas',
+            'El total de activos',
+            'La deuda total'
+          ],
+          correct: 1,
+          explanation: 'El margen bruto mide la rentabilidad antes de gastos operativos, calculado como (Ingresos - Costo de Ventas) / Ingresos.'
+        },
+        {
+          id: 'q3',
+          question: '¿Por qué es importante el flujo de caja?',
+          options: [
+            'Solo importa para empresas grandes',
+            'Muestra el movimiento real de efectivo, esencial para la liquidez',
+            'Es lo mismo que la utilidad neta',
+            'No es relevante si hay utilidades'
+          ],
+          correct: 1,
+          explanation: 'El flujo de caja es crítico porque muestra el movimiento real de efectivo. Una empresa puede tener utilidades pero quedarse sin efectivo si los cobros son lentos.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio Práctico: Análisis Financiero Completo',
+      description: 'Genera y analiza los tres reportes principales de Mentora Consulting',
+      steps: []
+    }
   }
 }
 
