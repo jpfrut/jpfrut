@@ -373,7 +373,7 @@ const ExercisePage = () => {
                 </Button>
               </div>
             )}
-          </Card>
+          </div>
         </Card>
       )}
 

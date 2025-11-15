@@ -543,6 +543,230 @@ export const lessonContent = {
     }
   },
 
+  // Continuación de lecciones de contabilidad
+  'acc-003': {
+    title: 'Gestión de Facturas de Proveedor',
+    introduction: `
+      Las facturas de proveedor son esenciales para controlar los gastos de tu empresa. Aprende
+      a registrarlas, aprobarlas y gestionarlas de manera eficiente en Odoo 19.
+    `,
+    sections: [
+      {
+        title: '1. Registrar Facturas de Compra',
+        content: `
+          El registro correcto de facturas de proveedor es fundamental para el control de gastos.
+
+          **Métodos de registro:**
+          - Manual: Registrar facturas recibidas directamente
+          - Desde orden de compra: Vincular con órdenes existentes
+          - OCR/Digitalización: Escanear y extraer datos automáticamente
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Proveedores > Facturas
+
+          Crear factura de proveedor:
+
+          Proveedor: Software S.A.
+          Fecha factura: 20/01/2025
+          Fecha vencimiento: 20/02/2025 (30 días)
+
+          Líneas:
+          - Licencias Office 365 | 10 unidades | $50/unidad | IVA 19% = $595
+          - Soporte técnico      | 1 servicio  | $200       | IVA 19% = $238
+
+          Subtotal: $700
+          IVA (19%): $133
+          TOTAL: $833
+
+          ⚠️ IMPORTANTE:
+          - Verificar que el NIF del proveedor sea correcto
+          - Adjuntar PDF de la factura original
+          - Validar que los montos coincidan
+        `,
+        tips: [
+          'Siempre adjunta la factura original en PDF',
+          'Verifica que los datos fiscales del proveedor estén actualizados',
+          'Revisa las condiciones de pago antes de confirmar',
+          'Usa las etiquetas analíticas para mejor control de gastos'
+        ]
+      },
+      {
+        title: '2. Validación y Aprobación',
+        content: `
+          Implementa un flujo de aprobación para controlar los gastos de la empresa.
+
+          **Niveles de aprobación:**
+          - Revisión operativa: Verifica que se recibió el producto/servicio
+          - Validación contable: Confirma que la factura es correcta
+          - Aprobación gerencial: Para montos superiores a un límite
+        `,
+        example: `
+          📍 Ruta en Odoo: Factura de proveedor > Estado
+
+          Flujo típico:
+
+          1. BORRADOR
+             - Factura ingresada pero no confirmada
+             - Se pueden hacer cambios
+             - No afecta contabilidad
+
+          2. PUBLICADA
+             - Factura confirmada
+             - Genera asiento contable
+             - Ya no se puede editar (solo cancelar)
+
+          3. PAGO PROGRAMADO
+             - Pago ordenado pero no ejecutado
+             - En cola para pago
+
+          4. PAGADA
+             - Pago registrado y confirmado
+             - Factura cerrada
+
+          Validaciones recomendadas:
+          ✓ ¿La orden de compra existe?
+          ✓ ¿Los productos/servicios fueron recibidos?
+          ✓ ¿Los precios son correctos?
+          ✓ ¿El proveedor está aprobado?
+        `,
+        tips: [
+          'Define límites de aprobación por usuario',
+          'Usa reglas de validación automática para facturas pequeñas',
+          'Configura notificaciones por email para aprobadores',
+          'Mantén un log de quién aprobó cada factura'
+        ]
+      },
+      {
+        title: '3. Gestión de Pagos a Proveedores',
+        content: `
+          Organiza y ejecuta los pagos a proveedores de manera eficiente.
+
+          **Métodos de pago:**
+          - Transferencia bancaria
+          - Cheque
+          - Efectivo
+          - Tarjeta de crédito empresarial
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Proveedores > Pagos
+
+          Registro de pago:
+
+          Proveedor: Software S.A.
+          Facturas pendientes: 2
+            - Factura 001: $833
+            - Factura 002: $1,200
+          Total adeudado: $2,033
+
+          Pagar:
+          1. Seleccionar facturas a pagar
+          2. Elegir método: Transferencia bancaria
+          3. Seleccionar cuenta bancaria
+          4. Fecha de pago: 20/01/2025
+          5. Referencia: TRANS-2025-001
+
+          Pago por lotes:
+          - Selecciona múltiples facturas
+          - Genera archivo bancario SEPA (Europa) o NACHA (USA)
+          - Sube al banco para procesamiento masivo
+        `,
+        tips: [
+          'Programa pagos para aprovechar descuentos por pronto pago',
+          'Revisa el reporte de antigüedad para priorizar pagos',
+          'Usa la reconciliación automática después de pagar',
+          'Mantén comunicación con proveedores sobre fechas de pago'
+        ]
+      },
+      {
+        title: '4. Control de Gastos',
+        content: `
+          Analiza y controla los gastos de tu empresa con las herramientas de Odoo.
+
+          **Análisis de gastos:**
+          - Por proveedor
+          - Por categoría de producto
+          - Por centro de costos
+          - Por período
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Reportes > Gastos
+
+          Reporte mensual de gastos (Enero 2025):
+
+          Categoría              | Monto    | % Total
+          -----------------------|----------|--------
+          Software y licencias   | $2,500   | 25%
+          Servicios profesionales| $3,000   | 30%
+          Marketing y publicidad | $1,500   | 15%
+          Oficina y suministros  | $1,000   | 10%
+          Otros                  | $2,000   | 20%
+          -----------------------|----------|--------
+          TOTAL                  | $10,000  | 100%
+
+          Comparativa año anterior:
+          Enero 2024: $8,500
+          Incremento: 17.6% 📈
+
+          Análisis:
+          - Incremento en software por nuevas herramientas
+          - Servicios profesionales estables
+          - Oportunidad de reducir "Otros" investigando detalle
+        `,
+        tips: [
+          'Establece presupuestos por categoría y monitorea variaciones',
+          'Revisa gastos recurrentes mensualmente para optimizar',
+          'Usa etiquetas analíticas para seguimiento por proyecto',
+          'Genera reportes automáticos para la gerencia'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Cuál es la principal diferencia entre una factura en borrador y una publicada?',
+          options: [
+            'El color en la pantalla',
+            'La factura en borrador no genera asientos contables y puede editarse',
+            'No hay diferencia',
+            'Solo el gerente puede ver las publicadas'
+          ],
+          correct: 1,
+          explanation: 'Una factura en borrador no afecta la contabilidad y puede modificarse libremente. Al publicarla, se genera el asiento contable y ya no puede editarse directamente.'
+        },
+        {
+          id: 'q2',
+          question: '¿Por qué es importante validar que se recibieron los productos antes de aprobar una factura?',
+          options: [
+            'No es importante',
+            'Para evitar pagar por productos/servicios no recibidos',
+            'Solo es importante para gastos grandes',
+            'Es solo un requisito administrativo sin valor'
+          ],
+          correct: 1,
+          explanation: 'Validar la recepción antes de aprobar evita pagos incorrectos y asegura que solo pagas por lo que realmente recibiste.'
+        },
+        {
+          id: 'q3',
+          question: '¿Qué ventaja tiene el pago por lotes de facturas?',
+          options: [
+            'Es más caro pero más rápido',
+            'Permite pagar múltiples facturas con un solo archivo bancario',
+            'Solo funciona los viernes',
+            'No tiene ninguna ventaja'
+          ],
+          correct: 1,
+          explanation: 'El pago por lotes te permite generar un solo archivo bancario para pagar múltiples facturas a diferentes proveedores, ahorrando tiempo y esfuerzo.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio Práctico: Ciclo Completo de Factura de Proveedor',
+      description: 'Simula el proceso completo de gestión de una factura de proveedor',
+      steps: []
+    }
+  },
+
   'fleet-001': {
     title: 'Configuración del Módulo de Flota',
     introduction: `
