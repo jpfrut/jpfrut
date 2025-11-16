@@ -777,6 +777,1091 @@ export const glossaryTerms = {
       'Mantén historial de contratos anteriores',
       'Actualiza cuando hay cambios de salario o condiciones'
     ]
+  },
+
+  // =====================================
+  // FINANZAS - TÉRMINOS ADICIONALES
+  // =====================================
+
+  'impuesto': {
+    term: 'Impuesto',
+    shortDef: 'Porcentaje que cobras o pagas al gobierno',
+    fullDef: 'Es el dinero extra que agregas al precio de venta (como el IVA) o que te descuentan de tus ingresos. El gobierno lo usa para escuelas, hospitales y servicios públicos. Odoo lo calcula automáticamente en cada factura.',
+    category: 'Contabilidad',
+    icon: '🏛️',
+    example: {
+      title: 'Ejemplo de IVA en una venta',
+      content: `
+        Vendes una silla:
+        Precio base:        $1,000
+        + IVA (16%):        $160
+        ━━━━━━━━━━━━━━━━━━
+        Cliente paga:       $1,160
+
+        Los $160 NO son tuyos:
+        → Los guardas temporalmente
+        → Cada mes o bimestre, los pagas al gobierno
+        → Odoo lleva la cuenta de cuánto debes
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'factura',
+        explanation: 'Cada factura muestra el desglose de impuestos automáticamente'
+      },
+      {
+        relatedTerm: 'posicion-fiscal',
+        explanation: 'La posición fiscal determina qué impuestos aplican a cada cliente'
+      }
+    ],
+    bestPractices: [
+      'Configura los impuestos de tu país al inicio (Odoo tiene plantillas)',
+      'Nunca modifiques un impuesto que ya usaste - crea uno nuevo',
+      'Separa IVA de otros impuestos (IEPS, ISR retenido, etc.)',
+      'Revisa que las tasas sean las vigentes según tu gobierno'
+    ],
+    commonMistakes: [
+      'Confundir impuestos incluidos con impuestos añadidos',
+      'Olvidar que algunos productos tienen tasas diferentes (0%, exentos)',
+      'No actualizar tasas cuando el gobierno las cambia'
+    ],
+    relatedModules: ['Contabilidad', 'Ventas', 'Compras', 'Punto de Venta']
+  },
+
+  'posicion-fiscal': {
+    term: 'Posición Fiscal',
+    shortDef: 'Reglas de impuestos según el tipo de cliente',
+    fullDef: 'Es como una "etiqueta" que le pones a un cliente o proveedor para que Odoo sepa qué impuestos cobrarle. Por ejemplo: clientes extranjeros no pagan IVA, clientes exentos tienen tasa 0%, etc.',
+    category: 'Contabilidad',
+    icon: '🏷️',
+    example: {
+      title: 'Posiciones fiscales comunes',
+      content: `
+        1. CLIENTE NACIONAL
+           → Cobra IVA normal (16%)
+           → Factura con todos los impuestos
+
+        2. CLIENTE EXTRANJERO (exportación)
+           → NO cobra IVA (0%)
+           → Factura sin impuestos locales
+
+        3. CLIENTE EXENTO (ej: asociación civil)
+           → No cobra IVA
+           → Requiere documentación especial
+
+        Odoo cambia los impuestos automáticamente
+        según la posición fiscal del cliente.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'cliente',
+        explanation: 'Cada cliente puede tener una posición fiscal asignada'
+      },
+      {
+        relatedTerm: 'impuesto',
+        explanation: 'La posición fiscal mapea un impuesto a otro (o lo elimina)'
+      }
+    ],
+    bestPractices: [
+      'Configura las posiciones fiscales más comunes al inicio',
+      'Asigna la posición correcta al crear cada cliente',
+      'Revisa facturas de exportación para confirmar que no cobran IVA',
+      'Documenta cuándo aplica cada posición'
+    ],
+    commonMistakes: [
+      'Olvidar asignar posición fiscal a clientes extranjeros',
+      'Crear clientes sin verificar su situación fiscal',
+      'No actualizar cuando cambian las leyes fiscales'
+    ],
+    relatedModules: ['Contabilidad', 'Ventas', 'Compras']
+  },
+
+  'moneda': {
+    term: 'Moneda',
+    shortDef: 'El tipo de dinero que usas (pesos, dólares, euros)',
+    fullDef: 'Odoo puede manejar múltiples monedas: tu moneda principal (con la que llevas tu contabilidad) y monedas extranjeras para clientes o proveedores de otros países. El sistema convierte automáticamente usando tipos de cambio.',
+    category: 'Contabilidad',
+    icon: '💵',
+    example: {
+      title: 'Venta en dólares (moneda principal: pesos)',
+      content: `
+        Vendes a cliente en USA:
+        Factura:        $100 USD
+
+        Tipo de cambio del día: 1 USD = 17.50 MXN
+
+        En tu contabilidad registra:
+        Cuenta por cobrar: $1,750 MXN
+        Ventas:            $1,750 MXN
+
+        Cuando el cliente paga (y el tipo cambió a 18.00):
+        Recibes:           $1,800 MXN
+        Ganancia cambiaria: $50 MXN (diferencia)
+
+        Odoo hace todo esto automáticamente ✓
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'tipo-de-cambio',
+        explanation: 'El tipo de cambio determina la conversión entre monedas'
+      },
+      {
+        relatedTerm: 'factura',
+        explanation: 'Cada factura puede estar en diferente moneda'
+      }
+    ],
+    bestPractices: [
+      'Define tu moneda principal al configurar la empresa (no se puede cambiar después)',
+      'Activa solo las monedas que realmente usas',
+      'Actualiza tipos de cambio diariamente si tienes muchas operaciones',
+      'Configura actualización automática de tipos de cambio si está disponible'
+    ],
+    commonMistakes: [
+      'Intentar cambiar la moneda principal después de tener movimientos',
+      'No registrar pagos en la moneda correcta de la factura',
+      'Olvidar actualizar tipos de cambio por mucho tiempo'
+    ],
+    relatedModules: ['Contabilidad', 'Ventas', 'Compras', 'Tesorería']
+  },
+
+  'tipo-de-cambio': {
+    term: 'Tipo de Cambio',
+    shortDef: 'Cuánto vale una moneda en otra',
+    fullDef: 'Es el precio de una moneda expresado en otra. Por ejemplo: 1 dólar = 17.50 pesos. Odoo usa estos valores para convertir facturas y pagos en moneda extranjera a tu moneda principal.',
+    category: 'Contabilidad',
+    icon: '📈',
+    example: {
+      title: 'Cómo funciona el tipo de cambio',
+      content: `
+        Hoy:     1 USD = 17.50 MXN
+        Mañana:  1 USD = 17.80 MXN (el dólar subió)
+
+        Si tienes una factura de $100 USD:
+        Hoy vale:   $1,750 MXN
+        Mañana vale: $1,780 MXN
+
+        Esta diferencia se llama "diferencia cambiaria"
+        y puede ser ganancia o pérdida.
+
+        Odoo registra estos cambios automáticamente
+        cuando cierras períodos contables.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'moneda',
+        explanation: 'El tipo de cambio conecta la moneda extranjera con tu moneda principal'
+      },
+      {
+        relatedTerm: 'pago',
+        explanation: 'Al recibir/hacer pagos en otra moneda, usa el tipo de cambio del día'
+      }
+    ],
+    bestPractices: [
+      'Actualiza tipos de cambio al menos una vez por semana',
+      'Usa fuentes oficiales (banco central de tu país)',
+      'Configura actualización automática si Odoo lo permite',
+      'Guarda histórico de tipos de cambio para auditorías'
+    ],
+    commonMistakes: [
+      'Dejar tipos de cambio desactualizados por meses',
+      'Usar tipos de cambio inventados en lugar de oficiales',
+      'No revisar diferencias cambiarias al cierre del período'
+    ],
+    relatedModules: ['Contabilidad', 'Ventas', 'Compras']
+  },
+
+  'pago': {
+    term: 'Pago',
+    shortDef: 'Registrar cuando recibes o das dinero',
+    fullDef: 'Es la acción de registrar que tu cliente te pagó su factura, o que tú pagaste a tu proveedor. Puede ser en efectivo, transferencia, cheque o tarjeta. El pago se "conecta" con la factura para marcarla como pagada.',
+    category: 'Contabilidad',
+    icon: '💳',
+    example: {
+      title: 'Registro de pago de cliente',
+      content: `
+        1. Cliente tiene factura #001 por $1,000
+           Estado: "Por cobrar"
+
+        2. Cliente hace transferencia bancaria
+           Ves $1,000 en tu cuenta de banco
+
+        3. En Odoo registras el pago:
+           → Seleccionas la factura #001
+           → Indicas método: Transferencia
+           → Monto: $1,000
+           → Fecha: hoy
+
+        4. Resultado:
+           → Factura #001 cambia a "Pagada" ✓
+           → Tu saldo bancario aumenta en Odoo
+           → Contador feliz porque todo cuadra
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'factura',
+        explanation: 'Los pagos se aplican a facturas pendientes'
+      },
+      {
+        relatedTerm: 'conciliacion-bancaria',
+        explanation: 'Los pagos deben coincidir con movimientos del banco'
+      }
+    ],
+    bestPractices: [
+      'Registra pagos el mismo día que ocurren',
+      'Siempre vincula el pago con su factura correspondiente',
+      'Usa la referencia del cliente (número de transferencia) en la descripción',
+      'Revisa que el método de pago sea el correcto (efectivo, banco, etc.)'
+    ],
+    commonMistakes: [
+      'Registrar pagos sin vincularlos a facturas',
+      'Confundir anticipos con pagos de facturas',
+      'No registrar pagos parciales correctamente',
+      'Olvidar registrar comisiones bancarias'
+    ],
+    relatedModules: ['Contabilidad', 'Ventas', 'Compras', 'Tesorería']
+  },
+
+  'conciliacion-bancaria': {
+    term: 'Conciliación Bancaria',
+    shortDef: 'Comparar tu banco real con lo que Odoo tiene registrado',
+    fullDef: 'Es revisar que los movimientos de tu cuenta de banco (depósitos, retiros, transferencias) coincidan exactamente con lo que tienes registrado en Odoo. Si no cuadran, hay un error que debes encontrar y corregir.',
+    category: 'Contabilidad',
+    icon: '🔍',
+    example: {
+      title: 'Proceso de conciliación',
+      content: `
+        TU EXTRACTO BANCARIO dice:
+        Saldo inicial:     $10,000
+        + Depósito cliente: $1,500
+        - Pago proveedor:   $3,000
+        - Comisión banco:   $50
+        Saldo final:       $8,450
+
+        ODOO dice:
+        Saldo inicial:     $10,000
+        + Pago recibido:   $1,500
+        - Pago realizado:  $3,000
+        Saldo:             $8,500
+
+        ¡No cuadra! Falta registrar la comisión de $50.
+        Al conciliar, encuentras y corriges este error.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'pago',
+        explanation: 'Cada pago debe aparecer en la conciliación bancaria'
+      },
+      {
+        relatedTerm: 'sincronizacion-bancaria',
+        explanation: 'La sincronización automática facilita la conciliación'
+      }
+    ],
+    bestPractices: [
+      'Concilia al menos una vez por semana (idealmente diario)',
+      'Nunca dejes pasar más de un mes sin conciliar',
+      'Revisa comisiones y cargos que el banco hace automáticamente',
+      'Mantén un registro de diferencias encontradas y cómo las resolviste'
+    ],
+    commonMistakes: [
+      'Ignorar pequeñas diferencias (acumulan errores grandes)',
+      'No registrar comisiones bancarias, intereses o cargos',
+      'Conciliar sin verificar cada movimiento individualmente',
+      'Dejar pagos "huérfanos" sin vincular a facturas'
+    ],
+    relatedModules: ['Contabilidad', 'Tesorería']
+  },
+
+  'gasto': {
+    term: 'Gasto',
+    shortDef: 'Dinero que pagas para operar tu negocio',
+    fullDef: 'Son los costos necesarios para que tu empresa funcione: renta, luz, internet, sueldos, papelería, etc. En Odoo, puedes registrar gastos de empleados (viáticos, compras menores) o gastos generales de la empresa.',
+    category: 'Contabilidad',
+    icon: '🧾',
+    example: {
+      title: 'Tipos de gastos comunes',
+      content: `
+        GASTOS FIJOS (siempre los pagas):
+        - Renta de oficina: $5,000/mes
+        - Internet: $800/mes
+        - Luz: $1,200/mes
+        - Sueldos: $50,000/mes
+
+        GASTOS VARIABLES (cambian):
+        - Gasolina: depende de cuánto manejes
+        - Papelería: según necesites
+        - Comidas de trabajo: ocasional
+
+        GASTOS DE EMPLEADOS:
+        - Juan fue a ver cliente y pagó $500 de taxi
+        - María compró toners: $1,200
+        → Ellos piden reembolso, tú lo registras
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'reembolso',
+        explanation: 'Los empleados solicitan reembolso de los gastos que pagaron'
+      },
+      {
+        relatedTerm: 'informe-de-gastos',
+        explanation: 'Los gastos se agrupan en informes para aprobar y pagar'
+      }
+    ],
+    bestPractices: [
+      'Categoriza gastos correctamente (marketing, operación, etc.)',
+      'Guarda SIEMPRE el comprobante/factura del gasto',
+      'Registra gastos al momento, no acumules para "después"',
+      'Define política clara de qué gastos son reembolsables'
+    ],
+    commonMistakes: [
+      'Mezclar gastos personales con gastos de empresa',
+      'No guardar comprobantes (problemas con impuestos)',
+      'Registrar gastos en cuenta incorrecta',
+      'Olvidar gastos pequeños que suman mucho al año'
+    ],
+    relatedModules: ['Gastos', 'Contabilidad', 'RRHH']
+  },
+
+  'reembolso': {
+    term: 'Reembolso',
+    shortDef: 'Devolver dinero al empleado que pagó algo de su bolsa',
+    fullDef: 'Cuando un empleado usa su propio dinero para pagar algo del trabajo (taxi, comida con cliente, materiales), la empresa le devuelve ese dinero. En Odoo, el empleado registra el gasto, lo apruebas, y luego se lo pagas.',
+    category: 'RRHH',
+    icon: '💰',
+    example: {
+      title: 'Proceso de reembolso paso a paso',
+      content: `
+        1. EMPLEADO GASTA:
+           María paga taxi para ver cliente: $250
+           Guarda el ticket/recibo
+
+        2. REGISTRA EN ODOO:
+           - Sube foto del ticket
+           - Categoría: Transporte
+           - Monto: $250
+           - Descripción: "Visita cliente ABC"
+
+        3. APROBACIÓN:
+           Su jefe revisa y aprueba ✓
+
+        4. PAGO:
+           Finanzas incluye los $250 en siguiente nómina
+           o hace transferencia directa
+
+        5. RESULTADO:
+           María recupera su dinero
+           Empresa tiene gasto registrado correctamente
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'gasto',
+        explanation: 'El reembolso es para devolver gastos que el empleado pagó'
+      },
+      {
+        relatedTerm: 'informe-de-gastos',
+        explanation: 'Los reembolsos se agrupan en informes para facilitar aprobación'
+      }
+    ],
+    bestPractices: [
+      'Define límites claros: qué se reembolsa y qué no',
+      'Exige comprobantes para TODO (sin excepción)',
+      'Establece proceso de aprobación rápido (no más de 1 semana)',
+      'Paga reembolsos puntualmente para mantener confianza'
+    ],
+    commonMistakes: [
+      'Aprobar gastos sin revisar comprobantes',
+      'Tardar semanas en reembolsar (desmotiva empleados)',
+      'No tener política clara de gastos permitidos',
+      'Mezclar reembolsos con adelantos de nómina'
+    ],
+    relatedModules: ['Gastos', 'RRHH', 'Nómina']
+  },
+
+  'nota-de-credito': {
+    term: 'Nota de Crédito',
+    shortDef: 'Factura al revés para cancelar o corregir una venta',
+    fullDef: 'Cuando necesitas cancelar una factura (devolución, error en precio, descuento posterior), creas una nota de crédito. Es como una "factura negativa" que anula total o parcialmente la original.',
+    category: 'Contabilidad',
+    icon: '↩️',
+    example: {
+      title: 'Cuándo usar nota de crédito',
+      content: `
+        CASO 1 - DEVOLUCIÓN COMPLETA:
+        Factura #100: Vendiste 10 sillas por $10,000
+        Cliente devuelve TODO
+        → Nota de crédito por $10,000
+        → Factura queda en $0
+
+        CASO 2 - DEVOLUCIÓN PARCIAL:
+        Factura #100: 10 sillas por $10,000
+        Cliente devuelve 2 sillas
+        → Nota de crédito por $2,000
+        → Factura queda en $8,000
+
+        CASO 3 - DESCUENTO POSTERIOR:
+        Factura #100: $10,000
+        Le das 10% descuento después
+        → Nota de crédito por $1,000
+        → Cliente solo debe $9,000
+
+        La nota de crédito se vincula a la factura original.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'factura',
+        explanation: 'La nota de crédito siempre se relaciona con una factura existente'
+      },
+      {
+        relatedTerm: 'pago',
+        explanation: 'La nota de crédito puede aplicarse como "pago" a otras facturas'
+      }
+    ],
+    bestPractices: [
+      'SIEMPRE vincula la nota de crédito a su factura original',
+      'Documenta claramente el motivo (devolución, error, descuento)',
+      'Verifica que cumpla requisitos fiscales de tu país',
+      'No uses notas de crédito para "esconder" ventas'
+    ],
+    commonMistakes: [
+      'Crear nota de crédito sin vincular a factura original',
+      'No incluir los impuestos correspondientes',
+      'Usar nota de crédito cuando debería ser factura nueva',
+      'Olvidar notificar al cliente sobre la nota de crédito'
+    ],
+    relatedModules: ['Contabilidad', 'Ventas', 'Facturación']
+  },
+
+  'balance-general': {
+    term: 'Balance General',
+    shortDef: 'Foto completa de tu situación financiera en un momento',
+    fullDef: 'Es un reporte que muestra TODO lo que tienes (activos), TODO lo que debes (pasivos) y lo que realmente es tuyo (patrimonio). Como una fotografía de la salud financiera de tu empresa en una fecha específica.',
+    category: 'Contabilidad',
+    icon: '📊',
+    example: {
+      title: 'Balance General simplificado',
+      content: `
+        BALANCE GENERAL al 31 de diciembre
+
+        LO QUE TIENES (ACTIVOS):
+        Banco:                  $50,000
+        Clientes que te deben:  $30,000
+        Inventario:             $40,000
+        Equipo de cómputo:      $20,000
+        TOTAL ACTIVOS:          $140,000
+
+        LO QUE DEBES (PASIVOS):
+        A proveedores:          $25,000
+        Préstamo bancario:      $35,000
+        TOTAL PASIVOS:          $60,000
+
+        LO QUE ES TUYO (PATRIMONIO):
+        Capital:                $50,000
+        Utilidades:             $30,000
+        TOTAL PATRIMONIO:       $80,000
+
+        ✓ ACTIVOS = PASIVOS + PATRIMONIO
+        $140,000 = $60,000 + $80,000
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'cuenta-contable',
+        explanation: 'El balance agrupa todas las cuentas por tipo (activo, pasivo, patrimonio)'
+      },
+      {
+        relatedTerm: 'estado-de-resultados',
+        explanation: 'Las utilidades del estado de resultados pasan al patrimonio del balance'
+      }
+    ],
+    bestPractices: [
+      'Genera balance al menos cada mes',
+      'Compara con meses anteriores para ver tendencias',
+      'Verifica que siempre cuadre (activos = pasivos + patrimonio)',
+      'Úsalo para tomar decisiones de inversión o préstamos'
+    ],
+    commonMistakes: [
+      'Ignorar el balance y solo ver ventas',
+      'No entender qué significa cada sección',
+      'Generar balance sin haber cerrado el período contable',
+      'No comparar con períodos anteriores'
+    ],
+    relatedModules: ['Contabilidad', 'Reportes Financieros']
+  },
+
+  'proveedor-de-pagos': {
+    term: 'Proveedor de Pagos',
+    shortDef: 'Servicio que permite a tus clientes pagarte en línea',
+    fullDef: 'Son empresas como PayPal, Stripe, MercadoPago o el banco que te dan la tecnología para aceptar pagos con tarjeta de crédito o transferencias en tu tienda en línea. Cobran una comisión pequeña por cada pago.',
+    category: 'Contabilidad',
+    icon: '💳',
+    example: {
+      title: 'Cómo funcionan los proveedores de pago',
+      content: `
+        TU TIENDA EN LÍNEA:
+        Cliente quiere comprar zapatos: $1,000
+
+        1. Cliente da clic en "Pagar"
+        2. Ve opciones: PayPal, Tarjeta, Transferencia
+        3. Elige PayPal y pone su tarjeta
+        4. PayPal verifica que la tarjeta tiene fondos ✓
+        5. PayPal te avisa: "Pago exitoso"
+        6. Tú envías los zapatos
+
+        COSTOS (ejemplo):
+        Venta:                     $1,000
+        - Comisión PayPal (3%):    $30
+        Recibes:                   $970
+
+        Es como tener una terminal bancaria, pero digital.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'pago',
+        explanation: 'El proveedor de pagos facilita recibir pagos de clientes'
+      },
+      {
+        relatedTerm: 'factura',
+        explanation: 'Los pagos recibidos se vinculan a facturas pendientes'
+      }
+    ],
+    bestPractices: [
+      'Compara comisiones entre proveedores antes de elegir',
+      'Configura notificaciones para saber cuando te pagan',
+      'Ten al menos 2 opciones de pago para tus clientes',
+      'Verifica que el proveedor opere en tu país'
+    ],
+    commonMistakes: [
+      'No considerar las comisiones en tu precio de venta',
+      'Elegir proveedor sin verificar compatibilidad con Odoo',
+      'No registrar las comisiones como gasto',
+      'Olvidar verificar transferencias antes de enviar producto'
+    ],
+    relatedModules: ['Website', 'Ventas', 'Contabilidad', 'Punto de Venta']
+  },
+
+  'sincronizacion-bancaria': {
+    term: 'Sincronización Bancaria',
+    shortDef: 'Conectar tu cuenta de banco con Odoo automáticamente',
+    fullDef: 'En lugar de revisar manualmente tu estado de cuenta y registrar cada movimiento en Odoo, la sincronización bancaria importa automáticamente todos los depósitos y retiros. Así ahorras tiempo y evitas errores.',
+    category: 'Contabilidad',
+    icon: '🔄',
+    example: {
+      title: 'Sin sincronización vs con sincronización',
+      content: `
+        SIN SINCRONIZACIÓN (manual):
+        1. Abres página del banco
+        2. Descargas movimientos del mes
+        3. Revisas uno por uno (50 movimientos)
+        4. Registras cada uno en Odoo a mano
+        5. Tardas 2-3 horas
+        6. Posibles errores de dedo
+
+        CON SINCRONIZACIÓN (automático):
+        1. Odoo se conecta a tu banco
+        2. Importa los 50 movimientos automáticamente
+        3. Los relaciona con facturas existentes
+        4. Tardas 15 minutos revisando
+        5. Sin errores de captura
+
+        ¡Es como tener un asistente que hace la tarea por ti!
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'conciliacion-bancaria',
+        explanation: 'La sincronización facilita el proceso de conciliación'
+      },
+      {
+        relatedTerm: 'pago',
+        explanation: 'Los pagos importados se vinculan automáticamente con facturas'
+      }
+    ],
+    bestPractices: [
+      'Verifica que tu banco sea compatible con Odoo',
+      'Sincroniza al menos una vez al día',
+      'Revisa movimientos importados antes de confirmarlos',
+      'Configura reglas automáticas para movimientos frecuentes'
+    ],
+    commonMistakes: [
+      'Confiar ciegamente sin revisar los movimientos',
+      'No actualizar credenciales cuando expiran',
+      'Sincronizar sin tener respaldo de datos',
+      'Ignorar movimientos que el sistema no pudo clasificar'
+    ],
+    relatedModules: ['Contabilidad', 'Tesorería']
+  },
+
+  'informe-de-gastos': {
+    term: 'Informe de Gastos',
+    shortDef: 'Documento que agrupa varios gastos para aprobarlos juntos',
+    fullDef: 'Es como una "lista de compras" que el empleado entrega con todos los tickets de lo que pagó con su dinero durante un viaje o proyecto. El jefe revisa todo junto, aprueba, y se le reembolsa en un solo pago.',
+    category: 'RRHH',
+    icon: '📑',
+    example: {
+      title: 'Informe de gastos de viaje',
+      content: `
+        INFORME DE GASTOS
+        Empleado: Roberto García
+        Proyecto: Visita cliente Monterrey
+        Fecha: 10-12 marzo 2024
+
+        GASTOS INCLUIDOS:
+        1. Vuelo ida y vuelta:        $3,500
+        2. Hotel 2 noches:            $2,400
+        3. Comidas (3 días):          $900
+        4. Taxis locales:             $450
+        5. Estacionamiento aeropuerto: $350
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        TOTAL A REEMBOLSAR:           $7,600
+
+        Adjuntos: 5 tickets/facturas
+
+        FLUJO:
+        Roberto → Envía informe
+        Su jefe → Revisa y aprueba
+        Finanzas → Paga $7,600 a Roberto
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'gasto',
+        explanation: 'El informe agrupa múltiples gastos individuales'
+      },
+      {
+        relatedTerm: 'reembolso',
+        explanation: 'Una vez aprobado el informe, se procesa el reembolso'
+      }
+    ],
+    bestPractices: [
+      'Agrupa gastos por proyecto o viaje (no mezcles)',
+      'Adjunta TODOS los comprobantes escaneados',
+      'Envía el informe máximo 1 semana después del gasto',
+      'Describe brevemente cada gasto para facilitar aprobación'
+    ],
+    commonMistakes: [
+      'Enviar informes sin comprobantes completos',
+      'Mezclar gastos de diferentes proyectos en un informe',
+      'Esperar semanas para enviar (dificulta recordar detalles)',
+      'No categorizar correctamente cada gasto'
+    ],
+    relatedModules: ['Gastos', 'RRHH', 'Contabilidad']
+  },
+
+  'anticipo': {
+    term: 'Anticipo',
+    shortDef: 'Dinero que el cliente te paga antes de recibir el producto',
+    fullDef: 'Es un pago adelantado, parcial o total, que el cliente hace antes de que le entregues el producto o servicio. Sirve para asegurar el pedido y ayuda a tu flujo de efectivo. NO es lo mismo que la factura final.',
+    category: 'Contabilidad',
+    icon: '💵',
+    example: {
+      title: 'Anticipo para muebles a medida',
+      content: `
+        Cliente pide escritorio a medida: $10,000
+
+        PASO 1 - ANTICIPO (50%):
+        Cliente paga: $5,000
+        → Tú registras el anticipo
+        → Aún NO le facturas el escritorio
+        → Empiezas a fabricar
+
+        PASO 2 - ENTREGA Y FACTURA FINAL:
+        Entregas escritorio
+        Facturas: $10,000
+        Aplicas anticipo: -$5,000
+        Cliente debe: $5,000
+
+        PASO 3 - PAGO FINAL:
+        Cliente paga los $5,000 restantes
+        → Factura pagada completamente ✓
+
+        El anticipo es DIFERENTE a facturar.
+        Primero recibes dinero, luego facturas.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'pago',
+        explanation: 'El anticipo es un tipo especial de pago recibido antes de facturar'
+      },
+      {
+        relatedTerm: 'factura',
+        explanation: 'El anticipo se aplica como "crédito" a la factura final'
+      }
+    ],
+    bestPractices: [
+      'Define claramente política de anticipos (50%, 30%, etc.)',
+      'Siempre emite comprobante del anticipo recibido',
+      'Registra anticipos en cuenta especial (no como ingreso aún)',
+      'Vincula el anticipo con la factura final cuando la emitas'
+    ],
+    commonMistakes: [
+      'Registrar anticipo como venta (antes de entregar producto)',
+      'No vincular anticipo con pedido del cliente',
+      'Olvidar aplicar anticipo a la factura final',
+      'No tener política clara de devolución de anticipos'
+    ],
+    relatedModules: ['Ventas', 'Contabilidad', 'Proyectos']
+  },
+
+  'factura-proforma': {
+    term: 'Factura Proforma',
+    shortDef: 'Propuesta de factura que NO tiene valor fiscal',
+    fullDef: 'Es un "borrador" de factura que envías al cliente para mostrarle cuánto costará todo antes de que compre. NO tiene valor legal ni fiscal, es solo informativa. Si el cliente acepta, entonces creas la factura real.',
+    category: 'Ventas',
+    icon: '📋',
+    example: {
+      title: 'Diferencia: Proforma vs Factura Real',
+      content: `
+        FACTURA PROFORMA:
+        ✗ NO tiene folio fiscal
+        ✗ NO genera obligación de pago
+        ✗ NO se reporta al gobierno
+        ✗ NO afecta tu contabilidad
+        ✓ Es solo para informar al cliente
+
+        FACTURA REAL:
+        ✓ Tiene folio fiscal legal
+        ✓ Cliente debe pagarte
+        ✓ Se reporta en impuestos
+        ✓ Afecta tu contabilidad
+        ✓ Es documento oficial
+
+        USO COMÚN:
+        1. Cliente pide cotización detallada
+        2. Le envías factura proforma
+        3. Si acepta, creas factura real
+        4. Si no acepta, no pasa nada
+
+        Muy usado en comercio internacional para aduanas.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'factura',
+        explanation: 'La proforma se convierte en factura real cuando el cliente acepta'
+      },
+      {
+        relatedTerm: 'cotizacion',
+        explanation: 'La proforma es más formal que una cotización, pero sin valor fiscal'
+      }
+    ],
+    bestPractices: [
+      'Marca claramente "PROFORMA - SIN VALOR FISCAL"',
+      'Incluye fecha de validez (cuánto tiempo es válida)',
+      'Usa numeración diferente a facturas reales',
+      'Úsala para clientes nuevos o pedidos grandes'
+    ],
+    commonMistakes: [
+      'Enviar proforma pensando que ya facturaste',
+      'No marcar claramente que es proforma',
+      'Usar misma numeración que facturas reales',
+      'Confundir al cliente sobre si ya pagó o no'
+    ],
+    relatedModules: ['Ventas', 'Comercio Exterior']
+  },
+
+  'estado-de-resultados': {
+    term: 'Estado de Resultados',
+    shortDef: 'Reporte que muestra si ganaste o perdiste dinero',
+    fullDef: 'Es como la "libreta de calificaciones" de tu negocio. Te dice cuánto vendiste, cuánto gastaste, y si al final te quedó ganancia o pérdida. Se hace para un período específico (mes, trimestre, año).',
+    category: 'Contabilidad',
+    icon: '📈',
+    example: {
+      title: 'Estado de Resultados simplificado',
+      content: `
+        ESTADO DE RESULTADOS - Enero 2024
+
+        VENTAS (lo que facturaste):
+        Productos vendidos:         $100,000
+        Servicios prestados:        $20,000
+        TOTAL INGRESOS:             $120,000
+
+        COSTOS (lo que te costó vender):
+        Costo de productos:         $60,000
+        UTILIDAD BRUTA:             $60,000
+
+        GASTOS (para operar):
+        Sueldos:                    $25,000
+        Renta:                      $8,000
+        Luz, agua, internet:        $3,000
+        Marketing:                  $5,000
+        TOTAL GASTOS:               $41,000
+
+        RESULTADO:
+        $60,000 - $41,000 = $19,000
+
+        ✓ GANASTE $19,000 este mes 🎉
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'balance-general',
+        explanation: 'La utilidad del estado de resultados aumenta el patrimonio en el balance'
+      },
+      {
+        relatedTerm: 'cuenta-contable',
+        explanation: 'Resume las cuentas de ingresos y gastos del período'
+      }
+    ],
+    bestPractices: [
+      'Genera al menos mensualmente para monitorear',
+      'Compara con meses anteriores para ver tendencias',
+      'Analiza qué gastos puedes reducir',
+      'Úsalo para proyectar ventas necesarias para ser rentable'
+    ],
+    commonMistakes: [
+      'Confundir ingresos con dinero en banco (no es lo mismo)',
+      'No separar costos de productos de gastos operativos',
+      'Generar sin cerrar el período contable',
+      'No considerar gastos no recurrentes'
+    ],
+    relatedModules: ['Contabilidad', 'Reportes Financieros']
+  },
+
+  'cierre-contable': {
+    term: 'Cierre Contable',
+    shortDef: 'Proceso de cerrar un mes o año y empezar uno nuevo',
+    fullDef: 'Es como "cerrar caja" pero para todo un período (mes o año). Verificas que todo esté registrado correctamente, generas reportes finales, y "cierras la puerta" para que nadie modifique ese período. Así mantienes tu contabilidad ordenada.',
+    category: 'Contabilidad',
+    icon: '🔒',
+    example: {
+      title: 'Pasos del cierre mensual',
+      content: `
+        CIERRE DE ENERO 2024:
+
+        1. VERIFICAR TODO REGISTRADO:
+           ✓ Todas las facturas emitidas
+           ✓ Todas las facturas recibidas
+           ✓ Todos los pagos
+           ✓ Nómina del mes
+           ✓ Gastos menores
+
+        2. CONCILIAR BANCOS:
+           ✓ Odoo = Extracto bancario
+
+        3. REVISAR REPORTES:
+           ✓ Balance General cuadra
+           ✓ Estado de Resultados correcto
+
+        4. CERRAR PERÍODO:
+           → En Odoo: Bloquear enero
+           → Ya nadie puede modificar enero
+           → Si hay error, se corrige en febrero
+
+        5. RESULTADO:
+           Enero queda "sellado" y confiable.
+           Empiezas febrero limpio.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'balance-general',
+        explanation: 'Se genera el balance final antes del cierre'
+      },
+      {
+        relatedTerm: 'estado-de-resultados',
+        explanation: 'Se genera el estado de resultados del período antes de cerrar'
+      }
+    ],
+    bestPractices: [
+      'Cierra mes anterior antes del día 15 del mes siguiente',
+      'Haz checklist de todo lo que debes verificar',
+      'No cierres si hay diferencias sin explicar',
+      'Guarda respaldo de datos antes del cierre'
+    ],
+    commonMistakes: [
+      'Cerrar sin revisar conciliaciones bancarias',
+      'Olvidar facturas pendientes de registrar',
+      'No verificar que reportes cuadren',
+      'Cerrar muy tarde (acumulas errores)'
+    ],
+    relatedModules: ['Contabilidad']
+  },
+
+  'presupuesto': {
+    term: 'Presupuesto',
+    shortDef: 'Plan de cuánto dinero vas a gastar o ganar',
+    fullDef: 'Es como hacer tu "lista de propósitos financieros" para el año. Decides cuánto planeas vender, cuánto vas a gastar en cada área, y qué utilidad esperas. Después comparas plan vs realidad para ver si vas bien.',
+    category: 'Contabilidad',
+    icon: '🎯',
+    example: {
+      title: 'Presupuesto anual simplificado',
+      content: `
+        PRESUPUESTO 2024
+
+        META DE VENTAS:
+        Enero:    $100,000
+        Febrero:  $110,000
+        Marzo:    $120,000
+        ...
+        Total año: $1,500,000
+
+        LÍMITES DE GASTOS:
+        Marketing: máximo $15,000/mes
+        Sueldos:   $50,000/mes (fijo)
+        Renta:     $8,000/mes (fijo)
+        Varios:    $5,000/mes
+
+        SEGUIMIENTO MENSUAL:
+        Enero real: vendiste $95,000
+        vs presupuesto: $100,000
+        Diferencia: -$5,000 (alerta ⚠️)
+
+        El presupuesto te ayuda a:
+        → Saber si vas en camino a tus metas
+        → No gastar de más
+        → Planificar recursos
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'estado-de-resultados',
+        explanation: 'Comparas presupuesto con resultados reales'
+      },
+      {
+        relatedTerm: 'centro-de-costos',
+        explanation: 'Puedes presupuestar por cada centro de costos'
+      }
+    ],
+    bestPractices: [
+      'Basa tu presupuesto en datos reales del año anterior',
+      'Revisa mensualmente: plan vs real',
+      'Ajusta el presupuesto si cambian las condiciones',
+      'Involucra a los responsables de cada área'
+    ],
+    commonMistakes: [
+      'Hacer presupuesto demasiado optimista',
+      'Crear presupuesto y nunca revisarlo',
+      'No considerar gastos inesperados',
+      'No involucrar a quienes ejecutarán el presupuesto'
+    ],
+    relatedModules: ['Contabilidad', 'Reportes Financieros']
+  },
+
+  'centro-de-costos': {
+    term: 'Centro de Costos',
+    shortDef: 'Área de tu empresa donde se acumulan gastos',
+    fullDef: 'Es una forma de organizar tus gastos por departamento, proyecto o ubicación. Así sabes exactamente cuánto cuesta operar cada área de tu negocio y puedes identificar dónde optimizar.',
+    category: 'Contabilidad',
+    icon: '🏷️',
+    example: {
+      title: 'Centros de costos típicos',
+      content: `
+        EMPRESA DE RETAIL - Gastos de enero:
+
+        CENTRO: TIENDA NORTE
+        - Renta: $12,000
+        - Luz: $3,000
+        - Sueldos: $25,000
+        - Total: $40,000
+
+        CENTRO: TIENDA SUR
+        - Renta: $10,000
+        - Luz: $2,500
+        - Sueldos: $20,000
+        - Total: $32,500
+
+        CENTRO: OFICINA CENTRAL
+        - Renta: $8,000
+        - Sistemas: $5,000
+        - Administración: $15,000
+        - Total: $28,000
+
+        INSIGHT:
+        Tienda Norte cuesta más pero vende más.
+        Tienda Sur es más eficiente por metro cuadrado.
+        Oficina Central apoya a ambas tiendas.
+
+        Sin centros de costos, solo verías: "Gasté $100,500"
+        Con centros de costos ves: "La tienda Norte me cuesta $40,000"
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'gasto',
+        explanation: 'Cada gasto se asigna a un centro de costos específico'
+      },
+      {
+        relatedTerm: 'presupuesto',
+        explanation: 'Puedes hacer presupuesto por cada centro de costos'
+      }
+    ],
+    bestPractices: [
+      'Define centros que tengan sentido para tu negocio',
+      'Asigna un responsable por cada centro',
+      'Analiza mensualmente rentabilidad por centro',
+      'No crees demasiados (dificulta análisis)'
+    ],
+    commonMistakes: [
+      'Crear centros de costos sin propósito claro',
+      'Olvidar asignar centro de costos al registrar gastos',
+      'No revisar reportes por centro de costos',
+      'Mezclar gastos de diferentes centros'
+    ],
+    relatedModules: ['Contabilidad', 'Analítica']
+  },
+
+  'activo-fijo': {
+    term: 'Activo Fijo',
+    shortDef: 'Cosas valiosas que compras y usas por años',
+    fullDef: 'Son las inversiones grandes que haces para operar tu negocio a largo plazo: computadoras, muebles, vehículos, maquinaria. No se "gastan" inmediatamente, sino que se deprecian (pierden valor) poco a poco cada año.',
+    category: 'Contabilidad',
+    icon: '🏭',
+    example: {
+      title: 'Ejemplo de depreciación',
+      content: `
+        Compras computadora para oficina: $20,000
+        Vida útil estimada: 4 años
+
+        DEPRECIACIÓN (cómo pierde valor):
+        Año 1: $20,000 - $5,000 = $15,000
+        Año 2: $15,000 - $5,000 = $10,000
+        Año 3: $10,000 - $5,000 = $5,000
+        Año 4: $5,000 - $5,000 = $0
+
+        CADA AÑO:
+        → Registras $5,000 como gasto de depreciación
+        → El valor en libros disminuye
+        → Aunque no gastes dinero real
+
+        ¿POR QUÉ IMPORTA?
+        - Refleja el desgaste real del equipo
+        - Es deducible de impuestos
+        - Te prepara para reemplazar el equipo
+        - Muestra el valor real de tu empresa
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'balance-general',
+        explanation: 'Los activos fijos aparecen en el balance como parte de tus activos'
+      },
+      {
+        relatedTerm: 'gasto',
+        explanation: 'La depreciación mensual se registra como gasto'
+      }
+    ],
+    bestPractices: [
+      'Registra cada activo fijo con su fecha y costo de compra',
+      'Define vida útil realista (no exageres)',
+      'Configura depreciación automática en Odoo',
+      'Haz inventario físico anual de activos'
+    ],
+    commonMistakes: [
+      'Registrar compra grande como gasto directo (debe ser activo)',
+      'No calcular depreciación mensualmente',
+      'Olvidar dar de baja activos que ya no usas',
+      'No tener control de dónde están tus activos'
+    ],
+    relatedModules: ['Contabilidad', 'Activos Fijos']
   }
 }
 
