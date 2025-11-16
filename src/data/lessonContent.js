@@ -1489,6 +1489,788 @@ export const lessonContent = {
     ],
     quiz: { questions: [{ id: 'q1', question: '¿Qué ventaja tiene el renting vs compra?', options: ['Ninguna', 'Cuota fija mensual que incluye todos los costos, sin sorpresas', 'Es más caro siempre', 'Solo para empresas grandes'], correct: 1, explanation: 'El renting ofrece cuota fija mensual que incluye mantenimiento, seguros y otros costos, facilitando el presupuesto.' }] },
     practicalExercise: { title: 'Ejercicio: Reporte de Flota', description: 'Genera análisis completo', steps: [] }
+  },
+
+  // ========================================
+  // CRM - GESTIÓN DE RELACIONES CON CLIENTES
+  // ========================================
+  'crm-001': {
+    title: 'Introducción al CRM',
+    introduction: `
+      El CRM (Customer Relationship Management) es tu mejor amigo para encontrar y mantener clientes.
+      Piensa en él como una agenda súper inteligente que recuerda TODO sobre cada persona interesada
+      en tu negocio: qué quiere, cuándo llamó, qué le dijiste, y cuándo debes seguirlo.
+    `,
+    sections: [
+      {
+        title: '1. ¿Qué es un Lead?',
+        content: `
+          Un **Lead** es una persona o empresa que mostró interés en tu producto o servicio.
+          Puede ser alguien que:
+          - Llenó un formulario en tu sitio web
+          - Te llamó preguntando por precios
+          - Te enviaron un email pidiendo información
+          - Te conoció en una feria o evento
+
+          **¿Por qué es importante registrarlos?**
+          Porque sin un sistema, ¡se te olvidarán! El CRM te ayuda a no perder ninguna oportunidad.
+        `,
+        example: `
+          📍 Ruta en Odoo: CRM > Leads
+
+          Ejemplo de Lead:
+          ─────────────────────
+          Nombre: María García
+          Empresa: Panadería La Estrella
+          Email: maria@panaderia.com
+          Teléfono: 555-1234
+          Origen: Formulario web
+          Interés: Sistema de inventario
+          Notas: "Quiere controlar su stock de harina"
+
+          ¿Qué hacer ahora?
+          ✓ Llamarla mañana a las 10am
+          ✓ Enviarle información sobre el módulo de Inventario
+          ✓ Agendar una demostración si le interesa
+        `,
+        tips: [
+          'Registra TODO de inmediato, la memoria falla',
+          'Siempre anota de dónde vino el lead (origen)',
+          'Programa la próxima acción: ¿Cuándo lo contactarás?',
+          'Sé específico en las notas: qué le interesa y por qué'
+        ]
+      },
+      {
+        title: '2. El Pipeline (Embudo de Ventas)',
+        content: `
+          Imagina un embudo: muchos leads entran arriba, pero solo algunos salen convertidos en clientes.
+          El Pipeline te muestra visualmente en qué etapa está cada oportunidad.
+
+          **Etapas típicas:**
+          1. Nuevo - Acaba de llegar
+          2. Calificado - Confirmaste que tiene interés real
+          3. Propuesta - Le enviaste cotización
+          4. Negociación - Están discutiendo precios/términos
+          5. Ganado - ¡Éxito! Se convirtió en cliente
+          6. Perdido - No compró (pero aprendes por qué)
+        `,
+        example: `
+          📍 Ruta en Odoo: CRM > Pipeline
+
+          Tu Pipeline Visual:
+          ┌─────────┐ ┌──────────┐ ┌──────────┐ ┌───────────┐
+          │  NUEVO  │ │CALIFICADO│ │ PROPUESTA│ │NEGOCIACIÓN│
+          │   10    │ │    5     │ │     3    │ │     2     │
+          └─────────┘ └──────────┘ └──────────┘ └───────────┘
+
+          De 10 leads nuevos:
+          • 5 estaban realmente interesados (50%)
+          • 3 pidieron cotización (30%)
+          • 2 están negociando (20%)
+          • Posiblemente 1-2 comprarán (10-20%)
+
+          ¡Esto es NORMAL! No todos compran, lo importante es dar seguimiento.
+        `,
+        tips: [
+          'Revisa tu pipeline cada mañana',
+          'Mueve las tarjetas según avancen',
+          'Si un lead no responde en 2 semanas, llámalo',
+          'Analiza por qué los pierdes para mejorar'
+        ]
+      },
+      {
+        title: '3. Programar Actividades',
+        content: `
+          Las actividades son recordatorios de lo que debes hacer con cada cliente potencial.
+          Sin esto, se te olvidará seguirlos y perderás ventas.
+
+          **Tipos de actividades:**
+          - Llamar: Hablar por teléfono
+          - Email: Enviar correo
+          - Reunión: Agendar cita presencial o virtual
+          - Tarea: Algo que hacer (enviar documento, etc.)
+        `,
+        example: `
+          📍 Ruta: En cualquier Lead > Pestaña "Actividades" > Programar
+
+          Actividad programada:
+          ─────────────────────────
+          Tipo: Llamada telefónica
+          Responsable: Yo
+          Fecha: Mañana 10:00 AM
+          Resumen: "Seguimiento a cotización enviada"
+          Notas: "Preguntarle si recibió el PDF y si tiene dudas"
+
+          Cuando se acerque la hora, Odoo te mostrará un aviso.
+          Después de la llamada, registras qué pasó y programas la siguiente acción.
+        `,
+        tips: [
+          'SIEMPRE programa la siguiente actividad',
+          'Sé realista con las fechas y horarios',
+          'Registra el resultado de cada actividad',
+          'No dejes leads sin actividad programada'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Qué es un Lead en el CRM?',
+          options: [
+            'Un cliente que ya compró',
+            'Una persona o empresa que mostró interés en tu producto',
+            'Un empleado de la empresa',
+            'Un proveedor'
+          ],
+          correct: 1,
+          explanation: 'Un Lead es alguien que mostró interés pero AÚN NO ha comprado. Podría convertirse en cliente si le das buen seguimiento.'
+        },
+        {
+          id: 'q2',
+          question: '¿Por qué es importante el Pipeline?',
+          options: [
+            'No es importante',
+            'Te muestra visualmente en qué etapa está cada oportunidad de venta',
+            'Solo sirve para jefes',
+            'Es solo decoración'
+          ],
+          correct: 1,
+          explanation: 'El Pipeline te permite ver de un vistazo todas tus oportunidades y en qué etapa están, para que no se te escape ninguna.'
+        },
+        {
+          id: 'q3',
+          question: '¿Qué pasa si no programas actividades de seguimiento?',
+          options: [
+            'Nada importante',
+            'El cliente llamará solo',
+            'Te olvidarás de contactarlo y perderás la venta',
+            'Odoo lo hace automáticamente'
+          ],
+          correct: 2,
+          explanation: 'Sin actividades programadas, te olvidarás de dar seguimiento y el lead se "enfriará" o irá con la competencia. ¡El seguimiento es clave!'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Tu Primer Lead',
+      description: 'Crea un lead basado en esta situación real',
+      steps: [
+        'Situación: Te llama Juan Pérez de "Ferretería El Tornillo". Necesita un sistema para controlar su inventario porque siempre le faltan productos. Te dejó su email: juan@ferreteria.com',
+        'Ve a CRM > Leads y crea uno nuevo',
+        'Llena todos los campos importantes',
+        'Programa una actividad: llamarlo en 2 días para enviarle info de Inventario',
+        'Guarda y observa cómo aparece en tu Pipeline'
+      ]
+    }
+  },
+
+  'crm-002': {
+    title: 'Conversión de Leads a Oportunidades',
+    introduction: 'Aprende cuándo y cómo convertir un lead interesado en una oportunidad real de venta.',
+    sections: [
+      {
+        title: '1. ¿Cuándo Convertir un Lead?',
+        content: `
+          Un lead se convierte en **Oportunidad** cuando:
+          - Confirmaste que tiene un problema real que puedes resolver
+          - Tiene presupuesto (o está dispuesto a invertir)
+          - Es la persona que decide o influye en la compra
+          - Tiene un plazo en mente para resolver su necesidad
+
+          Si no cumple estos criterios, sigue siendo solo un lead y necesita más seguimiento.
+        `,
+        example: `
+          Lead: María de Panadería La Estrella
+
+          ¿Tiene problema real? ✓ Sí, pierde dinero por mal control de inventario
+          ¿Tiene presupuesto? ✓ Sí, puede invertir hasta $500/mes
+          ¿Decide ella? ✓ Sí, es la dueña
+          ¿Urgencia? ✓ Sí, necesita antes de temporada alta
+
+          RESULTADO: ¡Convertir a Oportunidad!
+
+          Valor estimado: $500/mes × 12 meses = $6,000/año
+        `,
+        tips: [
+          'No conviertas leads solo por convertir',
+          'Haz las preguntas correctas para calificar',
+          'Estima el valor de la oportunidad',
+          'Define claramente la próxima acción'
+        ]
+      },
+      {
+        title: '2. Proceso de Conversión',
+        content: `
+          Cuando estés seguro de que el lead está calificado:
+          1. Abre el lead en Odoo
+          2. Haz clic en "Convertir a Oportunidad"
+          3. Asigna un valor estimado (cuánto puede valer la venta)
+          4. Selecciona o crea el cliente
+          5. Elige la etapa inicial del pipeline
+        `,
+        example: `
+          📍 Ruta: CRM > Lead > Botón "Convertir a Oportunidad"
+
+          Datos a completar:
+          ─────────────────────
+          Nombre oportunidad: "Sistema Inventario - Panadería La Estrella"
+          Cliente: María García (se crea automático)
+          Valor esperado: $6,000
+          Probabilidad: 60%
+          Fecha cierre estimada: 30 días
+          Vendedor: Tú
+
+          Al guardar, aparece en el Pipeline como Oportunidad
+          y puedes empezar a enviar cotizaciones.
+        `,
+        tips: [
+          'El nombre de la oportunidad debe ser descriptivo',
+          'Sé realista con la probabilidad de cierre',
+          'Actualiza el valor si cambia durante la negociación',
+          'La fecha de cierre te ayuda a priorizar'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Qué diferencia hay entre Lead y Oportunidad?',
+          options: [
+            'Son lo mismo',
+            'El lead es interés inicial, la oportunidad es venta calificada con valor',
+            'La oportunidad es más pequeña',
+            'Solo el nombre cambia'
+          ],
+          correct: 1,
+          explanation: 'El Lead es contacto inicial. La Oportunidad ya está calificada: sabes que puede comprar y estimaste cuánto vale.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Convierte tu Lead',
+      description: 'Transforma el lead de Juan (Ferretería) en oportunidad',
+      steps: [
+        'Abre el lead que creaste de Juan Pérez',
+        'Haz clic en "Convertir a Oportunidad"',
+        'Estima valor: $3,600/año (módulo inventario $300/mes)',
+        'Probabilidad: 50%',
+        'Fecha cierre: 45 días',
+        'Observa cómo aparece en el Pipeline'
+      ]
+    }
+  },
+
+  // ========================================
+  // INVENTARIO
+  // ========================================
+  'inv-001': {
+    title: 'Fundamentos de Inventario',
+    introduction: `
+      ¿Alguna vez te quedaste sin producto justo cuando un cliente lo necesitaba? ¿O tienes productos
+      acumulándose y ocupando espacio? El módulo de Inventario de Odoo te ayuda a saber EXACTAMENTE
+      qué tienes, dónde está, y cuándo necesitas comprar más.
+    `,
+    sections: [
+      {
+        title: '1. ¿Por Qué Controlar el Inventario?',
+        content: `
+          Sin control de inventario:
+          - No sabes qué productos tienes realmente
+          - Te quedas sin stock y pierdes ventas
+          - Tienes productos vencidos o dañados sin saberlo
+          - No sabes cuánto dinero tienes "parado" en productos
+          - Desperdicias dinero comprando lo que ya tienes
+
+          Con control de inventario:
+          - Sabes exactamente qué tienes y dónde
+          - El sistema te avisa cuándo reponer
+          - Calculas el valor de tu inventario
+          - Reduces pérdidas y desperdicios
+          - Tomas decisiones basadas en datos reales
+        `,
+        example: `
+          Ejemplo: Tienda de Abarrotes "Don José"
+
+          SIN Odoo (Antes):
+          "Creo que tengo como 20 kg de azúcar..."
+          "¿Dónde puse esas latas de atún?"
+          "¿Ya se venció el queso?"
+
+          CON Odoo (Ahora):
+          Azúcar: 18.5 kg (Ubicación: Estante A-3)
+          Atún: 45 latas (Ubicación: Bodega-2)
+          Queso: 12 unidades (Vence: 15/03/2024) ⚠️
+
+          ¡Todo claro y sin adivinanzas!
+        `,
+        tips: [
+          'Empieza con tus 20 productos más vendidos',
+          'Sé consistente: registra TODO',
+          'Elige unidades simples (piezas, kg, litros)',
+          'Actualiza diariamente al principio'
+        ]
+      },
+      {
+        title: '2. Crear tu Primer Producto',
+        content: `
+          Para controlar el inventario, primero debes registrar tus productos. Cada producto
+          necesita información básica que te ayudará a gestionarlo.
+
+          **Información esencial:**
+          - Nombre claro del producto
+          - Tipo: ¿Es algo físico que guardas?
+          - Unidad de medida: ¿Cómo lo cuentas?
+          - Precio de venta y costo
+          - Categoría: Para organizarlo
+        `,
+        example: `
+          📍 Ruta: Inventario > Productos > Crear
+
+          Producto nuevo:
+          ─────────────────────────
+          Nombre: Azúcar Refinada 1kg
+          Tipo de producto: Almacenable (lo guardas físicamente)
+          Unidad de medida: kg
+          Precio de venta: $25.00
+          Costo: $18.00
+          Categoría: Abarrotes > Endulzantes
+          Código interno: AZU-001
+          Código de barras: 7501234567890
+
+          ✓ "Puede ser vendido" - marcado
+          ✓ "Puede ser comprado" - marcado
+
+          Esto crea el producto listo para seguimiento.
+        `,
+        tips: [
+          'Usa nombres descriptivos y consistentes',
+          'El código interno te ayuda a buscarlo rápido',
+          'Marca bien si es vendible y/o comprable',
+          'Agrega foto para identificarlo fácilmente'
+        ]
+      },
+      {
+        title: '3. Ubicaciones de Almacén',
+        content: `
+          Las ubicaciones te dicen DÓNDE está cada producto. Puede ser tan simple como:
+          - Una bodega
+          - Estantes (A, B, C)
+          - Cajones numerados
+
+          O más complejo para negocios grandes:
+          - Múltiples almacenes
+          - Zonas frías/secas
+          - Áreas de cuarentena
+        `,
+        example: `
+          📍 Ruta: Inventario > Configuración > Ubicaciones
+
+          Estructura simple para tienda pequeña:
+          ─────────────────────────
+          MI TIENDA
+          ├── Área de Ventas (lo que está en mostrador)
+          ├── Bodega Principal
+          │   ├── Estante A (Abarrotes secos)
+          │   ├── Estante B (Bebidas)
+          │   └── Estante C (Limpieza)
+          └── Refrigerador (Lácteos y carnes)
+
+          Ahora cuando registres stock de Azúcar:
+          "Hay 18.5 kg en Estante A"
+
+          ¡Sabes exactamente dónde buscarla!
+        `,
+        tips: [
+          'Empieza simple, 2-3 ubicaciones máximo',
+          'Usa nombres que todos entiendan',
+          'Agrupa productos similares',
+          'Puedes agregar más ubicaciones después'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Qué problema principal resuelve el control de inventario?',
+          options: [
+            'Hacer las cosas más complicadas',
+            'Saber exactamente qué tienes, dónde está y cuándo comprar más',
+            'Contratar más empleados',
+            'Aumentar los precios'
+          ],
+          correct: 1,
+          explanation: 'El inventario te da visibilidad total de tus productos: qué hay, dónde está, y te avisa cuándo reponer para no perder ventas.'
+        },
+        {
+          id: 'q2',
+          question: '¿Qué tipo de producto es uno que guardas físicamente?',
+          options: [
+            'Servicio',
+            'Consumible',
+            'Almacenable',
+            'Digital'
+          ],
+          correct: 2,
+          explanation: 'Producto "Almacenable" es algo físico que guardas en tu bodega/tienda y necesitas controlar su cantidad.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Tu Primer Producto',
+      description: 'Registra un producto real de tu negocio',
+      steps: [
+        'Piensa en tu producto más vendido',
+        'Ve a Inventario > Productos > Crear',
+        'Completa: nombre, tipo (Almacenable), unidad, precio',
+        'Asigna una categoría',
+        'Guarda y observa la ficha completa del producto'
+      ]
+    }
+  },
+
+  // ========================================
+  // COMPRAS
+  // ========================================
+  'pur-001': {
+    title: 'Gestión de Proveedores',
+    introduction: `
+      Tus proveedores son socios clave de tu negocio. Sin ellos, no tienes productos que vender.
+      Odoo te ayuda a mantener toda la información de proveedores organizada: precios, plazos de
+      entrega, historial de compras, y más. ¡Ya no perderás esa tarjeta con el teléfono del proveedor!
+    `,
+    sections: [
+      {
+        title: '1. Registrar un Proveedor',
+        content: `
+          Un proveedor es la empresa o persona que te vende los productos que necesitas.
+          Registrarlo en Odoo te permite:
+          - Tener sus datos siempre a la mano
+          - Hacer pedidos directamente desde el sistema
+          - Llevar historial de todas las compras
+          - Comparar precios entre proveedores
+        `,
+        example: `
+          📍 Ruta: Compras > Proveedores > Crear
+
+          Nuevo proveedor:
+          ─────────────────────────
+          Nombre: Distribuidora ABC S.A.
+          NIF/RFC: ABC123456789
+          Dirección: Calle Industrial #100
+          Teléfono: 555-9876
+          Email: ventas@abc.com
+          Sitio web: www.abc.com
+
+          Contacto principal: Roberto Sánchez
+          Cargo: Ejecutivo de ventas
+          Móvil: 555-1111
+
+          Condiciones:
+          Plazo de pago: 30 días
+          Moneda: MXN
+          Día de entregas: Martes y Jueves
+        `,
+        tips: [
+          'Registra TODOS tus proveedores, incluso pequeños',
+          'Incluye varios contactos por si uno no contesta',
+          'Anota días y horarios de entrega',
+          'Guarda sus políticas de devolución'
+        ]
+      },
+      {
+        title: '2. Crear Solicitud de Presupuesto',
+        content: `
+          Cuando necesitas comprar productos, creas una "Solicitud de Presupuesto" (RFQ).
+          Es como decirle al proveedor: "¿Cuánto me cuesta esto?"
+
+          Esto es especialmente útil cuando:
+          - Quieres comparar precios
+          - Necesitas confirmar disponibilidad
+          - Es la primera vez que compras algo
+        `,
+        example: `
+          📍 Ruta: Compras > Solicitudes de Presupuesto > Crear
+
+          Nueva solicitud:
+          ─────────────────────────
+          Proveedor: Distribuidora ABC
+          Fecha del pedido: Hoy
+          Fecha límite: En 5 días
+
+          Productos solicitados:
+          ┌────────────────┬─────────┬─────────┐
+          │ Producto       │ Cantidad│ Precio  │
+          ├────────────────┼─────────┼─────────┤
+          │ Azúcar 1kg     │   50    │ $18.00  │
+          │ Arroz 1kg      │   30    │ $22.00  │
+          │ Frijol 1kg     │   25    │ $28.00  │
+          └────────────────┴─────────┴─────────┘
+
+          Subtotal: $2,260.00
+          IVA 16%: $361.60
+          TOTAL: $2,621.60
+
+          Estado: Solicitud enviada ✓
+        `,
+        tips: [
+          'Verifica cantidades antes de enviar',
+          'Confirma precios actualizados',
+          'Considera costos de envío',
+          'Guarda copia de la solicitud'
+        ]
+      },
+      {
+        title: '3. Confirmar Orden de Compra',
+        content: `
+          Cuando el proveedor acepta tu solicitud y estás de acuerdo con el precio,
+          la "Solicitud" se convierte en "Orden de Compra" oficial.
+
+          Este es el compromiso formal: tú compras, ellos entregan.
+        `,
+        example: `
+          📍 Ruta: En la Solicitud > Botón "Confirmar Pedido"
+
+          La solicitud ahora es ORDEN DE COMPRA:
+          ─────────────────────────
+          Número: PO00015
+          Estado: Orden de Compra ✓
+
+          Próximos pasos:
+          1. Esperar la entrega del proveedor
+          2. Cuando llegue, registrar la recepción
+          3. Verificar que todo esté correcto
+          4. Pagar según los términos acordados
+
+          El proveedor puede ver el pedido y preparar el envío.
+        `,
+        tips: [
+          'Revisa TODO antes de confirmar',
+          'Guarda número de orden para seguimiento',
+          'Confirma fecha esperada de entrega',
+          'Prepara espacio en bodega para recibirlo'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Para qué sirve una Solicitud de Presupuesto?',
+          options: [
+            'Para vender productos',
+            'Para preguntar precios y disponibilidad al proveedor',
+            'Para contratar empleados',
+            'Para cerrar la tienda'
+          ],
+          correct: 1,
+          explanation: 'La Solicitud de Presupuesto (RFQ) es como preguntar: "¿Cuánto me cuesta y lo tienes disponible?" antes de comprometerte a comprar.'
+        },
+        {
+          id: 'q2',
+          question: '¿Cuándo se convierte una solicitud en Orden de Compra?',
+          options: [
+            'Automáticamente después de 1 hora',
+            'Cuando el proveedor la rechaza',
+            'Cuando confirmas que aceptas el precio y quieres comprar',
+            'Nunca se convierte'
+          ],
+          correct: 2,
+          explanation: 'Tú decides confirmar la compra cuando estás de acuerdo con precios y condiciones. Entonces se vuelve compromiso oficial.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Tu Primera Compra',
+      description: 'Simula una compra a un proveedor',
+      steps: [
+        'Crea un proveedor (puede ser ficticio)',
+        'Ve a Compras > Solicitudes > Crear',
+        'Agrega 3 productos con cantidades',
+        'Envía la solicitud',
+        'Confírmala como Orden de Compra',
+        'Observa cómo cambia el estado'
+      ]
+    }
+  },
+
+  // ========================================
+  // RECURSOS HUMANOS
+  // ========================================
+  'emp-001': {
+    title: 'Gestión Básica de Empleados',
+    introduction: `
+      Tu equipo es el corazón de tu negocio. Odoo te ayuda a mantener toda la información de tus
+      empleados organizada: datos personales, contratos, departamentos, y más. Ya no tendrás
+      carpetas con papeles regados, ¡todo estará en un solo lugar!
+    `,
+    sections: [
+      {
+        title: '1. Crear Ficha de Empleado',
+        content: `
+          Cada empleado necesita su "ficha" en el sistema con información importante.
+          Esto te ayuda a:
+          - Tener sus datos siempre disponibles
+          - Asignarle a un departamento
+          - Gestionar sus documentos
+          - Calcular su nómina (si usas ese módulo)
+        `,
+        example: `
+          📍 Ruta: Empleados > Empleados > Crear
+
+          Ficha de empleado:
+          ─────────────────────────
+          INFORMACIÓN PERSONAL
+          Nombre: Ana Martínez López
+          Foto: [Subir foto]
+          Cargo: Vendedora
+          Departamento: Ventas
+          Jefe directo: Carlos Rodríguez
+
+          INFORMACIÓN DE CONTACTO
+          Teléfono trabajo: Ext. 105
+          Email trabajo: ana.martinez@miempresa.com
+          Móvil personal: 555-7890
+
+          INFORMACIÓN PRIVADA
+          Dirección: Calle Principal #200
+          Fecha nacimiento: 15/03/1990
+          Género: Femenino
+          Estado civil: Soltera
+          Contacto emergencia: Juan Martínez (Padre) 555-4567
+
+          Esta información es confidencial y solo RRHH la ve completa.
+        `,
+        tips: [
+          'La foto ayuda a identificar al empleado',
+          'Mantén los datos actualizados',
+          'Respeta la privacidad de información sensible',
+          'Siempre ten contacto de emergencia'
+        ]
+      },
+      {
+        title: '2. Departamentos y Organigrama',
+        content: `
+          Organizar a tus empleados por departamentos te ayuda a:
+          - Ver la estructura de tu empresa
+          - Asignar responsables
+          - Gestionar permisos
+          - Planificar recursos
+
+          Ejemplos de departamentos:
+          - Administración
+          - Ventas
+          - Producción
+          - Almacén
+          - Contabilidad
+        `,
+        example: `
+          📍 Ruta: Empleados > Configuración > Departamentos
+
+          Estructura de Mi Empresa:
+          ─────────────────────────
+          DIRECCIÓN GENERAL
+          └── Director: Roberto Torres
+              ├── VENTAS (5 personas)
+              │   └── Gerente: Carlos Rodríguez
+              │       ├── Ana Martínez (Vendedora)
+              │       ├── Pedro Gómez (Vendedor)
+              │       └── Luis Sánchez (Vendedor)
+              ├── PRODUCCIÓN (8 personas)
+              │   └── Gerente: María Fernández
+              └── ADMINISTRACIÓN (3 personas)
+                  └── Gerente: Laura Díaz
+
+          Esto te da visibilidad clara de tu organización.
+        `,
+        tips: [
+          'Empieza con departamentos básicos',
+          'Asigna un responsable a cada uno',
+          'Puedes crear subdepartamentos',
+          'Revisa y actualiza cuando haya cambios'
+        ]
+      },
+      {
+        title: '3. Contratos de Trabajo',
+        content: `
+          El contrato define la relación laboral: tipo de trabajo, salario, horario.
+          Registrarlo en Odoo te permite:
+          - Llevar historial de contratos
+          - Recibir avisos de vencimientos
+          - Calcular prestaciones automáticamente
+          - Mantener documentación legal
+        `,
+        example: `
+          📍 Ruta: Empleado > Pestaña "Contratos"
+
+          Contrato de Ana Martínez:
+          ─────────────────────────
+          Tipo: Tiempo Completo
+          Fecha inicio: 01/02/2024
+          Fecha fin: Indefinido
+          Horario: Lunes a Viernes, 9am-6pm
+
+          Compensación:
+          Salario mensual: $15,000
+          Bono por ventas: 2% de ventas
+          Vales de despensa: $1,500/mes
+
+          Documentos adjuntos:
+          ✓ Contrato firmado (PDF)
+          ✓ Identificación oficial
+          ✓ Comprobante domicilio
+          ✓ RFC
+        `,
+        tips: [
+          'Guarda copias digitales de documentos firmados',
+          'Programa alertas para renovaciones',
+          'Revisa que cumpla con leyes laborales',
+          'Actualiza si hay cambios de salario'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Por qué es importante registrar empleados en Odoo?',
+          options: [
+            'No es importante',
+            'Para espiar a los empleados',
+            'Para tener su información organizada y gestionar RRHH eficientemente',
+            'Solo por cumplir un requisito'
+          ],
+          correct: 2,
+          explanation: 'Tener la información organizada te permite gestionar mejor: contactar en emergencias, calcular nómina, planificar y cumplir obligaciones legales.'
+        },
+        {
+          id: 'q2',
+          question: '¿Qué información debe tener el contrato de trabajo?',
+          options: [
+            'Solo el nombre',
+            'Tipo de contrato, fechas, horario, salario y prestaciones',
+            'Solo el salario',
+            'Solo las vacaciones'
+          ],
+          correct: 1,
+          explanation: 'El contrato debe ser completo: define qué tipo de trabajo es, cuándo inicia/termina, horarios, salario y todas las prestaciones acordadas.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Registra un Empleado',
+      description: 'Crea la ficha de un empleado ficticio',
+      steps: [
+        'Ve a Empleados > Crear',
+        'Llena información personal básica',
+        'Asígnalo a un departamento',
+        'Indica su jefe directo',
+        'Agrega un contrato con salario y horario',
+        'Guarda y observa el organigrama'
+      ]
+    }
   }
 }
 

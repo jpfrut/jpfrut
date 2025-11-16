@@ -367,6 +367,278 @@ export const practicalMissions = [
       message: 'Tus vehículos durarán más tiempo y tendrás menos gastos inesperados.',
       nextSuggestion: 'Siguiente misión: "Calcular Costos de Mi Flota"'
     }
+  },
+
+  {
+    id: 'mission-first-product',
+    title: '📦 Mi Primer Producto en Inventario',
+    subtitle: 'Registra un producto para controlar cuántos tienes',
+    difficulty: 'Principiante',
+    estimatedTime: '12 minutos',
+    xpReward: 120,
+    badge: 'Controlador de Stock',
+    category: 'inventario',
+
+    businessImportance: {
+      title: '¿Por qué necesitas registrar tus productos?',
+      explanation: 'Sin registro de productos: 1) No sabes cuántos tienes realmente, 2) Te quedas sin stock y pierdes ventas, 3) Compras cosas que ya tienes, desperdiciando dinero. Con productos registrados en Odoo, sabes exactamente qué tienes, dónde está, y cuándo comprar más.',
+      realLifeExample: 'Si vendes camisetas y no sabes cuántas tienes, podrías decirle a un cliente "sí tengo la talla M" y cuando la busques, ¡no hay! Perdiste la venta y la confianza del cliente.'
+    },
+
+    steps: [
+      {
+        id: 1,
+        title: 'Ve al módulo de Inventario',
+        instruction: 'Haz clic en "Inventario" en el menú principal. Es tu almacén digital.',
+        whyThisMatters: 'Aquí controlarás todos tus productos: cuántos tienes, dónde están, y cuándo comprar más.',
+        commonMistake: 'No confundas con "Compras". Inventario es para ver tu stock, Compras es para ordenar a proveedores.',
+        visualHelp: '📍 Menú Principal → Inventario'
+      },
+      {
+        id: 2,
+        title: 'Crea un nuevo producto',
+        instruction: 'Ve a Productos > Productos y haz clic en "Crear". Es como crear una ficha para ese producto.',
+        whyThisMatters: 'Cada producto necesita su propia ficha con toda su información.',
+        commonMistake: 'No te confundas con "Variantes de producto". Por ahora, crea productos simples.',
+        visualHelp: '📦 Productos → Crear'
+      },
+      {
+        id: 3,
+        title: 'Pon un nombre claro',
+        instruction: 'Escribe un nombre descriptivo. Ejemplo: "Camiseta Azul Talla M" es mejor que solo "Camiseta".',
+        whyThisMatters: 'Un buen nombre te ayuda a encontrarlo rápido y evitar confusiones.',
+        commonMistake: 'Nombres muy cortos como "Producto 1" no sirven. Sé específico.',
+        visualHelp: '✏️ Nombre: "Camiseta Polo Azul Marino - Talla M"'
+      },
+      {
+        id: 4,
+        title: 'Elige el tipo de producto',
+        instruction: 'Selecciona "Almacenable" si es algo físico que guardas. Esto le dice a Odoo que cuente las cantidades.',
+        whyThisMatters: 'Los productos "Almacenables" son los que Odoo cuenta y te avisa cuando se acaban.',
+        commonMistake: 'Si eliges "Consumible", Odoo no llevará cuenta. Elige "Almacenable" para controlar stock.',
+        visualHelp: '📋 Tipo de producto → Almacenable (seleccionar)'
+      },
+      {
+        id: 5,
+        title: 'Agrega precio de venta',
+        instruction: 'En "Precio de venta", pon cuánto cobras al cliente. En "Costo", pon cuánto te cuesta a ti.',
+        whyThisMatters: 'Esto te ayuda a calcular tu ganancia y hacer facturas correctamente.',
+        commonMistake: 'No confundas precio de venta con costo. El precio de venta es mayor porque incluye tu ganancia.',
+        visualHelp: '💰 Precio de venta: $250 | Costo: $150'
+      },
+      {
+        id: 6,
+        title: 'Guarda el producto',
+        instruction: 'Haz clic en "Guardar". ¡Tu producto ya está registrado!',
+        whyThisMatters: 'Ahora puedes empezar a controlar cuántos tienes en stock.',
+        commonMistake: 'Después de guardar, necesitarás hacer un "ajuste de inventario" para decirle a Odoo cuántos tienes actualmente.',
+        visualHelp: '💾 GUARDAR → ¡Producto creado!'
+      }
+    ],
+
+    celebration: {
+      title: '🎉 ¡Excelente! Producto registrado',
+      message: 'Ahora Odoo puede llevar la cuenta de cuántos tienes. El siguiente paso es decirle cuántos tienes actualmente.',
+      nextSuggestion: 'Siguiente misión: "Ajustar Mi Inventario Inicial"'
+    }
+  },
+
+  {
+    id: 'mission-first-purchase',
+    title: '🛍️ Mi Primera Orden de Compra',
+    subtitle: 'Compra productos a tu proveedor de forma organizada',
+    difficulty: 'Principiante',
+    estimatedTime: '15 minutos',
+    xpReward: 140,
+    badge: 'Comprador Inteligente',
+    category: 'compras',
+
+    businessImportance: {
+      title: '¿Por qué usar órdenes de compra?',
+      explanation: 'Las órdenes de compra te ayudan a: 1) Tener registro de todo lo que pides, 2) Comparar precios de proveedores, 3) Saber cuándo llega tu pedido, 4) Controlar que te entreguen lo correcto. Sin esto, olvidas qué pediste y no puedes reclamar si algo está mal.',
+      realLifeExample: 'Imagina que llamas al proveedor y pides "50 bolsas de cemento". Llegan 40 y te cobran 50. Si no tienes orden de compra, no puedes probar qué pediste exactamente.'
+    },
+
+    steps: [
+      {
+        id: 1,
+        title: 'Abre el módulo de Compras',
+        instruction: 'Haz clic en "Compras" en el menú principal. Es donde gestionas todo lo que compras a proveedores.',
+        whyThisMatters: 'Aquí creas pedidos formales para tus proveedores.',
+        commonMistake: 'No confundas con Inventario. Compras es para ordenar; Inventario es para ver lo que ya tienes.',
+        visualHelp: '📍 Menú Principal → Compras'
+      },
+      {
+        id: 2,
+        title: 'Crea una solicitud de presupuesto',
+        instruction: 'Haz clic en "Crear" para iniciar una nueva solicitud de presupuesto.',
+        whyThisMatters: 'Empiezas pidiendo precio (solicitud). Cuando aceptas, se vuelve orden oficial.',
+        commonMistake: 'Es normal que empieces como "solicitud". Después la conviertes en orden.',
+        visualHelp: '🔵 CREAR → Nueva solicitud'
+      },
+      {
+        id: 3,
+        title: 'Selecciona tu proveedor',
+        instruction: 'En el campo "Proveedor", escribe el nombre del proveedor al que le vas a comprar.',
+        whyThisMatters: 'El sistema guardará el historial de compras con ese proveedor.',
+        commonMistake: 'Si el proveedor no aparece, primero debes registrarlo en Contactos marcando que es "Proveedor".',
+        visualHelp: '🏭 Proveedor → Escribe nombre → Selecciona'
+      },
+      {
+        id: 4,
+        title: 'Agrega los productos que necesitas',
+        instruction: 'En "Productos", haz clic en "Agregar línea". Selecciona el producto, cantidad y precio.',
+        whyThisMatters: 'Aquí detallas exactamente qué necesitas comprar y cuánto.',
+        commonMistake: 'Verifica que el precio sea el correcto. Pregunta a tu proveedor si no estás seguro.',
+        visualHelp: '📝 Agregar línea → Producto → Cantidad → Precio unitario'
+      },
+      {
+        id: 5,
+        title: 'Confirma la orden',
+        instruction: 'Revisa que todo esté bien y haz clic en "Confirmar Pedido". Esto convierte la solicitud en orden oficial.',
+        whyThisMatters: 'Una vez confirmado, es tu compromiso de compra. Puedes imprimir la orden para enviarla al proveedor.',
+        commonMistake: 'Revisa dos veces: productos, cantidades y precios. Después de confirmar es más difícil cambiar.',
+        visualHelp: '✅ Revisar → CONFIRMAR PEDIDO → Orden creada'
+      }
+    ],
+
+    celebration: {
+      title: '🎉 ¡Perfecto! Orden de compra creada',
+      message: 'Ahora tienes registro formal de tu pedido. Cuando llegue, podrás verificar que todo esté correcto.',
+      nextSuggestion: 'Siguiente misión: "Recibir Mi Pedido en Almacén"'
+    }
+  },
+
+  {
+    id: 'mission-crm-opportunity',
+    title: '🎯 Convertir Interesado en Oportunidad',
+    subtitle: 'Cuando alguien muestra interés real, conviértelo en oportunidad de venta',
+    difficulty: 'Principiante',
+    estimatedTime: '10 minutos',
+    xpReward: 130,
+    badge: 'Cazador de Oportunidades',
+    category: 'crm',
+
+    businessImportance: {
+      title: '¿Por qué convertir leads en oportunidades?',
+      explanation: 'Un "Lead" es alguien que apenas mostró interés. Una "Oportunidad" es alguien que realmente puede comprarte. Al convertir, le dices a Odoo: "Este cliente va en serio, quiero darle seguimiento especial". Te ayuda a enfocarte en los que sí van a comprar.',
+      realLifeExample: 'Si 10 personas te piden información pero solo 3 realmente quieren comprar, enfocarte en esas 3 te ahorra tiempo y aumenta tus ventas.'
+    },
+
+    steps: [
+      {
+        id: 1,
+        title: 'Abre el CRM',
+        instruction: 'Ve a CRM en el menú principal. Aquí están todos tus leads y oportunidades.',
+        whyThisMatters: 'El CRM es tu centro de control de ventas.',
+        commonMistake: 'CRM no es solo para empresas grandes. Cualquier negocio se beneficia de dar buen seguimiento.',
+        visualHelp: '📍 Menú Principal → CRM'
+      },
+      {
+        id: 2,
+        title: 'Busca el lead que quieres convertir',
+        instruction: 'En la lista de Leads, busca a la persona que ya confirmaste que tiene interés real en comprar.',
+        whyThisMatters: 'Solo conviertes los que realmente van a comprar, no todos los que preguntan.',
+        commonMistake: 'No conviertas leads solo por convertir. Primero confirma que tienen presupuesto y necesidad real.',
+        visualHelp: '🔍 Leads → Buscar cliente interesado'
+      },
+      {
+        id: 3,
+        title: 'Haz clic en "Convertir a Oportunidad"',
+        instruction: 'Abre el lead y busca el botón "Convertir a Oportunidad". Haz clic en él.',
+        whyThisMatters: 'Este es el momento donde dices: "Este cliente va en serio".',
+        commonMistake: 'El botón puede estar arriba o en el menú de acciones. Búscalo bien.',
+        visualHelp: '🔄 Botón "Convertir a Oportunidad"'
+      },
+      {
+        id: 4,
+        title: 'Estima el valor de la venta',
+        instruction: 'Pon cuánto crees que va a comprar el cliente. Ejemplo: Si es un servicio mensual de $500, pon $500.',
+        whyThisMatters: 'Esto te ayuda a priorizar: una oportunidad de $10,000 merece más atención que una de $100.',
+        commonMistake: 'No pongas un valor inventado. Estima basándote en lo que el cliente dijo que necesita.',
+        visualHelp: '💵 Valor esperado: $____'
+      },
+      {
+        id: 5,
+        title: 'Guarda la oportunidad',
+        instruction: 'Confirma y guarda. Ahora aparecerá en tu Pipeline como una oportunidad activa.',
+        whyThisMatters: 'El Pipeline te muestra visualmente en qué etapa está cada venta.',
+        commonMistake: 'Recuerda programar la siguiente actividad: ¿Cuándo lo contactarás de nuevo?',
+        visualHelp: '💾 GUARDAR → Ver en Pipeline'
+      }
+    ],
+
+    celebration: {
+      title: '🎉 ¡Genial! Oportunidad creada',
+      message: 'Ahora tienes una venta potencial bien identificada. Dale seguimiento y cierra esa venta.',
+      nextSuggestion: 'Siguiente misión: "Enviar Cotización al Cliente"'
+    }
+  },
+
+  {
+    id: 'mission-add-employee',
+    title: '👤 Registrar Mi Primer Empleado',
+    subtitle: 'Organiza la información de tu equipo de trabajo',
+    difficulty: 'Principiante',
+    estimatedTime: '10 minutos',
+    xpReward: 110,
+    badge: 'Gestor de Equipo',
+    category: 'rrhh',
+
+    businessImportance: {
+      title: '¿Por qué registrar empleados en el sistema?',
+      explanation: 'Tener empleados registrados te permite: 1) Tener sus datos de contacto siempre disponibles, 2) Asignarles tareas y responsabilidades, 3) Calcular nómina y vacaciones, 4) Cumplir con requisitos legales. Sin esto, pierdes información importante y es difícil gestionar tu equipo.',
+      realLifeExample: 'Si tienes 5 empleados y no recuerdas cuándo contrataste a cada uno, no sabrás cuándo les toca vacaciones o aumento. Odoo te lo recuerda todo.'
+    },
+
+    steps: [
+      {
+        id: 1,
+        title: 'Ve al módulo de Empleados',
+        instruction: 'Haz clic en "Empleados" en el menú principal. Es tu directorio de personal.',
+        whyThisMatters: 'Aquí gestionas toda la información de tu equipo de trabajo.',
+        commonMistake: 'No confundas con "Contactos". Empleados es específico para tu personal.',
+        visualHelp: '📍 Menú Principal → Empleados'
+      },
+      {
+        id: 2,
+        title: 'Crea un nuevo empleado',
+        instruction: 'Haz clic en "Crear" para agregar a alguien de tu equipo.',
+        whyThisMatters: 'Cada persona de tu equipo tendrá su ficha con toda su información.',
+        commonMistake: 'Incluso si solo tienes 1-2 empleados, vale la pena registrarlos.',
+        visualHelp: '🔵 CREAR → Nueva ficha de empleado'
+      },
+      {
+        id: 3,
+        title: 'Llena la información básica',
+        instruction: 'Pon nombre completo, cargo (puesto de trabajo), y departamento al que pertenece.',
+        whyThisMatters: 'Esto te ayuda a organizar quién hace qué en tu empresa.',
+        commonMistake: 'Sé específico con el cargo. "Vendedor" es mejor que solo "Empleado".',
+        visualHelp: '✏️ Nombre → Cargo → Departamento'
+      },
+      {
+        id: 4,
+        title: 'Agrega información de contacto',
+        instruction: 'Pon teléfono de trabajo, email, y un contacto de emergencia (familiar).',
+        whyThisMatters: 'Necesitas poder contactarlo y saber a quién llamar en caso de emergencia.',
+        commonMistake: 'El contacto de emergencia es muy importante. No lo dejes vacío.',
+        visualHelp: '📞 Teléfono → Email → Contacto emergencia'
+      },
+      {
+        id: 5,
+        title: 'Guarda el empleado',
+        instruction: 'Haz clic en "Guardar". ¡El empleado ya está registrado!',
+        whyThisMatters: 'Ahora tienes su información organizada y disponible.',
+        commonMistake: 'Después puedes agregar más info: contrato, salario, vacaciones, etc.',
+        visualHelp: '💾 GUARDAR → Empleado registrado'
+      }
+    ],
+
+    celebration: {
+      title: '🎉 ¡Muy bien! Empleado registrado',
+      message: 'Tu equipo está más organizado. Ahora puedes gestionar mejor a tu personal.',
+      nextSuggestion: 'Siguiente misión: "Crear Contrato de Trabajo"'
+    }
   }
 ];
 
@@ -401,6 +673,18 @@ export const missionCategories = {
     icon: '📦',
     description: 'Maneja tu inventario',
     color: 'text-yellow-600 bg-yellow-50'
+  },
+  compras: {
+    name: 'Compras',
+    icon: '🛍️',
+    description: 'Gestiona tus proveedores y pedidos',
+    color: 'text-teal-600 bg-teal-50'
+  },
+  rrhh: {
+    name: 'Recursos Humanos',
+    icon: '👥',
+    description: 'Administra tu equipo de trabajo',
+    color: 'text-indigo-600 bg-indigo-50'
   }
 };
 

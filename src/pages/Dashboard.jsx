@@ -12,9 +12,10 @@ import {
   Clock,
   Heart,
   HelpCircle,
-  ArrowRight
+  ArrowRight,
+  Star
 } from 'lucide-react'
-import { getModulesArray, getStats } from '../data/modules'
+import { getModulesArray, getStats, getCategories } from '../data/modules'
 import useStore from '../store/useStore'
 import ModuleCard from '../components/ModuleCard'
 import StatsCard from '../components/StatsCard'
@@ -28,6 +29,7 @@ const Dashboard = () => {
   const { user, completedExercises, moduleProgress } = useStore()
   const modules = getModulesArray()
   const stats = getStats()
+  const categories = getCategories()
 
   // Calcular estadísticas del usuario
   const totalCompleted = completedExercises.length
@@ -381,20 +383,57 @@ const Dashboard = () => {
               Módulos de Aprendizaje
             </h2>
           </div>
-          <div className="text-sm text-slate-500">
-            {stats.totalLessons} lecciones • {stats.totalTime} de contenido
-          </div>
+          <Link to="/explore">
+            <Button
+              variant="outline"
+              size="sm"
+              icon={<ArrowRight className="w-4 h-4" />}
+            >
+              Ver los {stats.totalModules} Módulos
+            </Button>
+          </Link>
         </div>
 
-        {/* Priority Modules */}
+        {/* Category Overview */}
         <div className="mb-8">
           <h3 className="text-lg font-semibold text-slate-700 mb-4 flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-yellow-500" />
-            Módulos Prioritarios
+            {categories.length} Categorías Disponibles
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+            {[
+              { name: 'Finanzas', icon: '💰', color: 'from-emerald-500 to-teal-600' },
+              { name: 'Ventas', icon: '🛒', color: 'from-blue-500 to-indigo-600' },
+              { name: 'Cadena de Suministro', icon: '📦', color: 'from-orange-500 to-amber-600' },
+              { name: 'Recursos Humanos', icon: '👥', color: 'from-purple-500 to-pink-600' },
+              { name: 'Sitios Web', icon: '🌐', color: 'from-cyan-500 to-blue-600' },
+              { name: 'Marketing', icon: '📣', color: 'from-pink-500 to-rose-600' },
+              { name: 'Servicios', icon: '🛠️', color: 'from-gray-500 to-slate-600' },
+              { name: 'Productividad', icon: '📊', color: 'from-indigo-500 to-purple-600' },
+              { name: 'Personalización', icon: '⚙️', color: 'from-yellow-500 to-orange-600' }
+            ].map((cat) => (
+              <Link key={cat.name} to={`/explore?category=${encodeURIComponent(cat.name)}`}>
+                <Card className="p-3 text-center hover:shadow-md transition-all group cursor-pointer">
+                  <div className="text-2xl mb-1">{cat.icon}</div>
+                  <div className="text-xs font-medium text-gray-700 group-hover:text-primary-600 transition-colors">
+                    {cat.name}
+                  </div>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Priority Modules - Show only top 6 */}
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold text-slate-700 mb-4 flex items-center gap-2">
+            <Star className="w-5 h-5 text-yellow-500" />
+            Módulos Recomendados para Empezar
           </h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {modules
               .filter(m => m.priority === 1)
+              .slice(0, 6)
               .map((module, index) => (
                 <ModuleCard
                   key={module.id}
@@ -405,23 +444,22 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Secondary Modules */}
-        <div>
-          <h3 className="text-lg font-semibold text-slate-700 mb-4">
-            Módulos Adicionales
-          </h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-            {modules
-              .filter(m => m.priority !== 1)
-              .map((module, index) => (
-                <ModuleCard
-                  key={module.id}
-                  module={module}
-                  index={index}
-                />
-              ))}
-          </div>
-        </div>
+        {/* Call to Action */}
+        <Link to="/explore">
+          <Card className="p-6 bg-gradient-to-r from-primary-50 to-secondary-50 border-primary-200 hover:shadow-lg transition-all group cursor-pointer">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-primary-800 mb-2">
+                  Explora los {stats.totalModules} Módulos de Odoo 19
+                </h3>
+                <p className="text-primary-700">
+                  {stats.totalLessons} lecciones • {stats.totalTime} de contenido • {categories.length} categorías
+                </p>
+              </div>
+              <ArrowRight className="w-8 h-8 text-primary-600 group-hover:translate-x-2 transition-transform" />
+            </div>
+          </Card>
+        </Link>
       </motion.div>
 
       {/* Motivational Quote */}
