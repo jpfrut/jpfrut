@@ -37,24 +37,25 @@ const Navigation = () => {
   ]
 
   return (
-    <nav className="glass-effect sticky top-0 z-30 border-b border-white/20">
-      <div className="container mx-auto px-4">
+    // Mentora Hub: Fondo AZUL REY sólido (#001D7A), texto blanco
+    <nav className="bg-primary-500 sticky top-0 z-30 shadow-sm">
+      <div className="container mx-auto px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg">
+            <div className="w-10 h-10 bg-secondary-500 rounded-lg flex items-center justify-center">
               <BookOpen className="w-6 h-6 text-white" />
             </div>
             <div className="hidden md:block">
-              <h1 className="text-xl font-heading font-bold gradient-text">
+              <h1 className="text-xl font-heading font-bold text-white">
                 Odoo Learning Platform
               </h1>
-              <p className="text-xs text-neutral-500">by Mentora Hub</p>
+              <p className="text-xs text-white/80">by Mentora Hub</p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-2">
             {navItems.map((item) => {
               const Icon = item.icon
               const isActive = location.pathname === item.path
@@ -62,27 +63,25 @@ const Navigation = () => {
                 <Link
                   key={item.path}
                   to={item.path}
-                  className="relative group"
+                  className="relative"
                 >
-                  <motion.div
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
+                  <div
                     className={`
                       flex items-center gap-2 px-4 py-2 rounded-lg
-                      transition-all duration-200
+                      transition-colors duration-200
                       ${isActive
-                        ? 'bg-primary-100 text-primary-700'
-                        : 'text-neutral-600 hover:bg-neutral-100'
+                        ? 'bg-accent-brillante text-white'  // Estado activo: AZUL BRILLANTE
+                        : 'text-white/90 hover:bg-white/10'
                       }
                     `}
                   >
                     <Icon className="w-5 h-5" />
                     <span className="font-medium">{item.label}</span>
-                  </motion.div>
+                  </div>
                   {isActive && (
                     <motion.div
                       layoutId="activeTab"
-                      className="absolute -bottom-4 left-0 right-0 h-1 bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"
+                      className="absolute -bottom-3 left-2 right-2 h-1 bg-secondary-500 rounded-full"
                     />
                   )}
                 </Link>
@@ -91,15 +90,15 @@ const Navigation = () => {
           </div>
 
           {/* User Stats */}
-          <div className="hidden lg:flex items-center gap-4">
+          <div className="hidden lg:flex items-center gap-3">
             {/* Streak */}
             <div
-              className="flex items-center gap-2 px-3 py-2 bg-secondary-100 rounded-lg border border-transparent hover:border-secondary-300 transition-colors"
+              className="flex items-center gap-2 px-3 py-2 bg-white/10 rounded-lg"
             >
               <Flame className="w-5 h-5 text-secondary-500" />
               <div>
-                <p className="text-xs text-secondary-600 font-medium">Racha</p>
-                <p className="text-sm font-bold text-secondary-700">
+                <p className="text-xs text-white/80 font-medium">Racha</p>
+                <p className="text-sm font-bold text-white">
                   {user.streak} días
                 </p>
               </div>
@@ -107,24 +106,24 @@ const Navigation = () => {
 
             {/* XP & Level */}
             <div
-              className="flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-primary-50 to-secondary-50 rounded-lg border border-primary-200 transition-colors hover:border-primary-300"
+              className="flex items-center gap-3 px-4 py-2 bg-white rounded-lg"
             >
               <div className="relative">
-                <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center shadow-lg">
-                  <Star className="w-6 h-6 text-white" />
+                <div className="w-10 h-10 rounded-full bg-primary-500 flex items-center justify-center">
+                  <Star className="w-5 h-5 text-white" />
                 </div>
-                <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-white rounded-full border-2 border-primary-500 flex items-center justify-center">
-                  <span className="text-xs font-bold text-primary-600">
+                <div className="absolute -bottom-1 -right-1 w-5 h-5 bg-secondary-500 rounded-full flex items-center justify-center">
+                  <span className="text-xs font-bold text-white">
                     {user.level}
                   </span>
                 </div>
               </div>
-              <div className="min-w-[120px]">
+              <div className="min-w-[100px]">
                 <div className="flex items-center justify-between mb-1">
                   <span className="text-xs font-medium text-neutral-600">
                     Nivel {user.level}
                   </span>
-                  <span className="text-xs font-bold text-primary-600">
+                  <span className="text-xs font-bold text-primary-500">
                     {user.xp}/{xpForNextLevel} XP
                   </span>
                 </div>
@@ -132,7 +131,7 @@ const Navigation = () => {
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${xpPercentage}%` }}
-                    className="h-full bg-gradient-to-r from-primary-500 to-secondary-500 rounded-full"
+                    className="h-full bg-accent-brillante rounded-full"
                   />
                 </div>
               </div>
@@ -141,10 +140,10 @@ const Navigation = () => {
             {/* Badges count */}
             {user.badges.length > 0 && (
               <div
-                className="flex items-center gap-2 px-3 py-2 bg-secondary-100 rounded-lg border border-transparent hover:border-secondary-300 transition-colors"
+                className="flex items-center gap-2 px-3 py-2 bg-white/10 rounded-lg"
               >
-                <Award className="w-5 h-5 text-secondary-600" />
-                <span className="text-sm font-bold text-secondary-700">
+                <Award className="w-5 h-5 text-accent-aqua" />
+                <span className="text-sm font-bold text-white">
                   {user.badges.length}
                 </span>
               </div>
@@ -154,12 +153,12 @@ const Navigation = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 hover:bg-neutral-100 rounded-lg"
+            className="md:hidden p-2 text-white hover:bg-white/10 rounded-lg"
           >
             {mobileMenuOpen ? (
-              <X className="w-6 h-6 text-neutral-600" />
+              <X className="w-6 h-6" />
             ) : (
-              <Menu className="w-6 h-6 text-neutral-600" />
+              <Menu className="w-6 h-6" />
             )}
           </button>
         </div>
@@ -170,7 +169,7 @@ const Navigation = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden py-4 border-t border-neutral-200"
+            className="md:hidden py-4 border-t border-white/20"
           >
             <div className="space-y-2">
               {navItems.map((item) => {
@@ -184,8 +183,8 @@ const Navigation = () => {
                     className={`
                       flex items-center gap-3 px-4 py-3 rounded-lg
                       ${isActive
-                        ? 'bg-primary-100 text-primary-700'
-                        : 'text-neutral-600 hover:bg-neutral-100'
+                        ? 'bg-accent-brillante text-white'
+                        : 'text-white/90 hover:bg-white/10'
                       }
                     `}
                   >
@@ -197,20 +196,20 @@ const Navigation = () => {
             </div>
 
             {/* Mobile Stats */}
-            <div className="mt-4 pt-4 border-t border-neutral-200 space-y-3">
+            <div className="mt-4 pt-4 border-t border-white/20 space-y-3">
               <div className="flex items-center justify-between px-4">
-                <span className="text-sm text-neutral-600">Nivel</span>
-                <Badge variant="primary">{user.level}</Badge>
+                <span className="text-sm text-white/80">Nivel</span>
+                <Badge tone="primary" variant="solid">{user.level}</Badge>
               </div>
               <div className="flex items-center justify-between px-4">
-                <span className="text-sm text-neutral-600">XP</span>
-                <Badge variant="secondary">
+                <span className="text-sm text-white/80">XP</span>
+                <Badge tone="secondary" variant="solid">
                   {user.xp}/{xpForNextLevel}
                 </Badge>
               </div>
               <div className="flex items-center justify-between px-4">
-                <span className="text-sm text-neutral-600">Racha</span>
-                <Badge variant="warning" icon={<Flame className="w-3 h-3" />}>
+                <span className="text-sm text-white/80">Racha</span>
+                <Badge tone="warning" variant="solid" icon={<Flame className="w-3 h-3" />}>
                   {user.streak} días
                 </Badge>
               </div>

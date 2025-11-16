@@ -1,15 +1,16 @@
 const brandColors = {
   primary: {
+    // Escala basada en AZUL REY #001D7A
     50: '#e6e9f5',
     100: '#ccd3eb',
     200: '#99a7d7',
     300: '#667bc3',
     400: '#334faf',
-    500: '#0F7CDA',
-    600: '#001D7A',
-    700: '#001662',
-    800: '#001049',
-    900: '#000a31',
+    500: '#001D7A',  // AZUL REY - Color principal de marca
+    600: '#001662',
+    700: '#001049',
+    800: '#000a31',
+    900: '#000519',
   },
   secondary: {
     50: '#fff3ed',
@@ -69,7 +70,7 @@ const brandColors = {
 
 export const surfaces = {
   default: {
-    base: brandColors.primary[50],
+    base: brandColors.neutral[200],  // #EFEFEF - Gris Claro como fondo principal
     accent: brandColors.neutral[50],
   },
   muted: {
@@ -77,33 +78,29 @@ export const surfaces = {
   },
   card: {
     base: '#ffffff',
-    hover: '#f7f9ff',
-    border: 'rgba(15, 124, 218, 0.12)',
-    hoverBorder: 'rgba(15, 124, 218, 0.25)',
-    shadow: '0 20px 35px rgba(15, 124, 218, 0.08)',
+    hover: '#fafafa',
+    border: brandColors.neutral[300],  // Borde gris sutil
+    hoverBorder: brandColors.neutral[400],
+    shadow: '0 1px 3px rgba(0, 0, 0, 0.08)',  // Sombra muy sutil
   },
   tintPrimary: {
-    base: 'rgba(15, 124, 218, 0.08)',
-    hover: 'rgba(15, 124, 218, 0.12)',
-    border: 'rgba(15, 124, 218, 0.2)',
-    hoverBorder: 'rgba(15, 124, 218, 0.3)',
-    shadow: '0 25px 45px rgba(15, 124, 218, 0.15)',
+    base: brandColors.primary[50],
+    hover: brandColors.primary[100],
+    border: brandColors.primary[200],
+    hoverBorder: brandColors.primary[300],
+    shadow: '0 1px 3px rgba(0, 0, 0, 0.08)',
   },
   tintSecondary: {
-    base: 'rgba(255, 63, 0, 0.08)',
-    hover: 'rgba(255, 63, 0, 0.12)',
-    border: 'rgba(255, 63, 0, 0.2)',
-    hoverBorder: 'rgba(255, 63, 0, 0.3)',
-    shadow: '0 25px 45px rgba(255, 63, 0, 0.15)',
+    base: brandColors.secondary[50],
+    hover: brandColors.secondary[100],
+    border: brandColors.secondary[200],
+    hoverBorder: brandColors.secondary[300],
+    shadow: '0 1px 3px rgba(0, 0, 0, 0.08)',
   },
-  glass: {
-    base: 'rgba(255, 255, 255, 0.78)',
-    border: 'rgba(255, 255, 255, 0.35)',
-    blur: '18px',
-  },
+  // Glass effects removed - using solid colors instead
   hero: {
-    base: brandColors.primary[600],
-    highlight: brandColors.primary[500],
+    base: brandColors.primary[500],  // AZUL REY #001D7A
+    highlight: brandColors.accent.brillante,  // AZUL BRILLANTE #0F7CDA
   },
 }
 
@@ -124,28 +121,32 @@ export const icons = {
 }
 
 export const shadows = {
-  brandGlow: '0 25px 65px rgba(15, 124, 218, 0.35)',
-  brandGlowSoft: '0 15px 35px rgba(15, 124, 218, 0.25)',
+  // Sombras simplificadas - sin efectos pesados según la guía de Mentora Hub
+  subtle: '0 1px 3px rgba(0, 0, 0, 0.08)',
+  card: '0 2px 4px rgba(0, 0, 0, 0.06)',
   focus: '0 0 0 3px rgba(0, 29, 122, 0.25)',
+  // Deprecados - mantener por compatibilidad pero usar shadows.subtle
+  brandGlow: '0 1px 3px rgba(0, 0, 0, 0.08)',
+  brandGlowSoft: '0 1px 2px rgba(0, 0, 0, 0.06)',
 }
 
-const createGradientToken = (start, end, flat = start) => ({
-  gradient: `linear-gradient(135deg, ${start} 0%, ${end} 85%)`,
-  flat,
+// NOTA: Mentora Hub usa colores PLANOS, no gradientes
+// Este objeto se mantiene por compatibilidad pero siempre retorna colores sólidos
+const createSolidColorToken = (color) => ({
+  gradient: color,  // Mantener key por compatibilidad, pero usar color sólido
+  flat: color,
 })
 
 export const gradients = {
-  heroBlue: createGradientToken(surfaces.hero.highlight, brandColors.primary[700], surfaces.hero.base),
-  ctaOrange: createGradientToken(brandColors.secondary[400], brandColors.secondary[600], brandColors.secondary[400]),
-  accentAqua: createGradientToken(brandColors.accent.aqua, brandColors.primary[500], brandColors.accent.aqua),
-  success: createGradientToken(brandColors.functional.success[500], brandColors.functional.success[600], brandColors.functional.success[500]),
-  warning: createGradientToken(brandColors.functional.warning[500], brandColors.functional.warning[600], brandColors.functional.warning[500]),
-  danger: createGradientToken(brandColors.functional.danger[500], brandColors.functional.danger[600], brandColors.functional.danger[500]),
-  info: createGradientToken(brandColors.functional.info[500], brandColors.functional.info[600], brandColors.functional.info[500]),
-  glassHighlight: {
-    gradient: `linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.65))`,
-    flat: 'rgba(255,255,255,0.8)',
-  },
+  // Colores sólidos - NO gradientes según guía de Mentora Hub
+  heroBlue: createSolidColorToken(brandColors.primary[500]),  // AZUL REY
+  ctaOrange: createSolidColorToken(brandColors.secondary[500]),  // NARANJA
+  accentAqua: createSolidColorToken(brandColors.accent.aqua),  // AZUL AQUA
+  accentBrillante: createSolidColorToken(brandColors.accent.brillante),  // AZUL BRILLANTE
+  success: createSolidColorToken(brandColors.functional.success[600]),
+  warning: createSolidColorToken(brandColors.functional.warning[600]),
+  danger: createSolidColorToken(brandColors.functional.danger[600]),
+  info: createSolidColorToken(brandColors.functional.info[600]),
 }
 
 const toneFactory = (solidColor, options = {}) => {
@@ -172,38 +173,38 @@ const toneFactory = (solidColor, options = {}) => {
 }
 
 export const tones = {
-  primary: toneFactory(brandColors.primary[600], {
+  primary: toneFactory(brandColors.primary[500], {  // AZUL REY #001D7A
     surface: brandColors.primary[50],
-    hoverSolid: brandColors.primary[500],
-    activeSolid: brandColors.primary[700],
+    hoverSolid: brandColors.accent.brillante,  // Hover: AZUL BRILLANTE #0F7CDA
+    activeSolid: brandColors.primary[600],
     hoverSurface: brandColors.primary[100],
     activeSurface: brandColors.primary[200],
-    onSurface: brandColors.primary[700],
-    border: 'rgba(15, 124, 218, 0.35)',
-    hoverBorder: 'rgba(15, 124, 218, 0.5)',
-    activeBorder: 'rgba(0, 29, 122, 0.55)',
+    onSurface: brandColors.primary[600],
+    border: brandColors.primary[300],
+    hoverBorder: brandColors.primary[400],
+    activeBorder: brandColors.primary[500],
   }),
-  secondary: toneFactory(brandColors.secondary[500], {
+  secondary: toneFactory(brandColors.secondary[500], {  // NARANJA #FF3F00
     surface: brandColors.secondary[50],
-    hoverSolid: brandColors.secondary[400],
-    activeSolid: brandColors.secondary[600],
+    hoverSolid: brandColors.secondary[600],  // Hover: naranja más oscuro
+    activeSolid: brandColors.secondary[700],
     hoverSurface: brandColors.secondary[100],
     activeSurface: brandColors.secondary[200],
     onSurface: brandColors.secondary[700],
-    border: 'rgba(255, 63, 0, 0.35)',
-    hoverBorder: 'rgba(255, 63, 0, 0.5)',
-    activeBorder: 'rgba(204, 50, 0, 0.55)',
+    border: brandColors.secondary[300],
+    hoverBorder: brandColors.secondary[400],
+    activeBorder: brandColors.secondary[500],
   }),
-  accent: toneFactory(brandColors.accent.aqua, {
-    surface: 'rgba(0, 187, 230, 0.12)',
-    hoverSolid: '#12c8f0',
-    activeSolid: '#039fcb',
-    hoverSurface: 'rgba(0, 187, 230, 0.18)',
-    activeSurface: 'rgba(0, 187, 230, 0.25)',
-    onSurface: brandColors.primary[700],
-    border: 'rgba(0, 187, 230, 0.35)',
-    hoverBorder: 'rgba(0, 187, 230, 0.5)',
-    activeBorder: 'rgba(0, 150, 184, 0.55)',
+  accent: toneFactory(brandColors.accent.brillante, {  // AZUL BRILLANTE #0F7CDA para estados activos
+    surface: brandColors.primary[50],
+    hoverSolid: brandColors.accent.aqua,  // Hover: AZUL AQUA #00BBE6
+    activeSolid: brandColors.primary[500],
+    hoverSurface: brandColors.primary[100],
+    activeSurface: brandColors.primary[200],
+    onSurface: brandColors.primary[600],
+    border: brandColors.primary[300],
+    hoverBorder: brandColors.primary[400],
+    activeBorder: brandColors.primary[500],
   }),
   success: toneFactory(brandColors.functional.success[600], {
     surface: brandColors.functional.success[100],
@@ -365,15 +366,16 @@ export const applyBrandTokensToCSSVariables = (target = typeof document !== 'und
     '--surface-muted': surfaces.muted.base,
     '--surface-card': surfaces.card.base,
     '--surface-card-border': surfaces.card.border,
-    '--surface-glass': surfaces.glass.base,
-    '--surface-glass-border': surfaces.glass.border,
     '--text-strong': text.strong,
     '--text-muted': text.muted,
-    '--shadow-brand-glow': shadows.brandGlow,
-    '--shadow-brand-glow-soft': shadows.brandGlowSoft,
-    '--gradient-hero-blue': gradients.heroBlue.gradient,
-    '--gradient-cta-orange': gradients.ctaOrange.gradient,
-    '--gradient-accent-aqua': gradients.accentAqua.gradient,
+    '--shadow-subtle': shadows.subtle,
+    '--shadow-card': shadows.card,
+    // Colores sólidos de marca
+    '--color-primary': brandColors.primary[500],  // AZUL REY
+    '--color-secondary': brandColors.secondary[500],  // NARANJA
+    '--color-brillante': brandColors.accent.brillante,  // AZUL BRILLANTE
+    '--color-aqua': brandColors.accent.aqua,  // AZUL AQUA
+    '--color-neutral': brandColors.neutral[200],  // GRIS CLARO
   }
 
   Object.entries(mappings).forEach(([cssVar, value]) => {

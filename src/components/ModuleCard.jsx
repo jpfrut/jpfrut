@@ -95,8 +95,10 @@ const ModuleCard = ({ module, index }) => {
 
         <div className="flex items-start gap-4">
           <motion.div
-            whileHover={{ scale: 1.08 }}
-            className="w-20 h-20 rounded-2xl border flex items-center justify-center text-4xl"
+            // Mentora Hub: Animaciones sutiles
+            whileHover={{ scale: 1.02 }}
+            // Mentora Hub: Border radius 8-12px
+            className="w-20 h-20 rounded-lg border flex items-center justify-center text-4xl"
             style={{ backgroundColor: accentSurface, borderColor: accentBorder, color: accentColor }}
           >
             <span>{module.icon}</span>
@@ -122,21 +124,23 @@ const ModuleCard = ({ module, index }) => {
         </div>
 
         <div className="mt-5 grid grid-cols-3 gap-3 text-sm">
-          <div className="rounded-xl border border-neutral-200 bg-neutral-50/60 p-3 flex flex-col gap-1">
+          {/* Mentora Hub: Border radius 8px, padding generoso */}
+          <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-3 flex flex-col gap-1">
             <span className="text-xs text-neutral-500">Tiempo estimado</span>
             <span className="font-semibold text-neutral-800">{module.estimatedTime}</span>
           </div>
-          <div className="rounded-xl border border-neutral-200 bg-neutral-50/60 p-3 flex flex-col gap-1">
+          <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-3 flex flex-col gap-1">
             <span className="text-xs text-neutral-500">Dificultad</span>
             <Badge
               size="sm"
-              variant={difficultyColors[module.difficulty]}
+              tone={difficultyColors[module.difficulty]}
+              variant="tint"
               className="w-fit"
             >
               {module.difficulty}
             </Badge>
           </div>
-          <div className="rounded-xl border border-neutral-200 bg-neutral-50/60 p-3 flex flex-col gap-1">
+          <div className="rounded-lg border border-neutral-200 bg-neutral-50 p-3 flex flex-col gap-1">
             <span className="text-xs text-neutral-500">Lecciones</span>
             <span className="font-semibold text-neutral-800">
               {completedCount}/{totalLessons}
