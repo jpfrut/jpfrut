@@ -232,7 +232,7 @@ export const getRecommendedIconOnSurface = (surfaceKey = 'default') => {
 
 export const applyBrandTokensToCSSVariables = (target = typeof document !== 'undefined' ? document.documentElement : null) => {
   if (!target) return
-  const mappings = {
+  const baseMappings = {
     '--surface-default': surfaces.default.gradient,
     '--surface-muted': surfaces.muted.base,
     '--surface-card': surfaces.card.base,
@@ -248,7 +248,15 @@ export const applyBrandTokensToCSSVariables = (target = typeof document !== 'und
     '--gradient-accent-aqua': gradients.accentAqua,
   }
 
-  Object.entries(mappings).forEach(([cssVar, value]) => {
+  const gradientMappings = Object.entries(brandGradients).reduce((acc, [key, token]) => {
+    const normalizedKey = key.replace(/[^a-z0-9-]/gi, '-').toLowerCase()
+    acc[`--brand-gradient-${normalizedKey}`] = token.gradient
+    acc[`--brand-gradient-${normalizedKey}-text`] = token.textColor
+    acc[`--brand-gradient-${normalizedKey}-icon`] = token.iconColor
+    return acc
+  }, {})
+
+  Object.entries({ ...baseMappings, ...gradientMappings }).forEach(([cssVar, value]) => {
     if (value) {
       target.style.setProperty(cssVar, value)
     }
