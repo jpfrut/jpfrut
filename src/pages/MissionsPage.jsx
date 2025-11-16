@@ -21,7 +21,7 @@ function MissionsPage() {
   const [showCelebration, setShowCelebration] = useState(false)
   const [expandedCategory, setExpandedCategory] = useState('ventas')
 
-  const { addXP, addBadge, completedExercises } = useStore()
+  const { addXP, addBadge, completeMission, completedMissions } = useStore()
 
   const handleSelectMission = (mission) => {
     setSelectedMission(mission)
@@ -39,6 +39,7 @@ function MissionsPage() {
       setCurrentStep(currentStep + 1)
     } else {
       // Misión completada
+      completeMission(selectedMission.id)
       addXP(selectedMission.xpReward)
       addBadge(selectedMission.badge)
       setShowCelebration(true)
@@ -50,7 +51,7 @@ function MissionsPage() {
   }
 
   const isMissionCompleted = (missionId) => {
-    return completedExercises.includes(missionId)
+    return completedMissions.includes(missionId)
   }
 
   // Vista de lista de misiones

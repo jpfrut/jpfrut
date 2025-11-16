@@ -20,6 +20,21 @@ const useStore = create(
       // Ejercicios completados
       completedExercises: [],
 
+      // Misiones completadas (incluye soporte para datos heredados)
+      completedMissions: (() => {
+        if (typeof window !== 'undefined') {
+          const legacyMissions = localStorage.getItem('completedMissions')
+          if (legacyMissions) {
+            try {
+              return JSON.parse(legacyMissions)
+            } catch (error) {
+              console.error('Error parsing legacy completed missions', error)
+            }
+          }
+        }
+        return []
+      })(),
+
       // Agregar XP
       addXP: (amount) => {
         const { user } = get()
@@ -56,6 +71,22 @@ const useStore = create(
           })
           addXP(xpEarned)
           updateModuleProgress(moduleId, exerciseId)
+        }
+      },
+
+      completeMission: (missionId) => {
+        const { completedMissions } = get()
+        if (completedMissions.includes(missionId)) return
+
+        const updatedMissions = [...completedMissions, missionId]
+        set({ completedMissions: updatedMissions })
+
+        if (typeof window !== 'undefined') {
+          try {
+            localStorage.setItem('completedMissions', JSON.stringify(updatedMissions))
+          } catch (error) {
+            console.error('Error saving completed missions', error)
+          }
         }
       },
 
@@ -132,7 +163,12 @@ const useStore = create(
           },
           moduleProgress: {},
           completedExercises: [],
+          completedMissions: [],
         })
+
+        if (typeof window !== 'undefined') {
+          localStorage.removeItem('completedMissions')
+        }
       },
     }),
     {
