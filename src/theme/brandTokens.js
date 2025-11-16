@@ -196,6 +196,22 @@ export const brandGradients = {
   sunset: createGradientToken('#FB923C', '#F43F5E'),
 }
 
+export const brandPaletteKeys = Object.freeze(Object.keys(brandGradients))
+
+export const isValidBrandPaletteKey = (key) => brandPaletteKeys.includes(key)
+
+export const assertValidBrandPaletteKey = (key, context = 'module') => {
+  if (!key) {
+    throw new Error(`El ${context} debe definir un paletteKey válido`)
+  }
+
+  if (!isValidBrandPaletteKey(key)) {
+    throw new Error(`El ${context} usa un paletteKey no soportado: ${key}`)
+  }
+
+  return key
+}
+
 export const getBrandGradient = (key = 'hero') => brandGradients[key] || brandGradients.hero
 
 export const getRecommendedTextOnSurface = (surfaceKey = 'default') => {
@@ -271,11 +287,14 @@ export default {
   shadows,
   gradients,
   brandGradients,
+  brandPaletteKeys,
   helpers: {
     getContrastRatio,
     getRecommendedTextOnSurface,
     getRecommendedIconOnSurface,
     applyBrandTokensToCSSVariables,
     getBrandGradient,
+    isValidBrandPaletteKey,
+    assertValidBrandPaletteKey,
   },
 }

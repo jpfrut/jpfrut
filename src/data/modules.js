@@ -1,6 +1,6 @@
 // Estructura de datos COMPLETA para TODOS los módulos de Odoo 19
 // Basado en la documentación oficial: https://www.odoo.com/documentation/19.0/applications.html
-import { brandGradients } from '../theme/brandTokens'
+import { assertValidBrandPaletteKey } from '../theme/brandTokens'
 
 export const odooModules = {
   // ========================
@@ -750,18 +750,8 @@ export const odooModules = {
   }
 }
 
-const allowedModulePalettes = new Set(Object.keys(brandGradients))
-
 Object.values(odooModules).forEach((module) => {
-  if (!module.paletteKey) {
-    throw new Error(`El módulo ${module.id} debe definir un paletteKey válido`)
-  }
-
-  if (!allowedModulePalettes.has(module.paletteKey)) {
-    throw new Error(
-      `El módulo ${module.id} utiliza un paletteKey no soportado: ${module.paletteKey}`
-    )
-  }
+  assertValidBrandPaletteKey(module.paletteKey, `módulo ${module.id}`)
 })
 
 // Función auxiliar para obtener todos los módulos como array
