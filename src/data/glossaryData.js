@@ -1862,6 +1862,920 @@ export const glossaryTerms = {
       'No tener control de dónde están tus activos'
     ],
     relatedModules: ['Contabilidad', 'Activos Fijos']
+  },
+
+  // =====================================
+  // VENTAS Y CRM - TÉRMINOS ADICIONALES
+  // =====================================
+
+  'pipeline': {
+    term: 'Pipeline de Ventas',
+    shortDef: 'El camino que sigue un cliente potencial hasta que compra',
+    fullDef: 'Es como un embudo o tubo donde entran muchos interesados por arriba, y conforme avanzan en el proceso de venta, algunos compran y otros se pierden. Te ayuda a ver en qué etapa está cada negociación.',
+    category: 'CRM',
+    icon: '🔺',
+    example: {
+      title: 'Pipeline típico de una empresa',
+      content: `
+        VISUALIZACIÓN DEL PIPELINE:
+
+        NUEVO (10 oportunidades)
+        → Acaban de contactarte
+
+        CONTACTADO (7 oportunidades)
+        → Ya hablaste con ellos
+
+        PROPUESTA ENVIADA (4 oportunidades)
+        → Les mandaste cotización
+
+        NEGOCIACIÓN (2 oportunidades)
+        → Están discutiendo precio/condiciones
+
+        GANADO (1 oportunidad)
+        → ¡Cerraste la venta! 🎉
+
+        PERDIDO (4 oportunidades)
+        → No compraron (razones varias)
+
+        MÉTRICAS IMPORTANTES:
+        - Tasa de conversión: 1/10 = 10%
+        - Valor del pipeline: suma de todas las oportunidades
+        - Tiempo promedio de cierre: cuánto tarda en decidir
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'oportunidad',
+        explanation: 'Cada oportunidad se mueve a través del pipeline'
+      },
+      {
+        relatedTerm: 'etapa',
+        explanation: 'El pipeline está dividido en etapas'
+      }
+    ],
+    bestPractices: [
+      'Revisa tu pipeline diariamente',
+      'Mantén suficientes oportunidades en cada etapa',
+      'Analiza dónde se estancan las oportunidades',
+      'Limpia oportunidades viejas que ya no avanzan'
+    ],
+    commonMistakes: [
+      'No mover oportunidades cuando cambian de etapa',
+      'Tener pipeline inflado con oportunidades falsas',
+      'No dar seguimiento a oportunidades estancadas',
+      'Ignorar métricas de conversión'
+    ],
+    relatedModules: ['CRM', 'Ventas']
+  },
+
+  'etapa': {
+    term: 'Etapa',
+    shortDef: 'Paso o fase en un proceso (ventas, proyectos, etc.)',
+    fullDef: 'Es cada una de las fases que atraviesa algo en Odoo. Por ejemplo, en ventas: Nuevo → Contactado → Propuesta → Negociación → Ganado. En proyectos: Por hacer → En progreso → Terminado.',
+    category: 'CRM',
+    icon: '📍',
+    example: {
+      title: 'Etapas en diferentes contextos',
+      content: `
+        PIPELINE DE VENTAS:
+        1. Nuevo (acaba de llegar)
+        2. Calificado (verificamos interés real)
+        3. Propuesta (enviamos cotización)
+        4. Negociación (discutiendo términos)
+        5. Ganado / Perdido (resultado final)
+
+        TABLERO KANBAN DE TAREAS:
+        1. Pendiente (por hacer)
+        2. En Progreso (trabajando)
+        3. En Revisión (verificando)
+        4. Completado (terminado)
+
+        PROCESO DE RECLUTAMIENTO:
+        1. Nuevo candidato
+        2. Entrevista inicial
+        3. Prueba técnica
+        4. Entrevista final
+        5. Contratado / Rechazado
+
+        Las etapas te ayudan a ver el estado de todo de un vistazo.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'pipeline',
+        explanation: 'Las etapas forman el pipeline de ventas'
+      },
+      {
+        relatedTerm: 'oportunidad',
+        explanation: 'Cada oportunidad está en una etapa específica'
+      }
+    ],
+    bestPractices: [
+      'Define etapas claras que representen tu proceso real',
+      'No tengas demasiadas etapas (5-7 es ideal)',
+      'Asegúrate que cada etapa tenga criterios claros de salida',
+      'Revisa periódicamente si las etapas siguen teniendo sentido'
+    ],
+    commonMistakes: [
+      'Crear etapas que no reflejan el proceso real',
+      'Tener demasiadas etapas que confunden',
+      'No capacitar al equipo sobre cuándo mover de etapa',
+      'Dejar cosas en etapas incorrectas'
+    ],
+    relatedModules: ['CRM', 'Proyectos', 'Helpdesk', 'Reclutamiento']
+  },
+
+  'actividad': {
+    term: 'Actividad',
+    shortDef: 'Tarea que debes hacer en Odoo (llamar, enviar email, reunión)',
+    fullDef: 'Es un recordatorio o tarea que programas en Odoo. Puede ser: llamar a cliente, enviar cotización, reunión, tarea pendiente. Odoo te avisa cuando está próxima o vencida.',
+    category: 'CRM',
+    icon: '📅',
+    example: {
+      title: 'Cómo funcionan las actividades',
+      content: `
+        OPORTUNIDAD: "Venta sistema a Panadería ABC"
+
+        ACTIVIDADES PROGRAMADAS:
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        ☑️ Hoy 10:00 - Llamar para seguimiento
+        📧 Mañana - Enviar cotización por email
+        🤝 Viernes 15:00 - Reunión de cierre
+
+        TIPOS DE ACTIVIDADES:
+        📞 Llamada telefónica
+        📧 Enviar email
+        🤝 Reunión presencial/virtual
+        📋 Tarea/Pendiente
+        📤 Subir documento
+
+        BENEFICIOS:
+        → Nunca olvidas dar seguimiento
+        → Tu jefe ve que estás activo
+        → Historial de todo lo que hiciste
+        → Planificas tu día eficientemente
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'oportunidad',
+        explanation: 'Las actividades se programan sobre oportunidades y otros documentos'
+      },
+      {
+        relatedTerm: 'lead',
+        explanation: 'Puedes programar actividades de seguimiento para leads'
+      }
+    ],
+    bestPractices: [
+      'Siempre programa la siguiente actividad al terminar una',
+      'Sé específico: no solo "llamar", sino "llamar para X motivo"',
+      'Respeta las fechas programadas',
+      'Revisa tus actividades pendientes cada mañana'
+    ],
+    commonMistakes: [
+      'Dejar oportunidades sin actividad programada',
+      'Acumular actividades vencidas sin completarlas',
+      'Programar actividades vagas sin propósito claro',
+      'No marcar actividades como completadas'
+    ],
+    relatedModules: ['CRM', 'Ventas', 'Proyectos', 'RRHH']
+  },
+
+  'puntuacion-lead': {
+    term: 'Puntuación de Lead',
+    shortDef: 'Número que indica qué tan probable es que un lead compre',
+    fullDef: 'Es un sistema de puntos que califica qué tan "caliente" está un lead. Más puntos = más probabilidad de comprar. Se basa en criterios como: tamaño de empresa, presupuesto, urgencia, comportamiento en tu sitio web.',
+    category: 'CRM',
+    icon: '⭐',
+    example: {
+      title: 'Sistema de puntuación de leads',
+      content: `
+        CRITERIOS DE PUNTUACIÓN:
+
+        PERFIL DEL LEAD:
+        + 20 pts: Empresa mediana/grande
+        + 15 pts: Tiene presupuesto definido
+        + 10 pts: Decisor de compra
+        + 5 pts: Sector industrial relevante
+
+        COMPORTAMIENTO:
+        + 10 pts: Visitó página de precios
+        + 15 pts: Descargó demo/prueba
+        + 20 pts: Solicitó cotización
+        + 5 pts: Abrió emails
+
+        EJEMPLO:
+        Lead "Panadería ABC":
+        - Empresa mediana: +20
+        - Tiene presupuesto: +15
+        - Visitó precios: +10
+        - Pidió cotización: +20
+        TOTAL: 65 puntos ⭐⭐⭐ (Lead CALIENTE)
+
+        Lead "Juan curioso":
+        - Freelancer: +5
+        - Sin presupuesto: +0
+        - Solo exploró: +5
+        TOTAL: 10 puntos ⭐ (Lead FRÍO)
+
+        Enfócate en leads con más puntos.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'lead',
+        explanation: 'La puntuación se asigna a cada lead'
+      },
+      {
+        relatedTerm: 'oportunidad',
+        explanation: 'Leads con alta puntuación se convierten en oportunidades'
+      }
+    ],
+    bestPractices: [
+      'Define criterios claros y objetivos para puntuar',
+      'Revisa y ajusta el sistema según resultados reales',
+      'Automatiza la puntuación cuando sea posible',
+      'Prioriza seguimiento según puntuación'
+    ],
+    commonMistakes: [
+      'Crear sistema muy complejo que nadie entiende',
+      'No ajustar puntuación según resultados reales',
+      'Ignorar el puntaje y no usarlo para priorizar',
+      'Puntuar subjetivamente en lugar de con criterios'
+    ],
+    relatedModules: ['CRM', 'Marketing']
+  },
+
+  'lista-de-precios': {
+    term: 'Lista de Precios',
+    shortDef: 'Catálogo con los precios de tus productos',
+    fullDef: 'Es donde defines cuánto cobras por cada producto. Puedes tener varias listas: una para clientes normales, otra para mayoristas, otra para VIP. Así el mismo producto puede tener diferentes precios según quién compre.',
+    category: 'Ventas',
+    icon: '💲',
+    example: {
+      title: 'Múltiples listas de precios',
+      content: `
+        PRODUCTO: Camiseta Polo
+
+        LISTA PÚBLICA (clientes normales):
+        → Precio: $500
+
+        LISTA MAYORISTA (compra 50+ piezas):
+        → Precio: $400 (20% menos)
+
+        LISTA VIP (clientes frecuentes):
+        → Precio: $450 (10% menos)
+
+        LISTA EMPLEADOS:
+        → Precio: $350 (30% menos)
+
+        CÓMO FUNCIONA:
+        1. Asignas lista de precios al cliente
+        2. Al crear cotización, usa esa lista
+        3. Precios se calculan automáticamente
+        4. No necesitas recordar descuentos
+
+        CASOS DE USO:
+        - Precios por volumen
+        - Precios por región/país
+        - Precios por temporada
+        - Precios B2B vs B2C
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'cliente',
+        explanation: 'Cada cliente puede tener asignada una lista de precios específica'
+      },
+      {
+        relatedTerm: 'descuento',
+        explanation: 'Las listas de precios pueden incluir descuentos automáticos'
+      }
+    ],
+    bestPractices: [
+      'Ten una lista pública como base',
+      'Nombra las listas claramente (Mayorista, VIP, etc.)',
+      'Revisa precios periódicamente',
+      'Documenta cuándo aplicar cada lista'
+    ],
+    commonMistakes: [
+      'Crear demasiadas listas que confunden',
+      'No asignar lista correcta al cliente',
+      'Olvidar actualizar precios en todas las listas',
+      'No tener lista pública por defecto'
+    ],
+    relatedModules: ['Ventas', 'Website', 'Punto de Venta']
+  },
+
+  'descuento': {
+    term: 'Descuento',
+    shortDef: 'Reducción en el precio de venta',
+    fullDef: 'Es bajar el precio de un producto para incentivar la compra. Puede ser porcentaje (10% menos) o monto fijo ($100 menos). Odoo permite descuentos manuales o automáticos según reglas.',
+    category: 'Ventas',
+    icon: '🏷️',
+    example: {
+      title: 'Tipos de descuentos',
+      content: `
+        DESCUENTO MANUAL (tú decides):
+        Producto: $1,000
+        Descuento: 15%
+        Precio final: $850
+
+        DESCUENTO POR CANTIDAD:
+        1-9 unidades: precio normal
+        10-49 unidades: 10% descuento
+        50+ unidades: 20% descuento
+
+        DESCUENTO POR PROMOCIÓN:
+        "Buen Fin": 25% en toda la tienda
+        Fecha inicio: 15 nov
+        Fecha fin: 18 nov
+
+        DESCUENTO POR PRONTO PAGO:
+        "Si pagas en 10 días: 2% descuento"
+        Ayuda a mejorar tu flujo de efectivo
+
+        IMPORTANTE:
+        → Siempre calcula si el descuento es rentable
+        → No vendas por debajo del costo
+        → Documenta por qué diste el descuento
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'lista-de-precios',
+        explanation: 'Los descuentos pueden estar incluidos en listas de precios'
+      },
+      {
+        relatedTerm: 'regla-de-precio',
+        explanation: 'Las reglas de precio automatizan descuentos'
+      }
+    ],
+    bestPractices: [
+      'Define política clara de descuentos máximos',
+      'Requiere aprobación para descuentos grandes',
+      'Registra el motivo de cada descuento',
+      'Analiza impacto de descuentos en rentabilidad'
+    ],
+    commonMistakes: [
+      'Dar descuentos sin calcular si sigues ganando',
+      'No documentar por qué se dio el descuento',
+      'Descuentos excesivos que devalúan tu producto',
+      'No tener límites de autorización'
+    ],
+    relatedModules: ['Ventas', 'Punto de Venta', 'Website']
+  },
+
+  'programa-de-fidelidad': {
+    term: 'Programa de Fidelidad',
+    shortDef: 'Recompensas para clientes que compran seguido',
+    fullDef: 'Es un sistema donde premias a clientes frecuentes con puntos, descuentos o regalos. Cada compra suma puntos, y esos puntos se canjean por beneficios. Mantiene a los clientes regresando.',
+    category: 'Ventas',
+    icon: '🎁',
+    example: {
+      title: 'Programa de puntos típico',
+      content: `
+        ACUMULACIÓN:
+        Por cada $100 de compra = 10 puntos
+
+        CANJE:
+        100 puntos = $50 de descuento
+        200 puntos = $120 de descuento
+        500 puntos = Producto gratis
+
+        EJEMPLO CLIENTE:
+        María compra regularmente:
+        - Enero: $500 → 50 puntos
+        - Febrero: $800 → 80 puntos
+        - Marzo: $400 → 40 puntos
+        Total: 170 puntos
+
+        María canjea 100 puntos:
+        → Obtiene $50 de descuento
+        → Le quedan 70 puntos
+
+        BENEFICIOS PARA TI:
+        → Clientes regresan (retención)
+        → Compran más para juntar puntos
+        → Datos de comportamiento de compra
+        → Diferenciarte de competencia
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'cliente',
+        explanation: 'El programa registra puntos por cada cliente'
+      },
+      {
+        relatedTerm: 'descuento',
+        explanation: 'Los puntos se canjean por descuentos o productos'
+      }
+    ],
+    bestPractices: [
+      'Hazlo simple: puntos fáciles de entender',
+      'Recompensas alcanzables para motivar',
+      'Comunica claramente cómo funciona',
+      'Ten varios niveles de canje'
+    ],
+    commonMistakes: [
+      'Reglas muy complicadas que confunden',
+      'Puntos que expiran muy rápido',
+      'Recompensas muy difíciles de alcanzar',
+      'No comunicar el programa a los clientes'
+    ],
+    relatedModules: ['Ventas', 'Punto de Venta', 'Website']
+  },
+
+  'comision': {
+    term: 'Comisión de Ventas',
+    shortDef: 'Pago extra al vendedor por cada venta que cierra',
+    fullDef: 'Es el dinero adicional que gana el vendedor cuando logra una venta. Generalmente es un porcentaje del monto vendido. Motiva al equipo de ventas a cerrar más negocios.',
+    category: 'Ventas',
+    icon: '💸',
+    example: {
+      title: 'Cálculo de comisiones',
+      content: `
+        ESQUEMA DE COMISIÓN:
+        Vendedor: Ana García
+        Comisión: 5% sobre ventas
+
+        VENTAS DEL MES:
+        Venta 1: $10,000 → Comisión: $500
+        Venta 2: $25,000 → Comisión: $1,250
+        Venta 3: $8,000  → Comisión: $400
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━
+        Total ventas: $43,000
+        Total comisión: $2,150
+
+        ESQUEMAS COMUNES:
+        - Porcentaje fijo (5% de toda venta)
+        - Escalonado (5% hasta $50k, 7% arriba)
+        - Por producto (más % en productos prioritarios)
+        - Por margen (% sobre la ganancia, no venta)
+
+        Odoo calcula automáticamente según reglas que configures.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'equipo-de-ventas',
+        explanation: 'Las comisiones se asignan a miembros del equipo de ventas'
+      },
+      {
+        relatedTerm: 'factura',
+        explanation: 'Las comisiones se calculan sobre facturas pagadas'
+      }
+    ],
+    bestPractices: [
+      'Define reglas claras y transparentes',
+      'Paga comisiones puntualmente',
+      'Considera pagar al cobrar, no al facturar',
+      'Revisa si el esquema motiva al equipo'
+    ],
+    commonMistakes: [
+      'Reglas confusas que generan conflictos',
+      'No documentar cómo se calculan',
+      'Pagar comisión de ventas no cobradas',
+      'Cambiar reglas sin avisar al equipo'
+    ],
+    relatedModules: ['Ventas', 'RRHH', 'Nómina']
+  },
+
+  'equipo-de-ventas': {
+    term: 'Equipo de Ventas',
+    shortDef: 'Grupo de vendedores que trabajan juntos',
+    fullDef: 'Es un grupo de personas dedicadas a vender. Pueden estar organizados por producto, territorio, tipo de cliente, etc. Cada equipo tiene metas y métricas propias.',
+    category: 'Ventas',
+    icon: '👥',
+    example: {
+      title: 'Organización de equipos de ventas',
+      content: `
+        EMPRESA DE SOFTWARE:
+
+        EQUIPO CORPORATIVO:
+        - Líder: Carlos (20% comisión)
+        - Ana, Roberto, María
+        - Meta: $500,000/mes
+        - Clientes: Empresas grandes
+
+        EQUIPO PYMES:
+        - Líder: Laura (15% comisión)
+        - José, Diana, Pedro
+        - Meta: $200,000/mes
+        - Clientes: Pequeños negocios
+
+        EQUIPO RETAIL:
+        - Líder: Fernanda
+        - Vendedores de tienda
+        - Meta: $100,000/mes
+        - Clientes: Consumidor final
+
+        BENEFICIOS:
+        → Especialización por tipo de cliente
+        → Metas claras por equipo
+        → Competencia sana entre equipos
+        → Mejor seguimiento de rendimiento
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'oportunidad',
+        explanation: 'Las oportunidades se asignan a equipos de ventas'
+      },
+      {
+        relatedTerm: 'comision',
+        explanation: 'Cada equipo puede tener diferentes esquemas de comisión'
+      }
+    ],
+    bestPractices: [
+      'Define un líder claro para cada equipo',
+      'Establece metas realistas pero retadoras',
+      'Revisa métricas de equipo semanalmente',
+      'Fomenta colaboración, no solo competencia'
+    ],
+    commonMistakes: [
+      'Equipos sin líder definido',
+      'Metas imposibles que desmotivan',
+      'No dar seguimiento al rendimiento',
+      'Competencia tóxica entre equipos'
+    ],
+    relatedModules: ['CRM', 'Ventas']
+  },
+
+  'territorio': {
+    term: 'Territorio de Ventas',
+    shortDef: 'Zona geográfica o segmento asignado a un vendedor',
+    fullDef: 'Es dividir el mercado en "territorios" para que cada vendedor se enfoque en su zona. Puede ser geográfico (Zona Norte, Zona Sur) o por tipo de cliente (sector salud, sector retail).',
+    category: 'Ventas',
+    icon: '🗺️',
+    example: {
+      title: 'División por territorios',
+      content: `
+        POR GEOGRAFÍA:
+        ━━━━━━━━━━━━━━━
+        Norte (Monterrey, Saltillo):
+        → Vendedor: Roberto
+        → 150 clientes potenciales
+
+        Centro (CDMX, Puebla):
+        → Vendedor: María
+        → 300 clientes potenciales
+
+        Sur (Oaxaca, Chiapas):
+        → Vendedor: Ana
+        → 100 clientes potenciales
+
+        POR SECTOR:
+        ━━━━━━━━━━━━━━━
+        Salud (hospitales, clínicas):
+        → Vendedor especializado: Juan
+
+        Retail (tiendas, supermercados):
+        → Vendedor especializado: Laura
+
+        VENTAJAS:
+        → Evita que vendedores compitan por mismos clientes
+        → Mejor conocimiento del territorio/sector
+        → Responsabilidad clara
+        → Más fácil medir rendimiento
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'equipo-de-ventas',
+        explanation: 'Los territorios se asignan a equipos o vendedores específicos'
+      },
+      {
+        relatedTerm: 'cliente',
+        explanation: 'Cada cliente pertenece a un territorio específico'
+      }
+    ],
+    bestPractices: [
+      'Divide territorios de forma equitativa (potencial similar)',
+      'Considera distancias y costos de visitas',
+      'Revisa y ajusta territorios anualmente',
+      'Documenta qué clientes pertenecen a cada territorio'
+    ],
+    commonMistakes: [
+      'Territorios desbalanceados (uno tiene todo el potencial)',
+      'No respetar asignaciones (pisar territorio ajeno)',
+      'No actualizar cuando crece la empresa',
+      'Ignorar costos de desplazamiento'
+    ],
+    relatedModules: ['CRM', 'Ventas']
+  },
+
+  'plantilla-de-cotizacion': {
+    term: 'Plantilla de Cotización',
+    shortDef: 'Formato predefinido para crear cotizaciones rápidamente',
+    fullDef: 'Es un modelo que ya tiene productos, términos y condiciones preestablecidos. En lugar de crear cotizaciones desde cero, eliges la plantilla y la personalizas. Ahorra tiempo y mantiene consistencia.',
+    category: 'Ventas',
+    icon: '📄',
+    example: {
+      title: 'Plantillas típicas',
+      content: `
+        PLANTILLA: "Paquete Básico Software"
+        Productos incluidos:
+        - Licencia básica: $5,000/año
+        - Soporte estándar: $1,200/año
+        - Capacitación 4 horas: $2,000
+        Total: $8,200
+
+        PLANTILLA: "Paquete Empresarial"
+        Productos incluidos:
+        - Licencia empresarial: $15,000/año
+        - Soporte prioritario: $3,600/año
+        - Capacitación 16 horas: $6,000
+        - Implementación: $10,000
+        Total: $34,600
+
+        CÓMO USARLA:
+        1. Cliente pide cotización
+        2. Seleccionas plantilla apropiada
+        3. Ajustas cantidades si necesario
+        4. Envías en 2 minutos
+
+        VENTAJAS:
+        → Ahorro de tiempo enorme
+        → Mismos términos siempre
+        → Menos errores
+        → Imagen profesional consistente
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'cotizacion',
+        explanation: 'Las plantillas agilizan la creación de cotizaciones'
+      },
+      {
+        relatedTerm: 'producto',
+        explanation: 'Las plantillas incluyen productos predefinidos'
+      }
+    ],
+    bestPractices: [
+      'Crea plantillas para tus productos/servicios más vendidos',
+      'Incluye términos y condiciones estándar',
+      'Revisa y actualiza plantillas cuando cambien precios',
+      'Nombra plantillas claramente'
+    ],
+    commonMistakes: [
+      'Tener demasiadas plantillas que confunden',
+      'No actualizar precios en las plantillas',
+      'Enviar cotización sin personalizar',
+      'Olvidar revisar términos y condiciones'
+    ],
+    relatedModules: ['Ventas']
+  },
+
+  'terminos-de-pago': {
+    term: 'Términos de Pago',
+    shortDef: 'Reglas de cuándo y cómo debe pagar el cliente',
+    fullDef: 'Define las condiciones de pago: ¿paga de inmediato?, ¿tiene 30 días?, ¿paga en 3 cuotas? Cada cliente puede tener diferentes términos según la confianza y relación comercial.',
+    category: 'Ventas',
+    icon: '⏰',
+    example: {
+      title: 'Términos de pago comunes',
+      content: `
+        PAGO INMEDIATO:
+        → Debe pagar al recibir factura
+        → Usado: Clientes nuevos, ventas pequeñas
+
+        NETO 15 DÍAS:
+        → Paga dentro de 15 días
+        → Usado: Clientes frecuentes
+
+        NETO 30 DÍAS:
+        → Paga dentro de 30 días
+        → Usado: Clientes confiables
+
+        NETO 60 DÍAS:
+        → Paga dentro de 60 días
+        → Usado: Clientes corporativos grandes
+
+        30% ANTICIPO + 70% ENTREGA:
+        → 30% al confirmar pedido
+        → 70% al entregar producto
+        → Usado: Proyectos, fabricación
+
+        50% ANTICIPO + 25% + 25%:
+        → Tres pagos parciales
+        → Usado: Proyectos largos
+
+        Cada cliente tiene términos asignados en su ficha.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'factura',
+        explanation: 'Los términos determinan la fecha de vencimiento de la factura'
+      },
+      {
+        relatedTerm: 'cliente',
+        explanation: 'Cada cliente tiene términos de pago asignados'
+      }
+    ],
+    bestPractices: [
+      'Asigna términos según historial del cliente',
+      'Ten términos más estrictos para clientes nuevos',
+      'Revisa clientes morosos y ajusta sus términos',
+      'Ofrece descuento por pronto pago si ayuda tu flujo'
+    ],
+    commonMistakes: [
+      'Dar mucho plazo a clientes nuevos sin historial',
+      'No cobrar intereses por pago tardío',
+      'No revisar términos de clientes morosos',
+      'Olvidar actualizar términos en la ficha del cliente'
+    ],
+    relatedModules: ['Ventas', 'Contabilidad']
+  },
+
+  'regla-de-precio': {
+    term: 'Regla de Precio',
+    shortDef: 'Condición que aplica descuento automáticamente',
+    fullDef: 'Son las instrucciones que le das a Odoo para cambiar precios automáticamente. Ejemplo: "Si compra más de 10 unidades, da 15% de descuento". No tienes que calcular manualmente, Odoo lo hace solo.',
+    category: 'Ventas',
+    icon: '⚙️',
+    example: {
+      title: 'Reglas de precio en acción',
+      content: `
+        REGLA POR CANTIDAD:
+        Si cantidad >= 10: descuento 10%
+        Si cantidad >= 50: descuento 20%
+        Si cantidad >= 100: descuento 30%
+
+        Cotización:
+        - 5 camisetas: precio normal ($500 c/u)
+        - 15 camisetas: -10% automático ($450 c/u)
+        - 60 camisetas: -20% automático ($400 c/u)
+
+        REGLA POR FECHA:
+        Del 1-15 diciembre: -25% (promoción navidad)
+        Resto del año: precio normal
+
+        REGLA POR CLIENTE:
+        Si cliente es "Mayorista": -15% siempre
+        Si cliente es "VIP": -10% siempre
+
+        CÓMO FUNCIONA:
+        1. Configuras la regla una vez
+        2. Al crear cotización, se aplica automática
+        3. No olvidas dar descuentos prometidos
+        4. Consistencia en todos los vendedores
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'lista-de-precios',
+        explanation: 'Las reglas se configuran dentro de listas de precios'
+      },
+      {
+        relatedTerm: 'descuento',
+        explanation: 'Las reglas aplican descuentos de forma automática'
+      }
+    ],
+    bestPractices: [
+      'Documenta todas las reglas activas',
+      'Prueba las reglas antes de activarlas',
+      'Revisa que no se contrapongan reglas',
+      'Ten cuidado con reglas que acumulan descuentos'
+    ],
+    commonMistakes: [
+      'Reglas que se sobreponen y confunden',
+      'No probar antes de activar',
+      'Olvidar desactivar reglas temporales',
+      'Crear descuentos acumulativos no deseados'
+    ],
+    relatedModules: ['Ventas', 'Website']
+  },
+
+  'orden-de-venta': {
+    term: 'Orden de Venta',
+    shortDef: 'Pedido confirmado por el cliente',
+    fullDef: 'Es cuando la cotización se convierte en un compromiso real. El cliente aceptó comprar. A partir de aquí puedes entregar el producto y facturar. Es el documento oficial de venta.',
+    category: 'Ventas',
+    icon: '✅',
+    example: {
+      title: 'De cotización a orden de venta',
+      content: `
+        COTIZACIÓN (propuesta):
+        Estado: "Presupuesto"
+        → Esperando respuesta del cliente
+        → Sin compromiso de entrega
+        → Puedes modificar libremente
+
+        ORDEN DE VENTA (confirmada):
+        Estado: "Orden de Venta"
+        → Cliente aceptó
+        → Compromiso de entregar
+        → Puedes facturar
+        → Reserva inventario
+
+        PROCESO:
+        1. Creas cotización
+        2. Envías al cliente
+        3. Cliente acepta
+        4. Confirmas → Se vuelve Orden de Venta
+        5. Entregas producto
+        6. Facturas
+
+        EFECTOS DE CONFIRMAR:
+        → Productos se reservan en inventario
+        → Se crea orden de entrega
+        → Puedes generar factura
+        → Aparece en reportes de ventas
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'cotizacion',
+        explanation: 'La cotización se convierte en orden de venta al confirmarse'
+      },
+      {
+        relatedTerm: 'factura',
+        explanation: 'La orden de venta permite crear facturas'
+      }
+    ],
+    bestPractices: [
+      'Solo confirma cuando el cliente realmente aceptó',
+      'Verifica stock antes de confirmar',
+      'Revisa términos de pago y entrega',
+      'Comunica al almacén sobre la orden'
+    ],
+    commonMistakes: [
+      'Confirmar sin autorización real del cliente',
+      'No verificar disponibilidad de productos',
+      'Olvidar notificar al equipo de entregas',
+      'Modificar orden ya confirmada sin documentar'
+    ],
+    relatedModules: ['Ventas', 'Inventario', 'Contabilidad']
+  },
+
+  'confirmacion-de-pedido': {
+    term: 'Confirmación de Pedido',
+    shortDef: 'Documento que envías al cliente diciendo que su pedido está registrado',
+    fullDef: 'Es la notificación oficial que le das al cliente confirmando que recibiste su orden y la estás procesando. Incluye qué compró, cuánto costó y cuándo lo recibirá.',
+    category: 'Ventas',
+    icon: '📨',
+    example: {
+      title: 'Email de confirmación típico',
+      content: `
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+        CONFIRMACIÓN DE PEDIDO
+        Orden: SO-2024-0156
+        Fecha: 15 marzo 2024
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+        Estimado cliente,
+
+        ¡Gracias por tu compra! Tu pedido ha sido
+        registrado y está siendo procesado.
+
+        PRODUCTOS:
+        - 10x Camiseta Polo Azul: $4,500
+        - 5x Pantalón Negro: $3,750
+        Subtotal: $8,250
+        IVA (16%): $1,320
+        TOTAL: $9,570
+
+        ENTREGA:
+        Dirección: Calle Principal #123
+        Fecha estimada: 18-20 marzo 2024
+        Método: Envío estándar
+
+        PAGO:
+        Estado: Pendiente
+        Términos: Neto 15 días
+        Vence: 30 marzo 2024
+
+        Dudas: ventas@empresa.com
+        ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+        Odoo envía esto automáticamente al confirmar.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'orden-de-venta',
+        explanation: 'La confirmación se genera al crear la orden de venta'
+      },
+      {
+        relatedTerm: 'cliente',
+        explanation: 'La confirmación se envía al email del cliente'
+      }
+    ],
+    bestPractices: [
+      'Personaliza la plantilla con tu logo y datos',
+      'Incluye información clara de entrega',
+      'Agrega datos de contacto para dudas',
+      'Activa envío automático al confirmar orden'
+    ],
+    commonMistakes: [
+      'No enviar confirmación y dejar cliente esperando',
+      'Información incorrecta en el correo',
+      'No incluir fecha estimada de entrega',
+      'Olvidar adjuntar condiciones de compra'
+    ],
+    relatedModules: ['Ventas', 'Website']
   }
 }
 
