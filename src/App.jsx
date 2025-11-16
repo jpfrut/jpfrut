@@ -10,6 +10,7 @@ import QuickGuidesPage from './pages/QuickGuidesPage'
 import EmergencyHelpPage from './pages/EmergencyHelpPage'
 import SuccessStoriesPage from './pages/SuccessStoriesPage'
 import ExplorePage from './pages/ExplorePage'
+import FirstDayPage from './pages/FirstDayPage'
 import AccessibilityPanel from './components/AccessibilityPanel'
 import OnboardingWizard from './components/OnboardingWizard'
 import useStore from './store/useStore'
@@ -47,6 +48,7 @@ function App() {
         >
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/first-day" element={<FirstDayPage />} />
             <Route path="/explore" element={<ExplorePage />} />
             <Route path="/missions" element={<MissionsPage />} />
             <Route path="/missions/:missionId" element={<MissionsPage />} />

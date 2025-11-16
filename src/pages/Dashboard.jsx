@@ -13,7 +13,8 @@ import {
   Heart,
   HelpCircle,
   ArrowRight,
-  Star
+  Star,
+  Sun
 } from 'lucide-react'
 import { getModulesArray, getStats, getCategories } from '../data/modules'
 import useStore from '../store/useStore'
@@ -22,6 +23,8 @@ import StatsCard from '../components/StatsCard'
 import AchievementCard from '../components/AchievementCard'
 import DailyChecklist from '../components/DailyChecklist'
 import TipOfTheDay from '../components/TipOfTheDay'
+import PersonalizedRecommendations from '../components/PersonalizedRecommendations'
+import ProgressSummary from '../components/ProgressSummary'
 import Button from '../components/ui/Button'
 import Card from '../components/ui/Card'
 
@@ -168,6 +171,34 @@ const Dashboard = () => {
         </motion.div>
       </motion.div>
 
+      {/* First Day Banner - For Complete Beginners */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.25 }}
+      >
+        <Link to="/first-day">
+          <Card className="p-6 bg-gradient-to-r from-yellow-50 via-orange-50 to-pink-50 border-2 border-orange-200 hover:border-orange-400 transition-all hover:shadow-lg group cursor-pointer">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl text-white">
+                  <Sun className="w-8 h-8" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-orange-800 mb-1">
+                    ¿Primera vez en Odoo? Empieza aquí
+                  </h3>
+                  <p className="text-orange-700">
+                    Guía paso a paso para tu primer día. Sin tecnicismos, con mucha paciencia.
+                  </p>
+                </div>
+              </div>
+              <ArrowRight className="w-6 h-6 text-orange-500 group-hover:translate-x-2 transition-transform" />
+            </div>
+          </Card>
+        </Link>
+      </motion.div>
+
       {/* Quick Access for Beginners */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -222,6 +253,9 @@ const Dashboard = () => {
 
       {/* Tip of the Day */}
       <TipOfTheDay />
+
+      {/* Personalized Recommendations */}
+      <PersonalizedRecommendations />
 
       {/* Encouragement for New Users */}
       <motion.div
@@ -307,41 +341,7 @@ const Dashboard = () => {
         className="grid grid-cols-1 lg:grid-cols-2 gap-6"
       >
         <DailyChecklist />
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-            <Target className="w-5 h-5 mr-2 text-secondary-500" />
-            Próximos Pasos Recomendados
-          </h3>
-          <div className="space-y-3">
-            <Link
-              to="/missions"
-              className="block p-3 bg-secondary-50 rounded-lg hover:bg-secondary-100 transition-colors"
-            >
-              <p className="font-medium text-secondary-700">1. Completa una Misión Práctica</p>
-              <p className="text-sm text-secondary-600">
-                Aprende haciendo - paso a paso con explicaciones claras
-              </p>
-            </Link>
-            <Link
-              to="/quick-guides"
-              className="block p-3 bg-primary-50 rounded-lg hover:bg-primary-100 transition-colors"
-            >
-              <p className="font-medium text-primary-700">2. Revisa la Guía del Día</p>
-              <p className="text-sm text-primary-600">
-                Descubre las tareas importantes que debes hacer hoy
-              </p>
-            </Link>
-            <Link
-              to="/emergency-help"
-              className="block p-3 bg-red-50 rounded-lg hover:bg-red-100 transition-colors"
-            >
-              <p className="font-medium text-red-700">3. ¿Cometiste un error?</p>
-              <p className="text-sm text-red-600">
-                No te preocupes, aquí te decimos cómo arreglarlo
-              </p>
-            </Link>
-          </div>
-        </Card>
+        <ProgressSummary />
       </motion.div>
 
       {/* Achievements Section */}
