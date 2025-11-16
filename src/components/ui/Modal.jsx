@@ -40,13 +40,13 @@ const Modal = ({
               className={`bg-white rounded-2xl shadow-2xl w-full ${sizes[size]} max-h-[90vh] overflow-hidden`}
             >
               {/* Header */}
-              <div className="flex items-center justify-between p-6 border-b border-slate-200">
-                <h2 className="text-2xl font-bold text-slate-800">{title}</h2>
+              <div className="flex items-center justify-between p-6 border-b border-neutral-200">
+                <h2 className="text-2xl font-bold text-neutral-800">{title}</h2>
                 <button
                   onClick={onClose}
-                  className="p-2 hover:bg-slate-100 rounded-full transition-colors"
+                  className="p-2 hover:bg-neutral-100 rounded-full transition-colors"
                 >
-                  <X className="w-5 h-5 text-slate-500" />
+                  <X className="w-5 h-5 text-neutral-500" />
                 </button>
               </div>
 
@@ -57,7 +57,7 @@ const Modal = ({
 
               {/* Footer */}
               {footer && (
-                <div className="flex items-center justify-end gap-3 p-6 border-t border-slate-200 bg-slate-50">
+                <div className="flex items-center justify-end gap-3 p-6 border-t border-neutral-200 bg-neutral-50">
                   {footer}
                 </div>
               )}

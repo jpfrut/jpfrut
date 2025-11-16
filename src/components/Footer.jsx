@@ -13,7 +13,7 @@ import {
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-r from-gray-900 to-gray-800 text-gray-300 mt-16">
+    <footer className="bg-gradient-to-r from-neutral-900 to-neutral-800 text-neutral-300 mt-16">
       <div className="container mx-auto px-4 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {/* Brand */}
@@ -24,15 +24,15 @@ const Footer = () => {
               </div>
               <div>
                 <h3 className="text-lg font-bold text-white">Odoo Learning Platform</h3>
-                <p className="text-xs text-gray-400">by Mentora Hub</p>
+                <p className="text-xs text-neutral-400">by Mentora Hub</p>
               </div>
             </div>
             <p className="text-sm leading-relaxed">
               Plataforma de aprendizaje de Odoo 19 diseñada especialmente para personas
               sin experiencia técnica. Aprende a tu ritmo, sin presiones.
             </p>
-            <div className="mt-4 flex items-center text-sm text-gray-400">
-              <Heart className="w-4 h-4 mr-1 text-red-400" />
+            <div className="mt-4 flex items-center text-sm text-neutral-400">
+              <Heart className="w-4 h-4 mr-1 text-accent-red-400" />
               Hecho con amor para ti
             </div>
           </div>
@@ -122,14 +122,14 @@ const Footer = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-12 pt-8 border-t border-gray-700">
+        <div className="mt-12 pt-8 border-t border-neutral-700">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <div className="text-sm text-gray-400">
+            <div className="text-sm text-neutral-400">
               © 2024 Odoo Learning Platform. Todos los derechos reservados.
             </div>
             <div className="flex items-center gap-4 text-sm">
-              <span className="text-gray-400">Versión de Odoo: 19.0</span>
-              <span className="text-gray-400">•</span>
+              <span className="text-neutral-400">Versión de Odoo: 19.0</span>
+              <span className="text-neutral-400">•</span>
               <span className="text-primary-400">Siempre en mejora continua</span>
             </div>
           </div>
@@ -137,7 +137,7 @@ const Footer = () => {
 
         {/* Motivational Message */}
         <div className="mt-8 text-center">
-          <p className="text-sm text-gray-400 italic">
+          <p className="text-sm text-neutral-400 italic">
             "Cada experto fue alguna vez un principiante. Tu viaje con Odoo empieza hoy."
           </p>
         </div>

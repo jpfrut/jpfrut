@@ -648,43 +648,43 @@ export const missionCategories = {
     name: 'Ventas y Cobros',
     icon: '💰',
     description: 'Aprende a vender y cobrar correctamente',
-    color: 'text-green-600 bg-green-50'
+    color: 'text-accent-green-600 bg-accent-green-50'
   },
   contabilidad: {
     name: 'Dinero y Finanzas',
     icon: '📊',
     description: 'Controla tu dinero y gastos',
-    color: 'text-blue-600 bg-blue-50'
+    color: 'text-primary-600 bg-primary-50'
   },
   crm: {
     name: 'Clientes y Contactos',
     icon: '👥',
     description: 'Organiza la información de tus clientes',
-    color: 'text-purple-600 bg-purple-50'
+    color: 'text-accent-purple-600 bg-accent-purple-50'
   },
   flota: {
     name: 'Vehículos',
     icon: '🚗',
     description: 'Cuida tus vehículos de trabajo',
-    color: 'text-orange-600 bg-orange-50'
+    color: 'text-secondary-600 bg-secondary-50'
   },
   inventario: {
     name: 'Productos',
     icon: '📦',
     description: 'Maneja tu inventario',
-    color: 'text-yellow-600 bg-yellow-50'
+    color: 'text-secondary-600 bg-secondary-50'
   },
   compras: {
     name: 'Compras',
     icon: '🛍️',
     description: 'Gestiona tus proveedores y pedidos',
-    color: 'text-teal-600 bg-teal-50'
+    color: 'text-accent-green-600 bg-accent-green-50'
   },
   rrhh: {
     name: 'Recursos Humanos',
     icon: '👥',
     description: 'Administra tu equipo de trabajo',
-    color: 'text-indigo-600 bg-indigo-50'
+    color: 'text-primary-600 bg-primary-50'
   }
 };
 

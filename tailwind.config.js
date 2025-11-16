@@ -1,3 +1,5 @@
+import colors from 'tailwindcss/colors'
+
 /** @type {import('tailwindcss').Config} */
 export default {
   content: [
@@ -53,8 +55,26 @@ export default {
         },
         accent: {
           // Colores adicionales de Mentora Hub
-          aqua: '#00BBE6',      // AZUL AQUA
           brillante: '#0F7CDA', // AZUL BRILLANTE
+          aqua: {
+            ...colors.cyan,
+            DEFAULT: '#00BBE6',
+          },
+          green: {
+            ...colors.emerald,
+          },
+          purple: {
+            ...colors.violet,
+          },
+          pink: {
+            ...colors.pink,
+          },
+          red: {
+            ...colors.rose,
+          },
+          indigo: {
+            ...colors.indigo,
+          }
         },
         neutral: {
           // Grises basados en GRIS CLARO #EFEFEF

@@ -33,7 +33,7 @@ const PersonalizedRecommendations = () => {
         action: 'Ir a Mi Primer Día',
         path: '/first-day',
         icon: Target,
-        color: 'from-orange-400 to-red-500'
+        color: 'from-secondary-400 to-accent-red-500'
       })
 
       recs.push({
@@ -45,7 +45,7 @@ const PersonalizedRecommendations = () => {
         action: 'Iniciar Misión',
         path: '/missions',
         icon: Target,
-        color: 'from-green-400 to-emerald-500'
+        color: 'from-accent-green-400 to-accent-green-500'
       })
     }
 
@@ -68,7 +68,7 @@ const PersonalizedRecommendations = () => {
           action: 'Explorar Módulo',
           path: `/module/${recommended.id}`,
           icon: BookOpen,
-          color: 'from-blue-400 to-indigo-500'
+          color: 'from-primary-400 to-primary-500'
         })
       }
 
@@ -112,7 +112,7 @@ const PersonalizedRecommendations = () => {
         action: 'Continuar',
         path: `/module/${moduleId}`,
         icon: TrendingUp,
-        color: 'from-purple-400 to-pink-500'
+        color: 'from-accent-purple-400 to-accent-pink-500'
       })
     }
 
@@ -133,7 +133,7 @@ const PersonalizedRecommendations = () => {
           action: 'Explorar',
           path: '/explore',
           icon: Lightbulb,
-          color: 'from-yellow-400 to-orange-500'
+          color: 'from-secondary-400 to-secondary-500'
         })
       }
     }
@@ -149,7 +149,7 @@ const PersonalizedRecommendations = () => {
         action: 'Ver Checklist Diario',
         path: '/quick-guides',
         icon: Zap,
-        color: 'from-amber-400 to-orange-500'
+        color: 'from-secondary-400 to-secondary-500'
       })
     }
 
@@ -165,7 +165,7 @@ const PersonalizedRecommendations = () => {
         action: 'Ver Ayuda',
         path: '/emergency-help',
         icon: Lightbulb,
-        color: 'from-red-400 to-rose-500'
+        color: 'from-accent-red-400 to-accent-pink-500'
       })
     }
 
@@ -184,8 +184,8 @@ const PersonalizedRecommendations = () => {
       className="space-y-4"
     >
       <div className="flex items-center gap-2">
-        <Lightbulb className="w-5 h-5 text-yellow-500" />
-        <h3 className="text-lg font-semibold text-gray-800">
+        <Lightbulb className="w-5 h-5 text-secondary-500" />
+        <h3 className="text-lg font-semibold text-neutral-800">
           Recomendado para Ti
         </h3>
       </div>
@@ -205,8 +205,8 @@ const PersonalizedRecommendations = () => {
                   <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${rec.color} flex items-center justify-center mb-3`}>
                     <Icon className="w-5 h-5 text-white" />
                   </div>
-                  <h4 className="font-semibold text-gray-800 mb-1">{rec.title}</h4>
-                  <p className="text-sm text-gray-600 mb-3 line-clamp-2">{rec.description}</p>
+                  <h4 className="font-semibold text-neutral-800 mb-1">{rec.title}</h4>
+                  <p className="text-sm text-neutral-600 mb-3 line-clamp-2">{rec.description}</p>
                   <div className="flex items-center text-primary-600 text-sm font-medium group-hover:translate-x-1 transition-transform">
                     {rec.action}
                     <ArrowRight className="w-4 h-4 ml-1" />

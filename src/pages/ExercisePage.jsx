@@ -42,7 +42,7 @@ const ExercisePage = () => {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
-          <h2 className="text-2xl font-heading font-bold text-slate-800 mb-2">
+          <h2 className="text-2xl font-heading font-bold text-neutral-800 mb-2">
             Lección no encontrada
           </h2>
           <Button onClick={() => navigate('/')}>Volver al Dashboard</Button>
@@ -65,16 +65,16 @@ const ExercisePage = () => {
 
         <Card className="text-center py-12">
           <div className="text-6xl mb-4">🚧</div>
-          <h2 className="text-2xl font-heading font-bold text-slate-800 mb-2">
+          <h2 className="text-2xl font-heading font-bold text-neutral-800 mb-2">
             Contenido en Desarrollo
           </h2>
-          <p className="text-slate-600 mb-6">
+          <p className="text-neutral-600 mb-6">
             El contenido detallado para esta lección estará disponible próximamente.
           </p>
           <div className="space-y-2 mb-6 max-w-md mx-auto">
-            <h3 className="font-semibold text-slate-700">Temas que cubrirá:</h3>
+            <h3 className="font-semibold text-neutral-700">Temas que cubrirá:</h3>
             {lesson.topics.map((topic, index) => (
-              <div key={index} className="flex items-center gap-2 text-sm text-slate-600">
+              <div key={index} className="flex items-center gap-2 text-sm text-neutral-600">
                 <div className="w-2 h-2 rounded-full bg-primary-400" />
                 {topic}
               </div>
@@ -184,8 +184,8 @@ const ExercisePage = () => {
             <Sparkles className="w-6 h-6 text-white" />
           </div>
           <div className="flex-1">
-            <h2 className="text-xl font-heading font-bold text-slate-800 mb-3">Introducción</h2>
-            <p className="text-slate-600 leading-relaxed">
+            <h2 className="text-xl font-heading font-bold text-neutral-800 mb-3">Introducción</h2>
+            <p className="text-neutral-600 leading-relaxed">
               <GlossaryText text={content.introduction} />
             </p>
           </div>
@@ -203,15 +203,15 @@ const ExercisePage = () => {
           <Card>
             <div className="space-y-4">
               <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-lg flex items-center justify-center text-white font-bold">
+                <div className="flex-shrink-0 w-10 h-10 bg-gradient-to-br from-primary-500 to-primary-600 rounded-lg flex items-center justify-center text-white font-bold">
                   {index + 1}
                 </div>
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-slate-800 mb-3">
+                  <h3 className="text-xl font-bold text-neutral-800 mb-3">
                     {section.title}
                   </h3>
-                  <div className="prose prose-slate max-w-none">
-                    <p className="text-slate-600 leading-relaxed">
+                  <div className="prose paccent-pink-slate max-w-none">
+                    <p className="text-neutral-600 leading-relaxed">
                       <GlossaryText text={section.content} />
                     </p>
                   </div>
@@ -220,12 +220,12 @@ const ExercisePage = () => {
 
               {/* Example */}
               {section.example && (
-                <div className="ml-14 p-4 bg-slate-50 rounded-xl border-l-4 border-primary-500">
+                <div className="ml-14 p-4 bg-neutral-50 rounded-xl border-l-4 border-primary-500">
                   <div className="flex items-center gap-2 mb-2">
                     <Lightbulb className="w-5 h-5 text-primary-600" />
-                    <span className="font-semibold text-slate-800">Ejemplo Práctico</span>
+                    <span className="font-semibold text-neutral-800">Ejemplo Práctico</span>
                   </div>
-                  <pre className="text-sm text-slate-700 whitespace-pre-wrap font-mono bg-white p-4 rounded-lg overflow-x-auto">
+                  <pre className="text-sm text-neutral-700 whitespace-pre-wrap font-mono bg-white p-4 rounded-lg overflow-x-auto">
                     {section.example}
                   </pre>
                 </div>
@@ -233,15 +233,15 @@ const ExercisePage = () => {
 
               {/* Tips */}
               {section.tips && section.tips.length > 0 && (
-                <div className="ml-14 p-4 bg-amber-50 rounded-xl border-l-4 border-amber-500">
+                <div className="ml-14 p-4 bg-secondary-50 rounded-xl border-l-4 border-secondary-500">
                   <div className="flex items-center gap-2 mb-3">
-                    <Star className="w-5 h-5 text-amber-600" />
-                    <span className="font-semibold text-slate-800">Consejos Importantes</span>
+                    <Star className="w-5 h-5 text-secondary-600" />
+                    <span className="font-semibold text-neutral-800">Consejos Importantes</span>
                   </div>
                   <ul className="space-y-2">
                     {section.tips.map((tip, i) => (
-                      <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
-                        <span className="text-amber-500 mt-0.5">💡</span>
+                      <li key={i} className="flex items-start gap-2 text-sm text-neutral-700">
+                        <span className="text-secondary-500 mt-0.5">💡</span>
                         <span><GlossaryText text={tip} /></span>
                       </li>
                     ))}
@@ -259,12 +259,12 @@ const ExercisePage = () => {
           <div className="space-y-6">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <div className="w-12 h-12 bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl flex items-center justify-center">
+                <div className="w-12 h-12 bg-gradient-to-br from-accent-purple-500 to-accent-pink-600 rounded-xl flex items-center justify-center">
                   <Trophy className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-slate-800">Quiz de Conocimientos</h3>
-                  <p className="text-sm text-slate-600">Demuestra lo que has aprendido</p>
+                  <h3 className="text-xl font-bold text-neutral-800">Quiz de Conocimientos</h3>
+                  <p className="text-sm text-neutral-600">Demuestra lo que has aprendido</p>
                 </div>
               </div>
               {quizSubmitted && (
@@ -284,12 +284,12 @@ const ExercisePage = () => {
                   className={`p-4 rounded-xl border-2 ${
                     quizSubmitted
                       ? quizAnswers[question.id] === question.correct
-                        ? 'border-green-500 bg-green-50'
-                        : 'border-red-500 bg-red-50'
-                      : 'border-slate-200 bg-white'
+                        ? 'border-accent-green-500 bg-accent-green-50'
+                        : 'border-accent-red-500 bg-accent-red-50'
+                      : 'border-neutral-200 bg-white'
                   }`}
                 >
-                  <p className="font-semibold text-slate-800 mb-3">
+                  <p className="font-semibold text-neutral-800 mb-3">
                     {qIndex + 1}. {question.question}
                   </p>
 
@@ -300,7 +300,7 @@ const ExercisePage = () => {
                         className={`flex items-center gap-3 p-3 rounded-lg cursor-pointer transition-all ${
                           quizAnswers[question.id] === oIndex
                             ? 'bg-primary-100 border-2 border-primary-500'
-                            : 'bg-slate-50 hover:bg-slate-100 border-2 border-transparent'
+                            : 'bg-neutral-50 hover:bg-neutral-100 border-2 border-transparent'
                         } ${quizSubmitted ? 'cursor-not-allowed' : ''}`}
                       >
                         <input
@@ -315,22 +315,22 @@ const ExercisePage = () => {
                           disabled={quizSubmitted}
                           className="w-4 h-4"
                         />
-                        <span className="text-slate-700">{option}</span>
+                        <span className="text-neutral-700">{option}</span>
                         {quizSubmitted && oIndex === question.correct && (
-                          <CheckCircle className="w-5 h-5 text-green-600 ml-auto" />
+                          <CheckCircle className="w-5 h-5 text-accent-green-600 ml-auto" />
                         )}
                         {quizSubmitted &&
                           quizAnswers[question.id] === oIndex &&
                           oIndex !== question.correct && (
-                            <XCircle className="w-5 h-5 text-red-600 ml-auto" />
+                            <XCircle className="w-5 h-5 text-accent-red-600 ml-auto" />
                           )}
                       </label>
                     ))}
                   </div>
 
                   {quizSubmitted && (
-                    <div className="mt-3 p-3 bg-blue-50 rounded-lg border-l-4 border-blue-500">
-                      <p className="text-sm text-slate-700">
+                    <div className="mt-3 p-3 bg-primary-50 rounded-lg border-l-4 border-primary-500">
+                      <p className="text-sm text-neutral-700">
                         <strong>Explicación:</strong> {question.explanation}
                       </p>
                     </div>
@@ -352,13 +352,13 @@ const ExercisePage = () => {
                 Enviar Respuestas
               </Button>
             ) : getQuizScore() === 100 ? (
-              <div className="text-center p-6 bg-gradient-to-r from-green-500 to-emerald-600 rounded-xl text-white">
+              <div className="text-center p-6 bg-gradient-to-r from-accent-green-500 to-accent-green-600 rounded-xl text-white">
                 <div className="text-5xl mb-3">🎉</div>
                 <h3 className="text-2xl font-bold mb-2">¡Perfecto!</h3>
                 <p>Has respondido todas las preguntas correctamente</p>
               </div>
             ) : (
-              <div className="text-center p-6 bg-gradient-to-r from-orange-500 to-yellow-600 rounded-xl text-white">
+              <div className="text-center p-6 bg-gradient-to-r from-secondary-500 to-secondary-600 rounded-xl text-white">
                 <div className="text-5xl mb-3">📚</div>
                 <h3 className="text-2xl font-bold mb-2">¡Buen intento!</h3>
                 <p>Repasa el contenido y vuelve a intentarlo</p>
@@ -427,10 +427,10 @@ const ExercisePage = () => {
           >
             🏆
           </motion.div>
-          <h2 className="text-3xl font-heading font-bold text-slate-800 mb-4">
+          <h2 className="text-3xl font-heading font-bold text-neutral-800 mb-4">
             ¡Lección Completada!
           </h2>
-          <p className="text-xl text-slate-600 mb-6">
+          <p className="text-xl text-neutral-600 mb-6">
             Has ganado <strong className="text-primary-600">{lesson.xp} XP</strong>
           </p>
           <div className="flex justify-center gap-4">

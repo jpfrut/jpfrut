@@ -197,22 +197,22 @@ const Dashboard = () => {
         transition={{ delay: 0.25 }}
       >
         <Link to="/first-day">
-          <Card className="p-6 bg-gradient-to-r from-yellow-50 via-orange-50 to-pink-50 border-2 border-orange-200 hover:border-orange-400 transition-all hover:shadow-lg group cursor-pointer">
+          <Card className="p-6 bg-gradient-to-r from-secondary-50 via-secondary-50 to-accent-pink-50 border-2 border-secondary-200 hover:border-secondary-400 transition-all hover:shadow-lg group cursor-pointer">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl text-white">
+                <div className="p-3 bg-gradient-to-br from-secondary-400 to-secondary-500 rounded-xl text-white">
                   <Sun className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-orange-800 mb-1">
+                  <h3 className="text-xl font-bold text-secondary-800 mb-1">
                     ¿Primera vez en Odoo? Empieza aquí
                   </h3>
-                  <p className="text-orange-700">
+                  <p className="text-secondary-700">
                     Guía paso a paso para tu primer día. Sin tecnicismos, con mucha paciencia.
                   </p>
                 </div>
               </div>
-              <ArrowRight className="w-6 h-6 text-orange-500 group-hover:translate-x-2 transition-transform" />
+              <ArrowRight className="w-6 h-6 text-secondary-500 group-hover:translate-x-2 transition-transform" />
             </div>
           </Card>
         </Link>
@@ -265,12 +265,12 @@ const Dashboard = () => {
               <div className="p-3 bg-secondary-100 rounded-xl">
                 <Target className="w-8 h-8 text-secondary-500" />
               </div>
-              <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-secondary-500 transition-colors" />
+              <ArrowRight className="w-5 h-5 text-neutral-400 group-hover:text-secondary-500 transition-colors" />
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">
+            <h3 className="text-xl font-bold text-neutral-800 mb-2">
               Misiones Prácticas
             </h3>
-            <p className="text-gray-600 mb-4">
+            <p className="text-neutral-600 mb-4">
               Aprende haciendo tareas reales. Cada misión te guía paso a paso con explicaciones claras de <strong>por qué</strong> cada acción es importante para tu negocio.
             </p>
             <div className="flex items-center text-sm text-secondary-600">
@@ -287,12 +287,12 @@ const Dashboard = () => {
               <div className="p-3 bg-primary-100 rounded-xl">
                 <Clock className="w-8 h-8 text-primary-600" />
               </div>
-              <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-primary-600 transition-colors" />
+              <ArrowRight className="w-5 h-5 text-neutral-400 group-hover:text-primary-600 transition-colors" />
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">
+            <h3 className="text-xl font-bold text-neutral-800 mb-2">
               Guía de Uso Diario
             </h3>
-            <p className="text-gray-600 mb-4">
+            <p className="text-neutral-600 mb-4">
               Rutinas simples que debes hacer cada día, semana y mes. Incluye preguntas frecuentes, glosario y señales de alerta.
             </p>
             <div className="flex items-center text-sm text-primary-600">
@@ -316,17 +316,17 @@ const Dashboard = () => {
         transition={{ delay: 0.4 }}
         className="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
-        <Card className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
+        <Card className="p-6 bg-gradient-to-r from-accent-green-50 to-accent-green-50 border-accent-green-200">
           <div className="flex items-start">
-            <Heart className="w-8 h-8 text-green-600 mr-4 flex-shrink-0" />
+            <Heart className="w-8 h-8 text-accent-green-600 mr-4 flex-shrink-0" />
             <div>
-              <h3 className="text-lg font-semibold text-green-800 mb-2">
+              <h3 className="text-lg font-semibold text-accent-green-800 mb-2">
                 ¿Nuevo en Odoo? ¡No te preocupes!
               </h3>
-              <p className="text-green-700 mb-3">
+              <p className="text-accent-green-700 mb-3">
                 Esta plataforma está diseñada especialmente para personas como tú. No necesitas saber de computadoras ni tener experiencia previa.
               </p>
-              <p className="text-sm text-green-600 font-medium">
+              <p className="text-sm text-accent-green-600 font-medium">
                 Comienza con la misión "Registro de Mi Primer Cliente" - solo toma 10 minutos.
               </p>
             </div>
@@ -334,18 +334,18 @@ const Dashboard = () => {
         </Card>
 
         <Link to="/success-stories">
-          <Card className="p-6 bg-gradient-to-r from-purple-50 to-pink-50 border-purple-200 hover:shadow-lg transition-all h-full">
+          <Card className="p-6 bg-gradient-to-r from-accent-purple-50 to-accent-pink-50 border-accent-purple-200 hover:shadow-lg transition-all h-full">
             <div className="flex items-start justify-between mb-3">
-              <Heart className="w-8 h-8 text-purple-600" />
-              <ArrowRight className="w-5 h-5 text-purple-400" />
+              <Heart className="w-8 h-8 text-accent-purple-600" />
+              <ArrowRight className="w-5 h-5 text-accent-purple-400" />
             </div>
-            <h3 className="text-lg font-semibold text-purple-800 mb-2">
+            <h3 className="text-lg font-semibold text-accent-purple-800 mb-2">
               Historias de Éxito
             </h3>
-            <p className="text-purple-700 mb-2">
+            <p className="text-accent-purple-700 mb-2">
               Conoce a personas como tú que vencieron el miedo y ahora dominan Odoo.
             </p>
-            <p className="text-sm text-purple-600 font-medium">
+            <p className="text-sm text-accent-purple-600 font-medium">
               ¡Tú también puedes lograrlo!
             </p>
           </Card>
@@ -358,14 +358,14 @@ const Dashboard = () => {
           icon={BookOpen}
           label="Módulos Disponibles"
           value={stats.totalModules}
-          color="from-blue-500 to-indigo-600"
+          color="from-primary-500 to-primary-600"
           index={0}
         />
         <StatsCard
           icon={CheckCircle}
           label="Lecciones Completadas"
           value={totalCompleted}
-          color="from-green-500 to-emerald-600"
+          color="from-accent-green-500 to-accent-green-600"
           trend={totalCompleted > 0 ? `${totalCompleted} de ${stats.totalLessons}` : undefined}
           index={1}
         />
@@ -373,14 +373,14 @@ const Dashboard = () => {
           icon={Zap}
           label="XP Total"
           value={totalXPEarned}
-          color="from-yellow-500 to-orange-600"
+          color="from-secondary-500 to-secondary-600"
           index={2}
         />
         <StatsCard
           icon={Award}
           label="Logros Desbloqueados"
           value={`${unlockedAchievements.length}/${achievements.length}`}
-          color="from-purple-500 to-pink-600"
+          color="from-accent-purple-500 to-accent-pink-600"
           index={3}
         />
       </div>
@@ -404,8 +404,8 @@ const Dashboard = () => {
           transition={{ delay: 0.5 }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <Trophy className="w-6 h-6 text-yellow-600" />
-            <h2 className="text-2xl font-heading font-bold text-slate-800">
+            <Trophy className="w-6 h-6 text-secondary-600" />
+            <h2 className="text-2xl font-heading font-bold text-neutral-800">
               Logros Recientes
             </h2>
           </div>
@@ -431,7 +431,7 @@ const Dashboard = () => {
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
             <TrendingUp className="w-6 h-6 text-primary-600" />
-            <h2 className="text-2xl font-heading font-bold text-slate-800">
+            <h2 className="text-2xl font-heading font-bold text-neutral-800">
               Módulos de Aprendizaje
             </h2>
           </div>
@@ -448,26 +448,26 @@ const Dashboard = () => {
 
         {/* Category Overview */}
         <div className="mb-8">
-          <h3 className="text-lg font-semibold text-slate-700 mb-4 flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-yellow-500" />
+          <h3 className="text-lg font-semibold text-neutral-700 mb-4 flex items-center gap-2">
+            <Sparkles className="w-5 h-5 text-secondary-500" />
             {categories.length} Categorías Disponibles
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
             {[
-              { name: 'Finanzas', icon: '💰', color: 'from-emerald-500 to-teal-600' },
-              { name: 'Ventas', icon: '🛒', color: 'from-blue-500 to-indigo-600' },
-              { name: 'Cadena de Suministro', icon: '📦', color: 'from-orange-500 to-amber-600' },
-              { name: 'Recursos Humanos', icon: '👥', color: 'from-purple-500 to-pink-600' },
-              { name: 'Sitios Web', icon: '🌐', color: 'from-cyan-500 to-blue-600' },
-              { name: 'Marketing', icon: '📣', color: 'from-pink-500 to-rose-600' },
-              { name: 'Servicios', icon: '🛠️', color: 'from-gray-500 to-slate-600' },
-              { name: 'Productividad', icon: '📊', color: 'from-indigo-500 to-purple-600' },
-              { name: 'Personalización', icon: '⚙️', color: 'from-yellow-500 to-orange-600' }
+              { name: 'Finanzas', icon: '💰', color: 'from-accent-green-500 to-accent-green-600' },
+              { name: 'Ventas', icon: '🛒', color: 'from-primary-500 to-primary-600' },
+              { name: 'Cadena de Suministro', icon: '📦', color: 'from-secondary-500 to-secondary-600' },
+              { name: 'Recursos Humanos', icon: '👥', color: 'from-accent-purple-500 to-accent-pink-600' },
+              { name: 'Sitios Web', icon: '🌐', color: 'from-accent-aqua-500 to-primary-600' },
+              { name: 'Marketing', icon: '📣', color: 'from-accent-pink-500 to-accent-pink-600' },
+              { name: 'Servicios', icon: '🛠️', color: 'from-neutral-500 to-neutral-600' },
+              { name: 'Productividad', icon: '📊', color: 'from-primary-500 to-accent-purple-600' },
+              { name: 'Personalización', icon: '⚙️', color: 'from-secondary-500 to-secondary-600' }
             ].map((cat) => (
               <Link key={cat.name} to={`/explore?category=${encodeURIComponent(cat.name)}`}>
                 <Card className="p-3 text-center hover:shadow-md transition-all group cursor-pointer">
                   <div className="text-2xl mb-1">{cat.icon}</div>
-                  <div className="text-xs font-medium text-gray-700 group-hover:text-primary-600 transition-colors">
+                  <div className="text-xs font-medium text-neutral-700 group-hover:text-primary-600 transition-colors">
                     {cat.name}
                   </div>
                 </Card>
@@ -478,8 +478,8 @@ const Dashboard = () => {
 
         {/* Priority Modules - Show only top 6 */}
         <div className="mb-6">
-          <h3 className="text-lg font-semibold text-slate-700 mb-4 flex items-center gap-2">
-            <Star className="w-5 h-5 text-yellow-500" />
+          <h3 className="text-lg font-semibold text-neutral-700 mb-4 flex items-center gap-2">
+            <Star className="w-5 h-5 text-secondary-500" />
             Módulos Recomendados para Empezar
           </h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -519,15 +519,15 @@ const Dashboard = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.6 }}
-        className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200"
+        className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-primary-50 to-accent-purple-50 border border-primary-200"
       >
         <div className="flex items-start gap-4">
           <div className="text-4xl">💡</div>
           <div>
-            <p className="text-lg font-semibold text-slate-800 mb-2">
+            <p className="text-lg font-semibold text-neutral-800 mb-2">
               "El conocimiento es poder, pero la práctica es maestría"
             </p>
-            <p className="text-sm text-slate-600">
+            <p className="text-sm text-neutral-600">
               Cada lección que completas te acerca más a dominar Odoo. ¡Sigue así!
             </p>
           </div>

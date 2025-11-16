@@ -277,10 +277,10 @@ function EmergencyHelpPage() {
         className="text-center"
       >
         <div className="flex items-center justify-center mb-4">
-          <LifeBuoy className="w-12 h-12 text-red-500 mr-3" />
-          <h1 className="text-4xl font-heading font-bold text-gray-800">Ayuda de Emergencia</h1>
+          <LifeBuoy className="w-12 h-12 text-accent-red-500 mr-3" />
+          <h1 className="text-4xl font-heading font-bold text-neutral-800">Ayuda de Emergencia</h1>
         </div>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+        <p className="text-xl text-neutral-600 max-w-2xl mx-auto">
           ¿Cometiste un error? <strong>No te preocupes.</strong> Aquí encontrarás cómo solucionarlo paso a paso.
         </p>
       </motion.div>
@@ -291,18 +291,18 @@ function EmergencyHelpPage() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <Card className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
+        <Card className="p-6 bg-gradient-to-r from-accent-green-50 to-accent-green-50 border-accent-green-200">
           <div className="flex items-start">
-            <Heart className="w-10 h-10 text-green-600 mr-4 flex-shrink-0" />
+            <Heart className="w-10 h-10 text-accent-green-600 mr-4 flex-shrink-0" />
             <div>
-              <h3 className="text-xl font-semibold text-green-800 mb-2">
+              <h3 className="text-xl font-semibold text-accent-green-800 mb-2">
                 Respira. Todo tiene solución.
               </h3>
-              <p className="text-green-700 mb-3">
+              <p className="text-accent-green-700 mb-3">
                 En Odoo, casi todos los errores se pueden corregir. El sistema está diseñado para permitir ajustes.
                 No has dañado nada permanentemente.
               </p>
-              <p className="text-sm text-green-600 font-medium">
+              <p className="text-sm text-accent-green-600 font-medium">
                 Recuerda: Los mejores profesionales son los que saben cómo recuperarse de los errores.
               </p>
             </div>
@@ -313,20 +313,20 @@ function EmergencyHelpPage() {
       {/* Buscador */}
       <Card className="p-4">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5" />
           <input
             type="text"
             placeholder="Describe tu problema... (ej: 'factura incorrecta', 'borré contacto')"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-10 pr-4 py-3 text-lg border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-red-500"
+            className="w-full pl-10 pr-4 py-3 text-lg border border-neutral-300 rounded-lg focus:ring-2 focus:ring-accent-red-500 focus:border-accent-red-500"
           />
         </div>
       </Card>
 
       {/* Lista de problemas */}
       <div className="space-y-4">
-        <h2 className="text-xl font-heading font-semibold text-gray-800">
+        <h2 className="text-xl font-heading font-semibold text-neutral-800">
           Problemas comunes y sus soluciones:
         </h2>
 
@@ -336,16 +336,16 @@ function EmergencyHelpPage() {
               onClick={() => setSelectedProblem(
                 selectedProblem === problem.id ? null : problem.id
               )}
-              className="w-full p-4 text-left hover:bg-gray-50 transition-colors"
+              className="w-full p-4 text-left hover:bg-neutral-50 transition-colors"
             >
               <div className="flex items-center justify-between">
                 <div className="flex items-center">
                   <span className="text-3xl mr-4">{problem.emoji}</span>
                   <div>
-                    <h3 className="font-semibold text-gray-800 text-lg">
+                    <h3 className="font-semibold text-neutral-800 text-lg">
                       {problem.title}
                     </h3>
-                    <p className="text-gray-600">{problem.shortAnswer}</p>
+                    <p className="text-neutral-600">{problem.shortAnswer}</p>
                   </div>
                 </div>
                 <div className="flex items-center">
@@ -367,9 +367,9 @@ function EmergencyHelpPage() {
                       : 'Fácil'}
                   </Badge>
                   {selectedProblem === problem.id ? (
-                    <ChevronUp className="w-5 h-5 text-gray-400" />
+                    <ChevronUp className="w-5 h-5 text-neutral-400" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-gray-400" />
+                    <ChevronDown className="w-5 h-5 text-neutral-400" />
                   )}
                 </div>
               </div>
@@ -379,9 +379,9 @@ function EmergencyHelpPage() {
               <motion.div
                 initial={{ height: 0, opacity: 0 }}
                 animate={{ height: 'auto', opacity: 1 }}
-                className="border-t border-gray-200 bg-gray-50 p-4"
+                className="border-t border-neutral-200 bg-neutral-50 p-4"
               >
-                <h4 className="font-semibold text-gray-800 mb-4">
+                <h4 className="font-semibold text-neutral-800 mb-4">
                   Pasos para solucionarlo:
                 </h4>
                 <div className="space-y-4">
@@ -391,9 +391,9 @@ function EmergencyHelpPage() {
                         {step.step}
                       </div>
                       <div className="flex-1">
-                        <p className="font-medium text-gray-800">{step.action}</p>
-                        <p className="text-gray-600 text-sm">{step.detail}</p>
-                        <div className="mt-1 bg-yellow-50 p-2 rounded text-xs text-yellow-700">
+                        <p className="font-medium text-neutral-800">{step.action}</p>
+                        <p className="text-neutral-600 text-sm">{step.detail}</p>
+                        <div className="mt-1 bg-secondary-50 p-2 rounded text-xs text-secondary-700">
                           💡 {step.tip}
                         </div>
                       </div>
@@ -401,14 +401,14 @@ function EmergencyHelpPage() {
                   ))}
                 </div>
 
-                <div className="mt-6 p-4 bg-blue-50 rounded-lg">
+                <div className="mt-6 p-4 bg-primary-50 rounded-lg">
                   <div className="flex items-start">
-                    <Shield className="w-5 h-5 text-blue-600 mr-2 flex-shrink-0 mt-0.5" />
+                    <Shield className="w-5 h-5 text-primary-600 mr-2 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-medium text-blue-800 mb-1">
+                      <p className="font-medium text-primary-800 mb-1">
                         Para evitar esto en el futuro:
                       </p>
-                      <p className="text-blue-700 text-sm">{problem.preventionTip}</p>
+                      <p className="text-primary-700 text-sm">{problem.preventionTip}</p>
                     </div>
                   </div>
                 </div>
@@ -419,8 +419,8 @@ function EmergencyHelpPage() {
 
         {filteredProblems.length === 0 && searchTerm && (
           <Card className="p-8 text-center">
-            <AlertTriangle className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-            <p className="text-gray-600 mb-4">
+            <AlertTriangle className="w-12 h-12 text-neutral-300 mx-auto mb-4" />
+            <p className="text-neutral-600 mb-4">
               No encontramos tu problema específico, pero no te preocupes.
             </p>
             <Button variant="outline" onClick={() => setSearchTerm('')}>
@@ -437,31 +437,31 @@ function EmergencyHelpPage() {
         transition={{ delay: 0.4 }}
       >
         <Card className="p-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4">
+          <h3 className="text-lg font-semibold text-neutral-800 mb-4">
             Reglas de oro para recuperarte de errores:
           </h3>
           <div className="grid md:grid-cols-2 gap-4">
             <div className="flex items-start">
-              <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5" />
-              <p className="text-gray-700 text-sm">
+              <CheckCircle className="w-5 h-5 text-accent-green-500 mr-2 mt-0.5" />
+              <p className="text-neutral-700 text-sm">
                 <strong>Nunca intentes borrar directamente.</strong> Usa las funciones de Odoo (Nota de Crédito, Revertir, etc.)
               </p>
             </div>
             <div className="flex items-start">
-              <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5" />
-              <p className="text-gray-700 text-sm">
+              <CheckCircle className="w-5 h-5 text-accent-green-500 mr-2 mt-0.5" />
+              <p className="text-neutral-700 text-sm">
                 <strong>Guarda los comprobantes originales.</strong> Facturas en papel o PDF, extractos bancarios, etc.
               </p>
             </div>
             <div className="flex items-start">
-              <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5" />
-              <p className="text-gray-700 text-sm">
+              <CheckCircle className="w-5 h-5 text-accent-green-500 mr-2 mt-0.5" />
+              <p className="text-neutral-700 text-sm">
                 <strong>Revisa antes de confirmar.</strong> Es más fácil prevenir que corregir.
               </p>
             </div>
             <div className="flex items-start">
-              <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5" />
-              <p className="text-gray-700 text-sm">
+              <CheckCircle className="w-5 h-5 text-accent-green-500 mr-2 mt-0.5" />
+              <p className="text-neutral-700 text-sm">
                 <strong>Pide ayuda si no entiendes.</strong> Es mejor preguntar que adivinar.
               </p>
             </div>
@@ -475,15 +475,15 @@ function EmergencyHelpPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
       >
-        <Card className="p-6 bg-purple-50 border-purple-200 text-center">
-          <h3 className="text-lg font-semibold text-purple-800 mb-2">
+        <Card className="p-6 bg-accent-purple-50 border-accent-purple-200 text-center">
+          <h3 className="text-lg font-semibold text-accent-purple-800 mb-2">
             ¿Sigues preocupado?
           </h3>
-          <p className="text-purple-700 mb-4">
+          <p className="text-accent-purple-700 mb-4">
             Recuerda: Odoo guarda un historial de todo. Incluso si algo sale mal,
             siempre hay un registro de lo que pasó y cómo corregirlo.
           </p>
-          <p className="text-sm text-purple-600 font-medium">
+          <p className="text-sm text-accent-purple-600 font-medium">
             Cada error es una oportunidad de aprendizaje. ¡Tú puedes con esto!
           </p>
         </Card>
