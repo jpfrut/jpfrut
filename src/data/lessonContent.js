@@ -543,6 +543,230 @@ export const lessonContent = {
     }
   },
 
+  // Continuación de lecciones de contabilidad
+  'acc-003': {
+    title: 'Gestión de Facturas de Proveedor',
+    introduction: `
+      Las facturas de proveedor son esenciales para controlar los gastos de tu empresa. Aprende
+      a registrarlas, aprobarlas y gestionarlas de manera eficiente en Odoo 19.
+    `,
+    sections: [
+      {
+        title: '1. Registrar Facturas de Compra',
+        content: `
+          El registro correcto de facturas de proveedor es fundamental para el control de gastos.
+
+          **Métodos de registro:**
+          - Manual: Registrar facturas recibidas directamente
+          - Desde orden de compra: Vincular con órdenes existentes
+          - OCR/Digitalización: Escanear y extraer datos automáticamente
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Proveedores > Facturas
+
+          Crear factura de proveedor:
+
+          Proveedor: Software S.A.
+          Fecha factura: 20/01/2025
+          Fecha vencimiento: 20/02/2025 (30 días)
+
+          Líneas:
+          - Licencias Office 365 | 10 unidades | $50/unidad | IVA 19% = $595
+          - Soporte técnico      | 1 servicio  | $200       | IVA 19% = $238
+
+          Subtotal: $700
+          IVA (19%): $133
+          TOTAL: $833
+
+          ⚠️ IMPORTANTE:
+          - Verificar que el NIF del proveedor sea correcto
+          - Adjuntar PDF de la factura original
+          - Validar que los montos coincidan
+        `,
+        tips: [
+          'Siempre adjunta la factura original en PDF',
+          'Verifica que los datos fiscales del proveedor estén actualizados',
+          'Revisa las condiciones de pago antes de confirmar',
+          'Usa las etiquetas analíticas para mejor control de gastos'
+        ]
+      },
+      {
+        title: '2. Validación y Aprobación',
+        content: `
+          Implementa un flujo de aprobación para controlar los gastos de la empresa.
+
+          **Niveles de aprobación:**
+          - Revisión operativa: Verifica que se recibió el producto/servicio
+          - Validación contable: Confirma que la factura es correcta
+          - Aprobación gerencial: Para montos superiores a un límite
+        `,
+        example: `
+          📍 Ruta en Odoo: Factura de proveedor > Estado
+
+          Flujo típico:
+
+          1. BORRADOR
+             - Factura ingresada pero no confirmada
+             - Se pueden hacer cambios
+             - No afecta contabilidad
+
+          2. PUBLICADA
+             - Factura confirmada
+             - Genera asiento contable
+             - Ya no se puede editar (solo cancelar)
+
+          3. PAGO PROGRAMADO
+             - Pago ordenado pero no ejecutado
+             - En cola para pago
+
+          4. PAGADA
+             - Pago registrado y confirmado
+             - Factura cerrada
+
+          Validaciones recomendadas:
+          ✓ ¿La orden de compra existe?
+          ✓ ¿Los productos/servicios fueron recibidos?
+          ✓ ¿Los precios son correctos?
+          ✓ ¿El proveedor está aprobado?
+        `,
+        tips: [
+          'Define límites de aprobación por usuario',
+          'Usa reglas de validación automática para facturas pequeñas',
+          'Configura notificaciones por email para aprobadores',
+          'Mantén un log de quién aprobó cada factura'
+        ]
+      },
+      {
+        title: '3. Gestión de Pagos a Proveedores',
+        content: `
+          Organiza y ejecuta los pagos a proveedores de manera eficiente.
+
+          **Métodos de pago:**
+          - Transferencia bancaria
+          - Cheque
+          - Efectivo
+          - Tarjeta de crédito empresarial
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Proveedores > Pagos
+
+          Registro de pago:
+
+          Proveedor: Software S.A.
+          Facturas pendientes: 2
+            - Factura 001: $833
+            - Factura 002: $1,200
+          Total adeudado: $2,033
+
+          Pagar:
+          1. Seleccionar facturas a pagar
+          2. Elegir método: Transferencia bancaria
+          3. Seleccionar cuenta bancaria
+          4. Fecha de pago: 20/01/2025
+          5. Referencia: TRANS-2025-001
+
+          Pago por lotes:
+          - Selecciona múltiples facturas
+          - Genera archivo bancario SEPA (Europa) o NACHA (USA)
+          - Sube al banco para procesamiento masivo
+        `,
+        tips: [
+          'Programa pagos para aprovechar descuentos por pronto pago',
+          'Revisa el reporte de antigüedad para priorizar pagos',
+          'Usa la reconciliación automática después de pagar',
+          'Mantén comunicación con proveedores sobre fechas de pago'
+        ]
+      },
+      {
+        title: '4. Control de Gastos',
+        content: `
+          Analiza y controla los gastos de tu empresa con las herramientas de Odoo.
+
+          **Análisis de gastos:**
+          - Por proveedor
+          - Por categoría de producto
+          - Por centro de costos
+          - Por período
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Reportes > Gastos
+
+          Reporte mensual de gastos (Enero 2025):
+
+          Categoría              | Monto    | % Total
+          -----------------------|----------|--------
+          Software y licencias   | $2,500   | 25%
+          Servicios profesionales| $3,000   | 30%
+          Marketing y publicidad | $1,500   | 15%
+          Oficina y suministros  | $1,000   | 10%
+          Otros                  | $2,000   | 20%
+          -----------------------|----------|--------
+          TOTAL                  | $10,000  | 100%
+
+          Comparativa año anterior:
+          Enero 2024: $8,500
+          Incremento: 17.6% 📈
+
+          Análisis:
+          - Incremento en software por nuevas herramientas
+          - Servicios profesionales estables
+          - Oportunidad de reducir "Otros" investigando detalle
+        `,
+        tips: [
+          'Establece presupuestos por categoría y monitorea variaciones',
+          'Revisa gastos recurrentes mensualmente para optimizar',
+          'Usa etiquetas analíticas para seguimiento por proyecto',
+          'Genera reportes automáticos para la gerencia'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Cuál es la principal diferencia entre una factura en borrador y una publicada?',
+          options: [
+            'El color en la pantalla',
+            'La factura en borrador no genera asientos contables y puede editarse',
+            'No hay diferencia',
+            'Solo el gerente puede ver las publicadas'
+          ],
+          correct: 1,
+          explanation: 'Una factura en borrador no afecta la contabilidad y puede modificarse libremente. Al publicarla, se genera el asiento contable y ya no puede editarse directamente.'
+        },
+        {
+          id: 'q2',
+          question: '¿Por qué es importante validar que se recibieron los productos antes de aprobar una factura?',
+          options: [
+            'No es importante',
+            'Para evitar pagar por productos/servicios no recibidos',
+            'Solo es importante para gastos grandes',
+            'Es solo un requisito administrativo sin valor'
+          ],
+          correct: 1,
+          explanation: 'Validar la recepción antes de aprobar evita pagos incorrectos y asegura que solo pagas por lo que realmente recibiste.'
+        },
+        {
+          id: 'q3',
+          question: '¿Qué ventaja tiene el pago por lotes de facturas?',
+          options: [
+            'Es más caro pero más rápido',
+            'Permite pagar múltiples facturas con un solo archivo bancario',
+            'Solo funciona los viernes',
+            'No tiene ninguna ventaja'
+          ],
+          correct: 1,
+          explanation: 'El pago por lotes te permite generar un solo archivo bancario para pagar múltiples facturas a diferentes proveedores, ahorrando tiempo y esfuerzo.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio Práctico: Ciclo Completo de Factura de Proveedor',
+      description: 'Simula el proceso completo de gestión de una factura de proveedor',
+      steps: []
+    }
+  },
+
   'fleet-001': {
     title: 'Configuración del Módulo de Flota',
     introduction: `
@@ -604,6 +828,667 @@ export const lessonContent = {
       description: 'Configura los elementos básicos del módulo de flota',
       steps: []
     }
+  },
+
+  // ========================================
+  // CONTABILIDAD - LECCIONES RESTANTES
+  // ========================================
+
+  'acc-004': {
+    title: 'Conciliación Bancaria',
+    introduction: `
+      La conciliación bancaria es esencial para mantener la integridad de tus registros contables.
+      Aprende a importar extractos bancarios y conciliar transacciones automática y manualmente.
+    `,
+    sections: [
+      {
+        title: '1. Importar Extractos Bancarios',
+        content: `
+          Odoo permite importar extractos de diferentes formatos para agilizar la conciliación.
+
+          **Formatos soportados:**
+          - CSV (valores separados por comas)
+          - OFX/QFX (formato bancario estándar)
+          - CAMT.053 (formato europeo SEPA)
+          - Formatos específicos de bancos
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Bancos > Importar extracto
+
+          Datos del extracto de Banco Santander (Enero 2025):
+
+          Fecha      | Descripción                    | Débito  | Crédito | Saldo
+          -----------|--------------------------------|---------|---------|--------
+          2025-01-05 | Pago Odoo S.A. - Licencias     | 1,089   |         | 123,911
+          2025-01-10 | Cobro INV-2025-001 TechCorp    |         | 18,876  | 142,787
+          2025-01-15 | Pago nóminas enero             | 28,000  |         | 114,787
+          2025-01-20 | Cobro INV-2025-002 Distribuid. |         | 968     | 115,755
+          2025-01-25 | Pago Sistemas Pro - Hardware   | 1,815   |         | 113,940
+
+          Pasos de importación:
+          1. Descargar extracto del banco en formato CSV/OFX
+          2. En Odoo: Contabilidad > Bancos > [Tu banco]
+          3. Botón "Importar"
+          4. Seleccionar archivo
+          5. Mapear campos si es necesario
+          6. Confirmar importación
+        `,
+        tips: [
+          'Importa extractos regularmente (semanal o mensual)',
+          'Verifica que el saldo final coincida con el del banco',
+          'Guarda copias de los archivos de extracto',
+          'Configura el formato de importación una sola vez por banco'
+        ]
+      },
+      {
+        title: '2. Conciliación Automática',
+        content: `
+          Odoo puede conciliar automáticamente transacciones que coinciden con facturas y pagos.
+
+          **Reglas de conciliación automática:**
+          - Coincidencia por monto exacto
+          - Coincidencia por referencia de pago
+          - Coincidencia por número de factura
+          - Reglas personalizadas
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Configuración > Reglas de conciliación
+
+          Ejemplo de regla automática:
+
+          Nombre: "Cobros de clientes"
+          Tipo: Extracto bancario de entrada
+          Cuenta contable: Clientes (1120)
+
+          Condiciones:
+          - Monto > 0 (entrada de dinero)
+          - Buscar factura con monto exacto
+          - Buscar referencia que contenga "INV"
+
+          Resultado de conciliación automática:
+          ✅ Transacción: +18,876 EUR - Ref: "INV-2025-001"
+          ✅ Conciliada con: Factura INV-2025-001 (TechCorp)
+          ✅ Estado: Conciliada automáticamente
+
+          Ahorro de tiempo: ~90% de transacciones conciliadas automáticamente
+        `,
+        tips: [
+          'Configura reglas para tus transacciones más frecuentes',
+          'Revisa las conciliaciones automáticas periódicamente',
+          'Usa referencias claras en pagos para facilitar matching',
+          'Ajusta reglas basándote en patrones recurrentes'
+        ]
+      },
+      {
+        title: '3. Conciliación Manual',
+        content: `
+          Algunas transacciones requieren intervención manual para su conciliación.
+
+          **Casos que requieren conciliación manual:**
+          - Pagos parciales
+          - Múltiples facturas en un solo pago
+          - Transacciones con diferencias de cambio
+          - Comisiones y cargos bancarios
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Bancos > Conciliar
+
+          Caso práctico - Pago múltiple:
+
+          Transacción bancaria:
+          - Pago a "Odoo S.A." por 2,178 EUR
+
+          Facturas pendientes:
+          - BILL-2025-001: 1,089 EUR
+          - BILL-2025-003: 1,089 EUR
+
+          Proceso de conciliación:
+          1. Seleccionar transacción bancaria pendiente
+          2. Buscar facturas del proveedor
+          3. Marcar ambas facturas (1,089 + 1,089 = 2,178)
+          4. Verificar que el total coincide
+          5. Clic en "Validar"
+
+          ✅ Resultado: 2 facturas conciliadas con 1 pago
+
+          Caso con diferencia:
+          Transacción: 100 EUR
+          Factura: 102 EUR
+          Diferencia: -2 EUR (comisión bancaria)
+
+          Solución:
+          1. Seleccionar transacción y factura
+          2. Registrar diferencia como "Comisión bancaria"
+          3. Cuenta: Gastos bancarios (6280)
+          4. Validar
+        `,
+        tips: [
+          'Investiga las diferencias antes de conciliar',
+          'Documenta el motivo de las diferencias',
+          'Crea cuentas específicas para comisiones y cargos',
+          'No fuerces conciliaciones incorrectas'
+        ]
+      },
+      {
+        title: '4. Resolución de Diferencias',
+        content: `
+          Aprende a identificar y resolver discrepancias entre tus registros y el banco.
+
+          **Tipos de diferencias comunes:**
+          - Pagos registrados pero no procesados
+          - Cobros procesados pero no registrados
+          - Comisiones bancarias no contabilizadas
+          - Errores de captura
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Bancos > Diferencias
+
+          Análisis de diferencias (31/01/2025):
+
+          Saldo según Odoo:     115,940 EUR
+          Saldo según banco:    113,940 EUR
+          Diferencia:            2,000 EUR
+
+          Investigación:
+
+          1. Revisar transacciones no conciliadas en Odoo:
+             ✓ Pago cheque #1234 a proveedor: 2,000 EUR (sin cobrar)
+
+          2. Revisar transacciones bancarias no registradas:
+             - Ninguna encontrada
+
+          3. Verificar fechas:
+             ✓ Cheque emitido 30/01 pero cobrado 02/02
+
+          Resolución:
+          - El cheque se cobrará en febrero
+          - Diferencia temporal normal
+          - Documentar en "Partidas en tránsito"
+          - Se conciliará en próximo extracto
+
+          Reporte de conciliación:
+          Saldo banco:              113,940 EUR
+          + Cheques en tránsito:      2,000 EUR
+          - Depósitos pendientes:         0 EUR
+          = Saldo según libros:     115,940 EUR ✅
+        `,
+        tips: [
+          'Concilia al menos mensualmente',
+          'Documenta todas las partidas en tránsito',
+          'Investiga diferencias inmediatamente',
+          'Mantén comunicación con el banco para aclarar dudas'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Qué porcentaje de transacciones puede conciliar Odoo automáticamente con reglas bien configuradas?',
+          options: [
+            'Menos del 50%',
+            'Aproximadamente 90%',
+            '100% siempre',
+            'No puede conciliar automáticamente'
+          ],
+          correct: 1,
+          explanation: 'Con reglas de conciliación bien configuradas, Odoo puede conciliar automáticamente cerca del 90% de las transacciones, ahorrando tiempo significativo.'
+        },
+        {
+          id: 'q2',
+          question: '¿Qué debes hacer si encuentras una diferencia entre el saldo bancario y tus registros?',
+          options: [
+            'Ignorarla si es pequeña',
+            'Investigar la causa y documentarla',
+            'Ajustar el saldo forzadamente',
+            'Esperar a que se resuelva sola'
+          ],
+          correct: 1,
+          explanation: 'Siempre debes investigar las diferencias, sin importar el monto, para mantener la integridad contable y detectar posibles errores o fraudes.'
+        },
+        {
+          id: 'q3',
+          question: '¿Qué son las "partidas en tránsito"?',
+          options: [
+            'Errores contables',
+            'Transacciones registradas en un sistema pero aún no procesadas en el otro',
+            'Facturas canceladas',
+            'Pagos rechazados'
+          ],
+          correct: 1,
+          explanation: 'Las partidas en tránsito son transacciones registradas en tus libros (como cheques emitidos) que aún no aparecen en el extracto bancario porque no se han procesado.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio Práctico: Conciliación Bancaria Completa',
+      description: 'Realiza una conciliación bancaria usando datos de Mentora Consulting',
+      steps: []
+    }
+  },
+
+  'acc-005': {
+    title: 'Reportes Financieros',
+    introduction: `
+      Los reportes financieros son fundamentales para la toma de decisiones. Aprende a generar
+      y analizar el Balance General, Estado de Resultados y Flujo de Caja en Odoo 19.
+    `,
+    sections: [
+      {
+        title: '1. Balance General',
+        content: `
+          El Balance General muestra la situación financiera de la empresa en un momento específico.
+
+          **Componentes del Balance:**
+          - Activos: Lo que la empresa posee
+          - Pasivos: Lo que la empresa debe
+          - Patrimonio: Capital y utilidades
+
+          Ecuación contable: Activos = Pasivos + Patrimonio
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Reportes > Balance General
+
+          MENTORA CONSULTING S.A.
+          Balance General al 31/01/2025
+          (Cifras en EUR)
+
+          ACTIVOS
+          Activo Corriente
+            Bancos y equivalentes        250,000
+            Cuentas por cobrar clientes   19,844
+            Otros activos corrientes        5,000
+            Total Activo Corriente       274,844
+
+          Activo No Corriente
+            Vehículos                     84,000
+            Depreciación acumulada       (12,000)
+            Equipos de oficina            25,000
+            Depreciación acumulada        (5,000)
+            Total Activo No Corriente     92,000
+
+          TOTAL ACTIVOS                  366,844
+
+          PASIVOS
+          Pasivo Corriente
+            Cuentas por pagar              2,178
+            Nómina por pagar              28,000
+            Impuestos por pagar            8,500
+            Total Pasivo Corriente        38,678
+
+          TOTAL PASIVOS                   38,678
+
+          PATRIMONIO
+            Capital social               250,000
+            Utilidades acumuladas         50,000
+            Utilidad del período          28,166
+            Total Patrimonio             328,166
+
+          TOTAL PASIVO + PATRIMONIO      366,844 ✅
+
+          Análisis:
+          - Liquidez: 274,844 / 38,678 = 7.1 (Excelente)
+          - Endeudamiento: 38,678 / 366,844 = 10.5% (Bajo)
+          - ROE: 28,166 / 328,166 = 8.6% (Bueno)
+        `,
+        tips: [
+          'Genera el balance mensualmente para monitorear tendencias',
+          'Compara con períodos anteriores',
+          'Calcula ratios financieros clave',
+          'Usa filtros de comparación para ver evolución'
+        ]
+      },
+      {
+        title: '2. Estado de Resultados',
+        content: `
+          El Estado de Resultados (P&L) muestra la rentabilidad en un período.
+
+          **Estructura:**
+          - Ingresos
+          - Costo de ventas
+          - Utilidad bruta
+          - Gastos operativos
+          - Utilidad neta
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Reportes > Estado de Resultados
+
+          MENTORA CONSULTING S.A.
+          Estado de Resultados - Enero 2025
+          (Cifras en EUR)
+
+          INGRESOS
+            Consultoría Estratégica        35,000
+            Implementación Odoo            45,000
+            Soporte Técnico                12,000
+            Capacitación                    8,000
+            Total Ingresos                100,000
+
+          COSTO DE VENTAS
+            Salarios consultores          (32,000)
+            Licencias software             (2,500)
+            Costos directos               (10,000)
+            Total Costo de Ventas         (44,500)
+
+          UTILIDAD BRUTA                   55,500
+          Margen bruto: 55.5%
+
+          GASTOS OPERATIVOS
+            Salarios administrativos      (12,000)
+            Arriendo oficina               (3,000)
+            Servicios (luz, agua, etc)     (1,500)
+            Marketing y publicidad         (2,800)
+            Depreciación                   (1,500)
+            Gastos varios                  (2,534)
+            Total Gastos Operativos       (23,334)
+
+          UTILIDAD OPERATIVA               32,166
+          Margen operativo: 32.2%
+
+          OTROS INGRESOS/GASTOS
+            Intereses ganados                 500
+            Comisiones bancarias             (500)
+            Total Otros                         0
+
+          UTILIDAD ANTES DE IMPUESTOS      32,166
+
+          IMPUESTOS (12%)                  (4,000)
+
+          UTILIDAD NETA                    28,166
+          Margen neto: 28.2%
+
+          KPIs:
+          ✅ Margen bruto > 50% (55.5%)
+          ✅ Margen operativo > 25% (32.2%)
+          ✅ Margen neto > 15% (28.2%)
+        `,
+        tips: [
+          'Analiza márgenes por tipo de servicio',
+          'Compara con presupuesto mensual',
+          'Identifica tendencias de ingresos y gastos',
+          'Establece metas de rentabilidad'
+        ]
+      },
+      {
+        title: '3. Flujo de Caja',
+        content: `
+          El Flujo de Caja muestra el movimiento de efectivo en un período.
+
+          **Categorías:**
+          - Actividades operativas
+          - Actividades de inversión
+          - Actividades de financiamiento
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Reportes > Flujo de Caja
+
+          MENTORA CONSULTING S.A.
+          Flujo de Caja - Enero 2025
+          (Cifras en EUR)
+
+          SALDO INICIAL (01/01/2025)      225,000
+
+          ACTIVIDADES OPERATIVAS
+          Cobros de clientes               85,000
+          Pago a proveedores               (8,500)
+          Pago nóminas                    (28,000)
+          Pago impuestos                   (3,500)
+          Otros gastos operativos          (6,000)
+          Flujo Operativo Neto             39,000
+
+          ACTIVIDADES DE INVERSIÓN
+          Compra equipos                   (5,000)
+          Venta activos                         0
+          Flujo de Inversión               (5,000)
+
+          ACTIVIDADES DE FINANCIAMIENTO
+          Aportes de capital                    0
+          Distribución dividendos          (9,000)
+          Flujo de Financiamiento          (9,000)
+
+          FLUJO NETO DEL PERÍODO           25,000
+
+          SALDO FINAL (31/01/2025)        250,000
+
+          Análisis:
+          - Flujo operativo positivo: ✅ Bueno
+          - Capacidad de inversión: ✅ Sí
+          - Días de caja: 250,000 / (100,000/30) = 75 días
+        `,
+        tips: [
+          'Proyecta flujo de caja a 3-6 meses',
+          'Identifica períodos de bajo efectivo',
+          'Mantén un colchón de seguridad',
+          'Negocia términos de pago favorables'
+        ]
+      },
+      {
+        title: '4. Reportes Personalizados',
+        content: `
+          Crea reportes personalizados según las necesidades de tu negocio.
+
+          **Opciones de personalización:**
+          - Filtros por período, cuenta, etiqueta
+          - Agrupación por diferentes criterios
+          - Comparativas entre períodos
+          - Exportación a Excel/PDF
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Reportes > Reportes personalizados
+
+          Ejemplos de reportes útiles:
+
+          1. Análisis por Cliente (Top 5):
+             - TechCorp:        18,876 EUR (38%)
+             - Distribuidora:   15,200 EUR (30%)
+             - Beta Services:   10,500 EUR (21%)
+             - Retail Group:     8,424 EUR (17%)
+             - Startups Inn:     2,000 EUR (4%)
+
+          2. Gastos por Categoría:
+             - Personal:        44,000 EUR (51%)
+             - Operaciones:     15,000 EUR (17%)
+             - Software:         2,500 EUR (3%)
+             - Marketing:        2,800 EUR (3%)
+             - Otros:           21,700 EUR (25%)
+
+          3. Rentabilidad por Servicio:
+             Servicio              | Ingresos | Costos | Margen
+             ---------------------|----------|--------|--------
+             Implementación Odoo  | 45,000   | 18,000 | 60%
+             Consultoría          | 35,000   | 17,500 | 50%
+             Soporte              | 12,000   |  6,000 | 50%
+             Capacitación         |  8,000   |  3,000 | 62.5%
+
+          Configuración de reporte:
+          - Período: Mes actual
+          - Agrupar por: Tipo de servicio
+          - Mostrar: Ingresos, Costos, Margen
+          - Ordenar por: Margen descendente
+          - Exportar a: Excel para análisis detallado
+        `,
+        tips: [
+          'Crea plantillas de reportes frecuentes',
+          'Programa envíos automáticos por email',
+          'Usa gráficos para visualizar tendencias',
+          'Comparte reportes con stakeholders relevantes'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Cuál es la ecuación contable fundamental?',
+          options: [
+            'Ingresos - Gastos = Utilidad',
+            'Activos = Pasivos + Patrimonio',
+            'Ventas - Costos = Margen',
+            'Efectivo + Bancos = Liquidez'
+          ],
+          correct: 1,
+          explanation: 'La ecuación contable fundamental es Activos = Pasivos + Patrimonio. Esta ecuación siempre debe estar en balance.'
+        },
+        {
+          id: 'q2',
+          question: '¿Qué mide el margen bruto?',
+          options: [
+            'La liquidez de la empresa',
+            'La diferencia entre ingresos y costo de ventas',
+            'El total de activos',
+            'La deuda total'
+          ],
+          correct: 1,
+          explanation: 'El margen bruto mide la rentabilidad antes de gastos operativos, calculado como (Ingresos - Costo de Ventas) / Ingresos.'
+        },
+        {
+          id: 'q3',
+          question: '¿Por qué es importante el flujo de caja?',
+          options: [
+            'Solo importa para empresas grandes',
+            'Muestra el movimiento real de efectivo, esencial para la liquidez',
+            'Es lo mismo que la utilidad neta',
+            'No es relevante si hay utilidades'
+          ],
+          correct: 1,
+          explanation: 'El flujo de caja es crítico porque muestra el movimiento real de efectivo. Una empresa puede tener utilidades pero quedarse sin efectivo si los cobros son lentos.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio Práctico: Análisis Financiero Completo',
+      description: 'Genera y analiza los tres reportes principales de Mentora Consulting',
+      steps: []
+    }
+  },
+
+  'acc-006': {
+    title: 'Impuestos y Declaraciones',
+    introduction: 'Domina la gestión de impuestos y declaraciones fiscales en Odoo para cumplir con tus obligaciones tributarias de manera eficiente.',
+    sections: [
+      { title: '1. Configuración de Impuestos', content: 'Configura todos los tipos de impuestos de tu jurisdicción.', example: '📍 Ruta: Contabilidad > Configuración > Impuestos\n\nIVA España 21%:\nNombre: IVA 21% Ventas\nTipo: Porcentaje\nImporte: 21%\nCuenta: 4770001 IVA Repercutido', tips: ['Configura impuestos por pares compra/venta', 'Valida con tu contador'] },
+      { title: '2. Reportes Fiscales', content: 'Genera declaraciones de impuestos automáticamente.', example: 'IVA Trimestral Q1 2025:\nVentas: 100,000 EUR\nIVA Repercutido: 21,000 EUR\nCompras: 25,000 EUR  \nIVA Soportado: 5,250 EUR\nA Pagar: 15,750 EUR', tips: ['Declara puntualmente', 'Conserva todos los comprobantes'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Por qué configurar impuestos por pares?', options: ['No es necesario', 'Para separar IVA cobrado vs soportado', 'Solo en Europa', 'Solo empresas grandes'], correct: 1, explanation: 'Necesitas pares para registrar correctamente IVA de ventas e IVA de compras por separado.' }] },
+    practicalExercise: { title: 'Ejercicio: Declaración Fiscal', description: 'Genera tu primera declaración de IVA', steps: [] }
+  },
+
+  // ========================================
+  // VENTAS - TODAS LAS LECCIONES
+  // ========================================
+
+  'sales-002': {
+    title: 'Gestión de Cotizaciones',
+    introduction: 'Crea cotizaciones profesionales y conviértelas en pedidos de venta de manera eficiente.',
+    sections: [
+      { title: '1. Crear Cotizaciones', content: 'Genera cotizaciones profesionales rápidamente.', example: '📍 Cotización para TechCorp:\nServicio: Implementación Odoo\nHoras: 80\nPrecio/hora: 120 EUR\nSubtotal: 9,600 EUR\nIVA 21%: 2,016 EUR\nTotal: 11,616 EUR\n\nVigencia: 30 días\nTérminos de pago: 50% adelanto, 50% al finalizar', tips: ['Usa plantillas para servicios recurrentes', 'Incluye términos claros'] },
+      { title: '2. Productos Opcionales', content: 'Ofrece productos adicionales en tus cotizaciones.', example: 'Base: Implementación Odoo (9,600 EUR)\nOpcionales:\n- Capacitación adicional: 1,200 EUR\n- Soporte extendido 6 meses: 2,400 EUR\n\nCliente elige qué agregar', tips: ['Usa opcionales para upselling', 'Márgenes más altos en opcionales'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Cuál es la ventaja de productos opcionales?', options: ['No tienen ventaja', 'Permiten al cliente personalizar y aumentan ventas', 'Solo para inventario', 'Complican el proceso'], correct: 1, explanation: 'Los opcionales dan flexibilidad al cliente y oportunidad de vender más sin presionar.' }] },
+    practicalExercise: { title: 'Ejercicio: Cotización Completa', description: 'Crea una cotización con opcionales', steps: [] }
+  },
+
+  'sales-003': {
+    title: 'Pedidos de Venta',
+    introduction: 'Gestiona el ciclo completo de pedidos desde la confirmación hasta la entrega.',
+    sections: [
+      { title: '1. Confirmar Pedidos', content: 'Convierte cotizaciones aprobadas en pedidos.', example: 'Cotización #S00045 → Pedido #SO00123\nEstado: Confirmado\nProductos reservados\nEntrega programada: 15/02/2025', tips: ['Confirma solo cuando el cliente acepta', 'Verifica stock antes'] },
+      { title: '2. Gestionar Entregas', content: 'Programa y ejecuta entregas de productos/servicios.', example: 'Pedido SO00123:\nFase 1: Análisis (Semana 1-2)\nFase 2: Configuración (Semana 3-4)\nFase 3: Capacitación (Semana 5)\nFase 4: Go-Live (Semana 6)', tips: ['Comunica fechas claramente', 'Actualiza estado regularmente'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Cuándo confirmar un pedido?', options: ['Inmediatamente al crear', 'Cuando el cliente aprueba la cotización', 'Al final del mes', 'Nunca'], correct: 1, explanation: 'Solo confirma pedidos cuando el cliente ha aprobado formalmente la cotización.' }] },
+    practicalExercise: { title: 'Ejercicio: Gestión de Pedido', description: 'Procesa un pedido completo', steps: [] }
+  },
+
+  'sales-004': {
+    title: 'Facturación desde Ventas',
+    introduction: 'Factura automáticamente desde pedidos de venta según diferentes políticas.',
+    sections: [
+      { title: '1. Políticas de Facturación', content: 'Factura según entrega, hitos o anticipos.', example: 'Opciones:\n- Al confirmar pedido (servicios)\n- Al entregar productos (ventas)\n- Por hitos (proyectos)\n- Anticipos + saldo', tips: ['Define política antes de confirmar', 'Comunica al cliente cuándo facturarás'] },
+      { title: '2. Facturación Automática', content: 'Genera facturas automáticamente según reglas.', example: 'Pedido #SO00123:\nHito 1 (50%): Factura al completar análisis\nHito 2 (50%): Factura al Go-Live\n\nOdoo genera facturas automáticamente', tips: ['Automatiza para ahorrar tiempo', 'Revisa facturas antes de enviar'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Qué es facturación por hitos?', options: ['Facturar todo al final', 'Facturar al completar cada fase del proyecto', 'Facturar mensualmente', 'Facturar por producto'], correct: 1, explanation: 'Facturación por hitos significa cobrar al completar cada etapa definida del proyecto.' }] },
+    practicalExercise: { title: 'Ejercicio: Facturación Automática', description: 'Configura facturación por hitos', steps: [] }
+  },
+
+  'sales-005': {
+    title: 'CRM y Seguimiento',
+    introduction: 'Usa el CRM integrado para gestionar tu pipeline de ventas y dar seguimiento a oportunidades.',
+    sections: [
+      { title: '1. Pipeline de Ventas', content: 'Organiza oportunidades en etapas visuales.', example: 'Pipeline:\n→ Nuevo Lead\n→ Contactado\n→ Reunión Agendada\n→ Propuesta Enviada\n→ Negociación\n→ Ganada/Perdida', tips: ['Actualiza estado regularmente', 'Define probabilidad por etapa'] },
+      { title: '2. Actividades y Seguimiento', content: 'Programa recordatorios y tareas de seguimiento.', example: 'Lead: TechCorp\nActividad: Llamada de seguimiento\nFecha: Mañana 10:00\nResponsable: María González\nNotas: Preguntar por presupuesto', tips: ['No dejes leads sin seguimiento', 'Usa recordatorios automáticos'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Por qué es importante el pipeline visual?', options: ['Solo es decorativo', 'Permite ver rápidamente el estado de todas las oportunidades', 'Es obligatorio', 'Solo para gerentes'], correct: 1, explanation: 'El pipeline visual te permite identificar rápidamente dónde están tus oportunidades y actuar en consecuencia.' }] },
+    practicalExercise: { title: 'Ejercicio: Gestión de Pipeline', description: 'Mueve oportunidades por el pipeline', steps: [] }
+  },
+
+  'sales-006': {
+    title: 'Reportes y Análisis de Ventas',
+    introduction: 'Analiza el desempeño de ventas con dashboards y reportes detallados.',
+    sections: [
+      { title: '1. Dashboard de Ventas', content: 'Visualiza KPIs clave en tiempo real.', example: 'Dashboard Enero 2025:\nVentas del mes: 100,000 EUR ↑15%\nPipeline activo: 250,000 EUR\nTasa de conversión: 35%\nTicket promedio: 12,500 EUR\nTop vendedor: María G. (45,000 EUR)', tips: ['Revisa dashboard diariamente', 'Establece metas mensuales'] },
+      { title: '2. Análisis por Vendedor', content: 'Compara rendimiento del equipo de ventas.', example: 'Vendedor | Ventas | Oportunidades | Conv%\nMaría G. | 45,000 | 15 | 40%\nCarlos M.| 35,000 | 20 | 30%\nAna R.   | 20,000 | 10 | 35%', tips: ['Reconoce top performers', 'Ayuda a los que necesitan apoyo'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Qué mide la tasa de conversión?', options: ['Total de ventas', 'Porcentaje de oportunidades que se cierran exitosamente', 'Número de clientes', 'Ingresos totales'], correct: 1, explanation: 'La tasa de conversión mide qué porcentaje de oportunidades se convierten en ventas cerradas.' }] },
+    practicalExercise: { title: 'Ejercicio: Análisis de Ventas', description: 'Genera y analiza reportes de ventas', steps: [] }
+  },
+
+  // ========================================
+  // FLOTA - TODAS LAS LECCIONES
+  // ========================================
+
+  'fleet-002': {
+    title: 'Gestión de Vehículos',
+    introduction: 'Registra y administra todos los vehículos de tu flota empresarial.',
+    sections: [
+      { title: '1. Registro de Vehículos', content: 'Ingresa toda la información de cada vehículo.', example: 'Vehículo: Toyota Prius 2022\nPlaca: 1234-ABC\nVIN: JT2BK18E0X0123456\nKm actuales: 45,000\nValor adquisición: 28,000 EUR\nSeguro: POL-2022-001\nVence: 15/01/2026', tips: ['Digitaliza documentos', 'Actualiza kilometraje mensualmente'] },
+      { title: '2. Seguimiento de Documentación', content: 'Controla vencimientos de seguros, permisos, revisiones técnicas.', example: 'Alertas VEH-001:\n⚠️ Seguro vence en 60 días\n⚠️ Revisión técnica en 15 días\n✅ SOAP vigente', tips: ['Configura alertas 60 días antes', 'Renueva a tiempo'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Por qué registrar el VIN?', options: ['No es necesario', 'Identificación única del vehículo para seguros y trámites', 'Solo para autos nuevos', 'Es opcional'], correct: 1, explanation: 'El VIN es el identificador único del vehículo, esencial para seguros, registros y historial.' }] },
+    practicalExercise: { title: 'Ejercicio: Registrar Flota', description: 'Ingresa los 3 vehículos de Mentora', steps: [] }
+  },
+
+  'fleet-003': {
+    title: 'Asignación de Vehículos',
+    introduction: 'Asigna vehículos a conductores y gestiona el uso eficientemente.',
+    sections: [
+      { title: '1. Asignar a Conductores', content: 'Vincula vehículos con empleados autorizados.', example: 'VEH-001: Juan Pérez (Director)\nVEH-002: Carlos Martínez (Consultor)\nVEH-003: Pool car (sin asignar)', tips: ['Verifica licencia vigente', 'Define responsable único'] },
+      { title: '2. Control de Uso', content: 'Registra y analiza el uso de cada vehículo.', example: 'VEH-001 Enero 2025:\nKm recorridos: 2,500\nViajes: 45\nPromedio: 55 km/viaje\nCombustible: 180 EUR\nCosto/km: 0.072 EUR', tips: ['Pide reporte mensual', 'Analiza costos por vehículo'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Por qué tener vehículos pool (sin asignar)?', options: ['Es un error', 'Flexibilidad para que cualquier empleado autorizado los use según necesidad', 'Solo para emergencias', 'No tiene sentido'], correct: 1, explanation: 'Los vehículos pool dan flexibilidad operativa sin necesidad de tener un vehículo por empleado.' }] },
+    practicalExercise: { title: 'Ejercicio: Asignación', description: 'Asigna vehículos a empleados', steps: [] }
+  },
+
+  'fleet-004': {
+    title: 'Mantenimiento y Servicios',
+    introduction: 'Programa y registra todos los mantenimientos para prolongar la vida útil de tu flota.',
+    sections: [
+      { title: '1. Plan de Mantenimiento', content: 'Define intervalos de servicio preventivo.', example: 'Toyota Prius:\nCambio aceite: cada 15,000 km\nFiltros: cada 30,000 km\nRevisión mayor: cada 60,000 km\nNeumáticos: cada 40,000 km\n\nPróximo servicio: 60,000 km (en 3,000 km)', tips: ['Sigue manual del fabricante', 'Mantén historial completo'] },
+      { title: '2. Registro de Servicios', content: 'Documenta cada servicio realizado.', example: 'Servicio #SRV-001:\nVehículo: VEH-001\nFecha: 15/11/2024\nKm: 45,000\nTipo: Mantenimiento preventivo\nTaller: Toyota Service Madrid\nCosto: 250 EUR\nDetalle: Cambio aceite + filtros', tips: ['Guarda facturas digitalmente', 'Adjunta en Odoo'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Cuál es el beneficio del mantenimiento preventivo?', options: ['Ninguno, es gasto innecesario', 'Previene fallas costosas y prolonga vida del vehículo', 'Solo para autos caros', 'Solo si está en garantía'], correct: 1, explanation: 'El mantenimiento preventivo evita averías costosas y extiende significativamente la vida útil del vehículo.' }] },
+    practicalExercise: { title: 'Ejercicio: Plan de Mantenimiento', description: 'Crea plan para los vehículos', steps: [] }
+  },
+
+  'fleet-005': {
+    title: 'Control de Costos',
+    introduction: 'Analiza y controla todos los costos asociados a tu flota.',
+    sections: [
+      { title: '1. Registro de Combustible', content: 'Lleva control detallado de consumo de combustible.', example: 'VEH-001 Enero:\nCargas: 8\nLitros totales: 180 L\nCosto total: 280 EUR\nPrecio promedio: 1.56 EUR/L\nKm recorridos: 2,500\nConsumo: 7.2 L/100km', tips: ['Usa tarjeta corporativa', 'Analiza eficiencia mensualmente'] },
+      { title: '2. Costo Total de Propiedad', content: 'Calcula el TCO (Total Cost of Ownership).', example: 'VEH-001 TCO Anual:\nDepreciación: 4,000 EUR\nCombustible: 3,360 EUR\nMantenimiento: 1,200 EUR\nSeguro: 1,200 EUR\nImpuestos: 800 EUR\nTotal: 10,560 EUR\nCosto/km: 0.352 EUR\nCosto/mes: 880 EUR', tips: ['Calcula TCO anualmente', 'Compara con leasing'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Qué incluye el TCO?', options: ['Solo combustible', 'Todos los costos del vehículo: compra, operación, mantenimiento, seguros', 'Solo compra', 'Solo mantenimiento'], correct: 1, explanation: 'TCO incluye TODOS los costos: adquisición, depreciación, operación, mantenimiento, seguros e impuestos.' }] },
+    practicalExercise: { title: 'Ejercicio: Análisis de Costos', description: 'Calcula TCO de la flota', steps: [] }
+  },
+
+  'fleet-006': {
+    title: 'Contratos y Reportes',
+    introduction: 'Gestiona contratos de arrendamiento y genera reportes de rendimiento de flota.',
+    sections: [
+      { title: '1. Contratos de Arrendamiento', content: 'Administra leasing y renting de vehículos.', example: 'Contrato VEH-003:\nTipo: Renting\nProveedor: AutoRent S.A.\nCuota mensual: 450 EUR\nIncluye: mantenimiento, seguro, neumáticos\nDuración: 36 meses\nInicio: 01/03/2023\nVence: 28/02/2026\nKm incluidos: 30,000/año', tips: ['Revisa qué incluye el contrato', 'Controla exceso de km'] },
+      { title: '2. Reportes de Flota', content: 'Genera análisis para optimizar tu flota.', example: 'Reporte Trimestral:\nFlota total: 3 vehículos\nKm totales: 18,500\nCosto total: 8,450 EUR\nCosto/km: 0.457 EUR\nUtilización: 75%\nVehículo más eficiente: VEH-003\nRecomendación: Renovar VEH-002', tips: ['Genera reportes trimestrales', 'Busca optimizaciones'] }
+    ],
+    quiz: { questions: [{ id: 'q1', question: '¿Qué ventaja tiene el renting vs compra?', options: ['Ninguna', 'Cuota fija mensual que incluye todos los costos, sin sorpresas', 'Es más caro siempre', 'Solo para empresas grandes'], correct: 1, explanation: 'El renting ofrece cuota fija mensual que incluye mantenimiento, seguros y otros costos, facilitando el presupuesto.' }] },
+    practicalExercise: { title: 'Ejercicio: Reporte de Flota', description: 'Genera análisis completo', steps: [] }
   }
 }
 
