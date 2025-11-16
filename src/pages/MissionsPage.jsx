@@ -257,7 +257,9 @@ function MissionsPage() {
           </div>
 
           <ProgressBar
-            value={(completedSteps.length / selectedMission.steps.length) * 100}
+            progress={completedSteps.length}
+            total={selectedMission.steps.length}
+            showLabel={false}
             className="mb-4"
           />
           <p className="text-sm text-gray-500">
