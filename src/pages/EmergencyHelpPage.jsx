@@ -278,7 +278,7 @@ function EmergencyHelpPage() {
       >
         <div className="flex items-center justify-center mb-4">
           <LifeBuoy className="w-12 h-12 text-red-500 mr-3" />
-          <h1 className="text-4xl font-bold text-gray-800">Ayuda de Emergencia</h1>
+          <h1 className="text-4xl font-heading font-bold text-gray-800">Ayuda de Emergencia</h1>
         </div>
         <p className="text-xl text-gray-600 max-w-2xl mx-auto">
           ¿Cometiste un error? <strong>No te preocupes.</strong> Aquí encontrarás cómo solucionarlo paso a paso.
@@ -326,7 +326,7 @@ function EmergencyHelpPage() {
 
       {/* Lista de problemas */}
       <div className="space-y-4">
-        <h2 className="text-xl font-semibold text-gray-800">
+        <h2 className="text-xl font-heading font-semibold text-gray-800">
           Problemas comunes y sus soluciones:
         </h2>
 

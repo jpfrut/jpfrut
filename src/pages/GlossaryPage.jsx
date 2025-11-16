@@ -63,7 +63,7 @@ const GlossaryPage = () => {
         <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-600 rounded-xl mb-6">
           <BookOpen className="w-8 h-8 text-white" />
         </div>
-        <h1 className="text-3xl font-bold text-neutral-900 mb-3">
+        <h1 className="text-3xl font-heading font-bold text-neutral-900 mb-3">
           Glosario de Odoo
         </h1>
         <p className="text-neutral-600 max-w-2xl mx-auto leading-relaxed">

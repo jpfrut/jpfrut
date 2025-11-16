@@ -125,7 +125,7 @@ const Dashboard = () => {
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: 'spring' }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+            <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
               ¡Hola, {user.name}! 👋
             </h1>
           </motion.div>
@@ -405,7 +405,7 @@ const Dashboard = () => {
         >
           <div className="flex items-center gap-3 mb-4">
             <Trophy className="w-6 h-6 text-yellow-600" />
-            <h2 className="text-2xl font-bold text-slate-800">
+            <h2 className="text-2xl font-heading font-bold text-slate-800">
               Logros Recientes
             </h2>
           </div>
@@ -431,7 +431,7 @@ const Dashboard = () => {
         <div className="flex items-center justify-between mb-6">
           <div className="flex items-center gap-3">
             <TrendingUp className="w-6 h-6 text-primary-600" />
-            <h2 className="text-2xl font-bold text-slate-800">
+            <h2 className="text-2xl font-heading font-bold text-slate-800">
               Módulos de Aprendizaje
             </h2>
           </div>

@@ -42,7 +42,7 @@ const ExercisePage = () => {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-slate-800 mb-2">
+          <h2 className="text-2xl font-heading font-bold text-slate-800 mb-2">
             Lección no encontrada
           </h2>
           <Button onClick={() => navigate('/')}>Volver al Dashboard</Button>
@@ -65,7 +65,7 @@ const ExercisePage = () => {
 
         <Card className="text-center py-12">
           <div className="text-6xl mb-4">🚧</div>
-          <h2 className="text-2xl font-bold text-slate-800 mb-2">
+          <h2 className="text-2xl font-heading font-bold text-slate-800 mb-2">
             Contenido en Desarrollo
           </h2>
           <p className="text-slate-600 mb-6">
@@ -156,7 +156,7 @@ const ExercisePage = () => {
           <div className="text-5xl">{module.icon}</div>
           <div className="flex-1">
             <p className="text-sm text-white/80 mb-1">{module.name}</p>
-            <h1 className="text-3xl md:text-4xl font-bold mb-3">
+            <h1 className="text-3xl md:text-4xl font-heading font-bold mb-3">
               {content.title}
             </h1>
             <div className="flex flex-wrap gap-2">
@@ -184,7 +184,7 @@ const ExercisePage = () => {
             <Sparkles className="w-6 h-6 text-white" />
           </div>
           <div className="flex-1">
-            <h2 className="text-xl font-bold text-slate-800 mb-3">Introducción</h2>
+            <h2 className="text-xl font-heading font-bold text-slate-800 mb-3">Introducción</h2>
             <p className="text-slate-600 leading-relaxed">
               <GlossaryText text={content.introduction} />
             </p>
@@ -427,7 +427,7 @@ const ExercisePage = () => {
           >
             🏆
           </motion.div>
-          <h2 className="text-3xl font-bold text-slate-800 mb-4">
+          <h2 className="text-3xl font-heading font-bold text-slate-800 mb-4">
             ¡Lección Completada!
           </h2>
           <p className="text-xl text-slate-600 mb-6">

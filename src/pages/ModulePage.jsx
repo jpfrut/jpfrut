@@ -26,7 +26,7 @@ const ModulePage = () => {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
-          <h2 className="text-2xl font-bold text-slate-800 mb-2">
+          <h2 className="text-2xl font-heading font-bold text-slate-800 mb-2">
             Módulo no encontrado
           </h2>
           <Button onClick={() => navigate('/')}>
@@ -88,7 +88,7 @@ const ModulePage = () => {
               {module.icon}
             </motion.div>
             <div className="flex-1">
-              <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
                 {module.name}
               </h1>
               <p className="text-xl text-white/90 mb-6">
@@ -177,7 +177,7 @@ const ModulePage = () => {
 
       {/* Lessons List */}
       <div>
-        <h2 className="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-3">
+        <h2 className="text-2xl font-heading font-bold text-slate-800 mb-6 flex items-center gap-3">
           <BookOpen className="w-7 h-7 text-primary-600" />
           Lecciones del Módulo
         </h2>
@@ -341,7 +341,7 @@ const ModulePage = () => {
           >
             🎉
           </motion.div>
-          <h2 className="text-3xl font-bold mb-2">
+          <h2 className="text-3xl font-heading font-bold mb-2">
             ¡Felicitaciones!
           </h2>
           <p className="text-xl text-white/90">

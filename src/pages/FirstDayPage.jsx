@@ -281,7 +281,7 @@ const FirstDayPage = () => {
             </div>
             <div>
               <div className="text-sm opacity-80">Paso {step.id} de {firstDaySteps.length}</div>
-              <h2 className="text-2xl font-bold">{step.title}</h2>
+              <h2 className="text-2xl font-heading font-bold">{step.title}</h2>
             </div>
           </div>
         </div>

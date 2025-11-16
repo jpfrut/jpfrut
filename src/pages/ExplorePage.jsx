@@ -111,7 +111,7 @@ const ExplorePage = () => {
         animate={{ opacity: 1, y: 0 }}
         className="bg-gradient-to-r from-primary-600 to-secondary-600 rounded-2xl p-6 text-white"
       >
-        <h1 className="text-3xl font-bold mb-2">
+        <h1 className="text-3xl font-heading font-bold mb-2">
           Explora Todos los Módulos de Odoo 19
         </h1>
         <p className="text-primary-100 mb-4">
