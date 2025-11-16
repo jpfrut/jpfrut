@@ -45,7 +45,7 @@ const FAQPage = () => {
         <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-2xl mb-4">
           <HelpCircle className="w-8 h-8 text-primary-600" />
         </div>
-        <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <h1 className="text-3xl font-heading font-bold text-gray-900 mb-2">
           Preguntas Frecuentes
         </h1>
         <p className="text-gray-600 max-w-2xl mx-auto">

@@ -6,6 +6,23 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: [
+          '"Neuzeit Grotesk"',
+          '"Neuzeit Grotesk Bold"',
+          'Inter',
+          'system-ui',
+          'sans-serif'
+        ],
+        heading: [
+          '"Avenir Next"',
+          '"Avenir Next LT Pro"',
+          '"Avenir Next LT Pro Bold"',
+          'Inter',
+          'system-ui',
+          'sans-serif'
+        ],
+      },
       colors: {
         // Colores oficiales de Mentora Hub
         primary: {

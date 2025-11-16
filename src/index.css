@@ -20,6 +20,7 @@
 
 @layer base {
   body {
+    @apply font-sans antialiased;
     min-height: 100vh;
     background: var(--surface-default);
     color: var(--text-strong);

@@ -25,7 +25,7 @@ function SuccessStoriesPage() {
       >
         <div className="flex items-center justify-center mb-4">
           <Heart className="w-12 h-12 text-red-500 mr-3" />
-          <h1 className="text-4xl font-bold text-gray-800">Historias de Éxito</h1>
+          <h1 className="text-4xl font-heading font-bold text-gray-800">Historias de Éxito</h1>
         </div>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           Personas reales que empezaron igual que tú, con miedo y sin experiencia.
@@ -172,7 +172,7 @@ function SuccessStoriesPage() {
               <div className="flex items-center mb-6">
                 <div className="text-5xl mr-4">{selectedStory.avatar}</div>
                 <div>
-                  <h2 className="text-2xl font-bold text-gray-800">
+                  <h2 className="text-2xl font-heading font-bold text-gray-800">
                     {selectedStory.name}, {selectedStory.age} años
                   </h2>
                   <p className="text-gray-600">{selectedStory.business}</p>

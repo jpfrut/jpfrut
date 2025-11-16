@@ -50,7 +50,7 @@ const Navigation = () => {
               <BookOpen className="w-6 h-6 text-white" />
             </motion.div>
             <div className="hidden md:block">
-              <h1 className="text-xl font-bold gradient-text">
+              <h1 className="text-xl font-heading font-bold gradient-text">
                 Odoo Learning Platform
               </h1>
               <p className="text-xs text-slate-500">by Mentora Hub</p>

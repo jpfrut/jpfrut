@@ -66,7 +66,7 @@ function MissionsPage() {
         >
           <div className="flex items-center justify-center mb-4">
             <Target className="w-12 h-12 text-secondary-500 mr-3" />
-            <h1 className="text-4xl font-bold text-gray-800">Misiones Prácticas</h1>
+            <h1 className="text-4xl font-heading font-bold text-gray-800">Misiones Prácticas</h1>
           </div>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
             Aprende haciendo tareas reales de tu negocio. Cada misión te enseña paso a paso
@@ -125,7 +125,7 @@ function MissionsPage() {
 
         {/* Lista de misiones por categoría */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-gray-800">Todas las Misiones</h2>
+          <h2 className="text-2xl font-heading font-bold text-gray-800">Todas las Misiones</h2>
 
           {Object.entries(missionCategories).map(([categoryId, category]) => {
             const missions = getMissionsByCategory(categoryId)
@@ -246,7 +246,7 @@ function MissionsPage() {
         <Card className="p-6">
           <div className="flex items-start justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-bold text-gray-800 mb-2">
+              <h1 className="text-3xl font-heading font-bold text-gray-800 mb-2">
                 {selectedMission.title}
               </h1>
               <p className="text-gray-600">{selectedMission.subtitle}</p>
@@ -420,7 +420,7 @@ function MissionsPage() {
               >
                 <Award className="w-20 h-20 text-yellow-500 mx-auto mb-4" />
               </motion.div>
-              <h2 className="text-2xl font-bold text-gray-800 mb-2">
+              <h2 className="text-2xl font-heading font-bold text-gray-800 mb-2">
                 {selectedMission.celebration.title}
               </h2>
               <p className="text-gray-600 mb-4">

@@ -39,7 +39,7 @@ function QuickGuidesPage() {
       >
         <div className="flex items-center justify-center mb-4">
           <Clock className="w-12 h-12 text-primary-600 mr-3" />
-          <h1 className="text-4xl font-bold text-gray-800">Guía de Uso Diario</h1>
+          <h1 className="text-4xl font-heading font-bold text-gray-800">Guía de Uso Diario</h1>
         </div>
         <p className="text-xl text-gray-600 max-w-3xl mx-auto">
           Un menú simple de las tareas más comunes que debes hacer para mantener tu negocio organizado.
