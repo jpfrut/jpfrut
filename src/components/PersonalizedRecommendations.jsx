@@ -16,7 +16,7 @@ import useStore from '../store/useStore'
 import Card from './ui/Card'
 
 const PersonalizedRecommendations = () => {
-  const { user, completedExercises, moduleProgress } = useStore()
+  const { user, completedExercises, completedMissions, moduleProgress } = useStore()
   const modules = getModulesArray()
 
   const recommendations = useMemo(() => {
@@ -73,9 +73,7 @@ const PersonalizedRecommendations = () => {
       }
 
       // Suggest continuing with missions
-      const completedMissionCount = localStorage.getItem('completedMissions')
-        ? JSON.parse(localStorage.getItem('completedMissions')).length
-        : 0
+      const completedMissionCount = completedMissions.length
 
       if (completedMissionCount < 3) {
         recs.push({
@@ -173,7 +171,7 @@ const PersonalizedRecommendations = () => {
 
     // Sort by priority and return top 3
     return recs.sort((a, b) => a.priority - b.priority).slice(0, 3)
-  }, [user, completedExercises, moduleProgress, modules])
+  }, [user, completedExercises, completedMissions, moduleProgress, modules])
 
   if (recommendations.length === 0) {
     return null
