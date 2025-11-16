@@ -42,13 +42,9 @@ const Navigation = () => {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3">
-            <motion.div
-              whileHover={{ rotate: 360 }}
-              transition={{ duration: 0.5 }}
-              className="w-10 h-10 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg"
-            >
+            <div className="w-10 h-10 bg-gradient-to-br from-primary-500 to-secondary-500 rounded-xl flex items-center justify-center shadow-lg">
               <BookOpen className="w-6 h-6 text-white" />
-            </motion.div>
+            </div>
             <div className="hidden md:block">
               <h1 className="text-xl font-heading font-bold gradient-text">
                 Odoo Learning Platform
@@ -97,9 +93,8 @@ const Navigation = () => {
           {/* User Stats */}
           <div className="hidden lg:flex items-center gap-4">
             {/* Streak */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-2 px-3 py-2 bg-secondary-100 rounded-lg"
+            <div
+              className="flex items-center gap-2 px-3 py-2 bg-secondary-100 rounded-lg border border-transparent hover:border-secondary-300 transition-colors"
             >
               <Flame className="w-5 h-5 text-secondary-500" />
               <div>
@@ -108,12 +103,11 @@ const Navigation = () => {
                   {user.streak} días
                 </p>
               </div>
-            </motion.div>
+            </div>
 
             {/* XP & Level */}
-            <motion.div
-              whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-primary-50 to-secondary-50 rounded-lg border border-primary-200"
+            <div
+              className="flex items-center gap-3 px-4 py-2 bg-gradient-to-r from-primary-50 to-secondary-50 rounded-lg border border-primary-200 transition-colors hover:border-primary-300"
             >
               <div className="relative">
                 <div className="w-12 h-12 rounded-full bg-gradient-to-br from-primary-500 to-secondary-500 flex items-center justify-center shadow-lg">
@@ -142,19 +136,18 @@ const Navigation = () => {
                   />
                 </div>
               </div>
-            </motion.div>
+            </div>
 
             {/* Badges count */}
             {user.badges.length > 0 && (
-              <motion.div
-                whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 px-3 py-2 bg-secondary-100 rounded-lg"
+              <div
+                className="flex items-center gap-2 px-3 py-2 bg-secondary-100 rounded-lg border border-transparent hover:border-secondary-300 transition-colors"
               >
                 <Award className="w-5 h-5 text-secondary-600" />
                 <span className="text-sm font-bold text-secondary-700">
                   {user.badges.length}
                 </span>
-              </motion.div>
+              </div>
             )}
           </div>
 
