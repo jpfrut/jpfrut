@@ -39,9 +39,10 @@ const Badge = ({
 
   const variantStyles = {
     solid: {
-      background: toneToken.gradient,
-      hoverBackground: toneToken.hover?.solid ?? toneToken.gradient,
-      activeBackground: toneToken.active?.solid ?? toneToken.gradient,
+      // Mentora Hub: Colores sólidos, no gradientes
+      background: toneToken.flat,
+      hoverBackground: toneToken.hover?.solid ?? toneToken.flat,
+      activeBackground: toneToken.active?.solid ?? toneToken.flat,
       color: toneToken.onSolid,
       borderColor: 'transparent',
       hoverBorder: 'transparent',
@@ -107,9 +108,8 @@ const Badge = ({
   return (
     <span
       className={`
-        inline-flex items-center gap-1.5 rounded-full font-semibold border border-transparent
+        inline-flex items-center gap-1.5 rounded-full font-medium border border-transparent
         ${sizes[size]}
-        ${isLive ? 'animate-pulse' : ''}
         ${interactiveClasses}
         ${className}
       `}

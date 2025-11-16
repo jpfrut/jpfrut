@@ -41,27 +41,15 @@ const ProgressBar = ({
             initial={{ width: 0 }}
             animate={{ width: `${percentage}%` }}
             transition={{ duration: 0.5, ease: 'easeOut' }}
-            className="h-full rounded-full relative"
-            style={{ background: toneToken.gradient }}
-          >
-            {percentage > 0 && (
-              <motion.div
-                className="absolute inset-0 bg-white/30"
-                animate={{
-                  x: ['-100%', '100%'],
-                }}
-                transition={{
-                  repeat: Infinity,
-                  duration: 1.5,
-                  ease: 'linear',
-                }}
-              />
-            )}
-          </motion.div>
+            className="h-full rounded-full"
+            // Mentora Hub: Colores sólidos, sin shimmer
+            style={{ background: toneToken.flat }}
+          />
         ) : (
           <div
-            className="h-full rounded-full relative transition-[width] duration-300 ease-out"
-            style={{ background: toneToken.gradient, width: `${percentage}%` }}
+            className="h-full rounded-full transition-[width] duration-300 ease-out"
+            // Mentora Hub: Colores sólidos, sin gradientes
+            style={{ background: toneToken.flat, width: `${percentage}%` }}
           />
         )}
       </div>

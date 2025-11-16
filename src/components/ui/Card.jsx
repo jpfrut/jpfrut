@@ -5,7 +5,7 @@ const surfaceVariants = {
   surface: surfaces.card,
   tintPrimary: surfaces.tintPrimary,
   tintSecondary: surfaces.tintSecondary,
-  glass: surfaces.glass,
+  // Glass variant removed - Mentora Hub uses solid colors
 }
 
 const Card = ({
@@ -16,8 +16,9 @@ const Card = ({
   onClick,
   ...props
 }) => {
-  const baseClasses = 'rounded-2xl p-6 transition-all duration-300 border shadow-none'
-  const hoverClasses = hover ? 'cursor-pointer hover:-translate-y-1' : ''
+  // Mentora Hub: Border radius 8-12px, padding generoso, sin sombras pesadas
+  const baseClasses = 'rounded-lg p-6 transition-colors duration-200 border'
+  const hoverClasses = hover ? 'cursor-pointer' : ''
   const normalizedClassName = className ?? ''
   const tone = surfaceVariants[variant] ?? surfaceVariants.surface
 
@@ -46,20 +47,18 @@ const Card = ({
     surfaceStyles['--card-border-hover'] = tone.hoverBorder ?? tone.border
   }
 
+  // Mentora Hub: Sombras sutiles, no pesadas
   if (!hasCustomShadow && tone?.shadow) {
     surfaceStyles.boxShadow = tone.shadow
   }
 
-  if (variant === 'glass' && tone?.blur) {
-    surfaceStyles.backdropFilter = `blur(${tone.blur})`
-  }
-
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.3 }}
-      whileHover={hover ? { y: -5 } : {}}
+      transition={{ duration: 0.2 }}
+      // Mentora Hub: Sin transforms exagerados en hover
+      whileHover={hover ? { y: -2 } : {}}
       onClick={onClick}
       className={`${baseClasses} ${hoverClasses} ${backgroundClasses} ${borderClasses} ${normalizedClassName}`}
       style={surfaceStyles}

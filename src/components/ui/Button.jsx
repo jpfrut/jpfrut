@@ -15,8 +15,9 @@ const Button = ({
   iconPosition = 'left',
   ...props
 }) => {
+  // Mentora Hub: Border radius 6-12px, padding generoso, transiciones suaves
   const baseClasses =
-    'font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 border-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-200'
+    'font-medium rounded-lg transition-colors duration-200 flex items-center justify-center gap-2 border focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-400'
 
   let resolvedVariant = variant
   let resolvedTone = tone
@@ -34,14 +35,15 @@ const Button = ({
 
   const variantStyles = {
     solid: {
-      background: toneToken.gradient,
-      hoverBackground: toneToken.hover?.solid ?? toneToken.gradient,
-      activeBackground: toneToken.active?.solid ?? toneToken.gradient,
+      // Mentora Hub: Colores sólidos, sin sombras pesadas
+      background: toneToken.flat,
+      hoverBackground: toneToken.hover?.solid ?? toneToken.flat,
+      activeBackground: toneToken.active?.solid ?? toneToken.flat,
       color: toneToken.onSolid,
       borderColor: 'transparent',
       hoverBorder: 'transparent',
       activeBorder: 'transparent',
-      boxShadow: shadows.brandGlowSoft,
+      boxShadow: 'none',  // Sin sombras pesadas
     },
     surface: {
       background: toneToken.surface,
@@ -77,15 +79,16 @@ const Button = ({
 
   const variantStyle = variantStyles[resolvedVariant] ?? variantStyles.solid
 
+  // Mentora Hub: Padding generoso (px-6 py-3 mínimo)
   const sizes = {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-5 py-2.5 text-base',
-    lg: 'px-7 py-3.5 text-lg',
+    sm: 'px-4 py-2 text-sm',
+    md: 'px-6 py-3 text-base',
+    lg: 'px-8 py-4 text-lg',
   }
 
   const iconOnlySizes = {
-    sm: 'w-9 h-9 text-sm',
-    md: 'w-11 h-11 text-base',
+    sm: 'w-10 h-10 text-sm',
+    md: 'w-12 h-12 text-base',
     lg: 'w-14 h-14 text-lg',
   }
 
@@ -146,8 +149,9 @@ const Button = ({
 
   return (
     <motion.button
-      whileHover={!disabled ? { scale: 1.02 } : {}}
-      whileTap={!disabled ? { scale: 0.98 } : {}}
+      // Mentora Hub: Animaciones sutiles, sin transforms exagerados
+      whileHover={!disabled ? { scale: 1.01 } : {}}
+      whileTap={!disabled ? { scale: 0.99 } : {}}
       onClick={onClick}
       disabled={disabled}
       className={`

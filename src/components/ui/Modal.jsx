@@ -21,27 +21,28 @@ const Modal = ({
     <AnimatePresence>
       {isOpen && (
         <>
-          {/* Backdrop */}
+          {/* Backdrop - Mentora Hub: Sin blur, overlay simple */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40"
+            className="fixed inset-0 bg-black/50 z-40"
           />
 
           {/* Modal */}
           <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
             <motion.div
-              initial={{ opacity: 0, scale: 0.9, y: 20 }}
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.9, y: 20 }}
-              transition={{ type: 'spring', damping: 20 }}
-              className={`bg-white rounded-2xl shadow-2xl w-full ${sizes[size]} max-h-[90vh] overflow-hidden`}
+              exit={{ opacity: 0, scale: 0.95, y: 10 }}
+              transition={{ duration: 0.2 }}
+              // Mentora Hub: Border radius 10-12px, sombra sutil
+              className={`bg-white rounded-brand-lg border border-neutral-300 shadow-lg w-full ${sizes[size]} max-h-[90vh] overflow-hidden`}
             >
               {/* Header */}
               <div className="flex items-center justify-between p-6 border-b border-neutral-200">
-                <h2 className="text-2xl font-bold text-neutral-800">{title}</h2>
+                <h2 className="text-2xl font-heading font-bold text-primary-700">{title}</h2>
                 <button
                   onClick={onClose}
                   className="p-2 hover:bg-neutral-100 rounded-full transition-colors"
