@@ -3956,6 +3956,367 @@ export const glossaryTerms = {
       'No revisar los mensajes recibidos'
     ],
     relatedModules: ['Website', 'CRM', 'Marketing']
+  },
+
+  // =====================================
+  // PROYECTOS Y SERVICIOS
+  // =====================================
+
+  'proyecto': {
+    term: 'Proyecto',
+    shortDef: 'Conjunto de tareas organizadas para lograr un objetivo',
+    fullDef: 'Es un trabajo con inicio y fin definidos, compuesto por varias tareas. En Odoo, agrupas tareas, asignas responsables, y das seguimiento al progreso y presupuesto.',
+    category: 'Proyectos',
+    icon: '📁',
+    example: {
+      title: 'Estructura de un proyecto',
+      content: `
+        PROYECTO: Implementación Odoo - Panadería
+        Fecha inicio: 01 marzo
+        Fecha fin: 30 abril
+
+        FASES:
+        1. Análisis (1 semana)
+        2. Configuración (2 semanas)
+        3. Migración datos (1 semana)
+        4. Capacitación (1 semana)
+        5. Go-live (3 semanas)
+
+        EQUIPO:
+        - Gerente: Ana
+        - Consultor: Roberto
+        - Técnico: María
+
+        MÉTRICAS:
+        Progreso: 65% completado
+        Horas planeadas: 200 hrs
+        Horas usadas: 130 hrs
+        Presupuesto: $50,000
+        Gastado: $32,000
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'tarea',
+        explanation: 'Los proyectos contienen múltiples tareas'
+      },
+      {
+        relatedTerm: 'parte-de-horas',
+        explanation: 'Las horas se registran contra el proyecto'
+      }
+    ],
+    bestPractices: [
+      'Define alcance claro al inicio',
+      'Divide en fases manejables',
+      'Asigna responsable por proyecto',
+      'Revisa progreso semanalmente'
+    ],
+    commonMistakes: [
+      'No definir fecha de fin clara',
+      'Alcance que crece sin control',
+      'No dar seguimiento regular',
+      'No comunicar cambios al cliente'
+    ],
+    relatedModules: ['Proyectos', 'Partes de Horas', 'Facturación']
+  },
+
+  'tarea': {
+    term: 'Tarea',
+    shortDef: 'Actividad específica a completar dentro de un proyecto',
+    fullDef: 'Es una unidad de trabajo asignable a una persona. Tiene responsable, fecha límite y horas estimadas. Las tareas se organizan en tableros Kanban (Por hacer, En progreso, Hecho).',
+    category: 'Proyectos',
+    icon: '✅',
+    example: {
+      title: 'Gestión de tareas en Kanban',
+      content: `
+        PROYECTO: Implementación Odoo
+
+        POR HACER:
+        □ Configurar plan de cuentas
+          Asignado: Roberto
+          Fecha: 15 marzo
+          Estimado: 4 hrs
+
+        EN PROGRESO:
+        □ Migrar productos
+          Asignado: María
+          Progreso: 50%
+          Usado: 6/10 hrs
+
+        HECHO:
+        ✓ Crear usuarios
+        ✓ Configurar empresa
+        ✓ Instalar módulos
+
+        FUNCIONES:
+        → Arrastra entre columnas
+        → Asigna responsable
+        → Adjunta documentos
+        → Registra tiempo
+        → Comenta y colabora
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'proyecto',
+        explanation: 'Las tareas pertenecen a un proyecto'
+      },
+      {
+        relatedTerm: 'etapa',
+        explanation: 'Las tareas se mueven entre etapas'
+      }
+    ],
+    bestPractices: [
+      'Tareas pequeñas (2-8 hrs)',
+      'Una persona responsable',
+      'Fecha límite realista',
+      'Actualiza estado diariamente'
+    ],
+    commonMistakes: [
+      'Tareas muy grandes y vagas',
+      'Sin responsable claro',
+      'Fechas irreales',
+      'No actualizar progreso'
+    ],
+    relatedModules: ['Proyectos', 'Tareas']
+  },
+
+  'parte-de-horas': {
+    term: 'Parte de Horas (Timesheet)',
+    shortDef: 'Registro del tiempo trabajado en cada tarea',
+    fullDef: 'Es llevar control de cuántas horas dedicas a cada trabajo. Útil para facturar al cliente, medir productividad y costear proyectos. El empleado registra diariamente qué hizo y cuánto tiempo.',
+    category: 'Proyectos',
+    icon: '⏱️',
+    example: {
+      title: 'Registro semanal de horas',
+      content: `
+        EMPLEADO: Roberto García
+        SEMANA: 11-15 marzo
+
+        LUNES:
+        - Proyecto ABC: 4 hrs
+        - Proyecto XYZ: 2 hrs
+        - Interno: Reunión 1 hr
+        Total: 7 hrs
+
+        MARTES:
+        - Proyecto ABC: 6 hrs
+        - Interno: Capacitación 2 hrs
+        Total: 8 hrs
+
+        RESUMEN SEMANAL:
+        Total: 40 hrs
+        ABC: 25 hrs (facturable)
+        XYZ: 8 hrs (facturable)
+        Interno: 7 hrs (no facturable)
+
+        FACTURACIÓN:
+        ABC: 25 hrs × $500/hr = $12,500
+        XYZ: 8 hrs × $500/hr = $4,000
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'tarea',
+        explanation: 'Las horas se registran contra tareas'
+      },
+      {
+        relatedTerm: 'factura',
+        explanation: 'Las horas se convierten en facturas'
+      }
+    ],
+    bestPractices: [
+      'Registra al final de cada día',
+      'Sé específico en descripción',
+      'Separa horas facturables',
+      'Revisa semanalmente con jefe'
+    ],
+    commonMistakes: [
+      'Registrar días después',
+      'Descripciones vagas',
+      'No separar tiempo facturable',
+      'Horas infladas o inventadas'
+    ],
+    relatedModules: ['Partes de Horas', 'Proyectos', 'Facturación']
+  },
+
+  'campana-marketing': {
+    term: 'Campaña de Marketing',
+    shortDef: 'Acciones coordinadas para promocionar algo',
+    fullDef: 'Es planificar y ejecutar actividades de promoción con un objetivo específico. Odoo te ayuda a crear emails masivos, medir aperturas y conversiones, y calcular ROI de tus campañas.',
+    category: 'Marketing',
+    icon: '📢',
+    example: {
+      title: 'Campaña de email marketing',
+      content: `
+        CAMPAÑA: Promoción Navidad 2024
+
+        OBJETIVO:
+        Incrementar ventas 30% en diciembre
+
+        AUDIENCIA:
+        5,000 contactos (clientes último año)
+
+        ACCIONES:
+        1. Email #1 (1 dic): Anticipo
+        2. Email #2 (10 dic): 20% descuento
+        3. Email #3 (20 dic): Última chance
+        4. SMS recordatorio (23 dic)
+
+        MÉTRICAS:
+        Enviados: 5,000
+        Abiertos: 1,250 (25%)
+        Clics: 375 (7.5%)
+        Ventas: $150,000
+        ROI: 500%
+
+        Odoo trackea todo automáticamente.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'lead',
+        explanation: 'Las campañas pueden generar nuevos leads'
+      },
+      {
+        relatedTerm: 'segmento',
+        explanation: 'Las campañas se envían a segmentos específicos'
+      }
+    ],
+    bestPractices: [
+      'Define objetivo medible',
+      'Segmenta tu audiencia',
+      'Prueba A/B antes de enviar masivo',
+      'Mide resultados y aprende'
+    ],
+    commonMistakes: [
+      'Enviar a todos sin segmentar',
+      'No medir resultados',
+      'Emails muy frecuentes (spam)',
+      'No tener objetivo claro'
+    ],
+    relatedModules: ['Email Marketing', 'Marketing Automation', 'CRM']
+  },
+
+  'calendario': {
+    term: 'Calendario',
+    shortDef: 'Vista de tus eventos y reuniones por fecha',
+    fullDef: 'Es donde ves organizados todos tus compromisos: reuniones, fechas límite, eventos. Odoo sincroniza el calendario con tus actividades de CRM, proyectos y RRHH todo en un lugar.',
+    category: 'Productividad',
+    icon: '📅',
+    example: {
+      title: 'Vista de calendario semanal',
+      content: `
+        MARZO 2024 - SEMANA 11
+
+        LUNES 11:
+        09:00 Reunión equipo
+        14:00 Llamada cliente ABC
+        16:00 Revisión proyecto
+
+        MARTES 12:
+        10:00 Demo a prospecto
+        15:00 Capacitación
+
+        MIÉRCOLES 13:
+        TODO EL DÍA: Visita cliente
+
+        JUEVES 14:
+        11:00 Entrevista candidato
+        14:00 Seguimiento leads
+
+        VIERNES 15:
+        09:00 Cierre de mes
+        12:00 Comida equipo
+
+        INTEGRACIÓN:
+        → Actividades CRM aquí
+        → Ausencias visibles
+        → Fechas límite tareas
+        → Todo sincronizado
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'actividad',
+        explanation: 'Las actividades aparecen en el calendario'
+      },
+      {
+        relatedTerm: 'ausencia',
+        explanation: 'Las ausencias se ven en el calendario'
+      }
+    ],
+    bestPractices: [
+      'Revisa calendario cada mañana',
+      'Bloquea tiempo para trabajo enfocado',
+      'Sincroniza con Google/Outlook',
+      'Programa recordatorios'
+    ],
+    commonMistakes: [
+      'No actualizar el calendario',
+      'Sobrecargar de reuniones',
+      'No dejar tiempo entre eventos',
+      'Ignorar conflictos de horario'
+    ],
+    relatedModules: ['Calendario', 'CRM', 'Proyectos', 'RRHH']
+  },
+
+  'nota-interna': {
+    term: 'Nota Interna',
+    shortDef: 'Comentario privado que solo ve tu equipo',
+    fullDef: 'Son mensajes internos que adjuntas a cualquier documento. Solo los ve tu equipo, no el cliente. Útil para instrucciones, advertencias o historial de decisiones importantes.',
+    category: 'Productividad',
+    icon: '📌',
+    example: {
+      title: 'Notas internas en ficha de cliente',
+      content: `
+        CLIENTE: Panadería ABC
+
+        NOTAS INTERNAS (solo equipo):
+
+        ━━━ 15 marzo - Ana ━━━
+        ⚠️ Cliente sensible a precio.
+        Siempre pide descuento.
+        Máximo autorizado: 10%
+
+        ━━━ 20 febrero - Roberto ━━━
+        Prefiere llamadas por la tarde
+        después de las 3pm.
+
+        ━━━ 10 enero - María ━━━
+        Pagó 15 días tarde últimas 2 facturas.
+        Considerar pedir anticipo.
+
+        MENSAJES AL CLIENTE (visibles):
+        "Gracias por su compra"
+
+        Las notas ayudan al equipo
+        a dar mejor servicio.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'cliente',
+        explanation: 'Las notas se adjuntan a clientes'
+      },
+      {
+        relatedTerm: 'oportunidad',
+        explanation: 'Puedes dejar notas en oportunidades'
+      }
+    ],
+    bestPractices: [
+      'Documenta información importante',
+      'Sé específico y útil',
+      'Fecha y firma cada nota',
+      'Revisa notas antes de contactar'
+    ],
+    commonMistakes: [
+      'No documentar decisiones',
+      'Notas confusas o incompletas',
+      'Olvidar revisar historial',
+      'Información desactualizada'
+    ],
+    relatedModules: ['Discuss', 'CRM', 'Ventas', 'Proyectos']
   }
 }
 
