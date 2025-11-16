@@ -3606,6 +3606,356 @@ export const glossaryTerms = {
       'Errores de redondeo en decimales'
     ],
     relatedModules: ['Inventario', 'Ventas', 'Compras', 'Fabricación']
+  },
+
+  // =====================================
+  // RRHH - TÉRMINOS ADICIONALES
+  // =====================================
+
+  'ausencia': {
+    term: 'Ausencia',
+    shortDef: 'Día que el empleado no trabaja (vacaciones, enfermedad, permiso)',
+    fullDef: 'Es cualquier día que el empleado falta al trabajo, ya sea planeado (vacaciones) o no planeado (enfermedad). Odoo registra cada ausencia, quién la aprobó y cuántos días le quedan.',
+    category: 'RRHH',
+    icon: '🏖️',
+    example: {
+      title: 'Tipos de ausencias',
+      content: `
+        EMPLEADO: María García - AÑO 2024
+
+        VACACIONES:
+        Derecho: 15 días/año
+        Usados: 8 días
+        Disponibles: 7 días
+
+        INCAPACIDAD (enfermedad):
+        Usados: 3 días (con certificado médico)
+
+        PERMISO SIN GOCE:
+        Usados: 1 día (descontado de nómina)
+
+        PERMISO CON GOCE:
+        Usados: 2 días (pagado por empresa)
+
+        PROCESO:
+        1. Empleado solicita en sistema
+        2. Jefe aprueba o rechaza
+        3. Se registra en calendario
+        4. Afecta nómina automáticamente
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'nomina',
+        explanation: 'Las ausencias pueden afectar el cálculo de nómina'
+      },
+      {
+        relatedTerm: 'empleado',
+        explanation: 'Cada empleado tiene su saldo de ausencias'
+      }
+    ],
+    bestPractices: [
+      'Define claramente tipos de ausencias',
+      'Requiere aprobación antes de la ausencia',
+      'Mantén registro de saldos actualizados',
+      'Notifica al equipo sobre ausencias'
+    ],
+    commonMistakes: [
+      'No registrar ausencias en el sistema',
+      'Aprobar sin verificar saldo disponible',
+      'No pedir comprobantes cuando se requiere',
+      'No planificar cobertura del trabajo'
+    ],
+    relatedModules: ['Ausencias', 'Nómina', 'Asistencias']
+  },
+
+  'nomina': {
+    term: 'Nómina',
+    shortDef: 'Cálculo y pago del salario de los empleados',
+    fullDef: 'Es el proceso de calcular cuánto debes pagar a cada empleado: salario base + bonos - deducciones - impuestos = pago neto. Odoo automatiza este cálculo y genera los recibos de nómina.',
+    category: 'RRHH',
+    icon: '💵',
+    example: {
+      title: 'Estructura de nómina quincenal',
+      content: `
+        NÓMINA - María García
+
+        PERCEPCIONES (lo que gana):
+        Salario base:           $7,500
+        Bono productividad:     $500
+        Horas extra (5 hrs):    $300
+        TOTAL BRUTO:            $8,300
+
+        DEDUCCIONES (lo que se resta):
+        IMSS (seguro social):   $250
+        ISR (impuesto):         $850
+        Fondo de ahorro:        $200
+        TOTAL DEDUCCIONES:      $1,300
+
+        NETO A PAGAR:           $7,000
+
+        PROCESO:
+        1. Configuras reglas salariales
+        2. Registras incidencias del período
+        3. Generas nómina automática
+        4. Revisas y apruebas
+        5. Pagas y envías recibos
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'empleado',
+        explanation: 'Cada empleado tiene su nómina con su contrato'
+      },
+      {
+        relatedTerm: 'ausencia',
+        explanation: 'Las ausencias pueden afectar el cálculo'
+      }
+    ],
+    bestPractices: [
+      'Procesa nómina con tiempo suficiente',
+      'Verifica incidencias antes de calcular',
+      'Guarda respaldo de cada nómina',
+      'Cumple regulaciones fiscales locales'
+    ],
+    commonMistakes: [
+      'No registrar horas extra o ausencias',
+      'Calcular impuestos incorrectamente',
+      'No actualizar tablas de impuestos',
+      'Pagar sin revisar el cálculo'
+    ],
+    relatedModules: ['Nómina', 'Empleados', 'Contabilidad']
+  },
+
+  'solicitud-de-cotizacion': {
+    term: 'Solicitud de Cotización (RFQ)',
+    shortDef: 'Pedir a varios proveedores sus precios antes de comprar',
+    fullDef: 'Es cuando envías mensaje a varios proveedores diciendo "necesito X producto, ¿cuánto me cobras?". Comparas respuestas y eliges la mejor opción. RFQ significa Request For Quotation.',
+    category: 'Compras',
+    icon: '📨',
+    example: {
+      title: 'Proceso de solicitud de cotización',
+      content: `
+        NECESITAS: 100 laptops para oficina
+
+        PASO 1 - ENVIAR RFQ:
+        Proveedor A: Dell México
+        Proveedor B: HP Store
+        Proveedor C: Lenovo Direct
+
+        PASO 2 - RECIBIR RESPUESTAS:
+        Dell: $15,000 c/u, entrega 10 días
+        HP: $14,500 c/u, entrega 15 días
+        Lenovo: $14,800 c/u, entrega 7 días
+
+        PASO 3 - COMPARAR:
+        Precio: HP gana
+        Tiempo: Lenovo gana
+        Decisión: Lenovo (buen precio + rápido)
+
+        PASO 4 - CONVERTIR:
+        RFQ de Lenovo → Orden de Compra
+        Confirmas y esperas entrega.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'orden-compra',
+        explanation: 'La RFQ aceptada se convierte en orden de compra'
+      },
+      {
+        relatedTerm: 'proveedor',
+        explanation: 'Envías RFQ a múltiples proveedores para comparar'
+      }
+    ],
+    bestPractices: [
+      'Pide al menos 3 cotizaciones',
+      'Especifica claramente qué necesitas',
+      'Define fecha límite para respuestas',
+      'Considera precio, tiempo y calidad'
+    ],
+    commonMistakes: [
+      'Comprar sin comparar proveedores',
+      'Especificaciones vagas',
+      'No considerar tiempo de entrega',
+      'Elegir solo por precio más bajo'
+    ],
+    relatedModules: ['Compras']
+  },
+
+  'carrito-de-compras': {
+    term: 'Carrito de Compras',
+    shortDef: 'Donde el cliente guarda productos antes de pagar',
+    fullDef: 'Es la "canasta virtual" donde el cliente va agregando productos mientras navega tu tienda en línea. Puede agregar, quitar o modificar cantidades antes de proceder al pago.',
+    category: 'Website',
+    icon: '🛒',
+    example: {
+      title: 'Flujo del carrito',
+      content: `
+        CLIENTE NAVEGANDO TU TIENDA:
+
+        1. Ve producto → "Agregar al carrito"
+        2. Sigue navegando → Agrega otro
+        3. Revisa carrito:
+           - Camiseta Azul (x2): $1,000
+           - Pantalón Negro: $800
+           Subtotal: $1,800
+
+        4. Aplica cupón "DESCUENTO10":
+           -$180
+           Total: $1,620
+
+        5. Procede a pagar →
+
+        CARRITOS ABANDONADOS:
+        Cliente agregó pero no pagó
+        → Oportunidad de remarketing
+        → Email recordatorio automático
+        → 70% de carritos se abandonan
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'checkout',
+        explanation: 'Después del carrito viene el proceso de pago'
+      },
+      {
+        relatedTerm: 'producto',
+        explanation: 'El carrito contiene productos seleccionados'
+      }
+    ],
+    bestPractices: [
+      'Muestra carrito siempre visible',
+      'Permite modificar cantidades fácilmente',
+      'Guarda carrito aunque cierre sesión',
+      'Envía recordatorios de carritos abandonados'
+    ],
+    commonMistakes: [
+      'Carrito difícil de encontrar',
+      'No mostrar subtotal actualizado',
+      'Perder carrito si no está logueado',
+      'No hacer seguimiento a abandonos'
+    ],
+    relatedModules: ['Website', 'Ventas', 'Marketing']
+  },
+
+  'checkout': {
+    term: 'Checkout',
+    shortDef: 'Proceso final de pago en tienda online',
+    fullDef: 'Es el momento donde el cliente finaliza su compra: ingresa datos de envío, elige método de pago, y confirma la orden. Un buen checkout es simple y rápido para evitar abandonos.',
+    category: 'Website',
+    icon: '💳',
+    example: {
+      title: 'Pasos del checkout',
+      content: `
+        CHECKOUT EN 4 PASOS:
+
+        1. REVISAR CARRITO:
+        ✓ Confirma productos
+        ✓ Ve total con impuestos
+        ✓ Aplica cupón si tiene
+
+        2. DATOS DE ENVÍO:
+        ✓ Nombre y dirección
+        ✓ Teléfono de contacto
+        ✓ Método de envío
+
+        3. MÉTODO DE PAGO:
+        ✓ Tarjeta crédito/débito
+        ✓ PayPal / MercadoPago
+        ✓ Transferencia
+        ✓ Pago contra entrega
+
+        4. CONFIRMAR:
+        ✓ Resumen final
+        ✓ Botón "Confirmar Pedido"
+        ✓ Email de confirmación
+
+        MÉTRICA CLAVE:
+        Tasa de conversión = % que completa
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'carrito-de-compras',
+        explanation: 'El checkout es el paso después del carrito'
+      },
+      {
+        relatedTerm: 'proveedor-de-pagos',
+        explanation: 'El checkout usa proveedores de pago'
+      }
+    ],
+    bestPractices: [
+      'Mínimos pasos posibles',
+      'No requieras crear cuenta para comprar',
+      'Muestra progreso claramente',
+      'Múltiples opciones de pago'
+    ],
+    commonMistakes: [
+      'Demasiados pasos que cansan',
+      'Obligar registro antes de pagar',
+      'Costos sorpresa al final',
+      'Opciones de pago limitadas'
+    ],
+    relatedModules: ['Website', 'Ventas']
+  },
+
+  'formulario-web': {
+    term: 'Formulario Web',
+    shortDef: 'Campos donde visitantes llenan información en tu sitio',
+    fullDef: 'Son los espacios en tu página donde los visitantes escriben sus datos: nombre, email, mensaje. Puede ser para contacto, cotización o registro. Odoo captura estos datos automáticamente.',
+    category: 'Website',
+    icon: '📝',
+    example: {
+      title: 'Formulario de contacto',
+      content: `
+        PÁGINA "CONTÁCTANOS":
+
+        Nombre: [____________]
+        Email:  [____________]
+        Tel:    [____________]
+        Mensaje:
+        [____________________]
+
+           [ENVIAR MENSAJE]
+
+        AL ENVIAR:
+        1. Datos llegan a Odoo
+        2. Se crea Lead automáticamente
+        3. Te notifica por email
+        4. Cliente recibe confirmación
+        5. Puedes dar seguimiento en CRM
+
+        TIPOS COMUNES:
+        - Contacto general
+        - Solicitud de cotización
+        - Registro a newsletter
+        - Encuesta de satisfacción
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'lead',
+        explanation: 'Los formularios pueden crear leads automáticamente'
+      },
+      {
+        relatedTerm: 'cliente',
+        explanation: 'La información se guarda en ficha del cliente'
+      }
+    ],
+    bestPractices: [
+      'Solo pide información necesaria',
+      'Indica campos obligatorios',
+      'Confirma que se recibió el mensaje',
+      'Responde en menos de 24 horas'
+    ],
+    commonMistakes: [
+      'Pedir demasiada información',
+      'No confirmar recepción al usuario',
+      'Formularios que no funcionan en móvil',
+      'No revisar los mensajes recibidos'
+    ],
+    relatedModules: ['Website', 'CRM', 'Marketing']
   }
 }
 
