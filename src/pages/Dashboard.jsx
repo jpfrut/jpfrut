@@ -159,35 +159,13 @@ const Dashboard = () => {
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
         <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary-400/20 rounded-full blur-3xl" />
 
-        {/* Floating icons */}
-        <motion.div
-          animate={{
-            y: [0, -20, 0],
-            rotate: [0, 5, 0]
-          }}
-          transition={{
-            duration: 4,
-            repeat: Infinity,
-            ease: 'easeInOut'
-          }}
-          className="absolute top-10 right-20 hidden md:block"
-        >
+        {/* Decorative icons aligned to grid */}
+        <div className="absolute top-10 right-20 hidden md:block">
           <BookOpen className="w-16 h-16 text-white/20" />
-        </motion.div>
-        <motion.div
-          animate={{
-            y: [0, 20, 0],
-            rotate: [0, -5, 0]
-          }}
-          transition={{
-            duration: 5,
-            repeat: Infinity,
-            ease: 'easeInOut'
-          }}
-          className="absolute bottom-10 right-40 hidden md:block"
-        >
+        </div>
+        <div className="absolute bottom-10 right-40 hidden md:block">
           <Target className="w-20 h-20 text-white/20" />
-        </motion.div>
+        </div>
       </motion.div>
 
       {/* First Day Banner - For Complete Beginners */}
