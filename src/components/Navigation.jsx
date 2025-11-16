@@ -10,7 +10,10 @@ import {
   Menu,
   X,
   Target,
-  Clock
+  Clock,
+  Compass,
+  HelpCircle,
+  Library
 } from 'lucide-react'
 import { useState } from 'react'
 import useStore from '../store/useStore'
@@ -26,9 +29,11 @@ const Navigation = () => {
 
   const navItems = [
     { path: '/', icon: Home, label: 'Inicio' },
+    { path: '/explore', icon: Compass, label: 'Explorar' },
+    { path: '/glossary', icon: Library, label: 'Glosario' },
     { path: '/missions', icon: Target, label: 'Misiones' },
-    { path: '/quick-guides', icon: Clock, label: 'Guía Diaria' },
-    { path: '/emergency-help', icon: Award, label: 'Ayuda' },
+    { path: '/quick-guides', icon: Clock, label: 'Guías' },
+    { path: '/faq', icon: HelpCircle, label: 'FAQ' },
   ]
 
   return (

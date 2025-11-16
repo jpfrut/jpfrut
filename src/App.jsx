@@ -9,8 +9,13 @@ import MissionsPage from './pages/MissionsPage'
 import QuickGuidesPage from './pages/QuickGuidesPage'
 import EmergencyHelpPage from './pages/EmergencyHelpPage'
 import SuccessStoriesPage from './pages/SuccessStoriesPage'
+import ExplorePage from './pages/ExplorePage'
+import FirstDayPage from './pages/FirstDayPage'
+import FAQPage from './pages/FAQPage'
+import GlossaryPage from './pages/GlossaryPage'
 import AccessibilityPanel from './components/AccessibilityPanel'
 import OnboardingWizard from './components/OnboardingWizard'
+import Footer from './components/Footer'
 import useStore from './store/useStore'
 
 function App() {
@@ -46,15 +51,20 @@ function App() {
         >
           <Routes>
             <Route path="/" element={<Dashboard />} />
+            <Route path="/first-day" element={<FirstDayPage />} />
+            <Route path="/explore" element={<ExplorePage />} />
             <Route path="/missions" element={<MissionsPage />} />
             <Route path="/missions/:missionId" element={<MissionsPage />} />
             <Route path="/quick-guides" element={<QuickGuidesPage />} />
             <Route path="/emergency-help" element={<EmergencyHelpPage />} />
+            <Route path="/faq" element={<FAQPage />} />
+            <Route path="/glossary" element={<GlossaryPage />} />
             <Route path="/success-stories" element={<SuccessStoriesPage />} />
             <Route path="/module/:moduleId" element={<ModulePage />} />
             <Route path="/module/:moduleId/exercise/:exerciseId" element={<ExercisePage />} />
           </Routes>
         </motion.main>
+        <Footer />
         <AccessibilityPanel />
       </div>
     </Router>

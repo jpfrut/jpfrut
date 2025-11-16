@@ -12,15 +12,20 @@ import {
   Clock,
   Heart,
   HelpCircle,
-  ArrowRight
+  ArrowRight,
+  Star,
+  Sun,
+  Library
 } from 'lucide-react'
-import { getModulesArray, getStats } from '../data/modules'
+import { getModulesArray, getStats, getCategories } from '../data/modules'
 import useStore from '../store/useStore'
 import ModuleCard from '../components/ModuleCard'
 import StatsCard from '../components/StatsCard'
 import AchievementCard from '../components/AchievementCard'
 import DailyChecklist from '../components/DailyChecklist'
 import TipOfTheDay from '../components/TipOfTheDay'
+import PersonalizedRecommendations from '../components/PersonalizedRecommendations'
+import ProgressSummary from '../components/ProgressSummary'
 import Button from '../components/ui/Button'
 import Card from '../components/ui/Card'
 
@@ -28,6 +33,7 @@ const Dashboard = () => {
   const { user, completedExercises, moduleProgress } = useStore()
   const modules = getModulesArray()
   const stats = getStats()
+  const categories = getCategories()
 
   // Calcular estadísticas del usuario
   const totalCompleted = completedExercises.length
@@ -166,6 +172,67 @@ const Dashboard = () => {
         </motion.div>
       </motion.div>
 
+      {/* First Day Banner - For Complete Beginners */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.25 }}
+      >
+        <Link to="/first-day">
+          <Card className="p-6 bg-gradient-to-r from-yellow-50 via-orange-50 to-pink-50 border-2 border-orange-200 hover:border-orange-400 transition-all hover:shadow-lg group cursor-pointer">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl text-white">
+                  <Sun className="w-8 h-8" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-orange-800 mb-1">
+                    ¿Primera vez en Odoo? Empieza aquí
+                  </h3>
+                  <p className="text-orange-700">
+                    Guía paso a paso para tu primer día. Sin tecnicismos, con mucha paciencia.
+                  </p>
+                </div>
+              </div>
+              <ArrowRight className="w-6 h-6 text-orange-500 group-hover:translate-x-2 transition-transform" />
+            </div>
+          </Card>
+        </Link>
+      </motion.div>
+
+      {/* Glossary Banner */}
+      <motion.div
+        initial={{ opacity: 0, scale: 0.95 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: 0.28 }}
+      >
+        <Link to="/glossary">
+          <Card className="p-6 bg-primary-50 border-2 border-primary-100 hover:border-primary-300 transition-all hover:shadow-lg group cursor-pointer">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-4">
+                <div className="p-3 bg-primary-600 rounded-xl text-white">
+                  <Library className="w-8 h-8" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-primary-800 mb-1">
+                    Glosario Interactivo de Odoo
+                  </h3>
+                  <p className="text-primary-700">
+                    Explora términos clave con ejemplos, mejores prácticas y relaciones entre conceptos.
+                  </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-2">
+                <span className="text-xs bg-secondary-500 text-white px-2 py-1 rounded-full font-medium">
+                  Nuevo
+                </span>
+                <ArrowRight className="w-6 h-6 text-primary-500 group-hover:translate-x-2 transition-transform" />
+              </div>
+            </div>
+          </Card>
+        </Link>
+      </motion.div>
+
       {/* Quick Access for Beginners */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -220,6 +287,9 @@ const Dashboard = () => {
 
       {/* Tip of the Day */}
       <TipOfTheDay />
+
+      {/* Personalized Recommendations */}
+      <PersonalizedRecommendations />
 
       {/* Encouragement for New Users */}
       <motion.div
@@ -305,41 +375,7 @@ const Dashboard = () => {
         className="grid grid-cols-1 lg:grid-cols-2 gap-6"
       >
         <DailyChecklist />
-        <Card className="p-6">
-          <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
-            <Target className="w-5 h-5 mr-2 text-secondary-500" />
-            Próximos Pasos Recomendados
-          </h3>
-          <div className="space-y-3">
-            <Link
-              to="/missions"
-              className="block p-3 bg-secondary-50 rounded-lg hover:bg-secondary-100 transition-colors"
-            >
-              <p className="font-medium text-secondary-700">1. Completa una Misión Práctica</p>
-              <p className="text-sm text-secondary-600">
-                Aprende haciendo - paso a paso con explicaciones claras
-              </p>
-            </Link>
-            <Link
-              to="/quick-guides"
-              className="block p-3 bg-primary-50 rounded-lg hover:bg-primary-100 transition-colors"
-            >
-              <p className="font-medium text-primary-700">2. Revisa la Guía del Día</p>
-              <p className="text-sm text-primary-600">
-                Descubre las tareas importantes que debes hacer hoy
-              </p>
-            </Link>
-            <Link
-              to="/emergency-help"
-              className="block p-3 bg-red-50 rounded-lg hover:bg-red-100 transition-colors"
-            >
-              <p className="font-medium text-red-700">3. ¿Cometiste un error?</p>
-              <p className="text-sm text-red-600">
-                No te preocupes, aquí te decimos cómo arreglarlo
-              </p>
-            </Link>
-          </div>
-        </Card>
+        <ProgressSummary />
       </motion.div>
 
       {/* Achievements Section */}
@@ -381,20 +417,57 @@ const Dashboard = () => {
               Módulos de Aprendizaje
             </h2>
           </div>
-          <div className="text-sm text-slate-500">
-            {stats.totalLessons} lecciones • {stats.totalTime} de contenido
-          </div>
+          <Link to="/explore">
+            <Button
+              variant="outline"
+              size="sm"
+              icon={<ArrowRight className="w-4 h-4" />}
+            >
+              Ver los {stats.totalModules} Módulos
+            </Button>
+          </Link>
         </div>
 
-        {/* Priority Modules */}
+        {/* Category Overview */}
         <div className="mb-8">
           <h3 className="text-lg font-semibold text-slate-700 mb-4 flex items-center gap-2">
             <Sparkles className="w-5 h-5 text-yellow-500" />
-            Módulos Prioritarios
+            {categories.length} Categorías Disponibles
+          </h3>
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+            {[
+              { name: 'Finanzas', icon: '💰', color: 'from-emerald-500 to-teal-600' },
+              { name: 'Ventas', icon: '🛒', color: 'from-blue-500 to-indigo-600' },
+              { name: 'Cadena de Suministro', icon: '📦', color: 'from-orange-500 to-amber-600' },
+              { name: 'Recursos Humanos', icon: '👥', color: 'from-purple-500 to-pink-600' },
+              { name: 'Sitios Web', icon: '🌐', color: 'from-cyan-500 to-blue-600' },
+              { name: 'Marketing', icon: '📣', color: 'from-pink-500 to-rose-600' },
+              { name: 'Servicios', icon: '🛠️', color: 'from-gray-500 to-slate-600' },
+              { name: 'Productividad', icon: '📊', color: 'from-indigo-500 to-purple-600' },
+              { name: 'Personalización', icon: '⚙️', color: 'from-yellow-500 to-orange-600' }
+            ].map((cat) => (
+              <Link key={cat.name} to={`/explore?category=${encodeURIComponent(cat.name)}`}>
+                <Card className="p-3 text-center hover:shadow-md transition-all group cursor-pointer">
+                  <div className="text-2xl mb-1">{cat.icon}</div>
+                  <div className="text-xs font-medium text-gray-700 group-hover:text-primary-600 transition-colors">
+                    {cat.name}
+                  </div>
+                </Card>
+              </Link>
+            ))}
+          </div>
+        </div>
+
+        {/* Priority Modules - Show only top 6 */}
+        <div className="mb-6">
+          <h3 className="text-lg font-semibold text-slate-700 mb-4 flex items-center gap-2">
+            <Star className="w-5 h-5 text-yellow-500" />
+            Módulos Recomendados para Empezar
           </h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
             {modules
               .filter(m => m.priority === 1)
+              .slice(0, 6)
               .map((module, index) => (
                 <ModuleCard
                   key={module.id}
@@ -405,23 +478,22 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Secondary Modules */}
-        <div>
-          <h3 className="text-lg font-semibold text-slate-700 mb-4">
-            Módulos Adicionales
-          </h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-            {modules
-              .filter(m => m.priority !== 1)
-              .map((module, index) => (
-                <ModuleCard
-                  key={module.id}
-                  module={module}
-                  index={index}
-                />
-              ))}
-          </div>
-        </div>
+        {/* Call to Action */}
+        <Link to="/explore">
+          <Card className="p-6 bg-gradient-to-r from-primary-50 to-secondary-50 border-primary-200 hover:shadow-lg transition-all group cursor-pointer">
+            <div className="flex items-center justify-between">
+              <div>
+                <h3 className="text-xl font-bold text-primary-800 mb-2">
+                  Explora los {stats.totalModules} Módulos de Odoo 19
+                </h3>
+                <p className="text-primary-700">
+                  {stats.totalLessons} lecciones • {stats.totalTime} de contenido • {categories.length} categorías
+                </p>
+              </div>
+              <ArrowRight className="w-8 h-8 text-primary-600 group-hover:translate-x-2 transition-transform" />
+            </div>
+          </Card>
+        </Link>
       </motion.div>
 
       {/* Motivational Quote */}
