@@ -77,17 +77,23 @@ export const surfaces = {
   },
   card: {
     base: '#ffffff',
+    hover: '#f7f9ff',
     border: 'rgba(15, 124, 218, 0.12)',
+    hoverBorder: 'rgba(15, 124, 218, 0.25)',
     shadow: '0 20px 35px rgba(15, 124, 218, 0.08)',
   },
   tintPrimary: {
     base: 'rgba(15, 124, 218, 0.08)',
+    hover: 'rgba(15, 124, 218, 0.12)',
     border: 'rgba(15, 124, 218, 0.2)',
+    hoverBorder: 'rgba(15, 124, 218, 0.3)',
     shadow: '0 25px 45px rgba(15, 124, 218, 0.15)',
   },
   tintSecondary: {
     base: 'rgba(255, 63, 0, 0.08)',
+    hover: 'rgba(255, 63, 0, 0.12)',
     border: 'rgba(255, 63, 0, 0.2)',
+    hoverBorder: 'rgba(255, 63, 0, 0.3)',
     shadow: '0 25px 45px rgba(255, 63, 0, 0.15)',
   },
   glass: {
@@ -142,56 +148,118 @@ export const gradients = {
   },
 }
 
-const toneFactory = (gradientToken, options = {}) => ({
-  gradient: typeof gradientToken === 'string' ? gradientToken : gradientToken.gradient,
-  flat: typeof gradientToken === 'string' ? gradientToken : gradientToken.flat,
-  onSolid: options.onSolid ?? text.inverse,
-  surface: options.surface ?? 'rgba(255,255,255,0.35)',
-  onSurface: options.onSurface ?? text.strong,
-  border: options.border ?? 'rgba(15, 124, 218, 0.25)',
-})
+const toneFactory = (solidColor, options = {}) => {
+  const surface = options.surface ?? 'rgba(255,255,255,0.35)'
+  const border = options.border ?? 'transparent'
+  return {
+    gradient: solidColor,
+    flat: solidColor,
+    surface,
+    onSolid: options.onSolid ?? text.inverse,
+    onSurface: options.onSurface ?? text.strong,
+    border,
+    hover: {
+      solid: options.hoverSolid ?? solidColor,
+      surface: options.hoverSurface ?? surface,
+      border: options.hoverBorder ?? border,
+    },
+    active: {
+      solid: options.activeSolid ?? options.hoverSolid ?? solidColor,
+      surface: options.activeSurface ?? surface,
+      border: options.activeBorder ?? options.hoverBorder ?? border,
+    },
+  }
+}
 
 export const tones = {
-  primary: toneFactory(gradients.heroBlue, {
-    surface: 'rgba(15, 124, 218, 0.08)',
+  primary: toneFactory(brandColors.primary[600], {
+    surface: brandColors.primary[50],
+    hoverSolid: brandColors.primary[500],
+    activeSolid: brandColors.primary[700],
+    hoverSurface: brandColors.primary[100],
+    activeSurface: brandColors.primary[200],
     onSurface: brandColors.primary[700],
     border: 'rgba(15, 124, 218, 0.35)',
+    hoverBorder: 'rgba(15, 124, 218, 0.5)',
+    activeBorder: 'rgba(0, 29, 122, 0.55)',
   }),
-  secondary: toneFactory(gradients.ctaOrange, {
-    surface: 'rgba(255, 63, 0, 0.08)',
+  secondary: toneFactory(brandColors.secondary[500], {
+    surface: brandColors.secondary[50],
+    hoverSolid: brandColors.secondary[400],
+    activeSolid: brandColors.secondary[600],
+    hoverSurface: brandColors.secondary[100],
+    activeSurface: brandColors.secondary[200],
     onSurface: brandColors.secondary[700],
     border: 'rgba(255, 63, 0, 0.35)',
+    hoverBorder: 'rgba(255, 63, 0, 0.5)',
+    activeBorder: 'rgba(204, 50, 0, 0.55)',
   }),
-  accent: toneFactory(gradients.accentAqua, {
+  accent: toneFactory(brandColors.accent.aqua, {
     surface: 'rgba(0, 187, 230, 0.12)',
+    hoverSolid: '#12c8f0',
+    activeSolid: '#039fcb',
+    hoverSurface: 'rgba(0, 187, 230, 0.18)',
+    activeSurface: 'rgba(0, 187, 230, 0.25)',
     onSurface: brandColors.primary[700],
     border: 'rgba(0, 187, 230, 0.35)',
+    hoverBorder: 'rgba(0, 187, 230, 0.5)',
+    activeBorder: 'rgba(0, 150, 184, 0.55)',
   }),
-  success: toneFactory(gradients.success, {
+  success: toneFactory(brandColors.functional.success[600], {
     surface: brandColors.functional.success[100],
+    hoverSolid: brandColors.functional.success[500],
+    activeSolid: brandColors.functional.success[700],
+    hoverSurface: brandColors.functional.success[100],
+    activeSurface: brandColors.functional.success[100],
     onSurface: brandColors.functional.success[700],
     border: 'rgba(34, 197, 94, 0.4)',
+    hoverBorder: 'rgba(34, 197, 94, 0.55)',
+    activeBorder: 'rgba(21, 128, 61, 0.55)',
   }),
-  warning: toneFactory(gradients.warning, {
+  warning: toneFactory(brandColors.functional.warning[500], {
     surface: brandColors.functional.warning[100],
+    hoverSolid: brandColors.functional.warning[400],
+    activeSolid: brandColors.functional.warning[600],
+    hoverSurface: brandColors.functional.warning[100],
+    activeSurface: brandColors.functional.warning[200],
     onSurface: brandColors.functional.warning[700],
     border: 'rgba(234, 179, 8, 0.45)',
+    hoverBorder: 'rgba(234, 179, 8, 0.6)',
+    activeBorder: 'rgba(217, 119, 6, 0.55)',
     onSolid: '#422006',
   }),
-  danger: toneFactory(gradients.danger, {
+  danger: toneFactory(brandColors.functional.danger[600], {
     surface: brandColors.functional.danger[100],
+    hoverSolid: brandColors.functional.danger[500],
+    activeSolid: brandColors.functional.danger[700],
+    hoverSurface: brandColors.functional.danger[100],
+    activeSurface: brandColors.functional.danger[200],
     onSurface: brandColors.functional.danger[700],
     border: 'rgba(239, 68, 68, 0.45)',
+    hoverBorder: 'rgba(239, 68, 68, 0.6)',
+    activeBorder: 'rgba(153, 27, 27, 0.55)',
   }),
-  info: toneFactory(gradients.info, {
+  info: toneFactory(brandColors.functional.info[600], {
     surface: brandColors.functional.info[100],
+    hoverSolid: brandColors.functional.info[500],
+    activeSolid: brandColors.functional.info[700],
+    hoverSurface: brandColors.functional.info[100],
+    activeSurface: brandColors.functional.info[200],
     onSurface: brandColors.functional.info[700],
     border: 'rgba(14, 165, 233, 0.35)',
+    hoverBorder: 'rgba(14, 165, 233, 0.5)',
+    activeBorder: 'rgba(2, 132, 199, 0.55)',
   }),
-  neutral: toneFactory(`linear-gradient(135deg, ${brandColors.neutral[200]} 0%, ${brandColors.neutral[300]} 100%)`, {
+  neutral: toneFactory(brandColors.neutral[500], {
     surface: brandColors.neutral[100],
+    hoverSolid: brandColors.neutral[400],
+    activeSolid: brandColors.neutral[600],
+    hoverSurface: brandColors.neutral[200],
+    activeSurface: brandColors.neutral[300],
     onSurface: text.muted,
     border: 'rgba(148, 163, 184, 0.45)',
+    hoverBorder: 'rgba(148, 163, 184, 0.6)',
+    activeBorder: 'rgba(107, 114, 128, 0.65)',
     onSolid: text.strong,
   }),
 }

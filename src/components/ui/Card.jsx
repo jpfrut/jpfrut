@@ -17,7 +17,7 @@ const Card = ({
   ...props
 }) => {
   const baseClasses = 'rounded-2xl p-6 transition-all duration-300 border shadow-none'
-  const hoverClasses = hover ? 'cursor-pointer' : ''
+  const hoverClasses = hover ? 'cursor-pointer hover:-translate-y-1' : ''
   const normalizedClassName = className ?? ''
   const tone = surfaceVariants[variant] ?? surfaceVariants.surface
 
@@ -25,14 +25,25 @@ const Card = ({
   const hasCustomBorder = /(^|\s)border(-|\[)/.test(normalizedClassName)
   const hasCustomShadow = normalizedClassName.includes('shadow')
 
+  const backgroundClasses =
+    !hasCustomBackground && tone?.base
+      ? 'bg-[var(--card-bg)] hover:bg-[var(--card-bg-hover)]'
+      : ''
+  const borderClasses =
+    !hasCustomBorder && tone?.border
+      ? 'border-[color:var(--card-border)] hover:border-[color:var(--card-border-hover)]'
+      : ''
+
   const surfaceStyles = {}
 
   if (!hasCustomBackground && tone?.base) {
-    surfaceStyles.background = tone.gradient ?? tone.base
+    surfaceStyles['--card-bg'] = tone.base
+    surfaceStyles['--card-bg-hover'] = tone.hover ?? tone.base
   }
 
   if (!hasCustomBorder && tone?.border) {
-    surfaceStyles.borderColor = tone.border
+    surfaceStyles['--card-border'] = tone.border
+    surfaceStyles['--card-border-hover'] = tone.hoverBorder ?? tone.border
   }
 
   if (!hasCustomShadow && tone?.shadow) {
@@ -50,7 +61,7 @@ const Card = ({
       transition={{ duration: 0.3 }}
       whileHover={hover ? { y: -5 } : {}}
       onClick={onClick}
-      className={`${baseClasses} ${hoverClasses} ${normalizedClassName}`}
+      className={`${baseClasses} ${hoverClasses} ${backgroundClasses} ${borderClasses} ${normalizedClassName}`}
       style={surfaceStyles}
       {...props}
     >

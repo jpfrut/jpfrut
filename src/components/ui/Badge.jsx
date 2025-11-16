@@ -31,26 +31,69 @@ const Badge = ({
   const variantStyles = {
     solid: {
       background: toneToken.gradient,
+      hoverBackground: toneToken.hover?.solid ?? toneToken.gradient,
+      activeBackground: toneToken.active?.solid ?? toneToken.gradient,
       color: toneToken.onSolid,
       borderColor: 'transparent',
+      hoverBorder: 'transparent',
+      activeBorder: 'transparent',
     },
     tint: {
       background: toneToken.surface,
+      hoverBackground: toneToken.hover?.surface ?? toneToken.surface,
+      activeBackground: toneToken.active?.surface ?? toneToken.surface,
       color: toneToken.onSurface,
       borderColor: 'transparent',
+      hoverBorder: 'transparent',
+      activeBorder: 'transparent',
     },
     outline: {
       background: 'transparent',
+      hoverBackground: toneToken.hover?.surface ?? toneToken.surface,
+      activeBackground: toneToken.active?.surface ?? toneToken.surface,
       color: toneToken.onSurface,
       borderColor: toneToken.border,
+      hoverBorder: toneToken.hover?.border ?? toneToken.border,
+      activeBorder: toneToken.active?.border ?? toneToken.border,
     },
   }
 
   const style = variantStyles[resolvedVariant] ?? variantStyles.tint
   const normalizedClassName = className ?? ''
-  const hasCustomBackground = /(^|\s)(bg-|from-|via-|to-)/.test(normalizedClassName)
+  const hasCustomBackground = /(^|\s)(bg-|from-|via-|to-|bg\[)/.test(normalizedClassName)
   const hasCustomText = /(^|\s)text-/.test(normalizedClassName)
   const hasCustomBorder = /(^|\s)border(-|\[)/.test(normalizedClassName)
+
+  const interactiveClasses = [
+    !hasCustomBackground
+      ? 'bg-[var(--badge-bg)] hover:bg-[var(--badge-bg-hover)] active:bg-[var(--badge-bg-active)]'
+      : '',
+    !hasCustomText ? 'text-[color:var(--badge-text)]' : '',
+    !hasCustomBorder
+      ? 'border-[color:var(--badge-border)] hover:border-[color:var(--badge-border-hover)] active:border-[color:var(--badge-border-active)]'
+      : '',
+  ]
+    .filter(Boolean)
+    .join(' ')
+
+  const styleVariables = {}
+
+  if (!hasCustomBackground) {
+    styleVariables['--badge-bg'] = style.background
+    styleVariables['--badge-bg-hover'] = style.hoverBackground ?? style.background
+    styleVariables['--badge-bg-active'] = style.activeBackground ?? style.hoverBackground ?? style.background
+  }
+
+  if (!hasCustomText) {
+    styleVariables['--badge-text'] = style.color
+  }
+
+  if (!hasCustomBorder) {
+    styleVariables['--badge-border'] = style.borderColor ?? 'transparent'
+    styleVariables['--badge-border-hover'] = style.hoverBorder ?? styleVariables['--badge-border']
+    styleVariables['--badge-border-active'] =
+      style.activeBorder ?? styleVariables['--badge-border-hover']
+  }
 
   return (
     <motion.span
@@ -60,13 +103,10 @@ const Badge = ({
         inline-flex items-center gap-1.5 rounded-full font-semibold border border-transparent
         ${sizes[size]}
         ${pulse ? 'animate-pulse' : ''}
+        ${interactiveClasses}
         ${className}
       `}
-      style={{
-        background: hasCustomBackground ? undefined : style.background,
-        color: hasCustomText ? undefined : style.color,
-        borderColor: hasCustomBorder ? undefined : style.borderColor,
-      }}
+      style={styleVariables}
     >
       {icon && <span className="flex items-center" aria-hidden="true">{icon}</span>}
       {children}
