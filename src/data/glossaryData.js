@@ -2776,6 +2776,836 @@ export const glossaryTerms = {
       'Olvidar adjuntar condiciones de compra'
     ],
     relatedModules: ['Ventas', 'Website']
+  },
+
+  // =====================================
+  // INVENTARIO - TÉRMINOS ADICIONALES
+  // =====================================
+
+  'almacen': {
+    term: 'Almacén',
+    shortDef: 'Lugar físico donde guardas tus productos',
+    fullDef: 'Es el edificio o espacio donde almacenas tu mercancía. Puede ser una bodega, tienda, o cualquier lugar. En Odoo puedes tener múltiples almacenes y controlar el inventario de cada uno por separado.',
+    category: 'Inventario',
+    icon: '🏭',
+    example: {
+      title: 'Estructura de almacenes',
+      content: `
+        EMPRESA CON MÚLTIPLES ALMACENES:
+
+        ALMACÉN CENTRAL (Bodega principal):
+        - Stock principal: 10,000 productos
+        - Recibe de proveedores
+        - Abastece a tiendas
+
+        TIENDA NORTE:
+        - Stock para venta: 500 productos
+        - Vende al público
+        - Se reabastece de Central
+
+        TIENDA SUR:
+        - Stock para venta: 300 productos
+        - Vende al público
+        - Se reabastece de Central
+
+        CADA ALMACÉN TIENE:
+        → Su propio inventario
+        → Sus ubicaciones internas
+        → Sus reglas de reabastecimiento
+        → Sus movimientos separados
+
+        Así sabes exactamente qué hay en cada lugar.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'ubicacion',
+        explanation: 'Cada almacén tiene ubicaciones internas'
+      },
+      {
+        relatedTerm: 'transferencia',
+        explanation: 'Puedes mover productos entre almacenes'
+      }
+    ],
+    bestPractices: [
+      'Un almacén por ubicación física real',
+      'Nombra claramente cada almacén',
+      'Define responsable por almacén',
+      'Configura reglas de reabastecimiento entre almacenes'
+    ],
+    commonMistakes: [
+      'Crear almacenes que no existen físicamente',
+      'No transferir productos cuando se mueven',
+      'Confundir almacén con ubicación',
+      'No controlar acceso por almacén'
+    ],
+    relatedModules: ['Inventario', 'Ventas', 'Compras']
+  },
+
+  'ubicacion-fisica': {
+    term: 'Ubicación Física',
+    shortDef: 'Lugar específico dentro del almacén (estante, pasillo, caja)',
+    fullDef: 'Es la dirección exacta donde guardas un producto dentro del almacén. Como el pasillo, estante, nivel y posición. Así cualquier persona puede encontrar el producto rápidamente.',
+    category: 'Inventario',
+    icon: '📍',
+    example: {
+      title: 'Sistema de ubicaciones',
+      content: `
+        CÓDIGO DE UBICACIÓN: A-02-03-B
+
+        A  = Zona A del almacén
+        02 = Pasillo 2
+        03 = Estante 3
+        B  = Nivel B (segundo nivel)
+
+        EJEMPLO REAL:
+        Producto: Camiseta Azul Talla M
+        Ubicación: A-02-03-B
+        Cantidad: 50 unidades
+
+        BENEFICIOS:
+        → Empleado nuevo encuentra producto en segundos
+        → No pierdes tiempo buscando
+        → Control preciso de espacio
+        → Optimizas rutas de picking
+
+        TIPOS DE UBICACIONES:
+        - Físicas: donde realmente están
+        - Virtuales: para control (merma, cuarentena)
+        - De tránsito: productos en camino
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'almacen',
+        explanation: 'Las ubicaciones están dentro de un almacén'
+      },
+      {
+        relatedTerm: 'picking',
+        explanation: 'El picking usa las ubicaciones para encontrar productos'
+      }
+    ],
+    bestPractices: [
+      'Crea sistema de codificación lógico',
+      'Etiqueta físicamente cada ubicación',
+      'Agrupa productos similares cerca',
+      'Deja espacio para crecimiento'
+    ],
+    commonMistakes: [
+      'Ubicaciones no coinciden con realidad física',
+      'Sistema de código confuso',
+      'No actualizar cuando reorganizas',
+      'Sobrecargar ubicaciones'
+    ],
+    relatedModules: ['Inventario']
+  },
+
+  'numero-de-serie': {
+    term: 'Número de Serie',
+    shortDef: 'Código único que identifica cada unidad individual',
+    fullDef: 'Es un código que hace único a cada producto individual. Dos camisetas iguales tienen diferente número de serie. Útil para garantías, devoluciones y rastreo. Como el número de chassis de un auto.',
+    category: 'Inventario',
+    icon: '🔢',
+    example: {
+      title: 'Trazabilidad con números de serie',
+      content: `
+        PRODUCTO: Laptop Dell XPS
+        CANTIDAD EN STOCK: 5 unidades
+
+        CADA UNA ES ÚNICA:
+        SN-001: Comprada 01/01, vendida a María
+        SN-002: Comprada 01/01, en stock
+        SN-003: Comprada 15/01, vendida a Pedro
+        SN-004: Comprada 15/01, en reparación
+        SN-005: Comprada 20/01, en stock
+
+        CASOS DE USO:
+        → Cliente reclama garantía
+          "¿Cuál es su número de serie?"
+          SN-003
+          "Ah, la compraste el 15/01, tienes garantía"
+
+        → Producto defectuoso
+          Proveedor retira SN-004 por falla
+          Sabes exactamente cuál es
+
+        → Auditoría
+          Puedes rastrear cada unidad desde compra hasta venta
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'producto',
+        explanation: 'Los productos almacenables pueden tener números de serie'
+      },
+      {
+        relatedTerm: 'numero-de-lote',
+        explanation: 'Serie es individual, lote agrupa varios productos'
+      }
+    ],
+    bestPractices: [
+      'Usa series para productos de alto valor',
+      'Escanea series en entrada y salida',
+      'Mantén registro actualizado',
+      'Vincula con garantías y servicios'
+    ],
+    commonMistakes: [
+      'No registrar serie al recibir producto',
+      'Vender sin especificar qué serie',
+      'Series duplicadas (¡nunca!)',
+      'Perder trazabilidad por no escanear'
+    ],
+    relatedModules: ['Inventario', 'Ventas', 'Servicio']
+  },
+
+  'numero-de-lote': {
+    term: 'Número de Lote',
+    shortDef: 'Código que agrupa productos fabricados o comprados juntos',
+    fullDef: 'Es un código que identifica un grupo de productos iguales que se hicieron o compraron al mismo tiempo. Si hay problema con ese lote, sabes cuáles productos están afectados. Muy usado en alimentos y medicinas.',
+    category: 'Inventario',
+    icon: '📦',
+    example: {
+      title: 'Control por lotes',
+      content: `
+        PRODUCTO: Yogurt Natural 1L
+
+        LOTE: LOT-2024-03-15
+        - Fecha producción: 15 marzo 2024
+        - Fecha vencimiento: 15 abril 2024
+        - Cantidad: 500 unidades
+        - Proveedor: Lácteos ABC
+
+        LOTE: LOT-2024-03-22
+        - Fecha producción: 22 marzo 2024
+        - Fecha vencimiento: 22 abril 2024
+        - Cantidad: 500 unidades
+        - Proveedor: Lácteos ABC
+
+        PROBLEMA DETECTADO:
+        ⚠️ Lote LOT-2024-03-15 tiene defecto
+        Acción: Retirar las 500 unidades de ese lote
+        → Sabes exactamente cuáles son
+        → No afectas al otro lote bueno
+
+        REGLA FIFO:
+        Vende primero LOT-2024-03-15 (más viejo)
+        para evitar vencimientos.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'fecha-de-vencimiento',
+        explanation: 'Cada lote tiene su propia fecha de vencimiento'
+      },
+      {
+        relatedTerm: 'estrategia-de-remocion',
+        explanation: 'Las estrategias FIFO/FEFO usan información de lotes'
+      }
+    ],
+    bestPractices: [
+      'Usa lotes para perecederos y trazables',
+      'Incluye fecha en código de lote',
+      'Vende lotes más viejos primero (FIFO)',
+      'Registra proveedor por lote'
+    ],
+    commonMistakes: [
+      'Mezclar lotes diferentes sin control',
+      'No verificar fechas de vencimiento',
+      'Vender lotes nuevos antes que viejos',
+      'No poder rastrear origen de problemas'
+    ],
+    relatedModules: ['Inventario', 'Calidad']
+  },
+
+  'fecha-de-vencimiento': {
+    term: 'Fecha de Vencimiento',
+    shortDef: 'Día hasta el cual el producto es seguro usar o vender',
+    fullDef: 'Es la fecha límite de uso de un producto perecedero. Después de esa fecha, el producto puede estar dañado o ser peligroso. Odoo te avisa antes de que venzan para que vendas o descarte a tiempo.',
+    category: 'Inventario',
+    icon: '📅',
+    example: {
+      title: 'Control de vencimientos',
+      content: `
+        DASHBOARD DE VENCIMIENTOS:
+
+        ⚠️ PRÓXIMOS A VENCER (7 días):
+        - 50 Yogurt → Vence: 20 marzo
+        - 30 Queso  → Vence: 22 marzo
+        → ACCIÓN: Promoción o donación
+
+        ✅ STOCK SALUDABLE (30+ días):
+        - 200 Yogurt → Vence: 15 abril
+        - 100 Queso  → Vence: 20 abril
+        → OK, vender normalmente
+
+        ❌ VENCIDOS:
+        - 10 Leche → Venció: 10 marzo
+        → ACCIÓN: Retirar y desechar
+
+        ALERTAS AUTOMÁTICAS:
+        Odoo te avisa X días antes:
+        - 30 días: Planificar promoción
+        - 7 días: Descuento urgente
+        - 1 día: Última oportunidad
+        - 0 días: No vender, retirar
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'numero-de-lote',
+        explanation: 'Cada lote tiene su propia fecha de vencimiento'
+      },
+      {
+        relatedTerm: 'estrategia-de-remocion',
+        explanation: 'FEFO vende primero lo que vence antes'
+      }
+    ],
+    bestPractices: [
+      'Configura alertas con suficiente anticipación',
+      'Revisa reporte de vencimientos diariamente',
+      'Ten plan para productos próximos a vencer',
+      'Nunca vendas productos vencidos'
+    ],
+    commonMistakes: [
+      'Ignorar alertas de vencimiento',
+      'No configurar fechas al recibir producto',
+      'Vender producto vencido (ilegal y peligroso)',
+      'No tener política de productos por vencer'
+    ],
+    relatedModules: ['Inventario', 'Punto de Venta', 'Calidad']
+  },
+
+  'reabastecimiento': {
+    term: 'Reabastecimiento',
+    shortDef: 'Proceso de reabastecer productos cuando se acaban',
+    fullDef: 'Es el proceso automático o manual de pedir más productos cuando tu stock baja. Odoo puede generar órdenes de compra o transferencias automáticamente para que nunca te quedes sin inventario.',
+    category: 'Inventario',
+    icon: '🔄',
+    example: {
+      title: 'Reabastecimiento automático',
+      content: `
+        CONFIGURACIÓN:
+        Producto: Camiseta Azul
+        Stock mínimo: 10 unidades
+        Cantidad a pedir: 50 unidades
+
+        SITUACIÓN:
+        Stock actual: 12 unidades
+        Vendes 5 camisetas
+        Stock nuevo: 7 unidades (¡bajo del mínimo!)
+
+        ACCIÓN AUTOMÁTICA:
+        Odoo genera orden de compra:
+        "Pedir 50 camisetas a proveedor"
+        → Nunca te quedas sin stock
+        → No dependes de que alguien recuerde
+
+        TIPOS:
+        - Por pedido: solo cuando vendes
+        - Por mínimo: cuando baja de límite
+        - Por pronóstico: basado en historial
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'regla-de-reorden',
+        explanation: 'Las reglas definen cuándo y cuánto reabastecer'
+      },
+      {
+        relatedTerm: 'punto-de-reorden',
+        explanation: 'El nivel de stock que dispara el reabastecimiento'
+      }
+    ],
+    bestPractices: [
+      'Configura para productos de alta rotación',
+      'Considera tiempos de entrega del proveedor',
+      'Revisa reglas periódicamente',
+      'Ajusta según temporadas'
+    ],
+    commonMistakes: [
+      'No considerar tiempo de entrega',
+      'Mínimos muy altos (capital atado)',
+      'Mínimos muy bajos (te quedas sin stock)',
+      'No revisar y ajustar según demanda real'
+    ],
+    relatedModules: ['Inventario', 'Compras']
+  },
+
+  'regla-de-reorden': {
+    term: 'Regla de Reorden',
+    shortDef: 'Instrucción que dice cuándo pedir más producto',
+    fullDef: 'Son las condiciones que defines para que Odoo automáticamente genere pedidos de reabastecimiento. Incluye: producto, cantidad mínima, cantidad a pedir, y de dónde obtenerlo.',
+    category: 'Inventario',
+    icon: '📏',
+    example: {
+      title: 'Configuración de regla de reorden',
+      content: `
+        PRODUCTO: Laptop Dell
+        ALMACÉN: Tienda Principal
+
+        REGLA:
+        - Cantidad mínima: 5 unidades
+        - Cantidad máxima: 20 unidades
+        - Cantidad múltiple: 5 (pedir de 5 en 5)
+        - Proveedor: Dell México
+        - Lead time: 7 días
+
+        FUNCIONAMIENTO:
+        Stock: 6 laptops → OK, arriba del mínimo
+        Stock: 4 laptops → ¡Genera orden!
+        Cantidad a pedir: 20 - 4 = 16 unidades
+        (Sube hasta el máximo)
+
+        RESULTADO:
+        Odoo crea automáticamente:
+        "Orden de Compra #PO-2024-0089"
+        Proveedor: Dell México
+        Producto: 16 Laptops Dell
+        Fecha esperada: +7 días
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'reabastecimiento',
+        explanation: 'Las reglas controlan el proceso de reabastecimiento'
+      },
+      {
+        relatedTerm: 'orden-compra',
+        explanation: 'La regla genera automáticamente órdenes de compra'
+      }
+    ],
+    bestPractices: [
+      'Crea reglas para productos críticos primero',
+      'Incluye lead time realista',
+      'Revisa reglas mensualmente',
+      'Ajusta según ventas históricas'
+    ],
+    commonMistakes: [
+      'Reglas muy agresivas que generan sobrestock',
+      'No considerar costos de almacenamiento',
+      'Olvidar actualizar cuando cambian proveedores',
+      'No tener reglas para productos nuevos'
+    ],
+    relatedModules: ['Inventario', 'Compras']
+  },
+
+  'picking': {
+    term: 'Picking',
+    shortDef: 'Proceso de recoger productos del almacén para enviarlos',
+    fullDef: 'Es cuando el trabajador va al almacén con una lista, busca los productos en sus ubicaciones y los prepara para enviar al cliente. "Pick" significa recoger. Es uno de los procesos más importantes del almacén.',
+    category: 'Inventario',
+    icon: '🛒',
+    example: {
+      title: 'Proceso de picking paso a paso',
+      content: `
+        ORDEN DE VENTA: Cliente pide 3 productos
+
+        LISTA DE PICKING:
+        1. Camiseta Azul M
+           Ubicación: A-02-03-B
+           Cantidad: 2
+        2. Pantalón Negro 32
+           Ubicación: B-01-05-A
+           Cantidad: 1
+
+        PROCESO:
+        1. Trabajador recibe lista en tablet
+        2. Ruta optimizada: A → B
+        3. Va a A-02-03-B, toma 2 camisetas ✓
+        4. Va a B-01-05-A, toma 1 pantalón ✓
+        5. Lleva al área de empaque
+        6. Confirma picking en sistema
+
+        ESTRATEGIAS:
+        - Uno por uno: cada orden por separado
+        - Por lotes: varias órdenes juntas
+        - Por zona: dividido por áreas
+        - Por oleadas: grupos programados
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'ubicacion-fisica',
+        explanation: 'El picking usa las ubicaciones para encontrar productos'
+      },
+      {
+        relatedTerm: 'entrega',
+        explanation: 'Después del picking viene el empaque y entrega'
+      }
+    ],
+    bestPractices: [
+      'Optimiza rutas de picking',
+      'Usa escáner para confirmar productos',
+      'Productos de alta rotación cerca de empaque',
+      'Mide tiempo por picking para optimizar'
+    ],
+    commonMistakes: [
+      'Tomar producto equivocado',
+      'No actualizar sistema al terminar',
+      'Rutas ineficientes que pierden tiempo',
+      'No verificar cantidades correctas'
+    ],
+    relatedModules: ['Inventario']
+  },
+
+  'estrategia-de-remocion': {
+    term: 'Estrategia de Remoción',
+    shortDef: 'Regla que decide qué producto sale primero del almacén',
+    fullDef: 'Cuando tienes varios lotes del mismo producto, ¿cuál vendes primero? La estrategia define esto: FIFO (el más viejo primero), LIFO (el más nuevo primero), o FEFO (el que vence antes primero).',
+    category: 'Inventario',
+    icon: '📤',
+    example: {
+      title: 'Comparación de estrategias',
+      content: `
+        PRODUCTO: Leche (3 lotes disponibles)
+
+        Lote A: Llegó 01 marzo, vence 01 abril
+        Lote B: Llegó 15 marzo, vence 15 abril
+        Lote C: Llegó 20 marzo, vence 10 abril
+
+        ESTRATEGIA FIFO (First In, First Out):
+        "Vende lo que llegó primero"
+        Orden: A → B → C
+        Uso: Productos no perecederos
+
+        ESTRATEGIA LIFO (Last In, First Out):
+        "Vende lo que llegó último"
+        Orden: C → B → A
+        Uso: Materiales donde orden no importa
+
+        ESTRATEGIA FEFO (First Expired, First Out):
+        "Vende lo que vence primero"
+        Orden: A → C → B (por fecha vencimiento)
+        Uso: Alimentos, medicinas, perecederos
+
+        FEFO es la mejor para evitar mermas.
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'numero-de-lote',
+        explanation: 'La estrategia decide qué lote usar primero'
+      },
+      {
+        relatedTerm: 'fecha-de-vencimiento',
+        explanation: 'FEFO prioriza productos que vencen antes'
+      }
+    ],
+    bestPractices: [
+      'FEFO para perecederos siempre',
+      'FIFO para la mayoría de productos',
+      'Configura por categoría de producto',
+      'Capacita al equipo sobre la estrategia'
+    ],
+    commonMistakes: [
+      'No seguir la estrategia configurada',
+      'LIFO para perecederos (¡evitar!)',
+      'No entrenar al personal',
+      'Mezclar estrategias sin control'
+    ],
+    relatedModules: ['Inventario']
+  },
+
+  'valoracion-de-inventario': {
+    term: 'Valoración de Inventario',
+    shortDef: 'Cuánto dinero vale todo tu stock',
+    fullDef: 'Es calcular el valor monetario de todos los productos que tienes en almacén. Hay diferentes métodos: costo estándar, costo promedio, FIFO. Importante para reportes financieros y toma de decisiones.',
+    category: 'Inventario',
+    icon: '💰',
+    example: {
+      title: 'Métodos de valoración',
+      content: `
+        PRODUCTO: Camiseta (50 en stock)
+
+        COSTO ESTÁNDAR:
+        Defines: $100 por camiseta
+        Valor = 50 × $100 = $5,000
+        Simple pero no refleja cambios
+
+        COSTO PROMEDIO:
+        Compra 1: 30 × $90 = $2,700
+        Compra 2: 20 × $120 = $2,400
+        Total: 50 camisetas, $5,100
+        Promedio: $102 c/u
+        Valor = 50 × $102 = $5,100
+
+        FIFO (First In First Out):
+        Vendes primero las de $90
+        Quedan las de $120
+        Valor varía según qué vendiste
+
+        ¿POR QUÉ IMPORTA?
+        → Balance general necesita valor de inventario
+        → Determina costo de ventas
+        → Afecta utilidades reportadas
+        → Decisiones de precios
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'producto',
+        explanation: 'Cada producto tiene un método de valoración asignado'
+      },
+      {
+        relatedTerm: 'balance-general',
+        explanation: 'El valor del inventario aparece en activos del balance'
+      }
+    ],
+    bestPractices: [
+      'Elige método y sé consistente',
+      'Costo promedio es bueno para mayoría',
+      'Consulta contador para decisión',
+      'Revisa valoración mensualmente'
+    ],
+    commonMistakes: [
+      'Cambiar método frecuentemente',
+      'No incluir costos adicionales (flete, impuestos)',
+      'Inventario físico no coincide con sistema',
+      'No considerar implicaciones fiscales'
+    ],
+    relatedModules: ['Inventario', 'Contabilidad']
+  },
+
+  'transferencia': {
+    term: 'Transferencia Interna',
+    shortDef: 'Mover productos de un lugar a otro dentro de tu empresa',
+    fullDef: 'Es cuando mueves productos entre almacenes o ubicaciones. Por ejemplo: de bodega central a tienda. El stock total no cambia, pero sí dónde está el producto.',
+    category: 'Inventario',
+    icon: '🔀',
+    example: {
+      title: 'Transferencia entre almacenes',
+      content: `
+        ANTES:
+        Almacén Central: 100 camisetas
+        Tienda Norte: 5 camisetas (¡pocas!)
+        Tienda Sur: 50 camisetas
+
+        TRANSFERENCIA:
+        De: Almacén Central
+        A: Tienda Norte
+        Producto: 20 camisetas
+
+        DESPUÉS:
+        Almacén Central: 80 camisetas
+        Tienda Norte: 25 camisetas ✓
+        Tienda Sur: 50 camisetas
+
+        PROCESO:
+        1. Creas transferencia en sistema
+        2. Imprimes lista de productos
+        3. Picking en origen
+        4. Transportas físicamente
+        5. Recepciones en destino
+        6. Confirmas transferencia
+        → Stock actualizado en ambos lugares
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'almacen',
+        explanation: 'Las transferencias mueven stock entre almacenes'
+      },
+      {
+        relatedTerm: 'movimiento-stock',
+        explanation: 'Cada transferencia genera movimientos de stock'
+      }
+    ],
+    bestPractices: [
+      'Usa sistema para todas las transferencias',
+      'Confirma recepción antes de cerrar transferencia',
+      'Documenta motivo de la transferencia',
+      'Planifica rutas eficientes'
+    ],
+    commonMistakes: [
+      'Mover físicamente sin registrar en sistema',
+      'No confirmar recepción',
+      'Cantidades incorrectas',
+      'No verificar stock en destino'
+    ],
+    relatedModules: ['Inventario']
+  },
+
+  'ajuste-de-inventario': {
+    term: 'Ajuste de Inventario',
+    shortDef: 'Corregir diferencias entre stock físico y sistema',
+    fullDef: 'Cuando cuentas físicamente y encuentras diferencias con lo que dice Odoo, haces un ajuste. Si sistema dice 100 pero físicamente hay 95, ajustas el sistema a 95. Importante para mantener datos reales.',
+    category: 'Inventario',
+    icon: '✏️',
+    example: {
+      title: 'Proceso de ajuste',
+      content: `
+        CONTEO FÍSICO:
+        Producto: Laptop Dell
+        Sistema dice: 10 unidades
+        Conteo real: 8 unidades
+        Diferencia: -2 unidades
+
+        POSIBLES CAUSAS:
+        - Robo/pérdida
+        - Error de entrada anterior
+        - Producto dañado no registrado
+        - Error de conteo anterior
+
+        AJUSTE:
+        1. Creas ajuste de inventario
+        2. Producto: Laptop Dell
+        3. Cantidad sistema: 10
+        4. Cantidad real: 8
+        5. Motivo: "Diferencia en conteo trimestral"
+        6. Confirmas ajuste
+
+        RESULTADO:
+        → Sistema ahora dice: 8 unidades
+        → Se registra la merma contablemente
+        → Historial documenta el ajuste
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'conteo-ciclico',
+        explanation: 'Los conteos cíclicos descubren necesidad de ajustes'
+      },
+      {
+        relatedTerm: 'movimiento-stock',
+        explanation: 'El ajuste genera movimiento hacia ubicación virtual de merma'
+      }
+    ],
+    bestPractices: [
+      'Documenta siempre el motivo del ajuste',
+      'Requiere autorización para ajustes grandes',
+      'Investiga causas de diferencias frecuentes',
+      'Haz conteos regulares para detectar temprano'
+    ],
+    commonMistakes: [
+      'Ajustar sin investigar la causa',
+      'No documentar motivo',
+      'Ajustes frecuentes en mismos productos',
+      'No revisar seguridad ante diferencias'
+    ],
+    relatedModules: ['Inventario', 'Contabilidad']
+  },
+
+  'variante-de-producto': {
+    term: 'Variante de Producto',
+    shortDef: 'Versiones diferentes del mismo producto (talla, color)',
+    fullDef: 'Cuando un producto tiene opciones como talla o color, cada combinación es una variante. "Camiseta Azul Talla M" es una variante de "Camiseta". Así no creas mil productos diferentes, solo uno con variantes.',
+    category: 'Inventario',
+    icon: '🎨',
+    example: {
+      title: 'Producto con variantes',
+      content: `
+        PRODUCTO: Camiseta Polo
+
+        ATRIBUTOS:
+        - Color: Azul, Rojo, Negro
+        - Talla: S, M, L, XL
+
+        VARIANTES GENERADAS (12 total):
+        Camiseta Polo - Azul - S
+        Camiseta Polo - Azul - M
+        Camiseta Polo - Azul - L
+        Camiseta Polo - Azul - XL
+        Camiseta Polo - Rojo - S
+        ... (y así 12 combinaciones)
+
+        CADA VARIANTE TIENE:
+        → SKU único (POL-AZL-M)
+        → Stock separado
+        → Puede tener precio diferente
+        → Su propia imagen
+
+        VENTAJAS:
+        → Un solo producto base, múltiples variantes
+        → Reportes consolidados
+        → Fácil gestión de catálogo
+        → Cliente ve opciones claras
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'atributo',
+        explanation: 'Los atributos definen las opciones de variantes'
+      },
+      {
+        relatedTerm: 'producto',
+        explanation: 'Las variantes son versiones específicas del producto'
+      }
+    ],
+    bestPractices: [
+      'Usa variantes para productos con opciones',
+      'Mantén stock por variante, no global',
+      'Fotos diferentes por variante si es necesario',
+      'Precios pueden variar (XL más caro que S)'
+    ],
+    commonMistakes: [
+      'Crear productos separados en vez de variantes',
+      'Demasiados atributos que explotan combinaciones',
+      'No asignar SKU único por variante',
+      'No trackear stock por variante individual'
+    ],
+    relatedModules: ['Inventario', 'Ventas', 'Website']
+  },
+
+  'unidad-de-medida': {
+    term: 'Unidad de Medida',
+    shortDef: 'Cómo mides tus productos (pieza, kilo, metro, etc.)',
+    fullDef: 'Define cómo cuentas y vendes cada producto. Puede ser piezas, kilogramos, litros, metros, cajas, docenas, etc. Odoo convierte automáticamente entre unidades relacionadas.',
+    category: 'Inventario',
+    icon: '📐',
+    example: {
+      title: 'Unidades de medida en acción',
+      content: `
+        PRODUCTO: Tela para tapicería
+
+        UNIDAD DE COMPRA: Rollo (50 metros)
+        Compras: 10 rollos
+        Stock: 500 metros
+
+        UNIDAD DE VENTA: Metro
+        Cliente pide: 15 metros
+        Stock restante: 485 metros
+
+        CONVERSIÓN AUTOMÁTICA:
+        1 rollo = 50 metros
+        Odoo sabe convertir
+
+        OTRO EJEMPLO:
+        Producto: Cerveza
+        Compras: Cajas (24 botellas)
+        Vendes: Botellas individuales
+        Sistema convierte automático
+
+        CATEGORÍAS COMUNES:
+        - Unidad/Pieza
+        - Peso (kg, gr, lb)
+        - Volumen (L, ml, galón)
+        - Longitud (m, cm, ft)
+        - Tiempo (hora, día)
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'producto',
+        explanation: 'Cada producto tiene unidad de medida asignada'
+      },
+      {
+        relatedTerm: 'orden-compra',
+        explanation: 'Puedes comprar en una unidad y vender en otra'
+      }
+    ],
+    bestPractices: [
+      'Usa unidades estándar de tu industria',
+      'Configura conversiones correctamente',
+      'Mismo producto, misma unidad en todo lugar',
+      'Verifica decimales en conversiones'
+    ],
+    commonMistakes: [
+      'Mezclar unidades en mismo producto',
+      'Conversiones incorrectas',
+      'No definir unidad de compra vs venta',
+      'Errores de redondeo en decimales'
+    ],
+    relatedModules: ['Inventario', 'Ventas', 'Compras', 'Fabricación']
   }
 }
 
