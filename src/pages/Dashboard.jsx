@@ -1,3 +1,4 @@
+import { useMemo } from 'react'
 import { motion } from 'framer-motion'
 import { Link } from 'react-router-dom'
 import {
@@ -32,6 +33,10 @@ import Card from '../components/ui/Card'
 const Dashboard = () => {
   const { user, completedExercises, moduleProgress } = useStore()
   const modules = getModulesArray()
+  const moduleMap = useMemo(
+    () => Object.fromEntries(modules.map(module => [module.id, module])),
+    [modules]
+  )
   const stats = getStats()
   const categories = getCategories()
 
@@ -41,6 +46,24 @@ const Dashboard = () => {
   const totalXPEarned = user.totalXp
 
   // Logros disponibles
+  const hasCompletedFirstModule = useMemo(() => {
+    return Object.entries(moduleProgress).some(([moduleId, progress]) => {
+      const module = moduleMap[moduleId]
+      if (!module) return false
+      return progress.completedLessons.length === module.lessons.length
+    })
+  }, [moduleProgress, moduleMap])
+
+  const hasCompletedAllModules = useMemo(() => {
+    const progressEntries = Object.entries(moduleProgress)
+    if (progressEntries.length !== modules.length) return false
+
+    return progressEntries.every(([moduleId, progress]) => {
+      const module = moduleMap[moduleId]
+      return module && progress.completedLessons.length === module.lessons.length
+    })
+  }, [moduleProgress, moduleMap, modules])
+
   const achievements = [
     {
       id: 'first-lesson',
@@ -61,9 +84,7 @@ const Dashboard = () => {
       title: 'Maestro del Módulo',
       description: 'Completa tu primer módulo completo',
       xp: 500,
-      unlocked: Object.values(moduleProgress).some(
-        p => p.completedLessons.length === modules.find(m => m.id === Object.keys(moduleProgress).find(k => moduleProgress[k] === p))?.lessons.length
-      )
+      unlocked: hasCompletedFirstModule
     },
     {
       id: 'level-5',
@@ -84,10 +105,7 @@ const Dashboard = () => {
       title: 'Experto en Odoo',
       description: 'Completa todos los módulos',
       xp: 2000,
-      unlocked: Object.keys(moduleProgress).length === modules.length &&
-        Object.values(moduleProgress).every(
-          (p, i) => p.completedLessons.length === modules[i]?.lessons.length
-        )
+      unlocked: hasCompletedAllModules
     }
   ]
 

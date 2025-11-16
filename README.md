@@ -207,6 +207,18 @@ npm run dev
    - Busca por palabra clave
    - Preguntas relacionadas sugeridas
 
+---
+
+## 🙋‍♀️ FAQ Rápido para Principiantes
+
+### ¿Tengo que dar clic en "Create PR" para ver los cambios?
+No. Cada actualización que aplicamos queda guardada directamente en el repositorio remoto. Lo único que necesitas es abrir una terminal dentro de tu clon local y ejecutar `git pull origin work` (o la rama que estés usando). Ese comando descarga el último commit y sincroniza tus archivos sin que tengas que crear un Pull Request manualmente.
+
+### ¿Qué significa "refactor"?
+Es una palabra que usamos para describir cuando reorganizamos o limpiamos el código **sin cambiar su comportamiento**. Piensa en ello como acomodar tu escritorio: mueves cosas, etiquetas cables y tiras papeles viejos para que todo quede más claro, pero las herramientas siguen siendo las mismas. Un refactor no añade funciones nuevas, solo hace que el código existente sea más fácil de entender y mantener.
+
+Si alguna otra palabra técnica te causa dudas, no dudes en agregarla a esta sección: así todos aprendemos juntos. 💪
+
 ### Para Usuarios Intermedios
 
 1. **Dashboard Principal** (`/`)
