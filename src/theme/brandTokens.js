@@ -195,10 +195,15 @@ export const brandGradients = {
   slate: createGradientToken('#64748B', '#1F2937'),
   sunset: createGradientToken('#FB923C', '#F43F5E'),
 }
+/**
+ * @typedef {keyof typeof brandGradients} BrandPaletteKey
+ */
 
-export const brandPaletteKeys = Object.freeze(Object.keys(brandGradients))
+const brandPaletteKeySet = new Set(Object.keys(brandGradients))
 
-export const isValidBrandPaletteKey = (key) => brandPaletteKeys.includes(key)
+export const brandPaletteKeys = Object.freeze([...brandPaletteKeySet])
+
+export const isValidBrandPaletteKey = (key) => brandPaletteKeySet.has(key)
 
 export const assertValidBrandPaletteKey = (key, context = 'module') => {
   if (!key) {

@@ -2,6 +2,34 @@
 // Basado en la documentación oficial: https://www.odoo.com/documentation/19.0/applications.html
 import { assertValidBrandPaletteKey } from '../theme/brandTokens'
 
+/**
+ * @typedef {keyof import('../theme/brandTokens').brandGradients} BrandPaletteKey
+ */
+
+/**
+ * @typedef {Object} Lesson
+ * @property {string} id
+ * @property {string} title
+ * @property {string} duration
+ * @property {number} xp
+ * @property {string[]} topics
+ */
+
+/**
+ * @typedef {Object} OdooModule
+ * @property {string} id
+ * @property {string} name
+ * @property {string} icon
+ * @property {BrandPaletteKey} paletteKey
+ * @property {string} category
+ * @property {number} priority
+ * @property {string} description
+ * @property {string} estimatedTime
+ * @property {'Básico' | 'Intermedio' | 'Avanzado'} difficulty
+ * @property {Lesson[]} lessons
+ */
+
+/** @type {Record<string, OdooModule>} */
 export const odooModules = {
   // ========================
   // FINANZAS
