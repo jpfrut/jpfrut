@@ -70,7 +70,7 @@ const brandColors = {
 export const surfaces = {
   default: {
     base: brandColors.primary[50],
-    gradient: `linear-gradient(135deg, ${brandColors.primary[50]} 0%, ${brandColors.neutral[50]} 85%)`,
+    accent: brandColors.neutral[50],
   },
   muted: {
     base: brandColors.neutral[100],
@@ -96,8 +96,8 @@ export const surfaces = {
     blur: '18px',
   },
   hero: {
-    base: brandColors.primary[700],
-    gradient: `linear-gradient(135deg, ${brandColors.primary[500]} 0%, ${brandColors.primary[700]} 85%)`,
+    base: brandColors.primary[600],
+    highlight: brandColors.primary[500],
   },
 }
 
@@ -123,19 +123,28 @@ export const shadows = {
   focus: '0 0 0 3px rgba(0, 29, 122, 0.25)',
 }
 
+const createGradientToken = (start, end, flat = start) => ({
+  gradient: `linear-gradient(135deg, ${start} 0%, ${end} 85%)`,
+  flat,
+})
+
 export const gradients = {
-  heroBlue: surfaces.hero.gradient,
-  ctaOrange: `linear-gradient(135deg, ${brandColors.secondary[400]} 0%, ${brandColors.secondary[600]} 80%)`,
-  accentAqua: `linear-gradient(135deg, ${brandColors.accent.aqua} 0%, ${brandColors.primary[500]} 80%)`,
-  success: `linear-gradient(135deg, ${brandColors.functional.success[500]} 0%, ${brandColors.functional.success[600]} 85%)`,
-  warning: `linear-gradient(135deg, ${brandColors.functional.warning[500]} 0%, ${brandColors.functional.warning[600]} 85%)`,
-  danger: `linear-gradient(135deg, ${brandColors.functional.danger[500]} 0%, ${brandColors.functional.danger[600]} 85%)`,
-  info: `linear-gradient(135deg, ${brandColors.functional.info[500]} 0%, ${brandColors.functional.info[600]} 85%)`,
-  glassHighlight: `linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.65))`,
+  heroBlue: createGradientToken(surfaces.hero.highlight, brandColors.primary[700], surfaces.hero.base),
+  ctaOrange: createGradientToken(brandColors.secondary[400], brandColors.secondary[600], brandColors.secondary[400]),
+  accentAqua: createGradientToken(brandColors.accent.aqua, brandColors.primary[500], brandColors.accent.aqua),
+  success: createGradientToken(brandColors.functional.success[500], brandColors.functional.success[600], brandColors.functional.success[500]),
+  warning: createGradientToken(brandColors.functional.warning[500], brandColors.functional.warning[600], brandColors.functional.warning[500]),
+  danger: createGradientToken(brandColors.functional.danger[500], brandColors.functional.danger[600], brandColors.functional.danger[500]),
+  info: createGradientToken(brandColors.functional.info[500], brandColors.functional.info[600], brandColors.functional.info[500]),
+  glassHighlight: {
+    gradient: `linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.65))`,
+    flat: 'rgba(255,255,255,0.8)',
+  },
 }
 
-const toneFactory = (gradient, options = {}) => ({
-  gradient,
+const toneFactory = (gradientToken, options = {}) => ({
+  gradient: typeof gradientToken === 'string' ? gradientToken : gradientToken.gradient,
+  flat: typeof gradientToken === 'string' ? gradientToken : gradientToken.flat,
   onSolid: options.onSolid ?? text.inverse,
   surface: options.surface ?? 'rgba(255,255,255,0.35)',
   onSurface: options.onSurface ?? text.strong,
@@ -241,6 +250,7 @@ const getSurfaceBaseColor = (surfaceKey) => {
   if (!token) return null
   if (typeof token === 'string') return token
   if (token.base) return token.base
+  if (token.flat) return token.flat
   if (token.gradient) {
     const match = token.gradient.match(/#[0-9a-fA-F]{6}/)
     return match ? match[0] : null
@@ -283,7 +293,7 @@ export const getRecommendedIconOnSurface = (surfaceKey = 'default') => {
 export const applyBrandTokensToCSSVariables = (target = typeof document !== 'undefined' ? document.documentElement : null) => {
   if (!target) return
   const mappings = {
-    '--surface-default': surfaces.default.gradient,
+    '--surface-default': surfaces.default.base,
     '--surface-muted': surfaces.muted.base,
     '--surface-card': surfaces.card.base,
     '--surface-card-border': surfaces.card.border,
@@ -293,9 +303,9 @@ export const applyBrandTokensToCSSVariables = (target = typeof document !== 'und
     '--text-muted': text.muted,
     '--shadow-brand-glow': shadows.brandGlow,
     '--shadow-brand-glow-soft': shadows.brandGlowSoft,
-    '--gradient-hero-blue': gradients.heroBlue,
-    '--gradient-cta-orange': gradients.ctaOrange,
-    '--gradient-accent-aqua': gradients.accentAqua,
+    '--gradient-hero-blue': gradients.heroBlue.gradient,
+    '--gradient-cta-orange': gradients.ctaOrange.gradient,
+    '--gradient-accent-aqua': gradients.accentAqua.gradient,
   }
 
   Object.entries(mappings).forEach(([cssVar, value]) => {
