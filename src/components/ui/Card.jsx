@@ -1,18 +1,47 @@
 import { motion } from 'framer-motion'
+import { surfaces } from '../../theme/brandTokens'
+
+const surfaceVariants = {
+  surface: surfaces.card,
+  tintPrimary: surfaces.tintPrimary,
+  tintSecondary: surfaces.tintSecondary,
+  glass: surfaces.glass,
+}
 
 const Card = ({
   children,
   className = '',
   hover = true,
-  gradient = false,
+  variant = 'surface',
   onClick,
   ...props
 }) => {
-  const baseClasses = 'rounded-2xl p-6 transition-all duration-300'
-  const hoverClasses = hover ? 'hover:scale-105 hover:shadow-2xl cursor-pointer' : ''
-  const gradientClasses = gradient
-    ? 'bg-gradient-to-br from-white to-primary-50/30'
-    : 'bg-white'
+  const baseClasses = 'rounded-2xl p-6 transition-all duration-300 border shadow-none'
+  const hoverClasses = hover ? 'cursor-pointer' : ''
+  const normalizedClassName = className ?? ''
+  const tone = surfaceVariants[variant] ?? surfaceVariants.surface
+
+  const hasCustomBackground = /(^|\s)(bg-|from-|via-|to-)/.test(normalizedClassName)
+  const hasCustomBorder = /(^|\s)border(-|\[)/.test(normalizedClassName)
+  const hasCustomShadow = normalizedClassName.includes('shadow')
+
+  const surfaceStyles = {}
+
+  if (!hasCustomBackground && tone?.base) {
+    surfaceStyles.background = tone.gradient ?? tone.base
+  }
+
+  if (!hasCustomBorder && tone?.border) {
+    surfaceStyles.borderColor = tone.border
+  }
+
+  if (!hasCustomShadow && tone?.shadow) {
+    surfaceStyles.boxShadow = tone.shadow
+  }
+
+  if (variant === 'glass' && tone?.blur) {
+    surfaceStyles.backdropFilter = `blur(${tone.blur})`
+  }
 
   return (
     <motion.div
@@ -21,14 +50,8 @@ const Card = ({
       transition={{ duration: 0.3 }}
       whileHover={hover ? { y: -5 } : {}}
       onClick={onClick}
-      className={`
-        ${baseClasses}
-        ${hoverClasses}
-        ${gradientClasses}
-        shadow-lg
-        border border-slate-200/50
-        ${className}
-      `}
+      className={`${baseClasses} ${hoverClasses} ${normalizedClassName}`}
+      style={surfaceStyles}
       {...props}
     >
       {children}

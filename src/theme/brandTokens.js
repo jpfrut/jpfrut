@@ -39,6 +39,32 @@ const brandColors = {
     aqua: '#00BBE6',
     brillante: '#0F7CDA',
   },
+  functional: {
+    success: {
+      100: '#dcfce7',
+      500: '#22c55e',
+      600: '#16a34a',
+      700: '#15803d',
+    },
+    warning: {
+      100: '#fef9c3',
+      500: '#facc15',
+      600: '#d97706',
+      700: '#92400e',
+    },
+    danger: {
+      100: '#fee2e2',
+      500: '#ef4444',
+      600: '#dc2626',
+      700: '#991b1b',
+    },
+    info: {
+      100: '#e0f2fe',
+      500: '#0ea5e9',
+      600: '#0284c7',
+      700: '#0369a1',
+    },
+  },
 }
 
 export const surfaces = {
@@ -52,6 +78,17 @@ export const surfaces = {
   card: {
     base: '#ffffff',
     border: 'rgba(15, 124, 218, 0.12)',
+    shadow: '0 20px 35px rgba(15, 124, 218, 0.08)',
+  },
+  tintPrimary: {
+    base: 'rgba(15, 124, 218, 0.08)',
+    border: 'rgba(15, 124, 218, 0.2)',
+    shadow: '0 25px 45px rgba(15, 124, 218, 0.15)',
+  },
+  tintSecondary: {
+    base: 'rgba(255, 63, 0, 0.08)',
+    border: 'rgba(255, 63, 0, 0.2)',
+    shadow: '0 25px 45px rgba(255, 63, 0, 0.15)',
   },
   glass: {
     base: 'rgba(255, 255, 255, 0.78)',
@@ -90,7 +127,64 @@ export const gradients = {
   heroBlue: surfaces.hero.gradient,
   ctaOrange: `linear-gradient(135deg, ${brandColors.secondary[400]} 0%, ${brandColors.secondary[600]} 80%)`,
   accentAqua: `linear-gradient(135deg, ${brandColors.accent.aqua} 0%, ${brandColors.primary[500]} 80%)`,
+  success: `linear-gradient(135deg, ${brandColors.functional.success[500]} 0%, ${brandColors.functional.success[600]} 85%)`,
+  warning: `linear-gradient(135deg, ${brandColors.functional.warning[500]} 0%, ${brandColors.functional.warning[600]} 85%)`,
+  danger: `linear-gradient(135deg, ${brandColors.functional.danger[500]} 0%, ${brandColors.functional.danger[600]} 85%)`,
+  info: `linear-gradient(135deg, ${brandColors.functional.info[500]} 0%, ${brandColors.functional.info[600]} 85%)`,
   glassHighlight: `linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.65))`,
+}
+
+const toneFactory = (gradient, options = {}) => ({
+  gradient,
+  onSolid: options.onSolid ?? text.inverse,
+  surface: options.surface ?? 'rgba(255,255,255,0.35)',
+  onSurface: options.onSurface ?? text.strong,
+  border: options.border ?? 'rgba(15, 124, 218, 0.25)',
+})
+
+export const tones = {
+  primary: toneFactory(gradients.heroBlue, {
+    surface: 'rgba(15, 124, 218, 0.08)',
+    onSurface: brandColors.primary[700],
+    border: 'rgba(15, 124, 218, 0.35)',
+  }),
+  secondary: toneFactory(gradients.ctaOrange, {
+    surface: 'rgba(255, 63, 0, 0.08)',
+    onSurface: brandColors.secondary[700],
+    border: 'rgba(255, 63, 0, 0.35)',
+  }),
+  accent: toneFactory(gradients.accentAqua, {
+    surface: 'rgba(0, 187, 230, 0.12)',
+    onSurface: brandColors.primary[700],
+    border: 'rgba(0, 187, 230, 0.35)',
+  }),
+  success: toneFactory(gradients.success, {
+    surface: brandColors.functional.success[100],
+    onSurface: brandColors.functional.success[700],
+    border: 'rgba(34, 197, 94, 0.4)',
+  }),
+  warning: toneFactory(gradients.warning, {
+    surface: brandColors.functional.warning[100],
+    onSurface: brandColors.functional.warning[700],
+    border: 'rgba(234, 179, 8, 0.45)',
+    onSolid: '#422006',
+  }),
+  danger: toneFactory(gradients.danger, {
+    surface: brandColors.functional.danger[100],
+    onSurface: brandColors.functional.danger[700],
+    border: 'rgba(239, 68, 68, 0.45)',
+  }),
+  info: toneFactory(gradients.info, {
+    surface: brandColors.functional.info[100],
+    onSurface: brandColors.functional.info[700],
+    border: 'rgba(14, 165, 233, 0.35)',
+  }),
+  neutral: toneFactory(`linear-gradient(135deg, ${brandColors.neutral[200]} 0%, ${brandColors.neutral[300]} 100%)`, {
+    surface: brandColors.neutral[100],
+    onSurface: text.muted,
+    border: 'rgba(148, 163, 184, 0.45)',
+    onSolid: text.strong,
+  }),
 }
 
 const toRgb = (color) => {
@@ -218,6 +312,7 @@ export default {
   icons,
   shadows,
   gradients,
+  tones,
   helpers: {
     getContrastRatio,
     getRecommendedTextOnSurface,

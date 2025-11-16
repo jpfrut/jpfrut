@@ -1,4 +1,7 @@
 import { motion } from 'framer-motion'
+import { tones } from '../../theme/brandTokens'
+
+const allowedColors = ['primary', 'secondary', 'accent', 'success', 'warning', 'danger']
 
 const ProgressBar = ({
   progress = 0,
@@ -17,13 +20,8 @@ const ProgressBar = ({
     lg: 'h-4',
   }
 
-  const colors = {
-    primary: 'from-primary-500 to-primary-600',
-    secondary: 'from-secondary-500 to-secondary-600',
-    success: 'from-green-500 to-emerald-600',
-    warning: 'from-yellow-500 to-orange-600',
-    danger: 'from-red-500 to-rose-600',
-  }
+  const toneKey = allowedColors.includes(color) ? color : 'primary'
+  const toneToken = tones[toneKey] ?? tones.primary
 
   return (
     <div className={`w-full ${className}`}>
@@ -32,7 +30,7 @@ const ProgressBar = ({
           <span className="text-sm font-medium text-slate-700">
             Progreso
           </span>
-          <span className="text-sm font-bold text-primary-600">
+          <span className="text-sm font-bold" style={{ color: toneToken.onSurface }}>
             {Math.round(percentage)}%
           </span>
         </div>
@@ -42,7 +40,8 @@ const ProgressBar = ({
           initial={{ width: 0 }}
           animate={{ width: `${percentage}%` }}
           transition={animated ? { duration: 0.5, ease: 'easeOut' } : { duration: 0 }}
-          className={`h-full bg-gradient-to-r ${colors[color]} rounded-full relative`}
+          className="h-full rounded-full relative"
+          style={{ background: toneToken.gradient }}
         >
           {animated && percentage > 0 && (
             <motion.div

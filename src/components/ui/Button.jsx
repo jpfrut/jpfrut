@@ -1,25 +1,65 @@
 import { motion } from 'framer-motion'
+import { tones, shadows } from '../../theme/brandTokens'
+
+const toneKeys = Object.keys(tones)
 
 const Button = ({
   children,
   onClick,
-  variant = 'primary',
+  variant = 'solid',
+  tone = 'primary',
   size = 'md',
   disabled = false,
   className = '',
   icon,
+  iconPosition = 'left',
   ...props
 }) => {
-  const baseClasses = 'font-semibold rounded-lg transition-all duration-200 flex items-center justify-center gap-2'
+  const baseClasses =
+    'font-semibold rounded-xl transition-all duration-200 flex items-center justify-center gap-2 border-2 border-transparent focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-primary-200'
 
-  const variants = {
-    primary: 'bg-gradient-to-r from-primary-500 to-primary-600 text-white hover:from-primary-600 hover:to-primary-700 shadow-lg hover:shadow-xl',
-    secondary: 'bg-gradient-to-r from-secondary-500 to-secondary-600 text-white hover:from-secondary-600 hover:to-secondary-700 shadow-lg hover:shadow-xl',
-    outline: 'border-2 border-primary-500 text-primary-600 hover:bg-primary-50',
-    ghost: 'text-primary-600 hover:bg-primary-50',
-    success: 'bg-gradient-to-r from-green-500 to-emerald-600 text-white hover:from-green-600 hover:to-emerald-700 shadow-lg',
-    danger: 'bg-gradient-to-r from-red-500 to-rose-600 text-white hover:from-red-600 hover:to-rose-700 shadow-lg',
+  let resolvedVariant = variant
+  let resolvedTone = tone
+
+  if (toneKeys.includes(variant) && tone === 'primary') {
+    resolvedTone = variant
+    resolvedVariant = 'solid'
   }
+
+  if (variant === 'ghost') {
+    resolvedVariant = 'surface'
+  }
+
+  const toneToken = tones[resolvedTone] ?? tones.primary
+
+  const variantStyles = {
+    solid: {
+      background: toneToken.gradient,
+      color: toneToken.onSolid,
+      borderColor: 'transparent',
+      boxShadow: shadows.brandGlowSoft,
+    },
+    surface: {
+      background: toneToken.surface,
+      color: toneToken.onSurface,
+      borderColor: toneToken.border,
+      boxShadow: 'none',
+    },
+    outline: {
+      background: 'transparent',
+      color: toneToken.onSurface,
+      borderColor: toneToken.border,
+      boxShadow: 'none',
+    },
+    iconOnly: {
+      background: toneToken.surface,
+      color: toneToken.onSurface,
+      borderColor: toneToken.border,
+      boxShadow: 'none',
+    },
+  }
+
+  const variantStyle = variantStyles[resolvedVariant] ?? variantStyles.solid
 
   const sizes = {
     sm: 'px-3 py-1.5 text-sm',
@@ -27,7 +67,28 @@ const Button = ({
     lg: 'px-7 py-3.5 text-lg',
   }
 
+  const iconOnlySizes = {
+    sm: 'w-9 h-9 text-sm',
+    md: 'w-11 h-11 text-base',
+    lg: 'w-14 h-14 text-lg',
+  }
+
+  const spacingClasses =
+    resolvedVariant === 'iconOnly'
+      ? iconOnlySizes[size] ?? iconOnlySizes.md
+      : sizes[size] ?? sizes.md
+
   const disabledClasses = 'opacity-50 cursor-not-allowed'
+
+  const renderIcon = (position) => {
+    if (!icon || resolvedVariant === 'iconOnly') return null
+    if (iconPosition !== position) return null
+    return (
+      <span className="flex items-center" aria-hidden="true">
+        {icon}
+      </span>
+    )
+  }
 
   return (
     <motion.button
@@ -37,15 +98,34 @@ const Button = ({
       disabled={disabled}
       className={`
         ${baseClasses}
-        ${variants[variant]}
-        ${sizes[size]}
+        ${resolvedVariant === 'iconOnly' ? 'rounded-full' : ''}
+        ${spacingClasses}
         ${disabled ? disabledClasses : ''}
         ${className}
       `}
+      style={{
+        background: variantStyle.background,
+        color: variantStyle.color,
+        borderColor: variantStyle.borderColor,
+        boxShadow: variantStyle.boxShadow,
+      }}
       {...props}
     >
-      {icon && <span>{icon}</span>}
-      {children}
+      {resolvedVariant === 'iconOnly' ? (
+        icon ? (
+          <span className="flex items-center justify-center" aria-hidden={!children}>
+            {icon}
+          </span>
+        ) : (
+          children
+        )
+      ) : (
+        <>
+          {renderIcon('left')}
+          <span className="whitespace-nowrap">{children}</span>
+          {renderIcon('right')}
+        </>
+      )}
     </motion.button>
   )
 }
