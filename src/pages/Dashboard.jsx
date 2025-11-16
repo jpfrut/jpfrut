@@ -19,6 +19,7 @@ import useStore from '../store/useStore'
 import ModuleCard from '../components/ModuleCard'
 import StatsCard from '../components/StatsCard'
 import AchievementCard from '../components/AchievementCard'
+import DailyChecklist from '../components/DailyChecklist'
 import Button from '../components/ui/Button'
 import Card from '../components/ui/Card'
 
@@ -273,12 +274,57 @@ const Dashboard = () => {
         />
       </div>
 
+      {/* Daily Checklist Section */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.45 }}
+        className="grid grid-cols-1 lg:grid-cols-2 gap-6"
+      >
+        <DailyChecklist />
+        <Card className="p-6">
+          <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center">
+            <Target className="w-5 h-5 mr-2 text-secondary-500" />
+            Próximos Pasos Recomendados
+          </h3>
+          <div className="space-y-3">
+            <Link
+              to="/missions"
+              className="block p-3 bg-secondary-50 rounded-lg hover:bg-secondary-100 transition-colors"
+            >
+              <p className="font-medium text-secondary-700">1. Completa una Misión Práctica</p>
+              <p className="text-sm text-secondary-600">
+                Aprende haciendo - paso a paso con explicaciones claras
+              </p>
+            </Link>
+            <Link
+              to="/quick-guides"
+              className="block p-3 bg-primary-50 rounded-lg hover:bg-primary-100 transition-colors"
+            >
+              <p className="font-medium text-primary-700">2. Revisa la Guía del Día</p>
+              <p className="text-sm text-primary-600">
+                Descubre las tareas importantes que debes hacer hoy
+              </p>
+            </Link>
+            <Link
+              to="/emergency-help"
+              className="block p-3 bg-red-50 rounded-lg hover:bg-red-100 transition-colors"
+            >
+              <p className="font-medium text-red-700">3. ¿Cometiste un error?</p>
+              <p className="text-sm text-red-600">
+                No te preocupes, aquí te decimos cómo arreglarlo
+              </p>
+            </Link>
+          </div>
+        </Card>
+      </motion.div>
+
       {/* Achievements Section */}
       {unlockedAchievements.length > 0 && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.5 }}
         >
           <div className="flex items-center gap-3 mb-4">
             <Trophy className="w-6 h-6 text-yellow-600" />
