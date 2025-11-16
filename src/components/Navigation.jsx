@@ -28,6 +28,7 @@ const Navigation = () => {
     { path: '/', icon: Home, label: 'Inicio' },
     { path: '/missions', icon: Target, label: 'Misiones' },
     { path: '/quick-guides', icon: Clock, label: 'Guía Diaria' },
+    { path: '/emergency-help', icon: Award, label: 'Ayuda' },
   ]
 
   return (
