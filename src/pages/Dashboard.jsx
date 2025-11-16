@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import { Link } from 'react-router-dom'
 import {
   BookOpen,
   CheckCircle,
@@ -7,7 +8,11 @@ import {
   Award,
   Zap,
   Sparkles,
-  Trophy
+  Trophy,
+  Clock,
+  Heart,
+  HelpCircle,
+  ArrowRight
 } from 'lucide-react'
 import { getModulesArray, getStats } from '../data/modules'
 import useStore from '../store/useStore'
@@ -15,6 +20,7 @@ import ModuleCard from '../components/ModuleCard'
 import StatsCard from '../components/StatsCard'
 import AchievementCard from '../components/AchievementCard'
 import Button from '../components/ui/Button'
+import Card from '../components/ui/Card'
 
 const Dashboard = () => {
   const { user, completedExercises, moduleProgress } = useStore()
@@ -101,21 +107,25 @@ const Dashboard = () => {
             Bienvenido a tu plataforma de aprendizaje de Odoo 19
           </p>
           <div className="flex flex-wrap gap-4">
-            <Button
-              variant="secondary"
-              size="lg"
-              icon={<Sparkles className="w-5 h-5" />}
-            >
-              Continuar Aprendiendo
-            </Button>
-            <Button
-              variant="outline"
-              size="lg"
-              className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
-              icon={<Trophy className="w-5 h-5" />}
-            >
-              Ver Logros
-            </Button>
+            <Link to="/missions">
+              <Button
+                variant="secondary"
+                size="lg"
+                icon={<Target className="w-5 h-5" />}
+              >
+                Empezar Misión
+              </Button>
+            </Link>
+            <Link to="/quick-guides">
+              <Button
+                variant="outline"
+                size="lg"
+                className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
+                icon={<Clock className="w-5 h-5" />}
+              >
+                Guía del Día
+              </Button>
+            </Link>
           </div>
         </div>
 
@@ -152,6 +162,82 @@ const Dashboard = () => {
         >
           <Target className="w-20 h-20 text-white/20" />
         </motion.div>
+      </motion.div>
+
+      {/* Quick Access for Beginners */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.3 }}
+        className="grid grid-cols-1 md:grid-cols-2 gap-6"
+      >
+        {/* Missions Card */}
+        <Link to="/missions">
+          <Card className="p-6 hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-secondary-500 group">
+            <div className="flex items-start justify-between mb-4">
+              <div className="p-3 bg-secondary-100 rounded-xl">
+                <Target className="w-8 h-8 text-secondary-500" />
+              </div>
+              <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-secondary-500 transition-colors" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">
+              Misiones Prácticas
+            </h3>
+            <p className="text-gray-600 mb-4">
+              Aprende haciendo tareas reales. Cada misión te guía paso a paso con explicaciones claras de <strong>por qué</strong> cada acción es importante para tu negocio.
+            </p>
+            <div className="flex items-center text-sm text-secondary-600">
+              <Heart className="w-4 h-4 mr-2" />
+              Perfecto para principiantes sin experiencia
+            </div>
+          </Card>
+        </Link>
+
+        {/* Daily Guide Card */}
+        <Link to="/quick-guides">
+          <Card className="p-6 hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-primary-500 group">
+            <div className="flex items-start justify-between mb-4">
+              <div className="p-3 bg-primary-100 rounded-xl">
+                <Clock className="w-8 h-8 text-primary-600" />
+              </div>
+              <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-primary-600 transition-colors" />
+            </div>
+            <h3 className="text-xl font-bold text-gray-800 mb-2">
+              Guía de Uso Diario
+            </h3>
+            <p className="text-gray-600 mb-4">
+              Rutinas simples que debes hacer cada día, semana y mes. Incluye preguntas frecuentes, glosario y señales de alerta.
+            </p>
+            <div className="flex items-center text-sm text-primary-600">
+              <HelpCircle className="w-4 h-4 mr-2" />
+              Respuestas rápidas a dudas comunes
+            </div>
+          </Card>
+        </Link>
+      </motion.div>
+
+      {/* Encouragement for New Users */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.4 }}
+      >
+        <Card className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
+          <div className="flex items-start">
+            <Heart className="w-8 h-8 text-green-600 mr-4 flex-shrink-0" />
+            <div>
+              <h3 className="text-lg font-semibold text-green-800 mb-2">
+                ¿Nuevo en Odoo? ¡No te preocupes!
+              </h3>
+              <p className="text-green-700 mb-3">
+                Esta plataforma está diseñada especialmente para personas como tú. No necesitas saber de computadoras ni tener experiencia previa. Solo sigue las misiones paso a paso y en poco tiempo dominarás tu negocio.
+              </p>
+              <p className="text-sm text-green-600 font-medium">
+                Comienza con la misión "Registro de Mi Primer Cliente" - solo toma 10 minutos.
+              </p>
+            </div>
+          </div>
+        </Card>
       </motion.div>
 
       {/* Stats Grid */}

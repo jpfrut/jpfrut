@@ -8,7 +8,9 @@ import {
   Flame,
   Star,
   Menu,
-  X
+  X,
+  Target,
+  Clock
 } from 'lucide-react'
 import { useState } from 'react'
 import useStore from '../store/useStore'
@@ -23,8 +25,9 @@ const Navigation = () => {
   const xpPercentage = (user.xp / xpForNextLevel) * 100
 
   const navItems = [
-    { path: '/', icon: Home, label: 'Dashboard' },
-    { path: '/modules', icon: BookOpen, label: 'Módulos' },
+    { path: '/', icon: Home, label: 'Inicio' },
+    { path: '/missions', icon: Target, label: 'Misiones' },
+    { path: '/quick-guides', icon: Clock, label: 'Guía Diaria' },
   ]
 
   return (
