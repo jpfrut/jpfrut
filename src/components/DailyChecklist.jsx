@@ -1,115 +1,99 @@
 import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import {
-  CheckSquare, Square, Calendar, Star, Trophy,
-  RefreshCw, Clock
+  CheckSquare, Square, Star, Trophy,
+  Clock
 } from 'lucide-react'
-import { Card, Badge, Button } from '../components/ui'
+import { Card, Badge } from '../components/ui'
 import useStore from '../store/useStore'
 
-function DailyChecklist() {
-  const { addXP, user } = useStore()
-  const [checklist, setChecklist] = useState([])
-  const [lastResetDate, setLastResetDate] = useState('')
-  const [streak, setStreak] = useState(0)
+const LAST_COMPLETED_KEY = 'checklistLastCompletedDate'
 
-  // Tareas diarias recomendadas
-  const dailyTasks = [
-    {
-      id: 'check-pending',
-      title: 'Revisar facturas pendientes',
-      description: 'Ver si hay pagos por cobrar',
-      xp: 10,
-      time: '2 min',
-      category: 'money'
-    },
-    {
-      id: 'check-balance',
-      title: 'Ver saldo bancario',
-      description: 'Saber cuánto dinero tienes disponible',
-      xp: 10,
-      time: '1 min',
-      category: 'money'
-    },
-    {
-      id: 'check-messages',
-      title: 'Revisar notificaciones',
-      description: 'Ver recordatorios y mensajes importantes',
-      xp: 10,
-      time: '2 min',
-      category: 'organization'
-    },
-    {
-      id: 'log-expense',
-      title: 'Registrar gastos del día',
-      description: 'Guardar facturas y recibos de hoy',
-      xp: 15,
-      time: '5 min',
-      category: 'accounting'
-    },
-    {
-      id: 'update-tasks',
-      title: 'Actualizar tareas pendientes',
-      description: 'Marcar lo que completaste hoy',
-      xp: 10,
-      time: '3 min',
-      category: 'organization'
-    }
-  ]
+const DAILY_TASKS = [
+  {
+    id: 'check-pending',
+    title: 'Revisar facturas pendientes',
+    description: 'Ver si hay pagos por cobrar',
+    xp: 10,
+    time: '2 min',
+    category: 'money'
+  },
+  {
+    id: 'check-balance',
+    title: 'Ver saldo bancario',
+    description: 'Saber cuánto dinero tienes disponible',
+    xp: 10,
+    time: '1 min',
+    category: 'money'
+  },
+  {
+    id: 'check-messages',
+    title: 'Revisar notificaciones',
+    description: 'Ver recordatorios y mensajes importantes',
+    xp: 10,
+    time: '2 min',
+    category: 'organization'
+  },
+  {
+    id: 'log-expense',
+    title: 'Registrar gastos del día',
+    description: 'Guardar facturas y recibos de hoy',
+    xp: 15,
+    time: '5 min',
+    category: 'accounting'
+  },
+  {
+    id: 'update-tasks',
+    title: 'Actualizar tareas pendientes',
+    description: 'Marcar lo que completaste hoy',
+    xp: 10,
+    time: '3 min',
+    category: 'organization'
+  }
+]
+
+function DailyChecklist() {
+  const { addXP, user, incrementStreak, resetStreak } = useStore()
+  const [checklist, setChecklist] = useState([])
 
   // Cargar estado guardado
   useEffect(() => {
     const savedChecklist = localStorage.getItem('dailyChecklist')
     const savedDate = localStorage.getItem('checklistDate')
-    const savedStreak = localStorage.getItem('checklistStreak')
+    const lastCompletedDate = localStorage.getItem(LAST_COMPLETED_KEY)
 
     const today = new Date().toDateString()
 
     if (savedDate !== today) {
       // Nuevo día, resetear checklist
-      const newChecklist = dailyTasks.map(task => ({
+      const newChecklist = DAILY_TASKS.map(task => ({
         ...task,
         completed: false
       }))
       setChecklist(newChecklist)
-      setLastResetDate(today)
       localStorage.setItem('dailyChecklist', JSON.stringify(newChecklist))
       localStorage.setItem('checklistDate', today)
 
-      // Verificar si ayer completó todo para mantener racha
-      if (savedChecklist && savedDate) {
-        const yesterday = new Date()
-        yesterday.setDate(yesterday.getDate() - 1)
-        const yesterdayString = yesterday.toDateString()
+      const yesterday = new Date()
+      yesterday.setDate(yesterday.getDate() - 1)
+      const yesterdayString = yesterday.toDateString()
 
-        if (savedDate === yesterdayString) {
-          const oldChecklist = JSON.parse(savedChecklist)
-          const allCompleted = oldChecklist.every(task => task.completed)
-          if (allCompleted) {
-            const newStreak = (parseInt(savedStreak) || 0) + 1
-            setStreak(newStreak)
-            localStorage.setItem('checklistStreak', newStreak.toString())
-          } else {
-            setStreak(0)
-            localStorage.setItem('checklistStreak', '0')
-          }
-        }
-      }
-    } else {
-      // Mismo día, cargar estado guardado
-      if (savedChecklist) {
-        setChecklist(JSON.parse(savedChecklist))
+      if (lastCompletedDate === yesterdayString) {
+        incrementStreak()
       } else {
-        const newChecklist = dailyTasks.map(task => ({
-          ...task,
-          completed: false
-        }))
-        setChecklist(newChecklist)
+        resetStreak()
       }
-      setLastResetDate(today)
-      setStreak(parseInt(savedStreak) || 0)
+    } else if (savedChecklist) {
+      // Mismo día, cargar estado guardado
+      setChecklist(JSON.parse(savedChecklist))
+    } else {
+      const newChecklist = DAILY_TASKS.map(task => ({
+        ...task,
+        completed: false
+      }))
+      setChecklist(newChecklist)
     }
-  }, [])
+  }, [incrementStreak, resetStreak])
 
   const toggleTask = (taskId) => {
     const updatedChecklist = checklist.map(task => {
@@ -126,6 +110,7 @@ function DailyChecklist() {
     // Verificar si completó todo
     const allCompleted = updatedChecklist.every(task => task.completed)
     if (allCompleted) {
+      localStorage.setItem(LAST_COMPLETED_KEY, new Date().toDateString())
       addXP(50) // Bonus por completar todo
     }
   }
@@ -155,10 +140,10 @@ function DailyChecklist() {
           Mi Checklist del Día
         </h3>
         <div className="flex items-center space-x-2">
-          {streak > 0 && (
+          {user.streak > 0 && (
             <Badge variant="warning" size="sm">
               <Trophy className="w-3 h-3 mr-1" />
-              {streak} días seguidos
+              {user.streak} días seguidos
             </Badge>
           )}
           <Badge variant="primary" size="sm">
