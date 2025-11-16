@@ -8,6 +8,7 @@ import ExercisePage from './pages/ExercisePage'
 import MissionsPage from './pages/MissionsPage'
 import QuickGuidesPage from './pages/QuickGuidesPage'
 import EmergencyHelpPage from './pages/EmergencyHelpPage'
+import SuccessStoriesPage from './pages/SuccessStoriesPage'
 import AccessibilityPanel from './components/AccessibilityPanel'
 import OnboardingWizard from './components/OnboardingWizard'
 import useStore from './store/useStore'
@@ -49,6 +50,7 @@ function App() {
             <Route path="/missions/:missionId" element={<MissionsPage />} />
             <Route path="/quick-guides" element={<QuickGuidesPage />} />
             <Route path="/emergency-help" element={<EmergencyHelpPage />} />
+            <Route path="/success-stories" element={<SuccessStoriesPage />} />
             <Route path="/module/:moduleId" element={<ModulePage />} />
             <Route path="/module/:moduleId/exercise/:exerciseId" element={<ExercisePage />} />
           </Routes>
