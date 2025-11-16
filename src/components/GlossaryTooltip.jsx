@@ -3,9 +3,10 @@ import { motion, AnimatePresence } from 'framer-motion'
 import {
   BookOpen,
   Lightbulb,
-  AlertTriangle,
+  AlertCircle,
   Link2,
-  ArrowRight,
+  ChevronDown,
+  ChevronUp,
   X
 } from 'lucide-react'
 import { getGlossaryTerm } from '../data/glossaryData'
@@ -15,7 +16,6 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
   const [position, setPosition] = useState({ top: 0, left: 0 })
   const [showFullView, setShowFullView] = useState(false)
   const triggerRef = useRef(null)
-  const tooltipRef = useRef(null)
   const timeoutRef = useRef(null)
 
   const term = getGlossaryTerm(termKey)
@@ -29,17 +29,15 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
       let top = rect.bottom + 8
       let left = rect.left
 
-      // Adjust if tooltip would go off screen
-      if (left + 400 > viewportWidth) {
-        left = viewportWidth - 420
+      if (left + 420 > viewportWidth) {
+        left = viewportWidth - 440
       }
       if (left < 10) {
         left = 10
       }
 
-      // If tooltip would go below viewport, show above
-      if (top + 300 > viewportHeight) {
-        top = rect.top - 310
+      if (top + 350 > viewportHeight) {
+        top = rect.top - 360
       }
 
       setPosition({ top, left })
@@ -84,27 +82,26 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
         onMouseLeave={handleMouseLeave}
         onClick={() => setShowFullView(!showFullView)}
         className={`
-          relative cursor-help
+          relative cursor-help inline-flex items-center gap-1
           ${inline
-            ? 'border-b-2 border-dotted border-primary-400 text-primary-700 hover:text-primary-800 hover:border-primary-600 transition-colors'
+            ? 'border-b border-dashed border-primary-400 text-primary-600 hover:text-primary-700 hover:border-primary-500 transition-colors duration-200'
             : 'block'
           }
         `}
       >
         {children}
         {inline && (
-          <BookOpen className="inline-block w-3 h-3 ml-1 opacity-60" />
+          <BookOpen className="inline-block w-3.5 h-3.5 opacity-70" />
         )}
       </TriggerWrapper>
 
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            ref={tooltipRef}
-            initial={{ opacity: 0, y: -10, scale: 0.95 }}
+            initial={{ opacity: 0, y: 8, scale: 0.98 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -10, scale: 0.95 }}
-            transition={{ duration: 0.2 }}
+            exit={{ opacity: 0, y: 8, scale: 0.98 }}
+            transition={{ duration: 0.15, ease: 'easeOut' }}
             onMouseEnter={handleTooltipMouseEnter}
             onMouseLeave={handleTooltipMouseLeave}
             style={{
@@ -114,29 +111,32 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
               zIndex: 50
             }}
             className={`
-              bg-white rounded-xl shadow-2xl border border-gray-200
-              ${showFullView ? 'w-[450px]' : 'w-[380px]'}
-              max-h-[80vh] overflow-hidden
+              bg-white rounded-lg shadow-xl border border-neutral-200
+              ${showFullView ? 'w-[440px]' : 'w-[400px]'}
+              max-h-[75vh] overflow-hidden
             `}
           >
             {/* Header */}
-            <div className="bg-gradient-to-r from-primary-50 to-secondary-50 p-4 border-b">
-              <div className="flex items-start justify-between">
-                <div className="flex items-center gap-2">
-                  <span className="text-2xl">{term.icon}</span>
+            <div className="bg-primary-600 px-5 py-4">
+              <div className="flex items-center justify-between">
+                <div className="flex items-center gap-3">
+                  <span className="text-2xl bg-white/10 p-2 rounded-md">{term.icon}</span>
                   <div>
-                    <h3 className="font-bold text-gray-900">{term.term}</h3>
-                    <span className="text-xs bg-primary-100 text-primary-700 px-2 py-0.5 rounded">
+                    <h3 className="font-semibold text-white text-lg leading-tight">
+                      {term.term}
+                    </h3>
+                    <span className="text-xs text-primary-100 font-medium">
                       {term.category}
                     </span>
                   </div>
                 </div>
                 <button
-                  onClick={() => {
+                  onClick={(e) => {
+                    e.stopPropagation()
                     setIsOpen(false)
                     setShowFullView(false)
                   }}
-                  className="text-gray-400 hover:text-gray-600"
+                  className="text-white/70 hover:text-white transition-colors"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -144,10 +144,12 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
             </div>
 
             {/* Content */}
-            <div className="overflow-y-auto max-h-[60vh]">
+            <div className="overflow-y-auto max-h-[55vh]">
               {/* Short Definition */}
-              <div className="p-4">
-                <p className="text-gray-700 font-medium">{term.shortDef}</p>
+              <div className="px-5 py-4 border-b border-neutral-100">
+                <p className="text-neutral-800 font-medium leading-relaxed">
+                  {term.shortDef}
+                </p>
               </div>
 
               {/* Full Definition (expandable) */}
@@ -155,26 +157,26 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
-                  className="px-4 pb-4"
+                  className="px-5 py-3 bg-neutral-50 border-b border-neutral-100"
                 >
-                  <div className="bg-gray-50 p-3 rounded-lg">
-                    <p className="text-sm text-gray-600 leading-relaxed">
-                      {term.fullDef}
-                    </p>
-                  </div>
+                  <p className="text-sm text-neutral-700 leading-relaxed">
+                    {term.fullDef}
+                  </p>
                 </motion.div>
               )}
 
               {/* Example */}
               {term.example && (
-                <div className="px-4 pb-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Lightbulb className="w-4 h-4 text-yellow-500" />
-                    <span className="text-sm font-semibold text-gray-700">
+                <div className="px-5 py-4 border-b border-neutral-100">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-6 h-6 bg-secondary-500 rounded flex items-center justify-center">
+                      <Lightbulb className="w-3.5 h-3.5 text-white" />
+                    </div>
+                    <span className="text-sm font-semibold text-neutral-800">
                       {term.example.title}
                     </span>
                   </div>
-                  <div className="bg-slate-900 text-green-400 p-3 rounded-lg text-xs font-mono whitespace-pre-line overflow-x-auto">
+                  <div className="bg-neutral-800 text-accent-aqua p-4 rounded-md text-xs font-mono whitespace-pre-line overflow-x-auto leading-relaxed">
                     {term.example.content.trim()}
                   </div>
                 </div>
@@ -182,17 +184,19 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
 
               {/* Best Practices */}
               {showFullView && term.bestPractices && term.bestPractices.length > 0 && (
-                <div className="px-4 pb-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <span className="text-green-500 font-bold">✓</span>
-                    <span className="text-sm font-semibold text-gray-700">
+                <div className="px-5 py-4 border-b border-neutral-100">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-5 h-5 bg-success rounded flex items-center justify-center">
+                      <span className="text-white text-xs font-bold">✓</span>
+                    </div>
+                    <span className="text-sm font-semibold text-neutral-800">
                       Mejores Prácticas
                     </span>
                   </div>
-                  <ul className="space-y-1">
+                  <ul className="space-y-2">
                     {term.bestPractices.slice(0, 3).map((practice, idx) => (
-                      <li key={idx} className="text-xs text-gray-600 flex items-start gap-2">
-                        <span className="text-green-500 mt-0.5">•</span>
+                      <li key={idx} className="text-xs text-neutral-700 flex items-start gap-2 leading-relaxed">
+                        <span className="text-success mt-0.5 font-bold">•</span>
                         {practice}
                       </li>
                     ))}
@@ -202,16 +206,18 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
 
               {/* Common Mistakes */}
               {showFullView && term.commonMistakes && term.commonMistakes.length > 0 && (
-                <div className="px-4 pb-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <AlertTriangle className="w-4 h-4 text-orange-500" />
-                    <span className="text-sm font-semibold text-gray-700">
-                      Errores Comunes
+                <div className="px-5 py-4 border-b border-neutral-100">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-5 h-5 bg-warning rounded flex items-center justify-center">
+                      <AlertCircle className="w-3.5 h-3.5 text-white" />
+                    </div>
+                    <span className="text-sm font-semibold text-neutral-800">
+                      Evita estos errores
                     </span>
                   </div>
-                  <ul className="space-y-1">
+                  <ul className="space-y-2">
                     {term.commonMistakes.slice(0, 2).map((mistake, idx) => (
-                      <li key={idx} className="text-xs text-orange-700 bg-orange-50 p-2 rounded">
+                      <li key={idx} className="text-xs text-neutral-700 bg-warning/10 p-2.5 rounded leading-relaxed">
                         {mistake}
                       </li>
                     ))}
@@ -221,20 +227,22 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
 
               {/* Relationships */}
               {term.relationships && term.relationships.length > 0 && (
-                <div className="px-4 pb-4">
-                  <div className="flex items-center gap-2 mb-2">
-                    <Link2 className="w-4 h-4 text-blue-500" />
-                    <span className="text-sm font-semibold text-gray-700">
-                      Relaciones
+                <div className="px-5 py-4 border-b border-neutral-100">
+                  <div className="flex items-center gap-2 mb-3">
+                    <div className="w-5 h-5 bg-accent-aqua rounded flex items-center justify-center">
+                      <Link2 className="w-3.5 h-3.5 text-white" />
+                    </div>
+                    <span className="text-sm font-semibold text-neutral-800">
+                      Conceptos Relacionados
                     </span>
                   </div>
                   <div className="space-y-2">
                     {term.relationships.slice(0, showFullView ? 3 : 2).map((rel, idx) => (
-                      <div key={idx} className="text-xs bg-blue-50 p-2 rounded">
-                        <div className="font-semibold text-blue-700 mb-1">
+                      <div key={idx} className="text-xs bg-accent-aqua/10 p-3 rounded">
+                        <div className="font-semibold text-primary-600 mb-1">
                           → {getGlossaryTerm(rel.relatedTerm)?.term || rel.relatedTerm}
                         </div>
-                        <div className="text-blue-600">
+                        <div className="text-neutral-600 leading-relaxed">
                           {rel.explanation}
                         </div>
                       </div>
@@ -245,15 +253,15 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
 
               {/* Related Modules */}
               {term.relatedModules && term.relatedModules.length > 0 && (
-                <div className="px-4 pb-4">
-                  <div className="text-xs text-gray-500">
-                    Módulos relacionados:{' '}
+                <div className="px-5 py-3 bg-neutral-50">
+                  <div className="flex items-center gap-2 flex-wrap">
+                    <span className="text-xs text-neutral-500 font-medium">Módulos:</span>
                     {term.relatedModules.map((mod, idx) => (
-                      <span key={idx}>
-                        <span className="bg-gray-100 px-1.5 py-0.5 rounded">
-                          {mod}
-                        </span>
-                        {idx < term.relatedModules.length - 1 && ' '}
+                      <span
+                        key={idx}
+                        className="text-xs bg-neutral-200 text-neutral-700 px-2 py-1 rounded font-medium"
+                      >
+                        {mod}
                       </span>
                     ))}
                   </div>
@@ -262,13 +270,25 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
             </div>
 
             {/* Footer */}
-            <div className="bg-gray-50 p-3 border-t">
+            <div className="bg-neutral-50 px-5 py-3 border-t border-neutral-200">
               <button
-                onClick={() => setShowFullView(!showFullView)}
-                className="text-xs text-primary-600 hover:text-primary-800 flex items-center gap-1"
+                onClick={(e) => {
+                  e.stopPropagation()
+                  setShowFullView(!showFullView)
+                }}
+                className="text-xs text-primary-600 hover:text-primary-700 font-medium flex items-center gap-1 transition-colors"
               >
-                <ArrowRight className="w-3 h-3" />
-                {showFullView ? 'Ver menos' : 'Ver más detalles'}
+                {showFullView ? (
+                  <>
+                    <ChevronUp className="w-3.5 h-3.5" />
+                    Mostrar menos
+                  </>
+                ) : (
+                  <>
+                    <ChevronDown className="w-3.5 h-3.5" />
+                    Ver información completa
+                  </>
+                )}
               </button>
             </div>
           </motion.div>

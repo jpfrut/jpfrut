@@ -207,26 +207,26 @@ const Dashboard = () => {
         transition={{ delay: 0.28 }}
       >
         <Link to="/glossary">
-          <Card className="p-6 bg-gradient-to-r from-blue-50 via-indigo-50 to-purple-50 border-2 border-indigo-200 hover:border-indigo-400 transition-all hover:shadow-lg group cursor-pointer">
+          <Card className="p-6 bg-primary-50 border-2 border-primary-100 hover:border-primary-300 transition-all hover:shadow-lg group cursor-pointer">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-gradient-to-br from-blue-500 to-indigo-600 rounded-xl text-white">
+                <div className="p-3 bg-primary-600 rounded-xl text-white">
                   <Library className="w-8 h-8" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-indigo-800 mb-1">
+                  <h3 className="text-xl font-bold text-primary-800 mb-1">
                     Glosario Interactivo de Odoo
                   </h3>
-                  <p className="text-indigo-700">
+                  <p className="text-primary-700">
                     Explora términos clave con ejemplos, mejores prácticas y relaciones entre conceptos.
                   </p>
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-xs bg-indigo-100 text-indigo-700 px-2 py-1 rounded-full font-medium">
+                <span className="text-xs bg-secondary-500 text-white px-2 py-1 rounded-full font-medium">
                   Nuevo
                 </span>
-                <ArrowRight className="w-6 h-6 text-indigo-500 group-hover:translate-x-2 transition-transform" />
+                <ArrowRight className="w-6 h-6 text-primary-500 group-hover:translate-x-2 transition-transform" />
               </div>
             </div>
           </Card>
