@@ -24,8 +24,8 @@ const Navigation = () => {
   const { user } = useStore()
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
-  const xpForNextLevel = user.level * 100
-  const xpPercentage = (user.xp / xpForNextLevel) * 100
+  const xpForNextLevel = Math.max(user.level, 1) * 100
+  const xpPercentage = Math.min(100, (user.xp / xpForNextLevel) * 100)
 
   const navItems = [
     { path: '/', icon: Home, label: 'Inicio' },
