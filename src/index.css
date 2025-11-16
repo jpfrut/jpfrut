@@ -16,6 +16,13 @@
   --gradient-hero-blue: linear-gradient(135deg, #0F7CDA 0%, #001D7A 85%);
   --gradient-cta-orange: linear-gradient(135deg, #FF9F6F 0%, #FF3F00 80%);
   --gradient-accent-aqua: linear-gradient(135deg, #00BBE6 0%, #0F7CDA 80%);
+  --tint-primary-soft: rgba(15, 124, 218, 0.08);
+  --tint-secondary-soft: rgba(255, 63, 0, 0.12);
+  --tint-success-soft: rgba(16, 185, 129, 0.12);
+  --tint-warning-soft: rgba(245, 158, 11, 0.15);
+  --tint-neutral-soft: rgba(0, 16, 73, 0.05);
+  --accent-primary: #0F7CDA;
+  --accent-secondary: #FF3F00;
 }
 
 @layer base {
@@ -58,6 +65,69 @@
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
+  }
+
+  .surface-card {
+    background: var(--surface-card);
+  }
+
+  .surface-neutral {
+    background: var(--surface-muted);
+  }
+
+  .surface-default {
+    background: var(--surface-default);
+  }
+
+  .surface-hero {
+    background-image: var(--gradient-hero-blue);
+    background-size: cover;
+  }
+
+  .surface-cta {
+    background-image: var(--gradient-cta-orange);
+    background-size: cover;
+  }
+
+  .surface-accent {
+    background-image: var(--gradient-accent-aqua);
+    background-size: cover;
+  }
+
+  .border-card {
+    border-color: var(--surface-card-border);
+  }
+
+  .border-glass {
+    border-color: var(--surface-glass-border);
+  }
+
+  .tint-primary-soft {
+    background-color: var(--tint-primary-soft);
+  }
+
+  .tint-secondary-soft {
+    background-color: var(--tint-secondary-soft);
+  }
+
+  .tint-success-soft {
+    background-color: var(--tint-success-soft);
+  }
+
+  .tint-warning-soft {
+    background-color: var(--tint-warning-soft);
+  }
+
+  .tint-neutral-soft {
+    background-color: var(--tint-neutral-soft);
+  }
+
+  .accent-primary-text {
+    color: var(--accent-primary);
+  }
+
+  .accent-secondary-text {
+    color: var(--accent-secondary);
   }
 }
 

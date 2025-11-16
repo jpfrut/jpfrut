@@ -15,7 +15,34 @@ import { hasLessonContent } from '../data/lessonContent'
 import useStore from '../store/useStore'
 import Card from './ui/Card'
 
-const PersonalizedRecommendations = () => {
+const variantStyles = {
+  neutral: {
+    wrapper: 'surface-card border border-card text-primary-900',
+    heading: 'text-primary-900',
+    body: 'text-primary-700'
+  },
+  highlight: {
+    wrapper: 'surface-cta text-white border border-card',
+    heading: 'text-white',
+    body: 'text-white/90'
+  }
+}
+
+const appearanceStyles = {
+  action: {
+    iconWrapper: 'tint-primary-soft',
+    icon: 'text-primary-600',
+    cta: 'text-primary-600'
+  },
+  cta: {
+    iconWrapper: 'tint-secondary-soft',
+    icon: 'text-secondary-500',
+    cta: 'text-secondary-500'
+  }
+}
+
+const PersonalizedRecommendations = ({ variant = 'neutral' }) => {
+  const sectionTheme = variantStyles[variant] || variantStyles.neutral
   const { user, completedExercises, completedMissions, moduleProgress } = useStore()
   const modules = getModulesArray()
 
@@ -33,7 +60,7 @@ const PersonalizedRecommendations = () => {
         action: 'Ir a Mi Primer Día',
         path: '/first-day',
         icon: Target,
-        color: 'from-orange-400 to-red-500'
+        appearance: 'cta'
       })
 
       recs.push({
@@ -45,7 +72,7 @@ const PersonalizedRecommendations = () => {
         action: 'Iniciar Misión',
         path: '/missions',
         icon: Target,
-        color: 'from-green-400 to-emerald-500'
+        appearance: 'cta'
       })
     }
 
@@ -68,7 +95,7 @@ const PersonalizedRecommendations = () => {
           action: 'Explorar Módulo',
           path: `/module/${recommended.id}`,
           icon: BookOpen,
-          color: 'from-blue-400 to-indigo-500'
+          appearance: 'action'
         })
       }
 
@@ -84,10 +111,10 @@ const PersonalizedRecommendations = () => {
           description: 'Las misiones prácticas te ayudan a aprender haciendo',
           action: 'Ver Misiones',
           path: '/missions',
-          icon: Target,
-          color: 'from-secondary-400 to-secondary-600'
-        })
-      }
+        icon: Target,
+        appearance: 'cta'
+      })
+    }
     }
 
     // 3. If user has started modules but hasn't finished any
@@ -112,7 +139,7 @@ const PersonalizedRecommendations = () => {
         action: 'Continuar',
         path: `/module/${moduleId}`,
         icon: TrendingUp,
-        color: 'from-purple-400 to-pink-500'
+        appearance: 'action'
       })
     }
 
@@ -132,10 +159,10 @@ const PersonalizedRecommendations = () => {
           description: `Hay ${unexploredPriorityModules.length} módulos importantes que aún no has visto`,
           action: 'Explorar',
           path: '/explore',
-          icon: Lightbulb,
-          color: 'from-yellow-400 to-orange-500'
-        })
-      }
+        icon: Lightbulb,
+        appearance: 'action'
+      })
+    }
     }
 
     // 5. If user has good streak, encourage them
@@ -165,7 +192,7 @@ const PersonalizedRecommendations = () => {
         action: 'Ver Ayuda',
         path: '/emergency-help',
         icon: Lightbulb,
-        color: 'from-red-400 to-rose-500'
+        appearance: 'action'
       })
     }
 
@@ -184,8 +211,8 @@ const PersonalizedRecommendations = () => {
       className="space-y-4"
     >
       <div className="flex items-center gap-2">
-        <Lightbulb className="w-5 h-5 text-yellow-500" />
-        <h3 className="text-lg font-semibold text-gray-800">
+        <Lightbulb className="w-5 h-5 text-primary-600" />
+        <h3 className="text-lg font-semibold text-primary-900">
           Recomendado para Ti
         </h3>
       </div>
@@ -201,15 +228,19 @@ const PersonalizedRecommendations = () => {
               transition={{ delay: index * 0.1 }}
             >
               <Link to={rec.path}>
-                <Card className="p-4 h-full hover:shadow-lg transition-all group cursor-pointer border-2 border-transparent hover:border-primary-300">
-                  <div className={`w-10 h-10 rounded-lg bg-gradient-to-br ${rec.color} flex items-center justify-center mb-3`}>
-                    <Icon className="w-5 h-5 text-white" />
+                <Card className={`p-4 h-full group cursor-pointer ${sectionTheme.wrapper}`}>
+                  <div className={`w-10 h-10 rounded-lg flex items-center justify-center mb-3 ${
+                    (appearanceStyles[rec.appearance] || appearanceStyles.action).iconWrapper
+                  }`}>
+                    <Icon className={`w-5 h-5 ${(appearanceStyles[rec.appearance] || appearanceStyles.action).icon}`} />
                   </div>
-                  <h4 className="font-semibold text-gray-800 mb-1">{rec.title}</h4>
-                  <p className="text-sm text-gray-600 mb-3 line-clamp-2">{rec.description}</p>
-                  <div className="flex items-center text-primary-600 text-sm font-medium group-hover:translate-x-1 transition-transform">
+                  <h4 className={`font-semibold mb-1 ${sectionTheme.heading}`}>{rec.title}</h4>
+                  <p className={`text-sm mb-3 line-clamp-2 ${sectionTheme.body}`}>{rec.description}</p>
+                  <div className={`flex items-center text-sm font-medium group-hover:translate-x-1 transition-transform ${
+                    (appearanceStyles[rec.appearance] || appearanceStyles.action).cta
+                  }`}>
                     {rec.action}
-                    <ArrowRight className="w-4 h-4 ml-1" />
+                    <ArrowRight className="w-4 h-4 ml-1 text-secondary-500" />
                   </div>
                 </Card>
               </Link>

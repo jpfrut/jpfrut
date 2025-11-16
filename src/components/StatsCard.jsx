@@ -1,7 +1,27 @@
 import { motion } from 'framer-motion'
 import Card from './ui/Card'
 
-const StatsCard = ({ icon: Icon, label, value, color, trend, index = 0 }) => {
+const toneStyles = {
+  primary: {
+    wrapper: 'tint-primary-soft',
+    icon: 'text-primary-600'
+  },
+  success: {
+    wrapper: 'tint-success-soft',
+    icon: 'text-primary-600'
+  },
+  cta: {
+    wrapper: 'tint-secondary-soft',
+    icon: 'text-secondary-500'
+  },
+  accent: {
+    wrapper: 'tint-warning-soft',
+    icon: 'text-primary-900'
+  }
+}
+
+const StatsCard = ({ icon: Icon, label, value, tone = 'primary', trend, index = 0 }) => {
+  const toneClass = toneStyles[tone] || toneStyles.primary
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -22,11 +42,11 @@ const StatsCard = ({ icon: Icon, label, value, color, trend, index = 0 }) => {
           <motion.div
             whileHover={{ scale: 1.1, rotate: 5 }}
             className={`
-              w-16 h-16 rounded-2xl bg-gradient-to-br ${color}
+              w-16 h-16 rounded-2xl ${toneClass.wrapper}
               flex items-center justify-center shadow-lg
             `}
           >
-            <Icon className="w-8 h-8 text-white" />
+            <Icon className={`w-8 h-8 ${toneClass.icon}`} />
           </motion.div>
         </div>
 

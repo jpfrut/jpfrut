@@ -117,7 +117,7 @@ const Dashboard = () => {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-600 p-8 md:p-12 text-white shadow-2xl"
+        className="relative overflow-hidden rounded-3xl surface-hero p-8 md:p-12 text-white shadow-2xl"
       >
         <div className="relative z-10">
           <motion.div
@@ -146,7 +146,7 @@ const Dashboard = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
+                className="bg-white/10 backdrop-blur-sm border border-glass text-white hover:bg-white/20"
                 icon={<Clock className="w-5 h-5" />}
               >
                 Guía del Día
@@ -157,7 +157,7 @@ const Dashboard = () => {
 
         {/* Decorative elements */}
         <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary-400/20 rounded-full blur-3xl" />
+        <div className="absolute bottom-0 left-0 w-96 h-96 bg-white/10 rounded-full blur-3xl" />
 
         {/* Floating icons */}
         <motion.div
@@ -197,22 +197,22 @@ const Dashboard = () => {
         transition={{ delay: 0.25 }}
       >
         <Link to="/first-day">
-          <Card className="p-6 bg-gradient-to-r from-yellow-50 via-orange-50 to-pink-50 border-2 border-orange-200 hover:border-orange-400 transition-all hover:shadow-lg group cursor-pointer">
+          <Card className="p-6 surface-neutral border border-card hover:shadow-lg transition-all group cursor-pointer">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-xl text-white">
-                  <Sun className="w-8 h-8" />
+                <div className="p-3 tint-secondary-soft rounded-xl">
+                  <Sun className="w-8 h-8 text-secondary-500" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-orange-800 mb-1">
+                  <h3 className="text-xl font-bold text-primary-900 mb-1">
                     ¿Primera vez en Odoo? Empieza aquí
                   </h3>
-                  <p className="text-orange-700">
+                  <p className="text-primary-700">
                     Guía paso a paso para tu primer día. Sin tecnicismos, con mucha paciencia.
                   </p>
                 </div>
               </div>
-              <ArrowRight className="w-6 h-6 text-orange-500 group-hover:translate-x-2 transition-transform" />
+              <ArrowRight className="w-6 h-6 text-secondary-500 group-hover:translate-x-2 transition-transform" />
             </div>
           </Card>
         </Link>
@@ -225,14 +225,14 @@ const Dashboard = () => {
         transition={{ delay: 0.28 }}
       >
         <Link to="/glossary">
-          <Card className="p-6 bg-primary-50 border-2 border-primary-100 hover:border-primary-300 transition-all hover:shadow-lg group cursor-pointer">
+          <Card className="p-6 surface-neutral border border-card hover:shadow-lg transition-all group cursor-pointer">
             <div className="flex items-center justify-between">
               <div className="flex items-center gap-4">
-                <div className="p-3 bg-primary-600 rounded-xl text-white">
-                  <Library className="w-8 h-8" />
+                <div className="p-3 tint-primary-soft rounded-xl">
+                  <Library className="w-8 h-8 text-primary-600" />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-primary-800 mb-1">
+                  <h3 className="text-xl font-bold text-primary-900 mb-1">
                     Glosario Interactivo de Odoo
                   </h3>
                   <p className="text-primary-700">
@@ -241,10 +241,10 @@ const Dashboard = () => {
                 </div>
               </div>
               <div className="flex items-center gap-2">
-                <span className="text-xs bg-secondary-500 text-white px-2 py-1 rounded-full font-medium">
+                <span className="text-xs tint-secondary-soft text-primary-900 px-2 py-1 rounded-full font-medium">
                   Nuevo
                 </span>
-                <ArrowRight className="w-6 h-6 text-primary-500 group-hover:translate-x-2 transition-transform" />
+                <ArrowRight className="w-6 h-6 text-secondary-500 group-hover:translate-x-2 transition-transform" />
               </div>
             </div>
           </Card>
@@ -260,21 +260,21 @@ const Dashboard = () => {
       >
         {/* Missions Card */}
         <Link to="/missions">
-          <Card className="p-6 hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-secondary-500 group">
+          <Card className="p-6 transition-all duration-300 border border-card group">
             <div className="flex items-start justify-between mb-4">
-              <div className="p-3 bg-secondary-100 rounded-xl">
+              <div className="p-3 tint-secondary-soft rounded-xl">
                 <Target className="w-8 h-8 text-secondary-500" />
               </div>
-              <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-secondary-500 transition-colors" />
+              <ArrowRight className="w-5 h-5 text-secondary-500 transition-colors" />
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">
+            <h3 className="text-xl font-bold text-primary-900 mb-2">
               Misiones Prácticas
             </h3>
-            <p className="text-gray-600 mb-4">
+            <p className="text-primary-700 mb-4">
               Aprende haciendo tareas reales. Cada misión te guía paso a paso con explicaciones claras de <strong>por qué</strong> cada acción es importante para tu negocio.
             </p>
-            <div className="flex items-center text-sm text-secondary-600">
-              <Heart className="w-4 h-4 mr-2" />
+            <div className="flex items-center text-sm text-primary-700">
+              <Heart className="w-4 h-4 mr-2 text-secondary-500" />
               Perfecto para principiantes sin experiencia
             </div>
           </Card>
@@ -282,21 +282,21 @@ const Dashboard = () => {
 
         {/* Daily Guide Card */}
         <Link to="/quick-guides">
-          <Card className="p-6 hover:shadow-lg transition-all duration-300 border-2 border-transparent hover:border-primary-500 group">
+          <Card className="p-6 transition-all duration-300 border border-card group">
             <div className="flex items-start justify-between mb-4">
-              <div className="p-3 bg-primary-100 rounded-xl">
+              <div className="p-3 tint-primary-soft rounded-xl">
                 <Clock className="w-8 h-8 text-primary-600" />
               </div>
-              <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-primary-600 transition-colors" />
+              <ArrowRight className="w-5 h-5 text-secondary-500 transition-colors" />
             </div>
-            <h3 className="text-xl font-bold text-gray-800 mb-2">
+            <h3 className="text-xl font-bold text-primary-900 mb-2">
               Guía de Uso Diario
             </h3>
-            <p className="text-gray-600 mb-4">
+            <p className="text-primary-700 mb-4">
               Rutinas simples que debes hacer cada día, semana y mes. Incluye preguntas frecuentes, glosario y señales de alerta.
             </p>
-            <div className="flex items-center text-sm text-primary-600">
-              <HelpCircle className="w-4 h-4 mr-2" />
+            <div className="flex items-center text-sm text-primary-700">
+              <HelpCircle className="w-4 h-4 mr-2 text-primary-600" />
               Respuestas rápidas a dudas comunes
             </div>
           </Card>
@@ -304,10 +304,10 @@ const Dashboard = () => {
       </motion.div>
 
       {/* Tip of the Day */}
-      <TipOfTheDay />
+      <TipOfTheDay variant="neutral" />
 
       {/* Personalized Recommendations */}
-      <PersonalizedRecommendations />
+      <PersonalizedRecommendations variant="neutral" />
 
       {/* Encouragement for New Users */}
       <motion.div
@@ -316,17 +316,17 @@ const Dashboard = () => {
         transition={{ delay: 0.4 }}
         className="grid grid-cols-1 md:grid-cols-2 gap-6"
       >
-        <Card className="p-6 bg-gradient-to-r from-green-50 to-emerald-50 border-green-200">
+        <Card className="p-6 surface-neutral border border-card text-primary-900">
           <div className="flex items-start">
-            <Heart className="w-8 h-8 text-green-600 mr-4 flex-shrink-0" />
+            <Heart className="w-8 h-8 text-primary-600 mr-4 flex-shrink-0" />
             <div>
-              <h3 className="text-lg font-semibold text-green-800 mb-2">
+              <h3 className="text-lg font-semibold text-primary-900 mb-2">
                 ¿Nuevo en Odoo? ¡No te preocupes!
               </h3>
-              <p className="text-green-700 mb-3">
+              <p className="text-primary-700 mb-3">
                 Esta plataforma está diseñada especialmente para personas como tú. No necesitas saber de computadoras ni tener experiencia previa.
               </p>
-              <p className="text-sm text-green-600 font-medium">
+              <p className="text-sm text-primary-700 font-medium">
                 Comienza con la misión "Registro de Mi Primer Cliente" - solo toma 10 minutos.
               </p>
             </div>
@@ -334,18 +334,18 @@ const Dashboard = () => {
         </Card>
 
         <Link to="/success-stories">
-          <Card className="p-6 bg-gradient-to-r from-purple-50 to-pink-50 border-purple-200 hover:shadow-lg transition-all h-full">
+          <Card className="p-6 tint-neutral-soft border border-card hover:shadow-lg transition-all h-full">
             <div className="flex items-start justify-between mb-3">
-              <Heart className="w-8 h-8 text-purple-600" />
-              <ArrowRight className="w-5 h-5 text-purple-400" />
+              <Heart className="w-8 h-8 text-secondary-500" />
+              <ArrowRight className="w-5 h-5 text-secondary-500" />
             </div>
-            <h3 className="text-lg font-semibold text-purple-800 mb-2">
+            <h3 className="text-lg font-semibold text-primary-900 mb-2">
               Historias de Éxito
             </h3>
-            <p className="text-purple-700 mb-2">
+            <p className="text-primary-700 mb-2">
               Conoce a personas como tú que vencieron el miedo y ahora dominan Odoo.
             </p>
-            <p className="text-sm text-purple-600 font-medium">
+            <p className="text-sm text-primary-700 font-medium">
               ¡Tú también puedes lograrlo!
             </p>
           </Card>
@@ -358,14 +358,14 @@ const Dashboard = () => {
           icon={BookOpen}
           label="Módulos Disponibles"
           value={stats.totalModules}
-          color="from-blue-500 to-indigo-600"
+          tone="primary"
           index={0}
         />
         <StatsCard
           icon={CheckCircle}
           label="Lecciones Completadas"
           value={totalCompleted}
-          color="from-green-500 to-emerald-600"
+          tone="success"
           trend={totalCompleted > 0 ? `${totalCompleted} de ${stats.totalLessons}` : undefined}
           index={1}
         />
@@ -373,14 +373,14 @@ const Dashboard = () => {
           icon={Zap}
           label="XP Total"
           value={totalXPEarned}
-          color="from-yellow-500 to-orange-600"
+          tone="cta"
           index={2}
         />
         <StatsCard
           icon={Award}
           label="Logros Desbloqueados"
           value={`${unlockedAchievements.length}/${achievements.length}`}
-          color="from-purple-500 to-pink-600"
+          tone="accent"
           index={3}
         />
       </div>
@@ -392,8 +392,8 @@ const Dashboard = () => {
         transition={{ delay: 0.45 }}
         className="grid grid-cols-1 lg:grid-cols-2 gap-6"
       >
-        <DailyChecklist />
-        <ProgressSummary />
+        <DailyChecklist variant="neutral" />
+        <ProgressSummary variant="neutral" />
       </motion.div>
 
       {/* Achievements Section */}
@@ -404,7 +404,7 @@ const Dashboard = () => {
           transition={{ delay: 0.5 }}
         >
           <div className="flex items-center gap-3 mb-4">
-            <Trophy className="w-6 h-6 text-yellow-600" />
+            <Trophy className="w-6 h-6 text-secondary-500" />
             <h2 className="text-2xl font-bold text-slate-800">
               Logros Recientes
             </h2>
@@ -449,20 +449,20 @@ const Dashboard = () => {
         {/* Category Overview */}
         <div className="mb-8">
           <h3 className="text-lg font-semibold text-slate-700 mb-4 flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-yellow-500" />
+            <Sparkles className="w-5 h-5 text-primary-600" />
             {categories.length} Categorías Disponibles
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
             {[
-              { name: 'Finanzas', icon: '💰', color: 'from-emerald-500 to-teal-600' },
-              { name: 'Ventas', icon: '🛒', color: 'from-blue-500 to-indigo-600' },
-              { name: 'Cadena de Suministro', icon: '📦', color: 'from-orange-500 to-amber-600' },
-              { name: 'Recursos Humanos', icon: '👥', color: 'from-purple-500 to-pink-600' },
-              { name: 'Sitios Web', icon: '🌐', color: 'from-cyan-500 to-blue-600' },
-              { name: 'Marketing', icon: '📣', color: 'from-pink-500 to-rose-600' },
-              { name: 'Servicios', icon: '🛠️', color: 'from-gray-500 to-slate-600' },
-              { name: 'Productividad', icon: '📊', color: 'from-indigo-500 to-purple-600' },
-              { name: 'Personalización', icon: '⚙️', color: 'from-yellow-500 to-orange-600' }
+              { name: 'Finanzas', icon: '💰' },
+              { name: 'Ventas', icon: '🛒' },
+              { name: 'Cadena de Suministro', icon: '📦' },
+              { name: 'Recursos Humanos', icon: '👥' },
+              { name: 'Sitios Web', icon: '🌐' },
+              { name: 'Marketing', icon: '📣' },
+              { name: 'Servicios', icon: '🛠️' },
+              { name: 'Productividad', icon: '📊' },
+              { name: 'Personalización', icon: '⚙️' }
             ].map((cat) => (
               <Link key={cat.name} to={`/explore?category=${encodeURIComponent(cat.name)}`}>
                 <Card className="p-3 text-center hover:shadow-md transition-all group cursor-pointer">
@@ -479,7 +479,7 @@ const Dashboard = () => {
         {/* Priority Modules - Show only top 6 */}
         <div className="mb-6">
           <h3 className="text-lg font-semibold text-slate-700 mb-4 flex items-center gap-2">
-            <Star className="w-5 h-5 text-yellow-500" />
+            <Star className="w-5 h-5 text-secondary-500" />
             Módulos Recomendados para Empezar
           </h3>
           <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-6">
@@ -498,17 +498,17 @@ const Dashboard = () => {
 
         {/* Call to Action */}
         <Link to="/explore">
-          <Card className="p-6 bg-gradient-to-r from-primary-50 to-secondary-50 border-primary-200 hover:shadow-lg transition-all group cursor-pointer">
+          <Card className="p-6 surface-neutral border border-card hover:shadow-lg transition-all group cursor-pointer">
             <div className="flex items-center justify-between">
               <div>
-                <h3 className="text-xl font-bold text-primary-800 mb-2">
+                <h3 className="text-xl font-bold text-primary-900 mb-2">
                   Explora los {stats.totalModules} Módulos de Odoo 19
                 </h3>
                 <p className="text-primary-700">
                   {stats.totalLessons} lecciones • {stats.totalTime} de contenido • {categories.length} categorías
                 </p>
               </div>
-              <ArrowRight className="w-8 h-8 text-primary-600 group-hover:translate-x-2 transition-transform" />
+              <ArrowRight className="w-8 h-8 text-secondary-500 group-hover:translate-x-2 transition-transform" />
             </div>
           </Card>
         </Link>
@@ -519,7 +519,7 @@ const Dashboard = () => {
         initial={{ opacity: 0, scale: 0.9 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.6 }}
-        className="mt-8 p-6 rounded-2xl bg-gradient-to-r from-indigo-50 to-purple-50 border border-indigo-200"
+        className="mt-8 p-6 rounded-2xl surface-neutral border border-card"
       >
         <div className="flex items-start gap-4">
           <div className="text-4xl">💡</div>

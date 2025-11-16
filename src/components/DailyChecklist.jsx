@@ -7,6 +7,15 @@ import {
 import { Card, Badge } from '../components/ui'
 import useStore from '../store/useStore'
 
+const variantStyles = {
+  neutral: {
+    card: 'surface-card border border-card text-primary-900',
+    iconAction: 'text-primary-600',
+    iconCta: 'text-secondary-500',
+    subtle: 'tint-neutral-soft text-primary-900'
+  }
+}
+
 const LAST_COMPLETED_KEY = 'checklistLastCompletedDate'
 
 const DAILY_TASKS = [
@@ -52,7 +61,8 @@ const DAILY_TASKS = [
   }
 ]
 
-function DailyChecklist() {
+function DailyChecklist({ variant = 'neutral' }) {
+  const theme = variantStyles[variant] || variantStyles.neutral
   const { addXP, user, incrementStreak, resetStreak } = useStore()
   const [checklist, setChecklist] = useState([])
 
@@ -133,10 +143,10 @@ function DailyChecklist() {
   }
 
   return (
-    <Card className="p-6">
+    <Card className={`p-6 ${theme.card}`}>
       <div className="flex items-center justify-between mb-4">
-        <h3 className="text-lg font-semibold text-gray-800 flex items-center">
-          <CheckSquare className="w-5 h-5 mr-2 text-primary-600" />
+        <h3 className="text-lg font-semibold text-primary-900 flex items-center">
+          <CheckSquare className={`w-5 h-5 mr-2 ${theme.iconAction}`} />
           Mi Checklist del Día
         </h3>
         <div className="flex items-center space-x-2">
@@ -154,18 +164,18 @@ function DailyChecklist() {
 
       {/* Barra de progreso */}
       <div className="mb-4">
-        <div className="flex justify-between text-sm text-gray-600 mb-1">
+        <div className="flex justify-between text-sm text-primary-700 mb-1">
           <span>Progreso de hoy</span>
           <span>{Math.round(completionPercentage)}%</span>
         </div>
-        <div className="h-3 bg-gray-200 rounded-full overflow-hidden">
+        <div className="h-3 tint-neutral-soft rounded-full overflow-hidden">
           <motion.div
             initial={{ width: 0 }}
             animate={{ width: `${completionPercentage}%` }}
             className={`h-full rounded-full ${
               completionPercentage === 100
-                ? 'bg-gradient-to-r from-green-500 to-emerald-500'
-                : 'bg-gradient-to-r from-primary-500 to-secondary-500'
+                ? 'surface-cta'
+                : 'surface-hero'
             }`}
           />
         </div>
@@ -185,37 +195,33 @@ function DailyChecklist() {
               disabled={task.completed}
               className={`w-full text-left p-3 rounded-lg border transition-all ${
                 task.completed
-                  ? 'bg-green-50 border-green-200'
-                  : 'bg-white border-gray-200 hover:border-primary-300 hover:bg-primary-50'
+                  ? 'tint-success-soft border-transparent'
+                  : `surface-card border-card hover:tint-primary-soft`
               }`}
             >
               <div className="flex items-start">
                 <div className="mr-3 mt-1">
                   {task.completed ? (
-                    <CheckSquare className="w-5 h-5 text-green-500" />
+                    <CheckSquare className={`w-5 h-5 ${theme.iconCta}`} />
                   ) : (
-                    <Square className="w-5 h-5 text-gray-400" />
+                    <Square className="w-5 h-5 text-primary-200" />
                   )}
                 </div>
                 <div className="flex-1">
                   <p className={`font-medium ${
-                    task.completed ? 'text-green-700 line-through' : 'text-gray-800'
+                    task.completed ? 'text-primary-700 line-through' : 'text-primary-900'
                   }`}>
                     {task.title}
                   </p>
-                  <p className={`text-sm ${
-                    task.completed ? 'text-green-600' : 'text-gray-500'
-                  }`}>
+                  <p className="text-sm text-primary-700">
                     {task.description}
                   </p>
                 </div>
                 <div className="text-right">
-                  <p className={`text-xs font-medium ${
-                    task.completed ? 'text-green-600' : 'text-primary-600'
-                  }`}>
+                  <p className={`text-xs font-medium ${theme.iconAction}`}>
                     +{task.xp} XP
                   </p>
-                  <p className="text-xs text-gray-400">{task.time}</p>
+                  <p className="text-xs text-primary-500">{task.time}</p>
                 </div>
               </div>
             </button>
@@ -225,15 +231,15 @@ function DailyChecklist() {
 
       {/* Resumen */}
       <div className="grid grid-cols-2 gap-3 mb-4">
-        <div className="bg-yellow-50 p-3 rounded-lg text-center">
-          <Star className="w-5 h-5 text-yellow-500 mx-auto mb-1" />
-          <p className="text-lg font-bold text-yellow-700">{getTotalXP()}</p>
-          <p className="text-xs text-yellow-600">XP ganados hoy</p>
+        <div className="tint-warning-soft p-3 rounded-lg text-center">
+          <Star className={`w-5 h-5 mx-auto mb-1 ${theme.iconCta}`} />
+          <p className="text-lg font-bold text-primary-900">{getTotalXP()}</p>
+          <p className="text-xs text-primary-700">XP ganados hoy</p>
         </div>
-        <div className="bg-blue-50 p-3 rounded-lg text-center">
-          <Clock className="w-5 h-5 text-blue-500 mx-auto mb-1" />
-          <p className="text-lg font-bold text-blue-700">{getTotalTime()} min</p>
-          <p className="text-xs text-blue-600">Tiempo restante</p>
+        <div className="tint-primary-soft p-3 rounded-lg text-center">
+          <Clock className={`w-5 h-5 mx-auto mb-1 ${theme.iconAction}`} />
+          <p className="text-lg font-bold text-primary-900">{getTotalTime()} min</p>
+          <p className="text-xs text-primary-700">Tiempo restante</p>
         </div>
       </div>
 
@@ -242,25 +248,25 @@ function DailyChecklist() {
         <motion.div
           initial={{ scale: 0.9, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          className="bg-gradient-to-r from-green-50 to-emerald-50 p-4 rounded-lg text-center"
+          className="tint-success-soft p-4 rounded-lg text-center"
         >
-          <Trophy className="w-8 h-8 text-yellow-500 mx-auto mb-2" />
-          <p className="font-semibold text-green-800">
+          <Trophy className={`w-8 h-8 mx-auto mb-2 ${theme.iconCta}`} />
+          <p className="font-semibold text-primary-900">
             ¡Excelente! Completaste todo hoy
           </p>
-          <p className="text-sm text-green-600">
+          <p className="text-sm text-primary-900">
             +50 XP bonus por completar todas las tareas
           </p>
         </motion.div>
       ) : completedCount === 0 ? (
-        <div className="bg-blue-50 p-4 rounded-lg text-center">
-          <p className="text-blue-700 text-sm">
+        <div className="tint-primary-soft p-4 rounded-lg text-center">
+          <p className="text-primary-900 text-sm">
             💪 Comienza con una tarea pequeña. Cada paso cuenta.
           </p>
         </div>
       ) : (
-        <div className="bg-orange-50 p-4 rounded-lg text-center">
-          <p className="text-orange-700 text-sm">
+        <div className="tint-warning-soft p-4 rounded-lg text-center">
+          <p className="text-primary-900 text-sm">
             🎯 ¡Vas muy bien! Te faltan {totalTasks - completedCount} tareas para completar el día.
           </p>
         </div>

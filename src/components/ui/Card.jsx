@@ -8,11 +8,9 @@ const Card = ({
   onClick,
   ...props
 }) => {
-  const baseClasses = 'rounded-2xl p-6 transition-all duration-300'
+  const baseClasses = 'rounded-2xl p-6 transition-all duration-300 border border-card shadow-lg'
   const hoverClasses = hover ? 'hover:scale-105 hover:shadow-2xl cursor-pointer' : ''
-  const gradientClasses = gradient
-    ? 'bg-gradient-to-br from-white to-primary-50/30'
-    : 'bg-white'
+  const backgroundClasses = gradient ? 'surface-hero text-white' : 'surface-card'
 
   return (
     <motion.div
@@ -24,9 +22,7 @@ const Card = ({
       className={`
         ${baseClasses}
         ${hoverClasses}
-        ${gradientClasses}
-        shadow-lg
-        border border-slate-200/50
+        ${backgroundClasses}
         ${className}
       `}
       {...props}

@@ -3,7 +3,27 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Lightbulb, RefreshCw, X, Bookmark } from 'lucide-react'
 import { Card, Badge } from '../components/ui'
 
-function TipOfTheDay() {
+const variantStyles = {
+  neutral: {
+    card: 'surface-neutral border border-card text-primary-900',
+    iconWrapper: 'tint-primary-soft',
+    icon: 'text-primary-600',
+    badge: 'tint-primary-soft text-primary-900',
+    actionable: 'tint-neutral-soft text-primary-900',
+    control: 'hover:tint-primary-soft text-primary-600'
+  },
+  highlight: {
+    card: 'surface-cta text-white border border-card',
+    iconWrapper: 'tint-secondary-soft',
+    icon: 'text-secondary-500',
+    badge: 'tint-secondary-soft text-primary-900',
+    actionable: 'tint-primary-soft text-primary-900',
+    control: 'hover:tint-secondary-soft text-primary-900'
+  }
+}
+
+function TipOfTheDay({ variant = 'neutral' }) {
+  const theme = variantStyles[variant] || variantStyles.neutral
   const [currentTip, setCurrentTip] = useState(null)
   const [isVisible, setIsVisible] = useState(true)
   const [savedTips, setSavedTips] = useState([])
@@ -173,13 +193,13 @@ function TipOfTheDay() {
   if (!currentTip || !isVisible) return null
 
   const categoryColors = {
-    facturación: 'bg-blue-100 text-blue-700',
-    organización: 'bg-purple-100 text-purple-700',
-    productividad: 'bg-green-100 text-green-700',
-    seguridad: 'bg-red-100 text-red-700',
-    contabilidad: 'bg-yellow-100 text-yellow-700',
-    ventas: 'bg-orange-100 text-orange-700',
-    flota: 'bg-cyan-100 text-cyan-700'
+    facturación: 'tint-secondary-soft text-primary-900',
+    organización: 'tint-primary-soft text-primary-900',
+    productividad: 'tint-success-soft text-primary-900',
+    seguridad: 'tint-warning-soft text-primary-900',
+    contabilidad: 'tint-neutral-soft text-primary-900',
+    ventas: 'tint-secondary-soft text-primary-900',
+    flota: 'tint-primary-soft text-primary-900'
   }
 
   return (
@@ -189,11 +209,11 @@ function TipOfTheDay() {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
       >
-        <Card className="p-4 bg-gradient-to-r from-yellow-50 to-amber-50 border-yellow-200">
+        <Card className={`p-4 ${theme.card}`}>
           <div className="flex items-start justify-between mb-3">
             <div className="flex items-center">
-              <div className="p-2 bg-yellow-100 rounded-lg mr-3">
-                <Lightbulb className="w-5 h-5 text-yellow-600" />
+              <div className={`p-2 rounded-lg mr-3 ${theme.iconWrapper}`}>
+                <Lightbulb className={`w-5 h-5 ${theme.icon}`} />
               </div>
               <div>
                 <h3 className="font-semibold text-gray-800">
@@ -209,8 +229,8 @@ function TipOfTheDay() {
                 onClick={handleSaveTip}
                 className={`p-1.5 rounded-lg transition-colors ${
                   savedTips.includes(currentTip.id)
-                    ? 'bg-yellow-200 text-yellow-700'
-                    : 'hover:bg-yellow-100 text-gray-400'
+                    ? 'tint-secondary-soft text-secondary-700'
+                    : theme.control
                 }`}
                 title="Guardar consejo"
               >
@@ -218,14 +238,14 @@ function TipOfTheDay() {
               </button>
               <button
                 onClick={handleNewTip}
-                className="p-1.5 hover:bg-yellow-100 rounded-lg text-gray-400 transition-colors"
+                className={`p-1.5 rounded-lg transition-colors ${theme.control}`}
                 title="Otro consejo"
               >
                 <RefreshCw className="w-4 h-4" />
               </button>
               <button
                 onClick={handleDismiss}
-                className="p-1.5 hover:bg-yellow-100 rounded-lg text-gray-400 transition-colors"
+                className={`p-1.5 rounded-lg transition-colors ${theme.control}`}
                 title="Cerrar"
               >
                 <X className="w-4 h-4" />
@@ -246,11 +266,11 @@ function TipOfTheDay() {
               </div>
             </div>
 
-            <div className="bg-yellow-100 p-3 rounded-lg">
-              <p className="text-sm font-medium text-yellow-800">
+            <div className={`p-3 rounded-lg ${theme.actionable}`}>
+              <p className="text-sm font-medium text-primary-900">
                 🎯 Acción de hoy:
               </p>
-              <p className="text-sm text-yellow-700">
+              <p className="text-sm text-primary-900">
                 {currentTip.actionable}
               </p>
             </div>
