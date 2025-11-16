@@ -203,6 +203,11 @@ const brandPaletteKeySet = new Set(Object.keys(brandGradients))
 
 export const brandPaletteKeys = Object.freeze([...brandPaletteKeySet])
 
+export const brandPalette = Object.freeze({
+  gradients: brandGradients,
+  keys: brandPaletteKeys,
+})
+
 export const isValidBrandPaletteKey = (key) => brandPaletteKeySet.has(key)
 
 export const assertValidBrandPaletteKey = (key, context = 'module') => {
@@ -292,7 +297,7 @@ export default {
   shadows,
   gradients,
   brandGradients,
-  brandPaletteKeys,
+  brandPalette,
   helpers: {
     getContrastRatio,
     getRecommendedTextOnSurface,
