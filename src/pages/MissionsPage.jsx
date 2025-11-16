@@ -66,9 +66,9 @@ function MissionsPage() {
         >
           <div className="flex items-center justify-center mb-4">
             <Target className="w-12 h-12 text-secondary-500 mr-3" />
-            <h1 className="text-4xl font-heading font-bold text-gray-800">Misiones Prácticas</h1>
+            <h1 className="text-4xl font-heading font-bold text-neutral-800">Misiones Prácticas</h1>
           </div>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+          <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
             Aprende haciendo tareas reales de tu negocio. Cada misión te enseña paso a paso
             con explicaciones claras de <strong>por qué es importante</strong> cada acción.
           </p>
@@ -110,10 +110,10 @@ function MissionsPage() {
               {Object.entries(learningPaths).map(([key, path]) => (
                 <div
                   key={key}
-                  className="p-4 border-2 border-gray-200 rounded-lg hover:border-primary-500 transition-colors cursor-pointer"
+                  className="p-4 border-2 border-neutral-200 rounded-lg hover:border-primary-500 transition-colors cursor-pointer"
                 >
-                  <h4 className="font-semibold text-gray-800 mb-2">{path.name}</h4>
-                  <p className="text-sm text-gray-600 mb-3">{path.description}</p>
+                  <h4 className="font-semibold text-neutral-800 mb-2">{path.name}</h4>
+                  <p className="text-sm text-neutral-600 mb-3">{path.description}</p>
                   <p className="text-xs text-primary-600 font-medium">
                     {path.suggestedMissions.length} misiones recomendadas
                   </p>
@@ -125,7 +125,7 @@ function MissionsPage() {
 
         {/* Lista de misiones por categoría */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-heading font-bold text-gray-800">Todas las Misiones</h2>
+          <h2 className="text-2xl font-heading font-bold text-neutral-800">Todas las Misiones</h2>
 
           {Object.entries(missionCategories).map(([categoryId, category]) => {
             const missions = getMissionsByCategory(categoryId)
@@ -166,17 +166,17 @@ function MissionsPage() {
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: 'auto', opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
-                        className="divide-y divide-gray-100"
+                        className="divide-y divide-neutral-100"
                       >
                         {missions.map((mission) => (
                           <div
                             key={mission.id}
-                            className="p-4 hover:bg-gray-50 transition-colors"
+                            className="p-4 hover:bg-neutral-50 transition-colors"
                           >
                             <div className="flex items-center justify-between">
                               <div className="flex-1">
                                 <div className="flex items-center mb-2">
-                                  <h4 className="font-semibold text-gray-800 mr-3">
+                                  <h4 className="font-semibold text-neutral-800 mr-3">
                                     {mission.title}
                                   </h4>
                                   {isMissionCompleted(mission.id) && (
@@ -186,10 +186,10 @@ function MissionsPage() {
                                     </Badge>
                                   )}
                                 </div>
-                                <p className="text-sm text-gray-600 mb-3">
+                                <p className="text-sm text-neutral-600 mb-3">
                                   {mission.subtitle}
                                 </p>
-                                <div className="flex items-center space-x-4 text-xs text-gray-500">
+                                <div className="flex items-center space-x-4 text-xs text-neutral-500">
                                   <span className="flex items-center">
                                     <Clock className="w-3 h-3 mr-1" />
                                     {mission.estimatedTime}
@@ -199,7 +199,7 @@ function MissionsPage() {
                                     {mission.difficulty}
                                   </span>
                                   <span className="flex items-center">
-                                    <Star className="w-3 h-3 mr-1 text-yellow-500" />
+                                    <Star className="w-3 h-3 mr-1 text-secondary-500" />
                                     {mission.xpReward} XP
                                   </span>
                                 </div>
@@ -246,10 +246,10 @@ function MissionsPage() {
         <Card className="p-6">
           <div className="flex items-start justify-between mb-4">
             <div>
-              <h1 className="text-3xl font-heading font-bold text-gray-800 mb-2">
+              <h1 className="text-3xl font-heading font-bold text-neutral-800 mb-2">
                 {selectedMission.title}
               </h1>
-              <p className="text-gray-600">{selectedMission.subtitle}</p>
+              <p className="text-neutral-600">{selectedMission.subtitle}</p>
             </div>
             <Badge variant="primary" size="lg">
               <Star className="w-4 h-4 mr-1" />
@@ -263,7 +263,7 @@ function MissionsPage() {
             showLabel={false}
             className="mb-4"
           />
-          <p className="text-sm text-gray-500">
+          <p className="text-sm text-neutral-500">
             Paso {currentStep + 1} de {selectedMission.steps.length}
           </p>
         </Card>
@@ -275,19 +275,19 @@ function MissionsPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.1 }}
       >
-        <Card className="p-6 bg-yellow-50 border-yellow-200">
-          <h3 className="text-lg font-semibold text-yellow-800 mb-3 flex items-center">
+        <Card className="p-6 bg-secondary-50 border-secondary-200">
+          <h3 className="text-lg font-semibold text-secondary-800 mb-3 flex items-center">
             <Lightbulb className="w-5 h-5 mr-2" />
             {selectedMission.businessImportance.title}
           </h3>
-          <p className="text-yellow-900 mb-4">
+          <p className="text-secondary-900 mb-4">
             {selectedMission.businessImportance.explanation}
           </p>
-          <div className="bg-yellow-100 p-4 rounded-lg">
-            <p className="text-sm font-medium text-yellow-800 mb-1">
+          <div className="bg-secondary-100 p-4 rounded-lg">
+            <p className="text-sm font-medium text-secondary-800 mb-1">
               📌 Ejemplo de la vida real:
             </p>
-            <p className="text-yellow-900">
+            <p className="text-secondary-900">
               {selectedMission.businessImportance.realLifeExample}
             </p>
           </div>
@@ -307,25 +307,25 @@ function MissionsPage() {
               <div className="w-10 h-10 rounded-full bg-primary-600 text-white flex items-center justify-center font-bold mr-4">
                 {selectedMission.steps[currentStep].id}
               </div>
-              <h3 className="text-xl font-semibold text-gray-800">
+              <h3 className="text-xl font-semibold text-neutral-800">
                 {selectedMission.steps[currentStep].title}
               </h3>
             </div>
 
             <div className="space-y-4">
               {/* Instrucción principal */}
-              <div className="bg-blue-50 p-4 rounded-lg">
-                <p className="text-blue-900 font-medium text-lg">
+              <div className="bg-primary-50 p-4 rounded-lg">
+                <p className="text-primary-900 font-medium text-lg">
                   {selectedMission.steps[currentStep].instruction}
                 </p>
               </div>
 
               {/* Por qué esto importa */}
               <div className="flex items-start">
-                <CheckCircle className="w-5 h-5 text-green-500 mr-3 mt-1 flex-shrink-0" />
+                <CheckCircle className="w-5 h-5 text-accent-green-500 mr-3 mt-1 flex-shrink-0" />
                 <div>
-                  <p className="font-medium text-gray-700 mb-1">¿Por qué hacer esto?</p>
-                  <p className="text-gray-600">
+                  <p className="font-medium text-neutral-700 mb-1">¿Por qué hacer esto?</p>
+                  <p className="text-neutral-600">
                     {selectedMission.steps[currentStep].whyThisMatters}
                   </p>
                 </div>
@@ -333,18 +333,18 @@ function MissionsPage() {
 
               {/* Error común */}
               <div className="flex items-start">
-                <AlertCircle className="w-5 h-5 text-orange-500 mr-3 mt-1 flex-shrink-0" />
+                <AlertCircle className="w-5 h-5 text-secondary-500 mr-3 mt-1 flex-shrink-0" />
                 <div>
-                  <p className="font-medium text-orange-700 mb-1">Error común a evitar:</p>
-                  <p className="text-gray-600">
+                  <p className="font-medium text-secondary-700 mb-1">Error común a evitar:</p>
+                  <p className="text-neutral-600">
                     {selectedMission.steps[currentStep].commonMistake}
                   </p>
                 </div>
               </div>
 
               {/* Ayuda visual */}
-              <div className="bg-gray-100 p-4 rounded-lg">
-                <p className="font-mono text-sm text-gray-700">
+              <div className="bg-neutral-100 p-4 rounded-lg">
+                <p className="font-mono text-sm text-neutral-700">
                   {selectedMission.steps[currentStep].visualHelp}
                 </p>
               </div>
@@ -373,7 +373,7 @@ function MissionsPage() {
 
       {/* Lista de todos los pasos */}
       <Card className="p-4">
-        <h4 className="font-semibold text-gray-700 mb-3">Todos los pasos:</h4>
+        <h4 className="font-semibold text-neutral-700 mb-3">Todos los pasos:</h4>
         <div className="space-y-2">
           {selectedMission.steps.map((step, index) => (
             <div
@@ -382,19 +382,19 @@ function MissionsPage() {
                 index === currentStep
                   ? 'bg-primary-50 border border-primary-200'
                   : completedSteps.includes(step.id)
-                  ? 'bg-green-50'
-                  : 'bg-gray-50'
+                  ? 'bg-accent-green-50'
+                  : 'bg-neutral-50'
               }`}
             >
               {completedSteps.includes(step.id) ? (
-                <CheckCircle className="w-5 h-5 text-green-500 mr-3" />
+                <CheckCircle className="w-5 h-5 text-accent-green-500 mr-3" />
               ) : (
-                <div className="w-5 h-5 rounded-full border-2 border-gray-300 mr-3 flex items-center justify-center text-xs">
+                <div className="w-5 h-5 rounded-full border-2 border-neutral-300 mr-3 flex items-center justify-center text-xs">
                   {step.id}
                 </div>
               )}
               <span className={`text-sm ${
-                index === currentStep ? 'font-medium text-primary-700' : 'text-gray-600'
+                index === currentStep ? 'font-medium text-primary-700' : 'text-neutral-600'
               }`}>
                 {step.title}
               </span>
@@ -418,23 +418,23 @@ function MissionsPage() {
                 animate={{ scale: 1 }}
                 transition={{ type: 'spring', delay: 0.2 }}
               >
-                <Award className="w-20 h-20 text-yellow-500 mx-auto mb-4" />
+                <Award className="w-20 h-20 text-secondary-500 mx-auto mb-4" />
               </motion.div>
-              <h2 className="text-2xl font-heading font-bold text-gray-800 mb-2">
+              <h2 className="text-2xl font-heading font-bold text-neutral-800 mb-2">
                 {selectedMission.celebration.title}
               </h2>
-              <p className="text-gray-600 mb-4">
+              <p className="text-neutral-600 mb-4">
                 {selectedMission.celebration.message}
               </p>
-              <div className="bg-green-50 p-3 rounded-lg mb-4">
-                <p className="text-green-700 font-medium">
+              <div className="bg-accent-green-50 p-3 rounded-lg mb-4">
+                <p className="text-accent-green-700 font-medium">
                   +{selectedMission.xpReward} XP ganados
                 </p>
-                <p className="text-green-600 text-sm">
+                <p className="text-accent-green-600 text-sm">
                   Nueva insignia: {selectedMission.badge}
                 </p>
               </div>
-              <p className="text-sm text-gray-500 mb-6">
+              <p className="text-sm text-neutral-500 mb-6">
                 {selectedMission.celebration.nextSuggestion}
               </p>
               <Button onClick={() => setSelectedMission(null)} className="w-full">

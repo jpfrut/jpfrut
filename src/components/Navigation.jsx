@@ -53,7 +53,7 @@ const Navigation = () => {
               <h1 className="text-xl font-heading font-bold gradient-text">
                 Odoo Learning Platform
               </h1>
-              <p className="text-xs text-slate-500">by Mentora Hub</p>
+              <p className="text-xs text-neutral-500">by Mentora Hub</p>
             </div>
           </Link>
 
@@ -76,7 +76,7 @@ const Navigation = () => {
                       transition-all duration-200
                       ${isActive
                         ? 'bg-primary-100 text-primary-700'
-                        : 'text-slate-600 hover:bg-slate-100'
+                        : 'text-neutral-600 hover:bg-neutral-100'
                       }
                     `}
                   >
@@ -99,12 +99,12 @@ const Navigation = () => {
             {/* Streak */}
             <motion.div
               whileHover={{ scale: 1.05 }}
-              className="flex items-center gap-2 px-3 py-2 bg-orange-100 rounded-lg"
+              className="flex items-center gap-2 px-3 py-2 bg-secondary-100 rounded-lg"
             >
-              <Flame className="w-5 h-5 text-orange-500" />
+              <Flame className="w-5 h-5 text-secondary-500" />
               <div>
-                <p className="text-xs text-orange-600 font-medium">Racha</p>
-                <p className="text-sm font-bold text-orange-700">
+                <p className="text-xs text-secondary-600 font-medium">Racha</p>
+                <p className="text-sm font-bold text-secondary-700">
                   {user.streak} días
                 </p>
               </div>
@@ -127,14 +127,14 @@ const Navigation = () => {
               </div>
               <div className="min-w-[120px]">
                 <div className="flex items-center justify-between mb-1">
-                  <span className="text-xs font-medium text-slate-600">
+                  <span className="text-xs font-medium text-neutral-600">
                     Nivel {user.level}
                   </span>
                   <span className="text-xs font-bold text-primary-600">
                     {user.xp}/{xpForNextLevel} XP
                   </span>
                 </div>
-                <div className="h-2 bg-slate-200 rounded-full overflow-hidden">
+                <div className="h-2 bg-neutral-200 rounded-full overflow-hidden">
                   <motion.div
                     initial={{ width: 0 }}
                     animate={{ width: `${xpPercentage}%` }}
@@ -148,10 +148,10 @@ const Navigation = () => {
             {user.badges.length > 0 && (
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                className="flex items-center gap-2 px-3 py-2 bg-yellow-100 rounded-lg"
+                className="flex items-center gap-2 px-3 py-2 bg-secondary-100 rounded-lg"
               >
-                <Award className="w-5 h-5 text-yellow-600" />
-                <span className="text-sm font-bold text-yellow-700">
+                <Award className="w-5 h-5 text-secondary-600" />
+                <span className="text-sm font-bold text-secondary-700">
                   {user.badges.length}
                 </span>
               </motion.div>
@@ -161,12 +161,12 @@ const Navigation = () => {
           {/* Mobile menu button */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="md:hidden p-2 hover:bg-slate-100 rounded-lg"
+            className="md:hidden p-2 hover:bg-neutral-100 rounded-lg"
           >
             {mobileMenuOpen ? (
-              <X className="w-6 h-6 text-slate-600" />
+              <X className="w-6 h-6 text-neutral-600" />
             ) : (
-              <Menu className="w-6 h-6 text-slate-600" />
+              <Menu className="w-6 h-6 text-neutral-600" />
             )}
           </button>
         </div>
@@ -177,7 +177,7 @@ const Navigation = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden py-4 border-t border-slate-200"
+            className="md:hidden py-4 border-t border-neutral-200"
           >
             <div className="space-y-2">
               {navItems.map((item) => {
@@ -192,7 +192,7 @@ const Navigation = () => {
                       flex items-center gap-3 px-4 py-3 rounded-lg
                       ${isActive
                         ? 'bg-primary-100 text-primary-700'
-                        : 'text-slate-600 hover:bg-slate-100'
+                        : 'text-neutral-600 hover:bg-neutral-100'
                       }
                     `}
                   >
@@ -204,19 +204,19 @@ const Navigation = () => {
             </div>
 
             {/* Mobile Stats */}
-            <div className="mt-4 pt-4 border-t border-slate-200 space-y-3">
+            <div className="mt-4 pt-4 border-t border-neutral-200 space-y-3">
               <div className="flex items-center justify-between px-4">
-                <span className="text-sm text-slate-600">Nivel</span>
+                <span className="text-sm text-neutral-600">Nivel</span>
                 <Badge variant="primary">{user.level}</Badge>
               </div>
               <div className="flex items-center justify-between px-4">
-                <span className="text-sm text-slate-600">XP</span>
+                <span className="text-sm text-neutral-600">XP</span>
                 <Badge variant="secondary">
                   {user.xp}/{xpForNextLevel}
                 </Badge>
               </div>
               <div className="flex items-center justify-between px-4">
-                <span className="text-sm text-slate-600">Racha</span>
+                <span className="text-sm text-neutral-600">Racha</span>
                 <Badge variant="warning" icon={<Flame className="w-3 h-3" />}>
                   {user.streak} días
                 </Badge>

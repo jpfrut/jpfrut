@@ -2,6 +2,25 @@
 
 Esta guía documenta la paleta de colores oficial de Mentora Hub y cómo se aplican en la plataforma de aprendizaje de Odoo.
 
+## Mapa de Equivalencias
+
+Para mantener la coherencia con la paleta definida en `tailwind.config.js`, todas las clases genéricas de Tailwind deben migrarse a las variantes personalizadas. Usa la siguiente tabla como referencia rápida:
+
+| Clase genérica | Variante Mentora | Notas |
+| --- | --- | --- |
+| `text-slate-600`, `text-gray-600` | `text-neutral-600` | Aplica a cualquier escala `gray-*`/`slate-*` (texto, fondo o borde) → `neutral-*` |
+| `bg-gray-900` | `bg-neutral-900` | Mantiene los tonos para backgrounds oscuros |
+| `text-blue-700` | `text-primary-700` | Todos los `blue-*`/`indigo-*` se sustituyen por `primary-*` |
+| `bg-blue-50` | `bg-primary-50` | Úsalo en tarjetas e indicadores suaves |
+| `text-yellow-800`, `text-orange-700` | `text-secondary-800`, `text-secondary-700` | La escala `secondary` cubre amarillos y naranjas |
+| `bg-yellow-50` | `bg-secondary-50` | Fondos cálidos o llamadas de atención |
+| `text-green-700` | `text-accent-green-700` | Para estados positivos, checklists o badges |
+| `bg-purple-100`, `text-pink-600` | `bg-accent-purple-100`, `text-accent-pink-600` | Cualquier púrpura/rosa pasa a la familia `accent` |
+| `text-red-700` | `text-accent-red-700` | Estados de error o alertas críticas |
+| `bg-cyan-100` | `bg-accent-aqua-100` | Casos que antes usaban `cyan` ahora usan el acento Aqua |
+
+> **Tip:** si encuentras una clase `text-`, `bg-`, `border-`, `from-`, `via-` o `to-` que no empiece con `primary`, `secondary`, `accent` o `neutral`, debes reemplazarla siguiendo la tabla anterior.
+
 ## Colores Principales
 
 ### 1. AZUL REY (Primary)

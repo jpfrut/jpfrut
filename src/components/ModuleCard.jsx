@@ -65,10 +65,10 @@ const ModuleCard = ({ module, index }) => {
           </motion.div>
 
           <div className="flex-1">
-            <h3 className="text-2xl font-bold text-slate-800 mb-2 group-hover:text-primary-600 transition-colors">
+            <h3 className="text-2xl font-bold text-neutral-800 mb-2 group-hover:text-primary-600 transition-colors">
               {module.name}
             </h3>
-            <p className="text-sm text-slate-600 line-clamp-2">
+            <p className="text-sm text-neutral-600 line-clamp-2">
               {module.description}
             </p>
           </div>
@@ -76,20 +76,20 @@ const ModuleCard = ({ module, index }) => {
 
         {/* Stats */}
         <div className="grid grid-cols-3 gap-3 mb-4">
-          <div className="flex items-center gap-2 px-3 py-2 bg-slate-50 rounded-lg">
-            <Clock className="w-4 h-4 text-slate-500" />
+          <div className="flex items-center gap-2 px-3 py-2 bg-neutral-50 rounded-lg">
+            <Clock className="w-4 h-4 text-neutral-500" />
             <div>
-              <p className="text-xs text-slate-500">Tiempo</p>
-              <p className="text-sm font-bold text-slate-700">
+              <p className="text-xs text-neutral-500">Tiempo</p>
+              <p className="text-sm font-bold text-neutral-700">
                 {module.estimatedTime}
               </p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 px-3 py-2 bg-slate-50 rounded-lg">
-            <TrendingUp className="w-4 h-4 text-slate-500" />
+          <div className="flex items-center gap-2 px-3 py-2 bg-neutral-50 rounded-lg">
+            <TrendingUp className="w-4 h-4 text-neutral-500" />
             <div>
-              <p className="text-xs text-slate-500">Dificultad</p>
+              <p className="text-xs text-neutral-500">Dificultad</p>
               <Badge
                 size="sm"
                 variant={difficultyColors[module.difficulty]}
@@ -100,11 +100,11 @@ const ModuleCard = ({ module, index }) => {
             </div>
           </div>
 
-          <div className="flex items-center gap-2 px-3 py-2 bg-slate-50 rounded-lg">
-            <Star className="w-4 h-4 text-slate-500" />
+          <div className="flex items-center gap-2 px-3 py-2 bg-neutral-50 rounded-lg">
+            <Star className="w-4 h-4 text-neutral-500" />
             <div>
-              <p className="text-xs text-slate-500">Lecciones</p>
-              <p className="text-sm font-bold text-slate-700">
+              <p className="text-xs text-neutral-500">Lecciones</p>
+              <p className="text-sm font-bold text-neutral-700">
                 {completedCount}/{totalLessons}
               </p>
             </div>

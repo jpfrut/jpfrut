@@ -120,13 +120,13 @@ const ExplorePage = () => {
 
         {/* Search Bar */}
         <div className="relative">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5" />
           <input
             type="text"
             placeholder="Buscar módulos... (ej: factura, inventario, empleados)"
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full pl-12 pr-4 py-3 rounded-xl bg-white text-gray-800 placeholder-gray-500 focus:ring-2 focus:ring-secondary-400 outline-none"
+            className="w-full pl-12 pr-4 py-3 rounded-xl bg-white text-neutral-800 placeholder-neutral-500 focus:ring-2 focus:ring-secondary-400 outline-none"
           />
         </div>
       </motion.div>
@@ -135,19 +135,19 @@ const ExplorePage = () => {
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card className="p-4 text-center">
           <div className="text-2xl font-bold text-primary-600">{stats.totalModules}</div>
-          <div className="text-sm text-gray-600">Módulos</div>
+          <div className="text-sm text-neutral-600">Módulos</div>
         </Card>
         <Card className="p-4 text-center">
           <div className="text-2xl font-bold text-secondary-600">{stats.totalLessons}</div>
-          <div className="text-sm text-gray-600">Lecciones</div>
+          <div className="text-sm text-neutral-600">Lecciones</div>
         </Card>
         <Card className="p-4 text-center">
-          <div className="text-2xl font-bold text-green-600">{categories.length}</div>
-          <div className="text-sm text-gray-600">Categorías</div>
+          <div className="text-2xl font-bold text-accent-green-600">{categories.length}</div>
+          <div className="text-sm text-neutral-600">Categorías</div>
         </Card>
         <Card className="p-4 text-center">
-          <div className="text-2xl font-bold text-purple-600">{Object.keys(moduleProgress).length}</div>
-          <div className="text-sm text-gray-600">En Progreso</div>
+          <div className="text-2xl font-bold text-accent-purple-600">{Object.keys(moduleProgress).length}</div>
+          <div className="text-sm text-neutral-600">En Progreso</div>
         </Card>
       </div>
 
@@ -163,7 +163,7 @@ const ExplorePage = () => {
             >
               Filtros
             </Button>
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-neutral-500">
               {filteredModules.length} de {modules.length} módulos
             </span>
           </div>
@@ -196,7 +196,7 @@ const ExplorePage = () => {
               <div className="mt-4 pt-4 border-t grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Category Filter */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-neutral-700 mb-2">
                     Categoría
                   </label>
                   <select
@@ -215,7 +215,7 @@ const ExplorePage = () => {
 
                 {/* Difficulty Filter */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-neutral-700 mb-2">
                     Dificultad
                   </label>
                   <select
@@ -270,23 +270,23 @@ const ExplorePage = () => {
               {/* Category Header */}
               <button
                 onClick={() => toggleCategory(category)}
-                className="w-full p-4 flex items-center justify-between bg-gradient-to-r from-gray-50 to-gray-100 hover:from-gray-100 hover:to-gray-150 transition-colors"
+                className="w-full p-4 flex items-center justify-between bg-gradient-to-r from-neutral-50 to-neutral-100 hover:from-neutral-100 hover:to-neutral-150 transition-colors"
               >
                 <div className="flex items-center gap-3">
                   <span className="text-2xl">{categoryIcons[category]}</span>
                   <div className="text-left">
-                    <h3 className="text-lg font-bold text-gray-800">{category}</h3>
-                    <p className="text-sm text-gray-600">{categoryDescriptions[category]}</p>
+                    <h3 className="text-lg font-bold text-neutral-800">{category}</h3>
+                    <p className="text-sm text-neutral-600">{categoryDescriptions[category]}</p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
-                  <span className="text-sm text-gray-500">
+                  <span className="text-sm text-neutral-500">
                     {catModules.length} módulo{catModules.length !== 1 ? 's' : ''}
                   </span>
                   {expandedCategories.has(category) ? (
-                    <ChevronDown className="w-5 h-5 text-gray-400" />
+                    <ChevronDown className="w-5 h-5 text-neutral-400" />
                   ) : (
-                    <ChevronRight className="w-5 h-5 text-gray-400" />
+                    <ChevronRight className="w-5 h-5 text-neutral-400" />
                   )}
                 </div>
               </button>
@@ -319,11 +319,11 @@ const ExplorePage = () => {
                                 <div className="flex items-center gap-3">
                                   <span className="text-2xl">{module.icon}</span>
                                   <div>
-                                    <h4 className="font-semibold text-gray-800">{module.name}</h4>
-                                    <p className="text-sm text-gray-600 line-clamp-1">{module.description}</p>
+                                    <h4 className="font-semibold text-neutral-800">{module.name}</h4>
+                                    <p className="text-sm text-neutral-600 line-clamp-1">{module.description}</p>
                                   </div>
                                 </div>
-                                <div className="flex items-center gap-4 text-sm text-gray-500">
+                                <div className="flex items-center gap-4 text-sm text-neutral-500">
                                   <div className="flex items-center gap-1">
                                     <BookOpen className="w-4 h-4" />
                                     {module.lessons.length}
@@ -333,14 +333,14 @@ const ExplorePage = () => {
                                     {module.estimatedTime}
                                   </div>
                                   <div className={`px-2 py-1 rounded text-xs font-medium ${
-                                    module.difficulty === 'Básico' ? 'bg-green-100 text-green-700' :
-                                    module.difficulty === 'Intermedio' ? 'bg-yellow-100 text-yellow-700' :
-                                    'bg-red-100 text-red-700'
+                                    module.difficulty === 'Básico' ? 'bg-accent-green-100 text-accent-green-700' :
+                                    module.difficulty === 'Intermedio' ? 'bg-secondary-100 text-secondary-700' :
+                                    'bg-accent-red-100 text-accent-red-700'
                                   }`}>
                                     {module.difficulty}
                                   </div>
                                   {getModuleProgress(module.id) > 0 && (
-                                    <div className="w-16 bg-gray-200 rounded-full h-2">
+                                    <div className="w-16 bg-neutral-200 rounded-full h-2">
                                       <div
                                         className="bg-primary-500 rounded-full h-2"
                                         style={{ width: `${getModuleProgress(module.id)}%` }}
@@ -369,11 +369,11 @@ const ExplorePage = () => {
         }`}>
           {filteredModules.length === 0 ? (
             <Card className="col-span-full p-8 text-center">
-              <Search className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-              <h3 className="text-lg font-semibold text-gray-700 mb-2">
+              <Search className="w-12 h-12 text-neutral-400 mx-auto mb-4" />
+              <h3 className="text-lg font-semibold text-neutral-700 mb-2">
                 No se encontraron módulos
               </h3>
-              <p className="text-gray-600">
+              <p className="text-neutral-600">
                 Intenta con otros términos de búsqueda o cambia los filtros
               </p>
             </Card>
@@ -392,12 +392,12 @@ const ExplorePage = () => {
                       <div className="flex items-center gap-3">
                         <span className="text-2xl">{module.icon}</span>
                         <div>
-                          <h4 className="font-semibold text-gray-800">{module.name}</h4>
-                          <p className="text-sm text-gray-600 line-clamp-1">{module.description}</p>
+                          <h4 className="font-semibold text-neutral-800">{module.name}</h4>
+                          <p className="text-sm text-neutral-600 line-clamp-1">{module.description}</p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-4 text-sm text-gray-500">
-                        <span className="text-xs bg-gray-100 px-2 py-1 rounded">{module.category}</span>
+                      <div className="flex items-center gap-4 text-sm text-neutral-500">
+                        <span className="text-xs bg-neutral-100 px-2 py-1 rounded">{module.category}</span>
                         <div className="flex items-center gap-1">
                           <BookOpen className="w-4 h-4" />
                           {module.lessons.length}
@@ -417,11 +417,11 @@ const ExplorePage = () => {
       )}
 
       {/* Helpful Tips */}
-      <Card className="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200">
-        <h3 className="text-lg font-semibold text-blue-800 mb-3">
+      <Card className="p-6 bg-gradient-to-r from-primary-50 to-primary-50 border-primary-200">
+        <h3 className="text-lg font-semibold text-primary-800 mb-3">
           💡 ¿No sabes por dónde empezar?
         </h3>
-        <div className="space-y-2 text-blue-700">
+        <div className="space-y-2 text-primary-700">
           <p>• <strong>Si vendes productos:</strong> Empieza con Ventas y Facturación</p>
           <p>• <strong>Si tienes empleados:</strong> Mira los módulos de Recursos Humanos</p>
           <p>• <strong>Si fabricas productos:</strong> Revisa Inventario y Fabricación</p>

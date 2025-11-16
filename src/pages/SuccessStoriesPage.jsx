@@ -24,10 +24,10 @@ function SuccessStoriesPage() {
         className="text-center"
       >
         <div className="flex items-center justify-center mb-4">
-          <Heart className="w-12 h-12 text-red-500 mr-3" />
-          <h1 className="text-4xl font-heading font-bold text-gray-800">Historias de Éxito</h1>
+          <Heart className="w-12 h-12 text-accent-red-500 mr-3" />
+          <h1 className="text-4xl font-heading font-bold text-neutral-800">Historias de Éxito</h1>
         </div>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
           Personas reales que empezaron igual que tú, con miedo y sin experiencia.
           <strong> Si ellos pudieron, tú también puedes.</strong>
         </p>
@@ -39,18 +39,18 @@ function SuccessStoriesPage() {
         animate={{ opacity: 1, scale: 1 }}
         transition={{ delay: 0.2 }}
       >
-        <Card className="p-6 bg-gradient-to-r from-purple-50 to-pink-50 border-purple-200">
+        <Card className="p-6 bg-gradient-to-r from-accent-purple-50 to-accent-pink-50 border-accent-purple-200">
           <div className="flex items-center justify-center">
-            <Quote className="w-8 h-8 text-purple-400 mr-4" />
+            <Quote className="w-8 h-8 text-accent-purple-400 mr-4" />
             <div className="text-center">
-              <p className="text-xl font-medium text-purple-800 italic mb-2">
+              <p className="text-xl font-medium text-accent-purple-800 italic mb-2">
                 "{dailyQuote.quote}"
               </p>
-              <p className="text-purple-600 font-medium">
+              <p className="text-accent-purple-600 font-medium">
                 — {dailyQuote.author}
               </p>
             </div>
-            <Quote className="w-8 h-8 text-purple-400 ml-4 transform rotate-180" />
+            <Quote className="w-8 h-8 text-accent-purple-400 ml-4 transform rotate-180" />
           </div>
         </Card>
       </motion.div>
@@ -61,14 +61,14 @@ function SuccessStoriesPage() {
         animate={{ opacity: 1 }}
         transition={{ delay: 0.3 }}
       >
-        <Card className="p-6 bg-green-50 border-green-200">
+        <Card className="p-6 bg-accent-green-50 border-accent-green-200">
           <div className="flex items-start">
-            <Users className="w-8 h-8 text-green-600 mr-4 flex-shrink-0" />
+            <Users className="w-8 h-8 text-accent-green-600 mr-4 flex-shrink-0" />
             <div>
-              <h3 className="text-lg font-semibold text-green-800 mb-2">
+              <h3 className="text-lg font-semibold text-accent-green-800 mb-2">
                 No estás solo en este camino
               </h3>
-              <p className="text-green-700">
+              <p className="text-accent-green-700">
                 Miles de personas han pasado por lo mismo: el miedo inicial, las dudas,
                 los errores. Pero todas comparten algo: <strong>decidieron intentarlo</strong>.
                 Y tú ya diste ese paso al estar aquí.
@@ -96,44 +96,44 @@ function SuccessStoriesPage() {
                 <div className="flex items-center mb-4">
                   <div className="text-4xl mr-3">{story.avatar}</div>
                   <div>
-                    <h3 className="font-semibold text-gray-800">
+                    <h3 className="font-semibold text-neutral-800">
                       {story.name}, {story.age} años
                     </h3>
-                    <p className="text-sm text-gray-500">{story.business}</p>
-                    <p className="text-xs text-gray-400">{story.location}</p>
+                    <p className="text-sm text-neutral-500">{story.business}</p>
+                    <p className="text-xs text-neutral-400">{story.location}</p>
                   </div>
                 </div>
 
                 {/* Desafío */}
                 <div className="mb-4">
-                  <p className="text-sm font-medium text-red-600 mb-1">
+                  <p className="text-sm font-medium text-accent-red-600 mb-1">
                     Su desafío:
                   </p>
-                  <p className="text-gray-700 text-sm">
+                  <p className="text-neutral-700 text-sm">
                     {story.challenge}
                   </p>
                 </div>
 
                 {/* Stats */}
                 <div className="grid grid-cols-2 gap-2 mb-4">
-                  <div className="bg-blue-50 p-2 rounded text-center">
-                    <Clock className="w-4 h-4 text-blue-500 mx-auto mb-1" />
-                    <p className="text-xs text-blue-700 font-medium">
+                  <div className="bg-primary-50 p-2 rounded text-center">
+                    <Clock className="w-4 h-4 text-primary-500 mx-auto mb-1" />
+                    <p className="text-xs text-primary-700 font-medium">
                       {story.timeToLearn}
                     </p>
-                    <p className="text-xs text-blue-600">para aprender</p>
+                    <p className="text-xs text-primary-600">para aprender</p>
                   </div>
-                  <div className="bg-green-50 p-2 rounded text-center">
-                    <Trophy className="w-4 h-4 text-green-500 mx-auto mb-1" />
-                    <p className="text-xs text-green-700 font-medium">
+                  <div className="bg-accent-green-50 p-2 rounded text-center">
+                    <Trophy className="w-4 h-4 text-accent-green-500 mx-auto mb-1" />
+                    <p className="text-xs text-accent-green-700 font-medium">
                       Gran logro
                     </p>
                   </div>
                 </div>
 
                 {/* Cita */}
-                <div className="bg-yellow-50 p-3 rounded-lg mb-4">
-                  <p className="text-sm italic text-yellow-800">
+                <div className="bg-secondary-50 p-3 rounded-lg mb-4">
+                  <p className="text-sm italic text-secondary-800">
                     "{story.quote.substring(0, 80)}..."
                   </p>
                 </div>
@@ -172,64 +172,64 @@ function SuccessStoriesPage() {
               <div className="flex items-center mb-6">
                 <div className="text-5xl mr-4">{selectedStory.avatar}</div>
                 <div>
-                  <h2 className="text-2xl font-heading font-bold text-gray-800">
+                  <h2 className="text-2xl font-heading font-bold text-neutral-800">
                     {selectedStory.name}, {selectedStory.age} años
                   </h2>
-                  <p className="text-gray-600">{selectedStory.business}</p>
-                  <p className="text-sm text-gray-500">{selectedStory.location}</p>
+                  <p className="text-neutral-600">{selectedStory.business}</p>
+                  <p className="text-sm text-neutral-500">{selectedStory.location}</p>
                 </div>
               </div>
 
               {/* Desafío */}
-              <Card className="p-4 bg-red-50 border-red-200 mb-4">
-                <h3 className="font-semibold text-red-800 mb-2">
+              <Card className="p-4 bg-accent-red-50 border-accent-red-200 mb-4">
+                <h3 className="font-semibold text-accent-red-800 mb-2">
                   Su mayor desafío:
                 </h3>
-                <p className="text-red-700">{selectedStory.challenge}</p>
+                <p className="text-accent-red-700">{selectedStory.challenge}</p>
               </Card>
 
               {/* Historia */}
               <div className="mb-6">
-                <h3 className="font-semibold text-gray-800 mb-3">Su historia:</h3>
-                <div className="text-gray-700 whitespace-pre-line leading-relaxed">
+                <h3 className="font-semibold text-neutral-800 mb-3">Su historia:</h3>
+                <div className="text-neutral-700 whitespace-pre-line leading-relaxed">
                   {selectedStory.story}
                 </div>
               </div>
 
               {/* Cita */}
-              <Card className="p-4 bg-yellow-50 border-yellow-200 mb-6">
-                <Quote className="w-6 h-6 text-yellow-500 mb-2" />
-                <p className="text-lg italic text-yellow-800 mb-2">
+              <Card className="p-4 bg-secondary-50 border-secondary-200 mb-6">
+                <Quote className="w-6 h-6 text-secondary-500 mb-2" />
+                <p className="text-lg italic text-secondary-800 mb-2">
                   "{selectedStory.quote}"
                 </p>
-                <p className="text-yellow-700 font-medium text-right">
+                <p className="text-secondary-700 font-medium text-right">
                   — {selectedStory.name}
                 </p>
               </Card>
 
               {/* Resultados */}
               <div className="grid grid-cols-2 gap-4 mb-6">
-                <Card className="p-4 bg-blue-50 border-blue-200">
-                  <Clock className="w-6 h-6 text-blue-500 mb-2" />
-                  <h4 className="font-semibold text-blue-800">Tiempo para aprender</h4>
-                  <p className="text-blue-700">{selectedStory.timeToLearn}</p>
+                <Card className="p-4 bg-primary-50 border-primary-200">
+                  <Clock className="w-6 h-6 text-primary-500 mb-2" />
+                  <h4 className="font-semibold text-primary-800">Tiempo para aprender</h4>
+                  <p className="text-primary-700">{selectedStory.timeToLearn}</p>
                 </Card>
-                <Card className="p-4 bg-green-50 border-green-200">
-                  <Trophy className="w-6 h-6 text-green-500 mb-2" />
-                  <h4 className="font-semibold text-green-800">Mayor logro</h4>
-                  <p className="text-green-700">{selectedStory.biggestWin}</p>
+                <Card className="p-4 bg-accent-green-50 border-accent-green-200">
+                  <Trophy className="w-6 h-6 text-accent-green-500 mb-2" />
+                  <h4 className="font-semibold text-accent-green-800">Mayor logro</h4>
+                  <p className="text-accent-green-700">{selectedStory.biggestWin}</p>
                 </Card>
               </div>
 
               {/* Consejo */}
-              <Card className="p-4 bg-purple-50 border-purple-200 mb-6">
+              <Card className="p-4 bg-accent-purple-50 border-accent-purple-200 mb-6">
                 <div className="flex items-start">
-                  <Lightbulb className="w-6 h-6 text-purple-500 mr-3 flex-shrink-0 mt-1" />
+                  <Lightbulb className="w-6 h-6 text-accent-purple-500 mr-3 flex-shrink-0 mt-1" />
                   <div>
-                    <h4 className="font-semibold text-purple-800 mb-1">
+                    <h4 className="font-semibold text-accent-purple-800 mb-1">
                       Su consejo para ti:
                     </h4>
-                    <p className="text-purple-700">
+                    <p className="text-accent-purple-700">
                       {selectedStory.tipForBeginners}
                     </p>
                   </div>
@@ -255,11 +255,11 @@ function SuccessStoriesPage() {
         transition={{ delay: 0.5 }}
       >
         <Card className="p-6 bg-gradient-to-r from-primary-50 to-secondary-50 border-primary-200 text-center">
-          <Star className="w-12 h-12 text-yellow-500 mx-auto mb-4" />
-          <h3 className="text-xl font-bold text-gray-800 mb-2">
+          <Star className="w-12 h-12 text-secondary-500 mx-auto mb-4" />
+          <h3 className="text-xl font-bold text-neutral-800 mb-2">
             Tu historia de éxito está por escribirse
           </h3>
-          <p className="text-gray-700 mb-4">
+          <p className="text-neutral-700 mb-4">
             Cada una de estas personas empezó exactamente donde tú estás ahora.
             La diferencia fue que decidieron dar el primer paso.
           </p>

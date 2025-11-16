@@ -39,9 +39,9 @@ function QuickGuidesPage() {
       >
         <div className="flex items-center justify-center mb-4">
           <Clock className="w-12 h-12 text-primary-600 mr-3" />
-          <h1 className="text-4xl font-heading font-bold text-gray-800">Guía de Uso Diario</h1>
+          <h1 className="text-4xl font-heading font-bold text-neutral-800">Guía de Uso Diario</h1>
         </div>
-        <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+        <p className="text-xl text-neutral-600 max-w-3xl mx-auto">
           Un menú simple de las tareas más comunes que debes hacer para mantener tu negocio organizado.
           <strong> No te compliques, solo sigue estas rutinas.</strong>
         </p>
@@ -100,11 +100,11 @@ function QuickGuidesPage() {
                   </h3>
                   <p className="text-primary-600">{taskGroup.description}</p>
                 </div>
-                <div className="divide-y divide-gray-100">
+                <div className="divide-y divide-neutral-100">
                   {taskGroup.tasks.map((task) => (
-                    <div key={task.id} className="p-4 hover:bg-gray-50 transition-colors">
+                    <div key={task.id} className="p-4 hover:bg-neutral-50 transition-colors">
                       <div className="flex items-start justify-between mb-3">
-                        <h4 className="font-semibold text-gray-800 text-lg">
+                        <h4 className="font-semibold text-neutral-800 text-lg">
                           {task.name}
                         </h4>
                         <div className="flex items-center space-x-2">
@@ -120,23 +120,23 @@ function QuickGuidesPage() {
 
                       <div className="space-y-3">
                         <div className="flex items-start">
-                          <CheckCircle className="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" />
-                          <p className="text-gray-700">
+                          <CheckCircle className="w-5 h-5 text-accent-green-500 mr-2 mt-0.5 flex-shrink-0" />
+                          <p className="text-neutral-700">
                             <strong>¿Por qué?</strong> {task.whyImportant}
                           </p>
                         </div>
 
-                        <div className="bg-blue-50 p-3 rounded-lg">
-                          <p className="text-sm font-medium text-blue-800 mb-1">
+                        <div className="bg-primary-50 p-3 rounded-lg">
+                          <p className="text-sm font-medium text-primary-800 mb-1">
                             🛤️ Cómo llegar:
                           </p>
-                          <p className="font-mono text-blue-900 text-sm">
+                          <p className="font-mono text-primary-900 text-sm">
                             {task.quickPath}
                           </p>
                         </div>
 
-                        <div className="bg-yellow-50 p-3 rounded-lg">
-                          <p className="text-yellow-800 text-sm">
+                        <div className="bg-secondary-50 p-3 rounded-lg">
+                          <p className="text-secondary-800 text-sm">
                             {task.tip}
                           </p>
                         </div>
@@ -161,13 +161,13 @@ function QuickGuidesPage() {
             {/* Buscador */}
             <Card className="p-4">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5" />
                 <input
                   type="text"
                   placeholder="Busca tu pregunta... (ej: 'cancelar factura')"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                  className="w-full pl-10 pr-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                 />
               </div>
             </Card>
@@ -178,23 +178,23 @@ function QuickGuidesPage() {
                   onClick={() => setExpandedQuestion(
                     expandedQuestion === q.id ? null : q.id
                   )}
-                  className="w-full p-4 text-left flex items-start justify-between hover:bg-gray-50 transition-colors"
+                  className="w-full p-4 text-left flex items-start justify-between hover:bg-neutral-50 transition-colors"
                 >
                   <div className="flex-1">
                     <div className="flex items-center mb-2">
                       <HelpCircle className="w-5 h-5 text-primary-500 mr-2 flex-shrink-0" />
-                      <h4 className="font-semibold text-gray-800">
+                      <h4 className="font-semibold text-neutral-800">
                         {q.question}
                       </h4>
                     </div>
-                    <p className="text-gray-600 ml-7">
+                    <p className="text-neutral-600 ml-7">
                       {q.shortAnswer}
                     </p>
                   </div>
                   {expandedQuestion === q.id ? (
-                    <ChevronUp className="w-5 h-5 text-gray-400 ml-2 flex-shrink-0" />
+                    <ChevronUp className="w-5 h-5 text-neutral-400 ml-2 flex-shrink-0" />
                   ) : (
-                    <ChevronDown className="w-5 h-5 text-gray-400 ml-2 flex-shrink-0" />
+                    <ChevronDown className="w-5 h-5 text-neutral-400 ml-2 flex-shrink-0" />
                   )}
                 </button>
 
@@ -204,13 +204,13 @@ function QuickGuidesPage() {
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: 'auto', opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
-                      className="border-t border-gray-100"
+                      className="border-t border-neutral-100"
                     >
-                      <div className="p-4 bg-gray-50">
-                        <h5 className="font-medium text-gray-700 mb-2">
+                      <div className="p-4 bg-neutral-50">
+                        <h5 className="font-medium text-neutral-700 mb-2">
                           Explicación detallada:
                         </h5>
-                        <p className="text-gray-600 mb-3">
+                        <p className="text-neutral-600 mb-3">
                           {q.detailedAnswer}
                         </p>
                         <Badge
@@ -234,8 +234,8 @@ function QuickGuidesPage() {
 
             {filteredQuestions.length === 0 && searchTerm && (
               <Card className="p-8 text-center">
-                <HelpCircle className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                <p className="text-gray-600">
+                <HelpCircle className="w-12 h-12 text-neutral-300 mx-auto mb-4" />
+                <p className="text-neutral-600">
                   No encontramos preguntas que coincidan con "{searchTerm}".
                   Intenta con otras palabras.
                 </p>
@@ -253,8 +253,8 @@ function QuickGuidesPage() {
             exit={{ opacity: 0, y: -20 }}
             className="space-y-4"
           >
-            <Card className="p-4 bg-orange-50 border-orange-200">
-              <p className="text-orange-800">
+            <Card className="p-4 bg-secondary-50 border-secondary-200">
+              <p className="text-secondary-800">
                 <strong>¿Qué es esto?</strong> Estas son señales de que algo en tu negocio
                 necesita atención. No entres en pánico, pero sí actúa pronto.
               </p>
@@ -265,20 +265,20 @@ function QuickGuidesPage() {
                 key={index}
                 className={`p-4 border-l-4 ${
                   warning.urgency === 'alta'
-                    ? 'border-l-red-500 bg-red-50'
+                    ? 'border-l-accent-red-500 bg-accent-red-50'
                     : warning.urgency === 'media'
-                    ? 'border-l-yellow-500 bg-yellow-50'
-                    : 'border-l-green-500 bg-green-50'
+                    ? 'border-l-secondary-500 bg-secondary-50'
+                    : 'border-l-accent-green-500 bg-accent-green-50'
                 }`}
               >
-                <h4 className="font-semibold text-gray-800 mb-2">
+                <h4 className="font-semibold text-neutral-800 mb-2">
                   {warning.signal}
                 </h4>
                 <div className="space-y-2">
-                  <p className="text-gray-700">
+                  <p className="text-neutral-700">
                     <strong>Qué significa:</strong> {warning.meaning}
                   </p>
-                  <p className="text-gray-700">
+                  <p className="text-neutral-700">
                     <strong>Qué hacer:</strong> {warning.action}
                   </p>
                   <Badge
@@ -311,32 +311,32 @@ function QuickGuidesPage() {
             {/* Buscador */}
             <Card className="p-4">
               <div className="relative">
-                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+                <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5" />
                 <input
                   type="text"
                   placeholder="Busca un término... (ej: 'IVA', 'Conciliación')"
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+                  className="w-full pl-10 pr-4 py-3 border border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
                 />
               </div>
             </Card>
 
-            <Card className="divide-y divide-gray-100">
+            <Card className="divide-y divide-neutral-100">
               {filteredGlossary.map(([term, definition]) => (
-                <div key={term} className="p-4 hover:bg-gray-50 transition-colors">
+                <div key={term} className="p-4 hover:bg-neutral-50 transition-colors">
                   <h4 className="font-semibold text-primary-700 text-lg mb-1">
                     {term}
                   </h4>
-                  <p className="text-gray-600">{definition}</p>
+                  <p className="text-neutral-600">{definition}</p>
                 </div>
               ))}
             </Card>
 
             {filteredGlossary.length === 0 && searchTerm && (
               <Card className="p-8 text-center">
-                <Book className="w-12 h-12 text-gray-300 mx-auto mb-4" />
-                <p className="text-gray-600">
+                <Book className="w-12 h-12 text-neutral-300 mx-auto mb-4" />
+                <p className="text-neutral-600">
                   No encontramos el término "{searchTerm}".
                   Intenta con otra palabra.
                 </p>

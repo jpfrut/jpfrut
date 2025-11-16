@@ -27,7 +27,7 @@ const ProgressBar = ({
     <div className={`w-full ${className}`}>
       {showLabel && (
         <div className="flex justify-between items-center mb-2">
-          <span className="text-sm font-medium text-slate-700">
+          <span className="text-sm font-medium text-neutral-700">
             Progreso
           </span>
           <span className="text-sm font-bold" style={{ color: toneToken.onSurface }}>
@@ -35,7 +35,7 @@ const ProgressBar = ({
           </span>
         </div>
       )}
-      <div className={`w-full bg-slate-200 rounded-full overflow-hidden ${sizes[size]}`}>
+      <div className={`w-full bg-neutral-200 rounded-full overflow-hidden ${sizes[size]}`}>
         <motion.div
           initial={{ width: 0 }}
           animate={{ width: `${percentage}%` }}

@@ -173,13 +173,13 @@ function TipOfTheDay() {
   if (!currentTip || !isVisible) return null
 
   const categoryColors = {
-    facturación: 'bg-blue-100 text-blue-700',
-    organización: 'bg-purple-100 text-purple-700',
-    productividad: 'bg-green-100 text-green-700',
-    seguridad: 'bg-red-100 text-red-700',
-    contabilidad: 'bg-yellow-100 text-yellow-700',
-    ventas: 'bg-orange-100 text-orange-700',
-    flota: 'bg-cyan-100 text-cyan-700'
+    facturación: 'bg-primary-100 text-primary-700',
+    organización: 'bg-accent-purple-100 text-accent-purple-700',
+    productividad: 'bg-accent-green-100 text-accent-green-700',
+    seguridad: 'bg-accent-red-100 text-accent-red-700',
+    contabilidad: 'bg-secondary-100 text-secondary-700',
+    ventas: 'bg-secondary-100 text-secondary-700',
+    flota: 'bg-accent-aqua-100 text-accent-aqua-700'
   }
 
   return (
@@ -189,14 +189,14 @@ function TipOfTheDay() {
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: -20 }}
       >
-        <Card className="p-4 bg-gradient-to-r from-yellow-50 to-amber-50 border-yellow-200">
+        <Card className="p-4 bg-gradient-to-r from-secondary-50 to-secondary-50 border-secondary-200">
           <div className="flex items-start justify-between mb-3">
             <div className="flex items-center">
-              <div className="p-2 bg-yellow-100 rounded-lg mr-3">
-                <Lightbulb className="w-5 h-5 text-yellow-600" />
+              <div className="p-2 bg-secondary-100 rounded-lg mr-3">
+                <Lightbulb className="w-5 h-5 text-secondary-600" />
               </div>
               <div>
-                <h3 className="font-semibold text-gray-800">
+                <h3 className="font-semibold text-neutral-800">
                   Consejo del Día
                 </h3>
                 <Badge size="sm" className={categoryColors[currentTip.category]}>
@@ -209,8 +209,8 @@ function TipOfTheDay() {
                 onClick={handleSaveTip}
                 className={`p-1.5 rounded-lg transition-colors ${
                   savedTips.includes(currentTip.id)
-                    ? 'bg-yellow-200 text-yellow-700'
-                    : 'hover:bg-yellow-100 text-gray-400'
+                    ? 'bg-secondary-200 text-secondary-700'
+                    : 'hover:bg-secondary-100 text-neutral-400'
                 }`}
                 title="Guardar consejo"
               >
@@ -218,14 +218,14 @@ function TipOfTheDay() {
               </button>
               <button
                 onClick={handleNewTip}
-                className="p-1.5 hover:bg-yellow-100 rounded-lg text-gray-400 transition-colors"
+                className="p-1.5 hover:bg-secondary-100 rounded-lg text-neutral-400 transition-colors"
                 title="Otro consejo"
               >
                 <RefreshCw className="w-4 h-4" />
               </button>
               <button
                 onClick={handleDismiss}
-                className="p-1.5 hover:bg-yellow-100 rounded-lg text-gray-400 transition-colors"
+                className="p-1.5 hover:bg-secondary-100 rounded-lg text-neutral-400 transition-colors"
                 title="Cerrar"
               >
                 <X className="w-4 h-4" />
@@ -237,20 +237,20 @@ function TipOfTheDay() {
             <div className="flex items-start">
               <span className="text-2xl mr-3">{currentTip.emoji}</span>
               <div>
-                <p className="font-medium text-gray-800 mb-1">
+                <p className="font-medium text-neutral-800 mb-1">
                   {currentTip.title}
                 </p>
-                <p className="text-gray-600 text-sm">
+                <p className="text-neutral-600 text-sm">
                   {currentTip.content}
                 </p>
               </div>
             </div>
 
-            <div className="bg-yellow-100 p-3 rounded-lg">
-              <p className="text-sm font-medium text-yellow-800">
+            <div className="bg-secondary-100 p-3 rounded-lg">
+              <p className="text-sm font-medium text-secondary-800">
                 🎯 Acción de hoy:
               </p>
-              <p className="text-sm text-yellow-700">
+              <p className="text-sm text-secondary-700">
                 {currentTip.actionable}
               </p>
             </div>

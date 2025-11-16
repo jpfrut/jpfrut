@@ -45,10 +45,10 @@ const FAQPage = () => {
         <div className="inline-flex items-center justify-center w-16 h-16 bg-primary-100 rounded-2xl mb-4">
           <HelpCircle className="w-8 h-8 text-primary-600" />
         </div>
-        <h1 className="text-3xl font-heading font-bold text-gray-900 mb-2">
+        <h1 className="text-3xl font-heading font-bold text-neutral-900 mb-2">
           Preguntas Frecuentes
         </h1>
-        <p className="text-gray-600 max-w-2xl mx-auto">
+        <p className="text-neutral-600 max-w-2xl mx-auto">
           Respuestas claras a las dudas más comunes. Si no encuentras lo que buscas,
           explora nuestras misiones prácticas o la ayuda de emergencia.
         </p>
@@ -57,7 +57,7 @@ const FAQPage = () => {
       {/* Search Bar */}
       <Card className="p-4">
         <div className="relative">
-          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+          <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-neutral-400 w-5 h-5" />
           <input
             type="text"
             placeholder="Busca tu pregunta... (ej: factura, inventario, error)"
@@ -70,7 +70,7 @@ const FAQPage = () => {
           />
         </div>
         {searchTerm && (
-          <div className="mt-2 text-sm text-gray-600">
+          <div className="mt-2 text-sm text-neutral-600">
             {filteredFaqs.length} resultado{filteredFaqs.length !== 1 ? 's' : ''} encontrado{filteredFaqs.length !== 1 ? 's' : ''}
           </div>
         )}
@@ -84,7 +84,7 @@ const FAQPage = () => {
             className={`p-3 rounded-lg text-center transition-all ${
               selectedCategory === 'all'
                 ? 'bg-primary-100 border-2 border-primary-500'
-                : 'bg-white border-2 border-gray-200 hover:border-primary-300'
+                : 'bg-white border-2 border-neutral-200 hover:border-primary-300'
             }`}
           >
             <div className="text-2xl mb-1">📚</div>
@@ -97,7 +97,7 @@ const FAQPage = () => {
               className={`p-3 rounded-lg text-center transition-all ${
                 selectedCategory === cat.id
                   ? 'bg-primary-100 border-2 border-primary-500'
-                  : 'bg-white border-2 border-gray-200 hover:border-primary-300'
+                  : 'bg-white border-2 border-neutral-200 hover:border-primary-300'
               }`}
             >
               <div className="text-2xl mb-1">{cat.icon}</div>
@@ -128,11 +128,11 @@ const FAQPage = () => {
       <div className="space-y-3">
         {filteredFaqs.length === 0 ? (
           <Card className="p-8 text-center">
-            <Search className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-            <h3 className="text-lg font-semibold text-gray-700 mb-2">
+            <Search className="w-12 h-12 text-neutral-400 mx-auto mb-4" />
+            <h3 className="text-lg font-semibold text-neutral-700 mb-2">
               No encontramos esa pregunta
             </h3>
-            <p className="text-gray-600 mb-4">
+            <p className="text-neutral-600 mb-4">
               Intenta con otras palabras o explora las categorías
             </p>
           </Card>
@@ -149,25 +149,25 @@ const FAQPage = () => {
                   {/* Question */}
                   <button
                     onClick={() => toggleFaq(faq.id)}
-                    className="w-full p-4 text-left flex items-center justify-between hover:bg-gray-50 transition-colors"
+                    className="w-full p-4 text-left flex items-center justify-between hover:bg-neutral-50 transition-colors"
                   >
                     <div className="flex items-start gap-3">
                       <span className="text-xl">{getCategoryInfo(faq.category)?.icon}</span>
                       <div>
-                        <h3 className="font-semibold text-gray-800 pr-4">
+                        <h3 className="font-semibold text-neutral-800 pr-4">
                           {faq.question}
                         </h3>
                         {searchTerm && (
-                          <span className="text-xs text-gray-500 bg-gray-100 px-2 py-0.5 rounded">
+                          <span className="text-xs text-neutral-500 bg-neutral-100 px-2 py-0.5 rounded">
                             {getCategoryInfo(faq.category)?.name}
                           </span>
                         )}
                       </div>
                     </div>
                     {expandedFaq === faq.id ? (
-                      <ChevronUp className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                      <ChevronUp className="w-5 h-5 text-neutral-500 flex-shrink-0" />
                     ) : (
-                      <ChevronDown className="w-5 h-5 text-gray-500 flex-shrink-0" />
+                      <ChevronDown className="w-5 h-5 text-neutral-500 flex-shrink-0" />
                     )}
                   </button>
 
@@ -181,17 +181,17 @@ const FAQPage = () => {
                         transition={{ duration: 0.3 }}
                         className="overflow-hidden"
                       >
-                        <div className="p-4 pt-0 border-t bg-gray-50">
-                          <div className="prose prose-sm max-w-none">
-                            <div className="whitespace-pre-line text-gray-700 leading-relaxed">
+                        <div className="p-4 pt-0 border-t bg-neutral-50">
+                          <div className="prose paccent-pink-sm max-w-none">
+                            <div className="whitespace-pre-line text-neutral-700 leading-relaxed">
                               {faq.answer.trim()}
                             </div>
                           </div>
 
                           {/* Related Questions */}
                           {faq.relatedQuestions && faq.relatedQuestions.length > 0 && (
-                            <div className="mt-4 pt-4 border-t border-gray-200">
-                              <h4 className="text-sm font-semibold text-gray-700 mb-2">
+                            <div className="mt-4 pt-4 border-t border-neutral-200">
+                              <h4 className="text-sm font-semibold text-neutral-700 mb-2">
                                 Preguntas relacionadas:
                               </h4>
                               <div className="space-y-1">
@@ -229,25 +229,25 @@ const FAQPage = () => {
       </div>
 
       {/* Bottom CTA */}
-      <Card className="p-6 bg-gradient-to-r from-blue-50 to-indigo-50 border-blue-200">
+      <Card className="p-6 bg-gradient-to-r from-primary-50 to-primary-50 border-primary-200">
         <div className="flex items-start gap-4">
-          <BookOpen className="w-8 h-8 text-blue-600 flex-shrink-0" />
+          <BookOpen className="w-8 h-8 text-primary-600 flex-shrink-0" />
           <div>
-            <h3 className="text-lg font-semibold text-blue-800 mb-2">
+            <h3 className="text-lg font-semibold text-primary-800 mb-2">
               ¿No encontraste lo que buscabas?
             </h3>
-            <p className="text-blue-700 mb-3">
+            <p className="text-primary-700 mb-3">
               Prueba nuestras misiones prácticas donde te guiamos paso a paso, o visita
               la Ayuda de Emergencia para problemas específicos.
             </p>
             <div className="flex flex-wrap gap-3">
-              <a href="/missions" className="text-sm font-medium text-blue-600 hover:text-blue-800 underline">
+              <a href="/missions" className="text-sm font-medium text-primary-600 hover:text-primary-800 underline">
                 Ver Misiones Prácticas
               </a>
-              <a href="/emergency-help" className="text-sm font-medium text-blue-600 hover:text-blue-800 underline">
+              <a href="/emergency-help" className="text-sm font-medium text-primary-600 hover:text-primary-800 underline">
                 Ayuda de Emergencia
               </a>
-              <a href="/quick-guides" className="text-sm font-medium text-blue-600 hover:text-blue-800 underline">
+              <a href="/quick-guides" className="text-sm font-medium text-primary-600 hover:text-primary-800 underline">
                 Guías Rápidas
               </a>
             </div>

@@ -26,7 +26,7 @@ const ModulePage = () => {
     return (
       <div className="flex items-center justify-center min-h-[60vh]">
         <div className="text-center">
-          <h2 className="text-2xl font-heading font-bold text-slate-800 mb-2">
+          <h2 className="text-2xl font-heading font-bold text-neutral-800 mb-2">
             Módulo no encontrado
           </h2>
           <Button onClick={() => navigate('/')}>
@@ -177,7 +177,7 @@ const ModulePage = () => {
 
       {/* Lessons List */}
       <div>
-        <h2 className="text-2xl font-heading font-bold text-slate-800 mb-6 flex items-center gap-3">
+        <h2 className="text-2xl font-heading font-bold text-neutral-800 mb-6 flex items-center gap-3">
           <BookOpen className="w-7 h-7 text-primary-600" />
           Lecciones del Módulo
         </h2>
@@ -203,7 +203,7 @@ const ModulePage = () => {
                   hover={!isLocked}
                   className={`
                     ${isLocked ? 'opacity-50 cursor-not-allowed' : ''}
-                    ${isCompleted ? 'border-2 border-green-400 bg-green-50/50' : ''}
+                    ${isCompleted ? 'border-2 border-accent-green-400 bg-accent-green-50/50' : ''}
                     relative overflow-hidden
                   `}
                 >
@@ -215,9 +215,9 @@ const ModulePage = () => {
                         className={`
                           w-16 h-16 rounded-2xl flex items-center justify-center text-2xl font-bold
                           ${isCompleted
-                            ? 'bg-gradient-to-br from-green-500 to-emerald-600 text-white shadow-lg'
+                            ? 'bg-gradient-to-br from-accent-green-500 to-accent-green-600 text-white shadow-lg'
                             : isLocked
-                            ? 'bg-slate-200 text-slate-400'
+                            ? 'bg-neutral-200 text-neutral-400'
                             : `bg-gradient-to-br ${module.color} text-white shadow-lg`
                           }
                         `}
@@ -235,7 +235,7 @@ const ModulePage = () => {
                     {/* Lesson Info */}
                     <div className="flex-1">
                       <div className="flex items-start justify-between mb-2">
-                        <h3 className="text-xl font-bold text-slate-800">
+                        <h3 className="text-xl font-bold text-neutral-800">
                           {lesson.title}
                         </h3>
                         {isCompleted && (
@@ -265,14 +265,14 @@ const ModulePage = () => {
                         {lesson.topics.slice(0, 3).map((topic, i) => (
                           <div
                             key={i}
-                            className="flex items-center gap-2 text-sm text-slate-600"
+                            className="flex items-center gap-2 text-sm text-neutral-600"
                           >
                             <div className="w-1.5 h-1.5 rounded-full bg-primary-400" />
                             {topic}
                           </div>
                         ))}
                         {lesson.topics.length > 3 && (
-                          <p className="text-sm text-slate-400 ml-3.5">
+                          <p className="text-sm text-neutral-400 ml-3.5">
                             +{lesson.topics.length - 3} temas más
                           </p>
                         )}
@@ -301,7 +301,7 @@ const ModulePage = () => {
                   {/* Completed overlay effect */}
                   {isCompleted && (
                     <motion.div
-                      className="absolute top-0 right-0 w-32 h-32 bg-green-400/20 rounded-full blur-2xl"
+                      className="absolute top-0 right-0 w-32 h-32 bg-accent-green-400/20 rounded-full blur-2xl"
                       animate={{
                         scale: [1, 1.2, 1],
                         opacity: [0.3, 0.5, 0.3],
@@ -325,7 +325,7 @@ const ModulePage = () => {
         <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
           animate={{ opacity: 1, scale: 1 }}
-          className="mt-8 p-8 rounded-3xl bg-gradient-to-r from-green-500 to-emerald-600 text-white text-center shadow-2xl"
+          className="mt-8 p-8 rounded-3xl bg-gradient-to-r from-accent-green-500 to-accent-green-600 text-white text-center shadow-2xl"
         >
           <motion.div
             animate={{

@@ -31,15 +31,15 @@ function OnboardingWizard({ onComplete }) {
             <Heart className="w-12 h-12 text-white" />
           </motion.div>
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-gray-800">
+            <h3 className="text-2xl font-bold text-neutral-800">
               ¡Hola! Soy tu asistente personal
             </h3>
-            <p className="text-gray-600 text-lg max-w-md mx-auto">
+            <p className="text-neutral-600 text-lg max-w-md mx-auto">
               No importa si nunca has usado una computadora antes.
               Estoy aquí para guiarte <strong>paso a paso</strong> de forma simple y amigable.
             </p>
-            <div className="bg-green-50 p-4 rounded-lg max-w-md mx-auto">
-              <p className="text-green-700 text-sm">
+            <div className="bg-accent-green-50 p-4 rounded-lg max-w-md mx-auto">
+              <p className="text-accent-green-700 text-sm">
                 💡 <strong>Promesa:</strong> Si te pierdes o te confundes en algún momento,
                 siempre podrás volver aquí y comenzar de nuevo. No hay errores que no se puedan arreglar.
               </p>
@@ -56,12 +56,12 @@ function OnboardingWizard({ onComplete }) {
         <div className="space-y-6 max-w-md mx-auto">
           <div className="text-center mb-8">
             <Users className="w-16 h-16 text-primary-500 mx-auto mb-4" />
-            <p className="text-gray-600">
+            <p className="text-neutral-600">
               Tu nombre nos ayuda a personalizar tu experiencia
             </p>
           </div>
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-neutral-700 mb-2">
               Mi nombre es:
             </label>
             <input
@@ -69,11 +69,11 @@ function OnboardingWizard({ onComplete }) {
               value={userName}
               onChange={(e) => setUserName(e.target.value)}
               placeholder="Escribe tu nombre aquí..."
-              className="w-full px-4 py-3 text-lg border-2 border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
+              className="w-full px-4 py-3 text-lg border-2 border-neutral-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500"
             />
           </div>
-          <div className="bg-blue-50 p-3 rounded-lg">
-            <p className="text-blue-700 text-sm">
+          <div className="bg-primary-50 p-3 rounded-lg">
+            <p className="text-primary-700 text-sm">
               📝 <strong>Consejo:</strong> Puedes usar tu nombre o un apodo.
               Lo importante es que te sientas cómodo.
             </p>
@@ -89,7 +89,7 @@ function OnboardingWizard({ onComplete }) {
         <div className="space-y-4 max-w-lg mx-auto">
           <div className="text-center mb-6">
             <Target className="w-16 h-16 text-secondary-500 mx-auto mb-4" />
-            <p className="text-gray-600">
+            <p className="text-neutral-600">
               Selecciona la opción que mejor describa tu negocio
             </p>
           </div>
@@ -132,14 +132,14 @@ function OnboardingWizard({ onComplete }) {
                 className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
                   businessType === option.id
                     ? 'border-primary-500 bg-primary-50'
-                    : 'border-gray-200 hover:border-primary-300'
+                    : 'border-neutral-200 hover:border-primary-300'
                 }`}
               >
                 <div className="flex items-center">
                   <span className="text-2xl mr-3">{option.icon}</span>
                   <div>
-                    <p className="font-medium text-gray-800">{option.label}</p>
-                    <p className="text-sm text-gray-500">{option.description}</p>
+                    <p className="font-medium text-neutral-800">{option.label}</p>
+                    <p className="text-sm text-neutral-500">{option.description}</p>
                   </div>
                   {businessType === option.id && (
                     <CheckCircle className="w-5 h-5 text-primary-500 ml-auto" />
@@ -158,8 +158,8 @@ function OnboardingWizard({ onComplete }) {
       content: (
         <div className="space-y-4 max-w-lg mx-auto">
           <div className="text-center mb-6">
-            <Shield className="w-16 h-16 text-green-500 mx-auto mb-4" />
-            <p className="text-gray-600">
+            <Shield className="w-16 h-16 text-accent-green-500 mx-auto mb-4" />
+            <p className="text-neutral-600">
               Sé honesto. Esto nos ayuda a adaptar las explicaciones a tu nivel.
             </p>
           </div>
@@ -195,20 +195,20 @@ function OnboardingWizard({ onComplete }) {
                 onClick={() => setExperienceLevel(option.id)}
                 className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
                   experienceLevel === option.id
-                    ? 'border-green-500 bg-green-50'
-                    : 'border-gray-200 hover:border-green-300'
+                    ? 'border-accent-green-500 bg-accent-green-50'
+                    : 'border-neutral-200 hover:border-accent-green-300'
                 }`}
               >
                 <div className="flex items-center">
                   <span className="text-2xl mr-3">{option.emoji}</span>
                   <div className="flex-1">
-                    <p className="font-medium text-gray-800">{option.label}</p>
+                    <p className="font-medium text-neutral-800">{option.label}</p>
                     {experienceLevel === option.id && (
-                      <p className="text-sm text-green-600 mt-1">{option.message}</p>
+                      <p className="text-sm text-accent-green-600 mt-1">{option.message}</p>
                     )}
                   </div>
                   {experienceLevel === option.id && (
-                    <CheckCircle className="w-5 h-5 text-green-500 ml-2" />
+                    <CheckCircle className="w-5 h-5 text-accent-green-500 ml-2" />
                   )}
                 </div>
               </button>
@@ -224,8 +224,8 @@ function OnboardingWizard({ onComplete }) {
       content: (
         <div className="space-y-4 max-w-lg mx-auto">
           <div className="text-center mb-6">
-            <Star className="w-16 h-16 text-yellow-500 mx-auto mb-4" />
-            <p className="text-gray-600">
+            <Star className="w-16 h-16 text-secondary-500 mx-auto mb-4" />
+            <p className="text-neutral-600">
               Selecciona lo que más te urge aprender
             </p>
           </div>
@@ -267,18 +267,18 @@ function OnboardingWizard({ onComplete }) {
                 onClick={() => setMainGoal(option.id)}
                 className={`w-full text-left p-4 rounded-lg border-2 transition-all ${
                   mainGoal === option.id
-                    ? 'border-yellow-500 bg-yellow-50'
-                    : 'border-gray-200 hover:border-yellow-300'
+                    ? 'border-secondary-500 bg-secondary-50'
+                    : 'border-neutral-200 hover:border-secondary-300'
                 }`}
               >
                 <div className="flex items-center">
                   <span className="text-2xl mr-3">{option.icon}</span>
                   <div className="flex-1">
-                    <p className="font-medium text-gray-800">{option.label}</p>
-                    <p className="text-sm text-gray-500">{option.time}</p>
+                    <p className="font-medium text-neutral-800">{option.label}</p>
+                    <p className="text-sm text-neutral-500">{option.time}</p>
                   </div>
                   {mainGoal === option.id && (
-                    <CheckCircle className="w-5 h-5 text-yellow-500 ml-2" />
+                    <CheckCircle className="w-5 h-5 text-secondary-500 ml-2" />
                   )}
                 </div>
               </button>
@@ -297,44 +297,44 @@ function OnboardingWizard({ onComplete }) {
             initial={{ scale: 0 }}
             animate={{ scale: 1, rotate: [0, 10, -10, 0] }}
             transition={{ type: 'spring', delay: 0.2 }}
-            className="w-24 h-24 mx-auto bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center"
+            className="w-24 h-24 mx-auto bg-gradient-to-br from-accent-green-500 to-accent-green-500 rounded-full flex items-center justify-center"
           >
             <Smile className="w-12 h-12 text-white" />
           </motion.div>
 
           <div className="space-y-4">
-            <h3 className="text-2xl font-bold text-gray-800">
+            <h3 className="text-2xl font-bold text-neutral-800">
               ¡Bienvenido, {userName || user.name}!
             </h3>
-            <p className="text-gray-600 text-lg">
+            <p className="text-neutral-600 text-lg">
               Has dado el primer paso más importante: <strong>decidir aprender</strong>.
             </p>
           </div>
 
-          <Card className="p-4 bg-blue-50 border-blue-200 text-left">
-            <h4 className="font-semibold text-blue-800 mb-2">Tu plan personalizado:</h4>
-            <ul className="space-y-2 text-blue-700 text-sm">
+          <Card className="p-4 bg-primary-50 border-primary-200 text-left">
+            <h4 className="font-semibold text-primary-800 mb-2">Tu plan personalizado:</h4>
+            <ul className="space-y-2 text-primary-700 text-sm">
               <li className="flex items-center">
-                <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                <CheckCircle className="w-4 h-4 mr-2 text-accent-green-500" />
                 Misiones adaptadas a tu nivel de experiencia
               </li>
               <li className="flex items-center">
-                <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                <CheckCircle className="w-4 h-4 mr-2 text-accent-green-500" />
                 Explicaciones en lenguaje simple sin tecnicismos
               </li>
               <li className="flex items-center">
-                <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                <CheckCircle className="w-4 h-4 mr-2 text-accent-green-500" />
                 Practica sin miedo - aquí es seguro equivocarse
               </li>
               <li className="flex items-center">
-                <CheckCircle className="w-4 h-4 mr-2 text-green-500" />
+                <CheckCircle className="w-4 h-4 mr-2 text-accent-green-500" />
                 Avanza a tu propio ritmo, sin presión
               </li>
             </ul>
           </Card>
 
-          <div className="bg-yellow-50 p-4 rounded-lg">
-            <p className="text-yellow-800 text-sm">
+          <div className="bg-secondary-50 p-4 rounded-lg">
+            <p className="text-secondary-800 text-sm">
               ⭐ <strong>Recuerda:</strong> Cada experto fue alguna vez un principiante.
               Tú puedes lograrlo.
             </p>
@@ -385,14 +385,14 @@ function OnboardingWizard({ onComplete }) {
         {/* Progress bar */}
         <div className="mb-8">
           <div className="flex justify-between items-center mb-2">
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-neutral-500">
               Paso {currentStep + 1} de {steps.length}
             </span>
             <span className="text-sm text-primary-600 font-medium">
               {Math.round(((currentStep + 1) / steps.length) * 100)}% completado
             </span>
           </div>
-          <div className="h-2 bg-gray-200 rounded-full overflow-hidden">
+          <div className="h-2 bg-neutral-200 rounded-full overflow-hidden">
             <motion.div
               initial={{ width: 0 }}
               animate={{ width: `${((currentStep + 1) / steps.length) * 100}%` }}
@@ -411,10 +411,10 @@ function OnboardingWizard({ onComplete }) {
             className="mb-8"
           >
             <div className="text-center mb-6">
-              <h2 className="text-3xl font-bold text-gray-800 mb-2">
+              <h2 className="text-3xl font-bold text-neutral-800 mb-2">
                 {steps[currentStep].title}
               </h2>
-              <p className="text-gray-500 text-lg">
+              <p className="text-neutral-500 text-lg">
                 {steps[currentStep].subtitle}
               </p>
             </div>

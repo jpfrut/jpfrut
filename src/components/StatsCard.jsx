@@ -11,10 +11,10 @@ const StatsCard = ({ icon: Icon, label, value, color, trend, index = 0 }) => {
       <Card hover={false} className="relative overflow-hidden">
         <div className="flex items-center justify-between">
           <div>
-            <p className="text-sm text-slate-500 mb-1">{label}</p>
-            <p className="text-3xl font-bold text-slate-800">{value}</p>
+            <p className="text-sm text-neutral-500 mb-1">{label}</p>
+            <p className="text-3xl font-bold text-neutral-800">{value}</p>
             {trend && (
-              <p className="text-xs text-green-600 mt-1 flex items-center gap-1">
+              <p className="text-xs text-accent-green-600 mt-1 flex items-center gap-1">
                 <span>↑</span> {trend}
               </p>
             )}
@@ -31,8 +31,8 @@ const StatsCard = ({ icon: Icon, label, value, color, trend, index = 0 }) => {
         </div>
 
         {/* Decorative circles */}
-        <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-gradient-to-br from-slate-100 to-transparent rounded-full opacity-50" />
-        <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-gradient-to-br from-slate-100 to-transparent rounded-full opacity-30" />
+        <div className="absolute -right-4 -bottom-4 w-24 h-24 bg-gradient-to-br from-neutral-100 to-transparent rounded-full opacity-50" />
+        <div className="absolute -right-8 -bottom-8 w-32 h-32 bg-gradient-to-br from-neutral-100 to-transparent rounded-full opacity-30" />
       </Card>
     </motion.div>
   )

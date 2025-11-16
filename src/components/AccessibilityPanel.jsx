@@ -119,26 +119,26 @@ function AccessibilityPanel() {
             >
               <Card className="p-6">
                 <div className="flex items-center justify-between mb-6">
-                  <h2 className="text-xl font-bold text-gray-800 flex items-center">
+                  <h2 className="text-xl font-bold text-neutral-800 flex items-center">
                     <Eye className="w-6 h-6 mr-2 text-primary-600" />
                     Opciones de Accesibilidad
                   </h2>
                   <button
                     onClick={() => setIsOpen(false)}
-                    className="p-2 hover:bg-gray-100 rounded-lg"
+                    className="p-2 hover:bg-neutral-100 rounded-lg"
                   >
-                    <X className="w-5 h-5 text-gray-500" />
+                    <X className="w-5 h-5 text-neutral-500" />
                   </button>
                 </div>
 
                 <div className="space-y-6">
                   {/* Tamaño de texto */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-3">
+                    <label className="block text-sm font-medium text-neutral-700 mb-3">
                       <Type className="w-4 h-4 inline mr-2" />
                       Tamaño del Texto
                     </label>
-                    <p className="text-xs text-gray-500 mb-3">
+                    <p className="text-xs text-neutral-500 mb-3">
                       Ajusta el tamaño de las letras para leer mejor
                     </p>
                     <div className="grid grid-cols-4 gap-2">
@@ -149,7 +149,7 @@ function AccessibilityPanel() {
                           className={`p-2 rounded-lg border-2 transition-colors text-center ${
                             fontSize === size
                               ? 'border-primary-500 bg-primary-50 text-primary-700'
-                              : 'border-gray-200 hover:border-primary-300'
+                              : 'border-neutral-200 hover:border-primary-300'
                           }`}
                         >
                           <span className={`block font-medium ${
@@ -168,11 +168,11 @@ function AccessibilityPanel() {
 
                   {/* Contraste */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-3">
+                    <label className="block text-sm font-medium text-neutral-700 mb-3">
                       <Sun className="w-4 h-4 inline mr-2" />
                       Contraste de Colores
                     </label>
-                    <p className="text-xs text-gray-500 mb-3">
+                    <p className="text-xs text-neutral-500 mb-3">
                       Aumenta el contraste si tienes dificultad para ver
                     </p>
                     <div className="grid grid-cols-2 gap-2">
@@ -181,7 +181,7 @@ function AccessibilityPanel() {
                         className={`p-3 rounded-lg border-2 transition-colors ${
                           contrast === 'normal'
                             ? 'border-primary-500 bg-primary-50'
-                            : 'border-gray-200 hover:border-primary-300'
+                            : 'border-neutral-200 hover:border-primary-300'
                         }`}
                       >
                         <Sun className="w-5 h-5 mx-auto mb-1" />
@@ -192,7 +192,7 @@ function AccessibilityPanel() {
                         className={`p-3 rounded-lg border-2 transition-colors ${
                           contrast === 'high'
                             ? 'border-primary-500 bg-primary-50'
-                            : 'border-gray-200 hover:border-primary-300'
+                            : 'border-neutral-200 hover:border-primary-300'
                         }`}
                       >
                         <Moon className="w-5 h-5 mx-auto mb-1" />
@@ -203,26 +203,26 @@ function AccessibilityPanel() {
 
                   {/* Animaciones */}
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-3">
+                    <label className="block text-sm font-medium text-neutral-700 mb-3">
                       <Volume2 className="w-4 h-4 inline mr-2" />
                       Animaciones
                     </label>
-                    <p className="text-xs text-gray-500 mb-3">
+                    <p className="text-xs text-neutral-500 mb-3">
                       Desactiva las animaciones si te marean o distraen
                     </p>
                     <button
                       onClick={() => handleReducedMotionChange(!reducedMotion)}
                       className={`w-full p-3 rounded-lg border-2 transition-colors flex items-center justify-between ${
                         reducedMotion
-                          ? 'border-orange-500 bg-orange-50'
-                          : 'border-gray-200 hover:border-orange-300'
+                          ? 'border-secondary-500 bg-secondary-50'
+                          : 'border-neutral-200 hover:border-secondary-300'
                       }`}
                     >
                       <span className="font-medium">
                         {reducedMotion ? 'Animaciones desactivadas' : 'Animaciones activadas'}
                       </span>
                       <div className={`w-12 h-6 rounded-full transition-colors ${
-                        reducedMotion ? 'bg-orange-500' : 'bg-gray-300'
+                        reducedMotion ? 'bg-secondary-500' : 'bg-neutral-300'
                       }`}>
                         <div className={`w-6 h-6 bg-white rounded-full shadow transition-transform ${
                           reducedMotion ? 'translate-x-6' : 'translate-x-0'
@@ -232,7 +232,7 @@ function AccessibilityPanel() {
                   </div>
 
                   {/* Reset */}
-                  <div className="pt-4 border-t border-gray-200">
+                  <div className="pt-4 border-t border-neutral-200">
                     <Button
                       variant="outline"
                       onClick={resetAll}
@@ -244,8 +244,8 @@ function AccessibilityPanel() {
                   </div>
 
                   {/* Nota */}
-                  <div className="bg-blue-50 p-3 rounded-lg">
-                    <p className="text-xs text-blue-700">
+                  <div className="bg-primary-50 p-3 rounded-lg">
+                    <p className="text-xs text-primary-700">
                       💡 Tus preferencias se guardarán automáticamente y se aplicarán
                       cada vez que vuelvas.
                     </p>

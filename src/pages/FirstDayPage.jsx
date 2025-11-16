@@ -25,7 +25,7 @@ const firstDaySteps = [
     id: 1,
     title: 'Bienvenido a Tu Primer Día',
     icon: Sun,
-    color: 'from-yellow-400 to-orange-500',
+    color: 'from-secondary-400 to-secondary-500',
     content: {
       greeting: '¡Hola! Hoy es tu primer día usando Odoo.',
       message: 'No te preocupes si nunca has usado un sistema como este. Vamos a ir paso a paso, muy despacio, y te explicaré todo como si fuéramos amigos tomando un café.',
@@ -42,7 +42,7 @@ const firstDaySteps = [
     id: 2,
     title: '¿Qué es Odoo y Por Qué lo Necesitas?',
     icon: Lightbulb,
-    color: 'from-blue-400 to-indigo-500',
+    color: 'from-primary-400 to-primary-500',
     content: {
       simple: 'Piensa en Odoo como tu asistente personal de negocios.',
       analogy: 'Es como tener una carpeta mágica que guarda TODO de tu negocio: clientes, facturas, productos, empleados... y nunca pierde nada.',
@@ -72,7 +72,7 @@ const firstDaySteps = [
     id: 3,
     title: 'No Tengas Miedo a Equivocarte',
     icon: Shield,
-    color: 'from-green-400 to-emerald-500',
+    color: 'from-accent-green-400 to-accent-green-500',
     content: {
       mainMessage: '¡Puedes equivocarte sin problema!',
       reassurance: 'Odoo está diseñado para que puedas corregir casi cualquier error. No vas a "romper" nada.',
@@ -101,7 +101,7 @@ const firstDaySteps = [
     id: 4,
     title: 'Conoce la Pantalla Principal',
     icon: Home,
-    color: 'from-purple-400 to-pink-500',
+    color: 'from-accent-purple-400 to-accent-pink-500',
     content: {
       overview: 'La pantalla principal es simple. Hay 3 partes importantes:',
       parts: [
@@ -128,7 +128,7 @@ const firstDaySteps = [
     id: 5,
     title: 'Tu Primera Tarea: Crear un Contacto',
     icon: Target,
-    color: 'from-orange-400 to-red-500',
+    color: 'from-secondary-400 to-accent-red-500',
     content: {
       intro: 'Vamos a hacer algo súper simple: guardar un contacto. Puede ser un cliente real o inventado.',
       whyImportant: 'Tener contactos registrados te permite luego enviarles facturas, darles seguimiento, y no perder su información.',
@@ -166,7 +166,7 @@ const firstDaySteps = [
     id: 6,
     title: '¿Qué Hacer Cuando Te Atoras?',
     icon: Heart,
-    color: 'from-pink-400 to-rose-500',
+    color: 'from-accent-pink-400 to-accent-pink-500',
     content: {
       mainMessage: 'Es normal atascarse. Todos lo hacemos. Aquí te digo qué hacer:',
       options: [
@@ -198,7 +198,7 @@ const firstDaySteps = [
     id: 7,
     title: 'Tu Plan para los Próximos Días',
     icon: Star,
-    color: 'from-indigo-400 to-purple-500',
+    color: 'from-primary-400 to-accent-purple-500',
     content: {
       intro: 'Ahora que completaste tu primer día, aquí está tu plan para seguir aprendiendo:',
       plan: [
@@ -289,17 +289,17 @@ const FirstDayPage = () => {
         {/* Content based on step */}
         {step.id === 1 && (
           <Card className="p-6 space-y-4">
-            <p className="text-xl text-gray-800 font-medium">{step.content.greeting}</p>
-            <p className="text-gray-700 leading-relaxed">{step.content.message}</p>
-            <div className="bg-green-50 p-4 rounded-lg border border-green-200">
-              <p className="text-green-800 font-medium">{step.content.encouragement}</p>
+            <p className="text-xl text-neutral-800 font-medium">{step.content.greeting}</p>
+            <p className="text-neutral-700 leading-relaxed">{step.content.message}</p>
+            <div className="bg-accent-green-50 p-4 rounded-lg border border-accent-green-200">
+              <p className="text-accent-green-800 font-medium">{step.content.encouragement}</p>
             </div>
             <div>
-              <h4 className="font-semibold text-gray-800 mb-3">Hoy aprenderás:</h4>
+              <h4 className="font-semibold text-neutral-800 mb-3">Hoy aprenderás:</h4>
               <ul className="space-y-2">
                 {step.content.whatYouWillLearn.map((item, i) => (
-                  <li key={i} className="flex items-center gap-2 text-gray-700">
-                    <CheckCircle2 className="w-5 h-5 text-green-500 flex-shrink-0" />
+                  <li key={i} className="flex items-center gap-2 text-neutral-700">
+                    <CheckCircle2 className="w-5 h-5 text-accent-green-500 flex-shrink-0" />
                     {item}
                   </li>
                 ))}
@@ -310,22 +310,22 @@ const FirstDayPage = () => {
 
         {step.id === 2 && (
           <Card className="p-6 space-y-4">
-            <p className="text-xl text-gray-800 font-medium">{step.content.simple}</p>
-            <p className="text-gray-700 bg-blue-50 p-4 rounded-lg">{step.content.analogy}</p>
+            <p className="text-xl text-neutral-800 font-medium">{step.content.simple}</p>
+            <p className="text-neutral-700 bg-primary-50 p-4 rounded-lg">{step.content.analogy}</p>
             <div className="grid md:grid-cols-2 gap-4">
-              <div className="bg-red-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-red-800 mb-2">{step.content.problems.title}</h4>
+              <div className="bg-accent-red-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-accent-red-800 mb-2">{step.content.problems.title}</h4>
                 <ul className="space-y-1">
                   {step.content.problems.list.map((item, i) => (
-                    <li key={i} className="text-red-700 text-sm">{item}</li>
+                    <li key={i} className="text-accent-red-700 text-sm">{item}</li>
                   ))}
                 </ul>
               </div>
-              <div className="bg-green-50 p-4 rounded-lg">
-                <h4 className="font-semibold text-green-800 mb-2">{step.content.solutions.title}</h4>
+              <div className="bg-accent-green-50 p-4 rounded-lg">
+                <h4 className="font-semibold text-accent-green-800 mb-2">{step.content.solutions.title}</h4>
                 <ul className="space-y-1">
                   {step.content.solutions.list.map((item, i) => (
-                    <li key={i} className="text-green-700 text-sm">{item}</li>
+                    <li key={i} className="text-accent-green-700 text-sm">{item}</li>
                   ))}
                 </ul>
               </div>
@@ -335,107 +335,107 @@ const FirstDayPage = () => {
 
         {step.id === 3 && (
           <Card className="p-6 space-y-4">
-            <div className="bg-green-100 p-4 rounded-lg text-center">
-              <h3 className="text-2xl font-bold text-green-800">{step.content.mainMessage}</h3>
+            <div className="bg-accent-green-100 p-4 rounded-lg text-center">
+              <h3 className="text-2xl font-bold text-accent-green-800">{step.content.mainMessage}</h3>
             </div>
-            <p className="text-gray-700">{step.content.reassurance}</p>
+            <p className="text-neutral-700">{step.content.reassurance}</p>
             <div className="space-y-3">
-              <h4 className="font-semibold text-gray-800">¿Qué pasa si...?</h4>
+              <h4 className="font-semibold text-neutral-800">¿Qué pasa si...?</h4>
               {step.content.safeActions.map((item, i) => (
-                <div key={i} className="flex items-start gap-3 bg-gray-50 p-3 rounded-lg">
-                  <Shield className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
+                <div key={i} className="flex items-start gap-3 bg-neutral-50 p-3 rounded-lg">
+                  <Shield className="w-5 h-5 text-accent-green-600 flex-shrink-0 mt-0.5" />
                   <div>
-                    <p className="font-medium text-gray-800">{item.action}</p>
-                    <p className="text-sm text-gray-600">Solución: {item.solution}</p>
+                    <p className="font-medium text-neutral-800">{item.action}</p>
+                    <p className="text-sm text-neutral-600">Solución: {item.solution}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-              <p className="text-yellow-800 font-medium">{step.content.goldenRule}</p>
+            <div className="bg-secondary-50 p-4 rounded-lg border border-secondary-200">
+              <p className="text-secondary-800 font-medium">{step.content.goldenRule}</p>
             </div>
           </Card>
         )}
 
         {step.id === 4 && (
           <Card className="p-6 space-y-4">
-            <p className="text-gray-700">{step.content.overview}</p>
+            <p className="text-neutral-700">{step.content.overview}</p>
             <div className="space-y-4">
               {step.content.parts.map((part, i) => (
-                <div key={i} className="bg-purple-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-purple-800 mb-1">{i + 1}. {part.name}</h4>
-                  <p className="text-purple-700 mb-2">{part.description}</p>
-                  <div className="text-sm bg-purple-100 p-2 rounded">
+                <div key={i} className="bg-accent-purple-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-accent-purple-800 mb-1">{i + 1}. {part.name}</h4>
+                  <p className="text-accent-purple-700 mb-2">{part.description}</p>
+                  <div className="text-sm bg-accent-purple-100 p-2 rounded">
                     <span className="font-medium">Tip:</span> {part.tip}
                   </div>
                 </div>
               ))}
             </div>
-            <p className="text-gray-600 italic">{step.content.analogy}</p>
+            <p className="text-neutral-600 italic">{step.content.analogy}</p>
           </Card>
         )}
 
         {step.id === 5 && (
           <Card className="p-6 space-y-4">
-            <p className="text-gray-700">{step.content.intro}</p>
-            <div className="bg-orange-50 p-4 rounded-lg">
-              <p className="text-orange-800 font-medium">{step.content.whyImportant}</p>
+            <p className="text-neutral-700">{step.content.intro}</p>
+            <div className="bg-secondary-50 p-4 rounded-lg">
+              <p className="text-secondary-800 font-medium">{step.content.whyImportant}</p>
             </div>
             <div className="space-y-3">
-              <h4 className="font-semibold text-gray-800">Pasos (muy fáciles):</h4>
+              <h4 className="font-semibold text-neutral-800">Pasos (muy fáciles):</h4>
               {step.content.steps.map((s) => (
-                <div key={s.step} className="flex items-start gap-3 p-3 bg-gray-50 rounded-lg">
-                  <div className="w-8 h-8 rounded-full bg-orange-500 text-white flex items-center justify-center font-bold flex-shrink-0">
+                <div key={s.step} className="flex items-start gap-3 p-3 bg-neutral-50 rounded-lg">
+                  <div className="w-8 h-8 rounded-full bg-secondary-500 text-white flex items-center justify-center font-bold flex-shrink-0">
                     {s.step}
                   </div>
                   <div>
-                    <p className="font-medium text-gray-800">{s.action}</p>
-                    <p className="text-sm text-gray-600">{s.detail}</p>
+                    <p className="font-medium text-neutral-800">{s.action}</p>
+                    <p className="text-sm text-neutral-600">{s.detail}</p>
                   </div>
                 </div>
               ))}
             </div>
-            <div className="bg-green-100 p-4 rounded-lg text-center">
-              <p className="text-green-800 text-lg font-medium">{step.content.celebration}</p>
+            <div className="bg-accent-green-100 p-4 rounded-lg text-center">
+              <p className="text-accent-green-800 text-lg font-medium">{step.content.celebration}</p>
             </div>
           </Card>
         )}
 
         {step.id === 6 && (
           <Card className="p-6 space-y-4">
-            <p className="text-gray-800 font-medium">{step.content.mainMessage}</p>
+            <p className="text-neutral-800 font-medium">{step.content.mainMessage}</p>
             <div className="space-y-3">
               {step.content.options.map((opt, i) => (
-                <div key={i} className="bg-pink-50 p-4 rounded-lg">
-                  <h4 className="font-semibold text-pink-800 mb-1">{i + 1}. {opt.option}</h4>
-                  <p className="text-pink-700 text-sm mb-1">Cómo: {opt.how}</p>
-                  <p className="text-pink-600 text-sm">Cuándo: {opt.when}</p>
+                <div key={i} className="bg-accent-pink-50 p-4 rounded-lg">
+                  <h4 className="font-semibold text-accent-pink-800 mb-1">{i + 1}. {opt.option}</h4>
+                  <p className="text-accent-pink-700 text-sm mb-1">Cómo: {opt.how}</p>
+                  <p className="text-accent-pink-600 text-sm">Cuándo: {opt.when}</p>
                 </div>
               ))}
             </div>
-            <div className="bg-yellow-50 p-4 rounded-lg border border-yellow-200">
-              <Heart className="w-6 h-6 text-pink-500 mb-2" />
-              <p className="text-yellow-800 font-medium">{step.content.reminder}</p>
+            <div className="bg-secondary-50 p-4 rounded-lg border border-secondary-200">
+              <Heart className="w-6 h-6 text-accent-pink-500 mb-2" />
+              <p className="text-secondary-800 font-medium">{step.content.reminder}</p>
             </div>
           </Card>
         )}
 
         {step.id === 7 && (
           <Card className="p-6 space-y-4">
-            <p className="text-gray-700">{step.content.intro}</p>
+            <p className="text-neutral-700">{step.content.intro}</p>
             <div className="space-y-4">
               {step.content.plan.map((p, i) => (
-                <div key={i} className="bg-indigo-50 p-4 rounded-lg">
+                <div key={i} className="bg-primary-50 p-4 rounded-lg">
                   <div className="flex justify-between items-center mb-2">
-                    <h4 className="font-semibold text-indigo-800">{p.day}</h4>
-                    <span className="text-sm text-indigo-600 bg-indigo-100 px-2 py-1 rounded">
+                    <h4 className="font-semibold text-primary-800">{p.day}</h4>
+                    <span className="text-sm text-primary-600 bg-primary-100 px-2 py-1 rounded">
                       {p.time}
                     </span>
                   </div>
                   <ul className="space-y-1">
                     {p.tasks.map((task, j) => (
-                      <li key={j} className="text-indigo-700 text-sm flex items-center gap-2">
-                        <Sparkles className="w-4 h-4 text-indigo-500" />
+                      <li key={j} className="text-primary-700 text-sm flex items-center gap-2">
+                        <Sparkles className="w-4 h-4 text-primary-500" />
                         {task}
                       </li>
                     ))}
@@ -443,7 +443,7 @@ const FirstDayPage = () => {
                 </div>
               ))}
             </div>
-            <div className="bg-gradient-to-r from-indigo-500 to-purple-600 p-4 rounded-lg text-white text-center">
+            <div className="bg-gradient-to-r from-primary-500 to-accent-purple-600 p-4 rounded-lg text-white text-center">
               <Star className="w-8 h-8 mx-auto mb-2" />
               <p className="font-medium">{step.content.motivation}</p>
             </div>
@@ -460,8 +460,8 @@ const FirstDayPage = () => {
       {/* Progress Bar */}
       <Card className="p-4">
         <div className="flex items-center justify-between mb-2">
-          <h3 className="font-semibold text-gray-800">Tu Progreso del Primer Día</h3>
-          <span className="text-sm text-gray-600">
+          <h3 className="font-semibold text-neutral-800">Tu Progreso del Primer Día</h3>
+          <span className="text-sm text-neutral-600">
             {completedSteps.size} de {firstDaySteps.length} completados
           </span>
         </div>
@@ -471,10 +471,10 @@ const FirstDayPage = () => {
               key={s.id}
               className={`h-2 flex-1 rounded-full transition-colors ${
                 completedSteps.has(i)
-                  ? 'bg-green-500'
+                  ? 'bg-accent-green-500'
                   : i === currentStep
                   ? 'bg-primary-500'
-                  : 'bg-gray-200'
+                  : 'bg-neutral-200'
               }`}
             />
           ))}
@@ -491,8 +491,8 @@ const FirstDayPage = () => {
               i === currentStep
                 ? 'bg-primary-500 scale-125'
                 : completedSteps.has(i)
-                ? 'bg-green-500'
-                : 'bg-gray-300'
+                ? 'bg-accent-green-500'
+                : 'bg-neutral-300'
             }`}
           />
         ))}
@@ -537,7 +537,7 @@ const FirstDayPage = () => {
       </div>
 
       {/* Quick Links */}
-      <Card className="p-4 bg-gray-50">
+      <Card className="p-4 bg-neutral-50">
         <div className="flex flex-wrap gap-3 justify-center">
           <Link to="/missions">
             <Button variant="ghost" size="sm" icon={<Target className="w-4 h-4" />}>
