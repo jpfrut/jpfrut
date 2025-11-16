@@ -9,7 +9,7 @@ const ProgressBar = ({
   showLabel = true,
   size = 'md',
   color = 'primary',
-  animated = true,
+  animated = false,
   className = '',
 }) => {
   const percentage = Math.min(100, Math.max(0, (progress / total) * 100))
@@ -36,27 +36,34 @@ const ProgressBar = ({
         </div>
       )}
       <div className={`w-full bg-neutral-200 rounded-full overflow-hidden ${sizes[size]}`}>
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: `${percentage}%` }}
-          transition={animated ? { duration: 0.5, ease: 'easeOut' } : { duration: 0 }}
-          className="h-full rounded-full relative"
-          style={{ background: toneToken.gradient }}
-        >
-          {animated && percentage > 0 && (
-            <motion.div
-              className="absolute inset-0 bg-white/30"
-              animate={{
-                x: ['-100%', '100%'],
-              }}
-              transition={{
-                repeat: Infinity,
-                duration: 1.5,
-                ease: 'linear',
-              }}
-            />
-          )}
-        </motion.div>
+        {animated ? (
+          <motion.div
+            initial={{ width: 0 }}
+            animate={{ width: `${percentage}%` }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
+            className="h-full rounded-full relative"
+            style={{ background: toneToken.gradient }}
+          >
+            {percentage > 0 && (
+              <motion.div
+                className="absolute inset-0 bg-white/30"
+                animate={{
+                  x: ['-100%', '100%'],
+                }}
+                transition={{
+                  repeat: Infinity,
+                  duration: 1.5,
+                  ease: 'linear',
+                }}
+              />
+            )}
+          </motion.div>
+        ) : (
+          <div
+            className="h-full rounded-full relative transition-[width] duration-300 ease-out"
+            style={{ background: toneToken.gradient, width: `${percentage}%` }}
+          />
+        )}
       </div>
     </div>
   )
