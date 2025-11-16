@@ -14,6 +14,7 @@ import FirstDayPage from './pages/FirstDayPage'
 import FAQPage from './pages/FAQPage'
 import AccessibilityPanel from './components/AccessibilityPanel'
 import OnboardingWizard from './components/OnboardingWizard'
+import Footer from './components/Footer'
 import useStore from './store/useStore'
 
 function App() {
@@ -61,6 +62,7 @@ function App() {
             <Route path="/module/:moduleId/exercise/:exerciseId" element={<ExercisePage />} />
           </Routes>
         </motion.main>
+        <Footer />
         <AccessibilityPanel />
       </div>
     </Router>
