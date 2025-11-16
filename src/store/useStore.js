@@ -23,16 +23,14 @@ const useStore = create(
       // Agregar XP
       addXP: (amount) => {
         const { user } = get()
-        const newXP = user.xp + amount
         const newTotalXP = user.totalXp + amount
-        const xpForNextLevel = user.level * 100
 
         let newLevel = user.level
-        let remainingXP = newXP
+        let remainingXP = user.xp + amount
 
-        if (newXP >= xpForNextLevel) {
+        while (remainingXP >= newLevel * 100) {
+          remainingXP -= newLevel * 100
           newLevel += 1
-          remainingXP = newXP - xpForNextLevel
         }
 
         set({
