@@ -1,15 +1,24 @@
-import { motion } from 'framer-motion'
 import { tones } from '../../theme/brandTokens'
 
 const toneKeys = Object.keys(tones)
 
+/**
+ * @param {object} props
+ * @param {React.ReactNode} props.children
+ * @param {'tint' | 'solid' | 'outline'} [props.variant]
+ * @param {string} [props.tone]
+ * @param {'sm' | 'md' | 'lg'} [props.size]
+ * @param {React.ReactNode} [props.icon]
+ * @param {boolean} [props.isLive] Adds the Tailwind `animate-pulse` class when true to represent a live/changing state.
+ * @param {string} [props.className]
+ */
 const Badge = ({
   children,
   variant = 'tint',
   tone = 'neutral',
   size = 'md',
   icon,
-  pulse = false,
+  isLive = false,
   className = '',
 }) => {
   let resolvedVariant = variant
@@ -96,13 +105,11 @@ const Badge = ({
   }
 
   return (
-    <motion.span
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
+    <span
       className={`
         inline-flex items-center gap-1.5 rounded-full font-semibold border border-transparent
         ${sizes[size]}
-        ${pulse ? 'animate-pulse' : ''}
+        ${isLive ? 'animate-pulse' : ''}
         ${interactiveClasses}
         ${className}
       `}
@@ -110,7 +117,7 @@ const Badge = ({
     >
       {icon && <span className="flex items-center" aria-hidden="true">{icon}</span>}
       {children}
-    </motion.span>
+    </span>
   )
 }
 
