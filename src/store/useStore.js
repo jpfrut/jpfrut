@@ -106,6 +106,19 @@ const useStore = create(
         })
       },
 
+      // Resetear racha
+      resetStreak: () => {
+        const { user } = get()
+        if (user.streak === 0) return
+
+        set({
+          user: {
+            ...user,
+            streak: 0
+          }
+        })
+      },
+
       // Resetear todo
       reset: () => {
         set({
