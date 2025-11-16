@@ -113,29 +113,29 @@ const Dashboard = () => {
 
   return (
     <div className="space-y-8 pb-12">
-      {/* Hero Section */}
+      {/* Hero Section - Mentora Hub: Fondo AZUL REY sólido, sin gradientes ni iconos decorativos */}
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="relative overflow-hidden rounded-3xl bg-gradient-to-br from-primary-500 via-primary-600 to-secondary-600 p-8 md:p-12 text-white shadow-2xl"
+        className="relative overflow-hidden rounded-lg bg-primary-500 p-8 md:p-12 text-white"
       >
         <div className="relative z-10">
           <motion.div
-            initial={{ scale: 0 }}
+            initial={{ scale: 0.95 }}
             animate={{ scale: 1 }}
-            transition={{ delay: 0.2, type: 'spring' }}
+            transition={{ delay: 0.2, duration: 0.3 }}
           >
             <h1 className="text-4xl md:text-5xl font-heading font-bold mb-4">
-              ¡Hola, {user.name}! 👋
+              ¡Hola, {user.name}!
             </h1>
           </motion.div>
-          <p className="text-xl md:text-2xl text-primary-100 mb-6">
+          <p className="text-xl md:text-2xl text-white/90 mb-6">
             Bienvenido a tu plataforma de aprendizaje de Odoo 19
           </p>
           <div className="flex flex-wrap gap-4">
             <Link to="/missions">
               <Button
-                variant="secondary"
+                tone="secondary"
                 size="lg"
                 icon={<Target className="w-5 h-5" />}
               >
@@ -146,25 +146,13 @@ const Dashboard = () => {
               <Button
                 variant="outline"
                 size="lg"
-                className="bg-white/10 backdrop-blur-sm border-white/30 text-white hover:bg-white/20"
+                className="bg-white/10 border-white/30 text-white hover:bg-white/20"
                 icon={<Clock className="w-5 h-5" />}
               >
                 Guía del Día
               </Button>
             </Link>
           </div>
-        </div>
-
-        {/* Decorative elements */}
-        <div className="absolute top-0 right-0 w-64 h-64 bg-white/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-0 left-0 w-96 h-96 bg-secondary-400/20 rounded-full blur-3xl" />
-
-        {/* Decorative icons aligned to grid */}
-        <div className="absolute top-10 right-20 hidden md:block">
-          <BookOpen className="w-16 h-16 text-white/20" />
-        </div>
-        <div className="absolute bottom-10 right-40 hidden md:block">
-          <Target className="w-20 h-20 text-white/20" />
         </div>
       </motion.div>
 
