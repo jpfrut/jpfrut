@@ -5,6 +5,7 @@ import Card from './ui/Card'
 import Badge from './ui/Badge'
 import ProgressBar from './ui/ProgressBar'
 import useStore from '../store/useStore'
+import { getBrandGradient } from '../theme/brandTokens'
 
 const ModuleCard = ({ module, index }) => {
   const navigate = useNavigate()
@@ -15,6 +16,7 @@ const ModuleCard = ({ module, index }) => {
   const completedCount = progress.completedLessons.length
   const progressPercentage = (completedCount / totalLessons) * 100
   const isCompleted = completedCount === totalLessons
+  const gradientToken = getBrandGradient(module.paletteKey)
 
   const difficultyColors = {
     'Básico': 'success',
@@ -55,11 +57,11 @@ const ModuleCard = ({ module, index }) => {
         <div className="flex items-start gap-4 mb-4">
           <motion.div
             whileHover={{ scale: 1.1, rotate: 5 }}
-            className={`
+            className="
               text-6xl w-20 h-20 flex items-center justify-center
-              rounded-2xl bg-gradient-to-br ${module.color}
-              shadow-lg transform transition-transform
-            `}
+              rounded-2xl shadow-lg transform transition-transform
+            "
+            style={{ backgroundImage: gradientToken.gradient, color: gradientToken.iconColor }}
           >
             <span className="text-4xl">{module.icon}</span>
           </motion.div>

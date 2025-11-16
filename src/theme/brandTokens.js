@@ -154,6 +154,50 @@ const getSurfaceBaseColor = (surfaceKey) => {
   return null
 }
 
+const pickBestContrastForStops = (stops, candidates) => {
+  if (!stops.length || !candidates.length) return candidates[0]
+
+  let best = candidates[0]
+  let bestScore = -Infinity
+
+  candidates.forEach((candidate) => {
+    const score = Math.min(...stops.map((stop) => getContrastRatio(candidate, stop)))
+    if (score > bestScore) {
+      bestScore = score
+      best = candidate
+    }
+  })
+
+  return best
+}
+
+const createGradientToken = (from, to) => {
+  const stops = [from, to].filter(Boolean)
+  return {
+    from,
+    to,
+    gradient: `linear-gradient(135deg, ${from} 0%, ${to} 100%)`,
+    textColor: pickBestContrastForStops(stops, [text.inverse, text.strong, text.default]),
+    iconColor: pickBestContrastForStops(stops, [icons.inverse, icons.primary, icons.accent]),
+  }
+}
+
+export const brandGradients = {
+  hero: createGradientToken(brandColors.primary[500], brandColors.primary[700]),
+  cta: createGradientToken(brandColors.secondary[400], brandColors.secondary[600]),
+  accent: createGradientToken(brandColors.accent.aqua, brandColors.primary[500]),
+  neutral: createGradientToken(brandColors.neutral[200], brandColors.neutral[400]),
+  growth: createGradientToken('#10B981', '#047857'),
+  passion: createGradientToken('#EC4899', '#BE123C'),
+  innovation: createGradientToken('#8B5CF6', '#6D28D9'),
+  energy: createGradientToken('#F59E0B', '#EA580C'),
+  ocean: createGradientToken('#06B6D4', '#0284C7'),
+  slate: createGradientToken('#64748B', '#1F2937'),
+  sunset: createGradientToken('#FB923C', '#F43F5E'),
+}
+
+export const getBrandGradient = (key = 'hero') => brandGradients[key] || brandGradients.hero
+
 export const getRecommendedTextOnSurface = (surfaceKey = 'default') => {
   const background = getSurfaceBaseColor(surfaceKey)
   if (!background) return text.default
@@ -218,10 +262,12 @@ export default {
   icons,
   shadows,
   gradients,
+  brandGradients,
   helpers: {
     getContrastRatio,
     getRecommendedTextOnSurface,
     getRecommendedIconOnSurface,
     applyBrandTokensToCSSVariables,
+    getBrandGradient,
   },
 }

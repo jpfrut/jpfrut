@@ -14,6 +14,7 @@ import {
 import { getModuleById } from '../data/modules'
 import useStore from '../store/useStore'
 import { Button, Card, Badge, ProgressBar } from '../components/ui'
+import { getBrandGradient } from '../theme/brandTokens'
 
 const ModulePage = () => {
   const { moduleId } = useParams()
@@ -54,6 +55,7 @@ const ModulePage = () => {
     'Intermedio': 'warning',
     'Avanzado': 'danger',
   }
+  const moduleGradient = getBrandGradient(module.paletteKey)
 
   return (
     <div className="space-y-8 pb-12">
@@ -75,7 +77,8 @@ const ModulePage = () => {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className={`relative overflow-hidden rounded-3xl bg-gradient-to-br ${module.color} p-8 md:p-12 text-white shadow-2xl`}
+        className="relative overflow-hidden rounded-3xl p-8 md:p-12 text-white shadow-2xl"
+        style={{ backgroundImage: moduleGradient.gradient }}
       >
         <div className="relative z-10">
           <div className="flex items-start gap-6 mb-6">
@@ -218,9 +221,10 @@ const ModulePage = () => {
                             ? 'bg-gradient-to-br from-green-500 to-emerald-600 text-white shadow-lg'
                             : isLocked
                             ? 'bg-slate-200 text-slate-400'
-                            : `bg-gradient-to-br ${module.color} text-white shadow-lg`
+                            : 'text-white shadow-lg'
                           }
                         `}
+                        style={!isCompleted && !isLocked ? { backgroundImage: moduleGradient.gradient } : undefined}
                       >
                         {isCompleted ? (
                           <CheckCircle className="w-8 h-8" />

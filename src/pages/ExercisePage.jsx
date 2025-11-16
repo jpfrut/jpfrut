@@ -18,6 +18,7 @@ import { getLessonContent, hasLessonContent } from '../data/lessonContent'
 import useStore from '../store/useStore'
 import { Button, Card, Badge, Modal } from '../components/ui'
 import GlossaryText from '../components/GlossaryText'
+import { getBrandGradient } from '../theme/brandTokens'
 
 const ExercisePage = () => {
   const { moduleId, exerciseId } = useParams()
@@ -123,6 +124,8 @@ const ExercisePage = () => {
     return Math.round((correct / content.quiz.questions.length) * 100)
   }
 
+  const moduleGradient = getBrandGradient(module.paletteKey)
+
   return (
     <div className="space-y-6 pb-12">
       {/* Header */}
@@ -150,7 +153,8 @@ const ExercisePage = () => {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className={`rounded-3xl bg-gradient-to-br ${module.color} p-8 text-white shadow-2xl`}
+        className="rounded-3xl p-8 text-white shadow-2xl"
+        style={{ backgroundImage: moduleGradient.gradient }}
       >
         <div className="flex items-start gap-4 mb-4">
           <div className="text-5xl">{module.icon}</div>

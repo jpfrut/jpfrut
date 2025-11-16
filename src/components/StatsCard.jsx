@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion'
 import Card from './ui/Card'
+import { getBrandGradient } from '../theme/brandTokens'
 
-const StatsCard = ({ icon: Icon, label, value, color, trend, index = 0 }) => {
+const StatsCard = ({ icon: Icon, label, value, paletteKey = 'hero', trend, index = 0 }) => {
+  const gradientToken = getBrandGradient(paletteKey)
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.9 }}
@@ -21,12 +23,12 @@ const StatsCard = ({ icon: Icon, label, value, color, trend, index = 0 }) => {
           </div>
           <motion.div
             whileHover={{ scale: 1.1, rotate: 5 }}
-            className={`
-              w-16 h-16 rounded-2xl bg-gradient-to-br ${color}
-              flex items-center justify-center shadow-lg
-            `}
+            className="
+              w-16 h-16 rounded-2xl flex items-center justify-center shadow-lg
+            "
+            style={{ backgroundImage: gradientToken.gradient }}
           >
-            <Icon className="w-8 h-8 text-white" />
+            <Icon className="w-8 h-8" style={{ color: gradientToken.iconColor }} />
           </motion.div>
         </div>
 

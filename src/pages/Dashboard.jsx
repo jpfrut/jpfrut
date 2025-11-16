@@ -358,14 +358,14 @@ const Dashboard = () => {
           icon={BookOpen}
           label="Módulos Disponibles"
           value={stats.totalModules}
-          color="from-blue-500 to-indigo-600"
+          paletteKey="hero"
           index={0}
         />
         <StatsCard
           icon={CheckCircle}
           label="Lecciones Completadas"
           value={totalCompleted}
-          color="from-green-500 to-emerald-600"
+          paletteKey="growth"
           trend={totalCompleted > 0 ? `${totalCompleted} de ${stats.totalLessons}` : undefined}
           index={1}
         />
@@ -373,14 +373,14 @@ const Dashboard = () => {
           icon={Zap}
           label="XP Total"
           value={totalXPEarned}
-          color="from-yellow-500 to-orange-600"
+          paletteKey="energy"
           index={2}
         />
         <StatsCard
           icon={Award}
           label="Logros Desbloqueados"
           value={`${unlockedAchievements.length}/${achievements.length}`}
-          color="from-purple-500 to-pink-600"
+          paletteKey="passion"
           index={3}
         />
       </div>
