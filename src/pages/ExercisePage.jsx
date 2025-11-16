@@ -17,6 +17,7 @@ import { getModuleById, getLessonById } from '../data/modules'
 import { getLessonContent, hasLessonContent } from '../data/lessonContent'
 import useStore from '../store/useStore'
 import { Button, Card, Badge, Modal } from '../components/ui'
+import GlossaryText from '../components/GlossaryText'
 
 const ExercisePage = () => {
   const { moduleId, exerciseId } = useParams()
@@ -184,8 +185,8 @@ const ExercisePage = () => {
           </div>
           <div className="flex-1">
             <h2 className="text-xl font-bold text-slate-800 mb-3">Introducción</h2>
-            <p className="text-slate-600 leading-relaxed whitespace-pre-line">
-              {content.introduction}
+            <p className="text-slate-600 leading-relaxed">
+              <GlossaryText text={content.introduction} />
             </p>
           </div>
         </div>
@@ -210,8 +211,8 @@ const ExercisePage = () => {
                     {section.title}
                   </h3>
                   <div className="prose prose-slate max-w-none">
-                    <p className="text-slate-600 leading-relaxed whitespace-pre-line">
-                      {section.content}
+                    <p className="text-slate-600 leading-relaxed">
+                      <GlossaryText text={section.content} />
                     </p>
                   </div>
                 </div>
@@ -241,7 +242,7 @@ const ExercisePage = () => {
                     {section.tips.map((tip, i) => (
                       <li key={i} className="flex items-start gap-2 text-sm text-slate-700">
                         <span className="text-amber-500 mt-0.5">💡</span>
-                        <span>{tip}</span>
+                        <span><GlossaryText text={tip} /></span>
                       </li>
                     ))}
                   </ul>
