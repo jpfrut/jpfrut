@@ -18,6 +18,7 @@ import { getLessonContent, hasLessonContent } from '../data/lessonContent'
 import useStore from '../store/useStore'
 import { Button, Card, Badge, Modal } from '../components/ui'
 import GlossaryText from '../components/GlossaryText'
+import MarkdownText from '../components/MarkdownText'
 
 const ExercisePage = () => {
   const { moduleId, exerciseId } = useParams()
@@ -210,10 +211,8 @@ const ExercisePage = () => {
                   <h3 className="text-xl font-bold text-neutral-800 mb-3">
                     {section.title}
                   </h3>
-                  <div className="prose paccent-pink-slate max-w-none">
-                    <p className="text-neutral-600 leading-relaxed">
-                      <GlossaryText text={section.content} />
-                    </p>
+                  <div className="prose paccent-pink-slate max-w-none text-neutral-600 leading-relaxed">
+                    <MarkdownText>{section.content}</MarkdownText>
                   </div>
                 </div>
               </div>

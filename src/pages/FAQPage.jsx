@@ -10,6 +10,7 @@ import {
 } from 'lucide-react'
 import { faqCategories, faqData, getFaqsByCategory, searchFaqs, getRelatedFaqs } from '../data/faqData'
 import Card from '../components/ui/Card'
+import MarkdownText from '../components/MarkdownText'
 
 const FAQPage = () => {
   const [selectedCategory, setSelectedCategory] = useState('all')
@@ -182,10 +183,8 @@ const FAQPage = () => {
                         className="overflow-hidden"
                       >
                         <div className="p-4 pt-0 border-t bg-neutral-50">
-                          <div className="prose paccent-pink-sm max-w-none">
-                            <div className="whitespace-pre-line text-neutral-700 leading-relaxed">
-                              {faq.answer.trim()}
-                            </div>
+                          <div className="prose paccent-pink-sm max-w-none text-neutral-700 leading-relaxed">
+                            <MarkdownText>{faq.answer.trim()}</MarkdownText>
                           </div>
 
                           {/* Related Questions */}
