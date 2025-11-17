@@ -197,7 +197,7 @@ const ModulePage = () => {
                 <Card
                   onClick={() => {
                     if (!isLocked) {
-                      navigate(`/module/${moduleId}/exercise/${lesson.id}`)
+                      navigate(`/modulo/${moduleId}/leccion/${lesson.id}`)
                     }
                   }}
                   hover={!isLocked}

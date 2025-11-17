@@ -68,7 +68,7 @@ const ModuleCard = ({ module, index }) => {
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: index * 0.1 }}
     >
-      <Card onClick={() => navigate(`/module/${module.id}`)} className="relative overflow-hidden group">
+      <Card onClick={() => navigate(`/modulo/${module.id}`)} className="relative overflow-hidden group">
         <span
           className="absolute inset-x-6 top-0 h-1 rounded-full"
           style={{ backgroundColor: accentColor }}
