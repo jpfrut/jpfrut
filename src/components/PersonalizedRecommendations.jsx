@@ -10,7 +10,6 @@ import {
   Zap
 } from 'lucide-react'
 import { getModulesArray } from '../data/modules'
-import { practicalMissions } from '../data/practicalMissions'
 import { hasLessonContent } from '../data/lessonContent'
 import useStore from '../store/useStore'
 import Card from './ui/Card'
@@ -25,15 +24,15 @@ const PersonalizedRecommendations = () => {
     // 1. If user is completely new (no progress)
     if (completedExercises.length === 0 && Object.keys(moduleProgress).length === 0) {
       recs.push({
-        id: 'start-first-day',
+        id: 'start-learning',
         type: 'start',
         priority: 1,
-        title: 'Comienza tu aventura',
-        description: 'Nunca has explorado Odoo. ¡Hoy es el día perfecto para empezar!',
-        action: 'Ir a Mi Primer Día',
-        path: '/first-day',
-        icon: Target,
-        color: 'from-secondary-400 to-accent-red-500'
+        title: 'Comienza tu aprendizaje',
+        description: 'Explora los módulos esenciales de Odoo',
+        action: 'Explorar Módulos',
+        path: '/aprender',
+        icon: BookOpen,
+        color: 'from-primary-400 to-primary-500'
       })
 
       recs.push({
@@ -43,7 +42,7 @@ const PersonalizedRecommendations = () => {
         title: 'Tu primera misión práctica',
         description: 'Registra tu primer cliente en solo 10 minutos',
         action: 'Iniciar Misión',
-        path: '/missions',
+        path: '/practicar',
         icon: Target,
         color: 'from-accent-green-400 to-accent-green-500'
       })
@@ -51,7 +50,6 @@ const PersonalizedRecommendations = () => {
 
     // 2. If user has started but not completed much
     if (completedExercises.length > 0 && completedExercises.length < 5) {
-      // Find modules with content that user hasn't started
       const modulesWithContent = modules.filter(m =>
         m.lessons.some(l => hasLessonContent(l.id)) &&
         !moduleProgress[m.id]
@@ -64,15 +62,14 @@ const PersonalizedRecommendations = () => {
           type: 'module',
           priority: 1,
           title: `Prueba: ${recommended.name}`,
-          description: `${recommended.description}. Tiene lecciones con contenido detallado.`,
+          description: `${recommended.description}`,
           action: 'Explorar Módulo',
-          path: `/module/${recommended.id}`,
+          path: `/modulo/${recommended.id}`,
           icon: BookOpen,
           color: 'from-primary-400 to-primary-500'
         })
       }
 
-      // Suggest continuing with missions
       const completedMissionCount = completedMissions.length
 
       if (completedMissionCount < 3) {
@@ -83,7 +80,7 @@ const PersonalizedRecommendations = () => {
           title: 'Sigue practicando',
           description: 'Las misiones prácticas te ayudan a aprender haciendo',
           action: 'Ver Misiones',
-          path: '/missions',
+          path: '/practicar',
           icon: Target,
           color: 'from-secondary-400 to-secondary-600'
         })
@@ -110,7 +107,7 @@ const PersonalizedRecommendations = () => {
         title: `Continúa con ${module.name}`,
         description: `Llevas ${percentComplete}% completado. ¡No te detengas ahora!`,
         action: 'Continuar',
-        path: `/module/${moduleId}`,
+        path: `/modulo/${moduleId}`,
         icon: TrendingUp,
         color: 'from-accent-purple-400 to-accent-pink-500'
       })
@@ -118,7 +115,6 @@ const PersonalizedRecommendations = () => {
 
     // 4. Recommend based on user level
     if (user.level >= 2 && user.level < 5) {
-      // Intermediate user - suggest exploring more modules
       const unexploredPriorityModules = modules.filter(
         m => m.priority === 1 && !moduleProgress[m.id]
       )
@@ -131,7 +127,7 @@ const PersonalizedRecommendations = () => {
           title: 'Explora módulos prioritarios',
           description: `Hay ${unexploredPriorityModules.length} módulos importantes que aún no has visto`,
           action: 'Explorar',
-          path: '/explore',
+          path: '/aprender',
           icon: Lightbulb,
           color: 'from-secondary-400 to-secondary-500'
         })
@@ -145,31 +141,30 @@ const PersonalizedRecommendations = () => {
         type: 'motivation',
         priority: 4,
         title: `¡${user.streak} días seguidos!`,
-        description: 'Tu dedicación es admirable. Mantén tu racha completando algo hoy.',
-        action: 'Ver Checklist Diario',
-        path: '/quick-guides',
+        description: 'Tu dedicación es admirable. Consulta el centro de ayuda.',
+        action: 'Ver Ayuda',
+        path: '/ayuda',
         icon: Zap,
         color: 'from-secondary-400 to-secondary-500'
       })
     }
 
-    // 6. Suggest emergency help if they haven't visited
-    const visitedEmergency = localStorage.getItem('visitedEmergencyHelp')
-    if (!visitedEmergency && completedExercises.length > 2) {
+    // 6. Suggest help center if they haven't visited
+    const visitedHelp = localStorage.getItem('visitedHelpCenter')
+    if (!visitedHelp && completedExercises.length > 2) {
       recs.push({
-        id: 'know-emergency',
+        id: 'know-help',
         type: 'tip',
         priority: 5,
-        title: 'Conoce la Ayuda de Emergencia',
-        description: '¿Cometiste un error? Aquí te decimos cómo arreglarlo',
+        title: 'Conoce el Centro de Ayuda',
+        description: 'FAQ, guías rápidas y soluciones a problemas comunes',
         action: 'Ver Ayuda',
-        path: '/emergency-help',
+        path: '/ayuda',
         icon: Lightbulb,
-        color: 'from-accent-red-400 to-accent-pink-500'
+        color: 'from-accent-green-400 to-accent-green-500'
       })
     }
 
-    // Sort by priority and return top 3
     return recs.sort((a, b) => a.priority - b.priority).slice(0, 3)
   }, [user, completedExercises, completedMissions, moduleProgress, modules])
 

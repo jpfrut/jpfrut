@@ -22,27 +22,17 @@ import Button from '../components/ui/Button'
 // Iconos por categoría
 const categoryIcons = {
   'Finanzas': '💰',
-  'Ventas': '🛒',
-  'Cadena de Suministro': '📦',
-  'Recursos Humanos': '👥',
-  'Sitios Web': '🌐',
-  'Marketing': '📣',
-  'Servicios': '🛠️',
-  'Productividad': '📊',
-  'Personalización': '⚙️'
+  'Ventas': '📊',
+  'Operaciones': '📦',
+  'Administración': '👥'
 }
 
 // Descripciones de categoría
 const categoryDescriptions = {
-  'Finanzas': 'Gestión contable, gastos y control financiero completo',
-  'Ventas': 'Desde CRM hasta punto de venta, todo para vender más',
-  'Cadena de Suministro': 'Inventario, compras, fabricación y calidad',
-  'Recursos Humanos': 'Empleados, nómina, reclutamiento y más',
-  'Sitios Web': 'Presencia online, eCommerce y aprendizaje digital',
-  'Marketing': 'Email marketing, redes sociales y eventos',
-  'Servicios': 'Proyectos, soporte técnico y planificación',
-  'Productividad': 'Documentos, firmas electrónicas y comunicación',
-  'Personalización': 'Personaliza Odoo sin programar'
+  'Finanzas': 'Gestión contable y control de gastos',
+  'Ventas': 'CRM, punto de venta y tienda online',
+  'Operaciones': 'Inventario y compras',
+  'Administración': 'Empleados, proyectos y soporte'
 }
 
 const ExplorePage = () => {

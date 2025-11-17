@@ -5,15 +5,11 @@ import {
   HelpCircle,
   Compass,
   Heart,
-  Sun,
-  MessageCircle,
-  Shield,
-  Lightbulb
+  Library
 } from 'lucide-react'
 
 const Footer = () => {
   return (
-    // Mentora Hub: Fondo AZUL REY sólido, texto blanco
     <footer className="bg-primary-500 text-white mt-16">
       <div className="container mx-auto px-6 py-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -29,8 +25,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-sm leading-relaxed text-white/90">
-              Plataforma de aprendizaje de Odoo 19 diseñada especialmente para personas
-              sin experiencia técnica. Aprende a tu ritmo, sin presiones.
+              Plataforma simplificada de aprendizaje de Odoo. Solo lo esencial, sin complicaciones.
             </p>
             <div className="mt-4 flex items-center text-sm text-white/80">
               <Heart className="w-4 h-4 mr-1 text-secondary-500" />
@@ -43,27 +38,21 @@ const Footer = () => {
             <h4 className="text-white font-heading font-semibold mb-4">Aprende</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/first-day" className="text-white/80 hover:text-accent-aqua transition-colors flex items-center gap-2">
-                  <Sun className="w-4 h-4" />
-                  Mi Primer Día
-                </Link>
-              </li>
-              <li>
-                <Link to="/explore" className="text-white/80 hover:text-accent-aqua transition-colors flex items-center gap-2">
+                <Link to="/aprender" className="text-white/80 hover:text-accent-aqua transition-colors flex items-center gap-2">
                   <Compass className="w-4 h-4" />
                   Explorar Módulos
                 </Link>
               </li>
               <li>
-                <Link to="/missions" className="text-white/80 hover:text-accent-aqua transition-colors flex items-center gap-2">
+                <Link to="/practicar" className="text-white/80 hover:text-accent-aqua transition-colors flex items-center gap-2">
                   <Target className="w-4 h-4" />
                   Misiones Prácticas
                 </Link>
               </li>
               <li>
-                <Link to="/quick-guides" className="text-white/80 hover:text-accent-aqua transition-colors flex items-center gap-2">
-                  <Lightbulb className="w-4 h-4" />
-                  Guías Rápidas
+                <Link to="/glosario" className="text-white/80 hover:text-accent-aqua transition-colors flex items-center gap-2">
+                  <Library className="w-4 h-4" />
+                  Glosario
                 </Link>
               </li>
             </ul>
@@ -74,21 +63,9 @@ const Footer = () => {
             <h4 className="text-white font-heading font-semibold mb-4">Ayuda</h4>
             <ul className="space-y-2">
               <li>
-                <Link to="/faq" className="text-white/80 hover:text-accent-aqua transition-colors flex items-center gap-2">
-                  <MessageCircle className="w-4 h-4" />
-                  Preguntas Frecuentes
-                </Link>
-              </li>
-              <li>
-                <Link to="/emergency-help" className="text-white/80 hover:text-accent-aqua transition-colors flex items-center gap-2">
-                  <Shield className="w-4 h-4" />
-                  Ayuda de Emergencia
-                </Link>
-              </li>
-              <li>
-                <Link to="/success-stories" className="text-white/80 hover:text-accent-aqua transition-colors flex items-center gap-2">
-                  <Heart className="w-4 h-4" />
-                  Historias de Éxito
+                <Link to="/ayuda" className="text-white/80 hover:text-accent-aqua transition-colors flex items-center gap-2">
+                  <HelpCircle className="w-4 h-4" />
+                  Centro de Ayuda
                 </Link>
               </li>
             </ul>
@@ -96,27 +73,23 @@ const Footer = () => {
 
           {/* Stats */}
           <div>
-            <h4 className="text-white font-heading font-semibold mb-4">Plataforma</h4>
+            <h4 className="text-white font-heading font-semibold mb-4">Plataforma Simplificada</h4>
             <div className="space-y-3">
               <div className="flex justify-between">
-                <span className="text-sm text-white/80">Módulos disponibles</span>
-                <span className="text-white font-medium">42</span>
+                <span className="text-sm text-white/80">Módulos esenciales</span>
+                <span className="text-white font-medium">12</span>
+              </div>
+              <div className="flex justify-between">
+                <span className="text-sm text-white/80">Categorías</span>
+                <span className="text-white font-medium">4</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-sm text-white/80">Lecciones totales</span>
-                <span className="text-white font-medium">131+</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-sm text-white/80">Misiones prácticas</span>
-                <span className="text-white font-medium">10</span>
+                <span className="text-white font-medium">59</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-sm text-white/80">Horas de contenido</span>
-                <span className="text-white font-medium">159+</span>
-              </div>
-              <div className="flex justify-between">
-                <span className="text-sm text-white/80">FAQs disponibles</span>
-                <span className="text-white font-medium">18</span>
+                <span className="text-white font-medium">59</span>
               </div>
             </div>
           </div>
@@ -126,21 +99,14 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-white/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-white/70">
-              © 2024 Odoo Learning Platform. Todos los derechos reservados.
+              © 2024 Odoo Learning Platform. Experiencia simplificada.
             </div>
             <div className="flex items-center gap-4 text-sm">
-              <span className="text-white/70">Versión de Odoo: 19.0</span>
+              <span className="text-white/70">Odoo 19</span>
               <span className="text-white/50">•</span>
-              <span className="text-accent-aqua">Siempre en mejora continua</span>
+              <span className="text-accent-aqua">Enfoque en lo esencial</span>
             </div>
           </div>
-        </div>
-
-        {/* Motivational Message */}
-        <div className="mt-8 text-center">
-          <p className="text-sm text-white/80 italic">
-            "Cada experto fue alguna vez un principiante. Tu viaje con Odoo empieza hoy."
-          </p>
         </div>
       </div>
     </footer>
