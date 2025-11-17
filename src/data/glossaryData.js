@@ -193,6 +193,277 @@ export const glossaryTerms = {
     relatedModules: ['Contabilidad']
   },
 
+  'cuenta-bancaria-odoo': {
+    term: 'Cuenta Bancaria en Odoo',
+    shortDef: 'Representación digital de tu cuenta de banco real',
+    fullDef: 'Es la cuenta contable que representa tu cuenta bancaria física dentro de Odoo. En México, donde no hay sincronización automática, debes crearla manualmente y registrar cada movimiento para que el sistema refleje tu saldo real.',
+    category: 'Contabilidad',
+    icon: '🏦',
+    example: {
+      title: 'Configuración de banco BBVA',
+      content: `
+        PASO 1: Crear cuenta contable
+        ───────────────────────────────
+        Código: 112.01
+        Nombre: BBVA Empresarial - Cta 1234
+        Tipo: Activo Circulante (Bank and Cash)
+        ✓ Permite conciliación: ACTIVADO
+
+        PASO 2: Crear diario
+        ───────────────────────────────
+        Nombre: Banco BBVA
+        Tipo: Banco
+        Código corto: BBVA
+        Cuenta: 112.01 (la que acabas de crear)
+
+        RESULTADO:
+        • Aparece en Dashboard de Contabilidad
+        • Puedes registrar depósitos y retiros
+        • Saldo visible en Balance General
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'diario-contable',
+        explanation: 'Cada cuenta bancaria necesita su propio diario tipo "Banco" para funcionar'
+      },
+      {
+        relatedTerm: 'cuenta-contable',
+        explanation: 'La cuenta bancaria es un tipo específico de cuenta contable (Activo Circulante)'
+      },
+      {
+        relatedTerm: 'plan-de-cuentas',
+        explanation: 'Las cuentas bancarias se ubican en el Plan bajo la categoría 112 (Bancos)'
+      }
+    ],
+    bestPractices: [
+      'Usa códigos 112.XX para bancos (112.01, 112.02, etc.)',
+      'Incluye nombre del banco + últimos dígitos en el nombre de la cuenta',
+      'SIEMPRE activa "Permite conciliación" para comparar con estados de cuenta',
+      'Crea un diario separado para cada cuenta bancaria física',
+      'En México sin tokens, registra movimientos diariamente para mantener saldos actualizados'
+    ],
+    commonMistakes: [
+      'Olvidar crear el diario asociado (sin él, no aparece en Dashboard)',
+      'No activar "Permite conciliación" (luego no podrás reconciliar)',
+      'Usar códigos inconsistentes (mezclar 112.XX con 1001.XX)',
+      'Crear una sola cuenta para múltiples bancos (pierdes visibilidad)',
+      'No registrar movimientos regularmente (saldos desactualizados)'
+    ],
+    relatedModules: ['Contabilidad', 'Tesorería', 'Facturación']
+  },
+
+  'caja-chica': {
+    term: 'Caja Chica',
+    shortDef: 'Fondo de efectivo para gastos menores del día a día',
+    fullDef: 'Es un monto fijo de dinero en efectivo que se mantiene en la empresa para pagar gastos pequeños e inmediatos (papelería, taxi, comidas). Se distingue de las cuentas bancarias porque es efectivo físico, no digital.',
+    category: 'Contabilidad',
+    icon: '💵',
+    example: {
+      title: 'Configuración y uso de Caja Chica',
+      content: `
+        CONFIGURACIÓN EN ODOO:
+        ─────────────────────────
+        Cuenta contable: 111.02 Caja Chica
+        Tipo: Activo Circulante
+        Diario: Caja Chica (Tipo: Efectivo)
+        Código: CCHIC
+
+        CICLO DE USO:
+        ─────────────────────────
+        1. Reposición inicial: $3,000
+           DEBE: 111.02 Caja Chica $3,000
+           HABER: 112.01 Banco BBVA $3,000
+
+        2. Gastos del mes:
+           - Papelería: -$350
+           - Taxis: -$450
+           - Comidas reuniones: -$800
+           Saldo restante: $1,400
+
+        3. Reposición (volver a $3,000):
+           DEBE: 111.02 Caja Chica $1,600
+           HABER: 112.01 Banco BBVA $1,600
+
+        EN DASHBOARD:
+        ┌─────────────────┐
+        │  CAJA CHICA     │
+        │   $3,000.00     │
+        └─────────────────┘
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'cuenta-contable',
+        explanation: 'La caja chica es una cuenta de Activo Circulante (código 111.XX)'
+      },
+      {
+        relatedTerm: 'diario-contable',
+        explanation: 'Necesita un diario tipo "Efectivo" (no "Banco")'
+      },
+      {
+        relatedTerm: 'asiento-contable',
+        explanation: 'Cada gasto y reposición genera un asiento contable'
+      }
+    ],
+    bestPractices: [
+      'Establece un monto fijo de caja chica ($2,000-$5,000 típico)',
+      'Solicita comprobantes para TODOS los gastos',
+      'Repone cuando llegue al 30-40% del monto original',
+      'Usa diario tipo "Efectivo", no "Banco"',
+      'Designa un responsable único para controlarla'
+    ],
+    commonMistakes: [
+      'No pedir comprobantes (problemas fiscales)',
+      'Usar caja chica para gastos grandes',
+      'No hacer arqueos periódicos (diferencias)',
+      'Confundir con caja general (ventas en efectivo)',
+      'Olvidar registrar gastos en Odoo'
+    ],
+    relatedModules: ['Contabilidad', 'Gastos']
+  },
+
+  'saldo-bancario': {
+    term: 'Saldo Bancario',
+    shortDef: 'El dinero disponible en tu cuenta de banco en este momento',
+    fullDef: 'Es la cantidad de dinero que tienes en una cuenta bancaria en un momento específico. En Odoo sin sincronización automática (como en México), el saldo que ves es el que tú has registrado manualmente. SIEMPRE debe coincidir con tu estado de cuenta real del banco.',
+    category: 'Contabilidad',
+    icon: '💰',
+    example: {
+      title: 'Verificación de saldo bancario',
+      content: `
+        SALDO EN ODOO (lo que registraste):
+        ────────────────────────────────────
+        Banco BBVA: $125,500.00
+
+        SALDO EN BANCA EN LÍNEA (real):
+        ────────────────────────────────────
+        Banco BBVA: $125,500.00
+
+        ¿COINCIDEN? ✓ SÍ - ¡Perfecto!
+
+        SI NO COINCIDEN:
+        ────────────────────────────────────
+        Odoo dice: $125,500.00
+        Banco dice: $127,300.00
+        Diferencia: $1,800.00
+
+        ¿Qué falta registrar?
+        • ¿Depósito no registrado? +$1,800
+        • ¿Retiro no registrado? No aplica
+        • ¿Comisiones no registradas? Revisar
+
+        DÓNDE VER SALDOS EN ODOO:
+        ────────────────────────────────────
+        1. Dashboard: Widgets individuales
+        2. Balance General: Total de bancos
+        3. Plan de Cuentas: Saldo por cuenta
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'cuenta-bancaria-odoo',
+        explanation: 'El saldo es el resultado de todos los movimientos registrados en esa cuenta'
+      },
+      {
+        relatedTerm: 'asiento-contable',
+        explanation: 'Cada asiento de banco modifica el saldo (suma o resta)'
+      }
+    ],
+    bestPractices: [
+      'Compara saldos de Odoo vs banco real al menos semanalmente',
+      'Investiga inmediatamente cualquier diferencia',
+      'En México, registra movimientos el mismo día que aparecen en banca en línea',
+      'Guarda capturas de pantalla del banco como respaldo',
+      'Reconcilia formalmente al cierre de cada mes'
+    ],
+    commonMistakes: [
+      'No verificar que Odoo coincida con el banco real',
+      'Olvidar registrar comisiones bancarias',
+      'No registrar transferencias internas',
+      'Dejar pasar semanas sin actualizar movimientos',
+      'Confiar solo en Odoo sin verificar estado de cuenta'
+    ],
+    relatedModules: ['Contabilidad', 'Reportes Financieros']
+  },
+
+  'registro-manual-bancario': {
+    term: 'Registro Manual Bancario',
+    shortDef: 'Capturar movimientos de banco a mano cuando no hay sincronización automática',
+    fullDef: 'Es el proceso de registrar cada depósito, retiro, comisión o transferencia bancaria manualmente en Odoo. Es necesario en países como México donde los tokens de sincronización automática no están disponibles. Requiere disciplina diaria.',
+    category: 'Contabilidad',
+    icon: '✏️',
+    example: {
+      title: 'Registro diario de movimientos',
+      content: `
+        RUTINA RECOMENDADA (diaria o semanal):
+        ────────────────────────────────────────
+
+        1. Abrir banca en línea
+        2. Revisar movimientos nuevos
+        3. Registrar en Odoo (Contabilidad > Bancos > [Banco] > Nuevo)
+
+        EJEMPLO DE HOY (3 movimientos):
+
+        Movimiento 1 - Depósito:
+        ┌─────────────────────────────────┐
+        │ Fecha: 15/01/2025               │
+        │ Etiqueta: Pago cliente ABC      │
+        │ Importe: +12,500.00             │
+        │ Contrapartida: Cuentas por Cobrar│
+        └─────────────────────────────────┘
+
+        Movimiento 2 - Pago:
+        ┌─────────────────────────────────┐
+        │ Fecha: 15/01/2025               │
+        │ Etiqueta: Pago proveedor XYZ    │
+        │ Importe: -8,900.00              │
+        │ Contrapartida: Cuentas por Pagar│
+        └─────────────────────────────────┘
+
+        Movimiento 3 - Comisión:
+        ┌─────────────────────────────────┐
+        │ Fecha: 15/01/2025               │
+        │ Etiqueta: Comisión transferencia│
+        │ Importe: -50.00                 │
+        │ Contrapartida: Gastos Bancarios │
+        └─────────────────────────────────┘
+
+        TIEMPO INVERTIDO: ~10 minutos
+        RESULTADO: Saldos actualizados ✓
+      `
+    },
+    relationships: [
+      {
+        relatedTerm: 'cuenta-bancaria-odoo',
+        explanation: 'Los registros manuales actualizan el saldo de la cuenta bancaria'
+      },
+      {
+        relatedTerm: 'diario-contable',
+        explanation: 'Cada movimiento manual crea un asiento en el diario del banco'
+      },
+      {
+        relatedTerm: 'saldo-bancario',
+        explanation: 'El saldo solo es correcto si registras TODOS los movimientos'
+      }
+    ],
+    bestPractices: [
+      'Establece una rutina: misma hora cada día o al menos 3 veces por semana',
+      'Usa etiquetas descriptivas: quién, qué, referencia',
+      'Registra el mismo día del movimiento para no olvidar',
+      'Guarda comprobantes digitales vinculados al registro',
+      'Al final del mes, haz reconciliación formal contra estado de cuenta'
+    ],
+    commonMistakes: [
+      'Dejar acumular semanas de movimientos sin registrar',
+      'Poner etiquetas vagas como "Depósito" sin detalles',
+      'Olvidar comisiones e intereses',
+      'Equivocar la cuenta contrapartida',
+      'No verificar que el saldo final coincida con el banco'
+    ],
+    relatedModules: ['Contabilidad']
+  },
+
   'factura': {
     term: 'Factura',
     shortDef: 'Documento legal de cobro a clientes',
