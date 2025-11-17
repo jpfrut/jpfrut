@@ -1373,6 +1373,532 @@ export const lessonContent = {
     practicalExercise: { title: 'Ejercicio: Declaración Fiscal', description: 'Genera tu primera declaración de IVA', steps: [] }
   },
 
+  'acc-007': {
+    title: 'Alta Manual de Cuentas Bancarias en México',
+    introduction: `
+      En México, los tokens bancarios no están habilitados para sincronizar automáticamente con Odoo.
+      Esto significa que debemos dar de alta las cuentas bancarias manualmente y registrar cada movimiento.
+      Esta lección te guiará paso a paso para configurar correctamente tus bancos, efectivo, diarios contables,
+      y lograr que el Balance General y el Dashboard de Contabilidad reflejen tu liquidez real.
+    `,
+    sections: [
+      {
+        title: '1. Entender la Estructura: Plan de Cuentas para Bancos',
+        content: `
+          El Plan de Cuentas es la columna vertebral de tu contabilidad. Para bancos en México,
+          necesitas una estructura jerárquica que separe:
+          - Efectivo físico (Caja)
+          - Cuentas bancarias (Bancos)
+
+          **Códigos recomendados:**
+          - 111.XX = Efectivo y caja chica
+          - 112.XX = Cuentas bancarias
+
+          Esta numeración sigue estándares contables mexicanos y facilita reportes fiscales.
+        `,
+        example: `
+          📍 Ruta en Odoo: Contabilidad > Configuración > Plan de Cuentas
+
+          Estructura ideal para México:
+
+          100 - ACTIVO
+          └── 110 - Activo Circulante
+              ├── 111 - Caja
+              │   ├── 111.01 - Caja General
+              │   └── 111.02 - Caja Chica
+              └── 112 - Bancos
+                  ├── 112.01 - BBVA Empresarial - Cta 1234
+                  ├── 112.02 - Santander PyME - Cta 5678
+                  ├── 112.03 - Banorte Digital - Cta 9012
+                  └── 112.04 - Banamex Cuenta 3456
+
+          Con esta estructura:
+          ✓ Cuenta 111 = Total efectivo físico
+          ✓ Cuenta 112 = Total en todos los bancos
+          ✓ Cuenta 110 = Total liquidez (efectivo + bancos)
+        `,
+        tips: [
+          'Usa códigos con punto (112.01) para identificar subcuentas fácilmente',
+          'Incluye en el nombre: Banco + Tipo de cuenta + Últimos 4 dígitos',
+          'NO uses acentos ni caracteres especiales en los códigos',
+          'Mantén numeración consecutiva (01, 02, 03...)'
+        ]
+      },
+      {
+        title: '2. Crear Cuentas Contables para Cada Banco',
+        content: `
+          Cada cuenta bancaria física (la que tienes en el banco real) necesita una cuenta contable en Odoo.
+
+          **Campos obligatorios:**
+          - Código: Único, sin duplicados
+          - Nombre: Descriptivo
+          - Tipo: "Activo Circulante" o "Bank and Cash"
+          - Permite conciliación: SIEMPRE activado para bancos
+
+          **¿Por qué "Permite conciliación"?**
+          Esto te permite después comparar tu registro en Odoo con el estado de cuenta del banco.
+        `,
+        example: `
+          📍 Ruta: Contabilidad > Configuración > Plan de Cuentas > Crear
+
+          EJEMPLO: Crear cuenta para BBVA
+          ─────────────────────────────────
+          1. Clic en "Crear"
+
+          2. Llenar formulario:
+             Código: 112.01
+             Nombre: BBVA Empresarial - Cuenta 0123456789
+             Tipo: Activo Circulante (o Bank and Cash)
+             ✓ Permite conciliación: ACTIVADO
+             Moneda: MXN (o USD si es cuenta en dólares)
+             Etiquetas: Banco, Operativa
+
+          3. Clic en "Guardar"
+
+          Repetir para cada banco:
+          ┌─────────┬──────────────────────────────┬──────────────────┐
+          │ Código  │ Nombre                       │ Tipo             │
+          ├─────────┼──────────────────────────────┼──────────────────┤
+          │ 112.01  │ BBVA Empresarial - Cta 1234  │ Activo Circulante│
+          │ 112.02  │ Santander PyME - Cta 5678    │ Activo Circulante│
+          │ 112.03  │ Banorte Digital - Cta 9012   │ Activo Circulante│
+          │ 111.01  │ Caja General                 │ Activo Circulante│
+          │ 111.02  │ Caja Chica                   │ Activo Circulante│
+          └─────────┴──────────────────────────────┴──────────────────┘
+        `,
+        tips: [
+          'Verifica que el código NO exista ya en tu plan de cuentas',
+          'Si tienes cuenta en dólares, especifica la moneda USD',
+          'Guarda el número de cuenta completo en el nombre para referencia',
+          'SIEMPRE activa "Permite conciliación" para cuentas bancarias'
+        ]
+      },
+      {
+        title: '3. Configurar Diarios Contables por Banco',
+        content: `
+          **¿Por qué necesito un diario por cada banco?**
+
+          El diario es el "libro" donde se registran los movimientos. Sin él:
+          - No aparecerá en el Dashboard de Contabilidad
+          - No podrás registrar movimientos
+          - No verás el saldo individual del banco
+
+          **Cada banco = 1 cuenta contable + 1 diario**
+
+          Para efectivo:
+          **Cada caja = 1 cuenta contable + 1 diario tipo "Efectivo"**
+        `,
+        example: `
+          📍 Ruta: Contabilidad > Configuración > Diarios > Crear
+
+          EJEMPLO: Crear diario para BBVA
+          ─────────────────────────────────
+          1. Clic en "Crear"
+
+          2. Pestaña "Información General":
+             Nombre del diario: Banco BBVA
+             Tipo: Banco ← MUY IMPORTANTE
+             Código corto: BBVA (máx 5 caracteres)
+
+          3. Pestaña "Configuración Contable":
+             Cuenta bancaria: 112.01 BBVA Empresarial
+             (selecciona la que creaste antes)
+             Cuenta de suspense: Por defecto
+             Cuenta de ganancias: Por defecto
+
+          4. Pestaña "Información Bancaria" (opcional):
+             Número de cuenta: 0123456789
+             Banco: BBVA Bancomer (selecciona o crea)
+             CLABE: 012180001234567890
+
+          5. Clic en "Guardar"
+
+          Resultado en Dashboard:
+          ┌─────────────────┐
+          │   BANCO BBVA    │
+          │    $0.00        │
+          │  (listo para    │
+          │   movimientos)  │
+          └─────────────────┘
+
+          Para CAJA (efectivo):
+          ─────────────────────
+          Nombre: Caja General
+          Tipo: Efectivo ← NO "Banco"
+          Código: CAJA
+          Cuenta: 111.01 Caja General
+        `,
+        tips: [
+          'El tipo "Banco" es para cuentas bancarias, "Efectivo" es para caja física',
+          'El código corto (BBVA, BNRT) aparece en los asientos contables',
+          'Guarda la CLABE para referencia en transferencias',
+          'Después de guardar, el banco aparecerá en el Dashboard'
+        ]
+      },
+      {
+        title: '4. Registrar el Saldo Inicial',
+        content: `
+          Antes de empezar a registrar movimientos, debes indicar cuánto dinero tienes actualmente
+          en cada cuenta. Esto se hace con un "Asiento de Apertura".
+
+          **¿Por qué es importante?**
+          Si no registras el saldo inicial, Odoo pensará que tienes $0 en todos los bancos,
+          y tus reportes estarán incorrectos.
+        `,
+        example: `
+          📍 Ruta: Contabilidad > Varios > Asientos Contables > Crear
+
+          Asiento de apertura de bancos:
+          ───────────────────────────────
+          Fecha: 01/01/2025 (inicio de tu contabilidad)
+          Referencia: Saldos iniciales de bancos
+          Diario: Varios (o Diario de Apertura si existe)
+
+          Líneas del asiento:
+          ┌─────────────────────────┬──────────────┬──────────────┐
+          │ Cuenta                  │ DEBE         │ HABER        │
+          ├─────────────────────────┼──────────────┼──────────────┤
+          │ 112.01 BBVA             │ $125,500.00  │              │
+          │ 112.02 Santander        │  $45,200.00  │              │
+          │ 111.01 Caja General     │   $8,750.00  │              │
+          │ 111.02 Caja Chica       │   $2,000.00  │              │
+          │ 310.01 Capital Social   │              │ $181,450.00  │
+          └─────────────────────────┴──────────────┴──────────────┘
+
+          Total DEBE = Total HABER = $181,450.00 ✓
+
+          ¿Por qué Capital Social?
+          Es la cuenta que "aporta" el dinero inicial. Si usas otro método,
+          consulta con tu contador.
+
+          Después de confirmar:
+          - Dashboard mostrará los saldos correctos
+          - Balance General reflejará tu liquidez real
+        `,
+        tips: [
+          'Usa la fecha real en que empiezas a llevar contabilidad en Odoo',
+          'Verifica que DEBE = HABER (partida doble)',
+          'La cuenta contrapartida puede ser Capital o Resultados Acumulados',
+          'Consulta con tu contador si tienes dudas sobre la contrapartida'
+        ]
+      },
+      {
+        title: '5. Registrar Movimientos Bancarios Manuales',
+        content: `
+          Sin sincronización automática, cada depósito, retiro, comisión o interés debes registrarlo tú.
+
+          **Tipos de movimientos comunes:**
+          - Depósitos de clientes (entrada)
+          - Pagos a proveedores (salida)
+          - Comisiones bancarias (salida)
+          - Intereses ganados (entrada)
+          - Transferencias entre cuentas (interna)
+
+          **Regla de oro:** Registra cada movimiento el mismo día que aparece en tu banca en línea.
+        `,
+        example: `
+          📍 Ruta: Contabilidad > Bancos > [Tu Banco] > Nuevo
+
+          EJEMPLO 1: Depósito de cliente ($15,000)
+          ─────────────────────────────────────────
+          Fecha: 15/01/2025
+          Etiqueta: Pago cliente Empresa ABC - Factura INV/2025/001
+          Importe: +15,000.00 (positivo = entrada)
+          Cuenta contrapartida: 120.01 Cuentas por Cobrar
+
+          Asiento generado:
+          DEBE: 112.01 Banco BBVA......$15,000.00
+          HABER: 120.01 Cuentas x Cobrar...$15,000.00
+
+          EJEMPLO 2: Pago a proveedor ($8,500)
+          ─────────────────────────────────────
+          Fecha: 16/01/2025
+          Etiqueta: Pago proveedor Distribuidora XYZ
+          Importe: -8,500.00 (negativo = salida)
+          Cuenta contrapartida: 201.01 Cuentas por Pagar
+
+          EJEMPLO 3: Comisión bancaria ($250)
+          ───────────────────────────────────
+          Fecha: 31/01/2025
+          Etiqueta: Comisión mensual manejo de cuenta
+          Importe: -250.00
+          Cuenta contrapartida: 520.01 Gastos Bancarios
+
+          EJEMPLO 4: Intereses ganados ($180)
+          ────────────────────────────────────
+          Fecha: 31/01/2025
+          Etiqueta: Intereses del mes enero
+          Importe: +180.00
+          Cuenta contrapartida: 410.01 Productos Financieros
+
+          Después de cada registro:
+          ✓ El saldo del banco se actualiza automáticamente
+          ✓ Aparece en el Dashboard
+          ✓ Se refleja en el Balance General
+        `,
+        tips: [
+          'Registra movimientos diariamente para no acumular trabajo',
+          'Usa etiquetas descriptivas que identifiquen el movimiento',
+          'Guarda comprobantes de cada operación',
+          'Al final del mes, compara con tu estado de cuenta bancario'
+        ]
+      },
+      {
+        title: '6. Transferencias Entre Cuentas Propias',
+        content: `
+          Las transferencias entre tus propias cuentas NO son gastos ni ingresos, solo redistribuyes tu dinero.
+
+          **Casos comunes:**
+          - Transferencia entre bancos
+          - Retiro de banco para caja
+          - Depósito de caja a banco
+          - Reposición de caja chica
+
+          **Principio clave:** Tu liquidez total NO cambia, solo se mueve de lugar.
+        `,
+        example: `
+          📍 Ruta: Contabilidad > Varios > Asientos Contables > Crear
+
+          CASO 1: Transferencia BBVA → Santander ($20,000)
+          ──────────────────────────────────────────────────
+          Fecha: 20/01/2025
+          Referencia: Transferencia entre cuentas propias
+          Diario: Varios
+
+          ┌─────────────────────┬──────────────┬──────────────┐
+          │ Cuenta              │ DEBE         │ HABER        │
+          ├─────────────────────┼──────────────┼──────────────┤
+          │ 112.02 Santander    │ $20,000.00   │              │
+          │ 112.01 BBVA         │              │ $20,000.00   │
+          └─────────────────────┴──────────────┴──────────────┘
+
+          Resultado:
+          • BBVA baja $20,000
+          • Santander sube $20,000
+          • Total liquidez = IGUAL
+
+          CASO 2: Retiro para caja ($5,000)
+          ───────────────────────────────────
+          ┌─────────────────────┬──────────────┬──────────────┐
+          │ Cuenta              │ DEBE         │ HABER        │
+          ├─────────────────────┼──────────────┼──────────────┤
+          │ 111.01 Caja General │ $5,000.00    │              │
+          │ 112.01 BBVA         │              │ $5,000.00    │
+          └─────────────────────┴──────────────┴──────────────┘
+
+          CASO 3: Depósito de ventas del día ($12,350)
+          ────────────────────────────────────────────────
+          ┌─────────────────────┬──────────────┬──────────────┐
+          │ Cuenta              │ DEBE         │ HABER        │
+          ├─────────────────────┼──────────────┼──────────────┤
+          │ 112.02 Santander    │ $12,350.00   │              │
+          │ 111.01 Caja General │              │ $12,350.00   │
+          └─────────────────────┴──────────────┴──────────────┘
+
+          Recuerda: DEBE es donde ENTRA, HABER es de donde SALE
+        `,
+        tips: [
+          'DEBE = HABER siempre (partida doble)',
+          'No uses cuentas de gastos o ingresos para transferencias internas',
+          'Registra la misma fecha del movimiento bancario real',
+          'Verifica que los saldos en Dashboard cuadren con tus estados de cuenta'
+        ]
+      },
+      {
+        title: '7. Visualizar en Dashboard y Balance General',
+        content: `
+          El objetivo final es ver:
+          1. Cuánto tienes en CADA banco (detalle)
+          2. Cuánto tienes en TOTAL en bancos
+          3. Cuánto tienes en efectivo físico
+          4. Tu liquidez TOTAL (bancos + efectivo)
+
+          Odoo te ofrece múltiples vistas para esto.
+        `,
+        example: `
+          📍 Ruta 1: Contabilidad > Dashboard
+
+          Vista de widgets:
+          ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
+          │   BANCO BBVA    │ │ BANCO SANTANDER │ │  CAJA GENERAL   │
+          │  $125,500.00    │ │   $65,200.00    │ │   $11,750.00    │
+          │   ↑ $15,000     │ │   ↑ $20,000     │ │   ↑ $3,000      │
+          └─────────────────┘ └─────────────────┘ └─────────────────┘
+
+          📍 Ruta 2: Contabilidad > Reportes > Balance General
+
+          ACTIVO CIRCULANTE:
+          ────────────────────────────────────────────
+          111 - Caja                         $13,750.00
+            111.01 Caja General              $11,750.00
+            111.02 Caja Chica                 $2,000.00
+
+          112 - Bancos                      $190,700.00
+            112.01 BBVA Empresarial         $125,500.00
+            112.02 Santander PyME            $65,200.00
+            112.03 Banorte Digital                $0.00
+
+          TOTAL LIQUIDEZ                    $204,450.00
+          ────────────────────────────────────────────
+
+          📍 Ruta 3: Haz clic en cualquier widget del Dashboard
+
+          Verás todos los movimientos de ese banco:
+          • 15/01 - Depósito cliente ABC +$15,000
+          • 16/01 - Pago proveedor XYZ -$8,500
+          • 20/01 - Transferencia a Santander -$20,000
+          • 31/01 - Comisión mensual -$250
+          • 31/01 - Intereses +$180
+
+          Saldo final: $125,500.00 ✓
+
+          ¿No aparece un banco en el Dashboard?
+          • Verifica que tenga diario tipo "Banco" o "Efectivo"
+          • Asegura que tenga cuenta contable asignada
+          • Revisa que no esté archivado
+        `,
+        tips: [
+          'Revisa el Dashboard diariamente',
+          'Compara SIEMPRE con tus estados de cuenta bancarios',
+          'Si hay diferencias, revisa movimientos faltantes',
+          'El Balance General es tu reporte oficial para fines fiscales'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Por qué en México debemos dar de alta los bancos manualmente en Odoo?',
+          options: [
+            'Porque es más seguro',
+            'Porque los tokens bancarios no están habilitados para sincronización automática',
+            'Porque Odoo no tiene esa función',
+            'Porque es más barato'
+          ],
+          correct: 1,
+          explanation: 'En México, los bancos no proporcionan tokens de sincronización automática con ERPs como Odoo, así que debemos configurar todo manualmente.'
+        },
+        {
+          id: 'q2',
+          question: '¿Qué código de cuenta recomendamos usar para bancos en el Plan de Cuentas?',
+          options: [
+            '100.XX',
+            '111.XX',
+            '112.XX',
+            '200.XX'
+          ],
+          correct: 2,
+          explanation: 'El código 112.XX es para cuentas bancarias, siguiendo la estructura: 100 Activo > 110 Circulante > 112 Bancos > 112.01 Banco específico.'
+        },
+        {
+          id: 'q3',
+          question: '¿Qué tipo de diario debe tener cada cuenta bancaria?',
+          options: [
+            'Tipo "Ventas"',
+            'Tipo "Compras"',
+            'Tipo "Banco"',
+            'Tipo "Varios"'
+          ],
+          correct: 2,
+          explanation: 'El diario tipo "Banco" es específico para cuentas bancarias y permite que aparezcan en el Dashboard y se puedan registrar movimientos.'
+        },
+        {
+          id: 'q4',
+          question: 'Al registrar una comisión bancaria de $150, ¿qué importe pones?',
+          options: [
+            '+150.00 (positivo)',
+            '-150.00 (negativo)',
+            '150.00 sin signo',
+            'Cualquiera funciona'
+          ],
+          correct: 1,
+          explanation: 'Las salidas de dinero se registran con importe negativo (-), las entradas con positivo (+). La comisión es una salida.'
+        },
+        {
+          id: 'q5',
+          question: '¿Qué campo DEBE estar activado en las cuentas contables de banco?',
+          options: [
+            'Permite eliminación',
+            'Permite conciliación',
+            'Permite duplicados',
+            'Permite archivado'
+          ],
+          correct: 1,
+          explanation: 'Permite conciliación te permitirá comparar los movimientos de Odoo con tu estado de cuenta bancario real.'
+        },
+        {
+          id: 'q6',
+          question: 'Al transferir $10,000 de BBVA a Santander, ¿qué pasa con tu liquidez total?',
+          options: [
+            'Aumenta en $10,000',
+            'Disminuye en $10,000',
+            'Se mantiene igual',
+            'Se duplica'
+          ],
+          correct: 2,
+          explanation: 'Las transferencias entre cuentas propias no cambian tu liquidez total, solo redistribuyen el dinero.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio Completo: Alta de Bancos para PyME Mexicana',
+      description: 'Configura la contabilidad bancaria completa para una empresa ficticia.',
+      steps: [
+        {
+          id: 'step1',
+          task: 'La empresa "Distribuidora Norte S.A. de C.V." tiene estos bancos:\n- BBVA con saldo $85,000\n- Banorte con saldo $42,500\n- Caja chica con $3,000\n\nCrea las 3 cuentas contables con los códigos correctos.',
+          validation: 'multiple-choice',
+          options: [
+            '112.01 BBVA, 112.02 Banorte, 111.02 Caja Chica',
+            '100.01 BBVA, 100.02 Banorte, 100.03 Caja',
+            '500.01 BBVA, 500.02 Banorte, 500.03 Caja',
+            '200.01 BBVA, 200.02 Banorte, 200.03 Caja'
+          ],
+          correct: 0
+        },
+        {
+          id: 'step2',
+          task: 'Crea los diarios correspondientes. ¿Qué tipo de diario usarás para la Caja Chica?',
+          validation: 'multiple-choice',
+          options: [
+            'Tipo Banco',
+            'Tipo Efectivo',
+            'Tipo Ventas',
+            'Tipo Varios'
+          ],
+          correct: 1
+        },
+        {
+          id: 'step3',
+          task: 'Registra este movimiento en BBVA:\n"Hoy el cliente Ferretería López depositó $12,000 para pagar su factura".\n¿El importe debe ser positivo o negativo?',
+          validation: 'text',
+          correctAnswer: 'positivo',
+          hints: ['Es dinero que ENTRA al banco', 'Las entradas son con signo +']
+        },
+        {
+          id: 'step4',
+          task: 'Necesitas transferir $15,000 de BBVA a Banorte. En el asiento contable:\n¿Cuál cuenta va en DEBE y cuál en HABER?',
+          validation: 'multiple-choice',
+          options: [
+            'DEBE: Banorte, HABER: BBVA',
+            'DEBE: BBVA, HABER: Banorte',
+            'DEBE: Ambos, HABER: Ninguno',
+            'DEBE: Ninguno, HABER: Ambos'
+          ],
+          correct: 0
+        },
+        {
+          id: 'step5',
+          task: 'Después de configurar todo, ¿dónde verificas que el saldo total de bancos + efectivo sea correcto?',
+          validation: 'text',
+          correctAnswer: 'Balance General',
+          hints: ['Es un reporte financiero oficial', 'Muestra Activo, Pasivo y Capital']
+        }
+      ]
+    }
+  },
+
   // ========================================
   // VENTAS - TODAS LAS LECCIONES
   // ========================================

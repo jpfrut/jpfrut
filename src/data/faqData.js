@@ -37,6 +37,12 @@ export const faqCategories = [
     name: 'Consejos Útiles',
     icon: '💡',
     description: 'Trucos para trabajar mejor'
+  },
+  {
+    id: 'banking',
+    name: 'Bancos y Efectivo',
+    icon: '🏦',
+    description: 'Cuentas bancarias y manejo de efectivo'
   }
 ]
 
@@ -559,6 +565,430 @@ export const faqData = [
       **Importante:** Tus personalizaciones son solo para ti, no afectan a otros usuarios.
     `,
     relatedQuestions: ['faq-50']
+  },
+
+  // BANCOS Y EFECTIVO
+  {
+    id: 'faq-53',
+    category: 'banking',
+    question: '¿Cómo configuro el Plan de Cuentas para dar de alta mis bancos en México?',
+    answer: `
+      **El problema en México:** Los tokens bancarios no están habilitados para sincronizar automáticamente con Odoo, así que debes configurar todo manualmente. Aquí te explico paso a paso.
+
+      **Estructura recomendada del Plan de Cuentas para Bancos:**
+
+      \`\`\`
+      100 - ACTIVO
+        110 - Activo Circulante
+          111 - Caja
+            111.01 - Caja General (efectivo físico)
+            111.02 - Caja Chica
+          112 - Bancos
+            112.01 - BBVA Cuenta 1234
+            112.02 - Santander Cuenta 5678
+            112.03 - Banorte Cuenta 9012
+            112.04 - Banamex Cuenta 3456
+      \`\`\`
+
+      **📍 Ruta en Odoo:** Contabilidad > Configuración > Plan de Cuentas
+
+      **Códigos ideales para México:**
+      - **111.XX** → Efectivo y caja chica
+      - **112.XX** → Cuentas bancarias
+      - Numeración consecutiva (01, 02, 03...)
+
+      **¿Por qué esta estructura?**
+      - El código **112** agrupa TODOS los bancos bajo "Activo Circulante"
+      - Cada subcuenta (112.01, 112.02) representa UN banco específico
+      - En el Balance General, verás el total de bancos (112) Y el detalle de cada uno
+      - Facilita reportes fiscales y auditorías
+
+      **Tipo de cuenta correcto:** "Activo Circulante" o "Bank and Cash" según tu localización.
+    `,
+    relatedQuestions: ['faq-54', 'faq-55']
+  },
+  {
+    id: 'faq-54',
+    category: 'banking',
+    question: '¿Cómo creo una cuenta contable específica para cada banco (BBVA, Santander, etc.)?',
+    answer: `
+      **📍 Ruta:** Contabilidad > Configuración > Plan de Cuentas > Crear
+
+      **Paso a paso detallado:**
+
+      **1. Haz clic en "Crear"**
+
+      **2. Llena estos campos OBLIGATORIOS:**
+      - **Código:** 112.01 (primer banco), 112.02 (segundo), etc.
+      - **Nombre:** "BBVA Empresarial - Cuenta 0123456789"
+      - **Tipo:** "Activo Circulante" o "Bank and Cash"
+      - **Permite conciliación:** ✓ ACTIVADO (muy importante)
+
+      **3. Campos opcionales pero recomendados:**
+      - **Moneda:** Si es cuenta en dólares, selecciona USD
+      - **Etiquetas:** "Banco", "Operativa"
+      - **Grupo:** Déjalo bajo "Bancos" o "112"
+
+      **Ejemplo para 3 bancos mexicanos:**
+
+      | Código | Nombre | Tipo |
+      |--------|--------|------|
+      | 112.01 | BBVA Empresarial - Cta 1234 | Activo Circulante |
+      | 112.02 | Santander PyME - Cta 5678 | Activo Circulante |
+      | 112.03 | Banorte Digital - Cta 9012 | Activo Circulante |
+
+      **¡IMPORTANTE!**
+      - El nombre debe ser descriptivo: incluye banco + tipo de cuenta + últimos 4 dígitos
+      - NO uses acentos ni caracteres especiales en el código
+      - Marca SIEMPRE "Permite conciliación" para poder reconciliar después
+
+      **Repite el proceso** para cada cuenta bancaria que tengas.
+    `,
+    relatedQuestions: ['faq-53', 'faq-55']
+  },
+  {
+    id: 'faq-55',
+    category: 'banking',
+    question: '¿Cómo configuro los Diarios Contables para cada banco?',
+    answer: `
+      **¿Por qué necesito un diario por banco?** Cada banco debe tener su propio diario para registrar movimientos separados y aparecer correctamente en el dashboard de Contabilidad.
+
+      **📍 Ruta:** Contabilidad > Configuración > Diarios > Crear
+
+      **Configuración paso a paso:**
+
+      **1. Información básica:**
+      - **Nombre del diario:** "Banco BBVA" o "BBVA Empresarial"
+      - **Tipo:** "Banco" ← MUY IMPORTANTE
+      - **Código corto:** "BBVA" (máximo 5 caracteres)
+
+      **2. Configuración contable:**
+      - **Cuenta bancaria:** Selecciona tu cuenta 112.01 (la que creaste antes)
+      - **Cuenta de suspense:** Déjala por defecto
+      - **Cuenta de ganancias/pérdidas:** Por defecto
+
+      **3. Información bancaria (opcional pero útil):**
+      - **Número de cuenta:** Tu número completo de cuenta
+      - **Banco:** Selecciona o crea "BBVA Bancomer"
+      - **CLABE interbancaria:** 18 dígitos
+
+      **Ejemplo de configuración completa:**
+
+      \`\`\`
+      Diario: Banco BBVA
+      ├── Tipo: Banco
+      ├── Código: BBVA
+      ├── Cuenta contable: 112.01 BBVA Empresarial
+      ├── Número de cuenta: 0123456789
+      └── CLABE: 012180001234567890
+      \`\`\`
+
+      **Para efectivo/caja chica:**
+      - Tipo: "Efectivo"
+      - Cuenta: 111.01 Caja General
+      - Código: "CAJA"
+
+      **¿Resultado?**
+      - En el dashboard de Contabilidad verás cada banco por separado
+      - Puedes registrar movimientos independientes
+      - Los reportes mostrarán saldos individuales y totales
+    `,
+    relatedQuestions: ['faq-54', 'faq-56', 'faq-58']
+  },
+  {
+    id: 'faq-56',
+    category: 'banking',
+    question: '¿Cómo registro movimientos bancarios manualmente (depósitos, retiros, comisiones)?',
+    answer: `
+      **Contexto:** En México, sin tokens de sincronización automática, debes registrar cada movimiento manualmente. Aquí te explico los métodos.
+
+      **📍 Ruta principal:** Contabilidad > Bancos > [Tu Banco] > Nuevo movimiento
+
+      **MÉTODO 1: Desde el diario del banco (RECOMENDADO)**
+
+      1. Ve a Contabilidad > Bancos
+      2. Selecciona tu banco (ej: "BBVA")
+      3. Clic en "Nuevo"
+      4. Llena:
+         - **Fecha:** Fecha del movimiento real
+         - **Etiqueta:** "Depósito cliente ABC" o "Retiro cajero"
+         - **Importe:** Positivo para entrada, negativo para salida
+         - **Cuenta contrapartida:** Qué cuenta afecta
+
+      **EJEMPLOS PRÁCTICOS:**
+
+      **Depósito de cliente ($5,000):**
+      \`\`\`
+      Fecha: 15/01/2025
+      Etiqueta: Pago cliente Empresa ABC - Factura 001
+      Importe: +5,000.00
+      Contrapartida: 120.01 Cuentas por Cobrar
+      \`\`\`
+
+      **Retiro para gastos ($1,500):**
+      \`\`\`
+      Fecha: 16/01/2025
+      Etiqueta: Retiro para pago proveedor
+      Importe: -1,500.00
+      Contrapartida: 201.01 Cuentas por Pagar
+      \`\`\`
+
+      **Comisión bancaria ($150):**
+      \`\`\`
+      Fecha: 31/01/2025
+      Etiqueta: Comisión mensual BBVA
+      Importe: -150.00
+      Contrapartida: 520.01 Gastos Bancarios
+      \`\`\`
+
+      **Intereses ganados ($25):**
+      \`\`\`
+      Fecha: 31/01/2025
+      Etiqueta: Intereses del mes
+      Importe: +25.00
+      Contrapartida: 410.01 Productos Financieros
+      \`\`\`
+
+      **MÉTODO 2: Importar extracto bancario (CSV/OFX)**
+
+      Si tu banco te da archivo digital:
+      1. Contabilidad > Bancos > Importar
+      2. Sube el archivo CSV/OFX
+      3. Mapea las columnas
+      4. Valida los movimientos importados
+
+      **¡CLAVE!** Siempre reconcilia tus registros con tu estado de cuenta bancario.
+    `,
+    relatedQuestions: ['faq-55', 'faq-57', 'faq-59']
+  },
+  {
+    id: 'faq-57',
+    category: 'banking',
+    question: '¿Cómo configuro la caja chica y el efectivo físico?',
+    answer: `
+      **¿Por qué separar efectivo de bancos?** El dashboard de Contabilidad muestra ambos por separado, así puedes ver:
+      - Cuánto tienes en bancos (total y por cuenta)
+      - Cuánto tienes en efectivo físico
+      - El total global de liquidez
+
+      **PASO 1: Crear cuenta contable para caja**
+
+      📍 Ruta: Contabilidad > Configuración > Plan de Cuentas > Crear
+
+      \`\`\`
+      Código: 111.01
+      Nombre: Caja General
+      Tipo: Activo Circulante / Bank and Cash
+      Permite conciliación: ✓
+      \`\`\`
+
+      **Para caja chica (gastos menores):**
+      \`\`\`
+      Código: 111.02
+      Nombre: Caja Chica
+      Tipo: Activo Circulante
+      \`\`\`
+
+      **PASO 2: Crear diario de efectivo**
+
+      📍 Ruta: Contabilidad > Configuración > Diarios > Crear
+
+      \`\`\`
+      Nombre: Caja General
+      Tipo: Efectivo ← NO "Banco"
+      Código corto: CAJA
+      Cuenta: 111.01 Caja General
+      \`\`\`
+
+      **PASO 3: Registrar movimientos de caja**
+
+      📍 Ruta: Contabilidad > Bancos > Caja General > Nuevo
+
+      **Entrada de efectivo (venta en mostrador):**
+      \`\`\`
+      Fecha: 15/01/2025
+      Etiqueta: Venta mostrador cliente Juan
+      Importe: +800.00
+      Contrapartida: 401.01 Ingresos por Ventas
+      \`\`\`
+
+      **Salida de caja chica (papelería):**
+      \`\`\`
+      Fecha: 16/01/2025
+      Etiqueta: Compra papelería Office Depot
+      Importe: -350.00
+      Contrapartida: 510.05 Gastos de Papelería
+      \`\`\`
+
+      **Reposición de caja chica desde banco:**
+      \`\`\`
+      En diario BANCO:
+      Importe: -2,000.00
+      Contrapartida: 111.02 Caja Chica
+
+      En diario CAJA CHICA:
+      Importe: +2,000.00
+      Contrapartida: 112.01 Banco BBVA
+      \`\`\`
+
+      **RESULTADO EN DASHBOARD:**
+      - Widget "Banco BBVA": $50,000
+      - Widget "Caja General": $3,200
+      - Widget "Caja Chica": $2,000
+      - **Total Liquidez: $55,200**
+    `,
+    relatedQuestions: ['faq-55', 'faq-56', 'faq-58']
+  },
+  {
+    id: 'faq-58',
+    category: 'banking',
+    question: '¿Cómo veo el total de efectivo en bancos y en físico en el dashboard?',
+    answer: `
+      **El dashboard de Contabilidad es tu mejor amigo para ver liquidez.**
+
+      **📍 Ruta:** Contabilidad > Dashboard (página principal del módulo)
+
+      **¿Qué muestra el dashboard?**
+
+      Verás widgets individuales para cada diario de tipo "Banco" o "Efectivo" que hayas creado:
+
+      \`\`\`
+      ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+      │   BANCO BBVA    │  │ BANCO SANTANDER │  │  CAJA GENERAL   │
+      │   $125,500.00   │  │   $45,200.00    │  │   $8,750.00     │
+      │   ▲ $12,300     │  │   ▼ $3,100      │  │   ▲ $2,150      │
+      └─────────────────┘  └─────────────────┘  └─────────────────┘
+      \`\`\`
+
+      **Para ver el TOTAL de todos los bancos + efectivo:**
+
+      **Opción 1: Reporte de Balance General**
+      📍 Ruta: Contabilidad > Reportes > Balance General
+
+      Busca la sección "Activo Circulante":
+      \`\`\`
+      ACTIVO CIRCULANTE
+      ├── 111 Caja........................$8,750.00
+      │   ├── 111.01 Caja General.........$6,750.00
+      │   └── 111.02 Caja Chica...........$2,000.00
+      ├── 112 Bancos.....................$170,700.00
+      │   ├── 112.01 BBVA................$125,500.00
+      │   ├── 112.02 Santander............$45,200.00
+      │   └── 112.03 Banorte.................$0.00
+      └── TOTAL LIQUIDEZ.................$179,450.00
+      \`\`\`
+
+      **Opción 2: Filtrar en el dashboard**
+      - Haz clic en cualquier widget de banco
+      - Ve todos los movimientos detallados
+      - Usa filtros por fecha, tipo, etc.
+
+      **Opción 3: Crear reporte personalizado**
+      📍 Ruta: Contabilidad > Reportes > Personalizados
+
+      Crea un reporte que sume:
+      - Cuenta 111 (todo el efectivo)
+      - Cuenta 112 (todos los bancos)
+      - = Total liquidez disponible
+
+      **Pro tip:** El saldo en el dashboard es en TIEMPO REAL según lo que hayas registrado. Compáralo con tus estados de cuenta bancarios para asegurar que coincidan.
+
+      **¿No aparece tu banco en el dashboard?**
+      - Verifica que el diario sea tipo "Banco" o "Efectivo"
+      - Asegúrate que tenga cuenta contable asignada
+      - Revisa que no esté archivado
+    `,
+    relatedQuestions: ['faq-55', 'faq-57', 'faq-59']
+  },
+  {
+    id: 'faq-59',
+    category: 'banking',
+    question: '¿Cómo hago transferencias entre bancos o de efectivo a banco?',
+    answer: `
+      **Las transferencias internas NO son pagos ni cobros, son movimientos entre tus propias cuentas.**
+
+      **📍 Ruta recomendada:** Contabilidad > Varios > Asientos Contables > Crear
+
+      **CASO 1: Transferencia entre dos bancos**
+
+      Ejemplo: Pasar $10,000 de BBVA a Santander
+
+      **Asiento contable:**
+      \`\`\`
+      Fecha: 20/01/2025
+      Referencia: Transferencia interna BBVA→Santander
+      Diario: Varios
+
+      DEBE:
+      112.02 Santander............$10,000.00
+
+      HABER:
+      112.01 BBVA.................$10,000.00
+      \`\`\`
+
+      **Método alternativo (dos movimientos):**
+
+      En diario BBVA:
+      \`\`\`
+      Fecha: 20/01/2025
+      Etiqueta: Transferencia a Santander
+      Importe: -10,000.00
+      Contrapartida: 112.02 Santander
+      \`\`\`
+
+      En diario Santander (se genera automáticamente o créalo):
+      \`\`\`
+      Fecha: 20/01/2025
+      Etiqueta: Transferencia desde BBVA
+      Importe: +10,000.00
+      Contrapartida: 112.01 BBVA
+      \`\`\`
+
+      **CASO 2: Retiro de banco a caja (efectivo)**
+
+      Ejemplo: Retirar $5,000 del banco para tener efectivo
+
+      \`\`\`
+      Fecha: 21/01/2025
+      Referencia: Retiro para caja general
+
+      DEBE:
+      111.01 Caja General.........$5,000.00
+
+      HABER:
+      112.01 BBVA.................$5,000.00
+      \`\`\`
+
+      **CASO 3: Depósito de efectivo al banco**
+
+      Ejemplo: Depositar $3,500 de ventas del día
+
+      \`\`\`
+      Fecha: 22/01/2025
+      Referencia: Depósito ventas del día
+
+      DEBE:
+      112.02 Santander............$3,500.00
+
+      HABER:
+      111.01 Caja General.........$3,500.00
+      \`\`\`
+
+      **IMPORTANTE - Partida doble:**
+      - El DEBE es donde ENTRA el dinero
+      - El HABER es de donde SALE el dinero
+      - Siempre deben ser IGUALES (DEBE = HABER)
+      - El total de tu liquidez NO cambia, solo se redistribuye
+
+      **Verificación:**
+      Después de cada transferencia, revisa en el dashboard que:
+      - El banco origen haya bajado
+      - El banco destino haya subido
+      - La suma total sea la misma
+
+      **Error común:** No confundas transferencias internas con pagos a proveedores o cobros de clientes. Las transferencias internas son SOLO entre tus cuentas propias.
+    `,
+    relatedQuestions: ['faq-56', 'faq-57', 'faq-58']
   }
 ]
 
