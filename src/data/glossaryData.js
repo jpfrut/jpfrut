@@ -13,22 +13,14 @@ export const glossaryTerms = {
     icon: '📊',
     example: {
       title: 'Estructura típica',
-      content: `
-        1000 - ACTIVOS
-        ├── 1100 - Bancos
-        │   ├── 1101 - Banco Principal
-        │   └── 1102 - Cuenta de Ahorros
-        ├── 1200 - Cuentas por Cobrar
-        └── 1300 - Inventario
+      content: `**Estructura mínima sugerida**
 
-        2000 - PASIVOS
-        ├── 2100 - Cuentas por Pagar
-        └── 2200 - Impuestos por Pagar
+- **Activos (1000):** Bancos, Cuentas por Cobrar, Inventario
+- **Pasivos (2000):** Cuentas por Pagar, Impuestos por pagar
+- **Patrimonio (3000):** Capital social y reservas
+- **Ingresos (4000)** y **Gastos (5000):** Categorías de ventas y costos
 
-        3000 - PATRIMONIO
-        4000 - INGRESOS
-        5000 - GASTOS
-      `
+[Ver ejemplo oficial de contabilidad](https://www.odoo.com/documentation) para ajustar códigos locales.`
     },
     relationships: [
       {
@@ -104,23 +96,14 @@ export const glossaryTerms = {
     icon: '📒',
     example: {
       title: 'Diarios típicos en una empresa',
-      content: `
-        DIARIO DE VENTAS (VNT)
-        → Aquí van TODAS las facturas que emites a clientes
-        → Afecta: Cuentas por Cobrar + Ingresos
+      content: `**Qué registra cada diario**
 
-        DIARIO DE COMPRAS (CMP)
-        → Aquí van TODAS las facturas de tus proveedores
-        → Afecta: Cuentas por Pagar + Gastos/Inventario
+1. **Ventas (VNT):** Facturas emitidas → Cuentas por Cobrar + Ingresos.
+2. **Compras (CMP):** Facturas de proveedores → Cuentas por Pagar + Gastos/Inventario.
+3. **Banco (BNC):** Movimientos bancarios → Bancos + cuentas afectadas.
+4. **Caja (EFV):** Ingresos/Egresos en efectivo → Caja + cuentas afectadas.
 
-        DIARIO DE BANCO (BNC)
-        → Aquí van movimientos de tu cuenta bancaria
-        → Afecta: Cuenta de Banco + diversas cuentas
-
-        DIARIO DE CAJA (EFV)
-        → Aquí van movimientos en efectivo
-        → Afecta: Cuenta de Caja + diversas cuentas
-      `
+> Tip: usa códigos cortos (VNT, CMP, BNC, EFV) para leer rápido los reportes.`
     },
     relationships: [
       {
@@ -154,19 +137,16 @@ export const glossaryTerms = {
     icon: '✍️',
     example: {
       title: 'Asiento: Cobro de factura #001 por $1,500',
-      content: `
-        DEBE (lo que entra):
-        → Cuenta Bancos: +$1,500
+      content: `**Asiento de cobro**
 
-        HABER (de dónde sale):
-        → Cuentas por Cobrar: -$1,500
+~~~text
+DEBE  | Banco                  | +$1,500
+HABER | Cuentas por Cobrar     | -$1,500
+~~~
 
-        TOTAL DEBE: $1,500
-        TOTAL HABER: $1,500
-        ¿Cuadra? ✓ SÍ
-
-        Significado: "El dinero entró al banco y dejamos de tener esa cuenta por cobrar"
-      `
+- El total DEBE y HABER deben coincidir.
+- Describe siempre qué documento origina el movimiento.
+- Si hay impuestos, añade la línea adicional antes de validar.`
     },
     relationships: [
       {

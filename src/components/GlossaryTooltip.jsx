@@ -188,7 +188,7 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
                       enableGlossary={true}
                       className="text-xs text-accent-aqua font-mono whitespace-pre-line leading-relaxed"
                     >
-                      {term.example.content.trim()}
+                      {term.example.content}
                     </MarkdownText>
                   </div>
                 </div>
