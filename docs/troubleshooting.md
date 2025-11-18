@@ -20,4 +20,4 @@
    - Ejecuta `npm run build` para asegurar que el bundle de producción se genera sin errores.
    - Comprueba las vistas que usan `MarkdownText` (lecciones, guías rápidas) para validar que el renderizado de Markdown funciona.
 
-> Nota: El script `npm run dev` ahora ejecuta un prechequeo automático (`scripts/verify-deps.mjs`) que alerta si `react-markdown` no está instalado antes de levantar Vite.
+> Nota: cualquier comando de ejecución (`npm run dev`, `npm run build`, `npm run preview`, etc.) dispara un prechequeo automático (`scripts/verify-deps.mjs`) que alerta si falta alguna dependencia antes de iniciar el flujo.

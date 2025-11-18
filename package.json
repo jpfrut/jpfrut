@@ -8,6 +8,7 @@
     "dev": "vite",
     "prebuild": "node scripts/verify-deps.mjs",
     "build": "vite build",
+    "prepreview": "node scripts/verify-deps.mjs",
     "preview": "vite preview",
     "lint:palette": "node scripts/validate-palette.mjs"
   },
