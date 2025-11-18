@@ -26,6 +26,7 @@ import { helpdesk } from './services/helpdesk.js'
 import { website } from './websites/website.js'
 
 import { emailMarketing } from './marketing/emailMarketing.js'
+import { marketingAutomation } from './marketing/marketingAutomation.js'
 
 // Objeto de módulos (compatible con la API anterior)
 export const odooModules = {
@@ -41,7 +42,8 @@ export const odooModules = {
   project,
   website,
   helpdesk,
-  emailMarketing
+  emailMarketing,
+  marketingAutomation
 }
 
 // ============================================
@@ -142,7 +144,7 @@ export const servicesModules = { project, helpdesk }
 export const websitesModules = { website }
 
 // Futuros módulos (preparación para expansión)
-export const marketingModules = { emailMarketing }
+export const marketingModules = { emailMarketing, marketingAutomation }
 export const productivityModules = {}
 export const essentialsModules = {}
 export const studioModules = {}

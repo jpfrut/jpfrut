@@ -14,6 +14,7 @@
 |--------|------|---------|----------|
 | Claude Code | Restructuración de Módulos | Auditoría completa, plan MECE, nueva estructura modular | [Ver](./2025-11-18-claude-restructure-and-audit.md) |
 | Claude Code | Email Marketing (Fase 1) | Primer módulo de Marketing, inicio Fase 1 | [Ver](./2025-11-18-claude-email-marketing.md) |
+| Claude Code | Marketing Automation | Segundo módulo de Marketing con workflows y automation | [Ver](./2025-11-18-claude-marketing-automation.md) |
 
 ---
 
@@ -21,9 +22,9 @@
 
 | Métrica | Inicio Proyecto | Último Update | Objetivo Final |
 |---------|----------------|---------------|----------------|
-| **Módulos** | 12 | 13 | 52+ |
-| **Lecciones** | 53 | 59 | 300+ |
-| **Cobertura** | 23% | 25% | 100% |
+| **Módulos** | 12 | 14 | 52+ |
+| **Lecciones** | 53 | 64 | 300+ |
+| **Cobertura** | 23% | 27% | 100% |
 | **Categorías** | 4 parciales | 4 parciales + 1 nueva | 11 completas |
 
 **Última actualización:** 2025-11-18
@@ -37,7 +38,7 @@
 
 | Categoría | Módulos Planeados | Módulos Completados | Estado |
 |-----------|-------------------|---------------------|--------|
-| Marketing | 6 | 1 | 🟡 En progreso |
+| Marketing | 6 | 2 | 🟡 En progreso (33%) |
 | Sales | 2 | 0 | ⚪ Pendiente |
 | HR | 4 | 0 | ⚪ Pendiente |
 | Supply Chain | 3 | 0 | ⚪ Pendiente |
@@ -96,6 +97,20 @@
 - ✅ Módulos: 12 → 13
 
 **[Ver bitácora completa →](./2025-11-18-claude-email-marketing.md)**
+
+---
+
+### 2025-11-18: Marketing Automation - Fase 1 Avanza
+**Branch:** `claude/audit-odoo-modules-01UT45MpGQ2QmZFE7NsZeD4s`
+**Duración:** ~20 min
+**Impacto:** 🟡 Medio (Segundo módulo Marketing)
+
+**Cambios:**
+- ✅ Módulo Marketing Automation (5 lecciones)
+- ✅ Progresión Básico → Avanzado
+- ✅ Módulos: 13 → 14, Lecciones: 59 → 64
+
+**[Ver bitácora completa →](./2025-11-18-claude-marketing-automation.md)**
 
 ---
 
