@@ -19,6 +19,7 @@ import {
   getGlossaryTerm
 } from '../data/glossaryData'
 import Card from '../components/ui/Card'
+import MarkdownText from '../components/MarkdownText'
 
 const GlossaryPage = () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -215,7 +216,12 @@ const GlossaryPage = () => {
                     </div>
 
                     {/* Short Definition */}
-                    <p className="text-sm text-neutral-700 leading-relaxed">{term.shortDef}</p>
+                    <MarkdownText
+                      enableGlossary={true}
+                      className="text-sm text-neutral-700 leading-relaxed"
+                    >
+                      {term.shortDef}
+                    </MarkdownText>
 
                     {/* Expanded Content */}
                     <AnimatePresence>
@@ -227,8 +233,13 @@ const GlossaryPage = () => {
                           className="space-y-4 mt-4 pt-4 border-t border-neutral-100"
                         >
                           {/* Full Definition */}
-                          <div className="text-xs text-neutral-600 bg-neutral-50 p-3 rounded-lg leading-relaxed">
-                            {term.fullDef}
+                          <div className="bg-neutral-50 p-3 rounded-lg">
+                            <MarkdownText
+                              enableGlossary={true}
+                              className="text-xs text-neutral-600 leading-relaxed"
+                            >
+                              {term.fullDef}
+                            </MarkdownText>
                           </div>
 
                           {/* Example */}
@@ -241,7 +252,12 @@ const GlossaryPage = () => {
                                 </span>
                               </div>
                               <div className="bg-neutral-800 text-accent-aqua p-3 rounded-md text-xs font-mono whitespace-pre-line overflow-x-auto">
-                                {term.example.content.trim()}
+                                <MarkdownText
+                                  enableGlossary={true}
+                                  className="text-xs text-accent-aqua font-mono whitespace-pre-line"
+                                >
+                                  {term.example.content.trim()}
+                                </MarkdownText>
                               </div>
                             </div>
                           )}
@@ -256,7 +272,14 @@ const GlossaryPage = () => {
                                 {term.bestPractices.slice(0, 2).map((bp, i) => (
                                   <li key={i} className="flex items-start gap-2 leading-relaxed">
                                     <span className="text-success mt-0.5">•</span>
-                                    {bp}
+                                    <div className="flex-1">
+                                      <MarkdownText
+                                        enableGlossary={true}
+                                        className="text-xs text-neutral-700 leading-relaxed"
+                                      >
+                                        {bp}
+                                      </MarkdownText>
+                                    </div>
                                   </li>
                                 ))}
                               </ul>
@@ -313,17 +336,22 @@ const GlossaryPage = () => {
                   }`}
                   onClick={() => setExpandedTerm(expandedTerm === term.term ? null : term.term)}
                 >
-                  <div className="p-5">
-                    <div className="flex items-center justify-between">
-                      <div className="flex items-center gap-5">
-                        <span className="text-4xl">{term.icon}</span>
-                        <div>
-                          <h3 className="font-bold text-neutral-900 text-xl mb-1">{term.term}</h3>
-                          <p className="text-sm text-neutral-600">{term.shortDef}</p>
-                        </div>
-                      </div>
-                      <div className="flex items-center gap-4">
-                        <span className={`text-sm font-medium px-3 py-1.5 rounded-lg ${colors.bg} ${colors.text}`}>
+                        <div className="p-5">
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-5">
+                              <span className="text-4xl">{term.icon}</span>
+                              <div>
+                                <h3 className="font-bold text-neutral-900 text-xl mb-1">{term.term}</h3>
+                                <MarkdownText
+                                  enableGlossary={true}
+                                  className="text-sm text-neutral-600"
+                                >
+                                  {term.shortDef}
+                                </MarkdownText>
+                              </div>
+                            </div>
+                            <div className="flex items-center gap-4">
+                              <span className={`text-sm font-medium px-3 py-1.5 rounded-lg ${colors.bg} ${colors.text}`}>
                           {term.category}
                         </span>
                         <ChevronRight
@@ -346,9 +374,14 @@ const GlossaryPage = () => {
                           {/* Full Definition */}
                           <div>
                             <h4 className="font-semibold text-neutral-800 mb-3">Definición Completa</h4>
-                            <p className="text-neutral-600 bg-neutral-50 p-4 rounded-lg leading-relaxed">
-                              {term.fullDef}
-                            </p>
+                            <div className="bg-neutral-50 p-4 rounded-lg">
+                              <MarkdownText
+                                enableGlossary={true}
+                                className="text-neutral-600 leading-relaxed"
+                              >
+                                {term.fullDef}
+                              </MarkdownText>
+                            </div>
                           </div>
 
                           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
@@ -362,7 +395,12 @@ const GlossaryPage = () => {
                                   </h4>
                                 </div>
                                 <div className="bg-neutral-800 text-accent-aqua p-4 rounded-lg text-sm font-mono whitespace-pre-line overflow-x-auto">
-                                  {term.example.content.trim()}
+                                  <MarkdownText
+                                    enableGlossary={true}
+                                    className="text-sm text-accent-aqua font-mono whitespace-pre-line"
+                                  >
+                                    {term.example.content.trim()}
+                                  </MarkdownText>
                                 </div>
                               </div>
                             )}
@@ -377,9 +415,16 @@ const GlossaryPage = () => {
                                   </h4>
                                   <ul className="space-y-2">
                                     {term.bestPractices.map((bp, i) => (
-                                      <li key={i} className="text-sm text-neutral-700 flex items-start gap-2 leading-relaxed">
+                                      <li key={i} className="flex items-start gap-2 leading-relaxed">
                                         <span className="text-success mt-1">•</span>
-                                        {bp}
+                                        <div className="flex-1">
+                                          <MarkdownText
+                                            enableGlossary={true}
+                                            className="text-sm text-neutral-700 leading-relaxed"
+                                          >
+                                            {bp}
+                                          </MarkdownText>
+                                        </div>
                                       </li>
                                     ))}
                                   </ul>
@@ -394,8 +439,13 @@ const GlossaryPage = () => {
                                   </h4>
                                   <ul className="space-y-2">
                                     {term.commonMistakes.map((mistake, i) => (
-                                      <li key={i} className="text-sm text-neutral-700 bg-warning/10 p-3 rounded-lg leading-relaxed">
-                                        {mistake}
+                                      <li key={i} className="bg-warning/10 p-3 rounded-lg">
+                                        <MarkdownText
+                                          enableGlossary={true}
+                                          className="text-sm text-neutral-700 leading-relaxed"
+                                        >
+                                          {mistake}
+                                        </MarkdownText>
                                       </li>
                                     ))}
                                   </ul>
@@ -417,9 +467,12 @@ const GlossaryPage = () => {
                                     <div className="font-medium text-primary-600 mb-2">
                                       → {getGlossaryTerm(rel.relatedTerm)?.term || rel.relatedTerm}
                                     </div>
-                                    <div className="text-sm text-neutral-600 leading-relaxed">
+                                    <MarkdownText
+                                      enableGlossary={true}
+                                      className="text-sm text-neutral-600 leading-relaxed"
+                                    >
                                       {rel.explanation}
-                                    </div>
+                                    </MarkdownText>
                                   </div>
                                 ))}
                               </div>
