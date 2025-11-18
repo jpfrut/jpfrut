@@ -54,15 +54,13 @@ export const glossaryTerms = {
     icon: '💳',
     example: {
       title: 'Cuenta 1101 - Banco Principal',
-      content: `
-        Fecha       | Descripción          | Debe    | Haber   | Saldo
-        01/03/2024  | Saldo inicial        | $10,000 |         | $10,000
-        05/03/2024  | Cobro factura #001   | $1,500  |         | $11,500
-        10/03/2024  | Pago a proveedor     |         | $3,000  | $8,500
-        15/03/2024  | Cobro factura #002   | $2,000  |         | $10,500
+      content: `Fecha       | Descripción          | Debe    | Haber   | Saldo
+01/03/2024  | Saldo inicial        | $10,000 |         | $10,000
+05/03/2024  | Cobro factura #001   | $1,500  |         | $11,500
+10/03/2024  | Pago a proveedor     |         | $3,000  | $8,500
+15/03/2024  | Cobro factura #002   | $2,000  |         | $10,500
 
-        El saldo final te dice: "Tienes $10,500 en el banco"
-      `
+El saldo final te dice: "Tienes $10,500 en el banco"`
     },
     relationships: [
       {
@@ -181,26 +179,24 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🏦',
     example: {
       title: 'Configuración de banco BBVA',
-      content: `
-        PASO 1: Crear cuenta contable
-        ───────────────────────────────
-        Código: 112.01
-        Nombre: BBVA Empresarial - Cta 1234
-        Tipo: Activo Circulante (Bank and Cash)
-        ✓ Permite conciliación: ACTIVADO
+      content: `**PASO 1: Crear cuenta contable**
+───────────────────────────────
+Código: 112.01
+Nombre: BBVA Empresarial - Cta 1234
+Tipo: Activo Circulante (Bank and Cash)
+✓ Permite conciliación: ACTIVADO
 
-        PASO 2: Crear diario
-        ───────────────────────────────
-        Nombre: Banco BBVA
-        Tipo: Banco
-        Código corto: BBVA
-        Cuenta: 112.01 (la que acabas de crear)
+**PASO 2: Crear diario**
+───────────────────────────────
+Nombre: Banco BBVA
+Tipo: Banco
+Código corto: BBVA
+Cuenta: 112.01 (la que acabas de crear)
 
-        RESULTADO:
-        • Aparece en Dashboard de Contabilidad
-        • Puedes registrar depósitos y retiros
-        • Saldo visible en Balance General
-      `
+**RESULTADO:**
+• Aparece en Dashboard de Contabilidad
+• Puedes registrar depósitos y retiros
+• Saldo visible en Balance General`
     },
     relationships: [
       {
@@ -241,36 +237,34 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💵',
     example: {
       title: 'Configuración y uso de Caja Chica',
-      content: `
-        CONFIGURACIÓN EN ODOO:
-        ─────────────────────────
-        Cuenta contable: 111.02 Caja Chica
-        Tipo: Activo Circulante
-        Diario: Caja Chica (Tipo: Efectivo)
-        Código: CCHIC
+      content: `**CONFIGURACIÓN EN ODOO:**
+─────────────────────────
+Cuenta contable: 111.02 Caja Chica
+Tipo: Activo Circulante
+Diario: Caja Chica (Tipo: Efectivo)
+Código: CCHIC
 
-        CICLO DE USO:
-        ─────────────────────────
-        1. Reposición inicial: $3,000
-           DEBE: 111.02 Caja Chica $3,000
-           HABER: 112.01 Banco BBVA $3,000
+**CICLO DE USO:**
+─────────────────────────
+1. Reposición inicial: $3,000
+   DEBE: 111.02 Caja Chica $3,000
+   HABER: 112.01 Banco BBVA $3,000
 
-        2. Gastos del mes:
-           - Papelería: -$350
-           - Taxis: -$450
-           - Comidas reuniones: -$800
-           Saldo restante: $1,400
+2. Gastos del mes:
+   - Papelería: -$350
+   - Taxis: -$450
+   - Comidas reuniones: -$800
+   Saldo restante: $1,400
 
-        3. Reposición (volver a $3,000):
-           DEBE: 111.02 Caja Chica $1,600
-           HABER: 112.01 Banco BBVA $1,600
+3. Reposición (volver a $3,000):
+   DEBE: 111.02 Caja Chica $1,600
+   HABER: 112.01 Banco BBVA $1,600
 
-        EN DASHBOARD:
-        ┌─────────────────┐
-        │  CAJA CHICA     │
-        │   $3,000.00     │
-        └─────────────────┘
-      `
+**EN DASHBOARD:**
+┌─────────────────┐
+│  CAJA CHICA     │
+│   $3,000.00     │
+└─────────────────┘`
     },
     relationships: [
       {
@@ -311,34 +305,32 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💰',
     example: {
       title: 'Verificación de saldo bancario',
-      content: `
-        SALDO EN ODOO (lo que registraste):
-        ────────────────────────────────────
-        Banco BBVA: $125,500.00
+      content: `**SALDO EN ODOO (lo que registraste):**
+────────────────────────────────────
+Banco BBVA: $125,500.00
 
-        SALDO EN BANCA EN LÍNEA (real):
-        ────────────────────────────────────
-        Banco BBVA: $125,500.00
+**SALDO EN BANCA EN LÍNEA (real):**
+────────────────────────────────────
+Banco BBVA: $125,500.00
 
-        ¿COINCIDEN? ✓ SÍ - ¡Perfecto!
+¿COINCIDEN? ✓ SÍ - ¡Perfecto!
 
-        SI NO COINCIDEN:
-        ────────────────────────────────────
-        Odoo dice: $125,500.00
-        Banco dice: $127,300.00
-        Diferencia: $1,800.00
+**SI NO COINCIDEN:**
+────────────────────────────────────
+Odoo dice: $125,500.00
+Banco dice: $127,300.00
+Diferencia: $1,800.00
 
-        ¿Qué falta registrar?
-        • ¿Depósito no registrado? +$1,800
-        • ¿Retiro no registrado? No aplica
-        • ¿Comisiones no registradas? Revisar
+¿Qué falta registrar?
+• ¿Depósito no registrado? +$1,800
+• ¿Retiro no registrado? No aplica
+• ¿Comisiones no registradas? Revisar
 
-        DÓNDE VER SALDOS EN ODOO:
-        ────────────────────────────────────
-        1. Dashboard: Widgets individuales
-        2. Balance General: Total de bancos
-        3. Plan de Cuentas: Saldo por cuenta
-      `
+**DÓNDE VER SALDOS EN ODOO:**
+────────────────────────────────────
+1. Dashboard: Widgets individuales
+2. Balance General: Total de bancos
+3. Plan de Cuentas: Saldo por cuenta`
     },
     relationships: [
       {
@@ -375,43 +367,41 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '✏️',
     example: {
       title: 'Registro diario de movimientos',
-      content: `
-        RUTINA RECOMENDADA (diaria o semanal):
-        ────────────────────────────────────────
+      content: `**RUTINA RECOMENDADA (diaria o semanal):**
+────────────────────────────────────────
 
-        1. Abrir banca en línea
-        2. Revisar movimientos nuevos
-        3. Registrar en Odoo (Contabilidad > Bancos > [Banco] > Nuevo)
+1. Abrir banca en línea
+2. Revisar movimientos nuevos
+3. Registrar en Odoo (Contabilidad > Bancos > [Banco] > Nuevo)
 
-        EJEMPLO DE HOY (3 movimientos):
+**EJEMPLO DE HOY (3 movimientos):**
 
-        Movimiento 1 - Depósito:
-        ┌─────────────────────────────────┐
-        │ Fecha: 15/01/2025               │
-        │ Etiqueta: Pago cliente ABC      │
-        │ Importe: +12,500.00             │
-        │ Contrapartida: Cuentas por Cobrar│
-        └─────────────────────────────────┘
+Movimiento 1 - Depósito:
+┌─────────────────────────────────┐
+│ Fecha: 15/01/2025               │
+│ Etiqueta: Pago cliente ABC      │
+│ Importe: +12,500.00             │
+│ Contrapartida: Cuentas por Cobrar│
+└─────────────────────────────────┘
 
-        Movimiento 2 - Pago:
-        ┌─────────────────────────────────┐
-        │ Fecha: 15/01/2025               │
-        │ Etiqueta: Pago proveedor XYZ    │
-        │ Importe: -8,900.00              │
-        │ Contrapartida: Cuentas por Pagar│
-        └─────────────────────────────────┘
+Movimiento 2 - Pago:
+┌─────────────────────────────────┐
+│ Fecha: 15/01/2025               │
+│ Etiqueta: Pago proveedor XYZ    │
+│ Importe: -8,900.00              │
+│ Contrapartida: Cuentas por Pagar│
+└─────────────────────────────────┘
 
-        Movimiento 3 - Comisión:
-        ┌─────────────────────────────────┐
-        │ Fecha: 15/01/2025               │
-        │ Etiqueta: Comisión transferencia│
-        │ Importe: -50.00                 │
-        │ Contrapartida: Gastos Bancarios │
-        └─────────────────────────────────┘
+Movimiento 3 - Comisión:
+┌─────────────────────────────────┐
+│ Fecha: 15/01/2025               │
+│ Etiqueta: Comisión transferencia│
+│ Importe: -50.00                 │
+│ Contrapartida: Gastos Bancarios │
+└─────────────────────────────────┘
 
-        TIEMPO INVERTIDO: ~10 minutos
-        RESULTADO: Saldos actualizados ✓
-      `
+TIEMPO INVERTIDO: ~10 minutos
+RESULTADO: Saldos actualizados ✓`
     },
     relationships: [
       {
@@ -1042,18 +1032,16 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🏛️',
     example: {
       title: 'Ejemplo de IVA en una venta',
-      content: `
-        Vendes una silla:
-        Precio base:        $1,000
-        + IVA (16%):        $160
-        ━━━━━━━━━━━━━━━━━━
-        Cliente paga:       $1,160
+      content: `Vendes una silla:
+Precio base:        $1,000
++ IVA (16%):        $160
+━━━━━━━━━━━━━━━━━━
+Cliente paga:       $1,160
 
-        Los $160 NO son tuyos:
-        → Los guardas temporalmente
-        → Cada mes o bimestre, los pagas al gobierno
-        → Odoo lleva la cuenta de cuánto debes
-      `
+Los $160 NO son tuyos:
+→ Los guardas temporalmente
+→ Cada mes o bimestre, los pagas al gobierno
+→ Odoo lleva la cuenta de cuánto debes`
     },
     relationships: [
       {
@@ -1087,22 +1075,20 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🏷️',
     example: {
       title: 'Posiciones fiscales comunes',
-      content: `
-        1. CLIENTE NACIONAL
-           → Cobra IVA normal (16%)
-           → Factura con todos los impuestos
+      content: `**1. CLIENTE NACIONAL**
+   → Cobra IVA normal (16%)
+   → Factura con todos los impuestos
 
-        2. CLIENTE EXTRANJERO (exportación)
-           → NO cobra IVA (0%)
-           → Factura sin impuestos locales
+**2. CLIENTE EXTRANJERO (exportación)**
+   → NO cobra IVA (0%)
+   → Factura sin impuestos locales
 
-        3. CLIENTE EXENTO (ej: asociación civil)
-           → No cobra IVA
-           → Requiere documentación especial
+**3. CLIENTE EXENTO (ej: asociación civil)**
+   → No cobra IVA
+   → Requiere documentación especial
 
-        Odoo cambia los impuestos automáticamente
-        según la posición fiscal del cliente.
-      `
+Odoo cambia los impuestos automáticamente
+según la posición fiscal del cliente.`
     },
     relationships: [
       {
@@ -1136,22 +1122,20 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💵',
     example: {
       title: 'Venta en dólares (moneda principal: pesos)',
-      content: `
-        Vendes a cliente en USA:
-        Factura:        $100 USD
+      content: `Vendes a cliente en USA:
+Factura:        $100 USD
 
-        Tipo de cambio del día: 1 USD = 17.50 MXN
+Tipo de cambio del día: 1 USD = 17.50 MXN
 
-        En tu contabilidad registra:
-        Cuenta por cobrar: $1,750 MXN
-        Ventas:            $1,750 MXN
+En tu contabilidad registra:
+Cuenta por cobrar: $1,750 MXN
+Ventas:            $1,750 MXN
 
-        Cuando el cliente paga (y el tipo cambió a 18.00):
-        Recibes:           $1,800 MXN
-        Ganancia cambiaria: $50 MXN (diferencia)
+Cuando el cliente paga (y el tipo cambió a 18.00):
+Recibes:           $1,800 MXN
+Ganancia cambiaria: $50 MXN (diferencia)
 
-        Odoo hace todo esto automáticamente ✓
-      `
+Odoo hace todo esto automáticamente ✓`
     },
     relationships: [
       {
@@ -1185,20 +1169,18 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📈',
     example: {
       title: 'Cómo funciona el tipo de cambio',
-      content: `
-        Hoy:     1 USD = 17.50 MXN
-        Mañana:  1 USD = 17.80 MXN (el dólar subió)
+      content: `Hoy:     1 USD = 17.50 MXN
+Mañana:  1 USD = 17.80 MXN (el dólar subió)
 
-        Si tienes una factura de $100 USD:
-        Hoy vale:   $1,750 MXN
-        Mañana vale: $1,780 MXN
+Si tienes una factura de $100 USD:
+Hoy vale:   $1,750 MXN
+Mañana vale: $1,780 MXN
 
-        Esta diferencia se llama "diferencia cambiaria"
-        y puede ser ganancia o pérdida.
+Esta diferencia se llama "diferencia cambiaria"
+y puede ser ganancia o pérdida.
 
-        Odoo registra estos cambios automáticamente
-        cuando cierras períodos contables.
-      `
+Odoo registra estos cambios automáticamente
+cuando cierras períodos contables.`
     },
     relationships: [
       {
@@ -1232,24 +1214,22 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💳',
     example: {
       title: 'Registro de pago de cliente',
-      content: `
-        1. Cliente tiene factura #001 por $1,000
-           Estado: "Por cobrar"
+      content: `**1. Cliente tiene factura #001 por $1,000**
+   Estado: "Por cobrar"
 
-        2. Cliente hace transferencia bancaria
-           Ves $1,000 en tu cuenta de banco
+**2. Cliente hace transferencia bancaria**
+   Ves $1,000 en tu cuenta de banco
 
-        3. En Odoo registras el pago:
-           → Seleccionas la factura #001
-           → Indicas método: Transferencia
-           → Monto: $1,000
-           → Fecha: hoy
+**3. En Odoo registras el pago:**
+   → Seleccionas la factura #001
+   → Indicas método: Transferencia
+   → Monto: $1,000
+   → Fecha: hoy
 
-        4. Resultado:
-           → Factura #001 cambia a "Pagada" ✓
-           → Tu saldo bancario aumenta en Odoo
-           → Contador feliz porque todo cuadra
-      `
+**4. Resultado:**
+   → Factura #001 cambia a "Pagada" ✓
+   → Tu saldo bancario aumenta en Odoo
+   → Contador feliz porque todo cuadra`
     },
     relationships: [
       {
@@ -1284,23 +1264,21 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🔍',
     example: {
       title: 'Proceso de conciliación',
-      content: `
-        TU EXTRACTO BANCARIO dice:
-        Saldo inicial:     $10,000
-        + Depósito cliente: $1,500
-        - Pago proveedor:   $3,000
-        - Comisión banco:   $50
-        Saldo final:       $8,450
+      content: `**TU EXTRACTO BANCARIO dice:**
+Saldo inicial:     $10,000
++ Depósito cliente: $1,500
+- Pago proveedor:   $3,000
+- Comisión banco:   $50
+Saldo final:       $8,450
 
-        ODOO dice:
-        Saldo inicial:     $10,000
-        + Pago recibido:   $1,500
-        - Pago realizado:  $3,000
-        Saldo:             $8,500
+**ODOO dice:**
+Saldo inicial:     $10,000
++ Pago recibido:   $1,500
+- Pago realizado:  $3,000
+Saldo:             $8,500
 
-        ¡No cuadra! Falta registrar la comisión de $50.
-        Al conciliar, encuentras y corriges este error.
-      `
+¡No cuadra! Falta registrar la comisión de $50.
+Al conciliar, encuentras y corriges este error.`
     },
     relationships: [
       {
@@ -1335,23 +1313,21 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🧾',
     example: {
       title: 'Tipos de gastos comunes',
-      content: `
-        GASTOS FIJOS (siempre los pagas):
-        - Renta de oficina: $5,000/mes
-        - Internet: $800/mes
-        - Luz: $1,200/mes
-        - Sueldos: $50,000/mes
+      content: `**GASTOS FIJOS (siempre los pagas):**
+- Renta de oficina: $5,000/mes
+- Internet: $800/mes
+- Luz: $1,200/mes
+- Sueldos: $50,000/mes
 
-        GASTOS VARIABLES (cambian):
-        - Gasolina: depende de cuánto manejes
-        - Papelería: según necesites
-        - Comidas de trabajo: ocasional
+**GASTOS VARIABLES (cambian):**
+- Gasolina: depende de cuánto manejes
+- Papelería: según necesites
+- Comidas de trabajo: ocasional
 
-        GASTOS DE EMPLEADOS:
-        - Juan fue a ver cliente y pagó $500 de taxi
-        - María compró toners: $1,200
-        → Ellos piden reembolso, tú lo registras
-      `
+**GASTOS DE EMPLEADOS:**
+- Juan fue a ver cliente y pagó $500 de taxi
+- María compró toners: $1,200
+→ Ellos piden reembolso, tú lo registras`
     },
     relationships: [
       {
@@ -1442,27 +1418,25 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '↩️',
     example: {
       title: 'Cuándo usar nota de crédito',
-      content: `
-        CASO 1 - DEVOLUCIÓN COMPLETA:
-        Factura #100: Vendiste 10 sillas por $10,000
-        Cliente devuelve TODO
-        → Nota de crédito por $10,000
-        → Factura queda en $0
+      content: `**CASO 1 - DEVOLUCIÓN COMPLETA:**
+Factura #100: Vendiste 10 sillas por $10,000
+Cliente devuelve TODO
+→ Nota de crédito por $10,000
+→ Factura queda en $0
 
-        CASO 2 - DEVOLUCIÓN PARCIAL:
-        Factura #100: 10 sillas por $10,000
-        Cliente devuelve 2 sillas
-        → Nota de crédito por $2,000
-        → Factura queda en $8,000
+**CASO 2 - DEVOLUCIÓN PARCIAL:**
+Factura #100: 10 sillas por $10,000
+Cliente devuelve 2 sillas
+→ Nota de crédito por $2,000
+→ Factura queda en $8,000
 
-        CASO 3 - DESCUENTO POSTERIOR:
-        Factura #100: $10,000
-        Le das 10% descuento después
-        → Nota de crédito por $1,000
-        → Cliente solo debe $9,000
+**CASO 3 - DESCUENTO POSTERIOR:**
+Factura #100: $10,000
+Le das 10% descuento después
+→ Nota de crédito por $1,000
+→ Cliente solo debe $9,000
 
-        La nota de crédito se vincula a la factura original.
-      `
+La nota de crédito se vincula a la factura original.`
     },
     relationships: [
       {
@@ -1497,29 +1471,27 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📊',
     example: {
       title: 'Balance General simplificado',
-      content: `
-        BALANCE GENERAL al 31 de diciembre
+      content: `**BALANCE GENERAL al 31 de diciembre**
 
-        LO QUE TIENES (ACTIVOS):
-        Banco:                  $50,000
-        Clientes que te deben:  $30,000
-        Inventario:             $40,000
-        Equipo de cómputo:      $20,000
-        TOTAL ACTIVOS:          $140,000
+**LO QUE TIENES (ACTIVOS):**
+Banco:                  $50,000
+Clientes que te deben:  $30,000
+Inventario:             $40,000
+Equipo de cómputo:      $20,000
+TOTAL ACTIVOS:          $140,000
 
-        LO QUE DEBES (PASIVOS):
-        A proveedores:          $25,000
-        Préstamo bancario:      $35,000
-        TOTAL PASIVOS:          $60,000
+**LO QUE DEBES (PASIVOS):**
+A proveedores:          $25,000
+Préstamo bancario:      $35,000
+TOTAL PASIVOS:          $60,000
 
-        LO QUE ES TUYO (PATRIMONIO):
-        Capital:                $50,000
-        Utilidades:             $30,000
-        TOTAL PATRIMONIO:       $80,000
+**LO QUE ES TUYO (PATRIMONIO):**
+Capital:                $50,000
+Utilidades:             $30,000
+TOTAL PATRIMONIO:       $80,000
 
-        ✓ ACTIVOS = PASIVOS + PATRIMONIO
-        $140,000 = $60,000 + $80,000
-      `
+✓ ACTIVOS = PASIVOS + PATRIMONIO
+$140,000 = $60,000 + $80,000`
     },
     relationships: [
       {
@@ -1554,24 +1526,22 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💳',
     example: {
       title: 'Cómo funcionan los proveedores de pago',
-      content: `
-        TU TIENDA EN LÍNEA:
-        Cliente quiere comprar zapatos: $1,000
+      content: `**TU TIENDA EN LÍNEA:**
+Cliente quiere comprar zapatos: $1,000
 
-        1. Cliente da clic en "Pagar"
-        2. Ve opciones: PayPal, Tarjeta, Transferencia
-        3. Elige PayPal y pone su tarjeta
-        4. PayPal verifica que la tarjeta tiene fondos ✓
-        5. PayPal te avisa: "Pago exitoso"
-        6. Tú envías los zapatos
+1. Cliente da clic en "Pagar"
+2. Ve opciones: PayPal, Tarjeta, Transferencia
+3. Elige PayPal y pone su tarjeta
+4. PayPal verifica que la tarjeta tiene fondos ✓
+5. PayPal te avisa: "Pago exitoso"
+6. Tú envías los zapatos
 
-        COSTOS (ejemplo):
-        Venta:                     $1,000
-        - Comisión PayPal (3%):    $30
-        Recibes:                   $970
+**COSTOS (ejemplo):**
+Venta:                     $1,000
+- Comisión PayPal (3%):    $30
+Recibes:                   $970
 
-        Es como tener una terminal bancaria, pero digital.
-      `
+Es como tener una terminal bancaria, pero digital.`
     },
     relationships: [
       {
@@ -1606,24 +1576,22 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🔄',
     example: {
       title: 'Sin sincronización vs con sincronización',
-      content: `
-        SIN SINCRONIZACIÓN (manual):
-        1. Abres página del banco
-        2. Descargas movimientos del mes
-        3. Revisas uno por uno (50 movimientos)
-        4. Registras cada uno en Odoo a mano
-        5. Tardas 2-3 horas
-        6. Posibles errores de dedo
+      content: `**SIN SINCRONIZACIÓN (manual):**
+1. Abres página del banco
+2. Descargas movimientos del mes
+3. Revisas uno por uno (50 movimientos)
+4. Registras cada uno en Odoo a mano
+5. Tardas 2-3 horas
+6. Posibles errores de dedo
 
-        CON SINCRONIZACIÓN (automático):
-        1. Odoo se conecta a tu banco
-        2. Importa los 50 movimientos automáticamente
-        3. Los relaciona con facturas existentes
-        4. Tardas 15 minutos revisando
-        5. Sin errores de captura
+**CON SINCRONIZACIÓN (automático):**
+1. Odoo se conecta a tu banco
+2. Importa los 50 movimientos automáticamente
+3. Los relaciona con facturas existentes
+4. Tardas 15 minutos revisando
+5. Sin errores de captura
 
-        ¡Es como tener un asistente que hace la tarea por ti!
-      `
+¡Es como tener un asistente que hace la tarea por ti!`
     },
     relationships: [
       {
@@ -1714,28 +1682,26 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💵',
     example: {
       title: 'Anticipo para muebles a medida',
-      content: `
-        Cliente pide escritorio a medida: $10,000
+      content: `Cliente pide escritorio a medida: $10,000
 
-        PASO 1 - ANTICIPO (50%):
-        Cliente paga: $5,000
-        → Tú registras el anticipo
-        → Aún NO le facturas el escritorio
-        → Empiezas a fabricar
+**PASO 1 - ANTICIPO (50%):**
+Cliente paga: $5,000
+→ Tú registras el anticipo
+→ Aún NO le facturas el escritorio
+→ Empiezas a fabricar
 
-        PASO 2 - ENTREGA Y FACTURA FINAL:
-        Entregas escritorio
-        Facturas: $10,000
-        Aplicas anticipo: -$5,000
-        Cliente debe: $5,000
+**PASO 2 - ENTREGA Y FACTURA FINAL:**
+Entregas escritorio
+Facturas: $10,000
+Aplicas anticipo: -$5,000
+Cliente debe: $5,000
 
-        PASO 3 - PAGO FINAL:
-        Cliente paga los $5,000 restantes
-        → Factura pagada completamente ✓
+**PASO 3 - PAGO FINAL:**
+Cliente paga los $5,000 restantes
+→ Factura pagada completamente ✓
 
-        El anticipo es DIFERENTE a facturar.
-        Primero recibes dinero, luego facturas.
-      `
+El anticipo es DIFERENTE a facturar.
+Primero recibes dinero, luego facturas.`
     },
     relationships: [
       {
