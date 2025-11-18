@@ -10,6 +10,7 @@ import {
   X
 } from 'lucide-react'
 import { getGlossaryTerm } from '../data/glossaryData'
+import MarkdownText from './MarkdownText'
 
 const GlossaryTooltip = ({ termKey, children, inline = true }) => {
   const [isOpen, setIsOpen] = useState(false)
@@ -147,9 +148,12 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
             <div className="overflow-y-auto max-h-[55vh]">
               {/* Short Definition */}
               <div className="px-5 py-4 border-b border-neutral-100">
-                <p className="text-neutral-800 font-medium leading-relaxed">
+                <MarkdownText
+                  enableGlossary={true}
+                  className="text-neutral-800 font-medium leading-relaxed"
+                >
                   {term.shortDef}
-                </p>
+                </MarkdownText>
               </div>
 
               {/* Full Definition (expandable) */}
@@ -159,9 +163,12 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
                   animate={{ opacity: 1, height: 'auto' }}
                   className="px-5 py-3 bg-neutral-50 border-b border-neutral-100"
                 >
-                  <p className="text-sm text-neutral-700 leading-relaxed">
+                  <MarkdownText
+                    enableGlossary={true}
+                    className="text-sm text-neutral-700 leading-relaxed"
+                  >
                     {term.fullDef}
-                  </p>
+                  </MarkdownText>
                 </motion.div>
               )}
 
@@ -176,8 +183,13 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
                       {term.example.title}
                     </span>
                   </div>
-                  <div className="bg-neutral-800 text-accent-aqua p-4 rounded-md text-xs font-mono whitespace-pre-line overflow-x-auto leading-relaxed">
-                    {term.example.content.trim()}
+                  <div className="bg-neutral-800 p-4 rounded-md overflow-x-auto">
+                    <MarkdownText
+                      enableGlossary={true}
+                      className="text-xs text-accent-aqua font-mono whitespace-pre-line leading-relaxed"
+                    >
+                      {term.example.content.trim()}
+                    </MarkdownText>
                   </div>
                 </div>
               )}
@@ -197,7 +209,11 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
                     {term.bestPractices.slice(0, 3).map((practice, idx) => (
                       <li key={idx} className="text-xs text-neutral-700 flex items-start gap-2 leading-relaxed">
                         <span className="text-success mt-0.5 font-bold">•</span>
-                        {practice}
+                        <div className="flex-1">
+                          <MarkdownText enableGlossary={true} className="text-xs text-neutral-700 leading-relaxed">
+                            {practice}
+                          </MarkdownText>
+                        </div>
                       </li>
                     ))}
                   </ul>
@@ -218,7 +234,9 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
                   <ul className="space-y-2">
                     {term.commonMistakes.slice(0, 2).map((mistake, idx) => (
                       <li key={idx} className="text-xs text-neutral-700 bg-warning/10 p-2.5 rounded leading-relaxed">
-                        {mistake}
+                        <MarkdownText enableGlossary={true} className="text-xs text-neutral-700 leading-relaxed">
+                          {mistake}
+                        </MarkdownText>
                       </li>
                     ))}
                   </ul>
@@ -242,9 +260,9 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
                         <div className="font-semibold text-primary-600 mb-1">
                           → {getGlossaryTerm(rel.relatedTerm)?.term || rel.relatedTerm}
                         </div>
-                        <div className="text-neutral-600 leading-relaxed">
+                        <MarkdownText enableGlossary={true} className="text-neutral-600 leading-relaxed text-xs">
                           {rel.explanation}
-                        </div>
+                        </MarkdownText>
                       </div>
                     ))}
                   </div>
