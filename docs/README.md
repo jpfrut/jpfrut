@@ -36,6 +36,18 @@
 - Componentes UI actualizados
 - Colores, tipografía, espaciado
 
+### [🤖 AI_COLLABORATION_PROTOCOL.md](./AI_COLLABORATION_PROTOCOL.md)
+**Protocolo de colaboración para agentes de IA**
+- Formato de bitácoras obligatorio
+- Reglas de coordinación entre agentes
+- Templates y mejores prácticas
+- Prevención de conflictos
+
+### [📚 changelog/](./changelog/)
+**Bitácoras de todas las sesiones**
+- Historial completo de desarrollo
+- Ver [índice de changelog](./changelog/README.md)
+
 ---
 
 ## 🎨 Diseño y Marca
@@ -69,9 +81,14 @@
 ├── MODULE_EXPANSION_TODOS.md         # TODOs tracking de módulos
 ├── GLOSSARY_EXPANSION_PLAN.md        # Plan de glosario
 ├── AESTHETIC_REHAUL_TODOS.md         # TODOs de diseño
+├── AI_COLLABORATION_PROTOCOL.md      # Protocolo para agentes de IA
 │
 ├── brand-system.md                   # Sistema de marca
 ├── troubleshooting.md                # Troubleshooting
+│
+├── changelog/                        # Bitácoras de sesiones
+│   ├── README.md                     # Índice de bitácoras
+│   └── [fecha]-[agente]-[tema].md    # Bitácoras individuales
 │
 └── templates/                        # (Pendiente) Templates de desarrollo
     ├── module-template.js
@@ -84,7 +101,7 @@
 
 ## 🚀 Inicio Rápido
 
-### Para Desarrolladores
+### Para Desarrolladores (Humanos)
 
 1. **Revisar el plan de expansión:**
    - Lee `PLAN_EXPANSION_MECE.md` para entender la visión completa
@@ -97,6 +114,23 @@
 3. **Tracking de progreso:**
    - Actualiza `MODULE_EXPANSION_TODOS.md` al completar tareas
    - Marca checkboxes ✅ al terminar módulos/lecciones
+
+### Para Agentes de IA (Claude Code, Codex, etc.)
+
+1. **ANTES de cada sesión:**
+   - Lee `AI_COLLABORATION_PROTOCOL.md` (OBLIGATORIO)
+   - Revisa `changelog/README.md` para últimas sesiones
+   - Checa `MODULE_EXPANSION_TODOS.md` para estado actual
+
+2. **DURANTE la sesión:**
+   - Trabaja en branch con formato: `[agente]/[tema]-[session-id]`
+   - Commits frecuentes y descriptivos
+
+3. **AL TERMINAR la sesión:**
+   - Crea bitácora en `changelog/[fecha]-[agente]-[tema].md`
+   - Actualiza `changelog/README.md` con nueva entrada
+   - Marca ✅ en `MODULE_EXPANSION_TODOS.md`
+   - Push de todo
 
 ### Para Diseñadores
 
@@ -122,11 +156,13 @@
 
 ## 📊 Estado Actual del Proyecto
 
-### Módulos: 12/52 (23% cobertura)
-### Lecciones: 53/300+ (18%)
-### Categorías: 4/11 parcialmente implementadas
+### Módulos: 13/52 (25% cobertura)
+### Lecciones: 59/300+ (20%)
+### Categorías: 5/11 parcialmente implementadas
 
 **Siguiente milestone:** Fase 1 - 50% cobertura (26 módulos)
+
+**Ver progreso detallado:** [changelog/README.md](./changelog/README.md)
 
 ---
 
