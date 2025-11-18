@@ -2883,40 +2883,38 @@ Estado: "Orden de Venta"
     icon: '📨',
     example: {
       title: 'Email de confirmación típico',
-      content: `
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        CONFIRMACIÓN DE PEDIDO
-        Orden: SO-2024-0156
-        Fecha: 15 marzo 2024
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      content: `━━━━━━━━━━━━━━━━━━━━━━━━━━━
+**CONFIRMACIÓN DE PEDIDO**
+Orden: SO-2024-0156
+Fecha: 15 marzo 2024
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-        Estimado cliente,
+Estimado cliente,
 
-        ¡Gracias por tu compra! Tu pedido ha sido
-        registrado y está siendo procesado.
+¡Gracias por tu compra! Tu pedido ha sido
+registrado y está siendo procesado.
 
-        PRODUCTOS:
-        - 10x Camiseta Polo Azul: $4,500
-        - 5x Pantalón Negro: $3,750
-        Subtotal: $8,250
-        IVA (16%): $1,320
-        TOTAL: $9,570
+**PRODUCTOS:**
+- 10x Camiseta Polo Azul: $4,500
+- 5x Pantalón Negro: $3,750
+Subtotal: $8,250
+IVA (16%): $1,320
+TOTAL: $9,570
 
-        ENTREGA:
-        Dirección: Calle Principal #123
-        Fecha estimada: 18-20 marzo 2024
-        Método: Envío estándar
+**ENTREGA:**
+Dirección: Calle Principal #123
+Fecha estimada: 18-20 marzo 2024
+Método: Envío estándar
 
-        PAGO:
-        Estado: Pendiente
-        Términos: Neto 15 días
-        Vence: 30 marzo 2024
+**PAGO:**
+Estado: Pendiente
+Términos: Neto 15 días
+Vence: 30 marzo 2024
 
-        Dudas: ventas@empresa.com
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Dudas: ventas@empresa.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-        Odoo envía esto automáticamente al confirmar.
-      `
+Odoo envía esto automáticamente al confirmar.`
     },
     relationships: [
       {
@@ -3932,28 +3930,26 @@ Diferencia: -2 unidades
     icon: '🛒',
     example: {
       title: 'Flujo del carrito',
-      content: `
-        CLIENTE NAVEGANDO TU TIENDA:
+      content: `**CLIENTE NAVEGANDO TU TIENDA:**
 
-        1. Ve producto → "Agregar al carrito"
-        2. Sigue navegando → Agrega otro
-        3. Revisa carrito:
-           - Camiseta Azul (x2): $1,000
-           - Pantalón Negro: $800
-           Subtotal: $1,800
+1. Ve producto → "Agregar al carrito"
+2. Sigue navegando → Agrega otro
+3. Revisa carrito:
+   - Camiseta Azul (x2): $1,000
+   - Pantalón Negro: $800
+   Subtotal: $1,800
 
-        4. Aplica cupón "DESCUENTO10":
-           -$180
-           Total: $1,620
+4. Aplica cupón "DESCUENTO10":
+   -$180
+   Total: $1,620
 
-        5. Procede a pagar →
+5. Procede a pagar →
 
-        CARRITOS ABANDONADOS:
-        Cliente agregó pero no pagó
-        → Oportunidad de remarketing
-        → Email recordatorio automático
-        → 70% de carritos se abandonan
-      `
+**CARRITOS ABANDONADOS:**
+Cliente agregó pero no pagó
+- Oportunidad de remarketing
+- Email recordatorio automático
+- 70% de carritos se abandonan`
     },
     relationships: [
       {
@@ -3988,33 +3984,31 @@ Diferencia: -2 unidades
     icon: '💳',
     example: {
       title: 'Pasos del checkout',
-      content: `
-        CHECKOUT EN 4 PASOS:
+      content: `**CHECKOUT EN 4 PASOS:**
 
-        1. REVISAR CARRITO:
-        ✓ Confirma productos
-        ✓ Ve total con impuestos
-        ✓ Aplica cupón si tiene
+**1. REVISAR CARRITO:**
+✓ Confirma productos
+✓ Ve total con impuestos
+✓ Aplica cupón si tiene
 
-        2. DATOS DE ENVÍO:
-        ✓ Nombre y dirección
-        ✓ Teléfono de contacto
-        ✓ Método de envío
+**2. DATOS DE ENVÍO:**
+✓ Nombre y dirección
+✓ Teléfono de contacto
+✓ Método de envío
 
-        3. MÉTODO DE PAGO:
-        ✓ Tarjeta crédito/débito
-        ✓ PayPal / MercadoPago
-        ✓ Transferencia
-        ✓ Pago contra entrega
+**3. MÉTODO DE PAGO:**
+✓ Tarjeta crédito/débito
+✓ PayPal / MercadoPago
+✓ Transferencia
+✓ Pago contra entrega
 
-        4. CONFIRMAR:
-        ✓ Resumen final
-        ✓ Botón "Confirmar Pedido"
-        ✓ Email de confirmación
+**4. CONFIRMAR:**
+✓ Resumen final
+✓ Botón "Confirmar Pedido"
+✓ Email de confirmación
 
-        MÉTRICA CLAVE:
-        Tasa de conversión = % que completa
-      `
+**MÉTRICA CLAVE:**
+Tasa de conversión = % que completa`
     },
     relationships: [
       {
@@ -4049,30 +4043,28 @@ Diferencia: -2 unidades
     icon: '📝',
     example: {
       title: 'Formulario de contacto',
-      content: `
-        PÁGINA "CONTÁCTANOS":
+      content: `**PÁGINA "CONTÁCTANOS":**
 
-        Nombre: [____________]
-        Email:  [____________]
-        Tel:    [____________]
-        Mensaje:
-        [____________________]
+Nombre: [____________]
+Email:  [____________]
+Tel:    [____________]
+Mensaje:
+[____________________]
 
-           [ENVIAR MENSAJE]
+   [ENVIAR MENSAJE]
 
-        AL ENVIAR:
-        1. Datos llegan a Odoo
-        2. Se crea Lead automáticamente
-        3. Te notifica por email
-        4. Cliente recibe confirmación
-        5. Puedes dar seguimiento en CRM
+**AL ENVIAR:**
+1. Datos llegan a Odoo
+2. Se crea Lead automáticamente
+3. Te notifica por email
+4. Cliente recibe confirmación
+5. Puedes dar seguimiento en CRM
 
-        TIPOS COMUNES:
-        - Contacto general
-        - Solicitud de cotización
-        - Registro a newsletter
-        - Encuesta de satisfacción
-      `
+**TIPOS COMUNES:**
+- Contacto general
+- Solicitud de cotización
+- Registro a newsletter
+- Encuesta de satisfacción`
     },
     relationships: [
       {
@@ -4283,30 +4275,28 @@ XYZ: 8 hrs × $500/hr = $4,000`
     icon: '📢',
     example: {
       title: 'Campaña de email marketing',
-      content: `
-        CAMPAÑA: Promoción Navidad 2024
+      content: `**CAMPAÑA: Promoción Navidad 2024**
 
-        OBJETIVO:
-        Incrementar ventas 30% en diciembre
+**OBJETIVO:**
+Incrementar ventas 30% en diciembre
 
-        AUDIENCIA:
-        5,000 contactos (clientes último año)
+**AUDIENCIA:**
+5,000 contactos (clientes último año)
 
-        ACCIONES:
-        1. Email #1 (1 dic): Anticipo
-        2. Email #2 (10 dic): 20% descuento
-        3. Email #3 (20 dic): Última chance
-        4. SMS recordatorio (23 dic)
+**ACCIONES:**
+1. Email #1 (1 dic): Anticipo
+2. Email #2 (10 dic): 20% descuento
+3. Email #3 (20 dic): Última chance
+4. SMS recordatorio (23 dic)
 
-        MÉTRICAS:
-        Enviados: 5,000
-        Abiertos: 1,250 (25%)
-        Clics: 375 (7.5%)
-        Ventas: $150,000
-        ROI: 500%
+**MÉTRICAS:**
+Enviados: 5,000
+Abiertos: 1,250 (25%)
+Clics: 375 (7.5%)
+Ventas: $150,000
+ROI: 500%
 
-        Odoo trackea todo automáticamente.
-      `
+Odoo trackea todo automáticamente.`
     },
     relationships: [
       {
