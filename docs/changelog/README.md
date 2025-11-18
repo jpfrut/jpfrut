@@ -15,6 +15,7 @@
 | Claude Code | Restructuración de Módulos | Auditoría completa, plan MECE, nueva estructura modular | [Ver](./2025-11-18-claude-restructure-and-audit.md) |
 | Claude Code | Email Marketing (Fase 1) | Primer módulo de Marketing, inicio Fase 1 | [Ver](./2025-11-18-claude-email-marketing.md) |
 | Claude Code | Marketing Automation | Segundo módulo de Marketing con workflows y automation | [Ver](./2025-11-18-claude-marketing-automation.md) |
+| Claude Code | SMS Marketing | Tercer módulo de Marketing con Twilio y campañas SMS | [Ver](./2025-11-18-claude-sms-marketing.md) |
 
 ---
 
@@ -22,9 +23,9 @@
 
 | Métrica | Inicio Proyecto | Último Update | Objetivo Final |
 |---------|----------------|---------------|----------------|
-| **Módulos** | 12 | 14 | 52+ |
-| **Lecciones** | 53 | 64 | 300+ |
-| **Cobertura** | 23% | 27% | 100% |
+| **Módulos** | 12 | 15 | 52+ |
+| **Lecciones** | 53 | 67 | 300+ |
+| **Cobertura** | 23% | 29% | 100% |
 | **Categorías** | 4 parciales | 4 parciales + 1 nueva | 11 completas |
 
 **Última actualización:** 2025-11-18
@@ -38,7 +39,7 @@
 
 | Categoría | Módulos Planeados | Módulos Completados | Estado |
 |-----------|-------------------|---------------------|--------|
-| Marketing | 6 | 2 | 🟡 En progreso (33%) |
+| Marketing | 6 | 3 | 🟡 En progreso (50%) |
 | Sales | 2 | 0 | ⚪ Pendiente |
 | HR | 4 | 0 | ⚪ Pendiente |
 | Supply Chain | 3 | 0 | ⚪ Pendiente |
@@ -111,6 +112,21 @@
 - ✅ Módulos: 13 → 14, Lecciones: 59 → 64
 
 **[Ver bitácora completa →](./2025-11-18-claude-marketing-automation.md)**
+
+---
+
+### 2025-11-18: SMS Marketing - Marketing al 50%
+**Branch:** `claude/audit-odoo-modules-01UT45MpGQ2QmZFE7NsZeD4s`
+**Duración:** ~15 min
+**Impacto:** 🟢 Bajo-Medio (Tercer módulo Marketing)
+
+**Cambios:**
+- ✅ Módulo SMS Marketing (3 lecciones)
+- ✅ Integración Twilio + Analytics
+- ✅ Módulos: 14 → 15, Lecciones: 64 → 67
+- ✅ **Marketing: 50% completado (3/6 módulos)**
+
+**[Ver bitácora completa →](./2025-11-18-claude-sms-marketing.md)**
 
 ---
 
