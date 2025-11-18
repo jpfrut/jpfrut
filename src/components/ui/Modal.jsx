@@ -20,18 +20,18 @@ const Modal = ({
   return (
     <AnimatePresence>
       {isOpen && (
-        <>
+        <div className="fixed inset-0 z-50">
           {/* Backdrop - Mentora Hub: Sin blur, overlay simple */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={onClose}
-            className="fixed inset-0 bg-black/50 z-40"
+            className="absolute inset-0 bg-black/50"
           />
 
           {/* Modal */}
-          <div className="fixed inset-0 flex items-center justify-center z-50 p-4">
+          <div className="absolute inset-0 flex items-center justify-center p-4">
             <motion.div
               initial={{ opacity: 0, scale: 0.95, y: 10 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -64,7 +64,7 @@ const Modal = ({
               )}
             </motion.div>
           </div>
-        </>
+        </div>
       )}
     </AnimatePresence>
   )

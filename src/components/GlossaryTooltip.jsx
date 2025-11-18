@@ -109,7 +109,7 @@ const GlossaryTooltip = ({ termKey, children, inline = true }) => {
               position: 'fixed',
               top: position.top,
               left: position.left,
-              zIndex: 50
+              zIndex: 40
             }}
             className={`
               bg-white rounded-lg shadow-xl border border-neutral-200
