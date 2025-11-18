@@ -497,20 +497,18 @@ RESULTADO: Saldos actualizados ✓`
     icon: '📦',
     example: {
       title: 'Tipos de productos',
-      content: `
-        ALMACENABLE (controla stock):
-        → Camiseta Azul Talla M
-        → Odoo cuenta cuántas tienes
-        → Avisa cuando quedan pocas
+      content: `**ALMACENABLE (controla stock):**
+→ Camiseta Azul Talla M
+→ Odoo cuenta cuántas tienes
+→ Avisa cuando quedan pocas
 
-        CONSUMIBLE (no controla stock):
-        → Papel de impresora
-        → Siempre disponible, no rastrea cantidad
+**CONSUMIBLE (no controla stock):**
+→ Papel de impresora
+→ Siempre disponible, no rastrea cantidad
 
-        SERVICIO (no físico):
-        → Hora de consultoría
-        → No hay stock, solo se factura tiempo
-      `
+**SERVICIO (no físico):**
+→ Hora de consultoría
+→ No hay stock, solo se factura tiempo`
     },
     relationships: [
       {
@@ -545,19 +543,17 @@ RESULTADO: Saldos actualizados ✓`
     icon: '📍',
     example: {
       title: 'Estructura de ubicaciones',
-      content: `
-        MI ALMACÉN
-        ├── 🏪 Tienda (productos en mostrador)
-        ├── 📦 Bodega Principal
-        │   ├── Estante A (Ropa)
-        │   │   ├── A-1 (Camisetas)
-        │   │   └── A-2 (Pantalones)
-        │   ├── Estante B (Accesorios)
-        │   └── Estante C (Zapatos)
-        └── ❄️ Refrigerador (Perecederos)
+      content: `**MI ALMACÉN**
+├── 🏪 Tienda (productos en mostrador)
+├── 📦 Bodega Principal
+│   ├── Estante A (Ropa)
+│   │   ├── A-1 (Camisetas)
+│   │   └── A-2 (Pantalones)
+│   ├── Estante B (Accesorios)
+│   └── Estante C (Zapatos)
+└── ❄️ Refrigerador (Perecederos)
 
-        Así sabes EXACTAMENTE dónde está cada producto.
-      `
+Así sabes EXACTAMENTE dónde está cada producto.`
     },
     relationships: [
       {
@@ -591,27 +587,25 @@ RESULTADO: Saldos actualizados ✓`
     icon: '🔄',
     example: {
       title: 'Tipos de movimientos',
-      content: `
-        RECEPCIÓN (entrada):
-        Proveedor → Tu Almacén
-        "Llegaron 50 camisetas del proveedor"
-        Stock: 0 → 50
+      content: `**RECEPCIÓN (entrada):**
+Proveedor → Tu Almacén
+"Llegaron 50 camisetas del proveedor"
+Stock: 0 → 50
 
-        ENTREGA (salida):
-        Tu Almacén → Cliente
-        "Vendiste 10 camisetas"
-        Stock: 50 → 40
+**ENTREGA (salida):**
+Tu Almacén → Cliente
+"Vendiste 10 camisetas"
+Stock: 50 → 40
 
-        TRANSFERENCIA INTERNA:
-        Bodega → Tienda
-        "Moviste 5 camisetas a mostrador"
-        Bodega: 40 → 35
-        Tienda: 0 → 5
+**TRANSFERENCIA INTERNA:**
+Bodega → Tienda
+"Moviste 5 camisetas a mostrador"
+Bodega: 40 → 35
+Tienda: 0 → 5
 
-        AJUSTE:
-        "Encontraste 3 camisetas dañadas"
-        Stock: 35 → 32
-      `
+**AJUSTE:**
+"Encontraste 3 camisetas dañadas"
+Stock: 35 → 32`
     },
     relationships: [
       {
@@ -753,28 +747,26 @@ Ya le enviaste cotización, esperas respuesta.`
     icon: '📋',
     example: {
       title: 'Flujo de compra completo',
-      content: `
-        1️⃣ SOLICITUD (RFQ):
-        "Hola proveedor, ¿me cotizas 50 camisetas?"
-        Estado: Borrador
+      content: `**1️⃣ SOLICITUD (RFQ):**
+"Hola proveedor, ¿me cotizas 50 camisetas?"
+Estado: Borrador
 
-        2️⃣ CONFIRMACIÓN:
-        "Ok, acepto. Mándame las 50 camisetas"
-        Estado: Orden de Compra
-        → Se genera obligación de pago
+**2️⃣ CONFIRMACIÓN:**
+"Ok, acepto. Mándame las 50 camisetas"
+Estado: Orden de Compra
+→ Se genera obligación de pago
 
-        3️⃣ RECEPCIÓN:
-        "Llegaron las camisetas, verifico..."
-        → Stock aumenta en almacén
+**3️⃣ RECEPCIÓN:**
+"Llegaron las camisetas, verifico..."
+→ Stock aumenta en almacén
 
-        4️⃣ FACTURA:
-        "Proveedor me envía factura por $2,500"
-        → Se registra cuenta por pagar
+**4️⃣ FACTURA:**
+"Proveedor me envía factura por $2,500"
+→ Se registra cuenta por pagar
 
-        5️⃣ PAGO:
-        "Le pago al proveedor"
-        → Se cancela la deuda
-      `
+**5️⃣ PAGO:**
+"Le pago al proveedor"
+→ Se cancela la deuda`
     },
     relationships: [
       {
@@ -816,27 +808,25 @@ Ya le enviaste cotización, esperas respuesta.`
     icon: '👤',
     example: {
       title: 'Ficha completa de empleado',
-      content: `
-        INFORMACIÓN LABORAL:
-        Nombre: Ana Martínez
-        Cargo: Vendedora Senior
-        Departamento: Ventas
-        Jefe: Carlos Rodríguez
-        Fecha ingreso: 01/02/2024
+      content: `**INFORMACIÓN LABORAL:**
+Nombre: Ana Martínez
+Cargo: Vendedora Senior
+Departamento: Ventas
+Jefe: Carlos Rodríguez
+Fecha ingreso: 01/02/2024
 
-        INFORMACIÓN PERSONAL:
-        Teléfono: 555-7890
-        Email: ana@empresa.com
-        Dirección: Calle Principal #200
-        Contacto emergencia: Juan (Padre) 555-4567
+**INFORMACIÓN PERSONAL:**
+Teléfono: 555-7890
+Email: ana@empresa.com
+Dirección: Calle Principal #200
+Contacto emergencia: Juan (Padre) 555-4567
 
-        CONTRATO:
-        Tipo: Indefinido
-        Salario: $15,000/mes
-        Horario: L-V 9am-6pm
+**CONTRATO:**
+Tipo: Indefinido
+Salario: $15,000/mes
+Horario: L-V 9am-6pm
 
-        → Todo en un solo lugar, organizado y seguro.
-      `
+→ Todo en un solo lugar, organizado y seguro.`
     },
     relationships: [
       {
@@ -962,21 +952,19 @@ Ya le enviaste cotización, esperas respuesta.`
     icon: '🏢',
     example: {
       title: 'Organigrama típico',
-      content: `
-        DIRECCIÓN GENERAL
-        ├── VENTAS (10 personas)
-        │   ├── Equipo Corporativo
-        │   └── Equipo Retail
-        ├── OPERACIONES (15 personas)
-        │   ├── Producción
-        │   └── Almacén
-        ├── FINANZAS (5 personas)
-        │   ├── Contabilidad
-        │   └── Tesorería
-        └── RRHH (3 personas)
+      content: `**DIRECCIÓN GENERAL**
+├── VENTAS (10 personas)
+│   ├── Equipo Corporativo
+│   └── Equipo Retail
+├── OPERACIONES (15 personas)
+│   ├── Producción
+│   └── Almacén
+├── FINANZAS (5 personas)
+│   ├── Contabilidad
+│   └── Tesorería
+└── RRHH (3 personas)
 
-        Cada departamento tiene un responsable y objetivos claros.
-      `
+Cada departamento tiene un responsable y objetivos claros.`
     },
     relationships: [
       {
@@ -1354,28 +1342,26 @@ Al conciliar, encuentras y corriges este error.`
     icon: '💰',
     example: {
       title: 'Proceso de reembolso paso a paso',
-      content: `
-        1. EMPLEADO GASTA:
-           María paga taxi para ver cliente: $250
-           Guarda el ticket/recibo
+      content: `**1. EMPLEADO GASTA:**
+   María paga taxi para ver cliente: $250
+   Guarda el ticket/recibo
 
-        2. REGISTRA EN ODOO:
-           - Sube foto del ticket
-           - Categoría: Transporte
-           - Monto: $250
-           - Descripción: "Visita cliente ABC"
+**2. REGISTRA EN ODOO:**
+   - Sube foto del ticket
+   - Categoría: Transporte
+   - Monto: $250
+   - Descripción: "Visita cliente ABC"
 
-        3. APROBACIÓN:
-           Su jefe revisa y aprueba ✓
+**3. APROBACIÓN:**
+   Su jefe revisa y aprueba ✓
 
-        4. PAGO:
-           Finanzas incluye los $250 en siguiente nómina
-           o hace transferencia directa
+**4. PAGO:**
+   Finanzas incluye los $250 en siguiente nómina
+   o hace transferencia directa
 
-        5. RESULTADO:
-           María recupera su dinero
-           Empresa tiene gasto registrado correctamente
-      `
+**5. RESULTADO:**
+   María recupera su dinero
+   Empresa tiene gasto registrado correctamente`
     },
     relationships: [
       {
@@ -2969,32 +2955,30 @@ Estado: "Orden de Venta"
     icon: '🏭',
     example: {
       title: 'Estructura de almacenes',
-      content: `
-        EMPRESA CON MÚLTIPLES ALMACENES:
+      content: `**EMPRESA CON MÚLTIPLES ALMACENES:**
 
-        ALMACÉN CENTRAL (Bodega principal):
-        - Stock principal: 10,000 productos
-        - Recibe de proveedores
-        - Abastece a tiendas
+**ALMACÉN CENTRAL (Bodega principal):**
+- Stock principal: 10,000 productos
+- Recibe de proveedores
+- Abastece a tiendas
 
-        TIENDA NORTE:
-        - Stock para venta: 500 productos
-        - Vende al público
-        - Se reabastece de Central
+**TIENDA NORTE:**
+- Stock para venta: 500 productos
+- Vende al público
+- Se reabastece de Central
 
-        TIENDA SUR:
-        - Stock para venta: 300 productos
-        - Vende al público
-        - Se reabastece de Central
+**TIENDA SUR:**
+- Stock para venta: 300 productos
+- Vende al público
+- Se reabastece de Central
 
-        CADA ALMACÉN TIENE:
-        → Su propio inventario
-        → Sus ubicaciones internas
-        → Sus reglas de reabastecimiento
-        → Sus movimientos separados
+**CADA ALMACÉN TIENE:**
+→ Su propio inventario
+→ Sus ubicaciones internas
+→ Sus reglas de reabastecimiento
+→ Sus movimientos separados
 
-        Así sabes exactamente qué hay en cada lugar.
-      `
+Así sabes exactamente qué hay en cada lugar.`
     },
     relationships: [
       {
@@ -3029,30 +3013,28 @@ Estado: "Orden de Venta"
     icon: '📍',
     example: {
       title: 'Sistema de ubicaciones',
-      content: `
-        CÓDIGO DE UBICACIÓN: A-02-03-B
+      content: `**CÓDIGO DE UBICACIÓN: A-02-03-B**
 
-        A  = Zona A del almacén
-        02 = Pasillo 2
-        03 = Estante 3
-        B  = Nivel B (segundo nivel)
+A  = Zona A del almacén
+02 = Pasillo 2
+03 = Estante 3
+B  = Nivel B (segundo nivel)
 
-        EJEMPLO REAL:
-        Producto: Camiseta Azul Talla M
-        Ubicación: A-02-03-B
-        Cantidad: 50 unidades
+**EJEMPLO REAL:**
+Producto: Camiseta Azul Talla M
+Ubicación: A-02-03-B
+Cantidad: 50 unidades
 
-        BENEFICIOS:
-        → Empleado nuevo encuentra producto en segundos
-        → No pierdes tiempo buscando
-        → Control preciso de espacio
-        → Optimizas rutas de picking
+**BENEFICIOS:**
+→ Empleado nuevo encuentra producto en segundos
+→ No pierdes tiempo buscando
+→ Control preciso de espacio
+→ Optimizas rutas de picking
 
-        TIPOS DE UBICACIONES:
-        - Físicas: donde realmente están
-        - Virtuales: para control (merma, cuarentena)
-        - De tránsito: productos en camino
-      `
+**TIPOS DE UBICACIONES:**
+- Físicas: donde realmente están
+- Virtuales: para control (merma, cuarentena)
+- De tránsito: productos en camino`
     },
     relationships: [
       {
@@ -3087,30 +3069,28 @@ Estado: "Orden de Venta"
     icon: '🔢',
     example: {
       title: 'Trazabilidad con números de serie',
-      content: `
-        PRODUCTO: Laptop Dell XPS
-        CANTIDAD EN STOCK: 5 unidades
+      content: `**PRODUCTO: Laptop Dell XPS**
+**CANTIDAD EN STOCK: 5 unidades**
 
-        CADA UNA ES ÚNICA:
-        SN-001: Comprada 01/01, vendida a María
-        SN-002: Comprada 01/01, en stock
-        SN-003: Comprada 15/01, vendida a Pedro
-        SN-004: Comprada 15/01, en reparación
-        SN-005: Comprada 20/01, en stock
+**CADA UNA ES ÚNICA:**
+SN-001: Comprada 01/01, vendida a María
+SN-002: Comprada 01/01, en stock
+SN-003: Comprada 15/01, vendida a Pedro
+SN-004: Comprada 15/01, en reparación
+SN-005: Comprada 20/01, en stock
 
-        CASOS DE USO:
-        → Cliente reclama garantía
-          "¿Cuál es su número de serie?"
-          SN-003
-          "Ah, la compraste el 15/01, tienes garantía"
+**CASOS DE USO:**
+→ Cliente reclama garantía
+  "¿Cuál es su número de serie?"
+  SN-003
+  "Ah, la compraste el 15/01, tienes garantía"
 
-        → Producto defectuoso
-          Proveedor retira SN-004 por falla
-          Sabes exactamente cuál es
+→ Producto defectuoso
+  Proveedor retira SN-004 por falla
+  Sabes exactamente cuál es
 
-        → Auditoría
-          Puedes rastrear cada unidad desde compra hasta venta
-      `
+→ Auditoría
+  Puedes rastrear cada unidad desde compra hasta venta`
     },
     relationships: [
       {
@@ -3145,31 +3125,29 @@ Estado: "Orden de Venta"
     icon: '📦',
     example: {
       title: 'Control por lotes',
-      content: `
-        PRODUCTO: Yogurt Natural 1L
+      content: `**PRODUCTO: Yogurt Natural 1L**
 
-        LOTE: LOT-2024-03-15
-        - Fecha producción: 15 marzo 2024
-        - Fecha vencimiento: 15 abril 2024
-        - Cantidad: 500 unidades
-        - Proveedor: Lácteos ABC
+**LOTE: LOT-2024-03-15**
+- Fecha producción: 15 marzo 2024
+- Fecha vencimiento: 15 abril 2024
+- Cantidad: 500 unidades
+- Proveedor: Lácteos ABC
 
-        LOTE: LOT-2024-03-22
-        - Fecha producción: 22 marzo 2024
-        - Fecha vencimiento: 22 abril 2024
-        - Cantidad: 500 unidades
-        - Proveedor: Lácteos ABC
+**LOTE: LOT-2024-03-22**
+- Fecha producción: 22 marzo 2024
+- Fecha vencimiento: 22 abril 2024
+- Cantidad: 500 unidades
+- Proveedor: Lácteos ABC
 
-        PROBLEMA DETECTADO:
-        ⚠️ Lote LOT-2024-03-15 tiene defecto
-        Acción: Retirar las 500 unidades de ese lote
-        → Sabes exactamente cuáles son
-        → No afectas al otro lote bueno
+**PROBLEMA DETECTADO:**
+⚠️ Lote LOT-2024-03-15 tiene defecto
+Acción: Retirar las 500 unidades de ese lote
+→ Sabes exactamente cuáles son
+→ No afectas al otro lote bueno
 
-        REGLA FIFO:
-        Vende primero LOT-2024-03-15 (más viejo)
-        para evitar vencimientos.
-      `
+**REGLA FIFO:**
+Vende primero LOT-2024-03-15 (más viejo)
+para evitar vencimientos.`
     },
     relationships: [
       {
@@ -3204,30 +3182,28 @@ Estado: "Orden de Venta"
     icon: '📅',
     example: {
       title: 'Control de vencimientos',
-      content: `
-        DASHBOARD DE VENCIMIENTOS:
+      content: `**DASHBOARD DE VENCIMIENTOS:**
 
-        ⚠️ PRÓXIMOS A VENCER (7 días):
-        - 50 Yogurt → Vence: 20 marzo
-        - 30 Queso  → Vence: 22 marzo
-        → ACCIÓN: Promoción o donación
+**⚠️ PRÓXIMOS A VENCER (7 días):**
+- 50 Yogurt → Vence: 20 marzo
+- 30 Queso  → Vence: 22 marzo
+→ ACCIÓN: Promoción o donación
 
-        ✅ STOCK SALUDABLE (30+ días):
-        - 200 Yogurt → Vence: 15 abril
-        - 100 Queso  → Vence: 20 abril
-        → OK, vender normalmente
+**✅ STOCK SALUDABLE (30+ días):**
+- 200 Yogurt → Vence: 15 abril
+- 100 Queso  → Vence: 20 abril
+→ OK, vender normalmente
 
-        ❌ VENCIDOS:
-        - 10 Leche → Venció: 10 marzo
-        → ACCIÓN: Retirar y desechar
+**❌ VENCIDOS:**
+- 10 Leche → Venció: 10 marzo
+→ ACCIÓN: Retirar y desechar
 
-        ALERTAS AUTOMÁTICAS:
-        Odoo te avisa X días antes:
-        - 30 días: Planificar promoción
-        - 7 días: Descuento urgente
-        - 1 día: Última oportunidad
-        - 0 días: No vender, retirar
-      `
+**ALERTAS AUTOMÁTICAS:**
+Odoo te avisa X días antes:
+- 30 días: Planificar promoción
+- 7 días: Descuento urgente
+- 1 día: Última oportunidad
+- 0 días: No vender, retirar`
     },
     relationships: [
       {
@@ -3262,28 +3238,26 @@ Estado: "Orden de Venta"
     icon: '🔄',
     example: {
       title: 'Reabastecimiento automático',
-      content: `
-        CONFIGURACIÓN:
-        Producto: Camiseta Azul
-        Stock mínimo: 10 unidades
-        Cantidad a pedir: 50 unidades
+      content: `**CONFIGURACIÓN:**
+Producto: Camiseta Azul
+Stock mínimo: 10 unidades
+Cantidad a pedir: 50 unidades
 
-        SITUACIÓN:
-        Stock actual: 12 unidades
-        Vendes 5 camisetas
-        Stock nuevo: 7 unidades (¡bajo del mínimo!)
+**SITUACIÓN:**
+Stock actual: 12 unidades
+Vendes 5 camisetas
+Stock nuevo: 7 unidades (¡bajo del mínimo!)
 
-        ACCIÓN AUTOMÁTICA:
-        Odoo genera orden de compra:
-        "Pedir 50 camisetas a proveedor"
-        → Nunca te quedas sin stock
-        → No dependes de que alguien recuerde
+**ACCIÓN AUTOMÁTICA:**
+Odoo genera orden de compra:
+"Pedir 50 camisetas a proveedor"
+→ Nunca te quedas sin stock
+→ No dependes de que alguien recuerde
 
-        TIPOS:
-        - Por pedido: solo cuando vendes
-        - Por mínimo: cuando baja de límite
-        - Por pronóstico: basado en historial
-      `
+**TIPOS:**
+- Por pedido: solo cuando vendes
+- Por mínimo: cuando baja de límite
+- Por pronóstico: basado en historial`
     },
     relationships: [
       {
@@ -3318,30 +3292,28 @@ Estado: "Orden de Venta"
     icon: '📏',
     example: {
       title: 'Configuración de regla de reorden',
-      content: `
-        PRODUCTO: Laptop Dell
-        ALMACÉN: Tienda Principal
+      content: `**PRODUCTO: Laptop Dell**
+**ALMACÉN: Tienda Principal**
 
-        REGLA:
-        - Cantidad mínima: 5 unidades
-        - Cantidad máxima: 20 unidades
-        - Cantidad múltiple: 5 (pedir de 5 en 5)
-        - Proveedor: Dell México
-        - Lead time: 7 días
+**REGLA:**
+- Cantidad mínima: 5 unidades
+- Cantidad máxima: 20 unidades
+- Cantidad múltiple: 5 (pedir de 5 en 5)
+- Proveedor: Dell México
+- Lead time: 7 días
 
-        FUNCIONAMIENTO:
-        Stock: 6 laptops → OK, arriba del mínimo
-        Stock: 4 laptops → ¡Genera orden!
-        Cantidad a pedir: 20 - 4 = 16 unidades
-        (Sube hasta el máximo)
+**FUNCIONAMIENTO:**
+Stock: 6 laptops → OK, arriba del mínimo
+Stock: 4 laptops → ¡Genera orden!
+Cantidad a pedir: 20 - 4 = 16 unidades
+(Sube hasta el máximo)
 
-        RESULTADO:
-        Odoo crea automáticamente:
-        "Orden de Compra #PO-2024-0089"
-        Proveedor: Dell México
-        Producto: 16 Laptops Dell
-        Fecha esperada: +7 días
-      `
+**RESULTADO:**
+Odoo crea automáticamente:
+"Orden de Compra #PO-2024-0089"
+Proveedor: Dell México
+Producto: 16 Laptops Dell
+Fecha esperada: +7 días`
     },
     relationships: [
       {
@@ -3376,31 +3348,29 @@ Estado: "Orden de Venta"
     icon: '🛒',
     example: {
       title: 'Proceso de picking paso a paso',
-      content: `
-        ORDEN DE VENTA: Cliente pide 3 productos
+      content: `**ORDEN DE VENTA: Cliente pide 3 productos**
 
-        LISTA DE PICKING:
-        1. Camiseta Azul M
-           Ubicación: A-02-03-B
-           Cantidad: 2
-        2. Pantalón Negro 32
-           Ubicación: B-01-05-A
-           Cantidad: 1
+**LISTA DE PICKING:**
+1. Camiseta Azul M
+   Ubicación: A-02-03-B
+   Cantidad: 2
+2. Pantalón Negro 32
+   Ubicación: B-01-05-A
+   Cantidad: 1
 
-        PROCESO:
-        1. Trabajador recibe lista en tablet
-        2. Ruta optimizada: A → B
-        3. Va a A-02-03-B, toma 2 camisetas ✓
-        4. Va a B-01-05-A, toma 1 pantalón ✓
-        5. Lleva al área de empaque
-        6. Confirma picking en sistema
+**PROCESO:**
+1. Trabajador recibe lista en tablet
+2. Ruta optimizada: A → B
+3. Va a A-02-03-B, toma 2 camisetas ✓
+4. Va a B-01-05-A, toma 1 pantalón ✓
+5. Lleva al área de empaque
+6. Confirma picking en sistema
 
-        ESTRATEGIAS:
-        - Uno por uno: cada orden por separado
-        - Por lotes: varias órdenes juntas
-        - Por zona: dividido por áreas
-        - Por oleadas: grupos programados
-      `
+**ESTRATEGIAS:**
+- Uno por uno: cada orden por separado
+- Por lotes: varias órdenes juntas
+- Por zona: dividido por áreas
+- Por oleadas: grupos programados`
     },
     relationships: [
       {
@@ -3435,30 +3405,28 @@ Estado: "Orden de Venta"
     icon: '📤',
     example: {
       title: 'Comparación de estrategias',
-      content: `
-        PRODUCTO: Leche (3 lotes disponibles)
+      content: `**PRODUCTO: Leche (3 lotes disponibles)**
 
-        Lote A: Llegó 01 marzo, vence 01 abril
-        Lote B: Llegó 15 marzo, vence 15 abril
-        Lote C: Llegó 20 marzo, vence 10 abril
+Lote A: Llegó 01 marzo, vence 01 abril
+Lote B: Llegó 15 marzo, vence 15 abril
+Lote C: Llegó 20 marzo, vence 10 abril
 
-        ESTRATEGIA FIFO (First In, First Out):
-        "Vende lo que llegó primero"
-        Orden: A → B → C
-        Uso: Productos no perecederos
+**ESTRATEGIA FIFO (First In, First Out):**
+"Vende lo que llegó primero"
+Orden: A → B → C
+Uso: Productos no perecederos
 
-        ESTRATEGIA LIFO (Last In, First Out):
-        "Vende lo que llegó último"
-        Orden: C → B → A
-        Uso: Materiales donde orden no importa
+**ESTRATEGIA LIFO (Last In, First Out):**
+"Vende lo que llegó último"
+Orden: C → B → A
+Uso: Materiales donde orden no importa
 
-        ESTRATEGIA FEFO (First Expired, First Out):
-        "Vende lo que vence primero"
-        Orden: A → C → B (por fecha vencimiento)
-        Uso: Alimentos, medicinas, perecederos
+**ESTRATEGIA FEFO (First Expired, First Out):**
+"Vende lo que vence primero"
+Orden: A → C → B (por fecha vencimiento)
+Uso: Alimentos, medicinas, perecederos
 
-        FEFO es la mejor para evitar mermas.
-      `
+FEFO es la mejor para evitar mermas.`
     },
     relationships: [
       {
@@ -3493,32 +3461,30 @@ Estado: "Orden de Venta"
     icon: '💰',
     example: {
       title: 'Métodos de valoración',
-      content: `
-        PRODUCTO: Camiseta (50 en stock)
+      content: `**PRODUCTO: Camiseta (50 en stock)**
 
-        COSTO ESTÁNDAR:
-        Defines: $100 por camiseta
-        Valor = 50 × $100 = $5,000
-        Simple pero no refleja cambios
+**COSTO ESTÁNDAR:**
+Defines: $100 por camiseta
+Valor = 50 × $100 = $5,000
+Simple pero no refleja cambios
 
-        COSTO PROMEDIO:
-        Compra 1: 30 × $90 = $2,700
-        Compra 2: 20 × $120 = $2,400
-        Total: 50 camisetas, $5,100
-        Promedio: $102 c/u
-        Valor = 50 × $102 = $5,100
+**COSTO PROMEDIO:**
+Compra 1: 30 × $90 = $2,700
+Compra 2: 20 × $120 = $2,400
+Total: 50 camisetas, $5,100
+Promedio: $102 c/u
+Valor = 50 × $102 = $5,100
 
-        FIFO (First In First Out):
-        Vendes primero las de $90
-        Quedan las de $120
-        Valor varía según qué vendiste
+**FIFO (First In First Out):**
+Vendes primero las de $90
+Quedan las de $120
+Valor varía según qué vendiste
 
-        ¿POR QUÉ IMPORTA?
-        → Balance general necesita valor de inventario
-        → Determina costo de ventas
-        → Afecta utilidades reportadas
-        → Decisiones de precios
-      `
+**¿POR QUÉ IMPORTA?**
+→ Balance general necesita valor de inventario
+→ Determina costo de ventas
+→ Afecta utilidades reportadas
+→ Decisiones de precios`
     },
     relationships: [
       {
@@ -3553,31 +3519,29 @@ Estado: "Orden de Venta"
     icon: '🔀',
     example: {
       title: 'Transferencia entre almacenes',
-      content: `
-        ANTES:
-        Almacén Central: 100 camisetas
-        Tienda Norte: 5 camisetas (¡pocas!)
-        Tienda Sur: 50 camisetas
+      content: `**ANTES:**
+Almacén Central: 100 camisetas
+Tienda Norte: 5 camisetas (¡pocas!)
+Tienda Sur: 50 camisetas
 
-        TRANSFERENCIA:
-        De: Almacén Central
-        A: Tienda Norte
-        Producto: 20 camisetas
+**TRANSFERENCIA:**
+De: Almacén Central
+A: Tienda Norte
+Producto: 20 camisetas
 
-        DESPUÉS:
-        Almacén Central: 80 camisetas
-        Tienda Norte: 25 camisetas ✓
-        Tienda Sur: 50 camisetas
+**DESPUÉS:**
+Almacén Central: 80 camisetas
+Tienda Norte: 25 camisetas ✓
+Tienda Sur: 50 camisetas
 
-        PROCESO:
-        1. Creas transferencia en sistema
-        2. Imprimes lista de productos
-        3. Picking en origen
-        4. Transportas físicamente
-        5. Recepciones en destino
-        6. Confirmas transferencia
-        → Stock actualizado en ambos lugares
-      `
+**PROCESO:**
+1. Creas transferencia en sistema
+2. Imprimes lista de productos
+3. Picking en origen
+4. Transportas físicamente
+5. Recepciones en destino
+6. Confirmas transferencia
+→ Stock actualizado en ambos lugares`
     },
     relationships: [
       {
@@ -3612,32 +3576,30 @@ Estado: "Orden de Venta"
     icon: '✏️',
     example: {
       title: 'Proceso de ajuste',
-      content: `
-        CONTEO FÍSICO:
-        Producto: Laptop Dell
-        Sistema dice: 10 unidades
-        Conteo real: 8 unidades
-        Diferencia: -2 unidades
+      content: `**CONTEO FÍSICO:**
+Producto: Laptop Dell
+Sistema dice: 10 unidades
+Conteo real: 8 unidades
+Diferencia: -2 unidades
 
-        POSIBLES CAUSAS:
-        - Robo/pérdida
-        - Error de entrada anterior
-        - Producto dañado no registrado
-        - Error de conteo anterior
+**POSIBLES CAUSAS:**
+- Robo/pérdida
+- Error de entrada anterior
+- Producto dañado no registrado
+- Error de conteo anterior
 
-        AJUSTE:
-        1. Creas ajuste de inventario
-        2. Producto: Laptop Dell
-        3. Cantidad sistema: 10
-        4. Cantidad real: 8
-        5. Motivo: "Diferencia en conteo trimestral"
-        6. Confirmas ajuste
+**AJUSTE:**
+1. Creas ajuste de inventario
+2. Producto: Laptop Dell
+3. Cantidad sistema: 10
+4. Cantidad real: 8
+5. Motivo: "Diferencia en conteo trimestral"
+6. Confirmas ajuste
 
-        RESULTADO:
-        → Sistema ahora dice: 8 unidades
-        → Se registra la merma contablemente
-        → Historial documenta el ajuste
-      `
+**RESULTADO:**
+→ Sistema ahora dice: 8 unidades
+→ Se registra la merma contablemente
+→ Historial documenta el ajuste`
     },
     relationships: [
       {
@@ -4149,30 +4111,28 @@ Estado: "Orden de Venta"
     icon: '📁',
     example: {
       title: 'Estructura de un proyecto',
-      content: `
-        PROYECTO: Implementación Odoo - Panadería
-        Fecha inicio: 01 marzo
-        Fecha fin: 30 abril
+      content: `**PROYECTO: Implementación Odoo - Panadería**
+Fecha inicio: 01 marzo
+Fecha fin: 30 abril
 
-        FASES:
-        1. Análisis (1 semana)
-        2. Configuración (2 semanas)
-        3. Migración datos (1 semana)
-        4. Capacitación (1 semana)
-        5. Go-live (3 semanas)
+**FASES:**
+1. Análisis (1 semana)
+2. Configuración (2 semanas)
+3. Migración datos (1 semana)
+4. Capacitación (1 semana)
+5. Go-live (3 semanas)
 
-        EQUIPO:
-        - Gerente: Ana
-        - Consultor: Roberto
-        - Técnico: María
+**EQUIPO:**
+- Gerente: Ana
+- Consultor: Roberto
+- Técnico: María
 
-        MÉTRICAS:
-        Progreso: 65% completado
-        Horas planeadas: 200 hrs
-        Horas usadas: 130 hrs
-        Presupuesto: $50,000
-        Gastado: $32,000
-      `
+**MÉTRICAS:**
+Progreso: 65% completado
+Horas planeadas: 200 hrs
+Horas usadas: 130 hrs
+Presupuesto: $50,000
+Gastado: $32,000`
     },
     relationships: [
       {
@@ -4207,33 +4167,31 @@ Estado: "Orden de Venta"
     icon: '✅',
     example: {
       title: 'Gestión de tareas en Kanban',
-      content: `
-        PROYECTO: Implementación Odoo
+      content: `**PROYECTO: Implementación Odoo**
 
-        POR HACER:
-        □ Configurar plan de cuentas
-          Asignado: Roberto
-          Fecha: 15 marzo
-          Estimado: 4 hrs
+**POR HACER:**
+□ Configurar plan de cuentas
+  Asignado: Roberto
+  Fecha: 15 marzo
+  Estimado: 4 hrs
 
-        EN PROGRESO:
-        □ Migrar productos
-          Asignado: María
-          Progreso: 50%
-          Usado: 6/10 hrs
+**EN PROGRESO:**
+□ Migrar productos
+  Asignado: María
+  Progreso: 50%
+  Usado: 6/10 hrs
 
-        HECHO:
-        ✓ Crear usuarios
-        ✓ Configurar empresa
-        ✓ Instalar módulos
+**HECHO:**
+✓ Crear usuarios
+✓ Configurar empresa
+✓ Instalar módulos
 
-        FUNCIONES:
-        → Arrastra entre columnas
-        → Asigna responsable
-        → Adjunta documentos
-        → Registra tiempo
-        → Comenta y colabora
-      `
+**FUNCIONES:**
+→ Arrastra entre columnas
+→ Asigna responsable
+→ Adjunta documentos
+→ Registra tiempo
+→ Comenta y colabora`
     },
     relationships: [
       {
@@ -4268,31 +4226,29 @@ Estado: "Orden de Venta"
     icon: '⏱️',
     example: {
       title: 'Registro semanal de horas',
-      content: `
-        EMPLEADO: Roberto García
-        SEMANA: 11-15 marzo
+      content: `**EMPLEADO: Roberto García**
+**SEMANA: 11-15 marzo**
 
-        LUNES:
-        - Proyecto ABC: 4 hrs
-        - Proyecto XYZ: 2 hrs
-        - Interno: Reunión 1 hr
-        Total: 7 hrs
+**LUNES:**
+- Proyecto ABC: 4 hrs
+- Proyecto XYZ: 2 hrs
+- Interno: Reunión 1 hr
+Total: 7 hrs
 
-        MARTES:
-        - Proyecto ABC: 6 hrs
-        - Interno: Capacitación 2 hrs
-        Total: 8 hrs
+**MARTES:**
+- Proyecto ABC: 6 hrs
+- Interno: Capacitación 2 hrs
+Total: 8 hrs
 
-        RESUMEN SEMANAL:
-        Total: 40 hrs
-        ABC: 25 hrs (facturable)
-        XYZ: 8 hrs (facturable)
-        Interno: 7 hrs (no facturable)
+**RESUMEN SEMANAL:**
+Total: 40 hrs
+ABC: 25 hrs (facturable)
+XYZ: 8 hrs (facturable)
+Interno: 7 hrs (no facturable)
 
-        FACTURACIÓN:
-        ABC: 25 hrs × $500/hr = $12,500
-        XYZ: 8 hrs × $500/hr = $4,000
-      `
+**FACTURACIÓN:**
+ABC: 25 hrs × $500/hr = $12,500
+XYZ: 8 hrs × $500/hr = $4,000`
     },
     relationships: [
       {
@@ -4385,35 +4341,33 @@ Estado: "Orden de Venta"
     icon: '📅',
     example: {
       title: 'Vista de calendario semanal',
-      content: `
-        MARZO 2024 - SEMANA 11
+      content: `**MARZO 2024 - SEMANA 11**
 
-        LUNES 11:
-        09:00 Reunión equipo
-        14:00 Llamada cliente ABC
-        16:00 Revisión proyecto
+**LUNES 11:**
+09:00 Reunión equipo
+14:00 Llamada cliente ABC
+16:00 Revisión proyecto
 
-        MARTES 12:
-        10:00 Demo a prospecto
-        15:00 Capacitación
+**MARTES 12:**
+10:00 Demo a prospecto
+15:00 Capacitación
 
-        MIÉRCOLES 13:
-        TODO EL DÍA: Visita cliente
+**MIÉRCOLES 13:**
+TODO EL DÍA: Visita cliente
 
-        JUEVES 14:
-        11:00 Entrevista candidato
-        14:00 Seguimiento leads
+**JUEVES 14:**
+11:00 Entrevista candidato
+14:00 Seguimiento leads
 
-        VIERNES 15:
-        09:00 Cierre de mes
-        12:00 Comida equipo
+**VIERNES 15:**
+09:00 Cierre de mes
+12:00 Comida equipo
 
-        INTEGRACIÓN:
-        → Actividades CRM aquí
-        → Ausencias visibles
-        → Fechas límite tareas
-        → Todo sincronizado
-      `
+**INTEGRACIÓN:**
+→ Actividades CRM aquí
+→ Ausencias visibles
+→ Fechas límite tareas
+→ Todo sincronizado`
     },
     relationships: [
       {
@@ -4448,30 +4402,28 @@ Estado: "Orden de Venta"
     icon: '📌',
     example: {
       title: 'Notas internas en ficha de cliente',
-      content: `
-        CLIENTE: Panadería ABC
+      content: `**CLIENTE: Panadería ABC**
 
-        NOTAS INTERNAS (solo equipo):
+**NOTAS INTERNAS (solo equipo):**
 
-        ━━━ 15 marzo - Ana ━━━
-        ⚠️ Cliente sensible a precio.
-        Siempre pide descuento.
-        Máximo autorizado: 10%
+━━━ 15 marzo - Ana ━━━
+⚠️ Cliente sensible a precio.
+Siempre pide descuento.
+Máximo autorizado: 10%
 
-        ━━━ 20 febrero - Roberto ━━━
-        Prefiere llamadas por la tarde
-        después de las 3pm.
+━━━ 20 febrero - Roberto ━━━
+Prefiere llamadas por la tarde
+después de las 3pm.
 
-        ━━━ 10 enero - María ━━━
-        Pagó 15 días tarde últimas 2 facturas.
-        Considerar pedir anticipo.
+━━━ 10 enero - María ━━━
+Pagó 15 días tarde últimas 2 facturas.
+Considerar pedir anticipo.
 
-        MENSAJES AL CLIENTE (visibles):
-        "Gracias por su compra"
+**MENSAJES AL CLIENTE (visibles):**
+"Gracias por su compra"
 
-        Las notas ayudan al equipo
-        a dar mejor servicio.
-      `
+Las notas ayudan al equipo
+a dar mejor servicio.`
     },
     relationships: [
       {
