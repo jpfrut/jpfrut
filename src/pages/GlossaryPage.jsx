@@ -256,7 +256,7 @@ const GlossaryPage = () => {
                                   enableGlossary={true}
                                   className="text-xs text-accent-aqua font-mono whitespace-pre-line"
                                 >
-                                  {term.example.content.trim()}
+                                  {term.example.content}
                                 </MarkdownText>
                               </div>
                             </div>
@@ -399,7 +399,7 @@ const GlossaryPage = () => {
                                     enableGlossary={true}
                                     className="text-sm text-accent-aqua font-mono whitespace-pre-line"
                                   >
-                                    {term.example.content.trim()}
+                                    {term.example.content}
                                   </MarkdownText>
                                 </div>
                               </div>
