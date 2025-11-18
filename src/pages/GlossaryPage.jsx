@@ -9,7 +9,8 @@ import {
   Link2,
   Grid3X3,
   List,
-  X
+  X,
+  CheckCircle2
 } from 'lucide-react'
 import {
   glossaryTerms as glossaryData,
@@ -20,6 +21,7 @@ import {
 } from '../data/glossaryData'
 import Card from '../components/ui/Card'
 import MarkdownText from '../components/MarkdownText'
+import { normalizeRichText } from '../utils/richText'
 
 const GlossaryPage = () => {
   const [searchTerm, setSearchTerm] = useState('')
@@ -233,10 +235,10 @@ const GlossaryPage = () => {
                           className="space-y-4 mt-4 pt-4 border-t border-neutral-100"
                         >
                           {/* Full Definition */}
-                          <div className="bg-neutral-50 p-3 rounded-lg">
+                          <div className="bg-neutral-50 p-4 rounded-2xl border border-neutral-100">
                             <MarkdownText
                               enableGlossary={true}
-                              className="text-xs text-neutral-600 leading-relaxed"
+                              className="text-sm text-neutral-700 leading-relaxed"
                             >
                               {term.fullDef}
                             </MarkdownText>
@@ -244,34 +246,33 @@ const GlossaryPage = () => {
 
                           {/* Example */}
                           {term.example && (
-                            <div>
-                              <div className="flex items-center gap-2 mb-2">
+                            <div className="p-4 rounded-2xl border border-neutral-200 bg-white shadow-sm">
+                              <div className="flex items-center gap-2 mb-3">
                                 <Lightbulb className="w-4 h-4 text-secondary-500" />
-                                <span className="text-xs font-semibold text-neutral-800">
+                                <span className="text-sm font-semibold text-neutral-800">
                                   {term.example.title}
                                 </span>
                               </div>
-                              <div className="bg-neutral-800 text-accent-aqua p-3 rounded-md text-xs font-mono whitespace-pre-line overflow-x-auto">
-                                <MarkdownText
-                                  enableGlossary={true}
-                                  className="text-xs text-accent-aqua font-mono whitespace-pre-line"
-                                >
-                                  {term.example.content}
-                                </MarkdownText>
-                              </div>
+                              <MarkdownText
+                                enableGlossary={true}
+                                className="text-sm text-neutral-700 leading-relaxed"
+                              >
+                                {normalizeRichText(term.example.content)}
+                              </MarkdownText>
                             </div>
                           )}
 
                           {/* Best Practices Preview */}
                           {term.bestPractices && term.bestPractices.length > 0 && (
-                            <div>
-                              <div className="text-xs font-semibold text-success mb-2 flex items-center gap-1">
-                                <span>✓</span> Mejores Prácticas
+                            <div className="rounded-2xl border border-success/30 bg-success/5 p-3">
+                              <div className="text-xs font-semibold text-success mb-2 flex items-center gap-2">
+                                <CheckCircle2 className="w-4 h-4" />
+                                Mejores Prácticas
                               </div>
                               <ul className="text-xs text-neutral-700 space-y-1.5">
-                                {term.bestPractices.slice(0, 2).map((bp, i) => (
+                                {term.bestPractices.map((bp, i) => (
                                   <li key={i} className="flex items-start gap-2 leading-relaxed">
-                                    <span className="text-success mt-0.5">•</span>
+                                    <span className="text-success mt-0.5 text-base leading-none">•</span>
                                     <div className="flex-1">
                                       <MarkdownText
                                         enableGlossary={true}
@@ -295,14 +296,22 @@ const GlossaryPage = () => {
                                   Relacionado con:
                                 </span>
                               </div>
-                              <div className="flex flex-wrap gap-1.5">
+                              <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
                                 {term.relationships.map((rel, i) => (
-                                  <span
+                                  <div
                                     key={i}
-                                    className="text-xs bg-accent-aqua/10 text-primary-600 px-2 py-1 rounded font-medium"
+                                    className="rounded-2xl border border-accent-aqua/30 bg-accent-aqua/5 p-3"
                                   >
-                                    {getGlossaryTerm(rel.relatedTerm)?.term || rel.relatedTerm}
-                                  </span>
+                                    <div className="text-xs font-semibold text-primary-700">
+                                      {getGlossaryTerm(rel.relatedTerm)?.term || rel.relatedTerm}
+                                    </div>
+                                    <MarkdownText
+                                      enableGlossary={true}
+                                      className="text-xs text-neutral-700 mt-1 leading-relaxed"
+                                    >
+                                      {rel.explanation}
+                                    </MarkdownText>
+                                  </div>
                                 ))}
                               </div>
                             </div>
@@ -374,10 +383,10 @@ const GlossaryPage = () => {
                           {/* Full Definition */}
                           <div>
                             <h4 className="font-semibold text-neutral-800 mb-3">Definición Completa</h4>
-                            <div className="bg-neutral-50 p-4 rounded-lg">
+                            <div className="bg-neutral-50 p-4 rounded-2xl border border-neutral-100">
                               <MarkdownText
                                 enableGlossary={true}
-                                className="text-neutral-600 leading-relaxed"
+                                className="text-neutral-700 leading-relaxed"
                               >
                                 {term.fullDef}
                               </MarkdownText>
@@ -387,36 +396,34 @@ const GlossaryPage = () => {
                           <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                             {/* Example */}
                             {term.example && (
-                              <div>
+                              <div className="p-5 rounded-2xl border border-neutral-200 bg-white shadow-sm">
                                 <div className="flex items-center gap-2 mb-3">
                                   <Lightbulb className="w-5 h-5 text-secondary-500" />
                                   <h4 className="font-semibold text-neutral-800">
                                     {term.example.title}
                                   </h4>
                                 </div>
-                                <div className="bg-neutral-800 text-accent-aqua p-4 rounded-lg text-sm font-mono whitespace-pre-line overflow-x-auto">
-                                  <MarkdownText
-                                    enableGlossary={true}
-                                    className="text-sm text-accent-aqua font-mono whitespace-pre-line"
-                                  >
-                                    {term.example.content}
-                                  </MarkdownText>
-                                </div>
+                                <MarkdownText
+                                  enableGlossary={true}
+                                  className="text-sm text-neutral-700 leading-relaxed"
+                                >
+                                  {normalizeRichText(term.example.content)}
+                                </MarkdownText>
                               </div>
                             )}
 
                             {/* Best Practices & Mistakes */}
                             <div className="space-y-5">
                               {term.bestPractices && term.bestPractices.length > 0 && (
-                                <div>
+                                <div className="rounded-2xl border border-success/30 bg-success/5 p-4">
                                   <h4 className="font-semibold text-success mb-3 flex items-center gap-2">
-                                    <span className="text-lg">✓</span>
+                                    <CheckCircle2 className="w-5 h-5" />
                                     Mejores Prácticas
                                   </h4>
                                   <ul className="space-y-2">
                                     {term.bestPractices.map((bp, i) => (
                                       <li key={i} className="flex items-start gap-2 leading-relaxed">
-                                        <span className="text-success mt-1">•</span>
+                                        <span className="text-success mt-1 text-base leading-none">•</span>
                                         <div className="flex-1">
                                           <MarkdownText
                                             enableGlossary={true}
@@ -463,7 +470,7 @@ const GlossaryPage = () => {
                               </h4>
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                 {term.relationships.map((rel, i) => (
-                                  <div key={i} className="bg-accent-aqua/10 p-4 rounded-lg">
+                                  <div key={i} className="bg-accent-aqua/5 border border-accent-aqua/30 p-4 rounded-2xl">
                                     <div className="font-medium text-primary-600 mb-2">
                                       → {getGlossaryTerm(rel.relatedTerm)?.term || rel.relatedTerm}
                                     </div>

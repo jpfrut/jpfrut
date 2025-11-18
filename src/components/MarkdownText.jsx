@@ -1,5 +1,6 @@
 import { Fragment, cloneElement, isValidElement } from 'react'
 import ReactMarkdown from 'react-markdown'
+import remarkGfm from 'remark-gfm'
 import GlossaryText from './GlossaryText'
 
 const MarkdownText = ({ children, enableGlossary = true, className = '' }) => {
@@ -8,6 +9,7 @@ const MarkdownText = ({ children, enableGlossary = true, className = '' }) => {
   return (
     <div className={`markdown-content ${className}`}>
       <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
         components={{
           // Render paragraphs with glossary support
           p: ({ children }) => <p className="mb-3 last:mb-0">{renderWithGlossary(children, enableGlossary)}</p>,
@@ -28,7 +30,7 @@ const MarkdownText = ({ children, enableGlossary = true, className = '' }) => {
           // Render list items with bullet points
           li: ({ children }) => (
             <li className="flex items-start gap-2">
-              <span className="text-primary-500 mt-1.5 flex-shrink-0">•</span>
+              <span className="text-primary-500 mt-1 flex-shrink-0 text-base leading-none">•</span>
               <span className="flex-1">
                 {renderWithGlossary(children, enableGlossary)}
               </span>
@@ -72,6 +74,25 @@ const MarkdownText = ({ children, enableGlossary = true, className = '' }) => {
             <blockquote className="border-l-4 border-primary-500 pl-4 italic text-neutral-600 my-2">
               {renderWithGlossary(children, enableGlossary)}
             </blockquote>
+          ),
+          hr: () => <hr className="my-4 border-neutral-200" />,
+          table: ({ children }) => (
+            <div className="overflow-x-auto my-4 rounded-xl border border-neutral-200">
+              <table className="w-full text-sm text-left border-collapse">{children}</table>
+            </div>
+          ),
+          thead: ({ children }) => <thead className="bg-neutral-50 text-neutral-600">{children}</thead>,
+          tbody: ({ children }) => <tbody className="divide-y divide-neutral-100">{children}</tbody>,
+          tr: ({ children }) => <tr className="last:border-b-0">{children}</tr>,
+          th: ({ children }) => (
+            <th className="px-3 py-2 font-semibold text-neutral-700">
+              {renderWithGlossary(children, enableGlossary)}
+            </th>
+          ),
+          td: ({ children }) => (
+            <td className="px-3 py-2 text-neutral-700">
+              {renderWithGlossary(children, enableGlossary)}
+            </td>
           ),
         }}
       >
