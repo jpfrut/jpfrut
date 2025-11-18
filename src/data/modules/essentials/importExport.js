@@ -3,7 +3,7 @@ export const importExport = {
   name: 'Import/Export',
   icon: '📥',
   color: 'from-neutral-500 to-accent-green-600',
-  category: 'Odoo Essentials',
+  category: 'essentials',
   priority: 5,
   description: 'Importa y exporta datos masivamente, templates y migraciones',
   estimatedTime: '4 horas',

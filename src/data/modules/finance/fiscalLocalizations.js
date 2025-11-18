@@ -3,7 +3,7 @@ export const fiscalLocalizations = {
   name: 'Fiscal Localizations - México',
   icon: '🌍',
   color: 'from-accent-green-500 to-accent-red-600',
-  category: 'Finance',
+  category: 'finance',
   priority: 4,
   description: 'Facturación electrónica CFDI, SAT y cumplimiento fiscal para México',
   estimatedTime: '5 horas',

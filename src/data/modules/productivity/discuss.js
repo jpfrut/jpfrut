@@ -3,7 +3,7 @@ export const discuss = {
   name: 'Discuss',
   icon: '💬',
   color: 'from-accent-aqua-500 to-accent-green-600',
-  category: 'Productivity',
+  category: 'productivity',
   priority: 3,
   description: 'Chat interno, canales de equipo, mensajería directa y videollamadas',
   estimatedTime: '4 horas',

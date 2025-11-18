@@ -3,7 +3,7 @@ export const recruitment = {
   name: 'Recruitment',
   icon: '🎯',
   color: 'from-accent-purple-500 to-accent-pink-600',
-  category: 'Human Resources',
+  category: 'humanResources',
   priority: 5,
   description: 'Gestiona el proceso completo de reclutamiento desde job postings hasta onboarding',
   estimatedTime: '6 horas',

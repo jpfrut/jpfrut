@@ -3,7 +3,7 @@ export const surveys = {
   name: 'Surveys',
   icon: '📋',
   color: 'from-accent-aqua-500 to-primary-600',
-  category: 'Marketing',
+  category: 'marketing',
   priority: 5,
   description: 'Crea encuestas profesionales, recopila feedback y analiza resultados',
   estimatedTime: '4 horas',

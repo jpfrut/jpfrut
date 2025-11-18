@@ -3,7 +3,7 @@ export const events = {
   name: 'Events',
   icon: '🎉',
   color: 'from-accent-purple-500 to-accent-pink-600',
-  category: 'Marketing',
+  category: 'marketing',
   priority: 4,
   description: 'Organiza eventos, vende tickets y gestiona asistentes de forma profesional',
   estimatedTime: '5 horas',

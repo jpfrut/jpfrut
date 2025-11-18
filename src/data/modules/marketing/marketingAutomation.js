@@ -3,7 +3,7 @@ export const marketingAutomation = {
   name: 'Marketing Automation',
   icon: '🤖',
   color: 'from-accent-red-500 to-accent-pink-600',
-  category: 'Marketing',
+  category: 'marketing',
   priority: 2,
   description: 'Automatiza campañas de marketing con workflows inteligentes y segmentación avanzada',
   estimatedTime: '5 horas',

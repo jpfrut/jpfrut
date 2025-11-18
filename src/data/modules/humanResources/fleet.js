@@ -3,7 +3,7 @@ export const fleet = {
   name: 'Fleet',
   icon: '🚗',
   color: 'from-accent-aqua-500 to-accent-purple-600',
-  category: 'Human Resources',
+  category: 'humanResources',
   priority: 7,
   description: 'Gestiona vehículos de la empresa, mantenimiento, combustible y costos',
   estimatedTime: '4 horas',

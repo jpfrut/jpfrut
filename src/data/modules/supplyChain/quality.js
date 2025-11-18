@@ -3,7 +3,7 @@ export const quality = {
   name: 'Quality',
   icon: '✅',
   color: 'from-accent-green-500 to-secondary-600',
-  category: 'Supply Chain',
+  category: 'supplyChain',
   priority: 5,
   description: 'Implementa controles de calidad, quality checks y gestión de no conformidades',
   estimatedTime: '4 horas',

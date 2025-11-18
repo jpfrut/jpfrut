@@ -3,7 +3,7 @@ export const plm = {
   name: 'Product Lifecycle Management',
   icon: '🔬',
   color: 'from-secondary-600 to-accent-purple-600',
-  category: 'Supply Chain',
+  category: 'supplyChain',
   priority: 8,
   description: 'Gestión del ciclo de vida de productos, ECOs y control de versiones',
   estimatedTime: '4 horas',

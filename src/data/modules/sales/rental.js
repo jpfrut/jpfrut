@@ -3,7 +3,7 @@ export const rental = {
   name: 'Rental',
   icon: '🏠',
   color: 'from-primary-500 to-accent-purple-600',
-  category: 'Sales',
+  category: 'sales',
   priority: 6,
   description: 'Gestiona alquileres de productos, depósitos y devoluciones',
   estimatedTime: '4 horas',

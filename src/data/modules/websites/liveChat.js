@@ -3,7 +3,7 @@ export const liveChat = {
   name: 'Live Chat',
   icon: '💬',
   color: 'from-accent-aqua-500 to-accent-pink-600',
-  category: 'Websites',
+  category: 'websites',
   priority: 3,
   description: 'Chat en vivo para website, chatbots y soporte en tiempo real',
   estimatedTime: '4 horas',

@@ -3,7 +3,7 @@ export const studioPlatform = {
   name: 'Studio Platform',
   icon: '🎨',
   color: 'from-accent-pink-500 to-accent-red-600',
-  category: 'Studio',
+  category: 'studio',
   priority: 1,
   description: 'Personalización low-code: crea campos, vistas, modelos y automatizaciones sin programar',
   estimatedTime: '8 horas',

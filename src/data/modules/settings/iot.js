@@ -3,7 +3,7 @@ export const iot = {
   name: 'IoT',
   icon: '🖥️',
   color: 'from-neutral-500 to-accent-purple-600',
-  category: 'Settings',
+  category: 'settings',
   priority: 5,
   description: 'Internet of Things: conecta dispositivos, sensores y hardware',
   estimatedTime: '3 horas',

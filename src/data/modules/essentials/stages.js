@@ -3,7 +3,7 @@ export const stages = {
   name: 'Stages',
   icon: '📋',
   color: 'from-neutral-400 to-accent-purple-600',
-  category: 'Odoo Essentials',
+  category: 'essentials',
   priority: 4,
   description: 'Entiende y personaliza stages, workflows y vistas Kanban',
   estimatedTime: '3 horas',

@@ -3,7 +3,7 @@ export const timesheets = {
   name: 'Timesheets',
   icon: '⏱️',
   color: 'from-neutral-500 to-accent-aqua-600',
-  category: 'Services',
+  category: 'services',
   priority: 3,
   description: 'Gestiona hojas de tiempo, facturación por tiempo y análisis de productividad',
   estimatedTime: '5 horas',

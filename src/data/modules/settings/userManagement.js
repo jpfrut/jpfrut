@@ -3,7 +3,7 @@ export const userManagement = {
   name: 'User Management',
   icon: '👤',
   color: 'from-neutral-500 to-neutral-600',
-  category: 'Settings',
+  category: 'settings',
   priority: 1,
   description: 'Gestiona usuarios, roles, permisos y autenticación en Odoo',
   estimatedTime: '5 horas',

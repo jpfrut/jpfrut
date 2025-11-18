@@ -3,7 +3,7 @@ export const payroll = {
   name: 'Payroll',
   icon: '💵',
   color: 'from-accent-green-500 to-accent-aqua-600',
-  category: 'Human Resources',
+  category: 'humanResources',
   priority: 3,
   description: 'Gestiona nóminas, estructuras salariales y cálculos de impuestos de forma automatizada',
   estimatedTime: '7 horas',

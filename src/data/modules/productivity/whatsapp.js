@@ -3,7 +3,7 @@ export const whatsapp = {
   name: 'WhatsApp',
   icon: '💚',
   color: 'from-accent-green-500 to-accent-green-600',
-  category: 'Productivity',
+  category: 'productivity',
   priority: 10,
   description: 'Integración con WhatsApp Business, mensajes template y automatización',
   estimatedTime: '3 horas',

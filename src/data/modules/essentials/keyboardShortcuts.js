@@ -3,7 +3,7 @@ export const keyboardShortcuts = {
   name: 'Keyboard Shortcuts',
   icon: '⌨️',
   color: 'from-neutral-500 to-accent-purple-600',
-  category: 'Odoo Essentials',
+  category: 'essentials',
   priority: 8,
   description: 'Atajos de teclado para productividad y navegación rápida',
   estimatedTime: '2 horas',

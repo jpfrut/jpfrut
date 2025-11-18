@@ -3,7 +3,7 @@ export const advancedSales = {
   name: 'Advanced Sales Features',
   icon: '🎯',
   color: 'from-primary-600 to-accent-purple-600',
-  category: 'Sales',
+  category: 'sales',
   priority: 5,
   description: 'Domina características avanzadas de ventas: variantes, pricelists, devoluciones y gift cards',
   estimatedTime: '4 horas',

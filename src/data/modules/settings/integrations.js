@@ -3,7 +3,7 @@ export const integrations = {
   name: 'Integrations',
   icon: '🔗',
   color: 'from-neutral-500 to-primary-600',
-  category: 'Settings',
+  category: 'settings',
   priority: 3,
   description: 'Integra Odoo con aplicaciones de terceros, APIs y webhooks',
   estimatedTime: '4 horas',

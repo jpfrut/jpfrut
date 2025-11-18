@@ -3,7 +3,7 @@ export const contacts = {
   name: 'Contacts',
   icon: '👤',
   color: 'from-neutral-400 to-accent-aqua-600',
-  category: 'Odoo Essentials',
+  category: 'essentials',
   priority: 7,
   description: 'Gestión de contactos, deduplicación y merge',
   estimatedTime: '3 horas',

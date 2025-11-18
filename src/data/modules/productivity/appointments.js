@@ -3,7 +3,7 @@ export const appointments = {
   name: 'Appointments',
   icon: '📆',
   color: 'from-accent-green-500 to-primary-600',
-  category: 'Productivity',
+  category: 'productivity',
   priority: 5,
   description: 'Sistema de reserva de citas, disponibilidad y booking online',
   estimatedTime: '3 horas',

@@ -3,7 +3,7 @@ export const socialMarketing = {
   name: 'Social Marketing',
   icon: '📱',
   color: 'from-accent-red-500 to-accent-purple-600',
-  category: 'Marketing',
+  category: 'marketing',
   priority: 6,
   description: 'Gestiona redes sociales, programa posts y analiza engagement desde Odoo',
   estimatedTime: '4 horas',

@@ -3,7 +3,7 @@ export const appraisals = {
   name: 'Appraisals',
   icon: '⭐',
   color: 'from-accent-green-500 to-accent-purple-600',
-  category: 'Human Resources',
+  category: 'humanResources',
   priority: 6,
   description: 'Gestiona evaluaciones de desempeño, feedback 360° y desarrollo de carrera',
   estimatedTime: '5 horas',

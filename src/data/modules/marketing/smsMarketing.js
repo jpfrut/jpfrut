@@ -3,7 +3,7 @@ export const smsMarketing = {
   name: 'SMS Marketing',
   icon: '📱',
   color: 'from-accent-pink-500 to-accent-red-600',
-  category: 'Marketing',
+  category: 'marketing',
   priority: 3,
   description: 'Crea campañas de SMS efectivas, llega a tus clientes por mensaje de texto',
   estimatedTime: '3 horas',

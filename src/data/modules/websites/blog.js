@@ -3,7 +3,7 @@ export const blog = {
   name: 'Blog',
   icon: '📝',
   color: 'from-accent-purple-500 to-accent-pink-600',
-  category: 'Websites',
+  category: 'websites',
   priority: 4,
   description: 'Gestiona blog corporativo, SEO, comentarios y newsletter',
   estimatedTime: '4 horas',

@@ -3,7 +3,7 @@ export const fieldService = {
   name: 'Field Service',
   icon: '🚚',
   color: 'from-neutral-600 to-primary-600',
-  category: 'Services',
+  category: 'services',
   priority: 4,
   description: 'Gestiona servicios de campo, scheduling, rutas y worksheets móviles',
   estimatedTime: '6 horas',

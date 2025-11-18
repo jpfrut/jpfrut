@@ -3,7 +3,7 @@ export const repairs = {
   name: 'Repairs',
   icon: '🛠️',
   color: 'from-secondary-600 to-accent-red-600',
-  category: 'Supply Chain',
+  category: 'supplyChain',
   priority: 7,
   description: 'Gestiona órdenes de reparación, repuestos y garantías',
   estimatedTime: '3 horas',

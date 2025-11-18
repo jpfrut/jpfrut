@@ -3,7 +3,7 @@ export const ecommerceIntegrations = {
   name: 'Ecommerce Integrations',
   icon: '🔌',
   color: 'from-primary-600 to-accent-pink-600',
-  category: 'Sales',
+  category: 'sales',
   priority: 7,
   description: 'Integra con Amazon, Shopee, Mercado Libre y otros marketplaces',
   estimatedTime: '4 horas',

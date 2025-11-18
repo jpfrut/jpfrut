@@ -3,7 +3,7 @@ export const planning = {
   name: 'Planning',
   icon: '📅',
   color: 'from-accent-purple-500 to-neutral-600',
-  category: 'Services',
+  category: 'services',
   priority: 5,
   description: 'Planifica recursos, turnos y forecasting de capacidad',
   estimatedTime: '5 horas',

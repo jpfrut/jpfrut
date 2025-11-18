@@ -3,7 +3,7 @@ export const subscriptions = {
   name: 'Subscriptions',
   icon: '🔄',
   color: 'from-primary-500 to-accent-aqua-500',
-  category: 'Sales',
+  category: 'sales',
   priority: 4,
   description: 'Gestiona modelos de suscripción, renovaciones automáticas y tracking de MRR/ARR',
   estimatedTime: '5 horas',

@@ -3,7 +3,7 @@ export const documents = {
   name: 'Documents',
   icon: '📄',
   color: 'from-primary-500 to-accent-aqua-600',
-  category: 'Productivity',
+  category: 'productivity',
   priority: 1,
   description: 'Gestiona documentos, workflows automatizados y colaboración en equipo',
   estimatedTime: '5 horas',

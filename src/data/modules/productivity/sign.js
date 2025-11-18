@@ -3,7 +3,7 @@ export const sign = {
   name: 'Sign',
   icon: '✍️',
   color: 'from-primary-600 to-accent-green-600',
-  category: 'Productivity',
+  category: 'productivity',
   priority: 6,
   description: 'Firma digital de documentos, workflows de aprobación y templates',
   estimatedTime: '3 horas',

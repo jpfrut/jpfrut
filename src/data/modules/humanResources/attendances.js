@@ -3,7 +3,7 @@ export const attendances = {
   name: 'Attendances',
   icon: '⏰',
   color: 'from-accent-aqua-500 to-primary-600',
-  category: 'Human Resources',
+  category: 'humanResources',
   priority: 4,
   description: 'Controla asistencias, check-in/check-out, horas extras y genera reportes precisos',
   estimatedTime: '4 horas',

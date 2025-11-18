@@ -3,7 +3,7 @@ export const frontdesk = {
   name: 'Frontdesk',
   icon: '🏢',
   color: 'from-accent-aqua-500 to-accent-green-600',
-  category: 'Human Resources',
+  category: 'humanResources',
   priority: 10,
   description: 'Gestión de visitantes, badges y seguridad de recepción',
   estimatedTime: '2 horas',

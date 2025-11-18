@@ -3,7 +3,7 @@ export const voip = {
   name: 'VoIP',
   icon: '☎️',
   color: 'from-accent-aqua-500 to-primary-600',
-  category: 'Productivity',
+  category: 'productivity',
   priority: 9,
   description: 'Integración telefónica VoIP, llamadas y logging',
   estimatedTime: '3 horas',

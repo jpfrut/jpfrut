@@ -3,7 +3,7 @@ export const lunch = {
   name: 'Lunch',
   icon: '🍽️',
   color: 'from-accent-green-500 to-accent-pink-600',
-  category: 'Human Resources',
+  category: 'humanResources',
   priority: 8,
   description: 'Sistema de pedidos de comida para empleados y gestión de proveedores',
   estimatedTime: '2 horas',

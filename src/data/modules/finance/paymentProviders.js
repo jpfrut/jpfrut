@@ -3,7 +3,7 @@ export const paymentProviders = {
   name: 'Payment Providers',
   icon: '💳',
   color: 'from-accent-green-500 to-accent-aqua-600',
-  category: 'Finance',
+  category: 'finance',
   priority: 3,
   description: 'Configura pasarelas de pago, integra Stripe, PayPal y otros proveedores',
   estimatedTime: '4 horas',

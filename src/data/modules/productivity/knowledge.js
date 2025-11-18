@@ -3,7 +3,7 @@ export const knowledge = {
   name: 'Knowledge',
   icon: '📚',
   color: 'from-accent-purple-500 to-primary-600',
-  category: 'Productivity',
+  category: 'productivity',
   priority: 2,
   description: 'Crea una base de conocimiento colaborativa, wiki y documentación interna',
   estimatedTime: '5 horas',

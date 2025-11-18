@@ -3,7 +3,7 @@ export const dashboards = {
   name: 'Dashboards',
   icon: '📈',
   color: 'from-accent-purple-500 to-accent-pink-600',
-  category: 'Productivity',
+  category: 'productivity',
   priority: 8,
   description: 'Dashboards personalizados, KPIs y visualización de datos en tiempo real',
   estimatedTime: '4 horas',

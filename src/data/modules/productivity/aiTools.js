@@ -3,7 +3,7 @@ export const aiTools = {
   name: 'AI Tools',
   icon: '🤖',
   color: 'from-accent-purple-500 to-primary-600',
-  category: 'Productivity',
+  category: 'productivity',
   priority: 12,
   description: 'Herramientas de IA: asistentes, generación de contenido y automatización inteligente',
   estimatedTime: '4 horas',

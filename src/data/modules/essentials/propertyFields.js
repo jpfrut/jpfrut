@@ -3,7 +3,7 @@ export const propertyFields = {
   name: 'Property Fields',
   icon: '🏷️',
   color: 'from-neutral-600 to-accent-green-600',
-  category: 'Odoo Essentials',
+  category: 'essentials',
   priority: 9,
   description: 'Campos personalizados por registro, properties y metadatos',
   estimatedTime: '3 horas',

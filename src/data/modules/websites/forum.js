@@ -3,7 +3,7 @@ export const forum = {
   name: 'Forum',
   icon: '💭',
   color: 'from-accent-pink-500 to-accent-purple-600',
-  category: 'Websites',
+  category: 'websites',
   priority: 5,
   description: 'Comunidad online, foros de discusión y gamificación',
   estimatedTime: '4 horas',

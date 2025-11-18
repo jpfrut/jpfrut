@@ -3,7 +3,7 @@ export const emailConfiguration = {
   name: 'Email Configuration',
   icon: '📧',
   color: 'from-neutral-600 to-accent-aqua-600',
-  category: 'Settings',
+  category: 'settings',
   priority: 4,
   description: 'Configuración de servidores de email, templates y automatización',
   estimatedTime: '3 horas',

@@ -3,7 +3,7 @@ export const reporting = {
   name: 'Reporting',
   icon: '📊',
   color: 'from-neutral-500 to-primary-600',
-  category: 'Odoo Essentials',
+  category: 'essentials',
   priority: 2,
   description: 'Crea reportes personalizados, dashboards y visualizaciones de datos',
   estimatedTime: '5 horas',

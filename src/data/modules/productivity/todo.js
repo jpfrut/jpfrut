@@ -3,7 +3,7 @@ export const todo = {
   name: 'To-do',
   icon: '✅',
   color: 'from-accent-red-500 to-accent-pink-600',
-  category: 'Productivity',
+  category: 'productivity',
   priority: 11,
   description: 'Listas de tareas personales, reminders y productividad individual',
   estimatedTime: '2 horas',

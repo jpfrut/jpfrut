@@ -3,7 +3,7 @@ export const barcode = {
   name: 'Barcode',
   icon: '📱',
   color: 'from-accent-aqua-500 to-secondary-600',
-  category: 'Supply Chain',
+  category: 'supplyChain',
   priority: 4,
   description: 'Implementa operaciones con código de barras para inventario, picking y shipping',
   estimatedTime: '4 horas',

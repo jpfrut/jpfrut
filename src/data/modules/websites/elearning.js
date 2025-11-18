@@ -3,7 +3,7 @@ export const elearning = {
   name: 'eLearning',
   icon: '🎓',
   color: 'from-accent-pink-500 to-accent-purple-600',
-  category: 'Websites',
+  category: 'websites',
   priority: 2,
   description: 'Crea cursos online, gestiona estudiantes y emite certificaciones',
   estimatedTime: '6 horas',

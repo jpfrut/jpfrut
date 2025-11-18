@@ -3,7 +3,7 @@ export const calendar = {
   name: 'Calendar',
   icon: '📅',
   color: 'from-accent-red-500 to-accent-pink-600',
-  category: 'Productivity',
+  category: 'productivity',
   priority: 4,
   description: 'Gestiona eventos, sincroniza con Google/Outlook y coordina reuniones',
   estimatedTime: '4 horas',

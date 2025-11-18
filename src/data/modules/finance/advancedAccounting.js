@@ -3,7 +3,7 @@ export const advancedAccounting = {
   name: 'Advanced Accounting',
   icon: '💰',
   color: 'from-accent-green-600 to-accent-aqua-600',
-  category: 'Finance',
+  category: 'finance',
   priority: 5,
   description: 'Contabilidad avanzada: multi-moneda, consolidación y compliance',
   estimatedTime: '6 horas',

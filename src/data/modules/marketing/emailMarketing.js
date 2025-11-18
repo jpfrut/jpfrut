@@ -3,7 +3,7 @@ export const emailMarketing = {
   name: 'Email Marketing',
   icon: '📧',
   color: 'from-accent-red-500 to-accent-pink-600',
-  category: 'Marketing',
+  category: 'marketing',
   priority: 1,
   description: 'Crea campañas de email efectivas, gestiona listas de correo y genera leads',
   estimatedTime: '6 horas',

@@ -3,7 +3,7 @@ export const searchFilterGroup = {
   name: 'Search, Filter & Group',
   icon: '🔍',
   color: 'from-neutral-400 to-neutral-500',
-  category: 'Odoo Essentials',
+  category: 'essentials',
   priority: 1,
   description: 'Domina búsquedas avanzadas, filtros personalizados y agrupaciones en Odoo',
   estimatedTime: '3 horas',

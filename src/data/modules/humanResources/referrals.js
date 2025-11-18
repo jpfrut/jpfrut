@@ -3,7 +3,7 @@ export const referrals = {
   name: 'Referrals',
   icon: '🤝',
   color: 'from-accent-purple-500 to-accent-pink-600',
-  category: 'Human Resources',
+  category: 'humanResources',
   priority: 9,
   description: 'Programa de referencias de empleados, puntos y recompensas',
   estimatedTime: '2 horas',

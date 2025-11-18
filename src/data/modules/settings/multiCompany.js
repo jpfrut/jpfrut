@@ -3,7 +3,7 @@ export const multiCompany = {
   name: 'Multi-company',
   icon: '🏢',
   color: 'from-neutral-600 to-accent-aqua-600',
-  category: 'Settings',
+  category: 'settings',
   priority: 2,
   description: 'Configura y gestiona múltiples empresas en una sola instancia de Odoo',
   estimatedTime: '4 horas',

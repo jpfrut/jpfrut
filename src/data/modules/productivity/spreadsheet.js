@@ -3,7 +3,7 @@ export const spreadsheet = {
   name: 'Spreadsheet',
   icon: '📊',
   color: 'from-accent-green-500 to-primary-600',
-  category: 'Productivity',
+  category: 'productivity',
   priority: 7,
   description: 'Análisis de datos con spreadsheets, pivot tables y fórmulas',
   estimatedTime: '4 horas',

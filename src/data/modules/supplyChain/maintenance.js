@@ -3,7 +3,7 @@ export const maintenance = {
   name: 'Maintenance',
   icon: '🔧',
   color: 'from-secondary-500 to-accent-purple-600',
-  category: 'Supply Chain',
+  category: 'supplyChain',
   priority: 6,
   description: 'Gestiona mantenimiento de equipos, preventivo y correctivo',
   estimatedTime: '4 horas',

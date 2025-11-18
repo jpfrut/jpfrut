@@ -3,7 +3,7 @@ export const activities = {
   name: 'Activities',
   icon: '📌',
   color: 'from-accent-aqua-500 to-neutral-600',
-  category: 'Odoo Essentials',
+  category: 'essentials',
   priority: 3,
   description: 'Gestiona actividades, seguimientos y recordatorios en Odoo',
   estimatedTime: '3 horas',

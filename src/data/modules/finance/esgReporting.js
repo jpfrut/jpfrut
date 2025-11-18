@@ -3,7 +3,7 @@ export const esgReporting = {
   name: 'ESG Reporting',
   icon: '♻️',
   color: 'from-accent-green-500 to-accent-green-600',
-  category: 'Finance',
+  category: 'finance',
   priority: 6,
   description: 'Reportes ESG: métricas ambientales, sociales y de gobernanza',
   estimatedTime: '3 horas',

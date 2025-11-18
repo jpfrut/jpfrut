@@ -3,7 +3,7 @@ export const manufacturing = {
   name: 'Manufacturing',
   icon: '🏭',
   color: 'from-secondary-500 to-accent-red-600',
-  category: 'Supply Chain',
+  category: 'supplyChain',
   priority: 3,
   description: 'Gestiona procesos de manufactura, BoMs, órdenes de producción y control de calidad',
   estimatedTime: '8 horas',

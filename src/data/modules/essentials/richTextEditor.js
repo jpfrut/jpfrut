@@ -3,7 +3,7 @@ export const richTextEditor = {
   name: 'Rich-text Editor',
   icon: '✏️',
   color: 'from-neutral-500 to-accent-pink-600',
-  category: 'Odoo Essentials',
+  category: 'essentials',
   priority: 6,
   description: 'Editor de texto enriquecido, formato y contenido multimedia',
   estimatedTime: '2 horas',
