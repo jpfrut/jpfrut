@@ -442,22 +442,20 @@ RESULTADO: Saldos actualizados ✓`
     icon: '🧾',
     example: {
       title: 'Factura INV/2024/00015',
-      content: `
-        Cliente: Panadería La Estrella
-        Fecha: 15/03/2024
-        Vencimiento: 15/04/2024 (30 días)
+      content: `**Cliente:** Panadería La Estrella
+**Fecha:** 15/03/2024
+**Vencimiento:** 15/04/2024 (30 días)
 
-        Líneas:
-        - Servicio de consultoría x 10 hrs @ $100 = $1,000
-        - IVA 16%: $160
-        TOTAL: $1,160
+**Líneas:**
+- Servicio de consultoría x 10 hrs @ $100 = $1,000
+- IVA 16%: $160
+**TOTAL:** $1,160
 
-        Al CONFIRMAR esta factura:
-        1. Se crea asiento en Diario de Ventas
-        2. Aumenta Cuentas por Cobrar (+$1,160)
-        3. Aumenta Ingresos (+$1,000)
-        4. Aumenta IVA por Pagar (+$160)
-      `
+**Al CONFIRMAR esta factura:**
+1. Se crea asiento en Diario de Ventas
+2. Aumenta Cuentas por Cobrar (+$1,160)
+3. Aumenta Ingresos (+$1,000)
+4. Aumenta IVA por Pagar (+$160)`
     },
     relationships: [
       {
@@ -655,22 +653,20 @@ RESULTADO: Saldos actualizados ✓`
     icon: '🎯',
     example: {
       title: 'Ciclo de vida de un Lead',
-      content: `
-        1️⃣ NUEVO: María llena formulario en tu web
-        → "Quiero información sobre sus servicios"
+      content: `**1️⃣ NUEVO:** María llena formulario en tu web
+→ "Quiero información sobre sus servicios"
 
-        2️⃣ CONTACTADO: La llamas
-        → "Sí, necesito ayuda con mi contabilidad"
+**2️⃣ CONTACTADO:** La llamas
+→ "Sí, necesito ayuda con mi contabilidad"
 
-        3️⃣ CALIFICADO: Confirmas su interés real
-        → Tiene presupuesto, necesidad y urgencia
+**3️⃣ CALIFICADO:** Confirmas su interés real
+→ Tiene presupuesto, necesidad y urgencia
 
-        4️⃣ CONVERTIDO: Se vuelve Oportunidad
-        → Ya puedes enviarle cotización
+**4️⃣ CONVERTIDO:** Se vuelve Oportunidad
+→ Ya puedes enviarle cotización
 
-        ❌ PERDIDO: No tiene interés real
-        → "Solo preguntaba, gracias"
-      `
+**❌ PERDIDO:** No tiene interés real
+→ "Solo preguntaba, gracias"`
     },
     relationships: [
       {
@@ -705,23 +701,21 @@ RESULTADO: Saldos actualizados ✓`
     icon: '💰',
     example: {
       title: 'Oportunidad en Pipeline',
-      content: `
-        Oportunidad: "Sistema contable - Panadería La Estrella"
+      content: `**Oportunidad:** "Sistema contable - Panadería La Estrella"
 
-        Cliente: María García
-        Valor esperado: $6,000/año
-        Probabilidad: 60%
-        Fecha cierre estimada: 30 días
+**Cliente:** María García
+**Valor esperado:** $6,000/año
+**Probabilidad:** 60%
+**Fecha cierre estimada:** 30 días
 
-        PIPELINE:
-        ┌─────────┐  ┌───────────┐  ┌─────────┐
-        │  NUEVO  │→ │ PROPUESTA │→ │ GANADO  │
-        │         │  │    ★      │  │         │
-        └─────────┘  └───────────┘  └─────────┘
+**PIPELINE:**
+┌─────────┐  ┌───────────┐  ┌─────────┐
+│  NUEVO  │→ │ PROPUESTA │→ │ GANADO  │
+│         │  │    ★      │  │         │
+└─────────┘  └───────────┘  └─────────┘
 
-        ★ = Aquí está esta oportunidad
-        Ya le enviaste cotización, esperas respuesta.
-      `
+★ = Aquí está esta oportunidad
+Ya le enviaste cotización, esperas respuesta.`
     },
     relationships: [
       {
@@ -925,24 +919,22 @@ RESULTADO: Saldos actualizados ✓`
     icon: '📄',
     example: {
       title: 'Flujo de cotización',
-      content: `
-        1. COTIZACIÓN (borrador)
-        → Creas propuesta con productos y precios
-        → Estado: Presupuesto
+      content: `**1. COTIZACIÓN (borrador)**
+→ Creas propuesta con productos y precios
+→ Estado: Presupuesto
 
-        2. ENVÍAS AL CLIENTE
-        → Por email directamente desde Odoo
-        → Estado: Presupuesto Enviado
+**2. ENVÍAS AL CLIENTE**
+→ Por email directamente desde Odoo
+→ Estado: Presupuesto Enviado
 
-        3. CLIENTE ACEPTA
-        → Confirmas la cotización
-        → Estado: Orden de Venta
-        → Ahora puedes entregar y facturar
+**3. CLIENTE ACEPTA**
+→ Confirmas la cotización
+→ Estado: Orden de Venta
+→ Ahora puedes entregar y facturar
 
-        Si el cliente NO acepta:
-        → Modificas o cancelas la cotización
-        → Aprendes para mejorar
-      `
+**Si el cliente NO acepta:**
+→ Modificas o cancelas la cotización
+→ Aprendes para mejorar`
     },
     relationships: [
       {
@@ -1736,29 +1728,27 @@ Primero recibes dinero, luego facturas.`
     icon: '📋',
     example: {
       title: 'Diferencia: Proforma vs Factura Real',
-      content: `
-        FACTURA PROFORMA:
-        ✗ NO tiene folio fiscal
-        ✗ NO genera obligación de pago
-        ✗ NO se reporta al gobierno
-        ✗ NO afecta tu contabilidad
-        ✓ Es solo para informar al cliente
+      content: `**FACTURA PROFORMA:**
+✗ NO tiene folio fiscal
+✗ NO genera obligación de pago
+✗ NO se reporta al gobierno
+✗ NO afecta tu contabilidad
+✓ Es solo para informar al cliente
 
-        FACTURA REAL:
-        ✓ Tiene folio fiscal legal
-        ✓ Cliente debe pagarte
-        ✓ Se reporta en impuestos
-        ✓ Afecta tu contabilidad
-        ✓ Es documento oficial
+**FACTURA REAL:**
+✓ Tiene folio fiscal legal
+✓ Cliente debe pagarte
+✓ Se reporta en impuestos
+✓ Afecta tu contabilidad
+✓ Es documento oficial
 
-        USO COMÚN:
-        1. Cliente pide cotización detallada
-        2. Le envías factura proforma
-        3. Si acepta, creas factura real
-        4. Si no acepta, no pasa nada
+**USO COMÚN:**
+1. Cliente pide cotización detallada
+2. Le envías factura proforma
+3. Si acepta, creas factura real
+4. Si no acepta, no pasa nada
 
-        Muy usado en comercio internacional para aduanas.
-      `
+Muy usado en comercio internacional para aduanas.`
     },
     relationships: [
       {
@@ -2093,32 +2083,30 @@ Primero recibes dinero, luego facturas.`
     icon: '🔺',
     example: {
       title: 'Pipeline típico de una empresa',
-      content: `
-        VISUALIZACIÓN DEL PIPELINE:
+      content: `**VISUALIZACIÓN DEL PIPELINE:**
 
-        NUEVO (10 oportunidades)
-        → Acaban de contactarte
+**NUEVO (10 oportunidades)**
+→ Acaban de contactarte
 
-        CONTACTADO (7 oportunidades)
-        → Ya hablaste con ellos
+**CONTACTADO (7 oportunidades)**
+→ Ya hablaste con ellos
 
-        PROPUESTA ENVIADA (4 oportunidades)
-        → Les mandaste cotización
+**PROPUESTA ENVIADA (4 oportunidades)**
+→ Les mandaste cotización
 
-        NEGOCIACIÓN (2 oportunidades)
-        → Están discutiendo precio/condiciones
+**NEGOCIACIÓN (2 oportunidades)**
+→ Están discutiendo precio/condiciones
 
-        GANADO (1 oportunidad)
-        → ¡Cerraste la venta! 🎉
+**GANADO (1 oportunidad)**
+→ ¡Cerraste la venta! 🎉
 
-        PERDIDO (4 oportunidades)
-        → No compraron (razones varias)
+**PERDIDO (4 oportunidades)**
+→ No compraron (razones varias)
 
-        MÉTRICAS IMPORTANTES:
-        - Tasa de conversión: 1/10 = 10%
-        - Valor del pipeline: suma de todas las oportunidades
-        - Tiempo promedio de cierre: cuánto tarda en decidir
-      `
+**MÉTRICAS IMPORTANTES:**
+- Tasa de conversión: 1/10 = 10%
+- Valor del pipeline: suma de todas las oportunidades
+- Tiempo promedio de cierre: cuánto tarda en decidir`
     },
     relationships: [
       {
@@ -2153,29 +2141,27 @@ Primero recibes dinero, luego facturas.`
     icon: '📍',
     example: {
       title: 'Etapas en diferentes contextos',
-      content: `
-        PIPELINE DE VENTAS:
-        1. Nuevo (acaba de llegar)
-        2. Calificado (verificamos interés real)
-        3. Propuesta (enviamos cotización)
-        4. Negociación (discutiendo términos)
-        5. Ganado / Perdido (resultado final)
+      content: `**PIPELINE DE VENTAS:**
+1. Nuevo (acaba de llegar)
+2. Calificado (verificamos interés real)
+3. Propuesta (enviamos cotización)
+4. Negociación (discutiendo términos)
+5. Ganado / Perdido (resultado final)
 
-        TABLERO KANBAN DE TAREAS:
-        1. Pendiente (por hacer)
-        2. En Progreso (trabajando)
-        3. En Revisión (verificando)
-        4. Completado (terminado)
+**TABLERO KANBAN DE TAREAS:**
+1. Pendiente (por hacer)
+2. En Progreso (trabajando)
+3. En Revisión (verificando)
+4. Completado (terminado)
 
-        PROCESO DE RECLUTAMIENTO:
-        1. Nuevo candidato
-        2. Entrevista inicial
-        3. Prueba técnica
-        4. Entrevista final
-        5. Contratado / Rechazado
+**PROCESO DE RECLUTAMIENTO:**
+1. Nuevo candidato
+2. Entrevista inicial
+3. Prueba técnica
+4. Entrevista final
+5. Contratado / Rechazado
 
-        Las etapas te ayudan a ver el estado de todo de un vistazo.
-      `
+Las etapas te ayudan a ver el estado de todo de un vistazo.`
     },
     relationships: [
       {
@@ -2210,28 +2196,26 @@ Primero recibes dinero, luego facturas.`
     icon: '📅',
     example: {
       title: 'Cómo funcionan las actividades',
-      content: `
-        OPORTUNIDAD: "Venta sistema a Panadería ABC"
+      content: `**OPORTUNIDAD:** "Venta sistema a Panadería ABC"
 
-        ACTIVIDADES PROGRAMADAS:
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        ☑️ Hoy 10:00 - Llamar para seguimiento
-        📧 Mañana - Enviar cotización por email
-        🤝 Viernes 15:00 - Reunión de cierre
+**ACTIVIDADES PROGRAMADAS:**
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+☑️ Hoy 10:00 - Llamar para seguimiento
+📧 Mañana - Enviar cotización por email
+🤝 Viernes 15:00 - Reunión de cierre
 
-        TIPOS DE ACTIVIDADES:
-        📞 Llamada telefónica
-        📧 Enviar email
-        🤝 Reunión presencial/virtual
-        📋 Tarea/Pendiente
-        📤 Subir documento
+**TIPOS DE ACTIVIDADES:**
+📞 Llamada telefónica
+📧 Enviar email
+🤝 Reunión presencial/virtual
+📋 Tarea/Pendiente
+📤 Subir documento
 
-        BENEFICIOS:
-        → Nunca olvidas dar seguimiento
-        → Tu jefe ve que estás activo
-        → Historial de todo lo que hiciste
-        → Planificas tu día eficientemente
-      `
+**BENEFICIOS:**
+→ Nunca olvidas dar seguimiento
+→ Tu jefe ve que estás activo
+→ Historial de todo lo que hiciste
+→ Planificas tu día eficientemente`
     },
     relationships: [
       {
@@ -2266,37 +2250,35 @@ Primero recibes dinero, luego facturas.`
     icon: '⭐',
     example: {
       title: 'Sistema de puntuación de leads',
-      content: `
-        CRITERIOS DE PUNTUACIÓN:
+      content: `**CRITERIOS DE PUNTUACIÓN:**
 
-        PERFIL DEL LEAD:
-        + 20 pts: Empresa mediana/grande
-        + 15 pts: Tiene presupuesto definido
-        + 10 pts: Decisor de compra
-        + 5 pts: Sector industrial relevante
+**PERFIL DEL LEAD:**
++ 20 pts: Empresa mediana/grande
++ 15 pts: Tiene presupuesto definido
++ 10 pts: Decisor de compra
++ 5 pts: Sector industrial relevante
 
-        COMPORTAMIENTO:
-        + 10 pts: Visitó página de precios
-        + 15 pts: Descargó demo/prueba
-        + 20 pts: Solicitó cotización
-        + 5 pts: Abrió emails
+**COMPORTAMIENTO:**
++ 10 pts: Visitó página de precios
++ 15 pts: Descargó demo/prueba
++ 20 pts: Solicitó cotización
++ 5 pts: Abrió emails
 
-        EJEMPLO:
-        Lead "Panadería ABC":
-        - Empresa mediana: +20
-        - Tiene presupuesto: +15
-        - Visitó precios: +10
-        - Pidió cotización: +20
-        TOTAL: 65 puntos ⭐⭐⭐ (Lead CALIENTE)
+**EJEMPLO:**
+Lead "Panadería ABC":
+- Empresa mediana: +20
+- Tiene presupuesto: +15
+- Visitó precios: +10
+- Pidió cotización: +20
+TOTAL: 65 puntos ⭐⭐⭐ (Lead CALIENTE)
 
-        Lead "Juan curioso":
-        - Freelancer: +5
-        - Sin presupuesto: +0
-        - Solo exploró: +5
-        TOTAL: 10 puntos ⭐ (Lead FRÍO)
+Lead "Juan curioso":
+- Freelancer: +5
+- Sin presupuesto: +0
+- Solo exploró: +5
+TOTAL: 10 puntos ⭐ (Lead FRÍO)
 
-        Enfócate en leads con más puntos.
-      `
+Enfócate en leads con más puntos.`
     },
     relationships: [
       {
@@ -2331,33 +2313,31 @@ Primero recibes dinero, luego facturas.`
     icon: '💲',
     example: {
       title: 'Múltiples listas de precios',
-      content: `
-        PRODUCTO: Camiseta Polo
+      content: `**PRODUCTO:** Camiseta Polo
 
-        LISTA PÚBLICA (clientes normales):
-        → Precio: $500
+**LISTA PÚBLICA (clientes normales):**
+→ Precio: $500
 
-        LISTA MAYORISTA (compra 50+ piezas):
-        → Precio: $400 (20% menos)
+**LISTA MAYORISTA (compra 50+ piezas):**
+→ Precio: $400 (20% menos)
 
-        LISTA VIP (clientes frecuentes):
-        → Precio: $450 (10% menos)
+**LISTA VIP (clientes frecuentes):**
+→ Precio: $450 (10% menos)
 
-        LISTA EMPLEADOS:
-        → Precio: $350 (30% menos)
+**LISTA EMPLEADOS:**
+→ Precio: $350 (30% menos)
 
-        CÓMO FUNCIONA:
-        1. Asignas lista de precios al cliente
-        2. Al crear cotización, usa esa lista
-        3. Precios se calculan automáticamente
-        4. No necesitas recordar descuentos
+**CÓMO FUNCIONA:**
+1. Asignas lista de precios al cliente
+2. Al crear cotización, usa esa lista
+3. Precios se calculan automáticamente
+4. No necesitas recordar descuentos
 
-        CASOS DE USO:
-        - Precios por volumen
-        - Precios por región/país
-        - Precios por temporada
-        - Precios B2B vs B2C
-      `
+**CASOS DE USO:**
+- Precios por volumen
+- Precios por región/país
+- Precios por temporada
+- Precios B2B vs B2C`
     },
     relationships: [
       {
@@ -2392,31 +2372,29 @@ Primero recibes dinero, luego facturas.`
     icon: '🏷️',
     example: {
       title: 'Tipos de descuentos',
-      content: `
-        DESCUENTO MANUAL (tú decides):
-        Producto: $1,000
-        Descuento: 15%
-        Precio final: $850
+      content: `**DESCUENTO MANUAL (tú decides):**
+Producto: $1,000
+Descuento: 15%
+Precio final: $850
 
-        DESCUENTO POR CANTIDAD:
-        1-9 unidades: precio normal
-        10-49 unidades: 10% descuento
-        50+ unidades: 20% descuento
+**DESCUENTO POR CANTIDAD:**
+1-9 unidades: precio normal
+10-49 unidades: 10% descuento
+50+ unidades: 20% descuento
 
-        DESCUENTO POR PROMOCIÓN:
-        "Buen Fin": 25% en toda la tienda
-        Fecha inicio: 15 nov
-        Fecha fin: 18 nov
+**DESCUENTO POR PROMOCIÓN:**
+"Buen Fin": 25% en toda la tienda
+Fecha inicio: 15 nov
+Fecha fin: 18 nov
 
-        DESCUENTO POR PRONTO PAGO:
-        "Si pagas en 10 días: 2% descuento"
-        Ayuda a mejorar tu flujo de efectivo
+**DESCUENTO POR PRONTO PAGO:**
+"Si pagas en 10 días: 2% descuento"
+Ayuda a mejorar tu flujo de efectivo
 
-        IMPORTANTE:
-        → Siempre calcula si el descuento es rentable
-        → No vendas por debajo del costo
-        → Documenta por qué diste el descuento
-      `
+**IMPORTANTE:**
+→ Siempre calcula si el descuento es rentable
+→ No vendas por debajo del costo
+→ Documenta por qué diste el descuento`
     },
     relationships: [
       {
@@ -2451,32 +2429,30 @@ Primero recibes dinero, luego facturas.`
     icon: '🎁',
     example: {
       title: 'Programa de puntos típico',
-      content: `
-        ACUMULACIÓN:
-        Por cada $100 de compra = 10 puntos
+      content: `**ACUMULACIÓN:**
+Por cada $100 de compra = 10 puntos
 
-        CANJE:
-        100 puntos = $50 de descuento
-        200 puntos = $120 de descuento
-        500 puntos = Producto gratis
+**CANJE:**
+100 puntos = $50 de descuento
+200 puntos = $120 de descuento
+500 puntos = Producto gratis
 
-        EJEMPLO CLIENTE:
-        María compra regularmente:
-        - Enero: $500 → 50 puntos
-        - Febrero: $800 → 80 puntos
-        - Marzo: $400 → 40 puntos
-        Total: 170 puntos
+**EJEMPLO CLIENTE:**
+María compra regularmente:
+- Enero: $500 → 50 puntos
+- Febrero: $800 → 80 puntos
+- Marzo: $400 → 40 puntos
+Total: 170 puntos
 
-        María canjea 100 puntos:
-        → Obtiene $50 de descuento
-        → Le quedan 70 puntos
+María canjea 100 puntos:
+→ Obtiene $50 de descuento
+→ Le quedan 70 puntos
 
-        BENEFICIOS PARA TI:
-        → Clientes regresan (retención)
-        → Compran más para juntar puntos
-        → Datos de comportamiento de compra
-        → Diferenciarte de competencia
-      `
+**BENEFICIOS PARA TI:**
+→ Clientes regresan (retención)
+→ Compran más para juntar puntos
+→ Datos de comportamiento de compra
+→ Diferenciarte de competencia`
     },
     relationships: [
       {
@@ -2511,27 +2487,25 @@ Primero recibes dinero, luego facturas.`
     icon: '💸',
     example: {
       title: 'Cálculo de comisiones',
-      content: `
-        ESQUEMA DE COMISIÓN:
-        Vendedor: Ana García
-        Comisión: 5% sobre ventas
+      content: `**ESQUEMA DE COMISIÓN:**
+Vendedor: Ana García
+Comisión: 5% sobre ventas
 
-        VENTAS DEL MES:
-        Venta 1: $10,000 → Comisión: $500
-        Venta 2: $25,000 → Comisión: $1,250
-        Venta 3: $8,000  → Comisión: $400
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━
-        Total ventas: $43,000
-        Total comisión: $2,150
+**VENTAS DEL MES:**
+Venta 1: $10,000 → Comisión: $500
+Venta 2: $25,000 → Comisión: $1,250
+Venta 3: $8,000  → Comisión: $400
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total ventas: $43,000
+Total comisión: $2,150
 
-        ESQUEMAS COMUNES:
-        - Porcentaje fijo (5% de toda venta)
-        - Escalonado (5% hasta $50k, 7% arriba)
-        - Por producto (más % en productos prioritarios)
-        - Por margen (% sobre la ganancia, no venta)
+**ESQUEMAS COMUNES:**
+- Porcentaje fijo (5% de toda venta)
+- Escalonado (5% hasta $50k, 7% arriba)
+- Por producto (más % en productos prioritarios)
+- Por margen (% sobre la ganancia, no venta)
 
-        Odoo calcula automáticamente según reglas que configures.
-      `
+Odoo calcula automáticamente según reglas que configures.`
     },
     relationships: [
       {
@@ -2566,33 +2540,31 @@ Primero recibes dinero, luego facturas.`
     icon: '👥',
     example: {
       title: 'Organización de equipos de ventas',
-      content: `
-        EMPRESA DE SOFTWARE:
+      content: `**EMPRESA DE SOFTWARE:**
 
-        EQUIPO CORPORATIVO:
-        - Líder: Carlos (20% comisión)
-        - Ana, Roberto, María
-        - Meta: $500,000/mes
-        - Clientes: Empresas grandes
+**EQUIPO CORPORATIVO:**
+- Líder: Carlos (20% comisión)
+- Ana, Roberto, María
+- Meta: $500,000/mes
+- Clientes: Empresas grandes
 
-        EQUIPO PYMES:
-        - Líder: Laura (15% comisión)
-        - José, Diana, Pedro
-        - Meta: $200,000/mes
-        - Clientes: Pequeños negocios
+**EQUIPO PYMES:**
+- Líder: Laura (15% comisión)
+- José, Diana, Pedro
+- Meta: $200,000/mes
+- Clientes: Pequeños negocios
 
-        EQUIPO RETAIL:
-        - Líder: Fernanda
-        - Vendedores de tienda
-        - Meta: $100,000/mes
-        - Clientes: Consumidor final
+**EQUIPO RETAIL:**
+- Líder: Fernanda
+- Vendedores de tienda
+- Meta: $100,000/mes
+- Clientes: Consumidor final
 
-        BENEFICIOS:
-        → Especialización por tipo de cliente
-        → Metas claras por equipo
-        → Competencia sana entre equipos
-        → Mejor seguimiento de rendimiento
-      `
+**BENEFICIOS:**
+→ Especialización por tipo de cliente
+→ Metas claras por equipo
+→ Competencia sana entre equipos
+→ Mejor seguimiento de rendimiento`
     },
     relationships: [
       {
@@ -2627,35 +2599,33 @@ Primero recibes dinero, luego facturas.`
     icon: '🗺️',
     example: {
       title: 'División por territorios',
-      content: `
-        POR GEOGRAFÍA:
-        ━━━━━━━━━━━━━━━
-        Norte (Monterrey, Saltillo):
-        → Vendedor: Roberto
-        → 150 clientes potenciales
+      content: `**POR GEOGRAFÍA:**
+━━━━━━━━━━━━━━━
+Norte (Monterrey, Saltillo):
+→ Vendedor: Roberto
+→ 150 clientes potenciales
 
-        Centro (CDMX, Puebla):
-        → Vendedor: María
-        → 300 clientes potenciales
+Centro (CDMX, Puebla):
+→ Vendedor: María
+→ 300 clientes potenciales
 
-        Sur (Oaxaca, Chiapas):
-        → Vendedor: Ana
-        → 100 clientes potenciales
+Sur (Oaxaca, Chiapas):
+→ Vendedor: Ana
+→ 100 clientes potenciales
 
-        POR SECTOR:
-        ━━━━━━━━━━━━━━━
-        Salud (hospitales, clínicas):
-        → Vendedor especializado: Juan
+**POR SECTOR:**
+━━━━━━━━━━━━━━━
+Salud (hospitales, clínicas):
+→ Vendedor especializado: Juan
 
-        Retail (tiendas, supermercados):
-        → Vendedor especializado: Laura
+Retail (tiendas, supermercados):
+→ Vendedor especializado: Laura
 
-        VENTAJAS:
-        → Evita que vendedores compitan por mismos clientes
-        → Mejor conocimiento del territorio/sector
-        → Responsabilidad clara
-        → Más fácil medir rendimiento
-      `
+**VENTAJAS:**
+→ Evita que vendedores compitan por mismos clientes
+→ Mejor conocimiento del territorio/sector
+→ Responsabilidad clara
+→ Más fácil medir rendimiento`
     },
     relationships: [
       {
@@ -2690,34 +2660,32 @@ Primero recibes dinero, luego facturas.`
     icon: '📄',
     example: {
       title: 'Plantillas típicas',
-      content: `
-        PLANTILLA: "Paquete Básico Software"
-        Productos incluidos:
-        - Licencia básica: $5,000/año
-        - Soporte estándar: $1,200/año
-        - Capacitación 4 horas: $2,000
-        Total: $8,200
+      content: `**PLANTILLA: "Paquete Básico Software"**
+Productos incluidos:
+- Licencia básica: $5,000/año
+- Soporte estándar: $1,200/año
+- Capacitación 4 horas: $2,000
+Total: $8,200
 
-        PLANTILLA: "Paquete Empresarial"
-        Productos incluidos:
-        - Licencia empresarial: $15,000/año
-        - Soporte prioritario: $3,600/año
-        - Capacitación 16 horas: $6,000
-        - Implementación: $10,000
-        Total: $34,600
+**PLANTILLA: "Paquete Empresarial"**
+Productos incluidos:
+- Licencia empresarial: $15,000/año
+- Soporte prioritario: $3,600/año
+- Capacitación 16 horas: $6,000
+- Implementación: $10,000
+Total: $34,600
 
-        CÓMO USARLA:
-        1. Cliente pide cotización
-        2. Seleccionas plantilla apropiada
-        3. Ajustas cantidades si necesario
-        4. Envías en 2 minutos
+**CÓMO USARLA:**
+1. Cliente pide cotización
+2. Seleccionas plantilla apropiada
+3. Ajustas cantidades si necesario
+4. Envías en 2 minutos
 
-        VENTAJAS:
-        → Ahorro de tiempo enorme
-        → Mismos términos siempre
-        → Menos errores
-        → Imagen profesional consistente
-      `
+**VENTAJAS:**
+→ Ahorro de tiempo enorme
+→ Mismos términos siempre
+→ Menos errores
+→ Imagen profesional consistente`
     },
     relationships: [
       {
@@ -2752,34 +2720,32 @@ Primero recibes dinero, luego facturas.`
     icon: '⏰',
     example: {
       title: 'Términos de pago comunes',
-      content: `
-        PAGO INMEDIATO:
-        → Debe pagar al recibir factura
-        → Usado: Clientes nuevos, ventas pequeñas
+      content: `**PAGO INMEDIATO:**
+→ Debe pagar al recibir factura
+→ Usado: Clientes nuevos, ventas pequeñas
 
-        NETO 15 DÍAS:
-        → Paga dentro de 15 días
-        → Usado: Clientes frecuentes
+**NETO 15 DÍAS:**
+→ Paga dentro de 15 días
+→ Usado: Clientes frecuentes
 
-        NETO 30 DÍAS:
-        → Paga dentro de 30 días
-        → Usado: Clientes confiables
+**NETO 30 DÍAS:**
+→ Paga dentro de 30 días
+→ Usado: Clientes confiables
 
-        NETO 60 DÍAS:
-        → Paga dentro de 60 días
-        → Usado: Clientes corporativos grandes
+**NETO 60 DÍAS:**
+→ Paga dentro de 60 días
+→ Usado: Clientes corporativos grandes
 
-        30% ANTICIPO + 70% ENTREGA:
-        → 30% al confirmar pedido
-        → 70% al entregar producto
-        → Usado: Proyectos, fabricación
+**30% ANTICIPO + 70% ENTREGA:**
+→ 30% al confirmar pedido
+→ 70% al entregar producto
+→ Usado: Proyectos, fabricación
 
-        50% ANTICIPO + 25% + 25%:
-        → Tres pagos parciales
-        → Usado: Proyectos largos
+**50% ANTICIPO + 25% + 25%:**
+→ Tres pagos parciales
+→ Usado: Proyectos largos
 
-        Cada cliente tiene términos asignados en su ficha.
-      `
+Cada cliente tiene términos asignados en su ficha.`
     },
     relationships: [
       {
@@ -2814,31 +2780,29 @@ Primero recibes dinero, luego facturas.`
     icon: '⚙️',
     example: {
       title: 'Reglas de precio en acción',
-      content: `
-        REGLA POR CANTIDAD:
-        Si cantidad >= 10: descuento 10%
-        Si cantidad >= 50: descuento 20%
-        Si cantidad >= 100: descuento 30%
+      content: `**REGLA POR CANTIDAD:**
+Si cantidad >= 10: descuento 10%
+Si cantidad >= 50: descuento 20%
+Si cantidad >= 100: descuento 30%
 
-        Cotización:
-        - 5 camisetas: precio normal ($500 c/u)
-        - 15 camisetas: -10% automático ($450 c/u)
-        - 60 camisetas: -20% automático ($400 c/u)
+Cotización:
+- 5 camisetas: precio normal ($500 c/u)
+- 15 camisetas: -10% automático ($450 c/u)
+- 60 camisetas: -20% automático ($400 c/u)
 
-        REGLA POR FECHA:
-        Del 1-15 diciembre: -25% (promoción navidad)
-        Resto del año: precio normal
+**REGLA POR FECHA:**
+Del 1-15 diciembre: -25% (promoción navidad)
+Resto del año: precio normal
 
-        REGLA POR CLIENTE:
-        Si cliente es "Mayorista": -15% siempre
-        Si cliente es "VIP": -10% siempre
+**REGLA POR CLIENTE:**
+Si cliente es "Mayorista": -15% siempre
+Si cliente es "VIP": -10% siempre
 
-        CÓMO FUNCIONA:
-        1. Configuras la regla una vez
-        2. Al crear cotización, se aplica automática
-        3. No olvidas dar descuentos prometidos
-        4. Consistencia en todos los vendedores
-      `
+**CÓMO FUNCIONA:**
+1. Configuras la regla una vez
+2. Al crear cotización, se aplica automática
+3. No olvidas dar descuentos prometidos
+4. Consistencia en todos los vendedores`
     },
     relationships: [
       {
@@ -2873,34 +2837,32 @@ Primero recibes dinero, luego facturas.`
     icon: '✅',
     example: {
       title: 'De cotización a orden de venta',
-      content: `
-        COTIZACIÓN (propuesta):
-        Estado: "Presupuesto"
-        → Esperando respuesta del cliente
-        → Sin compromiso de entrega
-        → Puedes modificar libremente
+      content: `**COTIZACIÓN (propuesta):**
+Estado: "Presupuesto"
+→ Esperando respuesta del cliente
+→ Sin compromiso de entrega
+→ Puedes modificar libremente
 
-        ORDEN DE VENTA (confirmada):
-        Estado: "Orden de Venta"
-        → Cliente aceptó
-        → Compromiso de entregar
-        → Puedes facturar
-        → Reserva inventario
+**ORDEN DE VENTA (confirmada):**
+Estado: "Orden de Venta"
+→ Cliente aceptó
+→ Compromiso de entregar
+→ Puedes facturar
+→ Reserva inventario
 
-        PROCESO:
-        1. Creas cotización
-        2. Envías al cliente
-        3. Cliente acepta
-        4. Confirmas → Se vuelve Orden de Venta
-        5. Entregas producto
-        6. Facturas
+**PROCESO:**
+1. Creas cotización
+2. Envías al cliente
+3. Cliente acepta
+4. Confirmas → Se vuelve Orden de Venta
+5. Entregas producto
+6. Facturas
 
-        EFECTOS DE CONFIRMAR:
-        → Productos se reservan en inventario
-        → Se crea orden de entrega
-        → Puedes generar factura
-        → Aparece en reportes de ventas
-      `
+**EFECTOS DE CONFIRMAR:**
+→ Productos se reservan en inventario
+→ Se crea orden de entrega
+→ Puedes generar factura
+→ Aparece en reportes de ventas`
     },
     relationships: [
       {
