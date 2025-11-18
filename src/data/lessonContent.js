@@ -57,8 +57,9 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Configuración > Plan de Cuentas
 
-          Ejemplo de estructura:
+          **Ejemplo de estructura:**
 
+          ~~~text
           1000 - ACTIVOS
             1100 - Activo Corriente
               1110 - Bancos
@@ -72,6 +73,7 @@ export const lessonContent = {
             2100 - Pasivo Corriente
               2110 - Cuentas por Pagar
               2120 - Impuestos por Pagar
+          ~~~
         `,
         tips: [
           'Usa una numeración lógica y escalable para tus cuentas',
@@ -95,7 +97,7 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Configuración > Diarios
 
-          Crear un nuevo diario:
+          **Crear un nuevo diario:**
 
           1. Clic en "Crear"
           2. Nombre: "Banco BBVA"
@@ -103,7 +105,7 @@ export const lessonContent = {
           4. Cuenta por defecto: Seleccionar cuenta bancaria
           5. Secuencia de asientos: Automática
 
-          Configuración del diario:
+          **Configuración del diario:**
           ✓ Moneda (si es diferente a la principal)
           ✓ Cuenta contable asociada
           ✓ Secuencia de numeración
@@ -130,18 +132,18 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Configuración > Períodos Fiscales
 
-          Configuración típica:
+          **Configuración típica:**
 
-          Año Fiscal 2025:
+          **Año Fiscal 2025:**
           - Inicio: 01/01/2025
           - Fin: 31/12/2025
 
-          Períodos mensuales:
+          **Períodos mensuales:**
           - Enero 2025 (01/01 - 31/01)
           - Febrero 2025 (01/02 - 28/02)
           - ... etc.
 
-          Estado de períodos:
+          **Estado de períodos:**
           ○ Abierto: Se pueden crear y modificar asientos
           ○ Cerrado: No se permiten nuevos asientos (solo con permisos especiales)
         `,
@@ -264,7 +266,8 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Clientes > Facturas
 
-          Crear factura manual:
+          **Crear factura manual:**
+
           1. Clic en "Crear"
           2. Seleccionar Cliente
           3. Agregar líneas de factura:
@@ -277,8 +280,9 @@ export const lessonContent = {
           5. Confirmar factura
           6. Enviar por email o imprimir
 
-          Ejemplo de factura:
+          **Ejemplo de factura:**
 
+          ~~~text
           Cliente: Empresa ABC S.A.
           Fecha: 15/01/2025
 
@@ -289,6 +293,7 @@ export const lessonContent = {
           Subtotal: $1,600
           IVA (19%): $304
           TOTAL: $1,904
+          ~~~
         `,
         tips: [
           'Verifica que el cliente tenga configurados todos sus datos fiscales',
@@ -310,7 +315,8 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Desde la factura > Botón "Agregar nota de crédito"
 
-          Proceso:
+          **Proceso:**
+
           1. Abrir la factura original
           2. Clic en "Agregar nota de crédito"
           3. Seleccionar motivo:
@@ -320,14 +326,16 @@ export const lessonContent = {
           4. Ajustar cantidades o importes
           5. Confirmar nota de crédito
 
-          Ejemplo:
+          **Ejemplo:**
 
+          ~~~text
           Factura Original: #INV/2025/0001 - $1,904
           Nota de Crédito: #RINV/2025/0001 - ($595)
 
           Motivo: Devolución de Licencia de Software
 
           Saldo pendiente: $1,904 - $595 = $1,309
+          ~~~
         `,
         tips: [
           'Las notas de crédito siempre deben referenciar la factura original',
@@ -349,7 +357,8 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Desde la factura > Botón "Registrar pago"
 
-          Registrar pago:
+          **Registrar pago:**
+
           1. Abrir factura pendiente
           2. Clic en "Registrar pago"
           3. Configurar:
@@ -359,7 +368,7 @@ export const lessonContent = {
              - Fecha de pago
           4. Confirmar
 
-          Estados de factura:
+          **Estados de factura:**
 
           🔴 Borrador - Factura no confirmada
           🟡 Publicada - Factura confirmada, pendiente de pago
@@ -386,14 +395,14 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Reportes > Antigüedad de Saldos
 
-          Reporte de Antigüedad:
+          **Reporte de Antigüedad:**
 
-          Cliente         | Actual | 1-30 días | 31-60 días | +60 días | Total
-          ----------------|--------|-----------|------------|----------|-------
-          Empresa ABC     | $1,000 | $500      | $300       | $0       | $1,800
-          Empresa XYZ     | $0     | $0        | $800       | $400     | $1,200
+          | Cliente     | Actual | 1-30 días | 31-60 días | +60 días | Total   |
+          | ----------- | ------ | --------- | ---------- | -------- | ------- |
+          | Empresa ABC | $1,000 | $500      | $300       | $0       | $1,800  |
+          | Empresa XYZ | $0     | $0        | $800       | $400     | $1,200  |
 
-          Acciones de seguimiento:
+          **Acciones de seguimiento:**
           ✓ Enviar recordatorio automático a 30 días
           ✓ Llamada telefónica a 45 días
           ✓ Suspender crédito a 60 días
@@ -564,8 +573,9 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Proveedores > Facturas
 
-          Crear factura de proveedor:
+          **Crear factura de proveedor:**
 
+          ~~~text
           Proveedor: Software S.A.
           Fecha factura: 20/01/2025
           Fecha vencimiento: 20/02/2025 (30 días)
@@ -577,8 +587,9 @@ export const lessonContent = {
           Subtotal: $700
           IVA (19%): $133
           TOTAL: $833
+          ~~~
 
-          ⚠️ IMPORTANTE:
+          **⚠️ IMPORTANTE:**
           - Verificar que el NIF del proveedor sea correcto
           - Adjuntar PDF de la factura original
           - Validar que los montos coincidan
@@ -603,27 +614,27 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Factura de proveedor > Estado
 
-          Flujo típico:
+          **Flujo típico:**
 
-          1. BORRADOR
+          **1. BORRADOR**
              - Factura ingresada pero no confirmada
              - Se pueden hacer cambios
              - No afecta contabilidad
 
-          2. PUBLICADA
+          **2. PUBLICADA**
              - Factura confirmada
              - Genera asiento contable
              - Ya no se puede editar (solo cancelar)
 
-          3. PAGO PROGRAMADO
+          **3. PAGO PROGRAMADO**
              - Pago ordenado pero no ejecutado
              - En cola para pago
 
-          4. PAGADA
+          **4. PAGADA**
              - Pago registrado y confirmado
              - Factura cerrada
 
-          Validaciones recomendadas:
+          **Validaciones recomendadas:**
           ✓ ¿La orden de compra existe?
           ✓ ¿Los productos/servicios fueron recibidos?
           ✓ ¿Los precios son correctos?
@@ -650,22 +661,25 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Proveedores > Pagos
 
-          Registro de pago:
+          **Registro de pago:**
 
+          ~~~text
           Proveedor: Software S.A.
           Facturas pendientes: 2
             - Factura 001: $833
             - Factura 002: $1,200
           Total adeudado: $2,033
+          ~~~
 
-          Pagar:
+          **Pagar:**
+
           1. Seleccionar facturas a pagar
           2. Elegir método: Transferencia bancaria
           3. Seleccionar cuenta bancaria
           4. Fecha de pago: 20/01/2025
           5. Referencia: TRANS-2025-001
 
-          Pago por lotes:
+          **Pago por lotes:**
           - Selecciona múltiples facturas
           - Genera archivo bancario SEPA (Europa) o NACHA (USA)
           - Sube al banco para procesamiento masivo
@@ -691,23 +705,22 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Reportes > Gastos
 
-          Reporte mensual de gastos (Enero 2025):
+          **Reporte mensual de gastos (Enero 2025):**
 
-          Categoría              | Monto    | % Total
-          -----------------------|----------|--------
-          Software y licencias   | $2,500   | 25%
-          Servicios profesionales| $3,000   | 30%
-          Marketing y publicidad | $1,500   | 15%
-          Oficina y suministros  | $1,000   | 10%
-          Otros                  | $2,000   | 20%
-          -----------------------|----------|--------
-          TOTAL                  | $10,000  | 100%
+          | Categoría               | Monto    | % Total |
+          | ----------------------- | -------- | ------- |
+          | Software y licencias    | $2,500   | 25%     |
+          | Servicios profesionales | $3,000   | 30%     |
+          | Marketing y publicidad  | $1,500   | 15%     |
+          | Oficina y suministros   | $1,000   | 10%     |
+          | Otros                   | $2,000   | 20%     |
+          | **TOTAL**               | **$10,000** | **100%** |
 
-          Comparativa año anterior:
-          Enero 2024: $8,500
-          Incremento: 17.6% 📈
+          **Comparativa año anterior:**
+          - Enero 2024: $8,500
+          - Incremento: 17.6% 📈
 
-          Análisis:
+          **Análisis:**
           - Incremento en software por nuevas herramientas
           - Servicios profesionales estables
           - Oportunidad de reducir "Otros" investigando detalle
@@ -855,17 +868,18 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Bancos > Importar extracto
 
-          Datos del extracto de Banco Santander (Enero 2025):
+          **Datos del extracto de Banco Santander (Enero 2025):**
 
-          Fecha      | Descripción                    | Débito  | Crédito | Saldo
-          -----------|--------------------------------|---------|---------|--------
-          2025-01-05 | Pago Odoo S.A. - Licencias     | 1,089   |         | 123,911
-          2025-01-10 | Cobro INV-2025-001 TechCorp    |         | 18,876  | 142,787
-          2025-01-15 | Pago nóminas enero             | 28,000  |         | 114,787
-          2025-01-20 | Cobro INV-2025-002 Distribuid. |         | 968     | 115,755
-          2025-01-25 | Pago Sistemas Pro - Hardware   | 1,815   |         | 113,940
+          | Fecha      | Descripción                    | Débito  | Crédito | Saldo   |
+          | ---------- | ------------------------------ | ------- | ------- | ------- |
+          | 2025-01-05 | Pago Odoo S.A. - Licencias     | 1,089   |         | 123,911 |
+          | 2025-01-10 | Cobro INV-2025-001 TechCorp    |         | 18,876  | 142,787 |
+          | 2025-01-15 | Pago nóminas enero             | 28,000  |         | 114,787 |
+          | 2025-01-20 | Cobro INV-2025-002 Distribuid. |         | 968     | 115,755 |
+          | 2025-01-25 | Pago Sistemas Pro - Hardware   | 1,815   |         | 113,940 |
 
-          Pasos de importación:
+          **Pasos de importación:**
+
           1. Descargar extracto del banco en formato CSV/OFX
           2. En Odoo: Contabilidad > Bancos > [Tu banco]
           3. Botón "Importar"
@@ -894,8 +908,9 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Configuración > Reglas de conciliación
 
-          Ejemplo de regla automática:
+          **Ejemplo de regla automática:**
 
+          ~~~text
           Nombre: "Cobros de clientes"
           Tipo: Extracto bancario de entrada
           Cuenta contable: Clientes (1120)
@@ -904,13 +919,14 @@ export const lessonContent = {
           - Monto > 0 (entrada de dinero)
           - Buscar factura con monto exacto
           - Buscar referencia que contenga "INV"
+          ~~~
 
-          Resultado de conciliación automática:
+          **Resultado de conciliación automática:**
           ✅ Transacción: +18,876 EUR - Ref: "INV-2025-001"
           ✅ Conciliada con: Factura INV-2025-001 (TechCorp)
           ✅ Estado: Conciliada automáticamente
 
-          Ahorro de tiempo: ~90% de transacciones conciliadas automáticamente
+          **Ahorro de tiempo:** ~90% de transacciones conciliadas automáticamente
         `,
         tips: [
           'Configura reglas para tus transacciones más frecuentes',
@@ -933,30 +949,35 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Bancos > Conciliar
 
-          Caso práctico - Pago múltiple:
+          **Caso práctico - Pago múltiple:**
 
-          Transacción bancaria:
+          **Transacción bancaria:**
           - Pago a "Odoo S.A." por 2,178 EUR
 
-          Facturas pendientes:
+          **Facturas pendientes:**
           - BILL-2025-001: 1,089 EUR
           - BILL-2025-003: 1,089 EUR
 
-          Proceso de conciliación:
+          **Proceso de conciliación:**
+
           1. Seleccionar transacción bancaria pendiente
           2. Buscar facturas del proveedor
           3. Marcar ambas facturas (1,089 + 1,089 = 2,178)
           4. Verificar que el total coincide
           5. Clic en "Validar"
 
-          ✅ Resultado: 2 facturas conciliadas con 1 pago
+          ✅ **Resultado:** 2 facturas conciliadas con 1 pago
 
-          Caso con diferencia:
+          **Caso con diferencia:**
+
+          ~~~text
           Transacción: 100 EUR
           Factura: 102 EUR
           Diferencia: -2 EUR (comisión bancaria)
+          ~~~
 
-          Solución:
+          **Solución:**
+
           1. Seleccionar transacción y factura
           2. Registrar diferencia como "Comisión bancaria"
           3. Cuenta: Gastos bancarios (6280)
@@ -983,13 +1004,15 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Bancos > Diferencias
 
-          Análisis de diferencias (31/01/2025):
+          **Análisis de diferencias (31/01/2025):**
 
+          ~~~text
           Saldo según Odoo:     115,940 EUR
           Saldo según banco:    113,940 EUR
           Diferencia:            2,000 EUR
+          ~~~
 
-          Investigación:
+          **Investigación:**
 
           1. Revisar transacciones no conciliadas en Odoo:
              ✓ Pago cheque #1234 a proveedor: 2,000 EUR (sin cobrar)
@@ -1000,17 +1023,20 @@ export const lessonContent = {
           3. Verificar fechas:
              ✓ Cheque emitido 30/01 pero cobrado 02/02
 
-          Resolución:
+          **Resolución:**
           - El cheque se cobrará en febrero
           - Diferencia temporal normal
           - Documentar en "Partidas en tránsito"
           - Se conciliará en próximo extracto
 
-          Reporte de conciliación:
+          **Reporte de conciliación:**
+
+          ~~~text
           Saldo banco:              113,940 EUR
           + Cheques en tránsito:      2,000 EUR
           - Depósitos pendientes:         0 EUR
           = Saldo según libros:     115,940 EUR ✅
+          ~~~
         `,
         tips: [
           'Concilia al menos mensualmente',
@@ -1089,10 +1115,11 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Reportes > Balance General
 
-          MENTORA CONSULTING S.A.
-          Balance General al 31/01/2025
+          **MENTORA CONSULTING S.A.**
+          **Balance General al 31/01/2025**
           (Cifras en EUR)
 
+          ~~~text
           ACTIVOS
           Activo Corriente
             Bancos y equivalentes        250,000
@@ -1125,8 +1152,9 @@ export const lessonContent = {
             Total Patrimonio             328,166
 
           TOTAL PASIVO + PATRIMONIO      366,844 ✅
+          ~~~
 
-          Análisis:
+          **Análisis:**
           - Liquidez: 274,844 / 38,678 = 7.1 (Excelente)
           - Endeudamiento: 38,678 / 366,844 = 10.5% (Bajo)
           - ROE: 28,166 / 328,166 = 8.6% (Bueno)
@@ -1153,10 +1181,11 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Reportes > Estado de Resultados
 
-          MENTORA CONSULTING S.A.
-          Estado de Resultados - Enero 2025
+          **MENTORA CONSULTING S.A.**
+          **Estado de Resultados - Enero 2025**
           (Cifras en EUR)
 
+          ~~~text
           INGRESOS
             Consultoría Estratégica        35,000
             Implementación Odoo            45,000
@@ -1196,8 +1225,9 @@ export const lessonContent = {
 
           UTILIDAD NETA                    28,166
           Margen neto: 28.2%
+          ~~~
 
-          KPIs:
+          **KPIs:**
           ✅ Margen bruto > 50% (55.5%)
           ✅ Margen operativo > 25% (32.2%)
           ✅ Margen neto > 15% (28.2%)
@@ -1222,10 +1252,11 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Reportes > Flujo de Caja
 
-          MENTORA CONSULTING S.A.
-          Flujo de Caja - Enero 2025
+          **MENTORA CONSULTING S.A.**
+          **Flujo de Caja - Enero 2025**
           (Cifras en EUR)
 
+          ~~~text
           SALDO INICIAL (01/01/2025)      225,000
 
           ACTIVIDADES OPERATIVAS
@@ -1249,8 +1280,9 @@ export const lessonContent = {
           FLUJO NETO DEL PERÍODO           25,000
 
           SALDO FINAL (31/01/2025)        250,000
+          ~~~
 
-          Análisis:
+          **Análisis:**
           - Flujo operativo positivo: ✅ Bueno
           - Capacidad de inversión: ✅ Sí
           - Días de caja: 250,000 / (100,000/30) = 75 días
@@ -1276,31 +1308,32 @@ export const lessonContent = {
         example: `
           📍 Ruta en Odoo: Contabilidad > Reportes > Reportes personalizados
 
-          Ejemplos de reportes útiles:
+          **Ejemplos de reportes útiles:**
 
-          1. Análisis por Cliente (Top 5):
-             - TechCorp:        18,876 EUR (38%)
-             - Distribuidora:   15,200 EUR (30%)
-             - Beta Services:   10,500 EUR (21%)
-             - Retail Group:     8,424 EUR (17%)
-             - Startups Inn:     2,000 EUR (4%)
+          **1. Análisis por Cliente (Top 5):**
+          - TechCorp:        18,876 EUR (38%)
+          - Distribuidora:   15,200 EUR (30%)
+          - Beta Services:   10,500 EUR (21%)
+          - Retail Group:     8,424 EUR (17%)
+          - Startups Inn:     2,000 EUR (4%)
 
-          2. Gastos por Categoría:
-             - Personal:        44,000 EUR (51%)
-             - Operaciones:     15,000 EUR (17%)
-             - Software:         2,500 EUR (3%)
-             - Marketing:        2,800 EUR (3%)
-             - Otros:           21,700 EUR (25%)
+          **2. Gastos por Categoría:**
+          - Personal:        44,000 EUR (51%)
+          - Operaciones:     15,000 EUR (17%)
+          - Software:         2,500 EUR (3%)
+          - Marketing:        2,800 EUR (3%)
+          - Otros:           21,700 EUR (25%)
 
-          3. Rentabilidad por Servicio:
-             Servicio              | Ingresos | Costos | Margen
-             ---------------------|----------|--------|--------
-             Implementación Odoo  | 45,000   | 18,000 | 60%
-             Consultoría          | 35,000   | 17,500 | 50%
-             Soporte              | 12,000   |  6,000 | 50%
-             Capacitación         |  8,000   |  3,000 | 62.5%
+          **3. Rentabilidad por Servicio:**
 
-          Configuración de reporte:
+          | Servicio            | Ingresos | Costos | Margen |
+          | ------------------- | -------- | ------ | ------ |
+          | Implementación Odoo | 45,000   | 18,000 | 60%    |
+          | Consultoría         | 35,000   | 17,500 | 50%    |
+          | Soporte             | 12,000   | 6,000  | 50%    |
+          | Capacitación        | 8,000    | 3,000  | 62.5%  |
+
+          **Configuración de reporte:**
           - Período: Mes actual
           - Agrupar por: Tipo de servicio
           - Mostrar: Ingresos, Costos, Margen
@@ -1905,32 +1938,367 @@ export const lessonContent = {
 
   'sales-002': {
     title: 'Gestión de Cotizaciones',
-    introduction: 'Crea cotizaciones profesionales y conviértelas en pedidos de venta de manera eficiente.',
+    introduction: `
+      Las cotizaciones son el primer paso formal en tu proceso de ventas. Una cotización bien estructurada
+      transmite profesionalismo y claridad, aumentando tus posibilidades de cerrar la venta.
+    `,
     sections: [
-      { title: '1. Crear Cotizaciones', content: 'Genera cotizaciones profesionales rápidamente.', example: '📍 Cotización para TechCorp:\nServicio: Implementación Odoo\nHoras: 80\nPrecio/hora: 120 EUR\nSubtotal: 9,600 EUR\nIVA 21%: 2,016 EUR\nTotal: 11,616 EUR\n\nVigencia: 30 días\nTérminos de pago: 50% adelanto, 50% al finalizar', tips: ['Usa plantillas para servicios recurrentes', 'Incluye términos claros'] },
-      { title: '2. Productos Opcionales', content: 'Ofrece productos adicionales en tus cotizaciones.', example: 'Base: Implementación Odoo (9,600 EUR)\nOpcionales:\n- Capacitación adicional: 1,200 EUR\n- Soporte extendido 6 meses: 2,400 EUR\n\nCliente elige qué agregar', tips: ['Usa opcionales para upselling', 'Márgenes más altos en opcionales'] }
+      {
+        title: '1. Crear Cotizaciones',
+        content: `
+          Genera cotizaciones profesionales que impresionen a tus clientes.
+
+          **Elementos clave de una cotización:**
+          - Cliente y datos de contacto
+          - Productos o servicios detallados
+          - Precios unitarios y totales
+          - Validez de la oferta
+          - Términos de pago
+          - Términos y condiciones
+        `,
+        example: `
+          📍 Ruta en Odoo: Ventas > Cotizaciones > Crear
+
+          Cotización para TechCorp:
+
+          **Datos del cliente:**
+          Cliente: TechCorp Solutions
+          Contacto: María García
+          Email: maria@techcorp.com
+          Fecha: 15/01/2025
+
+          **Líneas de cotización:**
+          ┌─────────────────────────┬──────┬──────────┬───────────┐
+          │ Producto/Servicio       │ Cant │ Precio/U │ Total     │
+          ├─────────────────────────┼──────┼──────────┼───────────┤
+          │ Implementación Odoo     │ 80h  │ 120 EUR  │ 9,600 EUR │
+          │ Módulos incluidos:      │      │          │           │
+          │ - Ventas                │      │          │           │
+          │ - CRM                   │      │          │           │
+          │ - Contabilidad          │      │          │           │
+          └─────────────────────────┴──────┴──────────┴───────────┘
+
+          **Totales:**
+          Subtotal:        9,600 EUR
+          IVA (21%):       2,016 EUR
+          TOTAL:          11,616 EUR
+
+          **Condiciones:**
+          ✓ Vigencia: 30 días
+          ✓ Términos de pago: 50% adelanto, 50% al finalizar
+          ✓ Tiempo de implementación: 6 semanas
+        `,
+        tips: [
+          'Usa plantillas para cotizaciones recurrentes y ahorra tiempo',
+          'Incluye términos y condiciones claros para evitar malentendidos',
+          'Añade notas internas para el equipo de ventas',
+          'Configura firmas digitales para aprobación rápida'
+        ]
+      },
+      {
+        title: '2. Productos Opcionales',
+        content: `
+          Los productos opcionales te permiten ofrecer servicios adicionales sin aumentar el precio base.
+
+          **Ventajas de los opcionales:**
+          - Cliente personaliza su compra
+          - Aumentas el ticket promedio
+          - No presionas al cliente
+          - Mayor flexibilidad en la oferta
+        `,
+        example: `
+          📍 Ruta: Cotización > Pestaña "Productos Opcionales"
+
+          **Paquete base:**
+          Implementación Odoo        9,600 EUR
+
+          **Productos opcionales disponibles:**
+          ┌────────────────────────────────┬───────────┬──────────┐
+          │ Producto Opcional              │ Precio    │ Margen   │
+          ├────────────────────────────────┼───────────┼──────────┤
+          │ Capacitación adicional (8h)    │ 1,200 EUR │ 70%      │
+          │ Soporte extendido 6 meses      │ 2,400 EUR │ 80%      │
+          │ Personalización avanzada       │ 1,800 EUR │ 65%      │
+          │ Migración de datos legacy      │ 3,000 EUR │ 60%      │
+          └────────────────────────────────┴───────────┴──────────┘
+
+          **Resultado:**
+          Si cliente elige 2 opcionales:
+          Base:         9,600 EUR
+          Opcionales:   3,600 EUR
+          Nuevo total: 13,200 EUR (+37.5%)
+        `,
+        tips: [
+          'Usa opcionales para servicios con alto margen',
+          'Máximo 3-5 opcionales para no abrumar al cliente',
+          'Destaca el valor agregado de cada opcional',
+          'Analiza qué opcionales se eligen más para mejorar tu oferta'
+        ]
+      }
     ],
-    quiz: { questions: [{ id: 'q1', question: '¿Cuál es la ventaja de productos opcionales?', options: ['No tienen ventaja', 'Permiten al cliente personalizar y aumentan ventas', 'Solo para inventario', 'Complican el proceso'], correct: 1, explanation: 'Los opcionales dan flexibilidad al cliente y oportunidad de vender más sin presionar.' }] },
-    practicalExercise: { title: 'Ejercicio: Cotización Completa', description: 'Crea una cotización con opcionales', steps: [] }
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Cuál es la ventaja principal de productos opcionales?',
+          options: [
+            'No tienen ninguna ventaja',
+            'Permiten al cliente personalizar y aumentan el valor promedio de venta',
+            'Solo sirven para productos físicos',
+            'Complican el proceso de venta'
+          ],
+          correct: 1,
+          explanation: 'Los opcionales dan flexibilidad al cliente para personalizar su compra y te dan la oportunidad de aumentar el valor de la venta sin presionar.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Cotización Completa con Opcionales',
+      description: 'Crea una cotización profesional para Distribuidora ABC con productos opcionales',
+      steps: []
+    }
   },
 
   'sales-003': {
     title: 'Pedidos de Venta',
-    introduction: 'Gestiona el ciclo completo de pedidos desde la confirmación hasta la entrega.',
+    introduction: `
+      Una vez que el cliente aprueba tu cotización, es momento de convertirla en un pedido de venta.
+      Este pedido activa todo el proceso operativo: reserva de productos, programación de entregas,
+      y facturación.
+    `,
     sections: [
-      { title: '1. Confirmar Pedidos', content: 'Convierte cotizaciones aprobadas en pedidos.', example: 'Cotización #S00045 → Pedido #SO00123\nEstado: Confirmado\nProductos reservados\nEntrega programada: 15/02/2025', tips: ['Confirma solo cuando el cliente acepta', 'Verifica stock antes'] },
-      { title: '2. Gestionar Entregas', content: 'Programa y ejecuta entregas de productos/servicios.', example: 'Pedido SO00123:\nFase 1: Análisis (Semana 1-2)\nFase 2: Configuración (Semana 3-4)\nFase 3: Capacitación (Semana 5)\nFase 4: Go-Live (Semana 6)', tips: ['Comunica fechas claramente', 'Actualiza estado regularmente'] }
+      {
+        title: '1. Confirmar Pedidos',
+        content: `
+          La confirmación de un pedido es un paso crítico que compromete recursos de la empresa.
+
+          **¿Qué sucede al confirmar un pedido?**
+          - Se genera un número de pedido de venta único
+          - Se reservan productos del inventario (si aplica)
+          - Se programa la entrega o ejecución del servicio
+          - Se bloquea el precio y condiciones
+          - Se activa el proceso de facturación
+        `,
+        example: `
+          📍 Ruta en Odoo: Ventas > Cotizaciones > [Seleccionar] > Confirmar
+
+          **Flujo de conversión:**
+
+          Cotización #S00045
+          → Botón "Confirmar venta"
+          → Pedido de venta #SO00123
+
+          **Estado del pedido:**
+          Estado: Pedido de venta
+          Cliente: TechCorp Solutions
+          Fecha pedido: 18/01/2025
+          Fecha esperada: 15/02/2025
+          Total: 11,616 EUR
+
+          **Acciones activadas:**
+          ✓ Productos/servicios reservados
+          ✓ Entrega programada: 15/02/2025
+          ✓ Facturación: Según política (50% adelanto)
+          ✓ Notificación al cliente enviada
+          ✓ Equipo de operaciones alertado
+
+          **Verificaciones antes de confirmar:**
+          ✓ ¿Cliente aceptó la cotización?
+          ✓ ¿Stock disponible? (productos)
+          ✓ ¿Equipo disponible? (servicios)
+          ✓ ¿Fechas realistas?
+          ✓ ¿Términos de pago claros?
+        `,
+        tips: [
+          'Confirma SOLO cuando el cliente ha aceptado formalmente',
+          'Verifica disponibilidad de stock antes de confirmar',
+          'Para servicios, valida capacidad del equipo',
+          'Comunica al cliente el número de pedido por email'
+        ]
+      },
+      {
+        title: '2. Gestionar Entregas',
+        content: `
+          Programa y ejecuta las entregas de productos o ejecución de servicios de manera organizada.
+
+          **Tipos de entrega:**
+          - Productos físicos: Almacén genera orden de entrega
+          - Servicios: Planificación de ejecución por fases
+          - Mixto: Coordinación de ambos
+        `,
+        example: `
+          📍 Ruta: Ventas > Pedidos > [Pedido] > Pestaña "Entrega"
+
+          **Ejemplo: Servicio de implementación**
+
+          Pedido: #SO00123
+          Cliente: TechCorp Solutions
+          Proyecto: Implementación Odoo
+
+          **Planificación de fases:**
+          ┌────────┬─────────────────────┬─────────────┬──────────┐
+          │ Fase   │ Descripción         │ Período     │ Estado   │
+          ├────────┼─────────────────────┼─────────────┼──────────┤
+          │ Fase 1 │ Análisis requisitos │ Semana 1-2  │ ✅ Lista │
+          │ Fase 2 │ Configuración       │ Semana 3-4  │ 🔄 En curso│
+          │ Fase 3 │ Capacitación        │ Semana 5    │ ⏳ Pendiente│
+          │ Fase 4 │ Go-Live             │ Semana 6    │ ⏳ Pendiente│
+          └────────┴─────────────────────┴─────────────┴──────────┘
+
+          **Para productos físicos:**
+
+          Pedido: #SO00125
+          Cliente: Distribuidora ABC
+          Productos: 50 unidades Widget Pro
+
+          Flujo de entrega:
+          1. Pedido confirmado → Genera orden de entrega
+          2. Almacén prepara productos
+          3. Transportista recoge
+          4. Cliente firma recepción
+          5. Entrega marcada como "Hecho"
+
+          **Comunicación con cliente:**
+          ✓ Envío automático de fecha estimada
+          ✓ Notificación cuando se despacha
+          ✓ Actualización si hay retrasos
+          ✓ Confirmación de entrega exitosa
+        `,
+        tips: [
+          'Comunica fechas de entrega claramente y confirma con el cliente',
+          'Actualiza el estado del pedido regularmente',
+          'Para servicios complejos, divide en fases manejables',
+          'Programa recordatorios automáticos para seguimiento'
+        ]
+      }
     ],
-    quiz: { questions: [{ id: 'q1', question: '¿Cuándo confirmar un pedido?', options: ['Inmediatamente al crear', 'Cuando el cliente aprueba la cotización', 'Al final del mes', 'Nunca'], correct: 1, explanation: 'Solo confirma pedidos cuando el cliente ha aprobado formalmente la cotización.' }] },
-    practicalExercise: { title: 'Ejercicio: Gestión de Pedido', description: 'Procesa un pedido completo', steps: [] }
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Cuándo debes confirmar un pedido de venta?',
+          options: [
+            'Inmediatamente al crear la cotización',
+            'Cuando el cliente ha aprobado formalmente la cotización',
+            'Al final del mes para consolidar',
+            'Nunca, las cotizaciones son suficientes'
+          ],
+          correct: 1,
+          explanation: 'Solo debes confirmar pedidos cuando el cliente ha aprobado formalmente la cotización, ya que al confirmar comprometes recursos y reservas inventario.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Gestión Completa de Pedido',
+      description: 'Convierte una cotización en pedido y programa su entrega',
+      steps: []
+    }
   },
 
   'sales-004': {
     title: 'Facturación desde Ventas',
-    introduction: 'Factura automáticamente desde pedidos de venta según diferentes políticas.',
+    introduction: `
+      La facturación es el paso final del ciclo de ventas. Odoo te permite configurar diferentes
+      políticas de facturación según tu modelo de negocio: facturación inmediata, por entrega,
+      por hitos o con anticipos.
+    `,
     sections: [
-      { title: '1. Políticas de Facturación', content: 'Factura según entrega, hitos o anticipos.', example: 'Opciones:\n- Al confirmar pedido (servicios)\n- Al entregar productos (ventas)\n- Por hitos (proyectos)\n- Anticipos + saldo', tips: ['Define política antes de confirmar', 'Comunica al cliente cuándo facturarás'] },
-      { title: '2. Facturación Automática', content: 'Genera facturas automáticamente según reglas.', example: 'Pedido #SO00123:\nHito 1 (50%): Factura al completar análisis\nHito 2 (50%): Factura al Go-Live\n\nOdoo genera facturas automáticamente', tips: ['Automatiza para ahorrar tiempo', 'Revisa facturas antes de enviar'] }
+      {
+        title: '1. Políticas de Facturación',
+        content: `
+          Configura cuándo y cómo se generan las facturas desde pedidos de venta.
+
+          **Políticas disponibles:**
+          - Al confirmar pedido: Factura inmediata (servicios)
+          - Al entregar: Factura cuando se entrega (productos físicos)
+          - Por hitos: Factura al completar fases (proyectos)
+          - Con anticipos: Factura parcial inicial + saldo
+        `,
+        example: `
+          📍 Ruta: Ventas > Configuración > Ajustes > Facturación
+
+          **Política 1: Al confirmar pedido**
+          Ideal para: Servicios, suscripciones
+
+          Cliente: TechCorp | Servicio: Consultoría
+          Total: 5,000 EUR | Factura: INV/2025/001 (inmediata)
+
+          **Política 2: Al entregar productos**
+          Cliente: Distribuidora ABC | Productos: 50 unidades
+          Total: 7,500 EUR | Factura: al confirmar entrega
+
+          **Política 3: Por hitos**
+          Proyecto: Implementación Odoo (11,616 EUR)
+
+          ┌────────┬─────────────────────┬────────────┬──────────┐
+          │ Hito   │ Descripción         │ % Factura  │ Monto    │
+          ├────────┼─────────────────────┼────────────┼──────────┤
+          │ Hito 1 │ Análisis completado │ 50%        │ 5,808 EUR│
+          │ Hito 2 │ Go-Live exitoso     │ 50%        │ 5,808 EUR│
+          └────────┴─────────────────────┴────────────┴──────────┘
+
+          **Política 4: Con anticipos**
+          - Anticipo 30%: 6,000 EUR
+          - Anticipo 40%: 8,000 EUR
+          - Saldo 30%: 6,000 EUR
+        `,
+        tips: [
+          'Define la política ANTES de confirmar el pedido',
+          'Comunica claramente al cliente cuándo recibirá facturas',
+          'Para servicios usa "Al confirmar", para productos "Al entregar"',
+          'Los hitos mejoran el flujo de caja en proyectos largos'
+        ]
+      },
+      {
+        title: '2. Facturación Automática',
+        content: `
+          Automatiza la generación de facturas para ahorrar tiempo y reducir errores.
+
+          **Ventajas de la automatización:**
+          - Facturas generadas sin intervención manual
+          - Consistencia en formato y datos
+          - Reducción de errores humanos
+          - Ahorro significativo de tiempo
+        `,
+        example: `
+          📍 Ruta: Ventas > Pedidos > [Pedido] > Crear factura
+
+          **Proyecto con hitos automáticos:**
+
+          Pedido: #SO00123 | Cliente: TechCorp | Total: 11,616 EUR
+
+          **Hito 1 - Análisis (50%):**
+          ✓ Tarea: "Análisis completado"
+          ✓ Al marcar "Hecho" → Factura automática
+          ✓ Monto: 5,808 EUR
+          ✓ Factura: INV/2025/003
+
+          **Hito 2 - Go-Live (50%):**
+          ✓ Tarea: "Go-Live exitoso"
+          ✓ Al marcar "Hecho" → Factura automática
+          ✓ Monto: 5,808 EUR
+          ✓ Factura: INV/2025/004
+
+          **Flujo automático:**
+          1. Equipo completa fase
+          2. Marca tarea como "Hecho"
+          3. Odoo detecta hito completado
+          4. Genera factura automáticamente
+          5. Envía email al cliente
+          6. Registra en contabilidad
+
+          **Resultado:**
+          ✅ Sin intervención manual
+          ✅ Cliente recibe factura inmediatamente
+          ✅ Mejora flujo de caja
+        `,
+        tips: [
+          'Automatiza facturas recurrentes para ahorrar tiempo',
+          'SIEMPRE revisa facturas automáticas antes de enviarlas',
+          'Configura plantillas de email personalizadas',
+          'Documenta en notas internas por qué se factura cada hito'
+        ]
+      }
     ],
     quiz: { questions: [{ id: 'q1', question: '¿Qué es facturación por hitos?', options: ['Facturar todo al final', 'Facturar al completar cada fase del proyecto', 'Facturar mensualmente', 'Facturar por producto'], correct: 1, explanation: 'Facturación por hitos significa cobrar al completar cada etapa definida del proyecto.' }] },
     practicalExercise: { title: 'Ejercicio: Facturación Automática', description: 'Configura facturación por hitos', steps: [] }
@@ -1938,24 +2306,280 @@ export const lessonContent = {
 
   'sales-005': {
     title: 'CRM y Seguimiento',
-    introduction: 'Usa el CRM integrado para gestionar tu pipeline de ventas y dar seguimiento a oportunidades.',
+    introduction: `
+      El CRM (Customer Relationship Management) de Odoo te ayuda a gestionar todo tu proceso
+      comercial, desde el primer contacto hasta el cierre de la venta. Un pipeline bien gestionado
+      es clave para aumentar tu tasa de conversión.
+    `,
     sections: [
-      { title: '1. Pipeline de Ventas', content: 'Organiza oportunidades en etapas visuales.', example: 'Pipeline:\n→ Nuevo Lead\n→ Contactado\n→ Reunión Agendada\n→ Propuesta Enviada\n→ Negociación\n→ Ganada/Perdida', tips: ['Actualiza estado regularmente', 'Define probabilidad por etapa'] },
-      { title: '2. Actividades y Seguimiento', content: 'Programa recordatorios y tareas de seguimiento.', example: 'Lead: TechCorp\nActividad: Llamada de seguimiento\nFecha: Mañana 10:00\nResponsable: María González\nNotas: Preguntar por presupuesto', tips: ['No dejes leads sin seguimiento', 'Usa recordatorios automáticos'] }
+      {
+        title: '1. Pipeline de Ventas',
+        content: `
+          Organiza tus oportunidades de venta en etapas visuales para dar seguimiento efectivo.
+
+          **Beneficios del pipeline visual:**
+          - Ver el estado de todas las oportunidades de un vistazo
+          - Identificar cuellos de botella en el proceso
+          - Priorizar acciones según etapa
+          - Proyectar ventas futuras
+        `,
+        example: `
+          📍 Ruta: CRM > Pipeline
+
+          **Pipeline típico de ventas:**
+
+          → **Nuevo Lead**
+             Probabilidad: 10%
+             Acción: Calificar lead
+
+          → **Contactado**
+             Probabilidad: 20%
+             Acción: Agendar reunión
+
+          → **Reunión Agendada**
+             Probabilidad: 40%
+             Acción: Preparar presentación
+
+          → **Propuesta Enviada**
+             Probabilidad: 60%
+             Acción: Dar seguimiento
+
+          → **Negociación**
+             Probabilidad: 80%
+             Acción: Cerrar condiciones
+
+          → **Ganada/Perdida**
+             Probabilidad: 100% / 0%
+
+          **Ejemplo práctico:**
+          ┌──────────────────┬─────────┬──────────────┬───────────┐
+          │ Cliente          │ Etapa   │ Valor        │ Prob.     │
+          ├──────────────────┼─────────┼──────────────┼───────────┤
+          │ TechCorp         │ Negoc.  │ 15,000 EUR   │ 80%       │
+          │ Retail Group     │ Propues.│ 8,000 EUR    │ 60%       │
+          │ Beta Services    │ Contact.│ 12,000 EUR   │ 20%       │
+          └──────────────────┴─────────┴──────────────┴───────────┘
+
+          Pipeline proyectado: 35,000 EUR
+          Venta esperada: 21,200 EUR (ponderada por probabilidad)
+        `,
+        tips: [
+          'Actualiza el estado del lead después de cada interacción',
+          'Define probabilidades realistas por cada etapa',
+          'Revisa tu pipeline diariamente',
+          'Identifica leads estancados y toma acción'
+        ]
+      },
+      {
+        title: '2. Actividades y Seguimiento',
+        content: `
+          El seguimiento sistemático es lo que convierte leads en clientes. Programa actividades
+          y recordatorios para nunca perder una oportunidad.
+
+          **Tipos de actividades:**
+          - Llamadas telefónicas
+          - Reuniones presenciales o virtuales
+          - Envío de propuestas
+          - Seguimiento de propuestas
+          - Negociación de términos
+        `,
+        example: `
+          📍 Ruta: CRM > [Lead] > Programar actividad
+
+          **Ejemplo de seguimiento sistemático:**
+
+          **Lead:** TechCorp
+          Valor: 15,000 EUR
+          Etapa: Propuesta enviada
+
+          **Actividades programadas:**
+
+          ✓ **Completada** - 15/01/2025
+            Tipo: Reunión
+            Notas: Presentamos solución, les gustó el enfoque
+
+          🔄 **Hoy** - 18/01/2025 10:00
+            Tipo: Llamada de seguimiento
+            Objetivo: Preguntar si revisaron la propuesta
+            Responsable: María González
+
+          ⏳ **Próxima** - 22/01/2025
+            Tipo: Email de seguimiento
+            Objetivo: Resolver dudas técnicas
+            Responsable: Carlos Martínez
+
+          **Resultado del seguimiento:**
+          - Lead no se olvida de nosotros
+          - Podemos resolver objeciones a tiempo
+          - Aumenta probabilidad de cierre
+          - Cliente percibe profesionalismo
+        `,
+        tips: [
+          'NUNCA dejes un lead sin una actividad programada',
+          'Usa recordatorios automáticos para no olvidar seguimientos',
+          'Documenta todas las interacciones en notas',
+          'Programa la siguiente actividad al terminar la actual'
+        ]
+      }
     ],
-    quiz: { questions: [{ id: 'q1', question: '¿Por qué es importante el pipeline visual?', options: ['Solo es decorativo', 'Permite ver rápidamente el estado de todas las oportunidades', 'Es obligatorio', 'Solo para gerentes'], correct: 1, explanation: 'El pipeline visual te permite identificar rápidamente dónde están tus oportunidades y actuar en consecuencia.' }] },
-    practicalExercise: { title: 'Ejercicio: Gestión de Pipeline', description: 'Mueve oportunidades por el pipeline', steps: [] }
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Por qué es importante el pipeline visual?',
+          options: [
+            'Solo es decorativo',
+            'Permite ver rápidamente el estado de todas las oportunidades y actuar',
+            'Es obligatorio por ley',
+            'Solo lo usan los gerentes'
+          ],
+          correct: 1,
+          explanation: 'El pipeline visual te permite identificar rápidamente dónde están tus oportunidades, detectar cuellos de botella y priorizar acciones.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Gestión de Pipeline Completa',
+      description: 'Mueve oportunidades por el pipeline y programa seguimientos',
+      steps: []
+    }
   },
 
   'sales-006': {
     title: 'Reportes y Análisis de Ventas',
-    introduction: 'Analiza el desempeño de ventas con dashboards y reportes detallados.',
+    introduction: `
+      Los datos sin análisis no sirven de nada. Aprende a usar los dashboards y reportes de Odoo
+      para tomar decisiones informadas que aumenten tus ventas.
+    `,
     sections: [
-      { title: '1. Dashboard de Ventas', content: 'Visualiza KPIs clave en tiempo real.', example: 'Dashboard Enero 2025:\nVentas del mes: 100,000 EUR ↑15%\nPipeline activo: 250,000 EUR\nTasa de conversión: 35%\nTicket promedio: 12,500 EUR\nTop vendedor: María G. (45,000 EUR)', tips: ['Revisa dashboard diariamente', 'Establece metas mensuales'] },
-      { title: '2. Análisis por Vendedor', content: 'Compara rendimiento del equipo de ventas.', example: 'Vendedor | Ventas | Oportunidades | Conv%\nMaría G. | 45,000 | 15 | 40%\nCarlos M.| 35,000 | 20 | 30%\nAna R.   | 20,000 | 10 | 35%', tips: ['Reconoce top performers', 'Ayuda a los que necesitan apoyo'] }
+      {
+        title: '1. Dashboard de Ventas',
+        content: `
+          El dashboard te muestra tus KPIs más importantes en tiempo real.
+
+          **KPIs esenciales:**
+          - Ventas del período
+          - Pipeline activo
+          - Tasa de conversión
+          - Ticket promedio
+          - Top vendedores
+          - Ventas por producto/servicio
+        `,
+        example: `
+          📍 Ruta: Ventas > Dashboard
+
+          **Dashboard Enero 2025:**
+
+          **Ventas del mes:** 100,000 EUR ↑15% vs dic
+          **Pipeline activo:** 250,000 EUR
+          **Tasa de conversión:** 35%
+          **Ticket promedio:** 12,500 EUR
+          **Top vendedor:** María G. (45,000 EUR)
+
+          **Desglose por servicio:**
+          ┌────────────────────────┬──────────┬────────┐
+          │ Servicio               │ Ventas   │ % Total│
+          ├────────────────────────┼──────────┼────────┤
+          │ Implementación Odoo    │ 45,000   │ 45%    │
+          │ Consultoría            │ 35,000   │ 35%    │
+          │ Soporte                │ 12,000   │ 12%    │
+          │ Capacitación           │  8,000   │  8%    │
+          └────────────────────────┴──────────┴────────┘
+
+          **Tendencia mensual:**
+          Nov: 75,000 EUR
+          Dic: 87,000 EUR
+          Ene: 100,000 EUR 📈
+
+          **Análisis:**
+          - Crecimiento sostenido ✅
+          - Implementación es el servicio estrella
+          - Oportunidad de aumentar capacitación
+        `,
+        tips: [
+          'Revisa el dashboard al inicio de cada día',
+          'Establece metas mensuales realistas pero ambiciosas',
+          'Compara con períodos anteriores para ver tendencias',
+          'Usa los datos para ajustar estrategia de ventas'
+        ]
+      },
+      {
+        title: '2. Análisis por Vendedor',
+        content: `
+          Analiza el rendimiento de tu equipo para reconocer top performers y apoyar a quien lo necesite.
+
+          **Métricas por vendedor:**
+          - Ventas cerradas
+          - Número de oportunidades gestionadas
+          - Tasa de conversión individual
+          - Ticket promedio
+          - Velocidad de cierre
+        `,
+        example: `
+          📍 Ruta: Ventas > Reportes > Análisis por vendedor
+
+          **Rendimiento del equipo - Enero 2025:**
+
+          ┌────────────┬─────────┬──────────────┬───────┬──────────┐
+          │ Vendedor   │ Ventas  │ Oportunidades│ Conv% │ Ticket   │
+          ├────────────┼─────────┼──────────────┼───────┼──────────┤
+          │ María G.   │ 45,000  │ 15           │ 40%   │ 15,000   │
+          │ Carlos M.  │ 35,000  │ 20           │ 30%   │ 11,667   │
+          │ Ana R.     │ 20,000  │ 10           │ 35%   │ 14,000   │
+          └────────────┴─────────┴──────────────┴───────┴──────────┘
+
+          **Análisis por vendedor:**
+
+          **María González** - Top performer 🏆
+          - Mayor tasa de conversión (40%)
+          - Ticket más alto (15,000 EUR)
+          - Acción: Compartir mejores prácticas con el equipo
+
+          **Carlos Martínez** - Alto volumen
+          - Gestiona más oportunidades (20)
+          - Conversión mejorable (30%)
+          - Acción: Coaching en técnicas de cierre
+
+          **Ana Rodríguez** - Equilibrada
+          - Buena conversión (35%)
+          - Potencial de crecimiento
+          - Acción: Asignar más leads de alta calidad
+
+          **Acciones del equipo:**
+          ✓ Reunión semanal de ventas
+          ✓ Compartir casos de éxito
+          ✓ Capacitación en objeciones
+          ✓ Bonos por metas alcanzadas
+        `,
+        tips: [
+          'Reconoce públicamente a los top performers',
+          'Ofrece coaching personalizado a quien necesita apoyo',
+          'No solo mires el total de ventas, analiza la conversión',
+          'Usa datos para asignar leads de forma inteligente'
+        ]
+      }
     ],
-    quiz: { questions: [{ id: 'q1', question: '¿Qué mide la tasa de conversión?', options: ['Total de ventas', 'Porcentaje de oportunidades que se cierran exitosamente', 'Número de clientes', 'Ingresos totales'], correct: 1, explanation: 'La tasa de conversión mide qué porcentaje de oportunidades se convierten en ventas cerradas.' }] },
-    practicalExercise: { title: 'Ejercicio: Análisis de Ventas', description: 'Genera y analiza reportes de ventas', steps: [] }
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Qué mide la tasa de conversión?',
+          options: [
+            'El total de ventas del mes',
+            'El porcentaje de oportunidades que se cierran exitosamente',
+            'El número total de clientes',
+            'Los ingresos totales del año'
+          ],
+          correct: 1,
+          explanation: 'La tasa de conversión mide qué porcentaje de oportunidades de venta se convierten en ventas cerradas. Es un indicador clave de efectividad comercial.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Análisis Completo de Ventas',
+      description: 'Genera y analiza reportes del mes para tomar decisiones',
+      steps: []
+    }
   },
 
   // ========================================
@@ -2302,34 +2926,34 @@ export const lessonContent = {
       {
         title: '1. ¿Por Qué Controlar el Inventario?',
         content: `
-          Sin control de inventario:
-          - No sabes qué productos tienes realmente
-          - Te quedas sin stock y pierdes ventas
-          - Tienes productos vencidos o dañados sin saberlo
-          - No sabes cuánto dinero tienes "parado" en productos
-          - Desperdicias dinero comprando lo que ya tienes
+**Sin control de inventario:**
+- No sabes qué productos tienes realmente
+- Te quedas sin stock y pierdes ventas
+- Tienes productos vencidos o dañados sin saberlo
+- No sabes cuánto dinero tienes "parado" en productos
+- Desperdicias dinero comprando lo que ya tienes
 
-          Con control de inventario:
-          - Sabes exactamente qué tienes y dónde
-          - El sistema te avisa cuándo reponer
-          - Calculas el valor de tu inventario
-          - Reduces pérdidas y desperdicios
-          - Tomas decisiones basadas en datos reales
+**Con control de inventario:**
+- Sabes exactamente qué tienes y dónde
+- El sistema te avisa cuándo reponer
+- Calculas el valor de tu inventario
+- Reduces pérdidas y desperdicios
+- Tomas decisiones basadas en datos reales
         `,
         example: `
-          Ejemplo: Tienda de Abarrotes "Don José"
+**Ejemplo:** Tienda de Abarrotes "Don José"
 
-          SIN Odoo (Antes):
-          "Creo que tengo como 20 kg de azúcar..."
-          "¿Dónde puse esas latas de atún?"
-          "¿Ya se venció el queso?"
+**SIN Odoo (Antes):**
+- "Creo que tengo como 20 kg de azúcar..."
+- "¿Dónde puse esas latas de atún?"
+- "¿Ya se venció el queso?"
 
-          CON Odoo (Ahora):
-          Azúcar: 18.5 kg (Ubicación: Estante A-3)
-          Atún: 45 latas (Ubicación: Bodega-2)
-          Queso: 12 unidades (Vence: 15/03/2024) ⚠️
+**CON Odoo (Ahora):**
+- Azúcar: 18.5 kg (Ubicación: Estante A-3)
+- Atún: 45 latas (Ubicación: Bodega-2)
+- Queso: 12 unidades (Vence: 15/03/2024) ⚠️
 
-          ¡Todo claro y sin adivinanzas!
+✅ ¡Todo claro y sin adivinanzas!
         `,
         tips: [
           'Empieza con tus 20 productos más vendidos',
@@ -2471,33 +3095,35 @@ export const lessonContent = {
       {
         title: '1. Registrar un Proveedor',
         content: `
-          Un proveedor es la empresa o persona que te vende los productos que necesitas.
-          Registrarlo en Odoo te permite:
-          - Tener sus datos siempre a la mano
-          - Hacer pedidos directamente desde el sistema
-          - Llevar historial de todas las compras
-          - Comparar precios entre proveedores
+Un proveedor es la empresa o persona que te vende los productos que necesitas.
+
+**Registrarlo en Odoo te permite:**
+- Tener sus datos siempre a la mano
+- Hacer pedidos directamente desde el sistema
+- Llevar historial de todas las compras
+- Comparar precios entre proveedores
         `,
         example: `
-          📍 Ruta: Compras > Proveedores > Crear
+📍 Ruta: Compras > Proveedores > Crear
 
-          Nuevo proveedor:
-          ─────────────────────────
-          Nombre: Distribuidora ABC S.A.
-          NIF/RFC: ABC123456789
-          Dirección: Calle Industrial #100
-          Teléfono: 555-9876
-          Email: ventas@abc.com
-          Sitio web: www.abc.com
+**Nuevo proveedor:**
+───────────────────────────────
+Nombre: Distribuidora ABC S.A.
+NIF/RFC: ABC123456789
+Dirección: Calle Industrial #100
+Teléfono: 555-9876
+Email: ventas@abc.com
+Sitio web: www.abc.com
 
-          Contacto principal: Roberto Sánchez
-          Cargo: Ejecutivo de ventas
-          Móvil: 555-1111
+**Contacto principal:**
+Nombre: Roberto Sánchez
+Cargo: Ejecutivo de ventas
+Móvil: 555-1111
 
-          Condiciones:
-          Plazo de pago: 30 días
-          Moneda: MXN
-          Día de entregas: Martes y Jueves
+**Condiciones:**
+Plazo de pago: 30 días
+Moneda: MXN
+Día de entregas: Martes y Jueves
         `,
         tips: [
           'Registra TODOS tus proveedores, incluso pequeños',
@@ -2509,37 +3135,37 @@ export const lessonContent = {
       {
         title: '2. Crear Solicitud de Presupuesto',
         content: `
-          Cuando necesitas comprar productos, creas una "Solicitud de Presupuesto" (RFQ).
-          Es como decirle al proveedor: "¿Cuánto me cuesta esto?"
+Cuando necesitas comprar productos, creas una **"Solicitud de Presupuesto"** (RFQ).
+Es como decirle al proveedor: "¿Cuánto me cuesta esto?"
 
-          Esto es especialmente útil cuando:
-          - Quieres comparar precios
-          - Necesitas confirmar disponibilidad
-          - Es la primera vez que compras algo
+**Esto es especialmente útil cuando:**
+- Quieres comparar precios
+- Necesitas confirmar disponibilidad
+- Es la primera vez que compras algo
         `,
         example: `
-          📍 Ruta: Compras > Solicitudes de Presupuesto > Crear
+📍 Ruta: Compras > Solicitudes de Presupuesto > Crear
 
-          Nueva solicitud:
-          ─────────────────────────
-          Proveedor: Distribuidora ABC
-          Fecha del pedido: Hoy
-          Fecha límite: En 5 días
+**Nueva solicitud:**
+───────────────────────────────
+Proveedor: Distribuidora ABC
+Fecha del pedido: Hoy
+Fecha límite: En 5 días
 
-          Productos solicitados:
-          ┌────────────────┬─────────┬─────────┐
-          │ Producto       │ Cantidad│ Precio  │
-          ├────────────────┼─────────┼─────────┤
-          │ Azúcar 1kg     │   50    │ $18.00  │
-          │ Arroz 1kg      │   30    │ $22.00  │
-          │ Frijol 1kg     │   25    │ $28.00  │
-          └────────────────┴─────────┴─────────┘
+**Productos solicitados:**
 
-          Subtotal: $2,260.00
-          IVA 16%: $361.60
-          TOTAL: $2,621.60
+| Producto     | Cantidad | Precio  |
+| ------------ | -------- | ------- |
+| Azúcar 1kg   | 50       | $18.00  |
+| Arroz 1kg    | 30       | $22.00  |
+| Frijol 1kg   | 25       | $28.00  |
 
-          Estado: Solicitud enviada ✓
+**Totales:**
+- Subtotal: $2,260.00
+- IVA 16%: $361.60
+- **TOTAL: $2,621.60**
+
+✅ Estado: Solicitud enviada
         `,
         tips: [
           'Verifica cantidades antes de enviar',
@@ -2551,26 +3177,26 @@ export const lessonContent = {
       {
         title: '3. Confirmar Orden de Compra',
         content: `
-          Cuando el proveedor acepta tu solicitud y estás de acuerdo con el precio,
-          la "Solicitud" se convierte en "Orden de Compra" oficial.
+Cuando el proveedor acepta tu solicitud y estás de acuerdo con el precio,
+la **"Solicitud"** se convierte en **"Orden de Compra"** oficial.
 
-          Este es el compromiso formal: tú compras, ellos entregan.
+Este es el compromiso formal: tú compras, ellos entregan.
         `,
         example: `
-          📍 Ruta: En la Solicitud > Botón "Confirmar Pedido"
+📍 Ruta: En la Solicitud > Botón "Confirmar Pedido"
 
-          La solicitud ahora es ORDEN DE COMPRA:
-          ─────────────────────────
-          Número: PO00015
-          Estado: Orden de Compra ✓
+**La solicitud ahora es ORDEN DE COMPRA:**
+───────────────────────────────
+Número: PO00015
+Estado: Orden de Compra ✅
 
-          Próximos pasos:
-          1. Esperar la entrega del proveedor
-          2. Cuando llegue, registrar la recepción
-          3. Verificar que todo esté correcto
-          4. Pagar según los términos acordados
+**Próximos pasos:**
+1. Esperar la entrega del proveedor
+2. Cuando llegue, registrar la recepción
+3. Verificar que todo esté correcto
+4. Pagar según los términos acordados
 
-          El proveedor puede ver el pedido y preparar el envío.
+💡 El proveedor puede ver el pedido y preparar el envío.
         `,
         tips: [
           'Revisa TODO antes de confirmar',
@@ -2636,38 +3262,40 @@ export const lessonContent = {
       {
         title: '1. Crear Ficha de Empleado',
         content: `
-          Cada empleado necesita su "ficha" en el sistema con información importante.
-          Esto te ayuda a:
-          - Tener sus datos siempre disponibles
-          - Asignarle a un departamento
-          - Gestionar sus documentos
-          - Calcular su nómina (si usas ese módulo)
+Cada empleado necesita su "ficha" en el sistema con información importante.
+
+**Esto te ayuda a:**
+- Tener sus datos siempre disponibles
+- Asignarle a un departamento
+- Gestionar sus documentos
+- Calcular su nómina (si usas ese módulo)
         `,
         example: `
-          📍 Ruta: Empleados > Empleados > Crear
+📍 Ruta: Empleados > Empleados > Crear
 
-          Ficha de empleado:
-          ─────────────────────────
-          INFORMACIÓN PERSONAL
-          Nombre: Ana Martínez López
-          Foto: [Subir foto]
-          Cargo: Vendedora
-          Departamento: Ventas
-          Jefe directo: Carlos Rodríguez
+**Ficha de empleado:**
+───────────────────────────────
 
-          INFORMACIÓN DE CONTACTO
-          Teléfono trabajo: Ext. 105
-          Email trabajo: ana.martinez@miempresa.com
-          Móvil personal: 555-7890
+**INFORMACIÓN PERSONAL**
+- Nombre: Ana Martínez López
+- Foto: [Subir foto]
+- Cargo: Vendedora
+- Departamento: Ventas
+- Jefe directo: Carlos Rodríguez
 
-          INFORMACIÓN PRIVADA
-          Dirección: Calle Principal #200
-          Fecha nacimiento: 15/03/1990
-          Género: Femenino
-          Estado civil: Soltera
-          Contacto emergencia: Juan Martínez (Padre) 555-4567
+**INFORMACIÓN DE CONTACTO**
+- Teléfono trabajo: Ext. 105
+- Email trabajo: ana.martinez@miempresa.com
+- Móvil personal: 555-7890
 
-          Esta información es confidencial y solo RRHH la ve completa.
+**INFORMACIÓN PRIVADA**
+- Dirección: Calle Principal #200
+- Fecha nacimiento: 15/03/1990
+- Género: Femenino
+- Estado civil: Soltera
+- Contacto emergencia: Juan Martínez (Padre) 555-4567
+
+⚠️ Esta información es confidencial y solo RRHH la ve completa.
         `,
         tips: [
           'La foto ayuda a identificar al empleado',
@@ -2679,37 +3307,38 @@ export const lessonContent = {
       {
         title: '2. Departamentos y Organigrama',
         content: `
-          Organizar a tus empleados por departamentos te ayuda a:
-          - Ver la estructura de tu empresa
-          - Asignar responsables
-          - Gestionar permisos
-          - Planificar recursos
+**Organizar a tus empleados por departamentos te ayuda a:**
+- Ver la estructura de tu empresa
+- Asignar responsables
+- Gestionar permisos
+- Planificar recursos
 
-          Ejemplos de departamentos:
-          - Administración
-          - Ventas
-          - Producción
-          - Almacén
-          - Contabilidad
+**Ejemplos de departamentos:**
+- Administración
+- Ventas
+- Producción
+- Almacén
+- Contabilidad
         `,
         example: `
-          📍 Ruta: Empleados > Configuración > Departamentos
+📍 Ruta: Empleados > Configuración > Departamentos
 
-          Estructura de Mi Empresa:
-          ─────────────────────────
-          DIRECCIÓN GENERAL
-          └── Director: Roberto Torres
-              ├── VENTAS (5 personas)
-              │   └── Gerente: Carlos Rodríguez
-              │       ├── Ana Martínez (Vendedora)
-              │       ├── Pedro Gómez (Vendedor)
-              │       └── Luis Sánchez (Vendedor)
-              ├── PRODUCCIÓN (8 personas)
-              │   └── Gerente: María Fernández
-              └── ADMINISTRACIÓN (3 personas)
-                  └── Gerente: Laura Díaz
+**Estructura de Mi Empresa:**
+───────────────────────────────
 
-          Esto te da visibilidad clara de tu organización.
+**DIRECCIÓN GENERAL**
+└── Director: Roberto Torres
+    ├── **VENTAS** (5 personas)
+    │   └── Gerente: Carlos Rodríguez
+    │       ├── Ana Martínez (Vendedora)
+    │       ├── Pedro Gómez (Vendedor)
+    │       └── Luis Sánchez (Vendedor)
+    ├── **PRODUCCIÓN** (8 personas)
+    │   └── Gerente: María Fernández
+    └── **ADMINISTRACIÓN** (3 personas)
+        └── Gerente: Laura Díaz
+
+✅ Esto te da visibilidad clara de tu organización.
         `,
         tips: [
           'Empieza con departamentos básicos',
@@ -2721,33 +3350,34 @@ export const lessonContent = {
       {
         title: '3. Contratos de Trabajo',
         content: `
-          El contrato define la relación laboral: tipo de trabajo, salario, horario.
-          Registrarlo en Odoo te permite:
-          - Llevar historial de contratos
-          - Recibir avisos de vencimientos
-          - Calcular prestaciones automáticamente
-          - Mantener documentación legal
+El contrato define la relación laboral: tipo de trabajo, salario, horario.
+
+**Registrarlo en Odoo te permite:**
+- Llevar historial de contratos
+- Recibir avisos de vencimientos
+- Calcular prestaciones automáticamente
+- Mantener documentación legal
         `,
         example: `
-          📍 Ruta: Empleado > Pestaña "Contratos"
+📍 Ruta: Empleado > Pestaña "Contratos"
 
-          Contrato de Ana Martínez:
-          ─────────────────────────
-          Tipo: Tiempo Completo
-          Fecha inicio: 01/02/2024
-          Fecha fin: Indefinido
-          Horario: Lunes a Viernes, 9am-6pm
+**Contrato de Ana Martínez:**
+───────────────────────────────
+Tipo: Tiempo Completo
+Fecha inicio: 01/02/2024
+Fecha fin: Indefinido
+Horario: Lunes a Viernes, 9am-6pm
 
-          Compensación:
-          Salario mensual: $15,000
-          Bono por ventas: 2% de ventas
-          Vales de despensa: $1,500/mes
+**Compensación:**
+- Salario mensual: $15,000
+- Bono por ventas: 2% de ventas
+- Vales de despensa: $1,500/mes
 
-          Documentos adjuntos:
-          ✓ Contrato firmado (PDF)
-          ✓ Identificación oficial
-          ✓ Comprobante domicilio
-          ✓ RFC
+**Documentos adjuntos:**
+✓ Contrato firmado (PDF)
+✓ Identificación oficial
+✓ Comprobante domicilio
+✓ RFC
         `,
         tips: [
           'Guarda copias digitales de documentos firmados',
