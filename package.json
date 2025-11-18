@@ -4,7 +4,9 @@
   "version": "1.0.0",
   "type": "module",
   "scripts": {
+    "predev": "node scripts/verify-deps.mjs",
     "dev": "vite",
+    "prebuild": "node scripts/verify-deps.mjs",
     "build": "vite build",
     "preview": "vite preview",
     "lint:palette": "node scripts/validate-palette.mjs"
