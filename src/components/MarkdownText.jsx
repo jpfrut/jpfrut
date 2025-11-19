@@ -2,9 +2,14 @@ import { Fragment, cloneElement, isValidElement } from 'react'
 import ReactMarkdown from 'react-markdown'
 import remarkGfm from 'remark-gfm'
 import GlossaryText from './GlossaryText'
+import { normalizeRichText } from '../utils/richText'
 
 const MarkdownText = ({ children, enableGlossary = true, className = '' }) => {
   if (!children) return null
+
+  const normalizedContent = typeof children === 'string'
+    ? normalizeRichText(children)
+    : children
 
   return (
     <div className={`markdown-content ${className}`}>
@@ -96,7 +101,7 @@ const MarkdownText = ({ children, enableGlossary = true, className = '' }) => {
           ),
         }}
       >
-        {children}
+        {normalizedContent}
       </ReactMarkdown>
     </div>
   )
