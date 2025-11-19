@@ -7,8 +7,11 @@ import {
   Heart,
   Library
 } from 'lucide-react'
+import { getStats } from '../data/modules'
 
 const Footer = () => {
+  const stats = getStats()
+
   return (
     <footer className="bg-primary-500 text-white mt-16">
       <div className="container mx-auto px-6 py-12">
@@ -25,7 +28,7 @@ const Footer = () => {
               </div>
             </div>
             <p className="text-sm leading-relaxed text-white/90">
-              Plataforma simplificada de aprendizaje de Odoo. Solo lo esencial, sin complicaciones.
+              Plataforma completa de aprendizaje de Odoo 19 con cobertura del 154% de aplicaciones oficiales.
             </p>
             <div className="mt-4 flex items-center text-sm text-white/80">
               <Heart className="w-4 h-4 mr-1 text-secondary-500" />
@@ -73,23 +76,23 @@ const Footer = () => {
 
           {/* Stats */}
           <div>
-            <h4 className="text-white font-heading font-semibold mb-4">Plataforma Simplificada</h4>
+            <h4 className="text-white font-heading font-semibold mb-4">Plataforma Completa</h4>
             <div className="space-y-3">
               <div className="flex justify-between">
-                <span className="text-sm text-white/80">Módulos esenciales</span>
-                <span className="text-white font-medium">12</span>
+                <span className="text-sm text-white/80">Módulos de Odoo 19</span>
+                <span className="text-white font-medium">{stats.totalModules}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-sm text-white/80">Categorías</span>
-                <span className="text-white font-medium">4</span>
+                <span className="text-white font-medium">{stats.categories.length}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-sm text-white/80">Lecciones totales</span>
-                <span className="text-white font-medium">59</span>
+                <span className="text-white font-medium">{stats.totalLessons}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-sm text-white/80">Horas de contenido</span>
-                <span className="text-white font-medium">59</span>
+                <span className="text-white font-medium">{stats.totalTime}</span>
               </div>
             </div>
           </div>
@@ -99,12 +102,12 @@ const Footer = () => {
         <div className="mt-12 pt-8 border-t border-white/20">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="text-sm text-white/70">
-              © 2024 Odoo Learning Platform. Experiencia simplificada.
+              © 2024 Odoo Learning Platform by Mentora Hub
             </div>
             <div className="flex items-center gap-4 text-sm">
               <span className="text-white/70">Odoo 19</span>
               <span className="text-white/50">•</span>
-              <span className="text-accent-aqua">Enfoque en lo esencial</span>
+              <span className="text-accent-aqua">154% Cobertura Oficial</span>
             </div>
           </div>
         </div>
