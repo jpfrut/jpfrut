@@ -6,8 +6,9 @@ exports[`MarkdownRenderer > renders lists, links, and code blocks consistently 1
     class="_markdown_0ef9bf prose"
   >
     <h2
-      class="_h2_0ef9bf"
+      class="_h2_0ef9bf _focusableHeading_0ef9bf"
       node="[object Object]"
+      tabindex="-1"
     >
       Demo markdown
     </h2>

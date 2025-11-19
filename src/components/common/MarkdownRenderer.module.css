@@ -34,6 +34,11 @@
   color: #1f2937;
 }
 
+.focusableHeading {
+  scroll-margin-top: 96px;
+  border-radius: 10px;
+}
+
 .unorderedList,
 .orderedList {
   margin: 0.35rem 0 1.1rem;
@@ -59,6 +64,13 @@
 .link:hover {
   color: #334faf;
   text-decoration-color: #334faf;
+}
+
+.focusableHeading:focus-visible,
+.link:focus-visible {
+  outline: 2px solid #334faf;
+  outline-offset: 4px;
+  box-shadow: 0 0 0 3px rgba(51, 79, 175, 0.15);
 }
 
 .blockquote {

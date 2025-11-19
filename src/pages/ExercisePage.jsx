@@ -224,9 +224,12 @@ const ExercisePage = () => {
                     <Lightbulb className="w-5 h-5 text-primary-600" />
                     <span className="font-semibold text-neutral-800">Ejemplo Práctico</span>
                   </div>
-                  <pre className="text-sm text-neutral-700 whitespace-pre-wrap font-mono bg-white p-4 rounded-lg overflow-x-auto">
+                  <MarkdownText
+                    enableGlossary={false}
+                    className="prose prose-sm max-w-none text-neutral-700"
+                  >
                     {section.example}
-                  </pre>
+                  </MarkdownText>
                 </div>
               )}
 
