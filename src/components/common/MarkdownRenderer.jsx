@@ -6,10 +6,15 @@ import remarkGfm from 'remark-gfm'
 import styles from './MarkdownRenderer.module.css'
 
 const MarkdownRenderer = ({ content, className = '' }) => {
-  const sanitizedContent = useMemo(
-    () => DOMPurify.sanitize(content ?? '', { USE_PROFILES: { html: true } }),
-    [content]
-  )
+  const sanitizedContent = useMemo(() => {
+    const normalizedContent = (content ?? '')
+      .split('\n')
+      .map(line => line.trimStart())
+      .join('\n')
+      .trim()
+
+    return DOMPurify.sanitize(normalizedContent, { USE_PROFILES: { html: true } })
+  }, [content])
 
   if (!sanitizedContent) return null
 
@@ -69,8 +74,16 @@ const MarkdownRenderer = ({ content, className = '' }) => {
             </blockquote>
           ),
           hr: () => <hr className={styles.divider} />, 
+          pre: ({ className: preClass, children, ...props }) => (
+            <pre className={`${styles.codeBlock} ${preClass ?? ''}`.trim()} {...props}>
+              {children}
+            </pre>
+          ),
           code: ({ inline, className: codeClass, children, ...props }) => {
-            if (inline) {
+            const content = Array.isArray(children) ? children.join('') : children
+            const isInline = inline ?? (!codeClass && !String(content).includes('\n'))
+
+            if (isInline) {
               return (
                 <code
                   className={`${styles.inlineCode} ${codeClass ?? ''}`.trim()}
@@ -82,11 +95,9 @@ const MarkdownRenderer = ({ content, className = '' }) => {
             }
 
             return (
-              <pre className={`${styles.codeBlock} ${codeClass ?? ''}`.trim()}>
-                <code className={codeClass} {...props}>
-                  {children}
-                </code>
-              </pre>
+              <code className={codeClass} {...props}>
+                {content}
+              </code>
             )
           },
           table: ({ className: tableClass, children, ...props }) => (
