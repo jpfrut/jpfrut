@@ -1,4 +1,5 @@
 import colors from 'tailwindcss/colors'
+import typography from '@tailwindcss/typography'
 
 /** @type {import('tailwindcss').Config} */
 export default {
@@ -115,7 +116,94 @@ export default {
         '18': '4.5rem',
         '22': '5.5rem',
       },
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            color: theme('colors.neutral.800'),
+            maxWidth: '100%',
+            lineHeight: theme('lineHeight.relaxed'),
+            a: {
+              color: theme('colors.primary.600'),
+              fontWeight: '600',
+              textDecorationColor: theme('colors.primary.300'),
+              textDecorationThickness: '2px',
+              textUnderlineOffset: '6px',
+              '&:hover': {
+                color: theme('colors.primary.500'),
+                textDecorationColor: theme('colors.primary.400'),
+              },
+            },
+            h1: {
+              color: theme('colors.primary.700'),
+              fontFamily: theme('fontFamily.heading'),
+              fontWeight: '700',
+              fontSize: '2.5rem',
+              lineHeight: '1.2',
+            },
+            h2: {
+              color: theme('colors.primary.700'),
+              fontFamily: theme('fontFamily.heading'),
+              fontWeight: '700',
+              fontSize: '2.25rem',
+              lineHeight: '1.25',
+            },
+            h3: {
+              color: theme('colors.primary.700'),
+              fontFamily: theme('fontFamily.heading'),
+              fontWeight: '700',
+              fontSize: '1.5rem',
+              lineHeight: '1.3',
+            },
+            h4: {
+              color: theme('colors.primary.700'),
+              fontFamily: theme('fontFamily.heading'),
+              fontWeight: '700',
+              fontSize: '1.25rem',
+              lineHeight: '1.4',
+            },
+            strong: {
+              color: theme('colors.primary.700'),
+            },
+            blockquote: {
+              color: theme('colors.neutral.900'),
+              fontWeight: '600',
+              backgroundColor: theme('colors.primary.50'),
+              borderLeftColor: theme('colors.primary.600'),
+              borderLeftWidth: '4px',
+              borderRadius: theme('borderRadius.brand'),
+              padding: '1rem 1.25rem',
+            },
+            'ol > li::marker': {
+              color: theme('colors.primary.600'),
+              fontWeight: '600',
+            },
+            'ul > li::marker': {
+              color: theme('colors.primary.600'),
+            },
+            code: {
+              color: theme('colors.primary.700'),
+              backgroundColor: theme('colors.neutral.100'),
+              fontWeight: '600',
+              padding: '0.125rem 0.375rem',
+              borderRadius: theme('borderRadius.brand'),
+            },
+            'code::before': {
+              content: '""',
+            },
+            'code::after': {
+              content: '""',
+            },
+            pre: {
+              color: theme('colors.neutral.50'),
+              backgroundColor: theme('colors.neutral.900'),
+              borderRadius: theme('borderRadius.brand-lg'),
+              padding: '1rem',
+              overflowX: 'auto',
+            },
+          },
+        },
+      }),
     },
   },
-  plugins: [],
+  plugins: [typography],
 }
