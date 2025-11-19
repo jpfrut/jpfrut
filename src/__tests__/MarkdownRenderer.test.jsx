@@ -1,4 +1,5 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
+import { vi } from 'vitest'
 import MarkdownRenderer from '../components/common/MarkdownRenderer'
 
 describe('MarkdownRenderer', () => {
@@ -47,5 +48,37 @@ describe('MarkdownRenderer', () => {
   it('returns null when there is no content to render', () => {
     const { container } = render(<MarkdownRenderer content={null} />)
     expect(container.firstChild).toBeNull()
+  })
+
+  it('notifies analytics hooks when markdown renders', async () => {
+    const track = vi.fn()
+    const dispatchSpy = vi.spyOn(window, 'dispatchEvent')
+
+    window.analytics = { track }
+
+    render(
+      <MarkdownRenderer content={richContent} />
+    )
+
+    await waitFor(() => {
+      expect(dispatchSpy).toHaveBeenCalled()
+      expect(track).toHaveBeenCalledWith(
+        'markdown_rendered',
+        expect.objectContaining({
+          length: expect.any(Number),
+          containsTable: false,
+          containsCodeBlock: true,
+        })
+      )
+    })
+
+    const dispatchedEvent = dispatchSpy.mock.calls.find(([event]) => event?.type === 'markdown:rendered')?.[0]
+    expect(dispatchedEvent?.detail).toEqual(expect.objectContaining({
+      length: expect.any(Number),
+      containsCodeBlock: true,
+    }))
+
+    dispatchSpy.mockRestore()
+    delete window.analytics
   })
 })
