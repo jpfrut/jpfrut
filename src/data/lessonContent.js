@@ -4364,6 +4364,2866 @@ Horario: Lunes a Viernes, 9am-6pm
         'Guarda y observa el organigrama'
       ]
     }
+  },
+
+  // ========================================
+  // GASTOS
+  // ========================================
+  'exp-001': {
+    title: 'Configuración de Categorías de Gastos',
+    introduction: `
+      El módulo de Gastos de Odoo 19 te permite gestionar todos los gastos de empleados de manera eficiente:
+      desde el registro inicial hasta el reembolso final. Una configuración adecuada de las categorías de
+      gastos te ayudará a controlar, aprobar y reembolsar los gastos de tu equipo de forma organizada.
+    `,
+    sections: [
+      {
+        title: '1. Activación y Configuración Inicial',
+        content: `
+          Antes de que tus empleados puedan registrar gastos, necesitas configurar el módulo correctamente.
+
+          **Pasos iniciales:**
+          - Activar el módulo de Gastos desde Aplicaciones
+          - Configurar las políticas de aprobación
+          - Definir límites de gastos por categoría
+          - Establecer los aprobadores por departamento
+        `,
+        example: `
+          📍 Ruta en Odoo: Aplicaciones > Buscar "Gastos" > Instalar
+
+          Luego: Gastos > Configuración > Ajustes
+
+          **Configuraciones clave:**
+          ✓ Activar aprobación por gerente
+          ✓ Permitir adjuntar recibos
+          ✓ Configurar límites de gasto
+          ✓ Habilitar re-facturación a clientes (si aplica)
+        `,
+        tips: [
+          'Define claramente quién puede aprobar gastos en cada departamento',
+          'Establece límites de gasto para evitar sorpresas',
+          'Activa la opción de adjuntar recibos para mejor control'
+        ]
+      },
+      {
+        title: '2. Crear Categorías de Gastos',
+        content: `
+          Las categorías de gastos te ayudan a organizar y controlar los diferentes tipos de gastos
+          que tus empleados pueden realizar.
+
+          **Categorías comunes:**
+          - Transporte: Taxis, combustible, estacionamiento
+          - Alimentación: Comidas de negocios, cafeterías
+          - Hospedaje: Hoteles durante viajes de trabajo
+          - Comunicaciones: Llamadas telefónicas, internet
+          - Material de oficina: Suministros y papelería
+        `,
+        example: `
+          📍 Ruta en Odoo: Gastos > Configuración > Categorías de Gastos
+
+          **Ejemplo: Categoría "Comidas de Negocios"**
+
+          ~~~text
+          Nombre: Comidas de Negocios
+          Cuenta contable: 6350 - Gastos de representación
+          Tipo de gasto: IVA deducible
+          Límite máximo: $500 por comida
+          Requiere aprobación: Sí (gerente)
+          Re-facturable a cliente: Opcional
+          ~~~
+
+          **Configuración de límites:**
+          - Sin límite: Para gastos pequeños (ej: café)
+          - Límite bajo ($100): Comidas casuales
+          - Límite medio ($500): Comidas formales
+          - Límite alto ($2,000): Hospedaje
+        `,
+        tips: [
+          'Crea solo las categorías que realmente necesitas',
+          'Asigna las cuentas contables correctas desde el inicio',
+          'Establece límites realistas pero controlados',
+          'Define claramente qué requiere aprobación'
+        ]
+      },
+      {
+        title: '3. Productos y Políticas de Gastos',
+        content: `
+          En Odoo, cada categoría de gasto está vinculada a un producto. Esto permite un mejor
+          control contable y facilita la re-facturación a clientes cuando sea necesario.
+
+          **Configuración de productos:**
+          - Nombre descriptivo del gasto
+          - Precio de referencia (opcional)
+          - Impuestos aplicables (IVA, retenciones)
+          - Cuenta de gasto en contabilidad
+          - Política de re-facturación
+        `,
+        example: `
+          📍 Ruta en Odoo: Gastos > Configuración > Categorías de Gastos > Crear
+
+          **Producto: "Gasolina"**
+
+          ~~~text
+          Nombre del producto: Gasolina
+          Descripción: Combustible para vehículo de trabajo
+          Costo de referencia: Variable
+          Impuesto incluido: IVA 16%
+          Cuenta contable: 6320 - Gastos de transporte
+
+          POLÍTICA DE APROBACIÓN:
+          ✓ Monto menor a $300: Aprobación automática
+          ✓ Monto $300-$1,000: Requiere aprobación de jefe
+          ✓ Monto mayor a $1,000: Requiere aprobación de gerencia
+          ~~~
+
+          **Re-facturación:**
+          - Al costo: El cliente paga exactamente lo gastado
+          - Precio de venta: Se aplica un margen (ej: +20%)
+        `,
+        tips: [
+          'Vincula correctamente los impuestos según tu país',
+          'Define políticas claras de aprobación por montos',
+          'Configura la re-facturación si tus empleados cobran gastos a clientes',
+          'Usa precios de referencia para detectar gastos inusuales'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Por qué es importante configurar categorías de gastos?',
+          options: [
+            'No es necesario configurarlas',
+            'Para organizar los gastos, controlar límites y facilitar la contabilidad',
+            'Solo para que se vea bonito el sistema',
+            'Para complicar el proceso de gastos'
+          ],
+          correct: 1,
+          explanation: 'Las categorías ayudan a organizar los gastos por tipo, establecer límites de control, asignar cuentas contables correctas y facilitar la aprobación y análisis.'
+        },
+        {
+          id: 'q2',
+          question: '¿Qué debe incluir una política de gastos bien configurada?',
+          options: [
+            'Solo el nombre de la categoría',
+            'Nombre, cuenta contable, límites, requisitos de aprobación e impuestos',
+            'Solo el límite de gasto',
+            'Solo la cuenta contable'
+          ],
+          correct: 1,
+          explanation: 'Una política completa incluye: categoría clara, cuenta contable, límites de gasto, quién debe aprobar, impuestos aplicables y si es re-facturable.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Crear Categorías de Gastos',
+      description: 'Configura las categorías básicas de gastos para tu empresa:',
+      steps: [
+        {
+          id: 'step1',
+          task: 'Crea una categoría "Transporte" con límite de $500. ¿Qué cuenta contable usarías?',
+          validation: 'multiple-choice',
+          options: [
+            'Cuentas por cobrar',
+            'Gastos de transporte',
+            'Ingresos por ventas',
+            'Activos fijos'
+          ],
+          correct: 1
+        },
+        {
+          id: 'step2',
+          task: 'Un empleado necesita registrar una comida de negocios de $350 con IVA. ¿Qué categoría crearías?',
+          validation: 'multiple-choice',
+          options: [
+            'Gastos generales',
+            'Comidas de negocios / Gastos de representación',
+            'Salarios',
+            'Inventario'
+          ],
+          correct: 1
+        }
+      ]
+    }
+  },
+
+  'exp-002': {
+    title: 'Registrar y Enviar Gastos',
+    introduction: `
+      Una vez configuradas las categorías, tus empleados pueden comenzar a registrar sus gastos.
+      Odoo ofrece múltiples formas de hacerlo: desde el registro manual hasta el envío automático
+      por correo electrónico, facilitando el proceso para todo el equipo.
+    `,
+    sections: [
+      {
+        title: '1. Registro Manual de Gastos',
+        content: `
+          La forma más directa de registrar un gasto es crearlo manualmente en el sistema.
+
+          **Información necesaria:**
+          - Categoría del gasto
+          - Descripción clara del gasto
+          - Monto total gastado
+          - Fecha del gasto
+          - Empleado que realizó el gasto
+          - Recibo o comprobante (adjunto)
+        `,
+        example: `
+          📍 Ruta en Odoo: Gastos > Mis Gastos > Crear
+
+          **Registro de gasto de transporte:**
+
+          ~~~text
+          DATOS DEL GASTO:
+          ────────────────────────────────────
+          Categoría: Transporte - Taxi
+          Descripción: Taxi para reunión con cliente ABC
+          Empleado: Juan Pérez
+          Fecha: 15/03/2024
+          Monto: $85.00
+          Pagado por: Empleado
+          Cliente: ABC Corporation (si es re-facturable)
+
+          ADJUNTOS:
+          ✓ Recibo del taxi (foto o PDF)
+          ~~~
+
+          **Datos opcionales:**
+          - Notas adicionales
+          - Proyecto asociado
+          - Centro de costos
+          - Analítica contable
+        `,
+        tips: [
+          'Registra los gastos lo antes posible para no olvidar detalles',
+          'Toma foto del recibo inmediatamente después del gasto',
+          'Describe claramente el motivo del gasto',
+          'Indica si es un gasto re-facturable al cliente'
+        ]
+      },
+      {
+        title: '2. Subir Recibos con Digitalización',
+        content: `
+          Odoo puede digitalizar automáticamente los recibos que subes, extrayendo la información
+          relevante y creando el gasto automáticamente.
+
+          **Proceso de digitalización:**
+          - Sube la foto o PDF del recibo
+          - Odoo extrae: fecha, monto, proveedor
+          - Revisa y corrige si es necesario
+          - Selecciona la categoría correcta
+          - Guarda el gasto
+        `,
+        example: `
+          📍 Ruta en Odoo: Gastos > Mis Gastos > Subir
+
+          **Proceso paso a paso:**
+
+          ~~~text
+          1. SUBIR RECIBO
+             - Arrastra el archivo o haz clic para seleccionar
+             - Formatos aceptados: JPG, PNG, PDF
+
+          2. DIGITALIZACIÓN AUTOMÁTICA
+             Odoo detecta:
+             ✓ Fecha: 15/03/2024
+             ✓ Proveedor: Uber México
+             ✓ Monto: $125.50
+             ✓ Concepto: Viaje (detectado por IA)
+
+          3. REVISIÓN Y AJUSTE
+             - Verifica que los datos sean correctos
+             - Selecciona categoría: "Transporte"
+             - Agrega descripción: "Viaje a reunión cliente"
+             - Confirma creación
+
+          4. GASTO CREADO
+             El gasto ya está en tu lista para enviar
+          ~~~
+        `,
+        tips: [
+          'Asegúrate que la foto del recibo sea clara y legible',
+          'Siempre revisa los datos extraídos antes de confirmar',
+          'La digitalización funciona mejor con recibos estándar',
+          'Guarda los recibos físicos por el tiempo que requiera la ley'
+        ]
+      },
+      {
+        title: '3. Enviar Gastos por Correo',
+        content: `
+          Para máxima comodidad, puedes enviar recibos directamente por email y Odoo creará
+          el gasto automáticamente.
+
+          **Configuración:**
+          - Cada empleado tiene un email único de gastos
+          - Formato: gastos+empleado123@tuempresa.odoo.com
+          - Envía el recibo como adjunto
+          - Odoo procesa y crea el gasto automáticamente
+        `,
+        example: `
+          📍 Ruta en Odoo: Gastos > Configuración > Ajustes > Email de Gastos
+
+          **Uso del email de gastos:**
+
+          ~~~text
+          DE: juan.perez@empresa.com
+          PARA: gastos+juan@empresa.odoo.com
+          ASUNTO: Comida reunión cliente
+          ADJUNTO: recibo_restaurante.jpg
+
+          CUERPO DEL EMAIL:
+          "Comida de negocios con cliente ABC Corp para
+          discutir proyecto de software. Total: $450"
+          ~~~
+
+          **Odoo procesará automáticamente:**
+          ✓ Crea el gasto
+          ✓ Adjunta el recibo
+          ✓ Extrae monto y fecha
+          ✓ Usa la descripción del email
+          ✓ Te notifica que está listo para revisión
+        `,
+        tips: [
+          'Guarda el email de gastos en tus contactos',
+          'Envía un recibo por email para mejor organización',
+          'Incluye descripción clara en el asunto o cuerpo',
+          'Revisa los gastos creados por email antes de enviarlos a aprobación'
+        ]
+      },
+      {
+        title: '4. Crear Reportes de Gastos',
+        content: `
+          Una vez registrados varios gastos, es momento de agruparlos en un reporte para
+          enviar a aprobación y posterior reembolso.
+
+          **Cuándo crear un reporte:**
+          - Al final de un viaje de negocios
+          - Al final del mes
+          - Cuando acumulas varios gastos pendientes
+          - Según la política de tu empresa
+        `,
+        example: `
+          📍 Ruta en Odoo: Gastos > Mis Gastos > Crear Reporte
+
+          **Reporte de gastos - Marzo 2024:**
+
+          ~~~text
+          REPORTE: Viaje de Negocios - Ciudad de México
+          Empleado: Juan Pérez
+          Periodo: 13-15 Marzo 2024
+          Gerente: María González
+
+          GASTOS INCLUIDOS:
+          ────────────────────────────────────
+          13/03 - Taxi aeropuerto         $  85.00
+          13/03 - Hotel (2 noches)        $1,200.00
+          13/03 - Cena reunión            $  350.00
+          14/03 - Desayuno cliente        $  120.00
+          14/03 - Taxi a oficina cliente  $   65.00
+          15/03 - Comida despedida        $  280.00
+          15/03 - Taxi a aeropuerto       $   90.00
+          ────────────────────────────────────
+          TOTAL A REEMBOLSAR:             $2,190.00
+
+          Adjuntos: 7 recibos
+          Estado: Borrador
+          ~~~
+
+          **Opciones al crear reporte:**
+          ✓ Seleccionar gastos específicos
+          ✓ Seleccionar todos los gastos pendientes
+          ✓ Filtrar por fecha o categoría
+        `,
+        tips: [
+          'Agrupa gastos relacionados en un mismo reporte',
+          'Revisa que todos los recibos estén adjuntos',
+          'Verifica los montos antes de enviar',
+          'Agrega notas explicativas si es necesario'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Cuál es la ventaja de usar la digitalización de recibos en Odoo?',
+          options: [
+            'No tiene ventajas',
+            'Odoo extrae automáticamente la información del recibo ahorrando tiempo',
+            'Es más lento que el registro manual',
+            'Solo funciona con recibos internacionales'
+          ],
+          correct: 1,
+          explanation: 'La digitalización automática extrae fecha, monto y proveedor del recibo, ahorrando tiempo y reduciendo errores de captura manual.'
+        },
+        {
+          id: 'q2',
+          question: '¿Cuándo debes crear un reporte de gastos?',
+          options: [
+            'Por cada gasto individual',
+            'Nunca, no es necesario',
+            'Al agrupar varios gastos relacionados para enviar a aprobación',
+            'Solo una vez al año'
+          ],
+          correct: 2,
+          explanation: 'Los reportes de gastos agrupan múltiples gastos relacionados (ej: viaje de negocios, gastos del mes) para enviarlos juntos a aprobación y reembolso.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Registrar Gastos de un Viaje',
+      description: 'Simula el registro de gastos de un viaje de negocios:',
+      steps: [
+        {
+          id: 'step1',
+          task: 'Registra un taxi al aeropuerto por $95. ¿Qué categoría usas?',
+          validation: 'multiple-choice',
+          options: [
+            'Comidas',
+            'Transporte',
+            'Hospedaje',
+            'Oficina'
+          ],
+          correct: 1
+        },
+        {
+          id: 'step2',
+          task: 'Hotel por 2 noches: $1,400. Comida con cliente: $380. Taxi de regreso: $90. ¿Cuál es el total del reporte?',
+          validation: 'numeric',
+          correctAnswer: 1965,
+          tolerance: 5,
+          hints: ['$95 + $1,400 + $380 + $90']
+        }
+      ]
+    }
+  },
+
+  'exp-003': {
+    title: 'Aprobar y Reembolsar',
+    introduction: `
+      El proceso de aprobación y reembolso es fundamental para mantener el control financiero.
+      Los reportes de gastos deben ser revisados y aprobados antes de proceder al reembolso,
+      asegurando que todos los gastos cumplan con las políticas de la empresa.
+    `,
+    sections: [
+      {
+        title: '1. Enviar Reportes a Aprobación',
+        content: `
+          Una vez que el empleado ha creado su reporte de gastos, debe enviarlo a su gerente
+          o aprobador designado para su revisión.
+
+          **Antes de enviar, verifica:**
+          - Todos los gastos tienen recibos adjuntos
+          - Los montos son correctos
+          - Las descripciones son claras
+          - No faltan gastos del periodo
+        `,
+        example: `
+          📍 Ruta en Odoo: Gastos > Mis Reportes > [Seleccionar reporte] > Enviar a Gerente
+
+          **Estado del reporte:**
+
+          ~~~text
+          ANTES DE ENVIAR:
+          Estado: Borrador
+          ✓ Puedes editar
+          ✓ Puedes agregar/quitar gastos
+          ✓ No visible para aprobadores
+
+          DESPUÉS DE ENVIAR:
+          Estado: Enviado
+          ⚠️ Ya no puedes editar
+          ✓ Visible para tu gerente
+          ✓ Esperando aprobación
+
+          NOTIFICACIONES:
+          ✓ El gerente recibe email de notificación
+          ✓ Aparece en su bandeja de aprobaciones
+          ✓ Tú recibes confirmación de envío
+          ~~~
+        `,
+        tips: [
+          'Revisa todo antes de enviar, no podrás editar después',
+          'Asegúrate que tu gerente esté correctamente asignado',
+          'Envía los gastos regularmente, no los acumules por meses',
+          'Incluye notas explicativas para gastos inusuales'
+        ]
+      },
+      {
+        title: '2. Proceso de Aprobación',
+        content: `
+          Los aprobadores (gerentes, directores) revisan los reportes de gastos para validar
+          que cumplan con las políticas de la empresa.
+
+          **Derechos de aprobación:**
+          - Aprobador de Equipo: Puede aprobar gastos de su equipo
+          - Aprobador Total: Puede aprobar cualquier gasto
+          - Solo los usuarios con estos derechos ven reportes pendientes
+        `,
+        example: `
+          📍 Ruta en Odoo: Gastos > Reportes a Aprobar
+
+          **Vista del aprobador:**
+
+          ~~~text
+          REPORTE: Viaje CDMX - Juan Pérez
+          Monto total: $2,190.00
+          Gastos: 7 items
+          Recibos adjuntos: 7/7 ✓
+
+          REVISIÓN LÍNEA POR LÍNEA:
+          ────────────────────────────────────
+          ✅ Taxi aeropuerto      $85.00    OK
+          ✅ Hotel 2 noches     $1,200.00   Dentro de política
+          ⚠️  Cena reunión        $350.00   Límite: $300
+             → Revisar justificación
+          ✅ Desayuno            $120.00    OK
+          ✅ Taxi                 $65.00    OK
+          ✅ Comida              $280.00    OK
+          ✅ Taxi regreso         $90.00    OK
+
+          OPCIONES:
+          [Aprobar] [Rechazar] [Solicitar Aclaración]
+          ~~~
+
+          **Criterios de aprobación:**
+          ✓ Gastos dentro de límites establecidos
+          ✓ Recibos válidos y legibles
+          ✓ Descripciones claras del motivo
+          ✓ Categorías correctas
+        `,
+        tips: [
+          'Revisa cada gasto individualmente, no solo el total',
+          'Verifica que los recibos adjuntos coincidan con los montos',
+          'Si algo no es claro, solicita aclaración antes de aprobar',
+          'Puedes aprobar parcialmente y rechazar gastos específicos'
+        ]
+      },
+      {
+        title: '3. Aprobar, Rechazar o Solicitar Cambios',
+        content: `
+          Como aprobador, tienes tres opciones principales al revisar un reporte de gastos.
+
+          **Opciones disponibles:**
+          - **Aprobar:** El reporte procede a contabilización y reembolso
+          - **Rechazar:** El reporte regresa al empleado con comentarios
+          - **Solicitar aclaración:** Pausar para pedir más información
+        `,
+        example: `
+          📍 Ruta en Odoo: Gastos > Reportes a Aprobar > [Seleccionar] > [Acción]
+
+          **Escenario 1: Aprobar**
+          ~~~text
+          ✅ APROBADO
+          Reporte: Viaje CDMX
+          Aprobado por: María González
+          Fecha aprobación: 18/03/2024
+
+          SIGUIENTE PASO:
+          → Contabilización automática
+          → Programación de reembolso
+          ~~~
+
+          **Escenario 2: Rechazar**
+          ~~~text
+          ❌ RECHAZADO
+          Motivo: "La cena de $350 excede el límite de
+          $300. Por favor, separa ese gasto y justifica
+          el exceso con una nota explicativa."
+
+          ACCIÓN DEL EMPLEADO:
+          → Recibe notificación
+          → Edita el reporte
+          → Vuelve a enviar
+          ~~~
+
+          **Escenario 3: Solicitar Aclaración**
+          ~~~text
+          ⏸️ EN PAUSA
+          Pregunta: "¿El hotel incluye desayuno? Veo
+          un gasto separado de desayuno y quiero
+          verificar que no haya duplicidad."
+
+          PROCESO:
+          → Empleado recibe pregunta
+          → Responde y adjunta evidencia
+          → Aprobador revisa nuevamente
+          ~~~
+        `,
+        tips: [
+          'Sé específico al rechazar: indica exactamente qué debe corregirse',
+          'Usa "Solicitar aclaración" para dudas antes de rechazar',
+          'Documenta el motivo de rechazo para auditorías futuras',
+          'Comunica las políticas claramente a tu equipo para evitar rechazos'
+        ]
+      },
+      {
+        title: '4. Contabilización y Reembolso',
+        content: `
+          Una vez aprobado el reporte, se procede a la contabilización y el reembolso al empleado.
+
+          **Proceso automático:**
+          - Odoo crea asientos contables
+          - Registra el gasto en las cuentas correspondientes
+          - Genera cuenta por pagar al empleado
+          - Permite programar el pago
+        `,
+        example: `
+          📍 Ruta en Odoo: Gastos > Reportes > [Seleccionar aprobado] > Contabilizar
+
+          **Asiento contable generado:**
+
+          ~~~text
+          DIARIO: Gastos de Personal
+          Fecha: 18/03/2024
+          Referencia: Viaje CDMX - Juan Pérez
+
+          DEBE                           HABER
+          ────────────────────────────────────────────
+          Gastos de transporte    $240.00
+          Gastos de hospedaje   $1,200.00
+          Gastos de representación $750.00
+                                          Cuentas por
+                                          pagar empleados $2,190.00
+          ────────────────────────────────────────────
+          TOTAL                 $2,190.00  $2,190.00
+          ~~~
+
+          **Reembolso al empleado:**
+
+          📍 Ruta: Contabilidad > Proveedores > Pagos > Crear Pago
+
+          ~~~text
+          PAGO A: Juan Pérez (Empleado)
+          Monto: $2,190.00
+          Método: Transferencia bancaria
+          Cuenta bancaria: XXXX-1234 (Juan)
+          Referencia: Reembolso gastos Viaje CDMX
+          Fecha pago: 25/03/2024
+
+          ✅ Pago registrado
+          ✅ Notificación enviada al empleado
+          ~~~
+        `,
+        tips: [
+          'Configura un calendario de reembolsos (ej: quincenales)',
+          'Verifica las cuentas bancarias de empleados antes del primer pago',
+          'Los asientos contables se generan automáticamente',
+          'Puedes pagar múltiples reportes en un solo lote de pagos'
+        ]
+      },
+      {
+        title: '5. Re-facturación a Clientes',
+        content: `
+          Algunos gastos pueden ser re-facturados a clientes. Odoo facilita este proceso
+          integrándolo con el módulo de Ventas.
+
+          **Cuándo re-facturar:**
+          - Gastos de viaje para visitar al cliente
+          - Comidas con el cliente
+          - Hospedaje para proyecto del cliente
+          - Cualquier gasto acordado en el contrato
+        `,
+        example: `
+          📍 Ruta en Odoo: Gastos > [Gasto] > Pestaña "Ventas" > Cliente
+
+          **Configuración de re-facturación:**
+
+          ~~~text
+          GASTO ORIGINAL:
+          Hotel para reunión con Cliente ABC
+          Costo: $1,200.00
+          Empleado: Juan Pérez
+
+          CONFIGURACIÓN:
+          Cliente: ABC Corporation
+          Pedido de venta: SO-2024-001
+          Política: Al costo (sin margen)
+          o
+          Política: Precio de venta (+20% margen)
+
+          RESULTADO EN FACTURA:
+          ────────────────────────────────────
+          Factura a: ABC Corporation
+
+          Hospedaje - Reunión proyecto
+          $1,200.00 (al costo)
+          o
+          $1,440.00 (con 20% margen)
+
+          IVA 16%: $192.00 / $230.40
+          Total: $1,392.00 / $1,670.40
+          ~~~
+
+          **Flujo completo:**
+          1. Empleado registra gasto y selecciona cliente
+          2. Se aprueba el gasto normalmente
+          3. Al contabilizar, Odoo crea línea en pedido de venta
+          4. Se factura al cliente automáticamente
+          5. La empresa recupera el gasto (y margen si aplica)
+        `,
+        tips: [
+          'Acuerda con el cliente qué gastos son re-facturables',
+          'Define si re-facturas al costo o con margen',
+          'Documenta bien para justificar los cargos al cliente',
+          'Vincula gastos al pedido de venta correcto'
+        ]
+      },
+      {
+        title: '6. Análisis de Gastos',
+        content: `
+          Odoo proporciona herramientas de análisis para revisar los gastos de la empresa
+          y detectar tendencias, excesos o áreas de optimización.
+
+          **Reportes disponibles:**
+          - Gastos por empleado
+          - Gastos por categoría
+          - Gastos por departamento
+          - Gastos por proyecto/cliente
+          - Tendencias mensuales
+        `,
+        example: `
+          📍 Ruta en Odoo: Gastos > Reportes > Análisis de Gastos
+
+          **Panel de análisis:**
+
+          ~~~text
+          GASTOS MARZO 2024
+          ════════════════════════════════════════
+
+          POR CATEGORÍA:
+          ────────────────────────────────────
+          Transporte           $3,450.00  (28%)
+          Hospedaje            $4,800.00  (39%)
+          Comidas              $2,890.00  (24%)
+          Comunicaciones       $  680.00  (5%)
+          Material oficina     $  450.00  (4%)
+          ────────────────────────────────────
+          TOTAL               $12,270.00
+
+          POR EMPLEADO:
+          ────────────────────────────────────
+          Juan Pérez (Ventas)  $5,200.00
+          Ana García (Ventas)  $4,100.00
+          Carlos López (Mkt)   $2,970.00
+
+          ALERTAS:
+          ⚠️ Gastos de transporte +35% vs mes anterior
+          ⚠️ Juan Pérez excedió presupuesto mensual
+
+          OPORTUNIDADES:
+          💡 Negociar tarifa corporativa con hotel
+          💡 Implementar política de viajes compartidos
+          ~~~
+        `,
+        tips: [
+          'Revisa los reportes mensualmente para detectar patrones',
+          'Establece presupuestos por departamento o empleado',
+          'Identifica oportunidades de negociación con proveedores frecuentes',
+          'Usa los datos para ajustar políticas de gastos'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Qué debe hacer un aprobador si un gasto excede el límite establecido?',
+          options: [
+            'Aprobar automáticamente',
+            'Ignorar el reporte',
+            'Rechazar o solicitar justificación según el caso',
+            'Modificar el monto sin preguntar'
+          ],
+          correct: 2,
+          explanation: 'Si un gasto excede el límite, el aprobador debe evaluar si hay justificación válida. Puede solicitar aclaración antes de aprobar o rechazar según las políticas.'
+        },
+        {
+          id: 'q2',
+          question: '¿Cuándo se debe re-facturar un gasto a un cliente?',
+          options: [
+            'Siempre, todos los gastos',
+            'Nunca, la empresa siempre asume los gastos',
+            'Cuando el gasto fue realizado específicamente para ese cliente y está acordado',
+            'Solo los gastos de comida'
+          ],
+          correct: 2,
+          explanation: 'Los gastos se re-facturan cuando fueron realizados específicamente para un cliente (viaje para visitarlo, hospedaje para su proyecto) y está acordado en el contrato.'
+        },
+        {
+          id: 'q3',
+          question: '¿Qué sucede después de aprobar un reporte de gastos?',
+          options: [
+            'No pasa nada más',
+            'Se contabiliza automáticamente y se programa el reembolso',
+            'Se elimina del sistema',
+            'El empleado debe volver a enviarlo'
+          ],
+          correct: 1,
+          explanation: 'Al aprobar, Odoo automáticamente crea los asientos contables, registra la deuda con el empleado y permite programar el pago de reembolso.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Ciclo Completo de Aprobación',
+      description: 'Simula el proceso completo de aprobación y reembolso:',
+      steps: [
+        {
+          id: 'step1',
+          task: 'Un empleado envía un reporte con 3 gastos: Taxi $80, Hotel $1,200, Comida $450. El límite de comida es $300. ¿Qué haces?',
+          validation: 'multiple-choice',
+          options: [
+            'Aprobar todo sin revisar',
+            'Rechazar todo el reporte',
+            'Solicitar justificación del exceso en comida antes de decidir',
+            'Modificar el monto de la comida a $300'
+          ],
+          correct: 2
+        },
+        {
+          id: 'step2',
+          task: 'Aprobaste un reporte de $2,500. El empleado usó su dinero. ¿Cuánto debes reembolsar?',
+          validation: 'numeric',
+          correctAnswer: 2500,
+          tolerance: 0,
+          hints: ['Si el empleado pagó con su dinero, reembolsas el total aprobado']
+        },
+        {
+          id: 'step3',
+          task: 'Un gasto de $800 de hotel fue para visitar al cliente XYZ. Política: re-facturar al costo. ¿Cuánto cargas al cliente (sin IVA)?',
+          validation: 'numeric',
+          correctAnswer: 800,
+          tolerance: 0,
+          hints: ['Al costo significa sin margen, cobras exactamente lo que costó']
+        }
+      ]
+    }
+  },
+
+  // ========================================
+  // EMAIL MARKETING - TODAS LAS LECCIONES
+  // ========================================
+
+  'email-001': {
+    title: 'Introducción a Email Marketing en Odoo',
+    introduction: `
+      El Email Marketing es una de las herramientas más poderosas y rentables para comunicarte con tus clientes y generar ventas. Odoo 19 ofrece un módulo completo de Email Marketing que te permite crear campañas profesionales, segmentar tu audiencia y medir resultados en tiempo real.
+
+      Con el Email Marketing de Odoo, puedes diseñar emails atractivos sin necesidad de conocimientos técnicos, automatizar tus envíos y generar leads calificados para tu negocio. Todo integrado con tu CRM, ventas y base de datos de contactos.
+    `,
+    sections: [
+      {
+        title: '1. ¿Qué es Email Marketing en Odoo?',
+        content: `
+          El módulo de Email Marketing de Odoo te permite crear y gestionar campañas de email masivas de forma profesional.
+
+          **Características principales:**
+          - Editor visual drag & drop para diseñar emails
+          - Plantillas profesionales pre-diseñadas
+          - Segmentación avanzada de audiencias
+          - A/B testing para optimizar resultados
+          - Analytics detallado de cada campaña
+          - Integración total con CRM y ventas
+        `,
+        example: `
+          📍 Ruta en Odoo: Aplicaciones > Buscar "Email Marketing" > Instalar
+
+          **Casos de uso típicos:**
+
+          **1. Newsletter mensual:**
+          Envías actualizaciones a 5,000 suscriptores cada mes
+          → Tasa de apertura: 28%
+          → Clicks: 12%
+          → Leads generados: 60
+
+          **2. Campaña promocional:**
+          Descuento del 20% solo para clientes VIP (500 contactos)
+          → Tasa de apertura: 45%
+          → Conversión: 8%
+          → Ventas: 40 pedidos x $150 promedio = $6,000
+
+          **3. Recuperación de carritos abandonados:**
+          Recordatorio a 200 usuarios que no completaron compra
+          → Tasa de apertura: 35%
+          → Recuperación: 15%
+          → Recuperados: 30 carritos x $80 = $2,400
+        `,
+        tips: [
+          'Comienza con una plantilla para no partir de cero',
+          'Define claramente el objetivo de cada campaña antes de crearla',
+          'Mantén tu base de datos de contactos actualizada y limpia',
+          'Respeta siempre las leyes de protección de datos (GDPR, CAN-SPAM)',
+          'Envía emails en horarios óptimos según tu audiencia (martes-jueves, 10am-2pm suele funcionar bien)'
+        ]
+      },
+      {
+        title: '2. Interfaz y Navegación',
+        content: `
+          La interfaz de Email Marketing está diseñada para ser intuitiva y eficiente.
+
+          **Secciones principales:**
+          - **Mailings:** Tus campañas de email (borradores, programadas, enviadas)
+          - **Listas de correo:** Segmentos de tu audiencia
+          - **Plantillas:** Diseños reutilizables
+          - **Configuración:** Ajustes generales y remitente
+          - **Reportes:** Analytics y métricas
+        `,
+        example: `
+          📍 Ruta: Email Marketing > Dashboard
+
+          **Vista del dashboard:**
+
+          Campañas activas:              3
+          Emails programados:            2
+          Tasa de apertura promedio:    32%
+          Tasa de clicks promedio:      14%
+          Total suscriptores:         12,450
+
+          **Campañas recientes:**
+
+          | Campaña              | Enviados | Abiertos | Clicks | Conversión |
+          | -------------------- | -------- | -------- | ------ | ---------- |
+          | Black Friday 2025    | 8,500    | 3,400    | 1,190  | 8.2%       |
+          | Newsletter Nov       | 12,000   | 3,840    | 1,536  | 4.1%       |
+          | Lanzamiento Producto | 2,500    | 1,125    | 450    | 12.5%      |
+
+          **Métricas clave:**
+          ✓ Open rate (tasa de apertura)
+          ✓ Click rate (tasa de clicks)
+          ✓ Bounce rate (rebotes)
+          ✓ Unsubscribe rate (bajas)
+          ✓ Conversion rate (conversiones)
+        `,
+        tips: [
+          'Revisa el dashboard semanalmente para identificar tendencias',
+          'Usa filtros para encontrar rápidamente campañas específicas',
+          'Marca como favoritas tus mejores plantillas',
+          'Configura notificaciones para eventos importantes'
+        ]
+      },
+      {
+        title: '3. Mejores Prácticas de Email Marketing',
+        content: `
+          Seguir las mejores prácticas garantiza mejores resultados y protege tu reputación.
+
+          **Reglas de oro:**
+          - **Permiso:** Solo envía a quien te dio permiso explícito
+          - **Valor:** Cada email debe aportar valor al receptor
+          - **Frecuencia:** No satures a tu audiencia (1-2 emails/semana máximo)
+          - **Mobile-first:** 70% abre emails en móvil, diseña para ello
+          - **Subject line:** El asunto es crítico para la apertura
+          - **CTA claro:** Botón de acción visible y único
+        `,
+        example: `
+          **EJEMPLO MALO ❌**
+
+          Subject: "Hola"
+          Contenido: Texto largo sin formato, múltiples productos, 5 botones diferentes, sin personalización
+          Resultado: 8% apertura, 1% clicks
+
+          **EJEMPLO BUENO ✅**
+
+          Subject: "María, 20% OFF exclusivo para ti (termina hoy)"
+          Contenido:
+          - Saludo personalizado
+          - 1 producto estrella con imagen
+          - Beneficio claro del descuento
+          - 1 solo CTA grande: "Usar mi descuento"
+          - Diseño responsive
+          - Opción de cancelar suscripción visible
+
+          Resultado: 42% apertura, 18% clicks, 7% conversión
+
+          **Elementos del email exitoso:**
+          ✓ Subject line personalizado con urgencia
+          ✓ Preheader atractivo
+          ✓ Contenido escaneable (bullets, negritas)
+          ✓ Imágenes optimizadas (< 100KB cada una)
+          ✓ CTA único y visible
+          ✓ Unsubscribe claro
+        `,
+        tips: [
+          'Personaliza siempre: usa el nombre del destinatario',
+          'Testea en diferentes dispositivos antes de enviar',
+          'Evita palabras spam: "gratis", "garantizado", exceso de mayúsculas',
+          'Incluye texto alternativo (ALT) en todas las imágenes',
+          'Mantén el ratio 60% texto / 40% imágenes'
+        ]
+      },
+      {
+        title: '4. Configuración Inicial',
+        content: `
+          Antes de lanzar tu primera campaña, configura correctamente los ajustes básicos.
+
+          **Configuración esencial:**
+          - **Remitente:** Nombre y email de envío (ej: "Pedro de MiEmpresa" <noreply@miempresa.com>)
+          - **Dominio:** Verificación de dominio (SPF, DKIM, DMARC)
+          - **Plantilla por defecto:** Footer con datos de la empresa
+          - **Unsubscribe:** Link de baja automático
+        `,
+        example: `
+          📍 Ruta: Email Marketing > Configuración > Ajustes
+
+          **Configuración de remitente:**
+
+          ~~~text
+          Nombre del remitente: "Equipo de Marketing - TechCorp"
+          Email del remitente: marketing@techcorp.com
+          Reply-to: contacto@techcorp.com
+
+          Dirección de la empresa:
+          TechCorp Solutions S.A. de C.V.
+          Av. Reforma 123, Piso 5
+          Ciudad de México, 06600
+          México
+          ~~~
+
+          **Verificación de dominio:**
+          ✓ SPF record configurado
+          ✓ DKIM signature activa
+          ✓ DMARC policy: p=quarantine
+
+          **Footer automático:**
+          ✓ Dirección física de la empresa (requerido legalmente)
+          ✓ Link de baja de suscripción
+          ✓ Links a redes sociales
+          ✓ Política de privacidad
+        `,
+        tips: [
+          'Usa un dominio verificado para mejor deliverability',
+          'Nunca uses emails personales como remitente (@gmail, @hotmail)',
+          'Configura un email reply-to que sí revises',
+          'Cumple con requisitos legales de tu país (dirección física)',
+          'Calienta tu dominio enviando primero a pequeños grupos'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Cuál es la ventaja principal del Email Marketing?',
+          options: [
+            'Es gratis siempre',
+            'No requiere permiso de los destinatarios',
+            'Es una herramienta muy rentable con alto ROI y fácil medición',
+            'Solo funciona para empresas grandes'
+          ],
+          correct: 2,
+          explanation: 'El Email Marketing tiene uno de los mejores ROI (retorno de inversión) de todos los canales de marketing, con medición precisa de resultados.'
+        },
+        {
+          id: 'q2',
+          question: '¿Qué porcentaje aproximado de usuarios abre emails en dispositivos móviles?',
+          options: [
+            '10%',
+            '30%',
+            '50%',
+            '70%'
+          ],
+          correct: 3,
+          explanation: 'Aproximadamente el 70% de los emails se abren en dispositivos móviles, por eso es crítico diseñar emails responsive.'
+        },
+        {
+          id: 'q3',
+          question: '¿Qué elemento es MÁS importante para lograr que abran tu email?',
+          options: [
+            'El color del botón',
+            'El asunto (subject line)',
+            'El tamaño de las imágenes',
+            'La hora de envío'
+          ],
+          correct: 1,
+          explanation: 'El asunto es lo primero que ve el destinatario y determina en gran medida si abrirá o no tu email. Un mal asunto = email no abierto.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Planifica tu Primera Campaña',
+      description: 'Define los elementos clave de tu primera campaña de email marketing',
+      steps: [
+        {
+          id: 'step1',
+          task: 'Define el objetivo de tu campaña. ¿Cuál de estos es un objetivo SMART (específico y medible)?',
+          validation: 'multiple-choice',
+          options: [
+            'Aumentar las ventas',
+            'Generar 50 leads calificados en 7 días',
+            'Mandar emails a muchas personas',
+            'Mejorar la imagen de marca'
+          ],
+          correct: 1
+        },
+        {
+          id: 'step2',
+          task: 'Tu producto cuesta $100. Enviarás a 1,000 personas. Si logras 30% apertura, 15% clicks y 5% conversión, ¿cuánto venderás?',
+          validation: 'numeric',
+          correctAnswer: 1500,
+          tolerance: 100,
+          hints: ['1,000 emails → 30% abiertos = 300 → 15% de 300 = 45 clicks → 5% de 1,000 = 50 conversiones → 50 × $100 = ?']
+        },
+        {
+          id: 'step3',
+          task: 'Escribe un subject line efectivo para una campaña de descuento del 25% (máximo 50 caracteres, incluye urgencia y personalización)',
+          validation: 'text',
+          correctAnswer: '[Nombre], tu 25% OFF termina hoy',
+          hints: ['Incluye: nombre personalizado, beneficio claro, urgencia']
+        }
+      ]
+    }
+  },
+
+  'email-002': {
+    title: 'Creación y Gestión de Listas de Correo',
+    introduction: `
+      Las listas de correo son la base de tu estrategia de email marketing. Una lista bien organizada y segmentada te permite enviar mensajes relevantes a las personas correctas, aumentando drásticamente tus tasas de apertura y conversión.
+
+      Odoo 19 te ofrece herramientas poderosas para crear, importar, segmentar y gestionar tus listas de correo de manera profesional y conforme a las regulaciones de privacidad.
+    `,
+    sections: [
+      {
+        title: '1. Crear Listas de Correo',
+        content: `
+          Las listas te permiten organizar tus contactos en grupos específicos según criterios que definas.
+
+          **Tipos de listas:**
+          - **Públicas:** Los usuarios pueden suscribirse desde tu sitio web
+          - **Privadas:** Solo tú puedes añadir contactos
+          - **Estáticas:** Lista fija de contactos que actualizas manualmente
+          - **Dinámicas:** Se actualizan automáticamente según criterios
+        `,
+        example: `
+          📍 Ruta en Odoo: Email Marketing > Listas de correo > Crear
+
+          **Ejemplo de listas segmentadas:**
+
+          **Lista: "Clientes VIP"** (Privada, Dinámica)
+          Criterios:
+          - Total de compras > $5,000
+          - Última compra < 90 días
+          - País: México
+          Total contactos: 342
+
+          **Lista: "Newsletter General"** (Pública, Estática)
+          - Suscriptores del sitio web
+          - Opt-in confirmado
+          Total contactos: 12,450
+
+          **Lista: "Leads Tecnología"** (Privada, Dinámica)
+          Criterios:
+          - Etiqueta: "Tech"
+          - No es cliente
+          - Descargó ebook
+          Total contactos: 890
+
+          **Configuración de una lista:**
+
+          ~~~text
+          Nombre: Clientes VIP México
+          Tipo: Privada
+          Modo: Dinámico
+
+          Filtros:
+          [Ventas totales] [>] [$5,000]
+          Y
+          [Última compra] [<] [90 días]
+          Y
+          [País] [=] [México]
+
+          ✓ Actualizar automáticamente cada día
+          ✓ Enviar email de bienvenida al entrar
+          ✓ Permitir bajas
+          ~~~
+        `,
+        tips: [
+          'Usa listas dinámicas para segmentos que cambian frecuentemente',
+          'Nombra las listas de forma descriptiva y clara',
+          'No mezcles contactos B2B y B2C en la misma lista',
+          'Revisa y limpia tus listas cada 3 meses',
+          'Crea listas por etapa del customer journey'
+        ]
+      },
+      {
+        title: '2. Importar Contactos',
+        content: `
+          Importa contactos desde archivos CSV o Excel para poblar tus listas rápidamente.
+
+          **Requisitos para importación:**
+          - Formato CSV o XLSX
+          - Columnas: Email (obligatorio), Nombre, Apellido, Empresa, etc.
+          - Emails únicos sin duplicados
+          - Opt-in válido (importante legalmente)
+        `,
+        example: `
+          📍 Ruta: Email Marketing > Listas > [Lista] > Importar
+
+          **Archivo CSV de ejemplo:**
+
+          ~~~text
+          email,nombre,apellido,empresa,pais,opt_in_date
+          maria@techcorp.com,María,García,TechCorp,México,2025-01-15
+          juan@retail.mx,Juan,López,RetailMX,México,2025-01-14
+          ana@consulting.com,Ana,Martínez,Consulting Plus,España,2025-01-13
+          ~~~
+
+          **Proceso de importación:**
+
+          1. Preparar archivo
+             ✓ Verificar que todos tienen opt-in válido
+             ✓ Eliminar duplicados
+             ✓ Limpiar datos (espacios, caracteres raros)
+
+          2. Importar en Odoo
+             → Subir archivo CSV
+             → Mapear columnas
+             → Validar preview
+             → Confirmar importación
+
+          3. Verificación post-importación
+             ✓ Contactos importados: 2,500
+             ✓ Duplicados ignorados: 45
+             ✓ Emails inválidos: 12
+             ✓ Exitosos: 2,443
+
+          **Mapeo de columnas:**
+          CSV Column          →    Odoo Field
+          email               →    Email
+          nombre              →    First Name
+          apellido            →    Last Name
+          empresa             →    Company
+          pais                →    Country
+          opt_in_date         →    Subscription Date
+        `,
+        tips: [
+          'NUNCA importes listas compradas, solo contactos opt-in',
+          'Limpia los datos antes de importar (usa Excel o Google Sheets)',
+          'Verifica que no haya duplicados antes de importar',
+          'Guarda un backup del archivo original',
+          'Importa primero un lote pequeño de prueba (50-100 contactos)'
+        ]
+      },
+      {
+        title: '3. Segmentación Avanzada',
+        content: `
+          La segmentación es la clave para campañas relevantes y efectivas.
+
+          **Criterios de segmentación:**
+          - **Demográficos:** Edad, género, ubicación, idioma
+          - **Comportamiento:** Compras, clicks, descargas, visitas
+          - **Engagement:** Aperturas, clicks, inactivos
+          - **Ciclo de vida:** Leads, clientes nuevos, recurrentes, VIP
+          - **Intereses:** Categorías de productos, temas
+        `,
+        example: `
+          **Segmento 1: "Recuperación de Inactivos"**
+
+          Criterios:
+          - Última apertura > 60 días
+          - Es cliente (al menos 1 compra)
+          - No ha cancelado suscripción
+
+          Objetivo: Reactivar con oferta especial
+          Tamaño: 1,250 contactos
+
+          Estrategia:
+          Subject: "Te extrañamos [Nombre] - 30% solo para ti"
+          Contenido: Descuento exclusivo por regresar
+
+          **Segmento 2: "Super Fans"**
+
+          Criterios:
+          - Open rate > 60% últimos 90 días
+          - Click rate > 25%
+          - Ha compartido al menos 1 email
+
+          Objetivo: Convertir en promotores
+          Tamaño: 420 contactos
+
+          Estrategia:
+          Invitación a programa de referidos con incentivos
+
+          **Segmento 3: "Leads Calientes"**
+
+          Criterios:
+          - Visitó pricing page
+          - Descargó case study
+          - Abrió últimos 3 emails
+          - NO es cliente aún
+
+          Objetivo: Conversión a venta
+          Tamaño: 180 contactos
+
+          Estrategia:
+          Demo personalizada + descuento por pronto pago
+        `,
+        tips: [
+          'Cuanto más específico el segmento, más efectiva la campaña',
+          'Crea al menos 5 segmentos básicos antes de empezar',
+          'Segmenta por nivel de engagement para ajustar frecuencia',
+          'Usa segmentos para excluir (ej: no enviar promoción a clientes VIP)',
+          'Actualiza los criterios de segmentación cada trimestre'
+        ]
+      },
+      {
+        title: '4. Gestión de Suscripciones',
+        content: `
+          Gestiona altas, bajas y preferencias de tus suscriptores de forma transparente.
+
+          **Tipos de suscripción:**
+          - **Single opt-in:** Usuario se suscribe directamente
+          - **Double opt-in:** Usuario confirma por email (recomendado)
+          - **Opt-out:** Usuario puede darse de baja en cualquier momento
+        `,
+        example: `
+          📍 Ruta: Email Marketing > Configuración > Suscripciones
+
+          **Flujo de double opt-in:**
+
+          1. Usuario completa formulario web
+             Email: cliente@empresa.com
+             ✓ "Acepto recibir newsletter"
+
+          2. Odoo envía email de confirmación
+             Subject: "Confirma tu suscripción a TechCorp News"
+             → Link: "Sí, confirmar suscripción"
+
+          3. Usuario hace click en link
+             Estado: Suscripción confirmada ✓
+             Fecha: 15/01/2025 10:45
+
+          4. Email de bienvenida automático
+             "¡Bienvenido! Aquí está tu guía gratuita..."
+
+          **Centro de preferencias:**
+
+          ~~~text
+          Gestiona tus suscripciones - cliente@empresa.com
+
+          Newsletter semanal              [✓] Suscrito
+          Ofertas y promociones           [✓] Suscrito
+          Lanzamiento de productos        [ ] No suscrito
+          Eventos y webinars              [✓] Suscrito
+
+          Frecuencia preferida: Semanal
+
+          [Guardar preferencias]  [Cancelar todas las suscripciones]
+          ~~~
+
+          **Razones de baja (analytics):**
+          - "Muy frecuente": 45%
+          - "No relevante": 30%
+          - "No recuerdo suscribirme": 15%
+          - "Otro": 10%
+        `,
+        tips: [
+          'Usa siempre double opt-in para lista de calidad',
+          'Haz el proceso de baja FÁCIL (1 click)',
+          'Ofrece centro de preferencias antes de darse de baja',
+          'Envía encuesta opcional al darse de baja',
+          'No elimines bajas inmediatamente, guárdalas como "unsubscribed" por si piden reactivación'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Cuál es la diferencia entre lista estática y dinámica?',
+          options: [
+            'No hay diferencia',
+            'Estática se actualiza manualmente, dinámica se actualiza automáticamente según criterios',
+            'Dinámica es solo para emails automatizados',
+            'Estática es más profesional'
+          ],
+          correct: 1,
+          explanation: 'Las listas dinámicas se actualizan automáticamente cuando los contactos cumplen los criterios definidos, mientras que las estáticas requieren actualización manual.'
+        },
+        {
+          id: 'q2',
+          question: '¿Por qué es recomendable usar double opt-in?',
+          options: [
+            'Es más rápido',
+            'No es recomendable',
+            'Asegura que los suscriptores realmente quieren recibir tus emails y mejora la calidad de la lista',
+            'Es obligatorio por ley siempre'
+          ],
+          correct: 2,
+          explanation: 'El double opt-in confirma que el suscriptor realmente quiere recibir emails, reduciendo spam complaints y mejorando engagement.'
+        },
+        {
+          id: 'q3',
+          question: '¿Qué tipo de contactos NUNCA debes importar?',
+          options: [
+            'Contactos de tu CRM',
+            'Listas compradas sin opt-in verificado',
+            'Asistentes a tus eventos',
+            'Clientes actuales'
+          ],
+          correct: 1,
+          explanation: 'Importar listas compradas sin permiso explícito es ilegal en muchas jurisdicciones (GDPR, CAN-SPAM) y daña tu reputación de envío.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Crea y Segmenta tus Listas',
+      description: 'Diseña una estrategia de listas segmentadas para tu negocio',
+      steps: [
+        {
+          id: 'step1',
+          task: 'Tienes 10,000 contactos. Quieres crear un segmento "Clientes Activos". ¿Qué criterios usarías?',
+          validation: 'multiple-choice',
+          options: [
+            'Todos los contactos que tengan email',
+            'Solo los que abrieron el último email',
+            'Quienes compraron en los últimos 90 días',
+            'Los que viven en México'
+          ],
+          correct: 2
+        },
+        {
+          id: 'step2',
+          task: 'Importaste 500 contactos. 45 eran duplicados y 12 tenían emails inválidos. ¿Cuántos contactos nuevos añadiste?',
+          validation: 'numeric',
+          correctAnswer: 443,
+          tolerance: 0,
+          hints: ['500 - 45 duplicados - 12 inválidos = ?']
+        },
+        {
+          id: 'step3',
+          task: 'De tus 5,000 suscriptores, 200 se dan de baja cada mes. ¿Cuál es tu tasa de bajas mensual (en %)?',
+          validation: 'numeric',
+          correctAnswer: 4,
+          tolerance: 0.5,
+          hints: ['(200 / 5,000) × 100 = ?']
+        }
+      ]
+    }
+  },
+
+  'email-003': {
+    title: 'Diseñar Campañas de Email Efectivas',
+    introduction: `
+      El diseño de tu email es crucial para captar la atención y lograr que los destinatarios realicen la acción deseada. Un diseño profesional, limpio y responsive puede marcar la diferencia entre una campaña exitosa y un email ignorado.
+
+      Odoo 19 incluye un potente editor drag & drop y plantillas profesionales que te permiten crear emails atractivos sin necesidad de conocer HTML o diseño gráfico.
+    `,
+    sections: [
+      {
+        title: '1. Editor de Emails Drag & Drop',
+        content: `
+          El editor visual de Odoo te permite diseñar emails profesionales arrastrando y soltando elementos.
+
+          **Bloques disponibles:**
+          - **Texto:** Párrafos, títulos, listas
+          - **Imágenes:** Fotos de productos, banners
+          - **Botones:** Call-to-actions destacados
+          - **Columnas:** Layouts de 2, 3 o 4 columnas
+          - **Separadores:** Líneas divisorias
+          - **Redes sociales:** Íconos con links
+          - **HTML personalizado:** Para necesidades avanzadas
+        `,
+        example: `
+          📍 Ruta en Odoo: Email Marketing > Mailings > Crear
+
+          **Estructura típica de un email efectivo:**
+
+          ~~~text
+          ┌────────────────────────────────────┐
+          │ [LOGO]           Newsletter  #42  │ ← Header con logo
+          ├────────────────────────────────────┤
+          │                                    │
+          │ Hola María,                       │ ← Saludo personalizado
+          │                                    │
+          │ [IMAGEN PRINCIPAL DEL PRODUCTO]   │ ← Hero image
+          │                                    │
+          │ Título: Nueva Colección Primavera │ ← Título atractivo
+          │                                    │
+          │ Texto: Descubre las últimas       │ ← Descripción breve
+          │ tendencias de la temporada...     │
+          │                                    │
+          │    [COMPRAR AHORA] ←───────────── │ ← CTA principal (botón grande)
+          │                                    │
+          ├─────────┬─────────┬───────────────┤
+          │[Img 1]  │[Img 2]  │  [Img 3]     │ ← Productos destacados
+          │Vestido  │Zapatos  │  Bolsa       │
+          │$899     │$1,299   │  $599        │
+          └─────────┴─────────┴───────────────┘
+          │                                    │
+          │ Síguenos: [FB][IG][TW]           │ ← Redes sociales
+          │ Darte de baja                    │ ← Unsubscribe
+          └────────────────────────────────────┘
+          ~~~
+
+          **Configuración del editor:**
+          - Ancho máximo: 600px (óptimo para emails)
+          - Fuentes: Arial, Helvetica (web-safe)
+          - Tamaño de fuente: mínimo 14px
+          - Espacio entre secciones: 20-30px
+        `,
+        tips: [
+          'Mantén el diseño simple: menos es más en email marketing',
+          'Usa una jerarquía visual clara (título > subtítulo > texto)',
+          'Los CTAs deben destacar con colores contrastantes',
+          'Optimiza imágenes (máximo 1MB total)',
+          'Preview en móvil antes de enviar (70% lo verá en smartphone)'
+        ]
+      },
+      {
+        title: '2. Plantillas Profesionales',
+        content: `
+          Usa plantillas pre-diseñadas para ahorrar tiempo y asegurar un diseño profesional.
+
+          **Tipos de plantillas:**
+          - **Newsletter:** Para actualizaciones regulares
+          - **Promocional:** Para ofertas y descuentos
+          - **Transaccional:** Confirmaciones, recibos
+          - **Evento:** Invitaciones y recordatorios
+          - **Producto:** Lanzamientos y catálogos
+        `,
+        example: `
+          📍 Ruta: Email Marketing > Configuración > Plantillas
+
+          **Ejemplo: Plantilla "Black Friday"**
+
+          Elementos incluidos:
+          ✓ Header con cuenta regresiva
+          ✓ Banner hero con % de descuento
+          ✓ Grid de productos (2x2)
+          ✓ Código de cupón destacado
+          ✓ CTA urgente ("Quedan 6 horas")
+          ✓ Footer con términos y condiciones
+
+          **Personalización de plantilla:**
+
+          1. Seleccionar plantilla base
+             → "E-commerce: Promotional"
+
+          2. Personalizar colores
+             Color primario: #FF6B35 (naranja)
+             Color secundario: #004E89 (azul)
+             Color CTA: #FF6B35
+
+          3. Reemplazar contenido
+             - Logo de empresa
+             - Imágenes de productos
+             - Textos y ofertas
+             - Links de destino
+
+          4. Guardar como plantilla propia
+             Nombre: "Plantilla Promo - MiEmpresa"
+
+          **Buenas prácticas de plantillas:**
+          ✓ Mantén consistencia con tu marca
+          ✓ Guarda versiones para diferentes campañas
+          ✓ Documenta qué funciona mejor
+          ✓ Actualiza plantillas trimestralmente
+        `,
+        tips: [
+          'Empieza siempre con una plantilla, no desde cero',
+          'Crea tu biblioteca de plantillas para diferentes objetivos',
+          'Mantén coherencia de marca en todas las plantillas',
+          'Testea plantillas en distintos clientes de email',
+          'Guarda versiones ganadoras de A/B tests como nuevas plantillas'
+        ]
+      },
+      {
+        title: '3. Personalización Dinámica',
+        content: `
+          La personalización aumenta drásticamente el engagement y conversión.
+
+          **Elementos personalizables:**
+          - Nombre del destinatario
+          - Empresa
+          - Productos recomendados según historial
+          - Ubicación geográfica
+          - Fecha de última compra
+          - Categorías de interés
+        `,
+        example: `
+          **Email SIN personalización:**
+
+          Subject: Oferta especial
+          Contenido: "Hola, tenemos descuentos"
+
+          Resultado: 15% apertura, 2% clicks
+
+          **Email CON personalización:**
+
+          Subject: {{first_name}}, 20% OFF en {{favorite_category}}
+          → "María, 20% OFF en Tecnología"
+
+          Contenido personalizado:
+
+          ~~~text
+          Hola {{first_name}},
+
+          Como eres fan de {{favorite_category}}, tenemos
+          estas recomendaciones especiales para ti:
+
+          [Producto 1 de su categoría favorita]
+          [Producto 2 de su categoría favorita]
+          [Producto 3 de su categoría favorita]
+
+          Código exclusivo: {{first_name}}20OFF
+          Válido hasta: {{expiry_date}}
+
+          Tu descuento VIP: {{vip_discount}}%
+          (Has ahorrado {{total_saved}} con nosotros)
+          ~~~
+
+          Resultado: 42% apertura, 18% clicks, 7% conversión
+
+          **Variables disponibles en Odoo:**
+          - {{object.name}} → Nombre completo
+          - {{object.email}} → Email
+          - {{object.company_id.name}} → Empresa
+          - {{object.country_id.name}} → País
+          - Custom fields → Cualquier campo personalizado
+        `,
+        tips: [
+          'Personaliza al menos el nombre en subject y saludo',
+          'Usa datos de compras para recomendar productos relevantes',
+          'Segmenta y personaliza por industria en B2B',
+          'Incluye cupones personalizados con el nombre del cliente',
+          'No abuses: demasiada personalización puede parecer invasiva'
+        ]
+      },
+      {
+        title: '4. Diseño Responsive',
+        content: `
+          Tu email debe verse perfecto en desktop, tablet y móvil.
+
+          **Principios de diseño responsive:**
+          - Layout de una sola columna en móvil
+          - Botones grandes (mínimo 44x44px)
+          - Texto legible sin zoom (14px mínimo)
+          - Imágenes que se adaptan al ancho
+          - Touch targets separados
+        `,
+        example: `
+          **Vista Desktop (600px ancho):**
+
+          ┌──────────┬──────────┬──────────┐
+          │ Prod 1   │ Prod 2   │ Prod 3   │
+          │ $99      │ $149     │ $199     │
+          └──────────┴──────────┴──────────┘
+
+          **Vista Móvil (320px ancho):**
+
+          ┌────────────────────┐
+          │ Producto 1         │
+          │ $99                │
+          │ [Comprar]         │
+          ├────────────────────┤
+          │ Producto 2         │
+          │ $149               │
+          │ [Comprar]         │
+          ├────────────────────┤
+          │ Producto 3         │
+          │ $199               │
+          │ [Comprar]         │
+          └────────────────────┘
+
+          **Checklist responsive:**
+
+          ✓ Texto: mínimo 14px
+          ✓ Botón CTA: mínimo 44px alto
+          ✓ Imágenes: max-width 100%
+          ✓ No usar hover effects (no funciona en móvil)
+          ✓ Links espaciados (evitar clicks accidentales)
+          ✓ Asunto: máximo 40 caracteres (se corta en móvil)
+
+          **Test en dispositivos:**
+          ✓ iPhone (Safari)
+          ✓ Android (Gmail app)
+          ✓ iPad
+          ✓ Outlook Desktop
+          ✓ Gmail Web
+        `,
+        tips: [
+          'Diseña primero para móvil (mobile-first)',
+          'Usa el preview de Odoo para ver versión móvil',
+          'Testea enviándote el email a ti mismo',
+          'Los botones deben ser fáciles de tocar con el dedo',
+          'Evita layouts complejos de múltiples columnas'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Cuál es el ancho máximo recomendado para emails?',
+          options: [
+            '1200px',
+            '960px',
+            '600px',
+            '320px'
+          ],
+          correct: 2,
+          explanation: '600px es el ancho estándar recomendado para emails, ya que se visualiza bien en la mayoría de clientes de email y pantallas.'
+        },
+        {
+          id: 'q2',
+          question: '¿Qué porcentaje de usuarios abre emails en móvil?',
+          options: [
+            'Aproximadamente 30%',
+            'Aproximadamente 50%',
+            'Aproximadamente 70%',
+            'Aproximadamente 90%'
+          ],
+          correct: 2,
+          explanation: 'Aproximadamente el 70% de los emails se abren en dispositivos móviles, por eso es crítico diseñar emails responsive.'
+        },
+        {
+          id: 'q3',
+          question: 'En un email efectivo, ¿cuántos CTAs (botones de acción) deberías incluir?',
+          options: [
+            'Solo 1, muy claro y destacado',
+            'Entre 5-7 para dar opciones',
+            'Ninguno, que el usuario decida',
+            '2-3 máximo'
+          ],
+          correct: 0,
+          explanation: 'Un solo CTA claro y destacado es más efectivo. Múltiples CTAs confunden al usuario y reducen la tasa de conversión.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Diseña tu Email',
+      description: 'Aplica los principios de diseño efectivo de emails',
+      steps: [
+        {
+          id: 'step1',
+          task: 'Estás diseñando un email promocional. ¿Cuál es la mejor estructura?',
+          validation: 'multiple-choice',
+          options: [
+            'Logo → Texto largo → Múltiples productos → Varios botones',
+            'Logo → Hero image → Título claro → Breve descripción → 1 CTA destacado',
+            'Solo texto sin imágenes',
+            'Solo imágenes sin texto'
+          ],
+          correct: 1
+        },
+        {
+          id: 'step2',
+          task: 'Tu email pesa 2.5 MB por las imágenes. ¿Qué debes hacer?',
+          validation: 'multiple-choice',
+          options: [
+            'Enviarlo así, no importa',
+            'Eliminar todas las imágenes',
+            'Optimizar y comprimir imágenes a máximo 1MB total',
+            'Convertir todo a texto'
+          ],
+          correct: 2
+        },
+        {
+          id: 'step3',
+          task: 'Personalizas el subject line con el nombre. Si tu tasa de apertura era 20%, ¿qué mejora aproximada esperas?',
+          validation: 'multiple-choice',
+          options: [
+            'Ninguna mejora',
+            'Mejora de 5-10%',
+            'Mejora de 50%',
+            'Empeora'
+          ],
+          correct: 1
+        }
+      ]
+    }
+  },
+
+  'email-004': {
+    title: 'A/B Testing y Optimización',
+    introduction: `
+      El A/B Testing (también llamado split testing) es la práctica de crear dos versiones de un email para descubrir cuál funciona mejor. Esta técnica basada en datos te permite optimizar cada elemento de tus campañas y maximizar resultados.
+
+      Odoo 19 facilita la creación y análisis de A/B tests, permitiéndote tomar decisiones informadas basadas en el comportamiento real de tu audiencia.
+    `,
+    sections: [
+      {
+        title: '1. ¿Qué es A/B Testing?',
+        content: `
+          El A/B Testing consiste en enviar dos versiones diferentes de un email a segmentos de tu audiencia para determinar cuál genera mejores resultados.
+
+          **Qué puedes testear:**
+          - Subject lines (asuntos)
+          - Nombres de remitente
+          - Contenido del email
+          - Call-to-actions (texto y diseño)
+          - Imágenes
+          - Horarios de envío
+          - Ofertas y pricing
+        `,
+        example: `
+          📍 Ruta en Odoo: Email Marketing > Mailings > Crear > A/B Test
+
+          **Ejemplo de A/B Test de Subject Line:**
+
+          **Configuración:**
+          Audiencia total: 10,000 suscriptores
+          Sample size: 20% (2,000 para test)
+          Ganador automático: Mejor open rate después de 4 horas
+          Métrica: Tasa de apertura
+
+          **Versión A (1,000 personas):**
+          Subject: "Descuento especial para ti"
+          Resultado: 250 aperturas = 25% open rate
+
+          **Versión B (1,000 personas):**
+          Subject: "María, tu 20% OFF termina hoy"
+          Resultado: 420 aperturas = 42% open rate
+
+          **Ganador: Versión B** ✓
+
+          **Envío masivo:**
+          Las 8,000 personas restantes reciben la Versión B
+          → 8,000 × 42% = 3,360 aperturas adicionales
+
+          **Total de aperturas:**
+          - Con A/B test: 3,670 (42% promedio)
+          - Sin A/B test (solo A): 2,500 (25%)
+          - **Mejora: +47% más aperturas** 📈
+        `,
+        tips: [
+          'Testea UN solo elemento a la vez (si cambias todo, no sabrás qué funcionó)',
+          'Usa una muestra significativa (mínimo 1,000 personas por versión)',
+          'Espera tiempo suficiente antes de declarar ganador (mínimo 4 horas)',
+          'Documenta todos los tests para aprender patrones',
+          'No todos los tests tendrán un ganador claro, está bien'
+        ]
+      },
+      {
+        title: '2. A/B Test de Subject Lines',
+        content: `
+          El asunto es lo primero que ve el destinatario. Un buen subject line puede duplicar tu tasa de apertura.
+
+          **Elementos a testear:**
+          - Personalización (con/sin nombre)
+          - Longitud (corto vs largo)
+          - Emojis (con/sin)
+          - Urgencia ("última oportunidad", "termina hoy")
+          - Curiosidad vs claridad
+          - Preguntas vs afirmaciones
+        `,
+        example: `
+          **Test 1: Personalización**
+
+          Versión A: "Nueva colección disponible"
+          Open rate: 22%
+
+          Versión B: "{{first_name}}, nueva colección solo para ti"
+          Open rate: 35%
+          **Ganador: B (+59%)** ✓
+
+          **Test 2: Urgencia**
+
+          Versión A: "Descuento del 25% en toda la tienda"
+          Open rate: 28%
+
+          Versión B: "⏰ Solo hoy: 25% OFF (termina en 6 horas)"
+          Open rate: 41%
+          **Ganador: B (+46%)** ✓
+
+          **Test 3: Longitud**
+
+          Versión A: "Oferta"
+          Open rate: 18%
+
+          Versión B: "Oferta especial exclusiva solo para suscriptores VIP de nuestra tienda online"
+          Open rate: 15%
+          **Ganador: A (más corto)** ✓
+
+          **Mejores prácticas para subject lines:**
+
+          ✅ FUNCIONA:
+          - Personalización con nombre
+          - Urgencia real
+          - Beneficio claro
+          - 30-50 caracteres
+          - Emojis relevantes (1-2 máximo)
+
+          ❌ EVITA:
+          - ALL CAPS
+          - Múltiples signos !!!???
+          - Palabras spam: "gratis", "garantizado"
+          - Clickbait que no cumple
+          - Más de 60 caracteres
+        `,
+        tips: [
+          'El subject line es lo MÁS importante: 47% decide abrir solo por el asunto',
+          'Testea personalización primero (suele ganar)',
+          'Usa emojis con moderación (1-2 relevantes)',
+          'Mantén coherencia: el subject debe reflejar el contenido',
+          'Revisa subject lines en móvil (se cortan antes)'
+        ]
+      },
+      {
+        title: '3. A/B Test de Contenido y CTAs',
+        content: `
+          Una vez abierto el email, el contenido y call-to-action determinan si el usuario realizará la acción deseada.
+
+          **Elementos a testear:**
+          - Texto del CTA ("Comprar ahora" vs "Ver oferta")
+          - Color del botón CTA
+          - Posición del CTA (arriba vs abajo)
+          - Longitud del contenido (corto vs largo)
+          - Imágenes vs solo texto
+          - Una oferta vs múltiples opciones
+        `,
+        example: `
+          **Test de CTA Text:**
+
+          Versión A:
+          Botón: "Saber más"
+          Click rate: 8%
+
+          Versión B:
+          Botón: "Obtener mi 20% OFF ahora"
+          Click rate: 18%
+          **Ganador: B (+125%)** ✓
+
+          **Test de Color de Botón:**
+
+          Versión A:
+          Botón azul (#0066CC)
+          Click rate: 12%
+
+          Versión B:
+          Botón naranja (#FF6B35) - contraste alto
+          Click rate: 17%
+          **Ganador: B (+42%)** ✓
+
+          **Test de Longitud de Contenido:**
+
+          Versión A: Email largo (800 palabras)
+          - Hero image
+          - 4 párrafos explicativos
+          - Testimonios
+          - FAQ
+          - CTA al final
+          Click rate: 9%
+
+          Versión B: Email corto (150 palabras)
+          - Hero image
+          - 1 párrafo breve
+          - CTA prominente arriba
+          Click rate: 15%
+          **Ganador: B (más conciso)** ✓
+
+          **Aprendizajes clave:**
+          - CTAs específicos y orientados a beneficio funcionan mejor
+          - Contraste visual importa (botón debe destacar)
+          - Menos suele ser más en contenido de email
+          - El CTA debe estar "above the fold" (visible sin scroll)
+        `,
+        tips: [
+          'El texto del CTA debe ser orientado a acción y beneficio',
+          'Usa verbos de acción: "Obtener", "Descargar", "Reservar"',
+          'El color del botón debe contrastar con el fondo',
+          'Testea posición del CTA: arriba vs abajo',
+          'Un solo CTA claro funciona mejor que múltiples opciones'
+        ]
+      },
+      {
+        title: '4. Análisis de Resultados',
+        content: `
+          Analizar correctamente los resultados es clave para tomar decisiones acertadas.
+
+          **Métricas a comparar:**
+          - Open rate (tasa de apertura)
+          - Click rate (tasa de clicks)
+          - Click-to-open rate (CTOR)
+          - Conversion rate (conversión)
+          - Unsubscribe rate (bajas)
+          - Revenue per email
+        `,
+        example: `
+          📍 Ruta: Email Marketing > Reportes > A/B Test Results
+
+          **Análisis completo de campaña:**
+
+          | Métrica            | Versión A | Versión B | Diferencia |
+          | ------------------ | --------- | --------- | ---------- |
+          | Enviados           | 5,000     | 5,000     | -          |
+          | Abiertos           | 1,250     | 2,100     | +68%       |
+          | Open Rate          | 25%       | 42%       | +17pp      |
+          | Clicks             | 200       | 504       | +152%      |
+          | Click Rate         | 4%        | 10.1%     | +6.1pp     |
+          | CTOR               | 16%       | 24%       | +8pp       |
+          | Conversiones       | 40        | 121       | +202%      |
+          | Conversion Rate    | 0.8%      | 2.42%     | +1.62pp    |
+          | Revenue            | $4,000    | $12,100   | +202%      |
+          | Revenue per Email  | $0.80     | $2.42     | +202%      |
+          | Unsubscribes       | 25        | 21        | -16%       |
+
+          **Conclusión:**
+          Versión B es ganador CLARO en todas las métricas ✓
+          - Open rate: +68%
+          - Clicks: +152%
+          - Revenue: +202%
+
+          **Significancia estadística:**
+          Confidence level: 99%
+          P-value: < 0.01
+          ✓ Resultado estadísticamente significativo
+
+          **Acción:**
+          - Implementar elementos ganadores de Versión B en futuras campañas
+          - Documentar aprendizajes
+          - Continuar tests para optimizar más
+        `,
+        tips: [
+          'Espera un tamaño de muestra suficiente antes de concluir',
+          'Una diferencia del 10-15% ya es significativa',
+          'Si la diferencia es menor al 5%, probablemente no es significativa',
+          'Considera el contexto: conversión importa más que apertura',
+          'Documenta todos los resultados para identificar patrones'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Cuál es la regla principal del A/B Testing?',
+          options: [
+            'Testear múltiples elementos al mismo tiempo',
+            'Testear UN solo elemento a la vez',
+            'Enviar ambas versiones a toda la audiencia',
+            'No documentar los resultados'
+          ],
+          correct: 1,
+          explanation: 'Debes testear UN solo elemento a la vez. Si cambias múltiples cosas, no sabrás cuál fue responsable del resultado.'
+        },
+        {
+          id: 'q2',
+          question: 'Enviaste a 1,000 personas la versión A (open rate 20%) y a 1,000 la versión B (open rate 35%). ¿Cuál es el ganador?',
+          options: [
+            'Versión A',
+            'Versión B',
+            'Empate',
+            'No se puede determinar'
+          ],
+          correct: 1,
+          explanation: 'Versión B tiene 35% vs 20% de apertura, una diferencia del +75%, claramente significativa.'
+        },
+        {
+          id: 'q3',
+          question: '¿Qué métrica es MÁS importante para una campaña de venta de producto?',
+          options: [
+            'Open rate (apertura)',
+            'Click rate (clicks)',
+            'Conversion rate (ventas realizadas)',
+            'Número de impresiones'
+          ],
+          correct: 2,
+          explanation: 'Para ventas, la conversión (ventas reales) es lo más importante. Puedes tener alta apertura pero si no vende, no sirve.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Diseña un A/B Test',
+      description: 'Planifica y analiza un A/B test para tu campaña',
+      steps: [
+        {
+          id: 'step1',
+          task: 'Tienes 10,000 suscriptores. ¿Qué tamaño de muestra usarías para el A/B test?',
+          validation: 'multiple-choice',
+          options: [
+            '100 personas (50 + 50)',
+            '2,000 personas (1,000 + 1,000)',
+            '10,000 personas (5,000 + 5,000)',
+            '500 personas (250 + 250)'
+          ],
+          correct: 1
+        },
+        {
+          id: 'step2',
+          task: 'Versión A: 1,000 enviados, 250 abiertos. Versión B: 1,000 enviados, 400 abiertos. ¿Cuál es el open rate de B?',
+          validation: 'numeric',
+          correctAnswer: 40,
+          tolerance: 0,
+          hints: ['(400 / 1,000) × 100 = ?']
+        },
+        {
+          id: 'step3',
+          task: '¿Qué deberías testear PRIMERO para mejorar una campaña con bajo open rate?',
+          validation: 'multiple-choice',
+          options: [
+            'El color del botón',
+            'El subject line (asunto)',
+            'El footer',
+            'Las imágenes'
+          ],
+          correct: 1
+        }
+      ]
+    }
+  },
+
+  'email-005': {
+    title: 'Métricas y Analytics de Email',
+    introduction: `
+      Medir y analizar el desempeño de tus campañas es esencial para mejorar continuamente tus resultados. Sin datos, estás navegando a ciegas. Con las métricas correctas, puedes tomar decisiones informadas y optimizar cada aspecto de tu email marketing.
+
+      Odoo 19 proporciona analytics detallado y dashboards visuales que te permiten entender qué funciona, qué no, y dónde enfocar tus esfuerzos de optimización.
+    `,
+    sections: [
+      {
+        title: '1. Métricas Fundamentales',
+        content: `
+          Estas son las métricas esenciales que debes monitorear en cada campaña.
+
+          **Open Rate (Tasa de Apertura):**
+          - Qué es: % de personas que abrieron tu email
+          - Fórmula: (Abiertos / Enviados) × 100
+          - Benchmark: 20-30% es bueno, 30-40% es excelente
+
+          **Click Rate (Tasa de Clicks):**
+          - Qué es: % de personas que hicieron click en algún link
+          - Fórmula: (Clicks / Enviados) × 100
+          - Benchmark: 2-5% es bueno, 5-10% es excelente
+
+          **Click-to-Open Rate (CTOR):**
+          - Qué es: % de los que abrieron y además hicieron click
+          - Fórmula: (Clicks / Abiertos) × 100
+          - Benchmark: 10-20% es bueno, 20-35% es excelente
+
+          **Conversion Rate:**
+          - Qué es: % que completaron la acción deseada (compra, registro, etc.)
+          - Fórmula: (Conversiones / Enviados) × 100
+          - Benchmark: 1-3% es bueno, 3-5%+ es excelente
+        `,
+        example: `
+          📍 Ruta: Email Marketing > Reportes > Campaign Analytics
+
+          **Campaña: "Black Friday 2025"**
+
+          Enviados:              10,000
+          Entregados:             9,850 (98.5%)
+          Rebotados:                150 (1.5%)
+
+          **Engagement:**
+          Abiertos:               3,940 (40% open rate) ✓ Excelente
+          Clicks únicos:          1,182 (12% click rate) ✓ Excelente
+          CTOR:                   30% (1,182/3,940) ✓ Excelente
+
+          **Conversión:**
+          Pedidos generados:        280
+          Conversion rate:        2.8% (280/10,000) ✓ Bueno
+          Revenue total:      $42,000
+          Revenue per email:    $4.20
+          AOV (ticket promedio): $150
+
+          **Negativo:**
+          Unsubscribes:            45 (0.45%) ✓ Aceptable
+          Spam reports:             2 (0.02%) ✓ Muy bueno
+
+          **ROI:**
+          Costo de campaña:      $200 (plataforma + diseño)
+          Revenue:            $42,000
+          Beneficio:          $41,800
+          ROI:                 20,900%
+        `,
+        tips: [
+          'Open rate mide el interés inicial (subject line)',
+          'Click rate mide el engagement con el contenido',
+          'CTOR es mejor indicador que click rate simple',
+          'Conversion rate es lo que realmente importa para el negocio',
+          'Compara siempre contra tus propios benchmarks históricos'
+        ]
+      },
+      {
+        title: '2. Bounce Rate y Deliverability',
+        content: `
+          El bounce rate afecta tu reputación de envío. Mantenerlo bajo es crítico.
+
+          **Tipos de bounces:**
+          - **Hard bounce:** Email inválido o inexistente (eliminar de lista)
+          - **Soft bounce:** Problema temporal (buzón lleno, servidor caído)
+
+          **Deliverability (Entregabilidad):**
+          - Qué es: % de emails que llegan a la bandeja de entrada
+          - Objetivo: > 95% delivered
+          - Factores: Reputación del dominio, contenido spam-free, engagement
+        `,
+        example: `
+          **Análisis de Bounces:**
+
+          Total enviados:        10,000
+          Delivered:              9,700 (97%)
+          Total bounced:            300 (3%)
+
+          **Desglose:**
+          Hard bounces:            180 (1.8%)
+          - Email inválido:        120
+          - Dominio inexistente:    45
+          - Bloqueado:              15
+
+          Soft bounces:            120 (1.2%)
+          - Buzón lleno:            70
+          - Servidor temporal:      35
+          - Mensaje muy grande:     15
+
+          **Acción correctiva:**
+
+          ✓ Eliminar hard bounces de lista inmediatamente
+          ✓ Reintentar soft bounces en 24-48h
+          ✓ Si bounce rate > 5%, investigar causa
+          ✓ Limpiar lista mensualmente
+
+          **Factores que afectan deliverability:**
+
+          ✅ MEJORAN:
+          - Listas opt-in verificadas
+          - High engagement (aperturas, clicks)
+          - Dominio autenticado (SPF, DKIM)
+          - Buen historial de envíos
+          - Contenido relevante
+
+          ❌ EMPEORAN:
+          - Listas compradas
+          - Alto spam report rate
+          - Palabras spam en contenido
+          - Envío inconsistente
+          - Alto bounce rate
+        `,
+        tips: [
+          'Mantén bounce rate por debajo del 3%',
+          'Elimina hard bounces inmediatamente',
+          'Autentifica tu dominio (SPF, DKIM, DMARC)',
+          'Evita palabras spam: "gratis", "garantizado", "urgente"',
+          'Limpia tu lista cada 3 meses'
+        ]
+      },
+      {
+        title: '3. Unsubscribe y Spam Reports',
+        content: `
+          Monitorear bajas y reportes de spam te ayuda a mantener una lista saludable.
+
+          **Unsubscribe Rate:**
+          - Qué es: % que se da de baja
+          - Aceptable: < 0.5% por campaña
+          - Preocupante: > 1%
+
+          **Spam Report Rate:**
+          - Qué es: % que marca como spam
+          - Aceptable: < 0.1%
+          - Crítico: > 0.5% (afecta reputación severamente)
+        `,
+        example: `
+          **Análisis de Bajas:**
+
+          Campaña: "Newsletter Semanal"
+          Enviados: 15,000
+
+          Unsubscribes:         45 (0.3%) ✓ Bueno
+          Spam reports:          3 (0.02%) ✓ Excelente
+
+          **Razones de baja (encuesta):**
+          - "Demasiado frecuente":     18 (40%)
+          - "No es relevante":         15 (33%)
+          - "No recuerdo suscribirme":  8 (18%)
+          - "Otro":                     4 (9%)
+
+          **Acciones basadas en datos:**
+
+          1. Alta frecuencia → Reducir de 2/semana a 1/semana
+          2. No relevante → Mejorar segmentación
+          3. No recuerdan → Verificar proceso de opt-in
+
+          **Comparativa por tipo de campaña:**
+
+          | Tipo Campaña  | Unsub Rate | Spam Rate |
+          | ------------- | ---------- | --------- |
+          | Newsletter    | 0.3%       | 0.02%     |
+          | Promocional   | 0.8%       | 0.05%     |
+          | Transaccional | 0.1%       | 0.01%     |
+
+          **Señales de alerta:**
+          ⚠️ Unsub rate > 1%: Revisa frecuencia o relevancia
+          ⚠️ Spam rate > 0.3%: Mejora opt-in y relevancia
+          ⚠️ Aumento súbito: Analiza qué cambió en esa campaña
+        `,
+        tips: [
+          'Haz el proceso de baja fácil (1 click)',
+          'Ofrece "centro de preferencias" antes de baja total',
+          'Analiza patrones: ¿qué campañas generan más bajas?',
+          'Un unsubscribe es mejor que un spam report',
+          'Encuesta opcional al darse de baja para aprender'
+        ]
+      },
+      {
+        title: '4. Dashboards y Reportes',
+        content: `
+          Visualiza tus datos en dashboards para identificar tendencias y oportunidades.
+
+          **Reportes esenciales:**
+          - Overview de campaña
+          - Comparativa entre campañas
+          - Tendencias temporales
+          - Segmentos más engaged
+          - Revenue attribution
+        `,
+        example: `
+          📍 Ruta: Email Marketing > Reportes > Dashboard
+
+          **Dashboard Principal:**
+
+          ┌─────────────────────────────────────────┐
+          │  Email Marketing Overview - Últimos 30d │
+          ├─────────────────────────────────────────┤
+          │                                         │
+          │  Campañas enviadas:           12        │
+          │  Total emails enviados:    140,000      │
+          │  Open rate promedio:         32%        │
+          │  Click rate promedio:        8.5%       │
+          │  Conversion rate:            2.1%       │
+          │  Revenue total:          $284,000       │
+          │  ROI:                      14,200%      │
+          │                                         │
+          ├─────────────────────────────────────────┤
+          │  Top 3 Campañas (por revenue)           │
+          ├─────────────────────────────────────────┤
+          │  1. Black Friday        $125,000        │
+          │  2. Lanzamiento         $89,000         │
+          │  3. Newsletter #45      $42,000         │
+          └─────────────────────────────────────────┘
+
+          **Reporte de Tendencias:**
+
+          Semana 1: Open 28%, Click 7%, Conv 1.8%
+          Semana 2: Open 31%, Click 8%, Conv 2.0%
+          Semana 3: Open 35%, Click 9%, Conv 2.3% 📈
+          Semana 4: Open 33%, Click 8.5%, Conv 2.1%
+
+          **Análisis por Segmento:**
+
+          | Segmento    | Size   | Open  | Click | Conv  | Rev/Email |
+          | ----------- | ------ | ----- | ----- | ----- | --------- |
+          | VIP         | 1,200  | 58%   | 25%   | 8.2%  | $12.50    |
+          | Activos     | 8,500  | 38%   | 12%   | 3.1%  | $4.20     |
+          | Inactivos   | 3,800  | 18%   | 4%    | 0.8%  | $0.90     |
+
+          **Insight:** VIPs generan 3x más revenue por email
+          **Acción:** Crear más campañas exclusivas para VIP
+        `,
+        tips: [
+          'Revisa métricas semanalmente',
+          'Identifica tu top 3 campañas y replica su fórmula',
+          'Segmenta métricas por audiencia',
+          'Exporta reportes mensuales para stakeholders',
+          'Usa datos para tomar decisiones, no intuiciones'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: 'Enviaste 5,000 emails. 1,500 los abrieron. ¿Cuál es tu open rate?',
+          options: [
+            '15%',
+            '30%',
+            '50%',
+            '75%'
+          ],
+          correct: 1,
+          explanation: 'Open rate = (1,500 / 5,000) × 100 = 30%'
+        },
+        {
+          id: 'q2',
+          question: '¿Qué bounce rate es aceptable?',
+          options: [
+            'Menos del 1%',
+            'Menos del 3%',
+            'Menos del 10%',
+            'No importa'
+          ],
+          correct: 1,
+          explanation: 'Un bounce rate menor al 3% es aceptable. Si supera el 5%, debes investigar y limpiar tu lista.'
+        },
+        {
+          id: 'q3',
+          question: 'Tu spam report rate es 0.8%. ¿Qué debes hacer?',
+          options: [
+            'Nada, es normal',
+            'Es preocupante, revisar proceso de opt-in y relevancia de contenido',
+            'Dejar de enviar emails',
+            'Comprar una nueva lista'
+          ],
+          correct: 1,
+          explanation: '0.8% de spam reports es alto (aceptable es < 0.1%). Debes mejorar tu proceso de opt-in y relevancia del contenido urgentemente.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Analiza tu Campaña',
+      description: 'Calcula e interpreta las métricas de una campaña',
+      steps: [
+        {
+          id: 'step1',
+          task: 'Enviaste 8,000 emails. 2,400 los abrieron y 480 hicieron click. ¿Cuál es tu click-to-open rate (CTOR)?',
+          validation: 'numeric',
+          correctAnswer: 20,
+          tolerance: 0,
+          hints: ['CTOR = (Clicks / Abiertos) × 100 = (480 / 2,400) × 100']
+        },
+        {
+          id: 'step2',
+          task: 'De 10,000 enviados, 150 rebotaron. ¿Tu bounce rate está dentro del rango aceptable (< 3%)?',
+          validation: 'multiple-choice',
+          options: [
+            'Sí, 1.5% es aceptable',
+            'No, es demasiado alto',
+            'No se puede determinar',
+            'Bounce rate no importa'
+          ],
+          correct: 0
+        },
+        {
+          id: 'step3',
+          task: 'Campaña A: 2,000 enviados, 80 conversiones. Campaña B: 5,000 enviados, 150 conversiones. ¿Cuál tiene mejor conversion rate?',
+          validation: 'multiple-choice',
+          options: [
+            'Campaña A (4%)',
+            'Campaña B (3%)',
+            'Iguales',
+            'No se puede determinar'
+          ],
+          correct: 0
+        }
+      ]
+    }
+  },
+
+  'email-006': {
+    title: 'Generación de Leads con Email',
+    introduction: `
+      El email marketing no solo sirve para vender a clientes existentes. Es una herramienta poderosa para generar y nutrir leads (prospectos) que eventualmente se convertirán en clientes.
+
+      En esta lección aprenderás a crear campañas de lead generation, diseñar lead magnets efectivos, integrar con tu CRM y implementar estrategias de lead nurturing que conviertan prospectos en clientes.
+    `,
+    sections: [
+      {
+        title: '1. Lead Magnets Efectivos',
+        content: `
+          Un lead magnet es un recurso valioso que ofreces a cambio del email de un prospecto.
+
+          **Tipos de lead magnets:**
+          - **Ebooks y guías:** Conocimiento profundo sobre un tema
+          - **Checklists y templates:** Herramientas prácticas
+          - **Webinars y cursos:** Educación en vivo o grabada
+          - **Trials y demos:** Prueba de tu producto/servicio
+          - **Descuentos:** Incentivo económico
+          - **Toolkits y recursos:** Paquetes de herramientas útiles
+
+          **Características de un buen lead magnet:**
+          - **Valioso:** Resuelve un problema real
+          - **Específico:** Enfocado en un tema concreto
+          - **Instant access:** Se entrega inmediatamente
+          - **Fácil de consumir:** No requiere mucho tiempo/esfuerzo
+          - **Relevante:** Relacionado con tu producto/servicio
+        `,
+        example: `
+          **EJEMPLO MALO ❌**
+
+          Lead Magnet: "Newsletter general"
+          Resultado: 2% conversion rate
+
+          ¿Por qué falla?
+          - No ofrece valor inmediato
+          - Muy genérico
+          - No resuelve problema específico
+
+          **EJEMPLO BUENO ✅**
+
+          Lead Magnet: "Checklist: 15 pasos para implementar Odoo en 30 días (PDF + plantillas)"
+
+          Landing page:
+          ~~~text
+          🎯 ¿Implementación de Odoo sin caos?
+
+          Descarga GRATIS nuestra checklist completa con:
+          ✓ 15 pasos probados
+          ✓ Plantillas de planificación
+          ✓ Checklist de configuración
+          ✓ Errores comunes a evitar
+
+          [email input]
+          [Descargar Checklist Gratis]
+
+          ⏱️ 2,500+ empresas lo usan
+          ~~~
+
+          Resultado: 28% conversion rate
+
+          **Flujo completo:**
+
+          1. Usuario llega a landing page (desde Google Ads, redes sociales, etc.)
+          2. Ve el valor del lead magnet
+          3. Ingresa su email
+          4. Recibe email automático con:
+             - Link de descarga del checklist
+             - Bienvenida cálida
+             - Qué esperar de futuros emails
+          5. Entra en secuencia de nurturing
+
+          **Lead magnets por industria:**
+
+          **B2B Software:**
+          - "ROI Calculator" interactivo
+          - Case studies con resultados
+          - Demo personalizada
+
+          **E-commerce:**
+          - Descuento del 15% primer pedido
+          - "Guía de tallas" PDF
+          - Lookbook de temporada
+
+          **Consultoría:**
+          - Auditoría gratuita
+          - Template de estrategia
+          - Webinar educativo
+        `,
+        tips: [
+          'El lead magnet debe ser irresistible para tu buyer persona ideal',
+          'Más específico > más genérico (ebook de 20 páginas > "newsletter")',
+          'Entrega inmediata (automated email con link de descarga)',
+          'Usa landing page dedicada (no form genérico)',
+          'El lead magnet debe conectar naturalmente con tu oferta principal'
+        ]
+      },
+      {
+        title: '2. Landing Pages Optimizadas',
+        content: `
+          La landing page es donde conviertes visitantes en leads. Debe estar optimizada para conversión.
+
+          **Elementos esenciales:**
+          - Headline claro del beneficio
+          - Subheadline explicativo
+          - Imagen/video del lead magnet
+          - Bullets de lo que incluye
+          - Form corto (solo email o email + nombre)
+          - CTA prominente
+          - Trust signals (# de descargas, testimonios)
+          - Sin navegación que distraiga
+        `,
+        example: `
+          📍 Ruta: Sitio Web > Landing Pages > Crear
+
+          **Estructura de landing page de alta conversión:**
+
+          ~~~text
+          ┌──────────────────────────────────────────┐
+          │ [LOGO]                                   │
+          ├──────────────────────────────────────────┤
+          │                                          │
+          │  🎯 Headline: "Domina Odoo en 30 días"  │ ← Beneficio claro
+          │                                          │
+          │  Subheadline: "Descarga nuestra guía    │
+          │  paso a paso + plantillas gratis"        │
+          │                                          │
+          │  [IMAGEN: Preview del ebook]             │
+          │                                          │
+          │  Aprenderás:                             │
+          │  ✓ Configuración inicial perfecta        │
+          │  ✓ 15 módulos esenciales                 │
+          │  ✓ Errores que cuestan miles de $       │
+          │  ✓ Plantillas listas para usar           │
+          │                                          │
+          │  ┌─────────────────────────────┐         │
+          │  │ [Email]                     │         │
+          │  │ [Nombre]                    │         │
+          │  │                             │         │
+          │  │  [DESCARGAR GRATIS] ←────────────── │ CTA grande
+          │  └─────────────────────────────┘         │
+          │                                          │
+          │  🔒 No spam. Cancela cuando quieras.    │
+          │                                          │
+          │  ⭐⭐⭐⭐⭐ "Excelente recurso"            │ ← Social proof
+          │  - 2,847 descargas                       │
+          │                                          │
+          └──────────────────────────────────────────┘
+          ~~~
+
+          **Tests A/B de landing pages:**
+
+          Test 1: Longitud del form
+          - Versión A: Email + Nombre + Empresa + Teléfono
+            Conversion: 12%
+          - Versión B: Solo Email
+            Conversion: 31%
+          **Ganador: B (menos campos)** ✓
+
+          Test 2: CTA text
+          - Versión A: "Enviar"
+            Conversion: 18%
+          - Versión B: "Descargar mi guía gratis"
+            Conversion: 28%
+          **Ganador: B (específico)** ✓
+
+          **Checklist de optimización:**
+          ✓ Un solo objetivo (capturar email)
+          ✓ Form above the fold (visible sin scroll)
+          ✓ Mobile responsive
+          ✓ Carga rápida (< 3 segundos)
+          ✓ Sin menú de navegación
+          ✓ Trust badges/testimonios
+          ✓ Beneficios > características
+        `,
+        tips: [
+          'Menos campos en el form = mayor conversión',
+          'El headline debe comunicar beneficio en 5 segundos',
+          'Usa imagen/preview del lead magnet',
+          'CTA debe decir QUÉ recibirán, no solo "enviar"',
+          'Testea constantemente: headline, CTA, form length'
+        ]
+      },
+      {
+        title: '3. Lead Nurturing',
+        content: `
+          Una vez capturado el lead, necesitas nutrirlo hasta que esté listo para comprar.
+
+          **Email nurturing sequence típica:**
+          - **Email 1 (inmediato):** Entrega del lead magnet + bienvenida
+          - **Email 2 (día 2):** Contenido educativo relacionado
+          - **Email 3 (día 5):** Case study o testimonio
+          - **Email 4 (día 8):** Introduce tu solución sutilmente
+          - **Email 5 (día 12):** Oferta directa con incentivo
+          - **Email 6+ (semanal):** Continúa educando
+
+          **Objetivos del nurturing:**
+          - Educar sobre el problema y solución
+          - Construir confianza y autoridad
+          - Mover al lead por el embudo
+          - Identificar leads calientes (lead scoring)
+        `,
+        example: `
+          **Secuencia de nurturing: Implementación de Odoo**
+
+          **Email 1 - Día 0 (Inmediato):**
+          Subject: "Tu checklist de Odoo está lista ✓"
+
+          ~~~text
+          Hola {{first_name}},
+
+          Aquí está tu checklist de implementación:
+          [Descargar Checklist]
+
+          También incluimos:
+          - Template de planificación
+          - Video tutorial (10 min)
+          - FAQ de errores comunes
+
+          ¿Necesitas ayuda? Responde este email.
+
+          Saludos,
+          Pedro
+          ~~~
+
+          **Email 2 - Día 2:**
+          Subject: "¿Ya revisaste el checklist? + Bonus"
+
+          Content: Tips adicionales, pregunta si tiene dudas
+          CTA: Responder con preguntas
+
+          **Email 3 - Día 5:**
+          Subject: "Cómo TechCorp implementó Odoo en 21 días"
+
+          Content: Case study detallado
+          CTA: Ver más casos de éxito
+
+          **Email 4 - Día 8:**
+          Subject: "3 errores que cuestan $10,000+ en implementaciones"
+
+          Content: Errores comunes + cómo evitarlos
+          CTA suave: "Nosotros te ayudamos a evitarlos"
+
+          **Email 5 - Día 12:**
+          Subject: "{{first_name}}, ¿listo para implementar?"
+
+          Content: Oferta directa de consultoría
+          CTA fuerte: "Agendar demo gratuita"
+          Incentivo: "Bonus: auditoría de procesos gratis"
+
+          **Métricas de nurturing:**
+
+          | Email | Open Rate | Click Rate | Conversión |
+          | ----- | --------- | ---------- | ---------- |
+          | #1    | 72%       | 45%        | 0%         |
+          | #2    | 58%       | 28%        | 2%         |
+          | #3    | 52%       | 22%        | 3%         |
+          | #4    | 48%       | 18%        | 5%         |
+          | #5    | 45%       | 32%        | 12%        |
+
+          Conversión total de secuencia: 18%
+        `,
+        tips: [
+          'Primer email debe entregar lo prometido INMEDIATAMENTE',
+          'Educa antes de vender (regla 80/20: 80% valor, 20% oferta)',
+          'Personaliza según comportamiento (abrió vs no abrió)',
+          'Lead scoring automático basado en engagement',
+          'No bombardees: espaciar emails (cada 2-5 días)'
+        ]
+      },
+      {
+        title: '4. Integración con CRM',
+        content: `
+          Integrar email marketing con CRM te permite gestionar leads de forma inteligente.
+
+          **Beneficios de integración:**
+          - Sincronización automática de leads
+          - Lead scoring basado en engagement
+          - Asignación automática a vendedores
+          - Tracking completo del journey
+          - Reporting unificado
+        `,
+        example: `
+          📍 Ruta: Email Marketing > Configuración > Integración CRM
+
+          **Flujo automático:**
+
+          1. **Lead descarga ebook**
+             → Odoo crea contacto en CRM
+             → Etapa: "Nuevo lead"
+             → Score: 10 puntos
+
+          2. **Lead abre 3 emails**
+             → Score: +15 puntos (total: 25)
+             → Etiqueta: "Engaged"
+
+          3. **Lead hace click en pricing**
+             → Score: +25 puntos (total: 50)
+             → Etapa: "Lead caliente"
+             → Notificar a vendedor
+
+          4. **Lead agenda demo**
+             → Score: +30 puntos (total: 80)
+             → Etapa: "Oportunidad"
+             → Asignar a vendedor senior
+
+          **Lead Scoring:**
+
+          Acción                    Puntos
+          ─────────────────────────────────
+          Descarga lead magnet         10
+          Abre email                    5
+          Click en email               10
+          Visita pricing page          25
+          Responde email               20
+          Agenda demo                  30
+          Descarga case study          15
+
+          **Umbral de calificación:**
+          0-25: Cold lead (nurturing automático)
+          26-50: Warm lead (mezcla auto + manual)
+          51-80: Hot lead (asignar a vendedor)
+          80+: Very hot (prioridad máxima)
+
+          **Asignación automática:**
+
+          ~~~text
+          SI lead score >= 51
+          Y lead country = "México"
+          Y lead company_size >= 50
+          ENTONCES asignar a: "Vendedor Senior - México"
+          Y crear tarea: "Contactar en < 24h"
+          ~~~
+
+          **Dashboard integrado:**
+
+          | Fuente        | Leads | Calientes | Conv | Revenue |
+          | ------------- | ----- | --------- | ---- | ------- |
+          | Ebook Odoo    | 450   | 82        | 18%  | $89K    |
+          | Webinar       | 280   | 95        | 34%  | $142K   |
+          | Trial         | 120   | 78        | 65%  | $195K   |
+        `,
+        tips: [
+          'Define criterios claros de lead scoring',
+          'Sincroniza en tiempo real (no batch diario)',
+          'Notifica a vendedores cuando lead está caliente',
+          'Tracking completo: desde primer email hasta venta',
+          'Reporta ROI por campaña de lead gen'
+        ]
+      }
+    ],
+    quiz: {
+      questions: [
+        {
+          id: 'q1',
+          question: '¿Qué es un lead magnet?',
+          options: [
+            'Un imán literal',
+            'Un recurso valioso que ofreces a cambio del email de un prospecto',
+            'Una técnica de spam',
+            'Un tipo de publicidad pagada'
+          ],
+          correct: 1,
+          explanation: 'Un lead magnet es un recurso valioso (ebook, checklist, descuento, etc.) que ofreces gratis a cambio del email del prospecto.'
+        },
+        {
+          id: 'q2',
+          question: 'En una landing page de generación de leads, ¿qué funciona mejor?',
+          options: [
+            'Form largo con muchos campos',
+            'Form corto solo con email',
+            'No poner form, solo información',
+            'Múltiples CTAs diferentes'
+          ],
+          correct: 1,
+          explanation: 'Forms cortos (solo email o email + nombre) tienen mayor conversión. Cada campo adicional reduce la tasa de conversión aproximadamente 10%.'
+        },
+        {
+          id: 'q3',
+          question: '¿Cuál debe ser el enfoque principal de los primeros emails de nurturing?',
+          options: [
+            'Vender agresivamente',
+            'Educar y aportar valor',
+            'Pedir referencias',
+            'Enviar promociones'
+          ],
+          correct: 1,
+          explanation: 'Los primeros emails deben educar y aportar valor (regla 80/20). La venta directa viene después de construir confianza.'
+        }
+      ]
+    },
+    practicalExercise: {
+      title: 'Ejercicio: Diseña tu Estrategia de Lead Generation',
+      description: 'Crea una estrategia completa de generación de leads',
+      steps: [
+        {
+          id: 'step1',
+          task: 'Tienes un curso de Odoo. ¿Cuál es el mejor lead magnet?',
+          validation: 'multiple-choice',
+          options: [
+            '"Newsletter general"',
+            '"Checklist: 10 pasos para elegir ERP + video explicativo"',
+            '"Compra el curso ahora"',
+            '"Síguenos en redes sociales"'
+          ],
+          correct: 1
+        },
+        {
+          id: 'step2',
+          task: 'Tu landing page recibe 1,000 visitas y 250 personas dejan su email. ¿Cuál es tu conversion rate?',
+          validation: 'numeric',
+          correctAnswer: 25,
+          tolerance: 0,
+          hints: ['(250 / 1,000) × 100 = ?']
+        },
+        {
+          id: 'step3',
+          task: 'De 100 leads nurturing, 18 se convirtieron en clientes. Tu ticket promedio es $500. ¿Cuánto revenue generaste?',
+          validation: 'numeric',
+          correctAnswer: 9000,
+          tolerance: 0,
+          hints: ['18 clientes × $500 = ?']
+        }
+      ]
+    }
   }
 }
 
