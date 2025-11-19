@@ -1,4 +1,4 @@
-import { useMemo } from 'react'
+import { useEffect, useMemo } from 'react'
 import ReactMarkdown from 'react-markdown'
 import DOMPurify from 'dompurify'
 import remarkGfm from 'remark-gfm'
@@ -15,6 +15,22 @@ const MarkdownRenderer = ({ content, className = '' }) => {
 
     return DOMPurify.sanitize(normalizedContent, { USE_PROFILES: { html: true } })
   }, [content])
+
+  useEffect(() => {
+    if (!sanitizedContent || typeof window === 'undefined') return
+
+    const detail = {
+      length: sanitizedContent.length,
+      containsTable: sanitizedContent.includes('|'),
+      containsCodeBlock: sanitizedContent.includes('```'),
+    }
+
+    window.dispatchEvent?.(new CustomEvent('markdown:rendered', { detail }))
+
+    if (window.analytics?.track) {
+      window.analytics.track('markdown_rendered', detail)
+    }
+  }, [sanitizedContent])
 
   if (!sanitizedContent) return null
 
