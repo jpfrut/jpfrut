@@ -54,15 +54,13 @@ export const glossaryTerms = {
     icon: '💳',
     example: {
       title: 'Cuenta 1101 - Banco Principal',
-      content: `
-        Fecha       | Descripción          | Debe    | Haber   | Saldo
-        01/03/2024  | Saldo inicial        | $10,000 |         | $10,000
-        05/03/2024  | Cobro factura #001   | $1,500  |         | $11,500
-        10/03/2024  | Pago a proveedor     |         | $3,000  | $8,500
-        15/03/2024  | Cobro factura #002   | $2,000  |         | $10,500
+      content: `Fecha       | Descripción          | Debe    | Haber   | Saldo
+01/03/2024  | Saldo inicial        | $10,000 |         | $10,000
+05/03/2024  | Cobro factura #001   | $1,500  |         | $11,500
+10/03/2024  | Pago a proveedor     |         | $3,000  | $8,500
+15/03/2024  | Cobro factura #002   | $2,000  |         | $10,500
 
-        El saldo final te dice: "Tienes $10,500 en el banco"
-      `
+El saldo final te dice: "Tienes $10,500 en el banco"`
     },
     relationships: [
       {
@@ -181,26 +179,24 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🏦',
     example: {
       title: 'Configuración de banco BBVA',
-      content: `
-        PASO 1: Crear cuenta contable
-        ───────────────────────────────
-        Código: 112.01
-        Nombre: BBVA Empresarial - Cta 1234
-        Tipo: Activo Circulante (Bank and Cash)
-        ✓ Permite conciliación: ACTIVADO
+      content: `**PASO 1: Crear cuenta contable**
+───────────────────────────────
+Código: 112.01
+Nombre: BBVA Empresarial - Cta 1234
+Tipo: Activo Circulante (Bank and Cash)
+✓ Permite conciliación: ACTIVADO
 
-        PASO 2: Crear diario
-        ───────────────────────────────
-        Nombre: Banco BBVA
-        Tipo: Banco
-        Código corto: BBVA
-        Cuenta: 112.01 (la que acabas de crear)
+**PASO 2: Crear diario**
+───────────────────────────────
+Nombre: Banco BBVA
+Tipo: Banco
+Código corto: BBVA
+Cuenta: 112.01 (la que acabas de crear)
 
-        RESULTADO:
-        • Aparece en Dashboard de Contabilidad
-        • Puedes registrar depósitos y retiros
-        • Saldo visible en Balance General
-      `
+**RESULTADO:**
+• Aparece en Dashboard de Contabilidad
+• Puedes registrar depósitos y retiros
+• Saldo visible en Balance General`
     },
     relationships: [
       {
@@ -241,36 +237,34 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💵',
     example: {
       title: 'Configuración y uso de Caja Chica',
-      content: `
-        CONFIGURACIÓN EN ODOO:
-        ─────────────────────────
-        Cuenta contable: 111.02 Caja Chica
-        Tipo: Activo Circulante
-        Diario: Caja Chica (Tipo: Efectivo)
-        Código: CCHIC
+      content: `**CONFIGURACIÓN EN ODOO:**
+─────────────────────────
+Cuenta contable: 111.02 Caja Chica
+Tipo: Activo Circulante
+Diario: Caja Chica (Tipo: Efectivo)
+Código: CCHIC
 
-        CICLO DE USO:
-        ─────────────────────────
-        1. Reposición inicial: $3,000
-           DEBE: 111.02 Caja Chica $3,000
-           HABER: 112.01 Banco BBVA $3,000
+**CICLO DE USO:**
+─────────────────────────
+1. Reposición inicial: $3,000
+   DEBE: 111.02 Caja Chica $3,000
+   HABER: 112.01 Banco BBVA $3,000
 
-        2. Gastos del mes:
-           - Papelería: -$350
-           - Taxis: -$450
-           - Comidas reuniones: -$800
-           Saldo restante: $1,400
+2. Gastos del mes:
+   - Papelería: -$350
+   - Taxis: -$450
+   - Comidas reuniones: -$800
+   Saldo restante: $1,400
 
-        3. Reposición (volver a $3,000):
-           DEBE: 111.02 Caja Chica $1,600
-           HABER: 112.01 Banco BBVA $1,600
+3. Reposición (volver a $3,000):
+   DEBE: 111.02 Caja Chica $1,600
+   HABER: 112.01 Banco BBVA $1,600
 
-        EN DASHBOARD:
-        ┌─────────────────┐
-        │  CAJA CHICA     │
-        │   $3,000.00     │
-        └─────────────────┘
-      `
+**EN DASHBOARD:**
+┌─────────────────┐
+│  CAJA CHICA     │
+│   $3,000.00     │
+└─────────────────┘`
     },
     relationships: [
       {
@@ -311,34 +305,32 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💰',
     example: {
       title: 'Verificación de saldo bancario',
-      content: `
-        SALDO EN ODOO (lo que registraste):
-        ────────────────────────────────────
-        Banco BBVA: $125,500.00
+      content: `**SALDO EN ODOO (lo que registraste):**
+────────────────────────────────────
+Banco BBVA: $125,500.00
 
-        SALDO EN BANCA EN LÍNEA (real):
-        ────────────────────────────────────
-        Banco BBVA: $125,500.00
+**SALDO EN BANCA EN LÍNEA (real):**
+────────────────────────────────────
+Banco BBVA: $125,500.00
 
-        ¿COINCIDEN? ✓ SÍ - ¡Perfecto!
+¿COINCIDEN? ✓ SÍ - ¡Perfecto!
 
-        SI NO COINCIDEN:
-        ────────────────────────────────────
-        Odoo dice: $125,500.00
-        Banco dice: $127,300.00
-        Diferencia: $1,800.00
+**SI NO COINCIDEN:**
+────────────────────────────────────
+Odoo dice: $125,500.00
+Banco dice: $127,300.00
+Diferencia: $1,800.00
 
-        ¿Qué falta registrar?
-        • ¿Depósito no registrado? +$1,800
-        • ¿Retiro no registrado? No aplica
-        • ¿Comisiones no registradas? Revisar
+¿Qué falta registrar?
+• ¿Depósito no registrado? +$1,800
+• ¿Retiro no registrado? No aplica
+• ¿Comisiones no registradas? Revisar
 
-        DÓNDE VER SALDOS EN ODOO:
-        ────────────────────────────────────
-        1. Dashboard: Widgets individuales
-        2. Balance General: Total de bancos
-        3. Plan de Cuentas: Saldo por cuenta
-      `
+**DÓNDE VER SALDOS EN ODOO:**
+────────────────────────────────────
+1. Dashboard: Widgets individuales
+2. Balance General: Total de bancos
+3. Plan de Cuentas: Saldo por cuenta`
     },
     relationships: [
       {
@@ -375,43 +367,41 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '✏️',
     example: {
       title: 'Registro diario de movimientos',
-      content: `
-        RUTINA RECOMENDADA (diaria o semanal):
-        ────────────────────────────────────────
+      content: `**RUTINA RECOMENDADA (diaria o semanal):**
+────────────────────────────────────────
 
-        1. Abrir banca en línea
-        2. Revisar movimientos nuevos
-        3. Registrar en Odoo (Contabilidad > Bancos > [Banco] > Nuevo)
+1. Abrir banca en línea
+2. Revisar movimientos nuevos
+3. Registrar en Odoo (Contabilidad > Bancos > [Banco] > Nuevo)
 
-        EJEMPLO DE HOY (3 movimientos):
+**EJEMPLO DE HOY (3 movimientos):**
 
-        Movimiento 1 - Depósito:
-        ┌─────────────────────────────────┐
-        │ Fecha: 15/01/2025               │
-        │ Etiqueta: Pago cliente ABC      │
-        │ Importe: +12,500.00             │
-        │ Contrapartida: Cuentas por Cobrar│
-        └─────────────────────────────────┘
+Movimiento 1 - Depósito:
+┌─────────────────────────────────┐
+│ Fecha: 15/01/2025               │
+│ Etiqueta: Pago cliente ABC      │
+│ Importe: +12,500.00             │
+│ Contrapartida: Cuentas por Cobrar│
+└─────────────────────────────────┘
 
-        Movimiento 2 - Pago:
-        ┌─────────────────────────────────┐
-        │ Fecha: 15/01/2025               │
-        │ Etiqueta: Pago proveedor XYZ    │
-        │ Importe: -8,900.00              │
-        │ Contrapartida: Cuentas por Pagar│
-        └─────────────────────────────────┘
+Movimiento 2 - Pago:
+┌─────────────────────────────────┐
+│ Fecha: 15/01/2025               │
+│ Etiqueta: Pago proveedor XYZ    │
+│ Importe: -8,900.00              │
+│ Contrapartida: Cuentas por Pagar│
+└─────────────────────────────────┘
 
-        Movimiento 3 - Comisión:
-        ┌─────────────────────────────────┐
-        │ Fecha: 15/01/2025               │
-        │ Etiqueta: Comisión transferencia│
-        │ Importe: -50.00                 │
-        │ Contrapartida: Gastos Bancarios │
-        └─────────────────────────────────┘
+Movimiento 3 - Comisión:
+┌─────────────────────────────────┐
+│ Fecha: 15/01/2025               │
+│ Etiqueta: Comisión transferencia│
+│ Importe: -50.00                 │
+│ Contrapartida: Gastos Bancarios │
+└─────────────────────────────────┘
 
-        TIEMPO INVERTIDO: ~10 minutos
-        RESULTADO: Saldos actualizados ✓
-      `
+TIEMPO INVERTIDO: ~10 minutos
+RESULTADO: Saldos actualizados ✓`
     },
     relationships: [
       {
@@ -452,22 +442,20 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🧾',
     example: {
       title: 'Factura INV/2024/00015',
-      content: `
-        Cliente: Panadería La Estrella
-        Fecha: 15/03/2024
-        Vencimiento: 15/04/2024 (30 días)
+      content: `**Cliente:** Panadería La Estrella
+**Fecha:** 15/03/2024
+**Vencimiento:** 15/04/2024 (30 días)
 
-        Líneas:
-        - Servicio de consultoría x 10 hrs @ $100 = $1,000
-        - IVA 16%: $160
-        TOTAL: $1,160
+**Líneas:**
+- Servicio de consultoría x 10 hrs @ $100 = $1,000
+- IVA 16%: $160
+**TOTAL:** $1,160
 
-        Al CONFIRMAR esta factura:
-        1. Se crea asiento en Diario de Ventas
-        2. Aumenta Cuentas por Cobrar (+$1,160)
-        3. Aumenta Ingresos (+$1,000)
-        4. Aumenta IVA por Pagar (+$160)
-      `
+**Al CONFIRMAR esta factura:**
+1. Se crea asiento en Diario de Ventas
+2. Aumenta Cuentas por Cobrar (+$1,160)
+3. Aumenta Ingresos (+$1,000)
+4. Aumenta IVA por Pagar (+$160)`
     },
     relationships: [
       {
@@ -509,20 +497,18 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📦',
     example: {
       title: 'Tipos de productos',
-      content: `
-        ALMACENABLE (controla stock):
-        → Camiseta Azul Talla M
-        → Odoo cuenta cuántas tienes
-        → Avisa cuando quedan pocas
+      content: `**ALMACENABLE (controla stock):**
+→ Camiseta Azul Talla M
+→ Odoo cuenta cuántas tienes
+→ Avisa cuando quedan pocas
 
-        CONSUMIBLE (no controla stock):
-        → Papel de impresora
-        → Siempre disponible, no rastrea cantidad
+**CONSUMIBLE (no controla stock):**
+→ Papel de impresora
+→ Siempre disponible, no rastrea cantidad
 
-        SERVICIO (no físico):
-        → Hora de consultoría
-        → No hay stock, solo se factura tiempo
-      `
+**SERVICIO (no físico):**
+→ Hora de consultoría
+→ No hay stock, solo se factura tiempo`
     },
     relationships: [
       {
@@ -557,19 +543,17 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📍',
     example: {
       title: 'Estructura de ubicaciones',
-      content: `
-        MI ALMACÉN
-        ├── 🏪 Tienda (productos en mostrador)
-        ├── 📦 Bodega Principal
-        │   ├── Estante A (Ropa)
-        │   │   ├── A-1 (Camisetas)
-        │   │   └── A-2 (Pantalones)
-        │   ├── Estante B (Accesorios)
-        │   └── Estante C (Zapatos)
-        └── ❄️ Refrigerador (Perecederos)
+      content: `**MI ALMACÉN**
+├── 🏪 Tienda (productos en mostrador)
+├── 📦 Bodega Principal
+│   ├── Estante A (Ropa)
+│   │   ├── A-1 (Camisetas)
+│   │   └── A-2 (Pantalones)
+│   ├── Estante B (Accesorios)
+│   └── Estante C (Zapatos)
+└── ❄️ Refrigerador (Perecederos)
 
-        Así sabes EXACTAMENTE dónde está cada producto.
-      `
+Así sabes EXACTAMENTE dónde está cada producto.`
     },
     relationships: [
       {
@@ -603,27 +587,25 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🔄',
     example: {
       title: 'Tipos de movimientos',
-      content: `
-        RECEPCIÓN (entrada):
-        Proveedor → Tu Almacén
-        "Llegaron 50 camisetas del proveedor"
-        Stock: 0 → 50
+      content: `**RECEPCIÓN (entrada):**
+Proveedor → Tu Almacén
+"Llegaron 50 camisetas del proveedor"
+Stock: 0 → 50
 
-        ENTREGA (salida):
-        Tu Almacén → Cliente
-        "Vendiste 10 camisetas"
-        Stock: 50 → 40
+**ENTREGA (salida):**
+Tu Almacén → Cliente
+"Vendiste 10 camisetas"
+Stock: 50 → 40
 
-        TRANSFERENCIA INTERNA:
-        Bodega → Tienda
-        "Moviste 5 camisetas a mostrador"
-        Bodega: 40 → 35
-        Tienda: 0 → 5
+**TRANSFERENCIA INTERNA:**
+Bodega → Tienda
+"Moviste 5 camisetas a mostrador"
+Bodega: 40 → 35
+Tienda: 0 → 5
 
-        AJUSTE:
-        "Encontraste 3 camisetas dañadas"
-        Stock: 35 → 32
-      `
+**AJUSTE:**
+"Encontraste 3 camisetas dañadas"
+Stock: 35 → 32`
     },
     relationships: [
       {
@@ -665,22 +647,20 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🎯',
     example: {
       title: 'Ciclo de vida de un Lead',
-      content: `
-        1️⃣ NUEVO: María llena formulario en tu web
-        → "Quiero información sobre sus servicios"
+      content: `**1️⃣ NUEVO:** María llena formulario en tu web
+→ "Quiero información sobre sus servicios"
 
-        2️⃣ CONTACTADO: La llamas
-        → "Sí, necesito ayuda con mi contabilidad"
+**2️⃣ CONTACTADO:** La llamas
+→ "Sí, necesito ayuda con mi contabilidad"
 
-        3️⃣ CALIFICADO: Confirmas su interés real
-        → Tiene presupuesto, necesidad y urgencia
+**3️⃣ CALIFICADO:** Confirmas su interés real
+→ Tiene presupuesto, necesidad y urgencia
 
-        4️⃣ CONVERTIDO: Se vuelve Oportunidad
-        → Ya puedes enviarle cotización
+**4️⃣ CONVERTIDO:** Se vuelve Oportunidad
+→ Ya puedes enviarle cotización
 
-        ❌ PERDIDO: No tiene interés real
-        → "Solo preguntaba, gracias"
-      `
+**❌ PERDIDO:** No tiene interés real
+→ "Solo preguntaba, gracias"`
     },
     relationships: [
       {
@@ -715,23 +695,21 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💰',
     example: {
       title: 'Oportunidad en Pipeline',
-      content: `
-        Oportunidad: "Sistema contable - Panadería La Estrella"
+      content: `**Oportunidad:** "Sistema contable - Panadería La Estrella"
 
-        Cliente: María García
-        Valor esperado: $6,000/año
-        Probabilidad: 60%
-        Fecha cierre estimada: 30 días
+**Cliente:** María García
+**Valor esperado:** $6,000/año
+**Probabilidad:** 60%
+**Fecha cierre estimada:** 30 días
 
-        PIPELINE:
-        ┌─────────┐  ┌───────────┐  ┌─────────┐
-        │  NUEVO  │→ │ PROPUESTA │→ │ GANADO  │
-        │         │  │    ★      │  │         │
-        └─────────┘  └───────────┘  └─────────┘
+**PIPELINE:**
+┌─────────┐  ┌───────────┐  ┌─────────┐
+│  NUEVO  │→ │ PROPUESTA │→ │ GANADO  │
+│         │  │    ★      │  │         │
+└─────────┘  └───────────┘  └─────────┘
 
-        ★ = Aquí está esta oportunidad
-        Ya le enviaste cotización, esperas respuesta.
-      `
+★ = Aquí está esta oportunidad
+Ya le enviaste cotización, esperas respuesta.`
     },
     relationships: [
       {
@@ -769,28 +747,26 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📋',
     example: {
       title: 'Flujo de compra completo',
-      content: `
-        1️⃣ SOLICITUD (RFQ):
-        "Hola proveedor, ¿me cotizas 50 camisetas?"
-        Estado: Borrador
+      content: `**1️⃣ SOLICITUD (RFQ):**
+"Hola proveedor, ¿me cotizas 50 camisetas?"
+Estado: Borrador
 
-        2️⃣ CONFIRMACIÓN:
-        "Ok, acepto. Mándame las 50 camisetas"
-        Estado: Orden de Compra
-        → Se genera obligación de pago
+**2️⃣ CONFIRMACIÓN:**
+"Ok, acepto. Mándame las 50 camisetas"
+Estado: Orden de Compra
+→ Se genera obligación de pago
 
-        3️⃣ RECEPCIÓN:
-        "Llegaron las camisetas, verifico..."
-        → Stock aumenta en almacén
+**3️⃣ RECEPCIÓN:**
+"Llegaron las camisetas, verifico..."
+→ Stock aumenta en almacén
 
-        4️⃣ FACTURA:
-        "Proveedor me envía factura por $2,500"
-        → Se registra cuenta por pagar
+**4️⃣ FACTURA:**
+"Proveedor me envía factura por $2,500"
+→ Se registra cuenta por pagar
 
-        5️⃣ PAGO:
-        "Le pago al proveedor"
-        → Se cancela la deuda
-      `
+**5️⃣ PAGO:**
+"Le pago al proveedor"
+→ Se cancela la deuda`
     },
     relationships: [
       {
@@ -832,27 +808,25 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '👤',
     example: {
       title: 'Ficha completa de empleado',
-      content: `
-        INFORMACIÓN LABORAL:
-        Nombre: Ana Martínez
-        Cargo: Vendedora Senior
-        Departamento: Ventas
-        Jefe: Carlos Rodríguez
-        Fecha ingreso: 01/02/2024
+      content: `**INFORMACIÓN LABORAL:**
+Nombre: Ana Martínez
+Cargo: Vendedora Senior
+Departamento: Ventas
+Jefe: Carlos Rodríguez
+Fecha ingreso: 01/02/2024
 
-        INFORMACIÓN PERSONAL:
-        Teléfono: 555-7890
-        Email: ana@empresa.com
-        Dirección: Calle Principal #200
-        Contacto emergencia: Juan (Padre) 555-4567
+**INFORMACIÓN PERSONAL:**
+Teléfono: 555-7890
+Email: ana@empresa.com
+Dirección: Calle Principal #200
+Contacto emergencia: Juan (Padre) 555-4567
 
-        CONTRATO:
-        Tipo: Indefinido
-        Salario: $15,000/mes
-        Horario: L-V 9am-6pm
+**CONTRATO:**
+Tipo: Indefinido
+Salario: $15,000/mes
+Horario: L-V 9am-6pm
 
-        → Todo en un solo lugar, organizado y seguro.
-      `
+→ Todo en un solo lugar, organizado y seguro.`
     },
     relationships: [
       {
@@ -935,24 +909,22 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📄',
     example: {
       title: 'Flujo de cotización',
-      content: `
-        1. COTIZACIÓN (borrador)
-        → Creas propuesta con productos y precios
-        → Estado: Presupuesto
+      content: `**1. COTIZACIÓN (borrador)**
+→ Creas propuesta con productos y precios
+→ Estado: Presupuesto
 
-        2. ENVÍAS AL CLIENTE
-        → Por email directamente desde Odoo
-        → Estado: Presupuesto Enviado
+**2. ENVÍAS AL CLIENTE**
+→ Por email directamente desde Odoo
+→ Estado: Presupuesto Enviado
 
-        3. CLIENTE ACEPTA
-        → Confirmas la cotización
-        → Estado: Orden de Venta
-        → Ahora puedes entregar y facturar
+**3. CLIENTE ACEPTA**
+→ Confirmas la cotización
+→ Estado: Orden de Venta
+→ Ahora puedes entregar y facturar
 
-        Si el cliente NO acepta:
-        → Modificas o cancelas la cotización
-        → Aprendes para mejorar
-      `
+**Si el cliente NO acepta:**
+→ Modificas o cancelas la cotización
+→ Aprendes para mejorar`
     },
     relationships: [
       {
@@ -980,21 +952,19 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🏢',
     example: {
       title: 'Organigrama típico',
-      content: `
-        DIRECCIÓN GENERAL
-        ├── VENTAS (10 personas)
-        │   ├── Equipo Corporativo
-        │   └── Equipo Retail
-        ├── OPERACIONES (15 personas)
-        │   ├── Producción
-        │   └── Almacén
-        ├── FINANZAS (5 personas)
-        │   ├── Contabilidad
-        │   └── Tesorería
-        └── RRHH (3 personas)
+      content: `**DIRECCIÓN GENERAL**
+├── VENTAS (10 personas)
+│   ├── Equipo Corporativo
+│   └── Equipo Retail
+├── OPERACIONES (15 personas)
+│   ├── Producción
+│   └── Almacén
+├── FINANZAS (5 personas)
+│   ├── Contabilidad
+│   └── Tesorería
+└── RRHH (3 personas)
 
-        Cada departamento tiene un responsable y objetivos claros.
-      `
+Cada departamento tiene un responsable y objetivos claros.`
     },
     relationships: [
       {
@@ -1042,18 +1012,16 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🏛️',
     example: {
       title: 'Ejemplo de IVA en una venta',
-      content: `
-        Vendes una silla:
-        Precio base:        $1,000
-        + IVA (16%):        $160
-        ━━━━━━━━━━━━━━━━━━
-        Cliente paga:       $1,160
+      content: `Vendes una silla:
+Precio base:        $1,000
++ IVA (16%):        $160
+━━━━━━━━━━━━━━━━━━
+Cliente paga:       $1,160
 
-        Los $160 NO son tuyos:
-        → Los guardas temporalmente
-        → Cada mes o bimestre, los pagas al gobierno
-        → Odoo lleva la cuenta de cuánto debes
-      `
+Los $160 NO son tuyos:
+→ Los guardas temporalmente
+→ Cada mes o bimestre, los pagas al gobierno
+→ Odoo lleva la cuenta de cuánto debes`
     },
     relationships: [
       {
@@ -1087,22 +1055,20 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🏷️',
     example: {
       title: 'Posiciones fiscales comunes',
-      content: `
-        1. CLIENTE NACIONAL
-           → Cobra IVA normal (16%)
-           → Factura con todos los impuestos
+      content: `**1. CLIENTE NACIONAL**
+   → Cobra IVA normal (16%)
+   → Factura con todos los impuestos
 
-        2. CLIENTE EXTRANJERO (exportación)
-           → NO cobra IVA (0%)
-           → Factura sin impuestos locales
+**2. CLIENTE EXTRANJERO (exportación)**
+   → NO cobra IVA (0%)
+   → Factura sin impuestos locales
 
-        3. CLIENTE EXENTO (ej: asociación civil)
-           → No cobra IVA
-           → Requiere documentación especial
+**3. CLIENTE EXENTO (ej: asociación civil)**
+   → No cobra IVA
+   → Requiere documentación especial
 
-        Odoo cambia los impuestos automáticamente
-        según la posición fiscal del cliente.
-      `
+Odoo cambia los impuestos automáticamente
+según la posición fiscal del cliente.`
     },
     relationships: [
       {
@@ -1136,22 +1102,20 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💵',
     example: {
       title: 'Venta en dólares (moneda principal: pesos)',
-      content: `
-        Vendes a cliente en USA:
-        Factura:        $100 USD
+      content: `Vendes a cliente en USA:
+Factura:        $100 USD
 
-        Tipo de cambio del día: 1 USD = 17.50 MXN
+Tipo de cambio del día: 1 USD = 17.50 MXN
 
-        En tu contabilidad registra:
-        Cuenta por cobrar: $1,750 MXN
-        Ventas:            $1,750 MXN
+En tu contabilidad registra:
+Cuenta por cobrar: $1,750 MXN
+Ventas:            $1,750 MXN
 
-        Cuando el cliente paga (y el tipo cambió a 18.00):
-        Recibes:           $1,800 MXN
-        Ganancia cambiaria: $50 MXN (diferencia)
+Cuando el cliente paga (y el tipo cambió a 18.00):
+Recibes:           $1,800 MXN
+Ganancia cambiaria: $50 MXN (diferencia)
 
-        Odoo hace todo esto automáticamente ✓
-      `
+Odoo hace todo esto automáticamente ✓`
     },
     relationships: [
       {
@@ -1185,20 +1149,18 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📈',
     example: {
       title: 'Cómo funciona el tipo de cambio',
-      content: `
-        Hoy:     1 USD = 17.50 MXN
-        Mañana:  1 USD = 17.80 MXN (el dólar subió)
+      content: `Hoy:     1 USD = 17.50 MXN
+Mañana:  1 USD = 17.80 MXN (el dólar subió)
 
-        Si tienes una factura de $100 USD:
-        Hoy vale:   $1,750 MXN
-        Mañana vale: $1,780 MXN
+Si tienes una factura de $100 USD:
+Hoy vale:   $1,750 MXN
+Mañana vale: $1,780 MXN
 
-        Esta diferencia se llama "diferencia cambiaria"
-        y puede ser ganancia o pérdida.
+Esta diferencia se llama "diferencia cambiaria"
+y puede ser ganancia o pérdida.
 
-        Odoo registra estos cambios automáticamente
-        cuando cierras períodos contables.
-      `
+Odoo registra estos cambios automáticamente
+cuando cierras períodos contables.`
     },
     relationships: [
       {
@@ -1232,24 +1194,22 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💳',
     example: {
       title: 'Registro de pago de cliente',
-      content: `
-        1. Cliente tiene factura #001 por $1,000
-           Estado: "Por cobrar"
+      content: `**1. Cliente tiene factura #001 por $1,000**
+   Estado: "Por cobrar"
 
-        2. Cliente hace transferencia bancaria
-           Ves $1,000 en tu cuenta de banco
+**2. Cliente hace transferencia bancaria**
+   Ves $1,000 en tu cuenta de banco
 
-        3. En Odoo registras el pago:
-           → Seleccionas la factura #001
-           → Indicas método: Transferencia
-           → Monto: $1,000
-           → Fecha: hoy
+**3. En Odoo registras el pago:**
+   → Seleccionas la factura #001
+   → Indicas método: Transferencia
+   → Monto: $1,000
+   → Fecha: hoy
 
-        4. Resultado:
-           → Factura #001 cambia a "Pagada" ✓
-           → Tu saldo bancario aumenta en Odoo
-           → Contador feliz porque todo cuadra
-      `
+**4. Resultado:**
+   → Factura #001 cambia a "Pagada" ✓
+   → Tu saldo bancario aumenta en Odoo
+   → Contador feliz porque todo cuadra`
     },
     relationships: [
       {
@@ -1284,23 +1244,21 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🔍',
     example: {
       title: 'Proceso de conciliación',
-      content: `
-        TU EXTRACTO BANCARIO dice:
-        Saldo inicial:     $10,000
-        + Depósito cliente: $1,500
-        - Pago proveedor:   $3,000
-        - Comisión banco:   $50
-        Saldo final:       $8,450
+      content: `**TU EXTRACTO BANCARIO dice:**
+Saldo inicial:     $10,000
++ Depósito cliente: $1,500
+- Pago proveedor:   $3,000
+- Comisión banco:   $50
+Saldo final:       $8,450
 
-        ODOO dice:
-        Saldo inicial:     $10,000
-        + Pago recibido:   $1,500
-        - Pago realizado:  $3,000
-        Saldo:             $8,500
+**ODOO dice:**
+Saldo inicial:     $10,000
++ Pago recibido:   $1,500
+- Pago realizado:  $3,000
+Saldo:             $8,500
 
-        ¡No cuadra! Falta registrar la comisión de $50.
-        Al conciliar, encuentras y corriges este error.
-      `
+¡No cuadra! Falta registrar la comisión de $50.
+Al conciliar, encuentras y corriges este error.`
     },
     relationships: [
       {
@@ -1335,23 +1293,21 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🧾',
     example: {
       title: 'Tipos de gastos comunes',
-      content: `
-        GASTOS FIJOS (siempre los pagas):
-        - Renta de oficina: $5,000/mes
-        - Internet: $800/mes
-        - Luz: $1,200/mes
-        - Sueldos: $50,000/mes
+      content: `**GASTOS FIJOS (siempre los pagas):**
+- Renta de oficina: $5,000/mes
+- Internet: $800/mes
+- Luz: $1,200/mes
+- Sueldos: $50,000/mes
 
-        GASTOS VARIABLES (cambian):
-        - Gasolina: depende de cuánto manejes
-        - Papelería: según necesites
-        - Comidas de trabajo: ocasional
+**GASTOS VARIABLES (cambian):**
+- Gasolina: depende de cuánto manejes
+- Papelería: según necesites
+- Comidas de trabajo: ocasional
 
-        GASTOS DE EMPLEADOS:
-        - Juan fue a ver cliente y pagó $500 de taxi
-        - María compró toners: $1,200
-        → Ellos piden reembolso, tú lo registras
-      `
+**GASTOS DE EMPLEADOS:**
+- Juan fue a ver cliente y pagó $500 de taxi
+- María compró toners: $1,200
+→ Ellos piden reembolso, tú lo registras`
     },
     relationships: [
       {
@@ -1386,28 +1342,26 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💰',
     example: {
       title: 'Proceso de reembolso paso a paso',
-      content: `
-        1. EMPLEADO GASTA:
-           María paga taxi para ver cliente: $250
-           Guarda el ticket/recibo
+      content: `**1. EMPLEADO GASTA:**
+   María paga taxi para ver cliente: $250
+   Guarda el ticket/recibo
 
-        2. REGISTRA EN ODOO:
-           - Sube foto del ticket
-           - Categoría: Transporte
-           - Monto: $250
-           - Descripción: "Visita cliente ABC"
+**2. REGISTRA EN ODOO:**
+   - Sube foto del ticket
+   - Categoría: Transporte
+   - Monto: $250
+   - Descripción: "Visita cliente ABC"
 
-        3. APROBACIÓN:
-           Su jefe revisa y aprueba ✓
+**3. APROBACIÓN:**
+   Su jefe revisa y aprueba ✓
 
-        4. PAGO:
-           Finanzas incluye los $250 en siguiente nómina
-           o hace transferencia directa
+**4. PAGO:**
+   Finanzas incluye los $250 en siguiente nómina
+   o hace transferencia directa
 
-        5. RESULTADO:
-           María recupera su dinero
-           Empresa tiene gasto registrado correctamente
-      `
+**5. RESULTADO:**
+   María recupera su dinero
+   Empresa tiene gasto registrado correctamente`
     },
     relationships: [
       {
@@ -1442,27 +1396,25 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '↩️',
     example: {
       title: 'Cuándo usar nota de crédito',
-      content: `
-        CASO 1 - DEVOLUCIÓN COMPLETA:
-        Factura #100: Vendiste 10 sillas por $10,000
-        Cliente devuelve TODO
-        → Nota de crédito por $10,000
-        → Factura queda en $0
+      content: `**CASO 1 - DEVOLUCIÓN COMPLETA:**
+Factura #100: Vendiste 10 sillas por $10,000
+Cliente devuelve TODO
+→ Nota de crédito por $10,000
+→ Factura queda en $0
 
-        CASO 2 - DEVOLUCIÓN PARCIAL:
-        Factura #100: 10 sillas por $10,000
-        Cliente devuelve 2 sillas
-        → Nota de crédito por $2,000
-        → Factura queda en $8,000
+**CASO 2 - DEVOLUCIÓN PARCIAL:**
+Factura #100: 10 sillas por $10,000
+Cliente devuelve 2 sillas
+→ Nota de crédito por $2,000
+→ Factura queda en $8,000
 
-        CASO 3 - DESCUENTO POSTERIOR:
-        Factura #100: $10,000
-        Le das 10% descuento después
-        → Nota de crédito por $1,000
-        → Cliente solo debe $9,000
+**CASO 3 - DESCUENTO POSTERIOR:**
+Factura #100: $10,000
+Le das 10% descuento después
+→ Nota de crédito por $1,000
+→ Cliente solo debe $9,000
 
-        La nota de crédito se vincula a la factura original.
-      `
+La nota de crédito se vincula a la factura original.`
     },
     relationships: [
       {
@@ -1497,29 +1449,27 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📊',
     example: {
       title: 'Balance General simplificado',
-      content: `
-        BALANCE GENERAL al 31 de diciembre
+      content: `**BALANCE GENERAL al 31 de diciembre**
 
-        LO QUE TIENES (ACTIVOS):
-        Banco:                  $50,000
-        Clientes que te deben:  $30,000
-        Inventario:             $40,000
-        Equipo de cómputo:      $20,000
-        TOTAL ACTIVOS:          $140,000
+**LO QUE TIENES (ACTIVOS):**
+Banco:                  $50,000
+Clientes que te deben:  $30,000
+Inventario:             $40,000
+Equipo de cómputo:      $20,000
+TOTAL ACTIVOS:          $140,000
 
-        LO QUE DEBES (PASIVOS):
-        A proveedores:          $25,000
-        Préstamo bancario:      $35,000
-        TOTAL PASIVOS:          $60,000
+**LO QUE DEBES (PASIVOS):**
+A proveedores:          $25,000
+Préstamo bancario:      $35,000
+TOTAL PASIVOS:          $60,000
 
-        LO QUE ES TUYO (PATRIMONIO):
-        Capital:                $50,000
-        Utilidades:             $30,000
-        TOTAL PATRIMONIO:       $80,000
+**LO QUE ES TUYO (PATRIMONIO):**
+Capital:                $50,000
+Utilidades:             $30,000
+TOTAL PATRIMONIO:       $80,000
 
-        ✓ ACTIVOS = PASIVOS + PATRIMONIO
-        $140,000 = $60,000 + $80,000
-      `
+✓ ACTIVOS = PASIVOS + PATRIMONIO
+$140,000 = $60,000 + $80,000`
     },
     relationships: [
       {
@@ -1554,24 +1504,22 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💳',
     example: {
       title: 'Cómo funcionan los proveedores de pago',
-      content: `
-        TU TIENDA EN LÍNEA:
-        Cliente quiere comprar zapatos: $1,000
+      content: `**TU TIENDA EN LÍNEA:**
+Cliente quiere comprar zapatos: $1,000
 
-        1. Cliente da clic en "Pagar"
-        2. Ve opciones: PayPal, Tarjeta, Transferencia
-        3. Elige PayPal y pone su tarjeta
-        4. PayPal verifica que la tarjeta tiene fondos ✓
-        5. PayPal te avisa: "Pago exitoso"
-        6. Tú envías los zapatos
+1. Cliente da clic en "Pagar"
+2. Ve opciones: PayPal, Tarjeta, Transferencia
+3. Elige PayPal y pone su tarjeta
+4. PayPal verifica que la tarjeta tiene fondos ✓
+5. PayPal te avisa: "Pago exitoso"
+6. Tú envías los zapatos
 
-        COSTOS (ejemplo):
-        Venta:                     $1,000
-        - Comisión PayPal (3%):    $30
-        Recibes:                   $970
+**COSTOS (ejemplo):**
+Venta:                     $1,000
+- Comisión PayPal (3%):    $30
+Recibes:                   $970
 
-        Es como tener una terminal bancaria, pero digital.
-      `
+Es como tener una terminal bancaria, pero digital.`
     },
     relationships: [
       {
@@ -1606,24 +1554,22 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🔄',
     example: {
       title: 'Sin sincronización vs con sincronización',
-      content: `
-        SIN SINCRONIZACIÓN (manual):
-        1. Abres página del banco
-        2. Descargas movimientos del mes
-        3. Revisas uno por uno (50 movimientos)
-        4. Registras cada uno en Odoo a mano
-        5. Tardas 2-3 horas
-        6. Posibles errores de dedo
+      content: `**SIN SINCRONIZACIÓN (manual):**
+1. Abres página del banco
+2. Descargas movimientos del mes
+3. Revisas uno por uno (50 movimientos)
+4. Registras cada uno en Odoo a mano
+5. Tardas 2-3 horas
+6. Posibles errores de dedo
 
-        CON SINCRONIZACIÓN (automático):
-        1. Odoo se conecta a tu banco
-        2. Importa los 50 movimientos automáticamente
-        3. Los relaciona con facturas existentes
-        4. Tardas 15 minutos revisando
-        5. Sin errores de captura
+**CON SINCRONIZACIÓN (automático):**
+1. Odoo se conecta a tu banco
+2. Importa los 50 movimientos automáticamente
+3. Los relaciona con facturas existentes
+4. Tardas 15 minutos revisando
+5. Sin errores de captura
 
-        ¡Es como tener un asistente que hace la tarea por ti!
-      `
+¡Es como tener un asistente que hace la tarea por ti!`
     },
     relationships: [
       {
@@ -1714,28 +1660,26 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💵',
     example: {
       title: 'Anticipo para muebles a medida',
-      content: `
-        Cliente pide escritorio a medida: $10,000
+      content: `Cliente pide escritorio a medida: $10,000
 
-        PASO 1 - ANTICIPO (50%):
-        Cliente paga: $5,000
-        → Tú registras el anticipo
-        → Aún NO le facturas el escritorio
-        → Empiezas a fabricar
+**PASO 1 - ANTICIPO (50%):**
+Cliente paga: $5,000
+→ Tú registras el anticipo
+→ Aún NO le facturas el escritorio
+→ Empiezas a fabricar
 
-        PASO 2 - ENTREGA Y FACTURA FINAL:
-        Entregas escritorio
-        Facturas: $10,000
-        Aplicas anticipo: -$5,000
-        Cliente debe: $5,000
+**PASO 2 - ENTREGA Y FACTURA FINAL:**
+Entregas escritorio
+Facturas: $10,000
+Aplicas anticipo: -$5,000
+Cliente debe: $5,000
 
-        PASO 3 - PAGO FINAL:
-        Cliente paga los $5,000 restantes
-        → Factura pagada completamente ✓
+**PASO 3 - PAGO FINAL:**
+Cliente paga los $5,000 restantes
+→ Factura pagada completamente ✓
 
-        El anticipo es DIFERENTE a facturar.
-        Primero recibes dinero, luego facturas.
-      `
+El anticipo es DIFERENTE a facturar.
+Primero recibes dinero, luego facturas.`
     },
     relationships: [
       {
@@ -1770,29 +1714,27 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📋',
     example: {
       title: 'Diferencia: Proforma vs Factura Real',
-      content: `
-        FACTURA PROFORMA:
-        ✗ NO tiene folio fiscal
-        ✗ NO genera obligación de pago
-        ✗ NO se reporta al gobierno
-        ✗ NO afecta tu contabilidad
-        ✓ Es solo para informar al cliente
+      content: `**FACTURA PROFORMA:**
+✗ NO tiene folio fiscal
+✗ NO genera obligación de pago
+✗ NO se reporta al gobierno
+✗ NO afecta tu contabilidad
+✓ Es solo para informar al cliente
 
-        FACTURA REAL:
-        ✓ Tiene folio fiscal legal
-        ✓ Cliente debe pagarte
-        ✓ Se reporta en impuestos
-        ✓ Afecta tu contabilidad
-        ✓ Es documento oficial
+**FACTURA REAL:**
+✓ Tiene folio fiscal legal
+✓ Cliente debe pagarte
+✓ Se reporta en impuestos
+✓ Afecta tu contabilidad
+✓ Es documento oficial
 
-        USO COMÚN:
-        1. Cliente pide cotización detallada
-        2. Le envías factura proforma
-        3. Si acepta, creas factura real
-        4. Si no acepta, no pasa nada
+**USO COMÚN:**
+1. Cliente pide cotización detallada
+2. Le envías factura proforma
+3. Si acepta, creas factura real
+4. Si no acepta, no pasa nada
 
-        Muy usado en comercio internacional para aduanas.
-      `
+Muy usado en comercio internacional para aduanas.`
     },
     relationships: [
       {
@@ -2127,32 +2069,30 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🔺',
     example: {
       title: 'Pipeline típico de una empresa',
-      content: `
-        VISUALIZACIÓN DEL PIPELINE:
+      content: `**VISUALIZACIÓN DEL PIPELINE:**
 
-        NUEVO (10 oportunidades)
-        → Acaban de contactarte
+**NUEVO (10 oportunidades)**
+→ Acaban de contactarte
 
-        CONTACTADO (7 oportunidades)
-        → Ya hablaste con ellos
+**CONTACTADO (7 oportunidades)**
+→ Ya hablaste con ellos
 
-        PROPUESTA ENVIADA (4 oportunidades)
-        → Les mandaste cotización
+**PROPUESTA ENVIADA (4 oportunidades)**
+→ Les mandaste cotización
 
-        NEGOCIACIÓN (2 oportunidades)
-        → Están discutiendo precio/condiciones
+**NEGOCIACIÓN (2 oportunidades)**
+→ Están discutiendo precio/condiciones
 
-        GANADO (1 oportunidad)
-        → ¡Cerraste la venta! 🎉
+**GANADO (1 oportunidad)**
+→ ¡Cerraste la venta! 🎉
 
-        PERDIDO (4 oportunidades)
-        → No compraron (razones varias)
+**PERDIDO (4 oportunidades)**
+→ No compraron (razones varias)
 
-        MÉTRICAS IMPORTANTES:
-        - Tasa de conversión: 1/10 = 10%
-        - Valor del pipeline: suma de todas las oportunidades
-        - Tiempo promedio de cierre: cuánto tarda en decidir
-      `
+**MÉTRICAS IMPORTANTES:**
+- Tasa de conversión: 1/10 = 10%
+- Valor del pipeline: suma de todas las oportunidades
+- Tiempo promedio de cierre: cuánto tarda en decidir`
     },
     relationships: [
       {
@@ -2187,29 +2127,27 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📍',
     example: {
       title: 'Etapas en diferentes contextos',
-      content: `
-        PIPELINE DE VENTAS:
-        1. Nuevo (acaba de llegar)
-        2. Calificado (verificamos interés real)
-        3. Propuesta (enviamos cotización)
-        4. Negociación (discutiendo términos)
-        5. Ganado / Perdido (resultado final)
+      content: `**PIPELINE DE VENTAS:**
+1. Nuevo (acaba de llegar)
+2. Calificado (verificamos interés real)
+3. Propuesta (enviamos cotización)
+4. Negociación (discutiendo términos)
+5. Ganado / Perdido (resultado final)
 
-        TABLERO KANBAN DE TAREAS:
-        1. Pendiente (por hacer)
-        2. En Progreso (trabajando)
-        3. En Revisión (verificando)
-        4. Completado (terminado)
+**TABLERO KANBAN DE TAREAS:**
+1. Pendiente (por hacer)
+2. En Progreso (trabajando)
+3. En Revisión (verificando)
+4. Completado (terminado)
 
-        PROCESO DE RECLUTAMIENTO:
-        1. Nuevo candidato
-        2. Entrevista inicial
-        3. Prueba técnica
-        4. Entrevista final
-        5. Contratado / Rechazado
+**PROCESO DE RECLUTAMIENTO:**
+1. Nuevo candidato
+2. Entrevista inicial
+3. Prueba técnica
+4. Entrevista final
+5. Contratado / Rechazado
 
-        Las etapas te ayudan a ver el estado de todo de un vistazo.
-      `
+Las etapas te ayudan a ver el estado de todo de un vistazo.`
     },
     relationships: [
       {
@@ -2244,28 +2182,26 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📅',
     example: {
       title: 'Cómo funcionan las actividades',
-      content: `
-        OPORTUNIDAD: "Venta sistema a Panadería ABC"
+      content: `**OPORTUNIDAD:** "Venta sistema a Panadería ABC"
 
-        ACTIVIDADES PROGRAMADAS:
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        ☑️ Hoy 10:00 - Llamar para seguimiento
-        📧 Mañana - Enviar cotización por email
-        🤝 Viernes 15:00 - Reunión de cierre
+**ACTIVIDADES PROGRAMADAS:**
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
+☑️ Hoy 10:00 - Llamar para seguimiento
+📧 Mañana - Enviar cotización por email
+🤝 Viernes 15:00 - Reunión de cierre
 
-        TIPOS DE ACTIVIDADES:
-        📞 Llamada telefónica
-        📧 Enviar email
-        🤝 Reunión presencial/virtual
-        📋 Tarea/Pendiente
-        📤 Subir documento
+**TIPOS DE ACTIVIDADES:**
+📞 Llamada telefónica
+📧 Enviar email
+🤝 Reunión presencial/virtual
+📋 Tarea/Pendiente
+📤 Subir documento
 
-        BENEFICIOS:
-        → Nunca olvidas dar seguimiento
-        → Tu jefe ve que estás activo
-        → Historial de todo lo que hiciste
-        → Planificas tu día eficientemente
-      `
+**BENEFICIOS:**
+→ Nunca olvidas dar seguimiento
+→ Tu jefe ve que estás activo
+→ Historial de todo lo que hiciste
+→ Planificas tu día eficientemente`
     },
     relationships: [
       {
@@ -2300,37 +2236,35 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '⭐',
     example: {
       title: 'Sistema de puntuación de leads',
-      content: `
-        CRITERIOS DE PUNTUACIÓN:
+      content: `**CRITERIOS DE PUNTUACIÓN:**
 
-        PERFIL DEL LEAD:
-        + 20 pts: Empresa mediana/grande
-        + 15 pts: Tiene presupuesto definido
-        + 10 pts: Decisor de compra
-        + 5 pts: Sector industrial relevante
+**PERFIL DEL LEAD:**
++ 20 pts: Empresa mediana/grande
++ 15 pts: Tiene presupuesto definido
++ 10 pts: Decisor de compra
++ 5 pts: Sector industrial relevante
 
-        COMPORTAMIENTO:
-        + 10 pts: Visitó página de precios
-        + 15 pts: Descargó demo/prueba
-        + 20 pts: Solicitó cotización
-        + 5 pts: Abrió emails
+**COMPORTAMIENTO:**
++ 10 pts: Visitó página de precios
++ 15 pts: Descargó demo/prueba
++ 20 pts: Solicitó cotización
++ 5 pts: Abrió emails
 
-        EJEMPLO:
-        Lead "Panadería ABC":
-        - Empresa mediana: +20
-        - Tiene presupuesto: +15
-        - Visitó precios: +10
-        - Pidió cotización: +20
-        TOTAL: 65 puntos ⭐⭐⭐ (Lead CALIENTE)
+**EJEMPLO:**
+Lead "Panadería ABC":
+- Empresa mediana: +20
+- Tiene presupuesto: +15
+- Visitó precios: +10
+- Pidió cotización: +20
+TOTAL: 65 puntos ⭐⭐⭐ (Lead CALIENTE)
 
-        Lead "Juan curioso":
-        - Freelancer: +5
-        - Sin presupuesto: +0
-        - Solo exploró: +5
-        TOTAL: 10 puntos ⭐ (Lead FRÍO)
+Lead "Juan curioso":
+- Freelancer: +5
+- Sin presupuesto: +0
+- Solo exploró: +5
+TOTAL: 10 puntos ⭐ (Lead FRÍO)
 
-        Enfócate en leads con más puntos.
-      `
+Enfócate en leads con más puntos.`
     },
     relationships: [
       {
@@ -2365,33 +2299,31 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💲',
     example: {
       title: 'Múltiples listas de precios',
-      content: `
-        PRODUCTO: Camiseta Polo
+      content: `**PRODUCTO:** Camiseta Polo
 
-        LISTA PÚBLICA (clientes normales):
-        → Precio: $500
+**LISTA PÚBLICA (clientes normales):**
+→ Precio: $500
 
-        LISTA MAYORISTA (compra 50+ piezas):
-        → Precio: $400 (20% menos)
+**LISTA MAYORISTA (compra 50+ piezas):**
+→ Precio: $400 (20% menos)
 
-        LISTA VIP (clientes frecuentes):
-        → Precio: $450 (10% menos)
+**LISTA VIP (clientes frecuentes):**
+→ Precio: $450 (10% menos)
 
-        LISTA EMPLEADOS:
-        → Precio: $350 (30% menos)
+**LISTA EMPLEADOS:**
+→ Precio: $350 (30% menos)
 
-        CÓMO FUNCIONA:
-        1. Asignas lista de precios al cliente
-        2. Al crear cotización, usa esa lista
-        3. Precios se calculan automáticamente
-        4. No necesitas recordar descuentos
+**CÓMO FUNCIONA:**
+1. Asignas lista de precios al cliente
+2. Al crear cotización, usa esa lista
+3. Precios se calculan automáticamente
+4. No necesitas recordar descuentos
 
-        CASOS DE USO:
-        - Precios por volumen
-        - Precios por región/país
-        - Precios por temporada
-        - Precios B2B vs B2C
-      `
+**CASOS DE USO:**
+- Precios por volumen
+- Precios por región/país
+- Precios por temporada
+- Precios B2B vs B2C`
     },
     relationships: [
       {
@@ -2426,31 +2358,29 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🏷️',
     example: {
       title: 'Tipos de descuentos',
-      content: `
-        DESCUENTO MANUAL (tú decides):
-        Producto: $1,000
-        Descuento: 15%
-        Precio final: $850
+      content: `**DESCUENTO MANUAL (tú decides):**
+Producto: $1,000
+Descuento: 15%
+Precio final: $850
 
-        DESCUENTO POR CANTIDAD:
-        1-9 unidades: precio normal
-        10-49 unidades: 10% descuento
-        50+ unidades: 20% descuento
+**DESCUENTO POR CANTIDAD:**
+1-9 unidades: precio normal
+10-49 unidades: 10% descuento
+50+ unidades: 20% descuento
 
-        DESCUENTO POR PROMOCIÓN:
-        "Buen Fin": 25% en toda la tienda
-        Fecha inicio: 15 nov
-        Fecha fin: 18 nov
+**DESCUENTO POR PROMOCIÓN:**
+"Buen Fin": 25% en toda la tienda
+Fecha inicio: 15 nov
+Fecha fin: 18 nov
 
-        DESCUENTO POR PRONTO PAGO:
-        "Si pagas en 10 días: 2% descuento"
-        Ayuda a mejorar tu flujo de efectivo
+**DESCUENTO POR PRONTO PAGO:**
+"Si pagas en 10 días: 2% descuento"
+Ayuda a mejorar tu flujo de efectivo
 
-        IMPORTANTE:
-        → Siempre calcula si el descuento es rentable
-        → No vendas por debajo del costo
-        → Documenta por qué diste el descuento
-      `
+**IMPORTANTE:**
+→ Siempre calcula si el descuento es rentable
+→ No vendas por debajo del costo
+→ Documenta por qué diste el descuento`
     },
     relationships: [
       {
@@ -2485,32 +2415,30 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🎁',
     example: {
       title: 'Programa de puntos típico',
-      content: `
-        ACUMULACIÓN:
-        Por cada $100 de compra = 10 puntos
+      content: `**ACUMULACIÓN:**
+Por cada $100 de compra = 10 puntos
 
-        CANJE:
-        100 puntos = $50 de descuento
-        200 puntos = $120 de descuento
-        500 puntos = Producto gratis
+**CANJE:**
+100 puntos = $50 de descuento
+200 puntos = $120 de descuento
+500 puntos = Producto gratis
 
-        EJEMPLO CLIENTE:
-        María compra regularmente:
-        - Enero: $500 → 50 puntos
-        - Febrero: $800 → 80 puntos
-        - Marzo: $400 → 40 puntos
-        Total: 170 puntos
+**EJEMPLO CLIENTE:**
+María compra regularmente:
+- Enero: $500 → 50 puntos
+- Febrero: $800 → 80 puntos
+- Marzo: $400 → 40 puntos
+Total: 170 puntos
 
-        María canjea 100 puntos:
-        → Obtiene $50 de descuento
-        → Le quedan 70 puntos
+María canjea 100 puntos:
+→ Obtiene $50 de descuento
+→ Le quedan 70 puntos
 
-        BENEFICIOS PARA TI:
-        → Clientes regresan (retención)
-        → Compran más para juntar puntos
-        → Datos de comportamiento de compra
-        → Diferenciarte de competencia
-      `
+**BENEFICIOS PARA TI:**
+→ Clientes regresan (retención)
+→ Compran más para juntar puntos
+→ Datos de comportamiento de compra
+→ Diferenciarte de competencia`
     },
     relationships: [
       {
@@ -2545,27 +2473,25 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💸',
     example: {
       title: 'Cálculo de comisiones',
-      content: `
-        ESQUEMA DE COMISIÓN:
-        Vendedor: Ana García
-        Comisión: 5% sobre ventas
+      content: `**ESQUEMA DE COMISIÓN:**
+Vendedor: Ana García
+Comisión: 5% sobre ventas
 
-        VENTAS DEL MES:
-        Venta 1: $10,000 → Comisión: $500
-        Venta 2: $25,000 → Comisión: $1,250
-        Venta 3: $8,000  → Comisión: $400
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━
-        Total ventas: $43,000
-        Total comisión: $2,150
+**VENTAS DEL MES:**
+Venta 1: $10,000 → Comisión: $500
+Venta 2: $25,000 → Comisión: $1,250
+Venta 3: $8,000  → Comisión: $400
+━━━━━━━━━━━━━━━━━━━━━━━━━━
+Total ventas: $43,000
+Total comisión: $2,150
 
-        ESQUEMAS COMUNES:
-        - Porcentaje fijo (5% de toda venta)
-        - Escalonado (5% hasta $50k, 7% arriba)
-        - Por producto (más % en productos prioritarios)
-        - Por margen (% sobre la ganancia, no venta)
+**ESQUEMAS COMUNES:**
+- Porcentaje fijo (5% de toda venta)
+- Escalonado (5% hasta $50k, 7% arriba)
+- Por producto (más % en productos prioritarios)
+- Por margen (% sobre la ganancia, no venta)
 
-        Odoo calcula automáticamente según reglas que configures.
-      `
+Odoo calcula automáticamente según reglas que configures.`
     },
     relationships: [
       {
@@ -2600,33 +2526,31 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '👥',
     example: {
       title: 'Organización de equipos de ventas',
-      content: `
-        EMPRESA DE SOFTWARE:
+      content: `**EMPRESA DE SOFTWARE:**
 
-        EQUIPO CORPORATIVO:
-        - Líder: Carlos (20% comisión)
-        - Ana, Roberto, María
-        - Meta: $500,000/mes
-        - Clientes: Empresas grandes
+**EQUIPO CORPORATIVO:**
+- Líder: Carlos (20% comisión)
+- Ana, Roberto, María
+- Meta: $500,000/mes
+- Clientes: Empresas grandes
 
-        EQUIPO PYMES:
-        - Líder: Laura (15% comisión)
-        - José, Diana, Pedro
-        - Meta: $200,000/mes
-        - Clientes: Pequeños negocios
+**EQUIPO PYMES:**
+- Líder: Laura (15% comisión)
+- José, Diana, Pedro
+- Meta: $200,000/mes
+- Clientes: Pequeños negocios
 
-        EQUIPO RETAIL:
-        - Líder: Fernanda
-        - Vendedores de tienda
-        - Meta: $100,000/mes
-        - Clientes: Consumidor final
+**EQUIPO RETAIL:**
+- Líder: Fernanda
+- Vendedores de tienda
+- Meta: $100,000/mes
+- Clientes: Consumidor final
 
-        BENEFICIOS:
-        → Especialización por tipo de cliente
-        → Metas claras por equipo
-        → Competencia sana entre equipos
-        → Mejor seguimiento de rendimiento
-      `
+**BENEFICIOS:**
+→ Especialización por tipo de cliente
+→ Metas claras por equipo
+→ Competencia sana entre equipos
+→ Mejor seguimiento de rendimiento`
     },
     relationships: [
       {
@@ -2661,35 +2585,33 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🗺️',
     example: {
       title: 'División por territorios',
-      content: `
-        POR GEOGRAFÍA:
-        ━━━━━━━━━━━━━━━
-        Norte (Monterrey, Saltillo):
-        → Vendedor: Roberto
-        → 150 clientes potenciales
+      content: `**POR GEOGRAFÍA:**
+━━━━━━━━━━━━━━━
+Norte (Monterrey, Saltillo):
+→ Vendedor: Roberto
+→ 150 clientes potenciales
 
-        Centro (CDMX, Puebla):
-        → Vendedor: María
-        → 300 clientes potenciales
+Centro (CDMX, Puebla):
+→ Vendedor: María
+→ 300 clientes potenciales
 
-        Sur (Oaxaca, Chiapas):
-        → Vendedor: Ana
-        → 100 clientes potenciales
+Sur (Oaxaca, Chiapas):
+→ Vendedor: Ana
+→ 100 clientes potenciales
 
-        POR SECTOR:
-        ━━━━━━━━━━━━━━━
-        Salud (hospitales, clínicas):
-        → Vendedor especializado: Juan
+**POR SECTOR:**
+━━━━━━━━━━━━━━━
+Salud (hospitales, clínicas):
+→ Vendedor especializado: Juan
 
-        Retail (tiendas, supermercados):
-        → Vendedor especializado: Laura
+Retail (tiendas, supermercados):
+→ Vendedor especializado: Laura
 
-        VENTAJAS:
-        → Evita que vendedores compitan por mismos clientes
-        → Mejor conocimiento del territorio/sector
-        → Responsabilidad clara
-        → Más fácil medir rendimiento
-      `
+**VENTAJAS:**
+→ Evita que vendedores compitan por mismos clientes
+→ Mejor conocimiento del territorio/sector
+→ Responsabilidad clara
+→ Más fácil medir rendimiento`
     },
     relationships: [
       {
@@ -2724,34 +2646,32 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📄',
     example: {
       title: 'Plantillas típicas',
-      content: `
-        PLANTILLA: "Paquete Básico Software"
-        Productos incluidos:
-        - Licencia básica: $5,000/año
-        - Soporte estándar: $1,200/año
-        - Capacitación 4 horas: $2,000
-        Total: $8,200
+      content: `**PLANTILLA: "Paquete Básico Software"**
+Productos incluidos:
+- Licencia básica: $5,000/año
+- Soporte estándar: $1,200/año
+- Capacitación 4 horas: $2,000
+Total: $8,200
 
-        PLANTILLA: "Paquete Empresarial"
-        Productos incluidos:
-        - Licencia empresarial: $15,000/año
-        - Soporte prioritario: $3,600/año
-        - Capacitación 16 horas: $6,000
-        - Implementación: $10,000
-        Total: $34,600
+**PLANTILLA: "Paquete Empresarial"**
+Productos incluidos:
+- Licencia empresarial: $15,000/año
+- Soporte prioritario: $3,600/año
+- Capacitación 16 horas: $6,000
+- Implementación: $10,000
+Total: $34,600
 
-        CÓMO USARLA:
-        1. Cliente pide cotización
-        2. Seleccionas plantilla apropiada
-        3. Ajustas cantidades si necesario
-        4. Envías en 2 minutos
+**CÓMO USARLA:**
+1. Cliente pide cotización
+2. Seleccionas plantilla apropiada
+3. Ajustas cantidades si necesario
+4. Envías en 2 minutos
 
-        VENTAJAS:
-        → Ahorro de tiempo enorme
-        → Mismos términos siempre
-        → Menos errores
-        → Imagen profesional consistente
-      `
+**VENTAJAS:**
+→ Ahorro de tiempo enorme
+→ Mismos términos siempre
+→ Menos errores
+→ Imagen profesional consistente`
     },
     relationships: [
       {
@@ -2786,34 +2706,32 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '⏰',
     example: {
       title: 'Términos de pago comunes',
-      content: `
-        PAGO INMEDIATO:
-        → Debe pagar al recibir factura
-        → Usado: Clientes nuevos, ventas pequeñas
+      content: `**PAGO INMEDIATO:**
+→ Debe pagar al recibir factura
+→ Usado: Clientes nuevos, ventas pequeñas
 
-        NETO 15 DÍAS:
-        → Paga dentro de 15 días
-        → Usado: Clientes frecuentes
+**NETO 15 DÍAS:**
+→ Paga dentro de 15 días
+→ Usado: Clientes frecuentes
 
-        NETO 30 DÍAS:
-        → Paga dentro de 30 días
-        → Usado: Clientes confiables
+**NETO 30 DÍAS:**
+→ Paga dentro de 30 días
+→ Usado: Clientes confiables
 
-        NETO 60 DÍAS:
-        → Paga dentro de 60 días
-        → Usado: Clientes corporativos grandes
+**NETO 60 DÍAS:**
+→ Paga dentro de 60 días
+→ Usado: Clientes corporativos grandes
 
-        30% ANTICIPO + 70% ENTREGA:
-        → 30% al confirmar pedido
-        → 70% al entregar producto
-        → Usado: Proyectos, fabricación
+**30% ANTICIPO + 70% ENTREGA:**
+→ 30% al confirmar pedido
+→ 70% al entregar producto
+→ Usado: Proyectos, fabricación
 
-        50% ANTICIPO + 25% + 25%:
-        → Tres pagos parciales
-        → Usado: Proyectos largos
+**50% ANTICIPO + 25% + 25%:**
+→ Tres pagos parciales
+→ Usado: Proyectos largos
 
-        Cada cliente tiene términos asignados en su ficha.
-      `
+Cada cliente tiene términos asignados en su ficha.`
     },
     relationships: [
       {
@@ -2848,31 +2766,29 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '⚙️',
     example: {
       title: 'Reglas de precio en acción',
-      content: `
-        REGLA POR CANTIDAD:
-        Si cantidad >= 10: descuento 10%
-        Si cantidad >= 50: descuento 20%
-        Si cantidad >= 100: descuento 30%
+      content: `**REGLA POR CANTIDAD:**
+Si cantidad >= 10: descuento 10%
+Si cantidad >= 50: descuento 20%
+Si cantidad >= 100: descuento 30%
 
-        Cotización:
-        - 5 camisetas: precio normal ($500 c/u)
-        - 15 camisetas: -10% automático ($450 c/u)
-        - 60 camisetas: -20% automático ($400 c/u)
+Cotización:
+- 5 camisetas: precio normal ($500 c/u)
+- 15 camisetas: -10% automático ($450 c/u)
+- 60 camisetas: -20% automático ($400 c/u)
 
-        REGLA POR FECHA:
-        Del 1-15 diciembre: -25% (promoción navidad)
-        Resto del año: precio normal
+**REGLA POR FECHA:**
+Del 1-15 diciembre: -25% (promoción navidad)
+Resto del año: precio normal
 
-        REGLA POR CLIENTE:
-        Si cliente es "Mayorista": -15% siempre
-        Si cliente es "VIP": -10% siempre
+**REGLA POR CLIENTE:**
+Si cliente es "Mayorista": -15% siempre
+Si cliente es "VIP": -10% siempre
 
-        CÓMO FUNCIONA:
-        1. Configuras la regla una vez
-        2. Al crear cotización, se aplica automática
-        3. No olvidas dar descuentos prometidos
-        4. Consistencia en todos los vendedores
-      `
+**CÓMO FUNCIONA:**
+1. Configuras la regla una vez
+2. Al crear cotización, se aplica automática
+3. No olvidas dar descuentos prometidos
+4. Consistencia en todos los vendedores`
     },
     relationships: [
       {
@@ -2907,34 +2823,32 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '✅',
     example: {
       title: 'De cotización a orden de venta',
-      content: `
-        COTIZACIÓN (propuesta):
-        Estado: "Presupuesto"
-        → Esperando respuesta del cliente
-        → Sin compromiso de entrega
-        → Puedes modificar libremente
+      content: `**COTIZACIÓN (propuesta):**
+Estado: "Presupuesto"
+→ Esperando respuesta del cliente
+→ Sin compromiso de entrega
+→ Puedes modificar libremente
 
-        ORDEN DE VENTA (confirmada):
-        Estado: "Orden de Venta"
-        → Cliente aceptó
-        → Compromiso de entregar
-        → Puedes facturar
-        → Reserva inventario
+**ORDEN DE VENTA (confirmada):**
+Estado: "Orden de Venta"
+→ Cliente aceptó
+→ Compromiso de entregar
+→ Puedes facturar
+→ Reserva inventario
 
-        PROCESO:
-        1. Creas cotización
-        2. Envías al cliente
-        3. Cliente acepta
-        4. Confirmas → Se vuelve Orden de Venta
-        5. Entregas producto
-        6. Facturas
+**PROCESO:**
+1. Creas cotización
+2. Envías al cliente
+3. Cliente acepta
+4. Confirmas → Se vuelve Orden de Venta
+5. Entregas producto
+6. Facturas
 
-        EFECTOS DE CONFIRMAR:
-        → Productos se reservan en inventario
-        → Se crea orden de entrega
-        → Puedes generar factura
-        → Aparece en reportes de ventas
-      `
+**EFECTOS DE CONFIRMAR:**
+→ Productos se reservan en inventario
+→ Se crea orden de entrega
+→ Puedes generar factura
+→ Aparece en reportes de ventas`
     },
     relationships: [
       {
@@ -2969,40 +2883,38 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📨',
     example: {
       title: 'Email de confirmación típico',
-      content: `
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━
-        CONFIRMACIÓN DE PEDIDO
-        Orden: SO-2024-0156
-        Fecha: 15 marzo 2024
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+      content: `━━━━━━━━━━━━━━━━━━━━━━━━━━━
+**CONFIRMACIÓN DE PEDIDO**
+Orden: SO-2024-0156
+Fecha: 15 marzo 2024
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-        Estimado cliente,
+Estimado cliente,
 
-        ¡Gracias por tu compra! Tu pedido ha sido
-        registrado y está siendo procesado.
+¡Gracias por tu compra! Tu pedido ha sido
+registrado y está siendo procesado.
 
-        PRODUCTOS:
-        - 10x Camiseta Polo Azul: $4,500
-        - 5x Pantalón Negro: $3,750
-        Subtotal: $8,250
-        IVA (16%): $1,320
-        TOTAL: $9,570
+**PRODUCTOS:**
+- 10x Camiseta Polo Azul: $4,500
+- 5x Pantalón Negro: $3,750
+Subtotal: $8,250
+IVA (16%): $1,320
+TOTAL: $9,570
 
-        ENTREGA:
-        Dirección: Calle Principal #123
-        Fecha estimada: 18-20 marzo 2024
-        Método: Envío estándar
+**ENTREGA:**
+Dirección: Calle Principal #123
+Fecha estimada: 18-20 marzo 2024
+Método: Envío estándar
 
-        PAGO:
-        Estado: Pendiente
-        Términos: Neto 15 días
-        Vence: 30 marzo 2024
+**PAGO:**
+Estado: Pendiente
+Términos: Neto 15 días
+Vence: 30 marzo 2024
 
-        Dudas: ventas@empresa.com
-        ━━━━━━━━━━━━━━━━━━━━━━━━━━━
+Dudas: ventas@empresa.com
+━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
-        Odoo envía esto automáticamente al confirmar.
-      `
+Odoo envía esto automáticamente al confirmar.`
     },
     relationships: [
       {
@@ -3041,32 +2953,30 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🏭',
     example: {
       title: 'Estructura de almacenes',
-      content: `
-        EMPRESA CON MÚLTIPLES ALMACENES:
+      content: `**EMPRESA CON MÚLTIPLES ALMACENES:**
 
-        ALMACÉN CENTRAL (Bodega principal):
-        - Stock principal: 10,000 productos
-        - Recibe de proveedores
-        - Abastece a tiendas
+**ALMACÉN CENTRAL (Bodega principal):**
+- Stock principal: 10,000 productos
+- Recibe de proveedores
+- Abastece a tiendas
 
-        TIENDA NORTE:
-        - Stock para venta: 500 productos
-        - Vende al público
-        - Se reabastece de Central
+**TIENDA NORTE:**
+- Stock para venta: 500 productos
+- Vende al público
+- Se reabastece de Central
 
-        TIENDA SUR:
-        - Stock para venta: 300 productos
-        - Vende al público
-        - Se reabastece de Central
+**TIENDA SUR:**
+- Stock para venta: 300 productos
+- Vende al público
+- Se reabastece de Central
 
-        CADA ALMACÉN TIENE:
-        → Su propio inventario
-        → Sus ubicaciones internas
-        → Sus reglas de reabastecimiento
-        → Sus movimientos separados
+**CADA ALMACÉN TIENE:**
+→ Su propio inventario
+→ Sus ubicaciones internas
+→ Sus reglas de reabastecimiento
+→ Sus movimientos separados
 
-        Así sabes exactamente qué hay en cada lugar.
-      `
+Así sabes exactamente qué hay en cada lugar.`
     },
     relationships: [
       {
@@ -3101,30 +3011,28 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📍',
     example: {
       title: 'Sistema de ubicaciones',
-      content: `
-        CÓDIGO DE UBICACIÓN: A-02-03-B
+      content: `**CÓDIGO DE UBICACIÓN: A-02-03-B**
 
-        A  = Zona A del almacén
-        02 = Pasillo 2
-        03 = Estante 3
-        B  = Nivel B (segundo nivel)
+A  = Zona A del almacén
+02 = Pasillo 2
+03 = Estante 3
+B  = Nivel B (segundo nivel)
 
-        EJEMPLO REAL:
-        Producto: Camiseta Azul Talla M
-        Ubicación: A-02-03-B
-        Cantidad: 50 unidades
+**EJEMPLO REAL:**
+Producto: Camiseta Azul Talla M
+Ubicación: A-02-03-B
+Cantidad: 50 unidades
 
-        BENEFICIOS:
-        → Empleado nuevo encuentra producto en segundos
-        → No pierdes tiempo buscando
-        → Control preciso de espacio
-        → Optimizas rutas de picking
+**BENEFICIOS:**
+→ Empleado nuevo encuentra producto en segundos
+→ No pierdes tiempo buscando
+→ Control preciso de espacio
+→ Optimizas rutas de picking
 
-        TIPOS DE UBICACIONES:
-        - Físicas: donde realmente están
-        - Virtuales: para control (merma, cuarentena)
-        - De tránsito: productos en camino
-      `
+**TIPOS DE UBICACIONES:**
+- Físicas: donde realmente están
+- Virtuales: para control (merma, cuarentena)
+- De tránsito: productos en camino`
     },
     relationships: [
       {
@@ -3159,30 +3067,28 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🔢',
     example: {
       title: 'Trazabilidad con números de serie',
-      content: `
-        PRODUCTO: Laptop Dell XPS
-        CANTIDAD EN STOCK: 5 unidades
+      content: `**PRODUCTO: Laptop Dell XPS**
+**CANTIDAD EN STOCK: 5 unidades**
 
-        CADA UNA ES ÚNICA:
-        SN-001: Comprada 01/01, vendida a María
-        SN-002: Comprada 01/01, en stock
-        SN-003: Comprada 15/01, vendida a Pedro
-        SN-004: Comprada 15/01, en reparación
-        SN-005: Comprada 20/01, en stock
+**CADA UNA ES ÚNICA:**
+SN-001: Comprada 01/01, vendida a María
+SN-002: Comprada 01/01, en stock
+SN-003: Comprada 15/01, vendida a Pedro
+SN-004: Comprada 15/01, en reparación
+SN-005: Comprada 20/01, en stock
 
-        CASOS DE USO:
-        → Cliente reclama garantía
-          "¿Cuál es su número de serie?"
-          SN-003
-          "Ah, la compraste el 15/01, tienes garantía"
+**CASOS DE USO:**
+→ Cliente reclama garantía
+  "¿Cuál es su número de serie?"
+  SN-003
+  "Ah, la compraste el 15/01, tienes garantía"
 
-        → Producto defectuoso
-          Proveedor retira SN-004 por falla
-          Sabes exactamente cuál es
+→ Producto defectuoso
+  Proveedor retira SN-004 por falla
+  Sabes exactamente cuál es
 
-        → Auditoría
-          Puedes rastrear cada unidad desde compra hasta venta
-      `
+→ Auditoría
+  Puedes rastrear cada unidad desde compra hasta venta`
     },
     relationships: [
       {
@@ -3217,31 +3123,29 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📦',
     example: {
       title: 'Control por lotes',
-      content: `
-        PRODUCTO: Yogurt Natural 1L
+      content: `**PRODUCTO: Yogurt Natural 1L**
 
-        LOTE: LOT-2024-03-15
-        - Fecha producción: 15 marzo 2024
-        - Fecha vencimiento: 15 abril 2024
-        - Cantidad: 500 unidades
-        - Proveedor: Lácteos ABC
+**LOTE: LOT-2024-03-15**
+- Fecha producción: 15 marzo 2024
+- Fecha vencimiento: 15 abril 2024
+- Cantidad: 500 unidades
+- Proveedor: Lácteos ABC
 
-        LOTE: LOT-2024-03-22
-        - Fecha producción: 22 marzo 2024
-        - Fecha vencimiento: 22 abril 2024
-        - Cantidad: 500 unidades
-        - Proveedor: Lácteos ABC
+**LOTE: LOT-2024-03-22**
+- Fecha producción: 22 marzo 2024
+- Fecha vencimiento: 22 abril 2024
+- Cantidad: 500 unidades
+- Proveedor: Lácteos ABC
 
-        PROBLEMA DETECTADO:
-        ⚠️ Lote LOT-2024-03-15 tiene defecto
-        Acción: Retirar las 500 unidades de ese lote
-        → Sabes exactamente cuáles son
-        → No afectas al otro lote bueno
+**PROBLEMA DETECTADO:**
+⚠️ Lote LOT-2024-03-15 tiene defecto
+Acción: Retirar las 500 unidades de ese lote
+→ Sabes exactamente cuáles son
+→ No afectas al otro lote bueno
 
-        REGLA FIFO:
-        Vende primero LOT-2024-03-15 (más viejo)
-        para evitar vencimientos.
-      `
+**REGLA FIFO:**
+Vende primero LOT-2024-03-15 (más viejo)
+para evitar vencimientos.`
     },
     relationships: [
       {
@@ -3276,30 +3180,28 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📅',
     example: {
       title: 'Control de vencimientos',
-      content: `
-        DASHBOARD DE VENCIMIENTOS:
+      content: `**DASHBOARD DE VENCIMIENTOS:**
 
-        ⚠️ PRÓXIMOS A VENCER (7 días):
-        - 50 Yogurt → Vence: 20 marzo
-        - 30 Queso  → Vence: 22 marzo
-        → ACCIÓN: Promoción o donación
+**⚠️ PRÓXIMOS A VENCER (7 días):**
+- 50 Yogurt → Vence: 20 marzo
+- 30 Queso  → Vence: 22 marzo
+→ ACCIÓN: Promoción o donación
 
-        ✅ STOCK SALUDABLE (30+ días):
-        - 200 Yogurt → Vence: 15 abril
-        - 100 Queso  → Vence: 20 abril
-        → OK, vender normalmente
+**✅ STOCK SALUDABLE (30+ días):**
+- 200 Yogurt → Vence: 15 abril
+- 100 Queso  → Vence: 20 abril
+→ OK, vender normalmente
 
-        ❌ VENCIDOS:
-        - 10 Leche → Venció: 10 marzo
-        → ACCIÓN: Retirar y desechar
+**❌ VENCIDOS:**
+- 10 Leche → Venció: 10 marzo
+→ ACCIÓN: Retirar y desechar
 
-        ALERTAS AUTOMÁTICAS:
-        Odoo te avisa X días antes:
-        - 30 días: Planificar promoción
-        - 7 días: Descuento urgente
-        - 1 día: Última oportunidad
-        - 0 días: No vender, retirar
-      `
+**ALERTAS AUTOMÁTICAS:**
+Odoo te avisa X días antes:
+- 30 días: Planificar promoción
+- 7 días: Descuento urgente
+- 1 día: Última oportunidad
+- 0 días: No vender, retirar`
     },
     relationships: [
       {
@@ -3334,28 +3236,26 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🔄',
     example: {
       title: 'Reabastecimiento automático',
-      content: `
-        CONFIGURACIÓN:
-        Producto: Camiseta Azul
-        Stock mínimo: 10 unidades
-        Cantidad a pedir: 50 unidades
+      content: `**CONFIGURACIÓN:**
+Producto: Camiseta Azul
+Stock mínimo: 10 unidades
+Cantidad a pedir: 50 unidades
 
-        SITUACIÓN:
-        Stock actual: 12 unidades
-        Vendes 5 camisetas
-        Stock nuevo: 7 unidades (¡bajo del mínimo!)
+**SITUACIÓN:**
+Stock actual: 12 unidades
+Vendes 5 camisetas
+Stock nuevo: 7 unidades (¡bajo del mínimo!)
 
-        ACCIÓN AUTOMÁTICA:
-        Odoo genera orden de compra:
-        "Pedir 50 camisetas a proveedor"
-        → Nunca te quedas sin stock
-        → No dependes de que alguien recuerde
+**ACCIÓN AUTOMÁTICA:**
+Odoo genera orden de compra:
+"Pedir 50 camisetas a proveedor"
+→ Nunca te quedas sin stock
+→ No dependes de que alguien recuerde
 
-        TIPOS:
-        - Por pedido: solo cuando vendes
-        - Por mínimo: cuando baja de límite
-        - Por pronóstico: basado en historial
-      `
+**TIPOS:**
+- Por pedido: solo cuando vendes
+- Por mínimo: cuando baja de límite
+- Por pronóstico: basado en historial`
     },
     relationships: [
       {
@@ -3390,30 +3290,28 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📏',
     example: {
       title: 'Configuración de regla de reorden',
-      content: `
-        PRODUCTO: Laptop Dell
-        ALMACÉN: Tienda Principal
+      content: `**PRODUCTO: Laptop Dell**
+**ALMACÉN: Tienda Principal**
 
-        REGLA:
-        - Cantidad mínima: 5 unidades
-        - Cantidad máxima: 20 unidades
-        - Cantidad múltiple: 5 (pedir de 5 en 5)
-        - Proveedor: Dell México
-        - Lead time: 7 días
+**REGLA:**
+- Cantidad mínima: 5 unidades
+- Cantidad máxima: 20 unidades
+- Cantidad múltiple: 5 (pedir de 5 en 5)
+- Proveedor: Dell México
+- Lead time: 7 días
 
-        FUNCIONAMIENTO:
-        Stock: 6 laptops → OK, arriba del mínimo
-        Stock: 4 laptops → ¡Genera orden!
-        Cantidad a pedir: 20 - 4 = 16 unidades
-        (Sube hasta el máximo)
+**FUNCIONAMIENTO:**
+Stock: 6 laptops → OK, arriba del mínimo
+Stock: 4 laptops → ¡Genera orden!
+Cantidad a pedir: 20 - 4 = 16 unidades
+(Sube hasta el máximo)
 
-        RESULTADO:
-        Odoo crea automáticamente:
-        "Orden de Compra #PO-2024-0089"
-        Proveedor: Dell México
-        Producto: 16 Laptops Dell
-        Fecha esperada: +7 días
-      `
+**RESULTADO:**
+Odoo crea automáticamente:
+"Orden de Compra #PO-2024-0089"
+Proveedor: Dell México
+Producto: 16 Laptops Dell
+Fecha esperada: +7 días`
     },
     relationships: [
       {
@@ -3448,31 +3346,29 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🛒',
     example: {
       title: 'Proceso de picking paso a paso',
-      content: `
-        ORDEN DE VENTA: Cliente pide 3 productos
+      content: `**ORDEN DE VENTA: Cliente pide 3 productos**
 
-        LISTA DE PICKING:
-        1. Camiseta Azul M
-           Ubicación: A-02-03-B
-           Cantidad: 2
-        2. Pantalón Negro 32
-           Ubicación: B-01-05-A
-           Cantidad: 1
+**LISTA DE PICKING:**
+1. Camiseta Azul M
+   Ubicación: A-02-03-B
+   Cantidad: 2
+2. Pantalón Negro 32
+   Ubicación: B-01-05-A
+   Cantidad: 1
 
-        PROCESO:
-        1. Trabajador recibe lista en tablet
-        2. Ruta optimizada: A → B
-        3. Va a A-02-03-B, toma 2 camisetas ✓
-        4. Va a B-01-05-A, toma 1 pantalón ✓
-        5. Lleva al área de empaque
-        6. Confirma picking en sistema
+**PROCESO:**
+1. Trabajador recibe lista en tablet
+2. Ruta optimizada: A → B
+3. Va a A-02-03-B, toma 2 camisetas ✓
+4. Va a B-01-05-A, toma 1 pantalón ✓
+5. Lleva al área de empaque
+6. Confirma picking en sistema
 
-        ESTRATEGIAS:
-        - Uno por uno: cada orden por separado
-        - Por lotes: varias órdenes juntas
-        - Por zona: dividido por áreas
-        - Por oleadas: grupos programados
-      `
+**ESTRATEGIAS:**
+- Uno por uno: cada orden por separado
+- Por lotes: varias órdenes juntas
+- Por zona: dividido por áreas
+- Por oleadas: grupos programados`
     },
     relationships: [
       {
@@ -3507,30 +3403,28 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📤',
     example: {
       title: 'Comparación de estrategias',
-      content: `
-        PRODUCTO: Leche (3 lotes disponibles)
+      content: `**PRODUCTO: Leche (3 lotes disponibles)**
 
-        Lote A: Llegó 01 marzo, vence 01 abril
-        Lote B: Llegó 15 marzo, vence 15 abril
-        Lote C: Llegó 20 marzo, vence 10 abril
+Lote A: Llegó 01 marzo, vence 01 abril
+Lote B: Llegó 15 marzo, vence 15 abril
+Lote C: Llegó 20 marzo, vence 10 abril
 
-        ESTRATEGIA FIFO (First In, First Out):
-        "Vende lo que llegó primero"
-        Orden: A → B → C
-        Uso: Productos no perecederos
+**ESTRATEGIA FIFO (First In, First Out):**
+"Vende lo que llegó primero"
+Orden: A → B → C
+Uso: Productos no perecederos
 
-        ESTRATEGIA LIFO (Last In, First Out):
-        "Vende lo que llegó último"
-        Orden: C → B → A
-        Uso: Materiales donde orden no importa
+**ESTRATEGIA LIFO (Last In, First Out):**
+"Vende lo que llegó último"
+Orden: C → B → A
+Uso: Materiales donde orden no importa
 
-        ESTRATEGIA FEFO (First Expired, First Out):
-        "Vende lo que vence primero"
-        Orden: A → C → B (por fecha vencimiento)
-        Uso: Alimentos, medicinas, perecederos
+**ESTRATEGIA FEFO (First Expired, First Out):**
+"Vende lo que vence primero"
+Orden: A → C → B (por fecha vencimiento)
+Uso: Alimentos, medicinas, perecederos
 
-        FEFO es la mejor para evitar mermas.
-      `
+FEFO es la mejor para evitar mermas.`
     },
     relationships: [
       {
@@ -3565,32 +3459,30 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💰',
     example: {
       title: 'Métodos de valoración',
-      content: `
-        PRODUCTO: Camiseta (50 en stock)
+      content: `**PRODUCTO: Camiseta (50 en stock)**
 
-        COSTO ESTÁNDAR:
-        Defines: $100 por camiseta
-        Valor = 50 × $100 = $5,000
-        Simple pero no refleja cambios
+**COSTO ESTÁNDAR:**
+Defines: $100 por camiseta
+Valor = 50 × $100 = $5,000
+Simple pero no refleja cambios
 
-        COSTO PROMEDIO:
-        Compra 1: 30 × $90 = $2,700
-        Compra 2: 20 × $120 = $2,400
-        Total: 50 camisetas, $5,100
-        Promedio: $102 c/u
-        Valor = 50 × $102 = $5,100
+**COSTO PROMEDIO:**
+Compra 1: 30 × $90 = $2,700
+Compra 2: 20 × $120 = $2,400
+Total: 50 camisetas, $5,100
+Promedio: $102 c/u
+Valor = 50 × $102 = $5,100
 
-        FIFO (First In First Out):
-        Vendes primero las de $90
-        Quedan las de $120
-        Valor varía según qué vendiste
+**FIFO (First In First Out):**
+Vendes primero las de $90
+Quedan las de $120
+Valor varía según qué vendiste
 
-        ¿POR QUÉ IMPORTA?
-        → Balance general necesita valor de inventario
-        → Determina costo de ventas
-        → Afecta utilidades reportadas
-        → Decisiones de precios
-      `
+**¿POR QUÉ IMPORTA?**
+→ Balance general necesita valor de inventario
+→ Determina costo de ventas
+→ Afecta utilidades reportadas
+→ Decisiones de precios`
     },
     relationships: [
       {
@@ -3625,31 +3517,29 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🔀',
     example: {
       title: 'Transferencia entre almacenes',
-      content: `
-        ANTES:
-        Almacén Central: 100 camisetas
-        Tienda Norte: 5 camisetas (¡pocas!)
-        Tienda Sur: 50 camisetas
+      content: `**ANTES:**
+Almacén Central: 100 camisetas
+Tienda Norte: 5 camisetas (¡pocas!)
+Tienda Sur: 50 camisetas
 
-        TRANSFERENCIA:
-        De: Almacén Central
-        A: Tienda Norte
-        Producto: 20 camisetas
+**TRANSFERENCIA:**
+De: Almacén Central
+A: Tienda Norte
+Producto: 20 camisetas
 
-        DESPUÉS:
-        Almacén Central: 80 camisetas
-        Tienda Norte: 25 camisetas ✓
-        Tienda Sur: 50 camisetas
+**DESPUÉS:**
+Almacén Central: 80 camisetas
+Tienda Norte: 25 camisetas ✓
+Tienda Sur: 50 camisetas
 
-        PROCESO:
-        1. Creas transferencia en sistema
-        2. Imprimes lista de productos
-        3. Picking en origen
-        4. Transportas físicamente
-        5. Recepciones en destino
-        6. Confirmas transferencia
-        → Stock actualizado en ambos lugares
-      `
+**PROCESO:**
+1. Creas transferencia en sistema
+2. Imprimes lista de productos
+3. Picking en origen
+4. Transportas físicamente
+5. Recepciones en destino
+6. Confirmas transferencia
+→ Stock actualizado en ambos lugares`
     },
     relationships: [
       {
@@ -3684,32 +3574,30 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '✏️',
     example: {
       title: 'Proceso de ajuste',
-      content: `
-        CONTEO FÍSICO:
-        Producto: Laptop Dell
-        Sistema dice: 10 unidades
-        Conteo real: 8 unidades
-        Diferencia: -2 unidades
+      content: `**CONTEO FÍSICO:**
+Producto: Laptop Dell
+Sistema dice: 10 unidades
+Conteo real: 8 unidades
+Diferencia: -2 unidades
 
-        POSIBLES CAUSAS:
-        - Robo/pérdida
-        - Error de entrada anterior
-        - Producto dañado no registrado
-        - Error de conteo anterior
+**POSIBLES CAUSAS:**
+- Robo/pérdida
+- Error de entrada anterior
+- Producto dañado no registrado
+- Error de conteo anterior
 
-        AJUSTE:
-        1. Creas ajuste de inventario
-        2. Producto: Laptop Dell
-        3. Cantidad sistema: 10
-        4. Cantidad real: 8
-        5. Motivo: "Diferencia en conteo trimestral"
-        6. Confirmas ajuste
+**AJUSTE:**
+1. Creas ajuste de inventario
+2. Producto: Laptop Dell
+3. Cantidad sistema: 10
+4. Cantidad real: 8
+5. Motivo: "Diferencia en conteo trimestral"
+6. Confirmas ajuste
 
-        RESULTADO:
-        → Sistema ahora dice: 8 unidades
-        → Se registra la merma contablemente
-        → Historial documenta el ajuste
-      `
+**RESULTADO:**
+→ Sistema ahora dice: 8 unidades
+→ Se registra la merma contablemente
+→ Historial documenta el ajuste`
     },
     relationships: [
       {
@@ -4042,28 +3930,26 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '🛒',
     example: {
       title: 'Flujo del carrito',
-      content: `
-        CLIENTE NAVEGANDO TU TIENDA:
+      content: `**CLIENTE NAVEGANDO TU TIENDA:**
 
-        1. Ve producto → "Agregar al carrito"
-        2. Sigue navegando → Agrega otro
-        3. Revisa carrito:
-           - Camiseta Azul (x2): $1,000
-           - Pantalón Negro: $800
-           Subtotal: $1,800
+1. Ve producto → "Agregar al carrito"
+2. Sigue navegando → Agrega otro
+3. Revisa carrito:
+   - Camiseta Azul (x2): $1,000
+   - Pantalón Negro: $800
+   Subtotal: $1,800
 
-        4. Aplica cupón "DESCUENTO10":
-           -$180
-           Total: $1,620
+4. Aplica cupón "DESCUENTO10":
+   -$180
+   Total: $1,620
 
-        5. Procede a pagar →
+5. Procede a pagar →
 
-        CARRITOS ABANDONADOS:
-        Cliente agregó pero no pagó
-        → Oportunidad de remarketing
-        → Email recordatorio automático
-        → 70% de carritos se abandonan
-      `
+**CARRITOS ABANDONADOS:**
+Cliente agregó pero no pagó
+- Oportunidad de remarketing
+- Email recordatorio automático
+- 70% de carritos se abandonan`
     },
     relationships: [
       {
@@ -4098,33 +3984,31 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '💳',
     example: {
       title: 'Pasos del checkout',
-      content: `
-        CHECKOUT EN 4 PASOS:
+      content: `**CHECKOUT EN 4 PASOS:**
 
-        1. REVISAR CARRITO:
-        ✓ Confirma productos
-        ✓ Ve total con impuestos
-        ✓ Aplica cupón si tiene
+**1. REVISAR CARRITO:**
+✓ Confirma productos
+✓ Ve total con impuestos
+✓ Aplica cupón si tiene
 
-        2. DATOS DE ENVÍO:
-        ✓ Nombre y dirección
-        ✓ Teléfono de contacto
-        ✓ Método de envío
+**2. DATOS DE ENVÍO:**
+✓ Nombre y dirección
+✓ Teléfono de contacto
+✓ Método de envío
 
-        3. MÉTODO DE PAGO:
-        ✓ Tarjeta crédito/débito
-        ✓ PayPal / MercadoPago
-        ✓ Transferencia
-        ✓ Pago contra entrega
+**3. MÉTODO DE PAGO:**
+✓ Tarjeta crédito/débito
+✓ PayPal / MercadoPago
+✓ Transferencia
+✓ Pago contra entrega
 
-        4. CONFIRMAR:
-        ✓ Resumen final
-        ✓ Botón "Confirmar Pedido"
-        ✓ Email de confirmación
+**4. CONFIRMAR:**
+✓ Resumen final
+✓ Botón "Confirmar Pedido"
+✓ Email de confirmación
 
-        MÉTRICA CLAVE:
-        Tasa de conversión = % que completa
-      `
+**MÉTRICA CLAVE:**
+Tasa de conversión = % que completa`
     },
     relationships: [
       {
@@ -4159,30 +4043,28 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📝',
     example: {
       title: 'Formulario de contacto',
-      content: `
-        PÁGINA "CONTÁCTANOS":
+      content: `**PÁGINA "CONTÁCTANOS":**
 
-        Nombre: [____________]
-        Email:  [____________]
-        Tel:    [____________]
-        Mensaje:
-        [____________________]
+Nombre: [____________]
+Email:  [____________]
+Tel:    [____________]
+Mensaje:
+[____________________]
 
-           [ENVIAR MENSAJE]
+   [ENVIAR MENSAJE]
 
-        AL ENVIAR:
-        1. Datos llegan a Odoo
-        2. Se crea Lead automáticamente
-        3. Te notifica por email
-        4. Cliente recibe confirmación
-        5. Puedes dar seguimiento en CRM
+**AL ENVIAR:**
+1. Datos llegan a Odoo
+2. Se crea Lead automáticamente
+3. Te notifica por email
+4. Cliente recibe confirmación
+5. Puedes dar seguimiento en CRM
 
-        TIPOS COMUNES:
-        - Contacto general
-        - Solicitud de cotización
-        - Registro a newsletter
-        - Encuesta de satisfacción
-      `
+**TIPOS COMUNES:**
+- Contacto general
+- Solicitud de cotización
+- Registro a newsletter
+- Encuesta de satisfacción`
     },
     relationships: [
       {
@@ -4221,30 +4103,28 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📁',
     example: {
       title: 'Estructura de un proyecto',
-      content: `
-        PROYECTO: Implementación Odoo - Panadería
-        Fecha inicio: 01 marzo
-        Fecha fin: 30 abril
+      content: `**PROYECTO: Implementación Odoo - Panadería**
+Fecha inicio: 01 marzo
+Fecha fin: 30 abril
 
-        FASES:
-        1. Análisis (1 semana)
-        2. Configuración (2 semanas)
-        3. Migración datos (1 semana)
-        4. Capacitación (1 semana)
-        5. Go-live (3 semanas)
+**FASES:**
+1. Análisis (1 semana)
+2. Configuración (2 semanas)
+3. Migración datos (1 semana)
+4. Capacitación (1 semana)
+5. Go-live (3 semanas)
 
-        EQUIPO:
-        - Gerente: Ana
-        - Consultor: Roberto
-        - Técnico: María
+**EQUIPO:**
+- Gerente: Ana
+- Consultor: Roberto
+- Técnico: María
 
-        MÉTRICAS:
-        Progreso: 65% completado
-        Horas planeadas: 200 hrs
-        Horas usadas: 130 hrs
-        Presupuesto: $50,000
-        Gastado: $32,000
-      `
+**MÉTRICAS:**
+Progreso: 65% completado
+Horas planeadas: 200 hrs
+Horas usadas: 130 hrs
+Presupuesto: $50,000
+Gastado: $32,000`
     },
     relationships: [
       {
@@ -4279,33 +4159,31 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '✅',
     example: {
       title: 'Gestión de tareas en Kanban',
-      content: `
-        PROYECTO: Implementación Odoo
+      content: `**PROYECTO: Implementación Odoo**
 
-        POR HACER:
-        □ Configurar plan de cuentas
-          Asignado: Roberto
-          Fecha: 15 marzo
-          Estimado: 4 hrs
+**POR HACER:**
+□ Configurar plan de cuentas
+  Asignado: Roberto
+  Fecha: 15 marzo
+  Estimado: 4 hrs
 
-        EN PROGRESO:
-        □ Migrar productos
-          Asignado: María
-          Progreso: 50%
-          Usado: 6/10 hrs
+**EN PROGRESO:**
+□ Migrar productos
+  Asignado: María
+  Progreso: 50%
+  Usado: 6/10 hrs
 
-        HECHO:
-        ✓ Crear usuarios
-        ✓ Configurar empresa
-        ✓ Instalar módulos
+**HECHO:**
+✓ Crear usuarios
+✓ Configurar empresa
+✓ Instalar módulos
 
-        FUNCIONES:
-        → Arrastra entre columnas
-        → Asigna responsable
-        → Adjunta documentos
-        → Registra tiempo
-        → Comenta y colabora
-      `
+**FUNCIONES:**
+→ Arrastra entre columnas
+→ Asigna responsable
+→ Adjunta documentos
+→ Registra tiempo
+→ Comenta y colabora`
     },
     relationships: [
       {
@@ -4340,31 +4218,29 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '⏱️',
     example: {
       title: 'Registro semanal de horas',
-      content: `
-        EMPLEADO: Roberto García
-        SEMANA: 11-15 marzo
+      content: `**EMPLEADO: Roberto García**
+**SEMANA: 11-15 marzo**
 
-        LUNES:
-        - Proyecto ABC: 4 hrs
-        - Proyecto XYZ: 2 hrs
-        - Interno: Reunión 1 hr
-        Total: 7 hrs
+**LUNES:**
+- Proyecto ABC: 4 hrs
+- Proyecto XYZ: 2 hrs
+- Interno: Reunión 1 hr
+Total: 7 hrs
 
-        MARTES:
-        - Proyecto ABC: 6 hrs
-        - Interno: Capacitación 2 hrs
-        Total: 8 hrs
+**MARTES:**
+- Proyecto ABC: 6 hrs
+- Interno: Capacitación 2 hrs
+Total: 8 hrs
 
-        RESUMEN SEMANAL:
-        Total: 40 hrs
-        ABC: 25 hrs (facturable)
-        XYZ: 8 hrs (facturable)
-        Interno: 7 hrs (no facturable)
+**RESUMEN SEMANAL:**
+Total: 40 hrs
+ABC: 25 hrs (facturable)
+XYZ: 8 hrs (facturable)
+Interno: 7 hrs (no facturable)
 
-        FACTURACIÓN:
-        ABC: 25 hrs × $500/hr = $12,500
-        XYZ: 8 hrs × $500/hr = $4,000
-      `
+**FACTURACIÓN:**
+ABC: 25 hrs × $500/hr = $12,500
+XYZ: 8 hrs × $500/hr = $4,000`
     },
     relationships: [
       {
@@ -4399,30 +4275,28 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📢',
     example: {
       title: 'Campaña de email marketing',
-      content: `
-        CAMPAÑA: Promoción Navidad 2024
+      content: `**CAMPAÑA: Promoción Navidad 2024**
 
-        OBJETIVO:
-        Incrementar ventas 30% en diciembre
+**OBJETIVO:**
+Incrementar ventas 30% en diciembre
 
-        AUDIENCIA:
-        5,000 contactos (clientes último año)
+**AUDIENCIA:**
+5,000 contactos (clientes último año)
 
-        ACCIONES:
-        1. Email #1 (1 dic): Anticipo
-        2. Email #2 (10 dic): 20% descuento
-        3. Email #3 (20 dic): Última chance
-        4. SMS recordatorio (23 dic)
+**ACCIONES:**
+1. Email #1 (1 dic): Anticipo
+2. Email #2 (10 dic): 20% descuento
+3. Email #3 (20 dic): Última chance
+4. SMS recordatorio (23 dic)
 
-        MÉTRICAS:
-        Enviados: 5,000
-        Abiertos: 1,250 (25%)
-        Clics: 375 (7.5%)
-        Ventas: $150,000
-        ROI: 500%
+**MÉTRICAS:**
+Enviados: 5,000
+Abiertos: 1,250 (25%)
+Clics: 375 (7.5%)
+Ventas: $150,000
+ROI: 500%
 
-        Odoo trackea todo automáticamente.
-      `
+Odoo trackea todo automáticamente.`
     },
     relationships: [
       {
@@ -4457,35 +4331,33 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📅',
     example: {
       title: 'Vista de calendario semanal',
-      content: `
-        MARZO 2024 - SEMANA 11
+      content: `**MARZO 2024 - SEMANA 11**
 
-        LUNES 11:
-        09:00 Reunión equipo
-        14:00 Llamada cliente ABC
-        16:00 Revisión proyecto
+**LUNES 11:**
+09:00 Reunión equipo
+14:00 Llamada cliente ABC
+16:00 Revisión proyecto
 
-        MARTES 12:
-        10:00 Demo a prospecto
-        15:00 Capacitación
+**MARTES 12:**
+10:00 Demo a prospecto
+15:00 Capacitación
 
-        MIÉRCOLES 13:
-        TODO EL DÍA: Visita cliente
+**MIÉRCOLES 13:**
+TODO EL DÍA: Visita cliente
 
-        JUEVES 14:
-        11:00 Entrevista candidato
-        14:00 Seguimiento leads
+**JUEVES 14:**
+11:00 Entrevista candidato
+14:00 Seguimiento leads
 
-        VIERNES 15:
-        09:00 Cierre de mes
-        12:00 Comida equipo
+**VIERNES 15:**
+09:00 Cierre de mes
+12:00 Comida equipo
 
-        INTEGRACIÓN:
-        → Actividades CRM aquí
-        → Ausencias visibles
-        → Fechas límite tareas
-        → Todo sincronizado
-      `
+**INTEGRACIÓN:**
+→ Actividades CRM aquí
+→ Ausencias visibles
+→ Fechas límite tareas
+→ Todo sincronizado`
     },
     relationships: [
       {
@@ -4520,30 +4392,28 @@ HABER | Cuentas por Cobrar     | -$1,500
     icon: '📌',
     example: {
       title: 'Notas internas en ficha de cliente',
-      content: `
-        CLIENTE: Panadería ABC
+      content: `**CLIENTE: Panadería ABC**
 
-        NOTAS INTERNAS (solo equipo):
+**NOTAS INTERNAS (solo equipo):**
 
-        ━━━ 15 marzo - Ana ━━━
-        ⚠️ Cliente sensible a precio.
-        Siempre pide descuento.
-        Máximo autorizado: 10%
+━━━ 15 marzo - Ana ━━━
+⚠️ Cliente sensible a precio.
+Siempre pide descuento.
+Máximo autorizado: 10%
 
-        ━━━ 20 febrero - Roberto ━━━
-        Prefiere llamadas por la tarde
-        después de las 3pm.
+━━━ 20 febrero - Roberto ━━━
+Prefiere llamadas por la tarde
+después de las 3pm.
 
-        ━━━ 10 enero - María ━━━
-        Pagó 15 días tarde últimas 2 facturas.
-        Considerar pedir anticipo.
+━━━ 10 enero - María ━━━
+Pagó 15 días tarde últimas 2 facturas.
+Considerar pedir anticipo.
 
-        MENSAJES AL CLIENTE (visibles):
-        "Gracias por su compra"
+**MENSAJES AL CLIENTE (visibles):**
+"Gracias por su compra"
 
-        Las notas ayudan al equipo
-        a dar mejor servicio.
-      `
+Las notas ayudan al equipo
+a dar mejor servicio.`
     },
     relationships: [
       {
