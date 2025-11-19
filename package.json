@@ -13,6 +13,7 @@
     "lint:palette": "node scripts/validate-palette.mjs"
   },
   "dependencies": {
+    "dompurify": "^3.3.0",
     "framer-motion": "^11.0.5",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
