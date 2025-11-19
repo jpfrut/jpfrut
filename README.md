@@ -2,7 +2,7 @@
 
 Una plataforma de aprendizaje interactiva y gamificada para dominar Odoo 19, diseñada específicamente para usuarios sin experiencia técnica previa. Aprendizaje divertido, práctico y motivador.
 
-![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)
+![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)
 ![Odoo](https://img.shields.io/badge/Odoo-19-purple.svg)
 ![React](https://img.shields.io/badge/React-18.3-61dafb.svg)
 ![License](https://img.shields.io/badge/license-MIT-green.svg)
@@ -27,7 +27,8 @@ Esta no es una documentación técnica más de Odoo. Es una **experiencia de apr
 
 ### 📚 Contenido Educativo Extenso
 - **74 Módulos de Odoo 19**: Cobertura 154% - Incluye TODAS las aplicaciones oficiales + 26 módulos adicionales
-- **307 Lecciones Estructuradas**: Con objetivos claros, ejemplos prácticos y progresión pedagógica
+- **307 Lecciones Estructuradas**: Arquitectura completa implementada (contenido didáctico en desarrollo activo)
+- **24 Lecciones con Contenido Didáctico**: 3 lecciones completas con ejercicios prácticos (Contabilidad), 21 en desarrollo
 - **10 Misiones Prácticas**: Aprende haciendo tareas reales paso a paso
 - **80+ Términos en Glosario**: Con definiciones narrativas, ejemplos y mejores prácticas
 
@@ -367,22 +368,31 @@ npm run lint      # Ejecutar ESLint
 
 ## 📈 Roadmap
 
-### ✅ Versión 2.0 (Actual)
-- [x] 42 módulos de Odoo 19 catalogados
+### ✅ Versión 1.0 (Actual)
+- [x] 74 módulos de Odoo 19 catalogados (154% cobertura oficial)
+- [x] 11 categorías completas y organizadas
+- [x] 307 lecciones estructuradas
 - [x] Sistema de glosario interactivo con tooltips
 - [x] 80+ términos con definiciones narrativas
-- [x] Misiones prácticas guiadas
-- [x] Página "Mi Primer Día" para principiantes
-- [x] FAQ interactivo con búsqueda
-- [x] Footer profesional con estadísticas
+- [x] 10 misiones prácticas guiadas
+- [x] FAQ interactivo con búsqueda (40+ preguntas)
+- [x] Footer profesional con estadísticas dinámicas
 - [x] Paleta de colores Mentora Hub sin gradientes
 - [x] Recomendaciones personalizadas
+- [x] Sistema de gamificación completo (XP, niveles, logros, rachas)
 
-### 🔜 Versión 2.1 (Próximamente)
-- [ ] Completar glosario con 80+ términos restantes
-- [ ] Agregar contenido para todos los módulos prioritarios
+### 🔜 Versión 1.1 (En Desarrollo - Sprint Actual)
+- [x] Arquitectura de 74 módulos completa
+- [ ] Completar contenido didáctico de 21 lecciones prioritarias (Ventas, Flota, CRM)
+- [ ] Expandar introducciones breves en 8 lecciones
+- [ ] Estandarizar complejidad de quizzes
+- [ ] Ver: `docs/NEXT_STEPS_2025-11-18.md` para plan detallado
+
+### 🔮 Versión 2.0 (Futuro - 3-6 meses)
+- [ ] Completar contenido didáctico de las 307 lecciones
 - [ ] Sistema de certificados al completar módulos
 - [ ] Exportar progreso y certificados en PDF
+- [ ] Videos tutoriales integrados
 - [ ] Modo oscuro completo
 
 ### 🔮 Versión 3.0 (Futuro)

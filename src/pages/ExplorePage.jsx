@@ -19,20 +19,34 @@ import ModuleCard from '../components/ModuleCard'
 import Card from '../components/ui/Card'
 import Button from '../components/ui/Button'
 
-// Iconos por categoría
+// Iconos por categoría (11 categorías completas)
 const categoryIcons = {
-  'Finanzas': '💰',
-  'Ventas': '📊',
-  'Operaciones': '📦',
-  'Administración': '👥'
+  'Finance': '💰',
+  'Sales': '📊',
+  'Websites': '🌐',
+  'Supply Chain': '📦',
+  'Human Resources': '👥',
+  'Services': '🛠️',
+  'Marketing': '📢',
+  'Productivity': '⚡',
+  'Odoo Essentials': '📚',
+  'Studio': '🎨',
+  'Settings': '⚙️'
 }
 
-// Descripciones de categoría
+// Descripciones de categoría (11 categorías completas)
 const categoryDescriptions = {
-  'Finanzas': 'Gestión contable y control de gastos',
-  'Ventas': 'CRM, punto de venta y tienda online',
-  'Operaciones': 'Inventario y compras',
-  'Administración': 'Empleados, proyectos y soporte'
+  'Finance': 'Contabilidad, gastos, pagos y gestión financiera',
+  'Sales': 'CRM, ventas, punto de venta, suscripciones y alquiler',
+  'Websites': 'Sitio web, blog, eLearning, live chat y foros',
+  'Supply Chain': 'Inventario, compras, manufactura, calidad y mantenimiento',
+  'Human Resources': 'Empleados, nómina, reclutamiento, evaluaciones y flota',
+  'Services': 'Proyectos, helpdesk, hojas de tiempo, servicio de campo y planificación',
+  'Marketing': 'Email marketing, automatización, SMS, eventos, encuestas y redes sociales',
+  'Productivity': 'Documentos, conocimiento, discusiones, calendario, citas y WhatsApp',
+  'Odoo Essentials': 'Búsqueda, reportes, actividades, etapas e importación/exportación',
+  'Studio': 'Personalización avanzada y desarrollo sin código',
+  'Settings': 'Gestión de usuarios, multi-empresa, integraciones e IoT'
 }
 
 const ExplorePage = () => {

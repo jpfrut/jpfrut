@@ -297,22 +297,36 @@ const Dashboard = () => {
 
         {/* Categories Overview */}
         <div className="mb-6">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            {categories.map((cat) => (
-              <Link key={cat} to={`/aprender?category=${encodeURIComponent(cat)}`}>
-                <Card className="p-4 text-center hover:shadow-md transition-all group cursor-pointer">
-                  <div className="text-2xl mb-2">
-                    {cat === 'Finanzas' && '💰'}
-                    {cat === 'Ventas' && '📊'}
-                    {cat === 'Operaciones' && '📦'}
-                    {cat === 'Administración' && '👥'}
-                  </div>
-                  <div className="text-sm font-medium text-neutral-700 group-hover:text-primary-600 transition-colors">
-                    {cat}
-                  </div>
-                </Card>
-              </Link>
-            ))}
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-3">
+            {categories.map((cat) => {
+              // Mapa de emojis por categoría (11 categorías completas)
+              const categoryEmojis = {
+                'Finance': '💰',
+                'Sales': '📊',
+                'Websites': '🌐',
+                'Supply Chain': '📦',
+                'Human Resources': '👥',
+                'Services': '🛠️',
+                'Marketing': '📢',
+                'Productivity': '⚡',
+                'Odoo Essentials': '📚',
+                'Studio': '🎨',
+                'Settings': '⚙️'
+              }
+
+              return (
+                <Link key={cat} to={`/aprender?category=${encodeURIComponent(cat)}`}>
+                  <Card className="p-4 text-center hover:shadow-md transition-all group cursor-pointer">
+                    <div className="text-2xl mb-2">
+                      {categoryEmojis[cat] || '📁'}
+                    </div>
+                    <div className="text-sm font-medium text-neutral-700 group-hover:text-primary-600 transition-colors">
+                      {cat}
+                    </div>
+                  </Card>
+                </Link>
+              )
+            })}
           </div>
         </div>
 
