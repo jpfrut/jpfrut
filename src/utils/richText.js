@@ -94,7 +94,14 @@ const stripIndent = (text) => {
 export const normalizeRichText = (text = '') => {
   if (!text) return ''
   const stripped = stripIndent(text)
-  return normalizeTables(stripped)
+
+  const cleaned = stripped
+    .replace(/\\\*/g, '*')
+    .split('\n')
+    .map(line => line.trimEnd())
+    .join('\n')
+
+  return normalizeTables(cleaned)
 }
 
 export { stripIndent }
