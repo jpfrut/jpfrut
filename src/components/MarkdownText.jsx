@@ -11,6 +11,9 @@ const MarkdownText = ({ children, enableGlossary = true, className = '' }) => {
     ? normalizeRichText(children)
     : children
 
+  const focusableHeadingClasses =
+    'focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-md scroll-mt-24'
+
   return (
     <div className={`markdown-content ${className}`}>
       <ReactMarkdown
@@ -49,17 +52,26 @@ const MarkdownText = ({ children, enableGlossary = true, className = '' }) => {
           ),
           // Render headers
           h1: ({ children }) => (
-            <h1 className="text-xl font-bold text-neutral-800 mb-2">
+            <h1
+              tabIndex={-1}
+              className={`text-xl font-bold text-neutral-800 mb-2 ${focusableHeadingClasses}`}
+            >
               {renderWithGlossary(children, enableGlossary)}
             </h1>
           ),
           h2: ({ children }) => (
-            <h2 className="text-lg font-bold text-neutral-800 mb-2">
+            <h2
+              tabIndex={-1}
+              className={`text-lg font-bold text-neutral-800 mb-2 ${focusableHeadingClasses}`}
+            >
               {renderWithGlossary(children, enableGlossary)}
             </h2>
           ),
           h3: ({ children }) => (
-            <h3 className="text-base font-bold text-neutral-800 mb-1">
+            <h3
+              tabIndex={-1}
+              className={`text-base font-bold text-neutral-800 mb-1 ${focusableHeadingClasses}`}
+            >
               {renderWithGlossary(children, enableGlossary)}
             </h3>
           ),
@@ -79,6 +91,15 @@ const MarkdownText = ({ children, enableGlossary = true, className = '' }) => {
             <blockquote className="border-l-4 border-primary-500 pl-4 italic text-neutral-600 my-2">
               {renderWithGlossary(children, enableGlossary)}
             </blockquote>
+          ),
+          a: ({ href, children, ...props }) => (
+            <a
+              href={href}
+              className="text-primary-700 font-semibold underline underline-offset-4 decoration-primary-300 rounded-sm focus:outline-none focus-visible:ring-2 focus-visible:ring-primary-500 focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+              {...props}
+            >
+              {renderWithGlossary(children, enableGlossary)}
+            </a>
           ),
           hr: () => <hr className="my-4 border-neutral-200" />,
           table: ({ children }) => (

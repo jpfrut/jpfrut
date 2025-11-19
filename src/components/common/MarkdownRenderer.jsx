@@ -24,17 +24,29 @@ const MarkdownRenderer = ({ content, className = '' }) => {
         remarkPlugins={[remarkGfm]}
         components={{
           h1: ({ className: headingClass, children, ...props }) => (
-            <h1 className={`${styles.h1} ${headingClass ?? ''}`.trim()} {...props}>
+            <h1
+              tabIndex={-1}
+              className={`${styles.h1} ${styles.focusableHeading} ${headingClass ?? ''}`.trim()}
+              {...props}
+            >
               {children}
             </h1>
           ),
           h2: ({ className: headingClass, children, ...props }) => (
-            <h2 className={`${styles.h2} ${headingClass ?? ''}`.trim()} {...props}>
+            <h2
+              tabIndex={-1}
+              className={`${styles.h2} ${styles.focusableHeading} ${headingClass ?? ''}`.trim()}
+              {...props}
+            >
               {children}
             </h2>
           ),
           h3: ({ className: headingClass, children, ...props }) => (
-            <h3 className={`${styles.h3} ${headingClass ?? ''}`.trim()} {...props}>
+            <h3
+              tabIndex={-1}
+              className={`${styles.h3} ${styles.focusableHeading} ${headingClass ?? ''}`.trim()}
+              {...props}
+            >
               {children}
             </h3>
           ),
