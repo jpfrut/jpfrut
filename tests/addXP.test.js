@@ -1,4 +1,4 @@
-import assert from 'node:assert'
+import { beforeAll, beforeEach, describe, expect, test } from 'vitest'
 
 const createStorageMock = () => {
   let store = {}
@@ -20,36 +20,42 @@ if (typeof globalThis.localStorage === 'undefined') {
   globalThis.localStorage = createStorageMock()
 }
 
-const { default: useStore } = await import('../src/store/useStore.js')
+let useStore
 
-const resetStore = () => {
+beforeAll(async () => {
+  const module = await import('../src/store/useStore.js')
+  useStore = module.default
+})
+
+beforeEach(() => {
   useStore.getState().reset()
-}
+})
 
-// Test multi-level up from base state
-resetStore()
-useStore.getState().addXP(350)
-let user = useStore.getState().user
+describe('addXP multi-level logic', () => {
+  test('levels up correctly from base state', () => {
+    useStore.getState().addXP(350)
+    const user = useStore.getState().user
 
-assert.strictEqual(user.level, 3, 'User should level up twice from level 1 to 3')
-assert.strictEqual(user.xp, 50, 'XP should carry over the remaining amount after leveling')
-assert.strictEqual(user.totalXp, 350, 'Total XP should reflect the entire reward amount')
+    expect(user.level).toBe(3)
+    expect(user.xp).toBe(50)
+    expect(user.totalXp).toBe(350)
+  })
 
-// Test multi-level up starting from an existing level with progress
-resetStore()
-useStore.setState((state) => ({
-  user: {
-    ...state.user,
-    level: 2,
-    xp: 50,
-    totalXp: 150,
-  }
-}))
-useStore.getState().addXP(500)
-user = useStore.getState().user
+  test('levels up correctly from an existing level with progress', () => {
+    useStore.setState((state) => ({
+      user: {
+        ...state.user,
+        level: 2,
+        xp: 50,
+        totalXp: 150,
+      }
+    }))
 
-assert.strictEqual(user.level, 4, 'User should jump from level 2 to 4 with enough XP')
-assert.strictEqual(user.xp, 50, 'Remaining XP should stay within the current level threshold')
-assert.strictEqual(user.totalXp, 650, 'Total XP should accumulate correctly')
+    useStore.getState().addXP(500)
+    const user = useStore.getState().user
 
-console.log('addXP multi-level tests passed')
+    expect(user.level).toBe(4)
+    expect(user.xp).toBe(50)
+    expect(user.totalXp).toBe(650)
+  })
+})

@@ -10,7 +10,8 @@
     "build": "vite build",
     "prepreview": "node scripts/verify-deps.mjs",
     "preview": "vite preview",
-    "lint:palette": "node scripts/validate-palette.mjs"
+    "lint:palette": "node scripts/validate-palette.mjs",
+    "test": "vitest"
   },
   "dependencies": {
     "dompurify": "^3.3.0",
@@ -25,12 +26,16 @@
   },
   "devDependencies": {
     "@tailwindcss/typography": "^0.5.19",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.3.0",
     "@types/react": "^18.3.1",
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.2.1",
     "autoprefixer": "^10.4.17",
+    "jsdom": "^27.2.0",
     "postcss": "^8.4.35",
     "tailwindcss": "^3.4.1",
-    "vite": "^5.1.4"
+    "vite": "^5.1.4",
+    "vitest": "^2.0.5"
   }
 }

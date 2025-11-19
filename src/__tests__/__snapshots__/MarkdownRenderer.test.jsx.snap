@@ -1,0 +1,114 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`MarkdownRenderer > renders lists, links, and code blocks consistently 1`] = `
+<DocumentFragment>
+  <div
+    class="_markdown_0ef9bf prose"
+  >
+    <h2
+      class="_h2_0ef9bf"
+      node="[object Object]"
+    >
+      Demo markdown
+    </h2>
+    
+
+    <p
+      class="_paragraph_0ef9bf"
+      node="[object Object]"
+    >
+      Esto incluye 
+      <a
+        class="_link_0ef9bf"
+        href="https://example.com"
+        node="[object Object]"
+        rel="noopener noreferrer"
+        target="_blank"
+      >
+        un enlace
+      </a>
+       y contenido mixto:
+    </p>
+    
+
+    <ul
+      class="_unorderedList_0ef9bf"
+      node="[object Object]"
+    >
+      
+
+      <li
+        class="_listItem_0ef9bf"
+        node="[object Object]"
+      >
+        Elemento de lista
+      </li>
+      
+
+      <li
+        class="_listItem_0ef9bf"
+        node="[object Object]"
+      >
+        Segundo elemento
+      </li>
+      
+
+    </ul>
+    
+
+    <ol
+      class="_orderedList_0ef9bf"
+      node="[object Object]"
+    >
+      
+
+      <li
+        class="_listItem_0ef9bf"
+        node="[object Object]"
+      >
+        Paso uno
+      </li>
+      
+
+      <li
+        class="_listItem_0ef9bf"
+        node="[object Object]"
+      >
+        Paso dos
+      </li>
+      
+
+    </ol>
+    
+
+    <p
+      class="_paragraph_0ef9bf"
+      node="[object Object]"
+    >
+      Texto con 
+      <code
+        class="_inlineCode_0ef9bf"
+        node="[object Object]"
+      >
+        código en línea
+      </code>
+      .
+    </p>
+    
+
+    <pre
+      class="_codeBlock_0ef9bf"
+      node="[object Object]"
+    >
+      <code
+        class="language-js"
+        node="[object Object]"
+      >
+        const saludo = 'hola'
+console.log(saludo)
+
+      </code>
+    </pre>
+  </div>
+</DocumentFragment>
+`;
