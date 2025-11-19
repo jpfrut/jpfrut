@@ -6,6 +6,7 @@ import {
   CheckCircle, Info
 } from 'lucide-react'
 import { Card, Button, Badge } from '../components/ui'
+import MarkdownRenderer from '../components/common/MarkdownRenderer'
 import { faqCategories, faqData, getFaqsByCategory, searchFaqs, getRelatedFaqs } from '../data/faqData'
 import { dailyTasks, warningSignals } from '../data/quickGuides'
 
@@ -249,9 +250,10 @@ const HelpCenterPage = () => {
                           className="overflow-hidden"
                         >
                           <div className="p-4 pt-0 border-t bg-neutral-50">
-                            <div className="whitespace-pre-line text-neutral-700 leading-relaxed">
-                              {faq.answer.trim()}
-                            </div>
+                            <MarkdownRenderer
+                              content={faq.answer.trim()}
+                              className="text-neutral-700 leading-relaxed"
+                            />
                           </div>
                         </motion.div>
                       )}
