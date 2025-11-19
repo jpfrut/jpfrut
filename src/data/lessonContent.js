@@ -782,37 +782,68 @@ export const lessonContent = {
 
   'fleet-001': {
     title: 'Configuración del Módulo de Flota',
-    introduction: `
-      El módulo de Flota de Odoo te permite gestionar todos los vehículos de tu empresa, desde el registro
-      inicial hasta el control de mantenimientos y costos operativos.
-    `,
+    introduction: `El módulo de Flota de Odoo te permite gestionar todos los vehículos de tu empresa, desde el registro inicial hasta el control de mantenimientos y costos operativos.`,
     sections: [
       {
         title: '1. Configuración Inicial',
-        content: `
-          Configurar correctamente el módulo es el primer paso para una gestión eficiente.
+        content: `Configurar correctamente el módulo es el primer paso para una gestión eficiente de tu flota vehicular.
 
-          **Elementos a configurar:**
-          - Marcas y modelos de vehículos
-          - Categorías de vehículos
-          - Tipos de servicio de mantenimiento
-          - Proveedores de servicio
-        `,
-        example: `
-          📍 Ruta en Odoo: Flota > Configuración
+**Elementos a configurar:**
+- **Marcas y modelos** de vehículos
+- **Categorías** de vehículos (ligeros, pesados, maquinaria)
+- **Tipos de servicio** de mantenimiento
+- **Proveedores** de servicio y talleres
 
-          Crear categorías:
-          - Vehículos ligeros (autos, camionetas)
-          - Vehículos pesados (camiones, tractocamiones)
-          - Maquinaria especial
+**Beneficios de una buena configuración:**
+- Registro rápido de nuevos vehículos
+- Reportes precisos por categoría
+- Control de mantenimientos programados
+- Análisis de costos por tipo de vehículo`,
+        example: `📍 Ruta en Odoo: Flota > Configuración
 
-          Configurar marcas:
-          - Toyota
-          - Ford
-          - Mercedes-Benz
+**1. Crear categorías de vehículos:**
 
-          Cada marca con sus modelos correspondientes.
-        `,
+~~~text
+Categoría: Vehículos Ligeros
+Descripción: Autos, camionetas y SUVs
+Uso: Transporte de personal
+
+Categoría: Vehículos Pesados
+Descripción: Camiones y tractocamiones
+Uso: Carga y distribución
+
+Categoría: Maquinaria Especial
+Descripción: Montacargas, grúas
+Uso: Operaciones de almacén
+~~~
+
+**2. Configurar marcas y modelos:**
+
+| Marca | Modelos Disponibles |
+| --- | --- |
+| Toyota | Hilux, Corolla, RAV4 |
+| Ford | F-150, Transit, Ranger |
+| Mercedes-Benz | Sprinter, Actros |
+
+**3. Tipos de mantenimiento:**
+
+✓ Mantenimiento preventivo (cada 5,000 km)
+✓ Cambio de aceite
+✓ Revisión de frenos
+✓ Alineación y balanceo
+✓ Verificación vehicular
+
+**4. Proveedores de servicio:**
+
+~~~text
+Proveedor: Taller Mecánico del Norte
+Servicios: Mantenimiento general, reparaciones
+Contacto: tallernorte@ejemplo.com
+
+Proveedor: Centro de Servicio Ford
+Servicios: Mantenimiento oficial, garantías
+Contacto: servicio@ford.ejemplo.com
+~~~`,
         tips: [
           'Organiza las categorías según el tipo de uso de los vehículos',
           'Mantén actualizada la lista de proveedores de servicio',
@@ -1399,8 +1430,70 @@ export const lessonContent = {
     title: 'Impuestos y Declaraciones',
     introduction: 'Domina la gestión de impuestos y declaraciones fiscales en Odoo para cumplir con tus obligaciones tributarias de manera eficiente.',
     sections: [
-      { title: '1. Configuración de Impuestos', content: 'Configura todos los tipos de impuestos de tu jurisdicción.', example: '📍 Ruta: Contabilidad > Configuración > Impuestos\n\nIVA España 21%:\nNombre: IVA 21% Ventas\nTipo: Porcentaje\nImporte: 21%\nCuenta: 4770001 IVA Repercutido', tips: ['Configura impuestos por pares compra/venta', 'Valida con tu contador'] },
-      { title: '2. Reportes Fiscales', content: 'Genera declaraciones de impuestos automáticamente.', example: 'IVA Trimestral Q1 2025:\nVentas: 100,000 EUR\nIVA Repercutido: 21,000 EUR\nCompras: 25,000 EUR  \nIVA Soportado: 5,250 EUR\nA Pagar: 15,750 EUR', tips: ['Declara puntualmente', 'Conserva todos los comprobantes'] }
+      {
+        title: '1. Configuración de Impuestos',
+        content: `Configura todos los tipos de impuestos de tu jurisdicción para cumplir con las obligaciones fiscales.
+
+**Conceptos clave:**
+- Configurar impuestos por pares (compra/venta)
+- Definir cuentas contables correctas
+- Establecer porcentajes según normativa vigente`,
+        example: `📍 Ruta: Contabilidad > Configuración > Impuestos
+
+**Ejemplo: IVA España 21%**
+
+~~~text
+Nombre: IVA 21% Ventas
+Tipo: Porcentaje
+Importe: 21%
+Alcance del impuesto: Ventas
+Cuenta: 4770001 IVA Repercutido
+~~~
+
+**Par complementario:**
+
+~~~text
+Nombre: IVA 21% Compras
+Tipo: Porcentaje
+Importe: 21%
+Alcance del impuesto: Compras
+Cuenta: 4720001 IVA Soportado
+~~~
+
+✓ Siempre configura pares compra/venta
+✓ Usa cuentas contables específicas para cada tipo`,
+        tips: ['Configura impuestos por pares compra/venta', 'Valida con tu contador']
+      },
+      {
+        title: '2. Reportes Fiscales',
+        content: `Genera declaraciones de impuestos automáticamente desde los movimientos registrados.
+
+**Reportes principales:**
+- Declaración de IVA trimestral
+- Balance de impuestos
+- Libro de ventas e IVA repercutido
+- Libro de compras e IVA soportado`,
+        example: `📍 Ruta: Contabilidad > Reportes > Declaración de Impuestos
+
+**IVA Trimestral Q1 2025:**
+
+| Concepto | Importe |
+| --- | --- |
+| Ventas | €100,000 |
+| IVA Repercutido (21%) | €21,000 |
+| Compras | €25,000 |
+| IVA Soportado (21%) | €5,250 |
+| **A Pagar** | **€15,750** |
+
+✅ Resultado: Pagar €15,750 a la Agencia Tributaria
+
+**Pasos para generar:**
+1. Ir a Reportes > Declaración de Impuestos
+2. Seleccionar periodo (Trimestre 1 - 2025)
+3. Generar reporte
+4. Exportar en formato oficial`,
+        tips: ['Declara puntualmente', 'Conserva todos los comprobantes']
+      }
     ],
     quiz: { questions: [{ id: 'q1', question: '¿Por qué configurar impuestos por pares?', options: ['No es necesario', 'Para separar IVA cobrado vs soportado', 'Solo en Europa', 'Solo empresas grandes'], correct: 1, explanation: 'Necesitas pares para registrar correctamente IVA de ventas e IVA de compras por separado.' }] },
     practicalExercise: { title: 'Ejercicio: Declaración Fiscal', description: 'Genera tu primera declaración de IVA', steps: [] }
@@ -1408,12 +1501,7 @@ export const lessonContent = {
 
   'acc-007': {
     title: 'Alta Manual de Cuentas Bancarias en México',
-    introduction: `
-      En México, los tokens bancarios no están habilitados para sincronizar automáticamente con Odoo.
-      Esto significa que debemos dar de alta las cuentas bancarias manualmente y registrar cada movimiento.
-      Esta lección te guiará paso a paso para configurar correctamente tus bancos, efectivo, diarios contables,
-      y lograr que el Balance General y el Dashboard de Contabilidad reflejen tu liquidez real.
-    `,
+    introduction: `En México, los tokens bancarios no están habilitados para sincronizar automáticamente con Odoo. Esto significa que debemos dar de alta las cuentas bancarias manualmente y registrar cada movimiento. Esta lección te guiará paso a paso para configurar correctamente tus bancos, efectivo, diarios contables, y lograr que el Balance General y el Dashboard de Contabilidad reflejen tu liquidez real.`,
     sections: [
       {
         title: '1. Entender la Estructura: Plan de Cuentas para Bancos',
@@ -2588,10 +2676,104 @@ export const lessonContent = {
 
   'fleet-002': {
     title: 'Gestión de Vehículos',
-    introduction: 'Registra y administra todos los vehículos de tu flota empresarial.',
+    introduction: 'Registra y administra todos los vehículos de tu flota empresarial con información completa y actualizada.',
     sections: [
-      { title: '1. Registro de Vehículos', content: 'Ingresa toda la información de cada vehículo.', example: 'Vehículo: Toyota Prius 2022\nPlaca: 1234-ABC\nVIN: JT2BK18E0X0123456\nKm actuales: 45,000\nValor adquisición: 28,000 EUR\nSeguro: POL-2022-001\nVence: 15/01/2026', tips: ['Digitaliza documentos', 'Actualiza kilometraje mensualmente'] },
-      { title: '2. Seguimiento de Documentación', content: 'Controla vencimientos de seguros, permisos, revisiones técnicas.', example: 'Alertas VEH-001:\n⚠️ Seguro vence en 60 días\n⚠️ Revisión técnica en 15 días\n✅ SOAP vigente', tips: ['Configura alertas 60 días antes', 'Renueva a tiempo'] }
+      {
+        title: '1. Registro de Vehículos',
+        content: `Ingresa toda la información relevante de cada vehículo para tener un control completo.
+
+**Datos esenciales a registrar:**
+- **Identificación:** Placa, VIN, número de serie
+- **Especificaciones:** Marca, modelo, año, color
+- **Documentación:** Tarjeta de circulación, seguro, factura
+- **Estado actual:** Kilometraje, valor de adquisición
+- **Asignación:** Conductor responsable o pool
+
+**Beneficios del registro completo:**
+- Trazabilidad total del vehículo
+- Renovaciones automáticas de seguros y permisos
+- Historial completo de servicios
+- Control de depreciación`,
+        example: `📍 Ruta: Flota > Vehículos > Crear
+
+**Ejemplo: Registro de Toyota Prius 2022**
+
+~~~text
+Información General:
+Marca: Toyota
+Modelo: Prius Hybrid
+Año: 2022
+Placa: 1234-ABC
+VIN: JT2BK18E0X0123456
+Color: Blanco Perla
+Categoría: Vehículos Ligeros
+
+Estado Actual:
+Kilometraje: 45,000 km
+Valor de adquisición: €28,000
+Valor actual (depreciado): €22,000
+Fecha de compra: 15/03/2022
+
+Documentación:
+Póliza de seguro: POL-2022-001
+Compañía: Seguros Madrid S.A.
+Vencimiento seguro: 15/01/2026
+Tarjeta de circulación: Vigente
+~~~
+
+| Documento | Número | Vencimiento | Estado |
+| --- | --- | --- | --- |
+| Seguro | POL-2022-001 | 15/01/2026 | ✅ Vigente |
+| Verificación | VER-2024-456 | 30/06/2025 | ✅ Vigente |
+| Tarjeta circulación | TC-1234-ABC | N/A | ✅ Vigente |`,
+        tips: ['Digitaliza documentos', 'Actualiza kilometraje mensualmente']
+      },
+      {
+        title: '2. Seguimiento de Documentación',
+        content: `Controla vencimientos de seguros, permisos y revisiones técnicas para cumplir con la normativa.
+
+**Documentos a controlar:**
+- **Seguro:** Póliza obligatoria de responsabilidad civil
+- **Verificación vehicular:** Revisión técnica periódica
+- **Tarjeta de circulación:** Permiso de circulación vigente
+- **Tenencia:** Impuesto de tenencia (si aplica)
+- **Permisos especiales:** Carga, transporte de personal
+
+**Sistema de alertas:**
+- 60 días antes: Alerta temprana
+- 30 días antes: Alerta urgente
+- Vencido: Alerta crítica`,
+        example: `📍 Ruta: Flota > Vehículos > [Vehículo] > Documentos
+
+**Alertas del VEH-001 Toyota Prius:**
+
+⚠️ **Seguro vence en 60 días** (15/01/2026)
+Acción: Contactar a Seguros Madrid para renovación
+Costo estimado: €1,200/año
+
+⚠️ **Revisión técnica en 15 días** (30/06/2025)
+Acción: Agendar cita en Centro de Verificación
+Costo: €50
+
+✅ **SOAP vigente** hasta 31/12/2025
+No requiere acción
+
+✅ **Tarjeta de circulación** vigente
+No requiere renovación
+
+**Calendario de renovaciones:**
+
+~~~text
+Junio 2025:
+✓ 15 Jun - Revisión técnica
+✓ 30 Jun - Pago de tenencia
+
+Enero 2026:
+✓ 15 Ene - Renovación de seguro
+✓ 20 Ene - Actualización de póliza
+~~~`,
+        tips: ['Configura alertas 60 días antes', 'Renueva a tiempo']
+      }
     ],
     quiz: { questions: [{ id: 'q1', question: '¿Por qué registrar el VIN?', options: ['No es necesario', 'Identificación única del vehículo para seguros y trámites', 'Solo para autos nuevos', 'Es opcional'], correct: 1, explanation: 'El VIN es el identificador único del vehículo, esencial para seguros, registros y historial.' }] },
     practicalExercise: { title: 'Ejercicio: Registrar Flota', description: 'Ingresa los 3 vehículos de Mentora', steps: [] }
@@ -2599,10 +2781,138 @@ export const lessonContent = {
 
   'fleet-003': {
     title: 'Asignación de Vehículos',
-    introduction: 'Asigna vehículos a conductores y gestiona el uso eficientemente.',
+    introduction: 'Asigna vehículos a conductores y gestiona el uso eficientemente para maximizar el aprovechamiento de la flota.',
     sections: [
-      { title: '1. Asignar a Conductores', content: 'Vincula vehículos con empleados autorizados.', example: 'VEH-001: Juan Pérez (Director)\nVEH-002: Carlos Martínez (Consultor)\nVEH-003: Pool car (sin asignar)', tips: ['Verifica licencia vigente', 'Define responsable único'] },
-      { title: '2. Control de Uso', content: 'Registra y analiza el uso de cada vehículo.', example: 'VEH-001 Enero 2025:\nKm recorridos: 2,500\nViajes: 45\nPromedio: 55 km/viaje\nCombustible: 180 EUR\nCosto/km: 0.072 EUR', tips: ['Pide reporte mensual', 'Analiza costos por vehículo'] }
+      {
+        title: '1. Asignar a Conductores',
+        content: `Vincula vehículos con empleados autorizados para establecer responsabilidades claras.
+
+**Tipos de asignación:**
+- **Asignación individual:** Vehículo exclusivo para un empleado
+- **Pool car:** Vehículo compartido disponible para múltiples usuarios
+- **Asignación por proyecto:** Vehículo temporal para proyecto específico
+- **Flotilla departamental:** Varios vehículos para un departamento
+
+**Requisitos para asignar:**
+- Licencia de conducir vigente
+- Autorización del responsable
+- Capacitación en uso del vehículo
+- Firma de carta responsiva`,
+        example: `📍 Ruta: Flota > Vehículos > [Vehículo] > Asignar
+
+**Asignaciones actuales:**
+
+| Vehículo | Tipo | Conductor | Puesto | Fecha Asignación |
+| --- | --- | --- | --- | --- |
+| VEH-001 | Individual | Juan Pérez | Director General | 01/01/2024 |
+| VEH-002 | Individual | Carlos Martínez | Consultor Senior | 15/03/2024 |
+| VEH-003 | Pool car | Sin asignar | Disponible | N/A |
+
+**Proceso de asignación:**
+
+~~~text
+1. Verificar requisitos:
+✓ Licencia vigente de Juan Pérez
+✓ Categoría A - vigencia hasta 2027
+✓ Sin infracciones pendientes
+✓ Aprobación de Dirección
+
+2. Registrar asignación:
+Vehículo: VEH-001 Toyota Prius
+Conductor: Juan Pérez
+Fecha inicio: 01/01/2024
+Kilometraje inicial: 45,000 km
+Responsable: Director General
+
+3. Documentar:
+✓ Carta responsiva firmada
+✓ Checklist de entrega completo
+✓ Fotos del vehículo
+✓ Combustible: 3/4 tanque
+~~~
+
+**Vehículos Pool:**
+
+~~~text
+VEH-003 - Ford Transit
+Tipo: Pool car (disponible)
+Reservas permitidas por:
+- Equipo de ventas
+- Consultores
+- Área de logística
+
+Proceso de reserva:
+1. Solicitar con 24h de anticipación
+2. Indicar destino y duración
+3. Aprobar con jefe de área
+4. Confirmar disponibilidad
+~~~`,
+        tips: ['Verifica licencia vigente', 'Define responsable único']
+      },
+      {
+        title: '2. Control de Uso',
+        content: `Registra y analiza el uso de cada vehículo para optimizar costos y eficiencia.
+
+**Métricas clave a monitorear:**
+- **Kilometraje recorrido:** Total mensual y promedio por viaje
+- **Número de viajes:** Frecuencia de uso
+- **Consumo de combustible:** Litros y costo por km
+- **Costo por kilómetro:** Incluye todos los gastos
+- **Utilización:** Porcentaje de tiempo en uso
+
+**Indicadores de eficiencia:**
+- Promedio km/viaje
+- Consumo L/100km
+- Costo/km vs presupuesto
+- Tasa de utilización`,
+        example: `📍 Ruta: Flota > Reportes > Uso por Vehículo
+
+**Reporte VEH-001 - Enero 2025:**
+
+| Métrica | Valor |
+| --- | --- |
+| Km recorridos | 2,500 km |
+| Número de viajes | 45 |
+| Promedio por viaje | 55 km |
+| Días en uso | 18 días |
+| Utilización | 58% |
+
+**Consumo de combustible:**
+
+~~~text
+Cargas de combustible: 4
+Litros totales: 180 L
+Costo total: €280
+Precio promedio: €1.56/L
+
+Rendimiento:
+Km recorridos: 2,500 km
+Consumo: 180 L
+Rendimiento: 13.9 km/L (7.2 L/100km)
+~~~
+
+**Costo por kilómetro:**
+
+~~~text
+Combustible: €280
+Mantenimiento: €0 (sin servicios este mes)
+Peajes: €25
+Estacionamiento: €40
+────────────────────
+Total: €345
+Costo/km: €0.138
+
+Presupuesto: €0.150/km
+Estado: ✅ Dentro del presupuesto (-8%)
+~~~
+
+**Análisis mensual:**
+
+✅ **Rendimiento óptimo:** 13.9 km/L supera especificación (12 km/L)
+✅ **Uso eficiente:** 58% de utilización es adecuado para vehículo individual
+⚠️ **Oportunidad:** Viajes cortos (55 km promedio) - considerar pool car para algunos trayectos`,
+        tips: ['Pide reporte mensual', 'Analiza costos por vehículo']
+      }
     ],
     quiz: { questions: [{ id: 'q1', question: '¿Por qué tener vehículos pool (sin asignar)?', options: ['Es un error', 'Flexibilidad para que cualquier empleado autorizado los use según necesidad', 'Solo para emergencias', 'No tiene sentido'], correct: 1, explanation: 'Los vehículos pool dan flexibilidad operativa sin necesidad de tener un vehículo por empleado.' }] },
     practicalExercise: { title: 'Ejercicio: Asignación', description: 'Asigna vehículos a empleados', steps: [] }
@@ -2610,10 +2920,137 @@ export const lessonContent = {
 
   'fleet-004': {
     title: 'Mantenimiento y Servicios',
-    introduction: 'Programa y registra todos los mantenimientos para prolongar la vida útil de tu flota.',
+    introduction: 'Programa y registra todos los mantenimientos para prolongar la vida útil de tu flota y prevenir fallas costosas.',
     sections: [
-      { title: '1. Plan de Mantenimiento', content: 'Define intervalos de servicio preventivo.', example: 'Toyota Prius:\nCambio aceite: cada 15,000 km\nFiltros: cada 30,000 km\nRevisión mayor: cada 60,000 km\nNeumáticos: cada 40,000 km\n\nPróximo servicio: 60,000 km (en 3,000 km)', tips: ['Sigue manual del fabricante', 'Mantén historial completo'] },
-      { title: '2. Registro de Servicios', content: 'Documenta cada servicio realizado.', example: 'Servicio #SRV-001:\nVehículo: VEH-001\nFecha: 15/11/2024\nKm: 45,000\nTipo: Mantenimiento preventivo\nTaller: Toyota Service Madrid\nCosto: 250 EUR\nDetalle: Cambio aceite + filtros', tips: ['Guarda facturas digitalmente', 'Adjunta en Odoo'] }
+      {
+        title: '1. Plan de Mantenimiento',
+        content: `Define intervalos de servicio preventivo según las especificaciones del fabricante.
+
+**Tipos de mantenimiento:**
+- **Preventivo:** Servicios programados según km o tiempo
+- **Correctivo:** Reparaciones por fallas o averías
+- **Predictivo:** Basado en monitoreo de condiciones
+- **Estacional:** Preparación para cambios de clima
+
+**Beneficios del mantenimiento preventivo:**
+- Reduce fallas inesperadas en 70%
+- Prolonga vida útil del vehículo
+- Mantiene valor de reventa
+- Mejora seguridad y confiabilidad
+- Reduce costos operativos a largo plazo`,
+        example: `📍 Ruta: Flota > Configuración > Tipos de Servicio
+
+**Plan de mantenimiento: Toyota Prius 2022**
+
+| Servicio | Intervalo | Último | Próximo | Estado |
+| --- | --- | --- | --- | --- |
+| Cambio de aceite | 15,000 km | 45,000 km | 60,000 km | ⚠️ En 3,000 km |
+| Filtros (aire/combustible) | 30,000 km | 30,000 km | 60,000 km | ⚠️ En 3,000 km |
+| Revisión mayor | 60,000 km | - | 60,000 km | ⚠️ Próximo |
+| Neumáticos | 40,000 km | - | 40,000 km | ❌ Vencido |
+| Frenos | 50,000 km | - | 50,000 km | ✅ Vigente |
+
+**Calendario de mantenimiento 2025:**
+
+~~~text
+Febrero 2025 (47,000 km):
+✓ Cambio de neumáticos - URGENTE
+Costo estimado: €600
+Taller: Neumáticos Express
+
+Marzo 2025 (48,000 km):
+✓ Cambio de aceite
+✓ Filtro de aire
+✓ Filtro de combustible
+✓ Revisión de 60,000 km
+Costo estimado: €450
+Taller: Toyota Service Madrid
+
+Mayo 2025 (51,000 km):
+✓ Revisión de frenos
+✓ Alineación y balanceo
+Costo estimado: €180
+Taller: Frenos del Norte
+~~~
+
+**Recordatorios automáticos:**
+
+✓ Alerta a los 57,000 km (3,000 km antes)
+✓ Email al conductor y fleet manager
+✓ Reserva automática en taller preferido`,
+        tips: ['Sigue manual del fabricante', 'Mantén historial completo']
+      },
+      {
+        title: '2. Registro de Servicios',
+        content: `Documenta cada servicio realizado para mantener un historial completo y trazable.
+
+**Información a registrar:**
+- **Identificación:** Número de servicio, vehículo, fecha
+- **Kilometraje:** Lectura actual del odómetro
+- **Tipo:** Preventivo, correctivo, garantía
+- **Proveedor:** Taller o mecánico responsable
+- **Detalle:** Trabajos realizados y refacciones
+- **Costos:** Mano de obra, partes, total
+- **Documentos:** Facturas, orden de servicio, garantías
+
+**Beneficios del registro:**
+- Historial completo para reventa
+- Control de garantías
+- Análisis de costos por vehículo
+- Evaluación de proveedores`,
+        example: `📍 Ruta: Flota > Vehículos > [Vehículo] > Servicios > Crear
+
+**Servicio #SRV-001**
+
+~~~text
+Información General:
+Vehículo: VEH-001 Toyota Prius
+Fecha: 15/11/2024
+Kilometraje: 45,000 km
+Tipo: Mantenimiento preventivo
+
+Proveedor:
+Taller: Toyota Service Madrid
+Técnico: José García
+Contacto: servicio@toyotamadrid.com
+Orden de trabajo: OT-2024-1156
+~~~
+
+**Trabajos realizados:**
+
+| Concepto | Cantidad | P. Unitario | Total |
+| --- | --- | --- | --- |
+| Cambio de aceite sintético 5W-30 | 4 L | €8/L | €32 |
+| Filtro de aceite Toyota original | 1 | €15 | €15 |
+| Filtro de aire | 1 | €25 | €25 |
+| Filtro de combustible | 1 | €30 | €30 |
+| Mano de obra | 1.5 hrs | €60/hr | €90 |
+| Inspección de 45 puntos | Incluido | €0 | €0 |
+| IVA (21%) | - | - | €40 |
+| **TOTAL** | - | - | **€232** |
+
+**Observaciones del técnico:**
+
+~~~text
+✅ Nivel de líquidos correcto
+✅ Presión de neumáticos ajustada (32 PSI)
+✅ Frenos en buen estado (60% vida útil)
+⚠️ Batería con 3 años - monitorear
+✓ Sin fugas detectadas
+✓ Sistema híbrido funcionando correctamente
+
+Próximo servicio recomendado: 60,000 km
+Fecha estimada: Marzo 2025
+~~~
+
+**Documentos adjuntos:**
+
+✓ Factura-SRV-001.pdf
+✓ OrdenTrabajo-OT-2024-1156.pdf
+✓ Checklist-45puntos.pdf
+✓ Garantía-filtros-12meses.pdf`,
+        tips: ['Guarda facturas digitalmente', 'Adjunta en Odoo']
+      }
     ],
     quiz: { questions: [{ id: 'q1', question: '¿Cuál es el beneficio del mantenimiento preventivo?', options: ['Ninguno, es gasto innecesario', 'Previene fallas costosas y prolonga vida del vehículo', 'Solo para autos caros', 'Solo si está en garantía'], correct: 1, explanation: 'El mantenimiento preventivo evita averías costosas y extiende significativamente la vida útil del vehículo.' }] },
     practicalExercise: { title: 'Ejercicio: Plan de Mantenimiento', description: 'Crea plan para los vehículos', steps: [] }
@@ -2621,10 +3058,150 @@ export const lessonContent = {
 
   'fleet-005': {
     title: 'Control de Costos',
-    introduction: 'Analiza y controla todos los costos asociados a tu flota.',
+    introduction: 'Analiza y controla todos los costos asociados a tu flota para tomar decisiones informadas y optimizar el presupuesto.',
     sections: [
-      { title: '1. Registro de Combustible', content: 'Lleva control detallado de consumo de combustible.', example: 'VEH-001 Enero:\nCargas: 8\nLitros totales: 180 L\nCosto total: 280 EUR\nPrecio promedio: 1.56 EUR/L\nKm recorridos: 2,500\nConsumo: 7.2 L/100km', tips: ['Usa tarjeta corporativa', 'Analiza eficiencia mensualmente'] },
-      { title: '2. Costo Total de Propiedad', content: 'Calcula el TCO (Total Cost of Ownership).', example: 'VEH-001 TCO Anual:\nDepreciación: 4,000 EUR\nCombustible: 3,360 EUR\nMantenimiento: 1,200 EUR\nSeguro: 1,200 EUR\nImpuestos: 800 EUR\nTotal: 10,560 EUR\nCosto/km: 0.352 EUR\nCosto/mes: 880 EUR', tips: ['Calcula TCO anualmente', 'Compara con leasing'] }
+      {
+        title: '1. Registro de Combustible',
+        content: `Lleva control detallado del consumo de combustible para identificar ineficiencias y ahorros.
+
+**Datos a registrar:**
+- **Por carga:** Litros, costo, precio/litro, kilometraje
+- **Análisis:** Rendimiento km/L, consumo L/100km
+- **Comparación:** vs especificación del fabricante
+- **Alertas:** Consumos anormales o fugas
+
+**Métodos de control:**
+- Tarjetas corporativas con PIN por conductor
+- Registro manual con tickets de gasolinera
+- Apps móviles de control de combustible
+- Integración con estaciones de servicio`,
+        example: `📍 Ruta: Flota > Vehículos > [Vehículo] > Combustible
+
+**Reporte VEH-001 - Enero 2025:**
+
+| Fecha | Litros | Costo | €/L | Km | Rendimiento |
+| --- | --- | --- | --- | --- | --- |
+| 05/01 | 45 L | €70 | €1.56 | 12,500 | - |
+| 12/01 | 42 L | €66 | €1.57 | 13,080 | 13.8 km/L |
+| 19/01 | 48 L | €75 | €1.56 | 13,690 | 12.7 km/L |
+| 26/01 | 45 L | €70 | €1.56 | 14,230 | 12.0 km/L |
+
+**Resumen mensual:**
+
+~~~text
+Cargas de combustible: 8
+Litros totales: 180 L
+Costo total: €280
+Precio promedio: €1.56/L
+
+Kilometraje:
+Inicial: 12,500 km
+Final: 15,000 km
+Recorridos: 2,500 km
+
+Rendimiento:
+Consumo total: 180 L
+Rendimiento promedio: 13.9 km/L
+Consumo L/100km: 7.2 L/100km
+
+Especificación fabricante: 7.5 L/100km
+Desempeño: ✅ 4% mejor que especificación
+~~~
+
+**Análisis:**
+
+✅ **Rendimiento óptimo:** 7.2 L/100km supera la especificación
+⚠️ **Tendencia:** Consumo incrementó en última semana (12.0 km/L)
+💡 **Acción:** Revisar presión de neumáticos y filtros
+
+**Costo por kilómetro:**
+
+~~~text
+Combustible total: €280
+Km recorridos: 2,500 km
+Costo/km combustible: €0.112
+~~~`,
+        tips: ['Usa tarjeta corporativa', 'Analiza eficiencia mensualmente']
+      },
+      {
+        title: '2. Costo Total de Propiedad',
+        content: `Calcula el TCO (Total Cost of Ownership) para evaluar el costo real de cada vehículo.
+
+**Componentes del TCO:**
+
+**Costos de adquisición:**
+- Precio de compra o enganche
+- Impuestos de compra
+- Gastos de alta y placas
+
+**Costos operativos:**
+- Combustible
+- Mantenimiento preventivo y correctivo
+- Neumáticos y refacciones
+- Seguros (responsabilidad civil, cobertura amplia)
+- Tenencia e impuestos anuales
+- Estacionamiento y peajes
+
+**Costos de depreciación:**
+- Valor de compra - Valor residual esperado
+- Distribuido en vida útil esperada
+
+**Fórmula TCO:**
+TCO Anual = Depreciación + Combustible + Mantenimiento + Seguros + Impuestos + Otros`,
+        example: `📍 Ruta: Flota > Reportes > Análisis de Costos
+
+**TCO VEH-001 Toyota Prius - Año 2024**
+
+**Costos de adquisición (amortización anual):**
+
+~~~text
+Precio de compra: €28,000
+Vida útil esperada: 7 años
+Valor residual estimado: €8,000
+Depreciación anual: (€28,000 - €8,000) / 7 = €2,857
+~~~
+
+**Costos operativos anuales:**
+
+| Concepto | Mensual | Anual |
+| --- | --- | --- |
+| Combustible | €280 | €3,360 |
+| Mantenimiento preventivo | €100 | €1,200 |
+| Seguro todo riesgo | €100 | €1,200 |
+| Tenencia e impuestos | €67 | €800 |
+| Estacionamiento | €50 | €600 |
+| Peajes | €30 | €360 |
+| Lavado y limpieza | €25 | €300 |
+| **Subtotal operativo** | **€652** | **€7,820** |
+
+**TCO Total Anual:**
+
+~~~text
+Depreciación:           €2,857
+Costos operativos:      €7,820
+──────────────────────────────
+TOTAL TCO ANUAL:       €10,677
+
+Km recorridos/año: 30,000 km
+Costo por km: €10,677 / 30,000 = €0.356/km
+Costo mensual promedio: €890
+~~~
+
+**Comparación con alternativas:**
+
+| Opción | TCO Anual | Costo/km | Notas |
+| --- | --- | --- | --- |
+| Propiedad (actual) | €10,677 | €0.356 | Control total |
+| Renting 36 meses | €12,000 | €0.400 | Todo incluido |
+| Leasing | €11,500 | €0.383 | Sin mantenimiento |
+
+**Análisis:**
+
+✅ **Propiedad es mejor opción** para km anuales altos (30,000)
+✅ **TCO/km competitivo** vs alternativas
+💡 **Recomendación:** Mantener vehículo hasta 150,000 km o 5 años`,
+        tips: ['Calcula TCO anualmente', 'Compara con leasing']
+      }
     ],
     quiz: { questions: [{ id: 'q1', question: '¿Qué incluye el TCO?', options: ['Solo combustible', 'Todos los costos del vehículo: compra, operación, mantenimiento, seguros', 'Solo compra', 'Solo mantenimiento'], correct: 1, explanation: 'TCO incluye TODOS los costos: adquisición, depreciación, operación, mantenimiento, seguros e impuestos.' }] },
     practicalExercise: { title: 'Ejercicio: Análisis de Costos', description: 'Calcula TCO de la flota', steps: [] }
@@ -2632,10 +3209,220 @@ export const lessonContent = {
 
   'fleet-006': {
     title: 'Contratos y Reportes',
-    introduction: 'Gestiona contratos de arrendamiento y genera reportes de rendimiento de flota.',
+    introduction: 'Gestiona contratos de arrendamiento y genera reportes de rendimiento de flota para optimizar recursos y costos.',
     sections: [
-      { title: '1. Contratos de Arrendamiento', content: 'Administra leasing y renting de vehículos.', example: 'Contrato VEH-003:\nTipo: Renting\nProveedor: AutoRent S.A.\nCuota mensual: 450 EUR\nIncluye: mantenimiento, seguro, neumáticos\nDuración: 36 meses\nInicio: 01/03/2023\nVence: 28/02/2026\nKm incluidos: 30,000/año', tips: ['Revisa qué incluye el contrato', 'Controla exceso de km'] },
-      { title: '2. Reportes de Flota', content: 'Genera análisis para optimizar tu flota.', example: 'Reporte Trimestral:\nFlota total: 3 vehículos\nKm totales: 18,500\nCosto total: 8,450 EUR\nCosto/km: 0.457 EUR\nUtilización: 75%\nVehículo más eficiente: VEH-003\nRecomendación: Renovar VEH-002', tips: ['Genera reportes trimestrales', 'Busca optimizaciones'] }
+      {
+        title: '1. Contratos de Arrendamiento',
+        content: `Administra contratos de leasing y renting de vehículos para mantener control sobre obligaciones y vencimientos.
+
+**Tipos de contratos:**
+
+**Leasing financiero:**
+- Opción de compra al final
+- Empresa es responsable de mantenimiento
+- Deprecia como activo
+- Ventajas fiscales
+
+**Renting operativo:**
+- Sin opción de compra
+- Todo incluido (mantenimiento, seguro)
+- Cuota fija mensual
+- Vehículo nuevo cada 2-4 años
+
+**Aspectos a controlar:**
+- Fechas de inicio y vencimiento
+- Cuotas mensuales y forma de pago
+- Kilometraje incluido y excedentes
+- Servicios incluidos (mantenimiento, seguro, neumáticos)
+- Penalizaciones por terminación anticipada
+- Condiciones de devolución`,
+        example: `📍 Ruta: Flota > Vehículos > [Vehículo] > Contratos
+
+**Contrato VEH-003 - Ford Transit**
+
+~~~text
+Tipo de contrato: Renting Operativo
+Proveedor: AutoRent S.A.
+Contacto: contratos@autorent.com
+Ejecutivo de cuenta: Laura Martínez
+
+Condiciones económicas:
+Cuota mensual: €450 (+ IVA)
+Cuota anual: €5,400
+Duración: 36 meses
+Fecha inicio: 01/03/2023
+Fecha vencimiento: 28/02/2026
+
+Kilometraje:
+Incluido: 30,000 km/año (90,000 km total)
+Costo excedente: €0.15/km
+Km actual: 55,000 km
+Km disponibles: 35,000 km
+~~~
+
+**Servicios incluidos:**
+
+✅ **Mantenimiento preventivo:** Todos los servicios programados
+✅ **Seguro:** Cobertura amplia + responsabilidad civil
+✅ **Neumáticos:** 2 juegos durante el contrato
+✅ **Asistencia 24/7:** Grúa, auto sustituto
+✅ **Impuestos:** Tenencia incluida
+❌ **No incluye:** Combustible, multas, daños no cubiertos
+
+**Control de kilometraje:**
+
+| Año | Km Permitidos | Km Reales | Diferencia | Estado |
+| --- | --- | --- | --- | --- |
+| 2023 | 30,000 | 28,500 | -1,500 | ✅ Bajo |
+| 2024 | 30,000 | 32,000 | +2,000 | ⚠️ Exceso |
+| 2025 | 30,000 | Proyectado: 29,000 | -1,000 | ✅ OK |
+
+**Proyección exceso:**
+~~~text
+Total exceso esperado: +500 km
+Costo estimado: €75 (500 km × €0.15)
+~~~
+
+**Renovación:**
+
+~~~text
+Vencimiento: 28/02/2026
+Alerta: 01/11/2025 (90 días antes)
+
+Opciones:
+1. Renovar con mismo proveedor (descuento 10%)
+2. Cambiar a modelo más eficiente
+3. Comprar vehículo (no disponible en renting)
+~~~`,
+        tips: ['Revisa qué incluye el contrato', 'Controla exceso de km']
+      },
+      {
+        title: '2. Reportes de Flota',
+        content: `Genera reportes periódicos para analizar rendimiento, costos y tomar decisiones estratégicas.
+
+**Reportes principales:**
+
+**Reporte de utilización:**
+- Km recorridos por vehículo
+- Días en uso vs días disponibles
+- Tasa de utilización
+
+**Reporte de costos:**
+- TCO por vehículo
+- Costo/km comparativo
+- Tendencias de gasto
+
+**Reporte de mantenimiento:**
+- Servicios vencidos/próximos
+- Costo de mantenimiento
+- Vehículos con mayor costo
+
+**Reporte de eficiencia:**
+- Consumo de combustible
+- Rendimiento km/L
+- Comparación vs especificación
+
+**Frecuencia recomendada:**
+- Mensual: Costos y combustible
+- Trimestral: Análisis integral de flota
+- Anual: TCO y decisiones de renovación`,
+        example: `📍 Ruta: Flota > Reportes > Análisis Integral
+
+**Reporte Trimestral Q1 2025 - Flota Completa**
+
+**Resumen ejecutivo:**
+
+| Métrica | Q1 2025 | Q4 2024 | Variación |
+| --- | --- | --- | --- |
+| Vehículos activos | 3 | 3 | - |
+| Km totales | 18,500 | 16,200 | +14% |
+| Costo total | €8,450 | €7,890 | +7% |
+| Costo/km | €0.457 | €0.487 | -6% ✅ |
+| Utilización | 75% | 68% | +7% ✅ |
+
+**Análisis por vehículo:**
+
+~~~text
+VEH-001 - Toyota Prius (Propiedad)
+────────────────────────────────────
+Km recorridos: 7,500 km
+Costo total: €2,670
+Costo/km: €0.356
+Utilización: 85%
+Rendimiento: 13.9 km/L
+Estado: ✅ Óptimo
+
+Fortalezas: Mejor rendimiento, alto uso
+Áreas de mejora: Ninguna
+Recomendación: Mantener
+
+VEH-002 - Ford Ranger (Propiedad)
+────────────────────────────────────
+Km recorridos: 6,000 km
+Costo total: €4,280
+Costo/km: €0.713
+Utilización: 55%
+Rendimiento: 9.2 km/L
+Estado: ⚠️ Costoso
+
+Fortalezas: Necesario para carga
+Áreas de mejora: Utilización baja, alto consumo
+Recomendación: Evaluar venta/renting
+
+VEH-003 - Ford Transit (Renting)
+────────────────────────────────────
+Km recorridos: 5,000 km
+Costo total: €1,500 (cuota renting)
+Costo/km: €0.300
+Utilización: 85%
+Rendimiento: 11.5 km/L
+Estado: ✅ Excelente
+
+Fortalezas: Costo fijo, todo incluido, alta utilización
+Áreas de mejora: Ninguna
+Recomendación: Renovar al vencimiento
+~~~
+
+**Análisis financiero:**
+
+~~~text
+Costo total trimestre: €8,450
+
+Distribución:
+- Combustible: €3,200 (38%)
+- Mantenimiento: €1,400 (17%)
+- Seguros: €900 (11%)
+- Renting VEH-003: €1,500 (18%)
+- Otros: €1,450 (17%)
+
+Presupuesto: €9,000
+Ahorro: €550 (6% bajo presupuesto) ✅
+~~~
+
+**Recomendaciones estratégicas:**
+
+💡 **Vehículo más eficiente:** VEH-003 (renting)
+- Costo/km más bajo: €0.300
+- Sin sorpresas, cuota fija
+- Alta utilización
+
+⚠️ **Oportunidad de optimización:** VEH-002
+- Costo/km alto: €0.713
+- Utilización baja: 55%
+- Acción: Evaluar venta y cambio a renting
+
+✅ **Mantener:** VEH-001
+- Rendimiento óptimo
+- Costo/km competitivo
+- Alta utilización
+
+**Plan de acción:**
+
+1. **Inmediato:** Analizar cotizaciones de renting para VEH-002
+2. **Marzo:** Evaluar venta de VEH-002
+3. **Junio:** Negociar renovación VEH-003 con descuento`,
+        tips: ['Genera reportes trimestrales', 'Busca optimizaciones']
+      }
     ],
     quiz: { questions: [{ id: 'q1', question: '¿Qué ventaja tiene el renting vs compra?', options: ['Ninguna', 'Cuota fija mensual que incluye todos los costos, sin sorpresas', 'Es más caro siempre', 'Solo para empresas grandes'], correct: 1, explanation: 'El renting ofrece cuota fija mensual que incluye mantenimiento, seguros y otros costos, facilitando el presupuesto.' }] },
     practicalExercise: { title: 'Ejercicio: Reporte de Flota', description: 'Genera análisis completo', steps: [] }
@@ -2646,43 +3433,60 @@ export const lessonContent = {
   // ========================================
   'crm-001': {
     title: 'Introducción al CRM',
-    introduction: `
-      El CRM (Customer Relationship Management) es tu mejor amigo para encontrar y mantener clientes.
-      Piensa en él como una agenda súper inteligente que recuerda TODO sobre cada persona interesada
-      en tu negocio: qué quiere, cuándo llamó, qué le dijiste, y cuándo debes seguirlo.
-    `,
+    introduction: `El CRM (Customer Relationship Management) es tu mejor amigo para encontrar y mantener clientes. Piensa en él como una agenda súper inteligente que recuerda TODO sobre cada persona interesada en tu negocio: qué quiere, cuándo llamó, qué le dijiste, y cuándo debes seguirlo.`,
     sections: [
       {
         title: '1. ¿Qué es un Lead?',
-        content: `
-          Un **Lead** es una persona o empresa que mostró interés en tu producto o servicio.
-          Puede ser alguien que:
-          - Llenó un formulario en tu sitio web
-          - Te llamó preguntando por precios
-          - Te enviaron un email pidiendo información
-          - Te conoció en una feria o evento
+        content: `Un **Lead** es una persona o empresa que mostró interés en tu producto o servicio.
 
-          **¿Por qué es importante registrarlos?**
-          Porque sin un sistema, ¡se te olvidarán! El CRM te ayuda a no perder ninguna oportunidad.
-        `,
-        example: `
-          📍 Ruta en Odoo: CRM > Leads
+**Puede ser alguien que:**
+- Llenó un formulario en tu sitio web
+- Te llamó preguntando por precios
+- Te envió un email pidiendo información
+- Te conoció en una feria o evento
+- Te contactó por redes sociales
 
-          Ejemplo de Lead:
-          ─────────────────────
-          Nombre: María García
-          Empresa: Panadería La Estrella
-          Email: maria@panaderia.com
-          Teléfono: 555-1234
-          Origen: Formulario web
-          Interés: Sistema de inventario
-          Notas: "Quiere controlar su stock de harina"
+**¿Por qué es importante registrarlos?**
+Porque sin un sistema, ¡se te olvidarán! El CRM te ayuda a no perder ninguna oportunidad de venta.
 
-          ¿Qué hacer ahora?
-          ✓ Llamarla mañana a las 10am
-          ✓ Enviarle información sobre el módulo de Inventario
-          ✓ Agendar una demostración si le interesa
-        `,
+**Datos esenciales de un lead:**
+- Nombre y empresa
+- Email y teléfono
+- Origen del contacto
+- Necesidad o interés específico
+- Próxima acción a realizar`,
+        example: `📍 Ruta en Odoo: CRM > Leads > Crear
+
+**Ejemplo de Lead:**
+
+~~~text
+Nombre: María García
+Empresa: Panadería La Estrella
+Email: maria@panaderia.com
+Teléfono: 555-1234
+Origen: Formulario web
+Interés: Sistema de inventario
+Prioridad: Media
+~~~
+
+**Notas del contacto:**
+
+~~~text
+"Quiere controlar su stock de harina y otros insumos.
+Actualmente usa Excel y pierde mucho tiempo.
+Busca solución simple y económica.
+Presupuesto aproximado: $500/mes"
+~~~
+
+**Plan de acción:**
+
+✓ **Llamarla mañana a las 10am**
+✓ **Enviarle información** sobre el módulo de Inventario
+✓ **Agendar demostración** si muestra interés
+✓ **Enviar cotización** después de la demo
+
+**Estado:** Nuevo
+**Siguiente actividad:** Llamada - Mañana 10:00 AM`,
         tips: [
           'Registra TODO de inmediato, la memoria falla',
           'Siempre anota de dónde vino el lead (origen)',
@@ -2692,35 +3496,51 @@ export const lessonContent = {
       },
       {
         title: '2. El Pipeline (Embudo de Ventas)',
-        content: `
-          Imagina un embudo: muchos leads entran arriba, pero solo algunos salen convertidos en clientes.
-          El Pipeline te muestra visualmente en qué etapa está cada oportunidad.
+        content: `Imagina un embudo: muchos leads entran arriba, pero solo algunos salen convertidos en clientes. El Pipeline te muestra visualmente en qué etapa está cada oportunidad.
 
-          **Etapas típicas:**
-          1. Nuevo - Acaba de llegar
-          2. Calificado - Confirmaste que tiene interés real
-          3. Propuesta - Le enviaste cotización
-          4. Negociación - Están discutiendo precios/términos
-          5. Ganado - ¡Éxito! Se convirtió en cliente
-          6. Perdido - No compró (pero aprendes por qué)
-        `,
-        example: `
-          📍 Ruta en Odoo: CRM > Pipeline
+**Etapas típicas del pipeline:**
 
-          Tu Pipeline Visual:
-          ┌─────────┐ ┌──────────┐ ┌──────────┐ ┌───────────┐
-          │  NUEVO  │ │CALIFICADO│ │ PROPUESTA│ │NEGOCIACIÓN│
-          │   10    │ │    5     │ │     3    │ │     2     │
-          └─────────┘ └──────────┘ └──────────┘ └───────────┘
+1. **Nuevo** - Acaba de llegar, aún sin contactar
+2. **Calificado** - Confirmaste que tiene interés real y presupuesto
+3. **Propuesta** - Le enviaste cotización o presentación
+4. **Negociación** - Están discutiendo precios/términos
+5. **Ganado** - ¡Éxito! Se convirtió en cliente
+6. **Perdido** - No compró (pero aprendes por qué)
 
-          De 10 leads nuevos:
-          • 5 estaban realmente interesados (50%)
-          • 3 pidieron cotización (30%)
-          • 2 están negociando (20%)
-          • Posiblemente 1-2 comprarán (10-20%)
+**Métricas importantes:**
+- **Tasa de conversión:** % de leads que avanzan
+- **Tiempo promedio:** Días en cada etapa
+- **Valor del pipeline:** Suma de oportunidades activas
+- **Probabilidad de cierre:** Estimación de éxito`,
+        example: `📍 Ruta en Odoo: CRM > Pipeline
 
-          ¡Esto es NORMAL! No todos compran, lo importante es dar seguimiento.
-        `,
+**Vista Kanban del Pipeline:**
+
+~~~text
+┌─────────┐ ┌──────────┐ ┌──────────┐ ┌───────────┐ ┌────────┐
+│  NUEVO  │ │CALIFICADO│ │ PROPUESTA│ │NEGOCIACIÓN│ │ GANADO │
+│   10    │ │    5     │ │     3    │ │     2     │ │   1    │
+│ $50,000 │ │ $40,000  │ │ $25,000  │ │ $15,000   │ │$10,000 │
+└─────────┘ └──────────┘ └──────────┘ └───────────┘ └────────┘
+~~~
+
+**Análisis del embudo:**
+
+| Etapa | Leads | % | Valor Potencial |
+| --- | --- | --- | --- |
+| Nuevo | 10 | 100% | $50,000 |
+| Calificado | 5 | 50% | $40,000 |
+| Propuesta | 3 | 30% | $25,000 |
+| Negociación | 2 | 20% | $15,000 |
+| Ganado | 1 | 10% | $10,000 |
+
+**Interpretación:**
+
+✅ **Tasa de conversión: 10%** (1 ganado de 10 iniciales)
+⚠️ **Cuello de botella:** De 5 calificados solo 3 pidieron propuesta
+💡 **Acción:** Mejorar presentación de propuestas
+
+**¡Esto es NORMAL!** No todos compran, lo importante es dar seguimiento constante.`,
         tips: [
           'Revisa tu pipeline cada mañana',
           'Mueve las tarjetas según avancen',
@@ -2730,30 +3550,66 @@ export const lessonContent = {
       },
       {
         title: '3. Programar Actividades',
-        content: `
-          Las actividades son recordatorios de lo que debes hacer con cada cliente potencial.
-          Sin esto, se te olvidará seguirlos y perderás ventas.
+        content: `Las actividades son recordatorios de lo que debes hacer con cada cliente potencial. Sin esto, se te olvidará seguirlos y perderás ventas.
 
-          **Tipos de actividades:**
-          - Llamar: Hablar por teléfono
-          - Email: Enviar correo
-          - Reunión: Agendar cita presencial o virtual
-          - Tarea: Algo que hacer (enviar documento, etc.)
-        `,
-        example: `
-          📍 Ruta: En cualquier Lead > Pestaña "Actividades" > Programar
+**Tipos de actividades:**
+- **Llamar:** Hablar por teléfono
+- **Email:** Enviar correo con información
+- **Reunión:** Agendar cita presencial o virtual
+- **Tarea:** Enviar documento, preparar propuesta, etc.
+- **Demo:** Demostración del producto
 
-          Actividad programada:
-          ─────────────────────────
-          Tipo: Llamada telefónica
-          Responsable: Yo
-          Fecha: Mañana 10:00 AM
-          Resumen: "Seguimiento a cotización enviada"
-          Notas: "Preguntarle si recibió el PDF y si tiene dudas"
+**Reglas de oro:**
+- SIEMPRE programa la siguiente actividad
+- Sé específico en la descripción
+- Asigna responsable y fecha realista
+- Registra el resultado de cada actividad`,
+        example: `📍 Ruta: En cualquier Lead > Pestaña "Actividades" > Programar
 
-          Cuando se acerque la hora, Odoo te mostrará un aviso.
-          Después de la llamada, registras qué pasó y programas la siguiente acción.
-        `,
+**Actividad programada:**
+
+~~~text
+Tipo: Llamada telefónica
+Responsable: Carlos Martínez (Vendedor)
+Fecha: 20/01/2025
+Hora: 10:00 AM
+Resumen: Seguimiento a cotización enviada
+~~~
+
+**Notas preparatorias:**
+
+~~~text
+Preguntarle:
+✓ ¿Recibió el PDF de la cotización?
+✓ ¿Tiene dudas sobre los módulos incluidos?
+✓ ¿Necesita ajustar el precio o términos?
+✓ ¿Cuándo puede tomar la decisión?
+
+Documentos listos:
+- Cotización COT-2025-001.pdf
+- Casos de éxito similares
+- Plan de implementación
+~~~
+
+**Después de la llamada:**
+
+~~~text
+Resultado: Conversación positiva
+Duración: 15 minutos
+
+Resumen:
+- Sí recibió la cotización
+- Tiene dudas sobre módulo de inventario
+- Pide descuento del 10%
+- Decisión en 1 semana
+
+Siguiente acción:
+✓ Enviar video demo de inventario (hoy)
+✓ Consultar con gerencia sobre descuento (mañana)
+✓ Llamar nuevamente en 7 días (27/01)
+~~~
+
+**Odoo te recordará** con notificación cuando se acerque la hora.`,
         tips: [
           'SIEMPRE programa la siguiente actividad',
           'Sé realista con las fechas y horarios',
@@ -2817,31 +3673,66 @@ export const lessonContent = {
 
   'crm-002': {
     title: 'Conversión de Leads a Oportunidades',
-    introduction: 'Aprende cuándo y cómo convertir un lead interesado en una oportunidad real de venta.',
+    introduction: 'Aprende cuándo y cómo convertir un lead interesado en una oportunidad real de venta para maximizar tus posibilidades de cierre.',
     sections: [
       {
         title: '1. ¿Cuándo Convertir un Lead?',
-        content: `
-          Un lead se convierte en **Oportunidad** cuando:
-          - Confirmaste que tiene un problema real que puedes resolver
-          - Tiene presupuesto (o está dispuesto a invertir)
-          - Es la persona que decide o influye en la compra
-          - Tiene un plazo en mente para resolver su necesidad
+        content: `Un lead se convierte en **Oportunidad** cuando cumple los criterios BANT (Budget, Authority, Need, Timeline).
 
-          Si no cumple estos criterios, sigue siendo solo un lead y necesita más seguimiento.
-        `,
-        example: `
-          Lead: María de Panadería La Estrella
+**Criterios para convertir a oportunidad:**
 
-          ¿Tiene problema real? ✓ Sí, pierde dinero por mal control de inventario
-          ¿Tiene presupuesto? ✓ Sí, puede invertir hasta $500/mes
-          ¿Decide ella? ✓ Sí, es la dueña
-          ¿Urgencia? ✓ Sí, necesita antes de temporada alta
+- **Problema real:** Confirmaste que tiene una necesidad que puedes resolver
+- **Presupuesto:** Tiene capacidad de inversión o está dispuesto a asignar recursos
+- **Autoridad:** Es quien decide o influye significativamente en la compra
+- **Urgencia/Timeline:** Tiene un plazo definido para resolver su necesidad
 
-          RESULTADO: ¡Convertir a Oportunidad!
+**Si NO cumple estos criterios:**
+El contacto sigue siendo solo un lead y necesita más seguimiento y calificación antes de invertir tiempo en propuestas formales.
 
-          Valor estimado: $500/mes × 12 meses = $6,000/año
-        `,
+**Beneficios de calificar correctamente:**
+- Enfocas esfuerzos en oportunidades reales
+- Proyecciones de venta más precisas
+- Mejor uso del tiempo del equipo comercial
+- Mayor tasa de conversión`,
+        example: `📍 Ruta: CRM > Leads > [Lead] > Calificar
+
+**Evaluación: María - Panadería La Estrella**
+
+**Checklist BANT:**
+
+~~~text
+✅ ¿Tiene problema real?
+Sí, pierde dinero por mal control de inventario.
+Desperdicia productos por caducidad.
+Pérdidas estimadas: $800/mes
+
+✅ ¿Tiene presupuesto?
+Sí, puede invertir hasta $500/mes.
+Ya tiene presupuesto aprobado para software.
+
+✅ ¿Decide ella?
+Sí, es la dueña de la panadería.
+Toma decisiones sin necesidad de aprobaciones.
+
+✅ ¿Tiene urgencia?
+Sí, necesita solución antes de temporada alta.
+Timeline: Implementar en 30 días.
+~~~
+
+**Cálculo de valor:**
+
+~~~text
+Inversión mensual: $500/mes
+Contrato anual: 12 meses
+Valor total: $500 × 12 = $6,000/año
+
+Probabilidad de cierre: 60%
+(Tiene presupuesto y urgencia, aún no vio demo)
+~~~
+
+**RESULTADO:** ✅ **¡Convertir a Oportunidad!**
+
+**Siguiente paso:** Enviar propuesta y agendar demostración`,
         tips: [
           'No conviertas leads solo por convertir',
           'Haz las preguntas correctas para calificar',
@@ -2851,29 +3742,75 @@ export const lessonContent = {
       },
       {
         title: '2. Proceso de Conversión',
-        content: `
-          Cuando estés seguro de que el lead está calificado:
-          1. Abre el lead en Odoo
-          2. Haz clic en "Convertir a Oportunidad"
-          3. Asigna un valor estimado (cuánto puede valer la venta)
-          4. Selecciona o crea el cliente
-          5. Elige la etapa inicial del pipeline
-        `,
-        example: `
-          📍 Ruta: CRM > Lead > Botón "Convertir a Oportunidad"
+        content: `Cuando estés seguro de que el lead está calificado según criterios BANT, convierte a oportunidad.
 
-          Datos a completar:
-          ─────────────────────
-          Nombre oportunidad: "Sistema Inventario - Panadería La Estrella"
-          Cliente: María García (se crea automático)
-          Valor esperado: $6,000
-          Probabilidad: 60%
-          Fecha cierre estimada: 30 días
-          Vendedor: Tú
+**Pasos para convertir:**
 
-          Al guardar, aparece en el Pipeline como Oportunidad
-          y puedes empezar a enviar cotizaciones.
-        `,
+1. **Abrir el lead** en Odoo
+2. **Clic en "Convertir a Oportunidad"**
+3. **Asignar valor estimado** (cuánto puede valer la venta)
+4. **Seleccionar o crear cliente** (se genera automáticamente)
+5. **Elegir etapa inicial** del pipeline (normalmente "Calificado")
+6. **Asignar vendedor** responsable
+7. **Definir fecha estimada** de cierre
+8. **Programar siguiente actividad** (demo, propuesta, reunión)
+
+**Campos importantes:**
+- **Nombre:** Descriptivo del proyecto/necesidad
+- **Valor esperado:** Estimación realista del contrato
+- **Probabilidad:** % de confianza en el cierre
+- **Fecha cierre:** Cuándo esperas cerrar la venta
+- **Prioridad:** Urgencia del cliente`,
+        example: `📍 Ruta: CRM > Lead > Botón "Convertir a Oportunidad"
+
+**Formulario de conversión:**
+
+~~~text
+Nombre oportunidad:
+"Sistema Inventario - Panadería La Estrella"
+
+Cliente:
+María García - Panadería La Estrella
+(se crea automáticamente si no existe)
+
+Contacto principal:
+María García
+Email: maria@panaderia.com
+Teléfono: 555-1234
+
+Datos comerciales:
+Valor esperado: $6,000 (contrato anual)
+Probabilidad: 60%
+Fecha cierre estimada: 30 días (20/02/2025)
+Vendedor responsable: Carlos Martínez
+Prioridad: Alta
+
+Etapa inicial:
+Calificado (ya pasó criterios BANT)
+
+Próxima actividad:
+Demostración - 22/01/2025 11:00 AM
+~~~
+
+**Después de convertir:**
+
+| Campo | Antes (Lead) | Después (Oportunidad) |
+| --- | --- | --- |
+| Tipo | Lead | Oportunidad |
+| Estado | Nuevo | Calificado |
+| Valor | - | $6,000 |
+| Pipeline | No visible | ✅ Visible |
+| Cliente | - | María García creado |
+
+**Ahora puedes:**
+
+✅ **Enviar cotizaciones** formales
+✅ **Programar demostraciones** del producto
+✅ **Hacer seguimiento** estructurado
+✅ **Generar reportes** de proyección de ventas
+
+**Al guardar:**
+La oportunidad aparece en tu Pipeline y puedes comenzar el proceso formal de venta con propuestas y cotizaciones.`,
         tips: [
           'El nombre de la oportunidad debe ser descriptivo',
           'Sé realista con la probabilidad de cierre',
